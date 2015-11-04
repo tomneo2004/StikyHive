@@ -321,7 +321,7 @@
     _tabView = [[UIView alloc] initWithFrame:CGRectMake(0, y, width, 600)];
     _tabView.backgroundColor = [UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1.0];
     
-    [self skillTab:];
+    [self skillTab:_seeAllArray];
     
 
     
@@ -336,6 +336,7 @@
 - (void)skillTab:(NSArray *)seeAllArray
 {
     CGFloat y = 0;
+    CGFloat width = self.view.frame.size.width;
     
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     
@@ -343,7 +344,7 @@
     {
         
         NSDictionary *object = _seeAllArray[i];
-        CGFloat width = self.view.frame.size.width;
+        
         
         UIView *skillView = [[UIView alloc] initWithFrame:CGRectMake(20, y+5, width-40, 240)];
         skillView.backgroundColor = [UIColor whiteColor];
@@ -774,7 +775,7 @@
     [_activityBtn setTitleColor:greyColor forState:UIControlStateNormal];
 
     
-    [self skillTab:self.view.frame.size.width];
+    [self skillTab:_seeAllArray];
     
 }
 
