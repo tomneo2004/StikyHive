@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SMTPAPI.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SendGrid.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>639DF70E158AC7B0B2318967E673B3C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>764ABAF5E4339EA5AB651A2A178ACB96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9D2530CD2F2DA8032AE4E6FF0E2D9BB6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C78A9046C0172CB21B0B83C568BCCBA9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
