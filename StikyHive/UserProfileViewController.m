@@ -23,6 +23,7 @@
 @property (nonatomic, strong) UIButton *educationBtn;
 @property (nonatomic, strong) UIButton *documentBtn;
 @property (nonatomic, strong) UIButton *activityBtn;
+@property (nonatomic, strong) UIButton *postBtn;
 
 @end
 
@@ -45,10 +46,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"stkid ---- %@",_stkId);
     
     _contentScrollView.alwaysBounceVertical = YES;
     _contentScrollView.delegate = self;
+    
+    self.view.backgroundColor = [UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1.0];
+
     
     NSString *stkid = [LocalDataInterface retrieveStkid];
     
@@ -68,10 +71,12 @@
                 
                 NSDictionary *buyerMarket = (NSDictionary *)obj3;
                 _buyerMarketArray = buyerMarket[@"buyermarkets"];
-//                NSLog(@"buyer market ----- %@",buyerMarket);
+                NSLog(@"buyer market ----- %@",buyerMarket);
                 
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    
                     
                      [self displayPage];
                     
@@ -93,7 +98,6 @@
     
     y = [self displayTitleBg:CGPointMake(x, y) andWidth:width];
     
-    
     y = [self displayTabScrollView:CGPointMake(x, y) andWidth:width];
     
     
@@ -107,9 +111,9 @@
 - (CGFloat)displayTitleBg:(CGPoint)point andWidth:(CGFloat)width
 {
     CGFloat y = point.y;
-    UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
+//    UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     
-    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(point.x, y, width, 260)];
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(point.x, y, width, 200)];
     bgImageView.image = [UIImage imageNamed:@"profile_bg - Copy"];
     
     NSDictionary *stikybee = _beeInfoDic[@"stikybee"];
@@ -153,19 +157,19 @@
     
     
     
-    UIButton *followBtn = [[UIButton alloc] initWithFrame:CGRectMake(width-155, bgImageView.frame.size.height-50, 130, 30)];
-    [followBtn setTitle:@"Follow" forState:UIControlStateNormal];
-    [followBtn setTitleColor:greenColor forState:UIControlStateNormal];
-    followBtn.layer.borderColor = greenColor.CGColor;
-    followBtn.layer.borderWidth = 2;
-    followBtn.layer.cornerRadius = 5;
-    followBtn.layer.masksToBounds = YES;
+//    UIButton *followBtn = [[UIButton alloc] initWithFrame:CGRectMake(width-155, bgImageView.frame.size.height-50, 130, 30)];
+//    [followBtn setTitle:@"Follow" forState:UIControlStateNormal];
+//    [followBtn setTitleColor:greenColor forState:UIControlStateNormal];
+//    followBtn.layer.borderColor = greenColor.CGColor;
+//    followBtn.layer.borderWidth = 2;
+//    followBtn.layer.cornerRadius = 5;
+//    followBtn.layer.masksToBounds = YES;
     
     
     [bgImageView addSubview:profileView];
     [bgImageView addSubview:discWebView];
 //    [bgImageView addSubview:discLabel];
-    [bgImageView addSubview:followBtn];
+//    [bgImageView addSubview:followBtn];
     
     [bgImageView addSubview:discWebView];   ///???? two??
     
@@ -270,6 +274,14 @@
     
     x = x+_skillBtn.frame.size.width;
     
+    _postBtn = [[UIButton alloc] initWithFrame:CGRectMake(x, 0, 80, height)];
+    [_postBtn setTitle:@"POSTS" forState:UIControlStateNormal];
+    [_postBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    _postBtn.titleLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:15];
+    [_postBtn addTarget:self action:@selector(postsTabTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    x = x+_postBtn.frame.size.width;
+    
     _experienceBtn = [[UIButton alloc] initWithFrame:CGRectMake(x, 0, 130, height)];
     [_experienceBtn setTitle:@"EXPERIENCE" forState:UIControlStateNormal];
     [_experienceBtn setTitleColor:greyColor forState:UIControlStateNormal];
@@ -311,6 +323,7 @@
     [tabScrollView addSubview:_educationBtn];
     [tabScrollView addSubview:_documentBtn];
     [tabScrollView addSubview:_activityBtn];
+    [tabScrollView addSubview:_postBtn];
     
     [_contentScrollView addSubview:tabScrollView];
     
@@ -321,7 +334,7 @@
     _tabView = [[UIView alloc] initWithFrame:CGRectMake(0, y, width, 600)];
     _tabView.backgroundColor = [UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1.0];
     
-    [self skillTab:_seeAllArray];
+    [self skillTab:_seeAllArray isSkill:YES];
     
 
     
@@ -333,37 +346,48 @@
     return y;
 }
 
-- (void)skillTab:(NSArray *)seeAllArray
+- (void)skillTab:(NSArray *)seeAllArray isSkill:(BOOL)isSkill
 {
     CGFloat y = 0;
     CGFloat width = self.view.frame.size.width;
     
+    for (UIView *view in [_tabView subviews])
+    {
+        [view removeFromSuperview];
+    }
+    
+
+    
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     
-    for (int i = 0; i < seeAllArray.count; i++)
+    if (seeAllArray != (id)[NSNull null])
     {
-        
-        NSDictionary *object = _seeAllArray[i];
-        
-        
-        UIView *skillView = [[UIView alloc] initWithFrame:CGRectMake(20, y+5, width-40, 240)];
-        skillView.backgroundColor = [UIColor whiteColor];
-        
-        UIImageView *picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, skillView.frame.size.width, 180)];
-//        picImageView.image = [ViewControllerUtil getImageWithPath:url];
-        picImageView.contentMode = UIViewContentModeScaleAspectFit;
-
-//        NSLog(@"skill array object ------- %@",object);
-        
-        NSString *thumbLocation = object[@"thumbnailLocation"];
-        NSString *location = object[@"location"];
-        
-        if (thumbLocation != (id)[NSNull null])
+        for (int i = 0; i < seeAllArray.count; i++)
         {
-            NSString *thumUrl = [WebDataInterface getFullUrlPath:thumbLocation];
+            NSDictionary *object = seeAllArray[i];
+        
+        
+            UIView *skillView = [[UIView alloc] initWithFrame:CGRectMake(20, y+5, width-40, 240)];
+            skillView.backgroundColor = [UIColor whiteColor];
+        
+            UIImageView *picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, skillView.frame.size.width, 180)];
+//        picImageView.image = [ViewControllerUtil getImageWithPath:url];
+            picImageView.contentMode = UIViewContentModeScaleAspectFit;
+
+        
+            if (isSkill)
+            {
+            
+                NSString *thumbLocation = object[@"thumbnailLocation"];
+                NSString *location = object[@"location"];
+        
+                if (thumbLocation != (id)[NSNull null])
+                {
+
+                    NSString *thumUrl = [WebDataInterface getFullUrlPath:thumbLocation];
 //            NSLog(@"thum url -------- %@",thumUrl);
             
-            picImageView.image = [ViewControllerUtil getImageWithPath:thumUrl];
+                    picImageView.image = [ViewControllerUtil getImageWithPath:thumUrl];
             
 //            
 //            UIImage *image = [ViewControllerUtil getImageWithPath:thumUrl];
@@ -378,29 +402,45 @@
             
             
             
-            UIImageView *playIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_play@2x"]];
-            [playIconView setCenter:picImageView.center];
-            [picImageView addSubview:playIconView];
+                    UIImageView *playIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_play@2x"]];
+                    [playIconView setCenter:picImageView.center];
+                    [picImageView addSubview:playIconView];
             
-        }
-        else if (location != (id)[NSNull null])
-        {
-            NSString *url = [WebDataInterface getFullUrlPath:location];
-            picImageView.image = [ViewControllerUtil getImageWithPath:url];
-        }
-        else
-        {
-            picImageView.image = [UIImage imageNamed:@"Default_skill_photo@2x"];
-        }
+                }
+                else if (location != (id)[NSNull null])
+                {
+                    NSString *url = [WebDataInterface getFullUrlPath:location];
+                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+                }
+                else
+                {
+                    picImageView.image = [UIImage imageNamed:@"Default_skill_photo@2x"];
+                }
+            
+            
+            }
+            else
+            {
+                NSString *location = object[@"location"];
+
+                if (location != (id)[NSNull null])
+                {
+                    NSString *url = [WebDataInterface getFullUrlPath:location];
+                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+                }
+                else
+                {
+                    picImageView.image = [UIImage imageNamed:@"Default_skill_photo@2x"];
+                }
+            
+            }
+        
         
         UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, picImageView.frame.size.height+5, 250, 25)];
         nameLabel.text = object[@"name"];
         nameLabel.textColor = greenColor;
         nameLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
         
-        
-        UIButton *bookmarkBtn = [[UIButton alloc] initWithFrame:CGRectMake(skillView.frame.size.width-40, picImageView.frame.size.height, 23, 27)];
-        [bookmarkBtn setImage:[UIImage imageNamed:@"profile_bookmark"] forState:UIControlStateNormal];
         
         UILabel *typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,nameLabel.frame.origin.y+ nameLabel.frame.size.height+5, 95, 15)];
         typeLabel.font = [UIFont systemFontOfSize:12];
@@ -417,140 +457,156 @@
             typeLabel.text = @"Raw Talent";
         }
         
-        
-        
-        CGFloat rateX = typeLabel.frame.origin.x+typeLabel.frame.size.width + 5;
-        CGFloat rateY = typeLabel.frame.origin.y + 3;
-        
-        NSString *ratingString = object[@"rating"];
-        
-        if (ratingString !=(id)[NSNull null]) {
-            NSInteger rating = [ratingString integerValue];
+        if (isSkill)
+        {
+  
+            UIButton *bookmarkBtn = [[UIButton alloc] initWithFrame:CGRectMake(skillView.frame.size.width-40, picImageView.frame.size.height, 23, 27)];
+            [bookmarkBtn setImage:[UIImage imageNamed:@"profile_bookmark"] forState:UIControlStateNormal];
             
-//            CGFloat rateX = typeLabel.frame.origin.x+typeLabel.frame.size.width + 5;
-//            CGFloat rateY = typeLabel.frame.origin.y + 3;
-            
-            for (int i = 0; i < rating; i++)
+        
+            CGFloat rateX = typeLabel.frame.origin.x+typeLabel.frame.size.width + 5;
+            CGFloat rateY = typeLabel.frame.origin.y + 3;
+        
+            NSString *ratingString = object[@"rating"];
+        
+            if (ratingString !=(id)[NSNull null])
             {
-                
-                UIImageView *rateImageView = [[UIImageView alloc] initWithFrame:CGRectMake(rateX, rateY, 11, 11)];
-                rateImageView.image = [UIImage imageNamed:@"review_filled"];
-                
-                [skillView addSubview:rateImageView];
-                
-                rateX = rateX+rateImageView.frame.size.width;
-            }
+                NSInteger rating = [ratingString integerValue];
             
-            int ratInt = [ratingString intValue];
+//              CGFloat rateX = typeLabel.frame.origin.x+typeLabel.frame.size.width + 5;
+//              CGFloat rateY = typeLabel.frame.origin.y + 3;
             
-            if (rating < 5) {
+                for (int i = 0; i < rating; i++)
+                {
                 
-                for (int i = ratInt; i < 5; i++) {
                     UIImageView *rateImageView = [[UIImageView alloc] initWithFrame:CGRectMake(rateX, rateY, 11, 11)];
-                    rateImageView.image = [UIImage imageNamed:@"review_empty"];
-                    
+                    rateImageView.image = [UIImage imageNamed:@"review_filled"];
+                
                     [skillView addSubview:rateImageView];
-                    
+                
                     rateX = rateX+rateImageView.frame.size.width;
                 }
-                
-            }
-
-        }
-        else
-        {
-//            CGFloat rateX = typeLabel.frame.origin.x+typeLabel.frame.size.width + 5;
-//            CGFloat rateY = typeLabel.frame.origin.y + 3;
             
-            for (int i = 0; i < 5; i++) {
-                UIImageView *rateImageView = [[UIImageView alloc] initWithFrame:CGRectMake(rateX, rateY, 11, 11)];
-                rateImageView.image = [UIImage imageNamed:@"review_empty"];
-                
-                [skillView addSubview:rateImageView];
-                
-                rateX = rateX+rateImageView.frame.size.width;
-            }
-
-        }
-        
-        
-        UILabel *reviewLabel = [[UILabel alloc] initWithFrame:CGRectMake(rateX+8, rateY-2, 100, 15)];
-        reviewLabel.text = [NSString stringWithFormat:@"%@ Reviews",object[@"reviewCount"]];
-        reviewLabel.font = [UIFont systemFontOfSize:13];
-        
-        
-        rateX = rateX+reviewLabel.frame.size.width+10;
-        
-        
-        UILabel *likeLabel = [[UILabel alloc] initWithFrame:CGRectMake(width-100, rateY, 80, 15)];
-        likeLabel.font = [UIFont systemFontOfSize:13];
-        
-        NSString *likeCountString = object[@"likeCount"];
-        
-        if (likeCountString != (id)[NSNull null])
-        {
-            likeLabel.text = [NSString stringWithFormat:@"%@ Likes",likeCountString];
+                int ratInt = [ratingString intValue];
             
-        }
-        else
-        {
-            likeLabel.text = @"0 Likes";
-        }
+                if (rating < 5) {
+                
+                    for (int i = ratInt; i < 5; i++)
+                    {
+                        UIImageView *rateImageView = [[UIImageView alloc] initWithFrame:CGRectMake(rateX, rateY, 11, 11)];
+                        rateImageView.image = [UIImage imageNamed:@"review_empty"];
+                    
+                        [skillView addSubview:rateImageView];
+                    
+                        rateX = rateX+rateImageView.frame.size.width;
+                    }
+                
+                }
+
+            }
+            else
+            {
+//              CGFloat rateX = typeLabel.frame.origin.x+typeLabel.frame.size.width + 5;
+//              CGFloat rateY = typeLabel.frame.origin.y + 3;
+            
+                for (int i = 0; i < 5; i++)
+                {
+                    UIImageView *rateImageView = [[UIImageView alloc] initWithFrame:CGRectMake(rateX, rateY, 11, 11)];
+                    rateImageView.image = [UIImage imageNamed:@"review_empty"];
+                
+                    [skillView addSubview:rateImageView];
+                
+                    rateX = rateX+rateImageView.frame.size.width;
+                }
+
+            }
         
-        UIImageView *likeImage = [[UIImageView alloc] initWithFrame:CGRectMake(width-likeLabel.frame.size.width-40, rateY, 15, 15)];
         
-        NSString *likeIdString = object[@"likeId"];
-        NSInteger likeId = [likeIdString integerValue];
+            UILabel *reviewLabel = [[UILabel alloc] initWithFrame:CGRectMake(rateX+8, rateY-2, 100, 15)];
+            reviewLabel.text = [NSString stringWithFormat:@"%@ Reviews",object[@"reviewCount"]];
+            reviewLabel.font = [UIFont systemFontOfSize:13];
         
-        if (likeId != 0) {
-            likeImage.image = [UIImage imageNamed:@"like_filled"];
-        }
-        else
-        {
-           likeImage.image = [UIImage imageNamed:@"like"];
+        
+            rateX = rateX+reviewLabel.frame.size.width+10;
+        
+        
+            UILabel *likeLabel = [[UILabel alloc] initWithFrame:CGRectMake(width-100, rateY, 80, 15)];
+            likeLabel.font = [UIFont systemFontOfSize:13];
+            
+            NSString *likeCountString = object[@"likeCount"];
+            
+            if (likeCountString != (id)[NSNull null])
+            {
+                likeLabel.text = [NSString stringWithFormat:@"%@ Likes",likeCountString];
+            
+            }
+            else
+            {
+                likeLabel.text = @"0 Likes";
+            }
+        
+            UIImageView *likeImage = [[UIImageView alloc] initWithFrame:CGRectMake(width-likeLabel.frame.size.width-40, rateY, 15, 15)];
+        
+            NSString *likeIdString = object[@"likeId"];
+            NSInteger likeId = [likeIdString integerValue];
+        
+            if (likeId != 0) {
+                likeImage.image = [UIImage imageNamed:@"like_filled"];
+            }
+            else
+            {
+                likeImage.image = [UIImage imageNamed:@"like"];
+            }
+            
+            
+            
+            [skillView addSubview:bookmarkBtn];
+            [skillView addSubview:reviewLabel];
+            [skillView addSubview:likeImage];
+            [skillView addSubview:likeLabel];
+
+            
         }
         
         
         [skillView addSubview:picImageView];
         [skillView addSubview:nameLabel];
-        [skillView addSubview:bookmarkBtn];
         [skillView addSubview:typeLabel];
-        [skillView addSubview:reviewLabel];
-        [skillView addSubview:likeImage];
-        [skillView addSubview:likeLabel];
-        
-        
-    
+ 
         [_tabView addSubview:skillView];
         
         
         y = y + skillView.frame.size.height+20;
-        
+    
+    }
+    
+    
+//    UIButton * addSkillBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+10, 150, 40)];
+//    [addSkillBtn setTitle:@"Add Skill" forState:UIControlStateNormal];
+//    addSkillBtn.backgroundColor = greenColor;
+//    addSkillBtn.layer.cornerRadius = 5;
+//    addSkillBtn.layer.masksToBounds = YES;
+//    CGPoint buttonCenter = addSkillBtn.center;
+//    buttonCenter.x = _tabView.center.x;
+//    addSkillBtn.center = buttonCenter;
+//    
+//    
+//    [_tabView addSubview:addSkillBtn];
+//    
+//    y = y + addSkillBtn.frame.size.height+30;
+
+    }
+    else
+    {
         
         
     }
-    
-    UIButton * addSkillBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+10, 150, 40)];
-    [addSkillBtn setTitle:@"Add Skill" forState:UIControlStateNormal];
-    addSkillBtn.backgroundColor = greenColor;
-    addSkillBtn.layer.cornerRadius = 5;
-    addSkillBtn.layer.masksToBounds = YES;
-    CGPoint buttonCenter = addSkillBtn.center;
-    buttonCenter.x = _tabView.center.x;
-    addSkillBtn.center = buttonCenter;
-    
-    
-    [_tabView addSubview:addSkillBtn];
-    
-    y = y + addSkillBtn.frame.size.height+30;
-
-    
     
     CGRect tabViewFrame = _tabView.frame;
     tabViewFrame.size.height = y;
     _tabView.frame = tabViewFrame;
     
-    [_contentScrollView setContentSize:CGSizeMake(width, y+370)];
+    [_contentScrollView setContentSize:CGSizeMake(width, y+310)];
     
 }
 
@@ -570,147 +626,143 @@
     
 //    NSArray *jobHistoryArray = _beeInfoDic[@"jobhistory"];
     
-    if (jobhistoryArray != (id)[NSNull null]) {
-        
+    if (jobhistoryArray != (id)[NSNull null])
+    {
+ 
     
-    
-    
-    
-    for (int i =0; i < jobhistoryArray.count; i++) {
+        for (int i =0; i < jobhistoryArray.count; i++)
+        {
         
-        NSDictionary *object = jobhistoryArray[i];
+            NSDictionary *object = jobhistoryArray[i];
+            UIView *experienceView = [[UIView alloc] initWithFrame:CGRectMake(0, y, width, 200)];
         
-        NSLog(@"object  ---23333333---- %@",object);
+            NSDateFormatter *formate = [[NSDateFormatter alloc] init];
+            NSString *fromDateString = object[@"fromDate"];
+            NSString *toDate = object[@"toDate"];
         
-        UIView *experienceView = [[UIView alloc] initWithFrame:CGRectMake(0, y, width, 200)];
-//        experienceView.backgroundColor = [UIColor whiteColor];
-
-        
-        NSDateFormatter *formate = [[NSDateFormatter alloc] init];
-        NSString *fromDateString = object[@"fromDate"];
-        NSString *toDate = object[@"toDate"];
-        
-        if (toDate == (id)[NSNull null]) {
-            NSDate *today = [NSDate date];
-            [formate setDateFormat:@"MMM yyyy"];
-            toDate = [formate stringFromDate:today];
+            if (toDate == (id)[NSNull null])
+            {
+                NSDate *today = [NSDate date];
+                [formate setDateFormat:@"MMM yyyy"];
+                toDate = [formate stringFromDate:today];
             
-            [formate setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
-            NSDate *fromDateDt = [formate dateFromString:fromDateString];
-            [formate setDateFormat:@"MMM yyyy"];
-            fromDateString = [formate stringFromDate:fromDateDt];
-        }
-        else
-        {
-           [formate setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
-            NSDate *fromDateDt = [formate dateFromString:fromDateString];
-            NSDate *toDateDt = [formate dateFromString:toDate];
-            [formate setDateFormat:@"MMM yyyy"];
-            fromDateString = [formate stringFromDate:fromDateDt];
-            toDate = [formate stringFromDate:toDateDt];
-        }
+                [formate setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+                NSDate *fromDateDt = [formate dateFromString:fromDateString];
+                [formate setDateFormat:@"MMM yyyy"];
+                fromDateString = [formate stringFromDate:fromDateDt];
+            }
+            else
+            {
+                [formate setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+                NSDate *fromDateDt = [formate dateFromString:fromDateString];
+                NSDate *toDateDt = [formate dateFromString:toDate];
+                [formate setDateFormat:@"MMM yyyy"];
+                fromDateString = [formate stringFromDate:fromDateDt];
+                toDate = [formate stringFromDate:toDateDt];
+            }
         
-        NSString *companyNameString = @"";
-        NSString *jobTitleString = @"";
+            NSString *companyNameString = @"";
+            NSString *jobTitleString = @"";
 
         
-        if (isExperience) {
-            companyNameString = object[@"companyName"];
-            jobTitleString = object[@"jobtitle"];
-        }
-        else
-        {
-            companyNameString = object[@"countryName"];
-            jobTitleString = object[@"qualification"];
-        }
+            if (isExperience)
+            {
+                companyNameString = object[@"companyName"];
+                jobTitleString = object[@"jobtitle"];
+            }
+            else
+            {
+                companyNameString = object[@"countryName"];
+                jobTitleString = object[@"qualification"];
+            }
         
-        NSString *otherInfoString = object[@"otherInfo"];
+            NSString *otherInfoString = object[@"otherInfo"];
         
-        CGFloat viewY = 20;
-        CGFloat viewX = 30;
+            CGFloat viewY = 20;
+            CGFloat viewX = 30;
         
-        UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(viewX, viewY, 300, 15)];
-        dateLabel.font = [UIFont systemFontOfSize:13];
-        dateLabel.text = [NSString stringWithFormat:@"%@ - %@",fromDateString,toDate];
+            UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(viewX, viewY, 300, 15)];
+            dateLabel.font = [UIFont systemFontOfSize:13];
+            dateLabel.text = [NSString stringWithFormat:@"%@ - %@",fromDateString,toDate];
         
-        viewY = viewY + dateLabel.frame.size.height + 5;
+            viewY = viewY + dateLabel.frame.size.height + 5;
         
-        UILabel *companyLabel = [[UILabel alloc] initWithFrame:CGRectMake(viewX, viewY, 300, 19)];
-        companyLabel.text = companyNameString;
-        companyLabel.textColor = greenColor;
+            UILabel *companyLabel = [[UILabel alloc] initWithFrame:CGRectMake(viewX, viewY, 300, 19)];
+            companyLabel.text = companyNameString;
+            companyLabel.textColor = greenColor;
         
-        viewY += companyLabel.frame.size.height +5;
+            viewY += companyLabel.frame.size.height +5;
         
-        UILabel *jobTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(viewX, viewY, 300, 19)];
-        jobTitleLabel.text = jobTitleString;
+            UILabel *jobTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(viewX, viewY, 300, 19)];
+            jobTitleLabel.text = jobTitleString;
         
-        viewY += jobTitleLabel.frame.size.height + 10;
+            viewY += jobTitleLabel.frame.size.height + 10;
         
-        UIWebView *infoWebView = [[UIWebView alloc] initWithFrame:CGRectMake(viewX, viewY, width-60, 2)];
-        infoWebView.scrollView.contentInset = UIEdgeInsetsMake(0, -8, infoWebView.frame.size.height, -8);
-        infoWebView.userInteractionEnabled = NO;
-        infoWebView.delegate = self;
-        infoWebView.opaque = NO;
-        infoWebView.backgroundColor = [UIColor clearColor];
+            UIWebView *infoWebView = [[UIWebView alloc] initWithFrame:CGRectMake(viewX, viewY, width-60, 2)];
+            infoWebView.scrollView.contentInset = UIEdgeInsetsMake(0, -8, infoWebView.frame.size.height, -8);
+            infoWebView.userInteractionEnabled = NO;
+            infoWebView.delegate = self;
+            infoWebView.opaque = NO;
+            infoWebView.backgroundColor = [UIColor clearColor];
         
-        UIFont *font14 = [UIFont fontWithName:@"Open Sans" size:14];
-        NSString *fontFormat = @"<span style=\"font-family: %@; font-size: %i\">%@</span>";
+            UIFont *font14 = [UIFont fontWithName:@"Open Sans" size:14];
+            NSString *fontFormat = @"<span style=\"font-family: %@; font-size: %i\">%@</span>";
         
-        NSString *discHtml = otherInfoString != (id)[NSNull null] ? [NSString stringWithFormat:fontFormat,font14.fontName,(int)font14.pointSize,otherInfoString] : @"";
+            NSString *discHtml = otherInfoString != (id)[NSNull null] ? [NSString stringWithFormat:fontFormat,font14.fontName,(int)font14.pointSize,otherInfoString] : @"";
         
-        [infoWebView loadHTMLString:discHtml baseURL:nil];
+            [infoWebView loadHTMLString:discHtml baseURL:nil];
         
-        viewY += infoWebView.frame.size.height + 30;
+            viewY += infoWebView.frame.size.height + 30;
         
-        UIColor *lineColor = [UIColor colorWithRed:215.0/255 green:217.0/255 blue:218.0/255 alpha:1.0];
+            UIColor *lineColor = [UIColor colorWithRed:215.0/255 green:217.0/255 blue:218.0/255 alpha:1.0];
         
-        UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(viewX, viewY, width - 60, 1)];
-        CGPoint center = lineView.center;
-        center.x = self.view.center.x;
-        lineView.center = center;
-        [lineView setBackgroundColor:lineColor];
+            UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(viewX, viewY, width - 60, 1)];
+            CGPoint center = lineView.center;
+            center.x = self.view.center.x;
+            lineView.center = center;
+            [lineView setBackgroundColor:lineColor];
 
         
         
-        [experienceView addSubview:dateLabel];
-        [experienceView addSubview:companyLabel];
-        [experienceView addSubview:jobTitleLabel];
-        [experienceView addSubview:infoWebView];
-        [experienceView addSubview:lineView];
+            [experienceView addSubview:dateLabel];
+            [experienceView addSubview:companyLabel];
+            [experienceView addSubview:jobTitleLabel];
+            [experienceView addSubview:infoWebView];
+            [experienceView addSubview:lineView];
         
-        CGRect experFrame = experienceView.frame;
-        experFrame.size.height = viewY+2;
-        experienceView.frame = experFrame;
+            CGRect experFrame = experienceView.frame;
+            experFrame.size.height = viewY+2;
+            experienceView.frame = experFrame;
         
-        [_tabView addSubview:experienceView];
+            [_tabView addSubview:experienceView];
         
-        y = y + experienceView.frame.size.height;
+            y = y + experienceView.frame.size.height;
+        
+        }
         
     }
-        
-    }
     
     
-    UIButton * addInfoBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+20, 150, 40)];
-    [addInfoBtn setTitle:@"Add Info" forState:UIControlStateNormal];
-    addInfoBtn.backgroundColor = greenColor;
-    addInfoBtn.layer.cornerRadius = 5;
-    addInfoBtn.layer.masksToBounds = YES;
-    CGPoint buttonCenter = addInfoBtn.center;
-    buttonCenter.x = _tabView.center.x;
-    addInfoBtn.center = buttonCenter;
-    
-    
-    [_tabView addSubview:addInfoBtn];
-    
-    y = y + addInfoBtn.frame.size.height+40;
+//    UIButton * addInfoBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+20, 150, 40)];
+//    [addInfoBtn setTitle:@"Add Info" forState:UIControlStateNormal];
+//    addInfoBtn.backgroundColor = greenColor;
+//    addInfoBtn.layer.cornerRadius = 5;
+//    addInfoBtn.layer.masksToBounds = YES;
+//    CGPoint buttonCenter = addInfoBtn.center;
+//    buttonCenter.x = _tabView.center.x;
+//    addInfoBtn.center = buttonCenter;
+//    
+//    
+//    [_tabView addSubview:addInfoBtn];
+//    
+//    y = y + addInfoBtn.frame.size.height+40;
 
     
     CGRect tabViewFrame = _tabView.frame;
     tabViewFrame.size.height = y;
     _tabView.frame = tabViewFrame;
     
-    [_contentScrollView setContentSize:CGSizeMake(width, _tabView.frame.size.height+370)];
+    [_contentScrollView setContentSize:CGSizeMake(width, _tabView.frame.size.height+310)];
     
 }
 
@@ -729,6 +781,27 @@
     
 }
 
+- (void)postsTabTapped:(UITapGestureRecognizer *)sender
+{
+    UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
+    UIColor *greyColor = [UIColor colorWithRed:109.0/255 green:110.0/255 blue:113.0/255 alpha:1.0];
+    
+    [_experienceBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_skillBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_educationBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_documentBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_activityBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_postBtn setTitleColor:greenColor forState:UIControlStateNormal];
+
+//    for (UIView *view in [_tabView subviews])
+//    {
+//        [view removeFromSuperview];
+//    }
+
+    [self skillTab:_buyerMarketArray isSkill:NO];
+    
+}
+
 - (void)experienceTabTapped:(UITapGestureRecognizer *)sender
 {
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
@@ -739,6 +812,8 @@
     [_educationBtn setTitleColor:greyColor forState:UIControlStateNormal];
     [_documentBtn setTitleColor:greyColor forState:UIControlStateNormal];
     [_activityBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_postBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    
     
     NSArray *jobHistoryArray = _beeInfoDic[@"jobhistory"];
     
@@ -755,6 +830,7 @@
     [_educationBtn setTitleColor:greenColor forState:UIControlStateNormal];
     [_documentBtn setTitleColor:greyColor forState:UIControlStateNormal];
     [_activityBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_postBtn setTitleColor:greyColor forState:UIControlStateNormal];
 
     
     NSArray *educationArray = _beeInfoDic[@"education"];
@@ -773,9 +849,10 @@
     [_educationBtn setTitleColor:greyColor forState:UIControlStateNormal];
     [_documentBtn setTitleColor:greyColor forState:UIControlStateNormal];
     [_activityBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_postBtn setTitleColor:greyColor forState:UIControlStateNormal];
 
-    
-    [self skillTab:_seeAllArray];
+                                                          
+    [self skillTab:_seeAllArray isSkill:YES];
     
 }
 
