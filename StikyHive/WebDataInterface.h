@@ -260,6 +260,9 @@
 
 + (void)getBuyerMarket:(NSString *)skillId limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
 
++ (void)getBuyerMarketByStkid:(NSString *)stkid limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
+
+
 + (NSString *)getFullUrlPath:(NSString *)fileLoc;
 
 + (void)getSkillById:(NSString *)skillId stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;

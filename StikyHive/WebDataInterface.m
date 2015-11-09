@@ -122,6 +122,15 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
++ (void)getBuyerMarketByStkid:(NSString *)stkid limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_LIMIT:[NSNumber numberWithInteger:limit]};
+    
+    [self requestData:DATA_URL_GET_BUYER_MARKET withParameters:params completion:completion];
+}
+
+
 + (NSString *)getFullUrlPath:(NSString *)fileLoc
 {
     NSString *fullPath = [NSString stringWithFormat:@"%@/%@", DATA_HOST, fileLoc];

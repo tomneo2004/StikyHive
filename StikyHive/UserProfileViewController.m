@@ -55,11 +55,13 @@
     
     NSString *stkid = [LocalDataInterface retrieveStkid];
     
+    NSLog(@"stkid ---- %@",_stkId);
+    
     [WebDataInterface getStikyBeeInfo:_stkId completion:^(NSObject *obj, NSError *err) {
         
         [WebDataInterface getSellAll:0 catId:0 stkid:_stkId actionMaker:stkid completion:^(NSObject *obj2, NSError *err2) {
             
-            [WebDataInterface getBuyerMarket:_stkId limit:0 completion:^(NSObject *obj3, NSError *err3) {
+            [WebDataInterface getBuyerMarketByStkid:_stkId limit:0 completion:^(NSObject *obj3, NSError *err3) {
                 
                 
                 _beeInfoDic = (NSDictionary *)obj;
@@ -304,6 +306,7 @@
     [_documentBtn setTitle:@"DOCUMENTS" forState:UIControlStateNormal];
     [_documentBtn setTitleColor:greyColor forState:UIControlStateNormal];
     _documentBtn.titleLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:15];
+    [_documentBtn addTarget:self action:@selector(documentTabTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     x = x + _documentBtn.frame.size.width;
     
@@ -311,6 +314,7 @@
     [_activityBtn setTitle:@"ACTIVITY" forState:UIControlStateNormal];
     [_activityBtn setTitleColor:greyColor forState:UIControlStateNormal];
     _activityBtn.titleLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:15];
+    [_activityBtn addTarget:self action:@selector(activityTabTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     x = x +_activityBtn.frame.size.width;
     
@@ -373,6 +377,48 @@
             UIImageView *picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, skillView.frame.size.width, 180)];
 //        picImageView.image = [ViewControllerUtil getImageWithPath:url];
             picImageView.contentMode = UIViewContentModeScaleAspectFit;
+            
+            
+            NSString *price = object[@"price"];
+            NSString *rateName = object[@"rateName"];
+            
+            if (price != (id)[NSNull null] && rateName !=(id)[NSNull null])
+            {
+            
+                UIView *rateView = [[UIView alloc] initWithFrame:CGRectMake(picImageView.frame.size.width-100, picImageView.frame.size.height -50, 100, 30)];
+                rateView.backgroundColor = [UIColor colorWithRed:81.0/255 green:81.0/255 blue:81.0/255 alpha:0.8];
+                
+                
+                UILabel *dollarLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 6, 15, 15)];
+                dollarLabel.text = @"S$";
+                dollarLabel.font = [UIFont systemFontOfSize:11];
+                dollarLabel.textColor = [UIColor whiteColor];
+                [dollarLabel sizeToFit];
+                
+                
+                UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(dollarLabel.frame.origin.x+dollarLabel.frame.size.width, 5, 50, 20)];
+                priceLabel.text = price;
+                priceLabel.font = [UIFont systemFontOfSize:15];
+                priceLabel.textColor = [UIColor whiteColor];
+                [priceLabel sizeToFit];
+                
+                UILabel *rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(priceLabel.frame.origin.x+priceLabel.frame.size.width, 6, 40, 15)];
+                rateLabel.text = [NSString stringWithFormat:@" /%@",rateName];
+                rateLabel.font = [UIFont systemFontOfSize:11];
+                rateLabel.textColor = [UIColor whiteColor];
+                [rateLabel sizeToFit];
+                
+                [rateView addSubview:dollarLabel];
+                [rateView addSubview:priceLabel];
+                [rateView addSubview:rateLabel];
+//                rateLabel.textColor = [UIColor whiteColor];
+//            
+//                rateLabel.text = [NSString stringWithFormat:@"S$%@/%@",price,rateName];
+            
+            
+                [picImageView addSubview:rateView];
+                
+            }
 
         
             if (isSkill)
@@ -385,20 +431,19 @@
                 {
 
                     NSString *thumUrl = [WebDataInterface getFullUrlPath:thumbLocation];
-//            NSLog(@"thum url -------- %@",thumUrl);
             
                     picImageView.image = [ViewControllerUtil getImageWithPath:thumUrl];
-            
+                
+//                  UIImage *image = [ViewControllerUtil getImageWithPath:thumUrl];
 //            
-//            UIImage *image = [ViewControllerUtil getImageWithPath:thumUrl];
-//            
-//            if (!image) {
-//                image = [UIImage imageNamed:@"Default_skill_photo@2x"];
-//            }
-//            else
-//            {
-//                picImageView.image = image;
-//            }
+//                  if (!image)
+//                  {
+//                      image = [UIImage imageNamed:@"Default_skill_photo@2x"];
+//                  }
+//                  else
+//                  {
+//                      picImageView.image = image;
+//                  }
             
             
             
@@ -489,7 +534,8 @@
             
                 int ratInt = [ratingString intValue];
             
-                if (rating < 5) {
+                if (rating < 5)
+                {
                 
                     for (int i = ratInt; i < 5; i++)
                     {
@@ -564,7 +610,6 @@
             [skillView addSubview:reviewLabel];
             [skillView addSubview:likeImage];
             [skillView addSubview:likeLabel];
-
             
         }
         
@@ -621,7 +666,6 @@
     CGFloat width = self.view.frame.size.width;
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
 
-    
 //    _tabView.backgroundColor = [UIColor yellowColor];
     
 //    NSArray *jobHistoryArray = _beeInfoDic[@"jobhistory"];
@@ -629,7 +673,6 @@
     if (jobhistoryArray != (id)[NSNull null])
     {
  
-    
         for (int i =0; i < jobhistoryArray.count; i++)
         {
         
@@ -663,17 +706,20 @@
         
             NSString *companyNameString = @"";
             NSString *jobTitleString = @"";
+            NSString *countryString = @"";
 
         
             if (isExperience)
             {
                 companyNameString = object[@"companyName"];
                 jobTitleString = object[@"jobtitle"];
+                countryString = object[@"countryName"];
             }
             else
             {
-                companyNameString = object[@"countryName"];
+                companyNameString = object[@"institute"];
                 jobTitleString = object[@"qualification"];
+                countryString = object[@"countryName"];
             }
         
             NSString *otherInfoString = object[@"otherInfo"];
@@ -688,7 +734,7 @@
             viewY = viewY + dateLabel.frame.size.height + 5;
         
             UILabel *companyLabel = [[UILabel alloc] initWithFrame:CGRectMake(viewX, viewY, 300, 19)];
-            companyLabel.text = companyNameString;
+            companyLabel.text = [NSString stringWithFormat:@"%@, %@",companyNameString,countryString];
             companyLabel.textColor = greenColor;
         
             viewY += companyLabel.frame.size.height +5;
@@ -742,22 +788,6 @@
         
     }
     
-    
-//    UIButton * addInfoBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+20, 150, 40)];
-//    [addInfoBtn setTitle:@"Add Info" forState:UIControlStateNormal];
-//    addInfoBtn.backgroundColor = greenColor;
-//    addInfoBtn.layer.cornerRadius = 5;
-//    addInfoBtn.layer.masksToBounds = YES;
-//    CGPoint buttonCenter = addInfoBtn.center;
-//    buttonCenter.x = _tabView.center.x;
-//    addInfoBtn.center = buttonCenter;
-//    
-//    
-//    [_tabView addSubview:addInfoBtn];
-//    
-//    y = y + addInfoBtn.frame.size.height+40;
-
-    
     CGRect tabViewFrame = _tabView.frame;
     tabViewFrame.size.height = y;
     _tabView.frame = tabViewFrame;
@@ -768,16 +798,65 @@
 
 - (void)documentTab:(NSArray *)documentArray
 {
-    if (documentArray != (id)[NSNull null]) {
+    for (UIView *view in [_tabView subviews])
+    {
+        [view removeFromSuperview];
+    }
+    
+    CGFloat y = 0;
+    CGFloat x = 20;
+    CGFloat width = self.view.frame.size.width;
+    
+    if (documentArray != (id)[NSNull null])
+    {
         
+        for (int i = 0; i < documentArray.count; i++)
+        {
+            
+            NSDictionary *objcet = documentArray[i];
+            
+            NSString *nameString = objcet[@"name"];
+            NSString *dateString = objcet[@"createDate"];
+            
+            NSDateFormatter *formate = [[NSDateFormatter alloc] init];
+            [formate setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+            NSDate *fromDateDt = [formate dateFromString:dateString];
+            [formate setDateFormat:@"dd MMM yyyy"];
+            NSString *date = [formate stringFromDate:fromDateDt];
+            
+            UIView *docuView = [[UIView alloc] initWithFrame:CGRectMake(x, y+10, width - 40, 80)];
+            docuView.backgroundColor = [UIColor whiteColor];
+            
+            
+            UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, docuView.frame.size.width-20, 20)];
+            nameLabel.text = nameString;
+            nameLabel.numberOfLines = 0;
+            [nameLabel sizeToFit];
+            
+            
+            UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, nameLabel.frame.origin.y+nameLabel.frame.size.height+5, 100, 20)];
+            dateLabel.text = date;
+//            [dateLabel sizeToFit];
+            
+            
+            
+            [docuView addSubview:nameLabel];
+            [docuView addSubview:dateLabel];
+            [docuView sizeToFit];
+            [_tabView addSubview:docuView];
+            
+            y = y+docuView.frame.size.height +20;
         
-        
-        
-        
+        }
         
     }
     
+    CGRect tabViewFrame = _tabView.frame;
+    tabViewFrame.size.height = y;
+    _tabView.frame = tabViewFrame;
     
+    [_contentScrollView setContentSize:CGSizeMake(width, _tabView.frame.size.height+310)];
+
     
 }
 
@@ -793,13 +872,39 @@
     [_activityBtn setTitleColor:greyColor forState:UIControlStateNormal];
     [_postBtn setTitleColor:greenColor forState:UIControlStateNormal];
 
-//    for (UIView *view in [_tabView subviews])
-//    {
-//        [view removeFromSuperview];
-//    }
 
     [self skillTab:_buyerMarketArray isSkill:NO];
     
+}
+
+- (void)documentTabTapped:(UITapGestureRecognizer *)sender
+{
+    UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
+    UIColor *greyColor = [UIColor colorWithRed:109.0/255 green:110.0/255 blue:113.0/255 alpha:1.0];
+    
+    [_experienceBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_skillBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_educationBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_documentBtn setTitleColor:greenColor forState:UIControlStateNormal];
+    [_activityBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_postBtn setTitleColor:greyColor forState:UIControlStateNormal];
+
+    
+    [self documentTab:_beeInfoDic[@"document"]];
+}
+
+- (void)activityTabTapped:(UITapGestureRecognizer *)sender
+{
+    UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
+    UIColor *greyColor = [UIColor colorWithRed:109.0/255 green:110.0/255 blue:113.0/255 alpha:1.0];
+    
+    [_experienceBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_skillBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_educationBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_documentBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    [_activityBtn setTitleColor:greenColor forState:UIControlStateNormal];
+    [_postBtn setTitleColor:greyColor forState:UIControlStateNormal];
+
 }
 
 - (void)experienceTabTapped:(UITapGestureRecognizer *)sender
