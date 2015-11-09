@@ -213,7 +213,8 @@
     
     _bottomLoginButton.userInteractionEnabled = YES;
     
-    if (dict && dict[@"status"]) {
+    if (dict && dict[@"status"])
+    {
         NSString *statusString = dict[@"status"];
         
 //        /// TRY

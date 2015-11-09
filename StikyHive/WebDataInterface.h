@@ -193,6 +193,7 @@
 #define DATA_URL_GET_BUYER_MARKET_BY_ID DATA_URL@"getBuyerMarketById/format/json"
 //#define DATA_URL_GET_SELL_ALL           DATA_URL@"getSellAll/format/json"
 #define DATA_URL_GET_STIKY_BEE_INFO     DATA_URL@"getStikyBeeInfo/format/json"
+#define DATA_URL_INSERT_SAVED_DOCU      DATA_URL@"insertSavedDocuemnt/format/json"
 
 
 
@@ -222,6 +223,7 @@
 #define POST_PARAMETER_TYPE             @"type"
 #define POST_PARAMETER_RATE             @"rating"
 #define POST_PARAMETER_BUYER_ID         @"id"
+#define POST_PARAMETER_LOCATION         @"location"
 
 
 //#define DATA_URL_USER_VERIFY            DATA_URL@"varify"
@@ -274,6 +276,8 @@
 + (void)getBuyerMarketById:(NSInteger)buyerId completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)getStikyBeeInfo:(NSString *)stikyid completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)insertSavedDocument:(NSString *)stkid name:(NSString *)name location:(NSString *)location completion:(void (^)(NSObject *, NSError *))completion;
 
 ////////  ///////////// END -------------------------------------
 

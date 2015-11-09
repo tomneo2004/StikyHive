@@ -24,6 +24,7 @@
 @property (nonatomic, strong) UIButton *documentBtn;
 @property (nonatomic, strong) UIButton *activityBtn;
 @property (nonatomic, strong) UIButton *postBtn;
+@property (nonatomic, strong) NSDictionary *buyerMarket;
 
 @end
 
@@ -71,9 +72,9 @@
                 _seeAllArray = seeAll[@"result"];
                 NSLog(@"see all  --------------- %@",_seeAllArray);
                 
-                NSDictionary *buyerMarket = (NSDictionary *)obj3;
-                _buyerMarketArray = buyerMarket[@"buyermarkets"];
-                NSLog(@"buyer market ----- %@",buyerMarket);
+                _buyerMarket = (NSDictionary *)obj3;
+                _buyerMarketArray = _buyerMarket[@"buyermarkets"];
+                NSLog(@"buyer market ----- %@",_buyerMarket);
                 
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -190,59 +191,61 @@
     CGFloat iconViewWidth = iconImageView.frame.size.width/4;
     CGFloat iconViewHeight = iconImageView.frame.size.height;
     
-    // icon view
-    UIView *contactView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, iconViewWidth, iconViewHeight)];
-//    contactView.backgroundColor = [UIColor redColor];
-    UIButton *contactBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 35, 30)];
-    [contactBtn setImage:[UIImage imageNamed:@"profile_addcontact"] forState:UIControlStateNormal];
-    CGPoint contactBtnCenter = contactBtn.center;
-    contactBtnCenter.x = contactView.center.x;
-    contactBtn.center = contactBtnCenter;
-    [contactView addSubview:contactBtn];
+    
+    NSString *stkid = [LocalDataInterface retrieveStkid];
+    
+    if (stkid != _stkId)
+    {
+        // icon view
+        UIView *contactView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, iconViewWidth, iconViewHeight)];
+//      contactView.backgroundColor = [UIColor redColor];
+        UIButton *contactBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 35, 30)];
+        [contactBtn setImage:[UIImage imageNamed:@"profile_addcontact"] forState:UIControlStateNormal];
+        CGPoint contactBtnCenter = contactBtn.center;
+        contactBtnCenter.x = contactView.center.x;
+        contactBtn.center = contactBtnCenter;
+        [contactView addSubview:contactBtn];
     
     
-    UIView *tocolonyView = [[UIView alloc] initWithFrame:CGRectMake(iconViewWidth, 0, iconViewWidth, iconViewHeight)];
-//    tocolonyView.backgroundColor = [UIColor blueColor];
-    UIButton *tocolonyBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 38, 30)];
-    [tocolonyBtn setImage:[UIImage imageNamed:@"profile_addtocolony"] forState:UIControlStateNormal];
-    CGPoint tocoBtnCenter = tocolonyBtn.center;
-    tocoBtnCenter.x = iconViewWidth/2;
-    tocolonyBtn.center = tocoBtnCenter;
-//    CGPoint tocolonyBtnCenter = tocolonyBtn.center;
-//    tocolonyBtnCenter.x = tocolonyView.center.x;
-//    tocolonyBtn.center = tocolonyBtnCenter;
-    [tocolonyView addSubview:tocolonyBtn];
+        UIView *tocolonyView = [[UIView alloc] initWithFrame:CGRectMake(iconViewWidth, 0, iconViewWidth, iconViewHeight)];
+//      tocolonyView.backgroundColor = [UIColor blueColor];
+        UIButton *tocolonyBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 38, 30)];
+        [tocolonyBtn setImage:[UIImage imageNamed:@"profile_addtocolony"] forState:UIControlStateNormal];
+        CGPoint tocoBtnCenter = tocolonyBtn.center;
+        tocoBtnCenter.x = iconViewWidth/2;
+        tocolonyBtn.center = tocoBtnCenter;
+//      CGPoint tocolonyBtnCenter = tocolonyBtn.center;
+//      tocolonyBtnCenter.x = tocolonyView.center.x;
+//      tocolonyBtn.center = tocolonyBtnCenter;
+        [tocolonyView addSubview:tocolonyBtn];
     
     
-    UIView *chatView = [[UIView alloc] initWithFrame:CGRectMake(iconViewWidth*2, 0, iconViewWidth, iconViewHeight)];
-//    chatView.backgroundColor = [UIColor greenColor];
-    UIButton *chatBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 33, 30)];
-    [chatBtn setImage:[UIImage imageNamed:@"profile_chat"] forState:UIControlStateNormal];
-    CGPoint chatBtnCenter = chatBtn.center;
-    chatBtnCenter.x = iconViewWidth/2;
-    chatBtn.center = chatBtnCenter;
-    [chatView addSubview:chatBtn];
+        UIView *chatView = [[UIView alloc] initWithFrame:CGRectMake(iconViewWidth*2, 0, iconViewWidth, iconViewHeight)];
+//      chatView.backgroundColor = [UIColor greenColor];
+        UIButton *chatBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 33, 30)];
+        [chatBtn setImage:[UIImage imageNamed:@"profile_chat"] forState:UIControlStateNormal];
+        CGPoint chatBtnCenter = chatBtn.center;
+        chatBtnCenter.x = iconViewWidth/2;
+        chatBtn.center = chatBtnCenter;
+        [chatView addSubview:chatBtn];
     
     
     
-    UIView *callView = [[UIView alloc] initWithFrame:CGRectMake(iconViewWidth*3, 0, iconViewWidth, iconViewHeight)];
-    UIButton *callBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 25, 30)];
-    [callBtn setImage:[UIImage imageNamed:@"profile_call"] forState:UIControlStateNormal];
-    CGPoint callBtnCenter = callBtn.center;
-    callBtnCenter.x = iconViewWidth/2;
-    callBtn.center = callBtnCenter;
-    [callView addSubview:callBtn];
+        UIView *callView = [[UIView alloc] initWithFrame:CGRectMake(iconViewWidth*3, 0, iconViewWidth, iconViewHeight)];
+        UIButton *callBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 25, 30)];
+        [callBtn setImage:[UIImage imageNamed:@"profile_call"] forState:UIControlStateNormal];
+        CGPoint callBtnCenter = callBtn.center;
+        callBtnCenter.x = iconViewWidth/2;
+        callBtn.center = callBtnCenter;
+        [callView addSubview:callBtn];
 
+        [iconImageView addSubview:contactView];
+        [iconImageView addSubview:tocolonyView];
+        [iconImageView addSubview:chatView];
+        [iconImageView addSubview:callView];
     
-    
-    
-    
-    
-    [iconImageView addSubview:contactView];
-    [iconImageView addSubview:tocolonyView];
-    [iconImageView addSubview:chatView];
-    [iconImageView addSubview:callView];
-    
+        
+    }
     
     [_contentScrollView addSubview:iconImageView];
     
@@ -266,6 +269,7 @@
     tabScrollView.delegate = self;
     tabScrollView.alwaysBounceHorizontal = YES;
     tabScrollView.showsHorizontalScrollIndicator = NO;
+    
     
     _skillBtn = [[UIButton alloc] initWithFrame:CGRectMake(x, 0, 80, height)];
     [_skillBtn setTitle:@"SKILLS" forState:UIControlStateNormal];
@@ -505,8 +509,8 @@
         if (isSkill)
         {
   
-            UIButton *bookmarkBtn = [[UIButton alloc] initWithFrame:CGRectMake(skillView.frame.size.width-40, picImageView.frame.size.height, 23, 27)];
-            [bookmarkBtn setImage:[UIImage imageNamed:@"profile_bookmark"] forState:UIControlStateNormal];
+//            UIButton *bookmarkBtn = [[UIButton alloc] initWithFrame:CGRectMake(skillView.frame.size.width-40, picImageView.frame.size.height, 23, 27)];
+//            [bookmarkBtn setImage:[UIImage imageNamed:@"profile_bookmark"] forState:UIControlStateNormal];
             
         
             CGFloat rateX = typeLabel.frame.origin.x+typeLabel.frame.size.width + 5;
@@ -517,9 +521,6 @@
             if (ratingString !=(id)[NSNull null])
             {
                 NSInteger rating = [ratingString integerValue];
-            
-//              CGFloat rateX = typeLabel.frame.origin.x+typeLabel.frame.size.width + 5;
-//              CGFloat rateY = typeLabel.frame.origin.y + 3;
             
                 for (int i = 0; i < rating; i++)
                 {
@@ -552,8 +553,6 @@
             }
             else
             {
-//              CGFloat rateX = typeLabel.frame.origin.x+typeLabel.frame.size.width + 5;
-//              CGFloat rateY = typeLabel.frame.origin.y + 3;
             
                 for (int i = 0; i < 5; i++)
                 {
@@ -606,7 +605,7 @@
             
             
             
-            [skillView addSubview:bookmarkBtn];
+//            [skillView addSubview:bookmarkBtn];
             [skillView addSubview:reviewLabel];
             [skillView addSubview:likeImage];
             [skillView addSubview:likeLabel];
@@ -643,8 +642,38 @@
     }
     else
     {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, y+30, 170, 100)];
+        imageView.image = [UIImage imageNamed:@"looking"];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, imageView.frame.origin.y+imageView.frame.size.height+10, 200, 30)];
+        
+        label.textColor = [UIColor colorWithRed:217.0/255 green:187.0/255 blue:21.0/255 alpha:1.0];
+        label.textAlignment = NSTextAlignmentCenter;
+        
+        //        [label sizeToFit];
+        
+        CGPoint imageCenter = imageView.center;
+        imageCenter.x = _tabView.center.x;
+        imageView.center = imageCenter;
+        CGPoint labelCenter = label.center;
+        labelCenter.x = _tabView.center.x;
+        label.center = labelCenter;
+        
+        if (isSkill)
+        {
+            label.text = @"No skills yet!";
+        }
+        else
+        {
+            label.text = @"No posts yet!";
+        }
         
         
+        [_tabView addSubview:imageView];
+        [_tabView addSubview:label];
+        
+        y = label.frame.origin.y+label.frame.size.height +20;
+  
     }
     
     CGRect tabViewFrame = _tabView.frame;
@@ -787,6 +816,46 @@
         }
         
     }
+    else
+    {
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, y+30, 170, 100)];
+        imageView.image = [UIImage imageNamed:@"looking"];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, imageView.frame.origin.y+imageView.frame.size.height+10, 200, 30)];
+        
+        label.textColor = [UIColor colorWithRed:217.0/255 green:187.0/255 blue:21.0/255 alpha:1.0];
+        label.textAlignment = NSTextAlignmentCenter;
+        
+//        [label sizeToFit];
+        
+        CGPoint imageCenter = imageView.center;
+        imageCenter.x = _tabView.center.x;
+        imageView.center = imageCenter;
+        CGPoint labelCenter = label.center;
+        labelCenter.x = _tabView.center.x;
+        label.center = labelCenter;
+        
+        if (isExperience)
+        {
+            label.text = @"No experience yet!";
+        }
+        else
+        {
+            label.text = @"No education yet!";
+        }
+        
+        
+        [_tabView addSubview:imageView];
+        [_tabView addSubview:label];
+        
+        y = label.frame.origin.y+label.frame.size.height +20;
+        
+    }
+    
+    
+    
+    
     
     CGRect tabViewFrame = _tabView.frame;
     tabViewFrame.size.height = y;
@@ -828,7 +897,15 @@
             docuView.backgroundColor = [UIColor whiteColor];
             
             
-            UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, docuView.frame.size.width-20, 20)];
+            
+            
+            
+            UIButton *saveBtn= [[UIButton alloc] initWithFrame:CGRectMake(docuView.frame.size.width-40, 10, 30, 30)];
+            [saveBtn setImage:[UIImage imageNamed:@"icon_doc_save"] forState:UIControlStateNormal];
+            [saveBtn addTarget:self action:@selector(saveBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+            
+            
+            UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, docuView.frame.size.width-saveBtn.frame.size.width-15, 20)];
             nameLabel.text = nameString;
             nameLabel.numberOfLines = 0;
             [nameLabel sizeToFit];
@@ -839,6 +916,21 @@
 //            [dateLabel sizeToFit];
             
             
+            CGRect docuFrame = docuView.frame;
+            docuFrame.size.height = nameLabel.frame.size.height+dateLabel.frame.size.height+25;
+            docuView.frame = docuFrame;
+            
+            CGPoint btnCenter = saveBtn.center;
+            btnCenter.y = docuView.frame.size.height/2;
+            saveBtn.center = btnCenter;
+            
+            NSString *stkid = [LocalDataInterface retrieveStkid];
+            if (stkid != _stkId)
+            {
+
+                [docuView addSubview:saveBtn];
+  
+            }
             
             [docuView addSubview:nameLabel];
             [docuView addSubview:dateLabel];
@@ -848,6 +940,37 @@
             y = y+docuView.frame.size.height +20;
         
         }
+        
+    }
+    else
+    {
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, y+30, 170, 100)];
+        imageView.image = [UIImage imageNamed:@"looking"];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30, imageView.frame.origin.y+imageView.frame.size.height+10, 200, 30)];
+        
+        label.textColor = [UIColor colorWithRed:217.0/255 green:187.0/255 blue:21.0/255 alpha:1.0];
+        label.textAlignment = NSTextAlignmentCenter;
+        
+        //        [label sizeToFit];
+        
+        CGPoint imageCenter = imageView.center;
+        imageCenter.x = _tabView.center.x;
+        imageView.center = imageCenter;
+        CGPoint labelCenter = label.center;
+        labelCenter.x = _tabView.center.x;
+        label.center = labelCenter;
+        
+       
+        label.text = @"No document yet!";
+        
+        
+        [_tabView addSubview:imageView];
+        [_tabView addSubview:label];
+        
+        y = label.frame.origin.y+label.frame.size.height +20;
+  
         
     }
     
@@ -872,8 +995,57 @@
     [_activityBtn setTitleColor:greyColor forState:UIControlStateNormal];
     [_postBtn setTitleColor:greenColor forState:UIControlStateNormal];
 
+    
+    
+    if ([_buyerMarket[@"status"] isEqualToString:@"fail"])
+    {
+        for (UIView *view in [_tabView subviews])
+        {
+            [view removeFromSuperview];
+        }
+        
+        CGFloat y = 0;
+        CGFloat x = 20;
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, y+30, 170, 100)];
+        imageView.image = [UIImage imageNamed:@"looking"];
 
-    [self skillTab:_buyerMarketArray isSkill:NO];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x, imageView.frame.origin.y+imageView.frame.size.height+20, 200, 30)];
+        
+        label.textColor = [UIColor colorWithRed:217.0/255 green:187.0/255 blue:21.0/255 alpha:1.0];
+        label.textAlignment = NSTextAlignmentCenter;
+        
+        //        [label sizeToFit];
+        CGPoint imageCenter = imageView.center;
+        imageCenter.x = _tabView.center.x;
+        imageView.center = imageCenter;
+        CGPoint labelCenter = label.center;
+        labelCenter.x = _tabView.center.x;
+        label.center = labelCenter;
+        
+        
+        label.text = @"No posts yet!";
+        
+        [_tabView addSubview:imageView];
+        [_tabView addSubview:label];
+        
+        y = 80;
+        
+        
+        CGRect tabViewFrame = _tabView.frame;
+        tabViewFrame.size.height = y;
+        _tabView.frame = tabViewFrame;
+        
+        [_contentScrollView setContentSize:CGSizeMake(self.view.frame.size.width, _tabView.frame.size.height+310)];
+  
+    }
+    else
+    {
+
+        [self skillTab:_buyerMarketArray isSkill:NO];
+        
+    }
     
 }
 
@@ -904,6 +1076,39 @@
     [_documentBtn setTitleColor:greyColor forState:UIControlStateNormal];
     [_activityBtn setTitleColor:greenColor forState:UIControlStateNormal];
     [_postBtn setTitleColor:greyColor forState:UIControlStateNormal];
+    
+    // no activity yet!
+    for (UIView *view in [_tabView subviews])
+    {
+        [view removeFromSuperview];
+    }
+    
+    CGFloat y = 0;
+    CGFloat x = 20;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x, 30, 200, 30)];
+    
+    label.textColor = [UIColor colorWithRed:217.0/255 green:187.0/255 blue:21.0/255 alpha:1.0];
+    label.textAlignment = NSTextAlignmentCenter;
+    
+    //        [label sizeToFit];
+    CGPoint labelCenter = label.center;
+    labelCenter.x = _tabView.center.x;
+    label.center = labelCenter;
+    
+   
+    label.text = @"No activity yet!";
+    
+    [_tabView addSubview:label];
+    
+    y = 50;
+    
+    
+    CGRect tabViewFrame = _tabView.frame;
+    tabViewFrame.size.height = y;
+    _tabView.frame = tabViewFrame;
+    
+    [_contentScrollView setContentSize:CGSizeMake(self.view.frame.size.width, _tabView.frame.size.height+310)];
 
 }
 
@@ -959,6 +1164,12 @@
                                                           
     [self skillTab:_seeAllArray isSkill:YES];
     
+}
+
+- (void)saveBtnTapped:(UITapGestureRecognizer *)sender
+{
+    
+//    NSString *name = _beeInfoDic[@""]
 }
 
 
