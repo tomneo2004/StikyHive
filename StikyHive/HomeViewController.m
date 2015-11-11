@@ -442,6 +442,8 @@
     
     NSString *stkid =  _sellerMarket[sender.view.tag][@"stkid"];
     
+    NSLog(@"home page stkid selected ------ %@",stkid);
+    
     
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"user_profile_view_controller"];
     UserProfileViewController *svc = (UserProfileViewController *)vc;

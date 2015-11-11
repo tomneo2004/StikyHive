@@ -14,6 +14,7 @@
 #import "WebDataInterface.h"
 #import "SelectableLabel.h"
 #import "SelectableImageView.h"
+#import "UserProfileViewController.h"
 //#import "ChatMessagesViewController.h"
 //#import "ViewControllerUtil.h"
 #import "Skill.h"
@@ -325,12 +326,24 @@ static NSString * const reuseIdentifier = @"seller_cell";
 
 -(void)profileImageTapped:(UITapGestureRecognizer *)sender
 {
-//    SelectableImageView *imageView = (SelectableImageView *)sender.view;
-//    Skill *skill = _skillList[imageView.index];
+    SelectableImageView *imageView = (SelectableImageView *)sender.view;
+    Skill *skill = _skillList[imageView.index];
+    
+    NSString *stkid = skill.stkid;
 //    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"profile_view_controller"];
 //    ProfileViewController *pvc = (ProfileViewController *)vc;
 //    [pvc setUserID:skill.userID];
 //    [self.navigationController pushViewController:pvc animated:YES];
+    
+    
+    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"user_profile_view_controller"];
+    UserProfileViewController *svc = (UserProfileViewController *)vc;
+    [svc setStkID:stkid];
+    
+    [self.navigationController pushViewController:svc animated:YES];
+
+    
 }
 
 -(void)chatImageTapped:(UITapGestureRecognizer *)sender

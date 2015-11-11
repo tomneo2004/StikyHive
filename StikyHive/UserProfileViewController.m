@@ -26,6 +26,8 @@
 @property (nonatomic, strong) UIButton *postBtn;
 @property (nonatomic, strong) NSDictionary *buyerMarket;
 
+
+
 @end
 
 @implementation UserProfileViewController
@@ -55,6 +57,7 @@
 
     
     NSString *stkid = [LocalDataInterface retrieveStkid];
+    NSLog(@"my stk id ----- %@",stkid);
     
     NSLog(@"stkid ---- %@",_stkId);
     
@@ -901,8 +904,27 @@
             
             
             UIButton *saveBtn= [[UIButton alloc] initWithFrame:CGRectMake(docuView.frame.size.width-40, 10, 30, 30)];
-            [saveBtn setImage:[UIImage imageNamed:@"icon_doc_save"] forState:UIControlStateNormal];
-            [saveBtn addTarget:self action:@selector(saveBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+            
+            NSString *typeString = objcet[@"type"];
+            NSInteger type = [typeString integerValue];
+            
+            if (type == 1) {
+                [saveBtn setImage:[UIImage imageNamed:@"icon_doc_save"] forState:UIControlStateNormal];
+                //            [_saveBtn setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateSelected];
+                [saveBtn addTarget:self action:@selector(saveBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+                saveBtn.tag = i;
+                
+                NSLog(@"save button tag --- %ld",(long)saveBtn.tag);
+
+            }
+            else
+            {
+                [saveBtn setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
+            }
+            
+            
+            
+//            NSLog(@"save button tag --- %ld",(long)saveBtn.tag);
             
             
             UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, docuView.frame.size.width-saveBtn.frame.size.width-15, 20)];
@@ -1166,10 +1188,49 @@
     
 }
 
-- (void)saveBtnTapped:(UITapGestureRecognizer *)sender
+- (void)saveBtnTapped:(UIButton *)sender
 {
     
-//    NSString *name = _beeInfoDic[@""]
+    NSDictionary *obj = _beeInfoDic[@"document"][sender.tag];
+    
+    NSString *name = obj[@"name"];
+    
+    NSString *location = obj[@"location"];
+    
+//    NSLog(@"sender view tag ---- %ld",(long)sender.tag);
+//    NSLog(@"save button object ------ %@",obj);
+//    NSLog(@"name ---- %@",name);
+//    
+//    NSLog(@"location ---- %@",location);
+//    
+    NSString *stkid = [LocalDataInterface retrieveStkid];
+
+//    NSLog(@"stkid ---- %@",stkid);
+    
+//    NSString *url = [WebDataInterface getFullUrlPath:location];
+    
+    [WebDataInterface insertSavedDocument:stkid name:name location:location completion:^(NSObject *obj, NSError *err) {
+        
+        NSLog(@"obj  ------ %@",obj);
+        NSDictionary *dict = (NSDictionary *)obj;
+//        if (dict) {
+        
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+//                if ([dict[@"status"] isEqualToString:@"sucess"]) {
+            
+                    [sender setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
+                    sender.userInteractionEnabled = NO;
+                    
+//                }
+            });
+
+//        }
+  
+    }];
+    
+    
+    
 }
 
 
