@@ -46,6 +46,7 @@
 //    
 //}
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -58,6 +59,14 @@
     
     NSString *stkid = [LocalDataInterface retrieveStkid];
     NSLog(@"my stk id ----- %@",stkid);
+    
+    
+    
+    [WebDataInterface getSavedDocument:stkid completion:^(NSObject *obj, NSError *err) {
+        
+        NSLog(@"get saved document --- %@",obj);
+    }];
+
     
     NSLog(@"stkid ---- %@",_stkId);
     
@@ -73,11 +82,11 @@
                 
                 NSDictionary *seeAll = (NSDictionary *)obj2;
                 _seeAllArray = seeAll[@"result"];
-                NSLog(@"see all  --------------- %@",_seeAllArray);
+//                NSLog(@"see all  --------------- %@",_seeAllArray);
                 
                 _buyerMarket = (NSDictionary *)obj3;
                 _buyerMarketArray = _buyerMarket[@"buyermarkets"];
-                NSLog(@"buyer market ----- %@",_buyerMarket);
+//                NSLog(@"buyer market ----- %@",_buyerMarket);
                 
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -1197,12 +1206,12 @@
     
     NSString *location = obj[@"location"];
     
-//    NSLog(@"sender view tag ---- %ld",(long)sender.tag);
-//    NSLog(@"save button object ------ %@",obj);
-//    NSLog(@"name ---- %@",name);
-//    
-//    NSLog(@"location ---- %@",location);
-//    
+    NSLog(@"sender view tag ---- %ld",(long)sender.tag);
+    NSLog(@"save button object ------ %@",obj);
+    NSLog(@"name ---- %@",name);
+    
+    NSLog(@"location ---- %@",location);
+//
     NSString *stkid = [LocalDataInterface retrieveStkid];
 
 //    NSLog(@"stkid ---- %@",stkid);
@@ -1229,6 +1238,19 @@
   
     }];
     
+//    get saved document --- {
+//        documents =     (
+//                         {
+//                             createDate = "2015-11-11 15:12:57.000";
+//                             id = 130;
+//                             location = "storage/7fd2cfadd496cfb1aacbd74e789cf6b2/document/2015/2015-10-23_15-39-03_1.pdf";
+//                             name = "chronological-resume-traditional-design.pdf";
+//                             status = 1;
+//                             stkid = 15AAAACB;
+//                             type = 2;
+//                             updateDate = "<null>";
+//                         }
+//
     
     
 }
