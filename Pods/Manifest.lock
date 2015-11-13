@@ -26,6 +26,7 @@ PODS:
   - SMTPAPI (0.2.0)
 
 DEPENDENCIES:
+  - AFNetworking (~> 2.0)
   - SendGrid (~> 0.2.6)
 
 SPEC CHECKSUMS:

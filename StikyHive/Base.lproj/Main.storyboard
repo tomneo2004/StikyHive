@@ -2409,7 +2409,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lo5-1M-TuP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1254" y="1701.75"/>
+            <point key="canvasLocation" x="1251" y="2383.5"/>
         </scene>
         <!--My Profile-->
         <scene sceneID="eMK-5i-QrS">
@@ -2421,7 +2421,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ShG-CA-U11" kind="relationship" relationship="rootViewController" id="g7i-MW-ouJ"/>
+                        <segue destination="5yc-a9-Ilv" kind="relationship" relationship="rootViewController" id="mgT-MN-z1a"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kp9-Bk-7Xa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2498,6 +2498,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anO-er-Lsz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2548.5" y="1701.75"/>
+        </scene>
+        <!--My Profile View Controller-->
+        <scene sceneID="GhC-Is-1NE">
+            <objects>
+                <viewController id="5yc-a9-Ilv" customClass="MyProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jL3-oI-UW6"/>
+                        <viewControllerLayoutGuide type="bottom" id="SSm-YW-Rej"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Efb-qO-3a5">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0Z-ZF-D7M">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l0Z-ZF-D7M" firstAttribute="leading" secondItem="Efb-qO-3a5" secondAttribute="leading" id="JxU-3a-2g1"/>
+                            <constraint firstAttribute="trailing" secondItem="l0Z-ZF-D7M" secondAttribute="trailing" id="K7S-mL-rDM"/>
+                            <constraint firstAttribute="bottom" secondItem="l0Z-ZF-D7M" secondAttribute="bottom" id="amb-cN-NCC"/>
+                            <constraint firstItem="l0Z-ZF-D7M" firstAttribute="top" secondItem="jL3-oI-UW6" secondAttribute="bottom" id="gas-ls-S0X"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="l0Z-ZF-D7M"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="JxU-3a-2g1"/>
+                                <exclude reference="K7S-mL-rDM"/>
+                                <exclude reference="amb-cN-NCC"/>
+                                <exclude reference="gas-ls-S0X"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="l0Z-ZF-D7M"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="JxU-3a-2g1"/>
+                                <include reference="K7S-mL-rDM"/>
+                                <include reference="amb-cN-NCC"/>
+                                <include reference="gas-ls-S0X"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="uzu-qq-tuC"/>
+                    <connections>
+                        <outlet property="contentScrollView" destination="l0Z-ZF-D7M" id="gE6-f3-CI6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bf8-N7-YtQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1251" y="1701.75"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="nI8-dY-vbD">

@@ -43,6 +43,7 @@
 		517C62C91BDE07DE00904FCB /* profile_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 517C62C71BDE07DE00904FCB /* profile_chat.png */; };
 		517D552F1BDA0301000EA8FD /* ReportAbuseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517D552E1BDA0301000EA8FD /* ReportAbuseViewController.m */; };
 		517D55321BDA4448000EA8FD /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517D55311BDA4447000EA8FD /* UserProfileViewController.m */; };
+		5181ED161BF58D6600804C29 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5181ED151BF58D6600804C29 /* MyProfileViewController.m */; };
 		51851C991BB24E35007CFBC2 /* SkillPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51851C981BB24E35007CFBC2 /* SkillPageViewController.m */; };
 		51851C9D1BB251CE007CFBC2 /* skillpg_email.png in Resources */ = {isa = PBXBuildFile; fileRef = 51851C9A1BB251CE007CFBC2 /* skillpg_email.png */; };
 		51851C9E1BB251CE007CFBC2 /* skillpg-call.png in Resources */ = {isa = PBXBuildFile; fileRef = 51851C9B1BB251CE007CFBC2 /* skillpg-call.png */; };
@@ -425,6 +426,8 @@
 		517D552E1BDA0301000EA8FD /* ReportAbuseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportAbuseViewController.m; sourceTree = "<group>"; };
 		517D55301BDA4447000EA8FD /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		517D55311BDA4447000EA8FD /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		5181ED141BF58D6600804C29 /* MyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileViewController.h; sourceTree = "<group>"; };
+		5181ED151BF58D6600804C29 /* MyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileViewController.m; sourceTree = "<group>"; };
 		51851C971BB24E35007CFBC2 /* SkillPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillPageViewController.h; sourceTree = "<group>"; };
 		51851C981BB24E35007CFBC2 /* SkillPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillPageViewController.m; sourceTree = "<group>"; };
 		51851C9A1BB251CE007CFBC2 /* skillpg_email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skillpg_email.png; sourceTree = "<group>"; };
@@ -1468,6 +1471,8 @@
 				676600E41BA1325A003A84D8 /* ResetPassViewController.m */,
 				517D55301BDA4447000EA8FD /* UserProfileViewController.h */,
 				517D55311BDA4447000EA8FD /* UserProfileViewController.m */,
+				5181ED141BF58D6600804C29 /* MyProfileViewController.h */,
+				5181ED151BF58D6600804C29 /* MyProfileViewController.m */,
 			);
 			name = UserAccount;
 			sourceTree = "<group>";
@@ -2149,6 +2154,7 @@
 				674D0F381B7D9A5200B5B80D /* UIView+JSQMessages.m in Sources */,
 				676F77E21B96F3060084988A /* TOCropViewControllerTransitioning.m in Sources */,
 				51694D6B1BABE9C4007722F1 /* SkillVideoPlayer.m in Sources */,
+				5181ED161BF58D6600804C29 /* MyProfileViewController.m in Sources */,
 				674D0F5D1B7D9A5200B5B80D /* JSQSystemSoundPlayer.m in Sources */,
 				517D55321BDA4448000EA8FD /* UserProfileViewController.m in Sources */,
 				676F77EB1B96F3270084988A /* CropPhotoViewController.m in Sources */,
