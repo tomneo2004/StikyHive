@@ -41,6 +41,7 @@
 		517C62C51BDE07C900904FCB /* profile_addtocolony.png in Resources */ = {isa = PBXBuildFile; fileRef = 517C62C31BDE07C900904FCB /* profile_addtocolony.png */; };
 		517C62C81BDE07DE00904FCB /* profile_call.png in Resources */ = {isa = PBXBuildFile; fileRef = 517C62C61BDE07DE00904FCB /* profile_call.png */; };
 		517C62C91BDE07DE00904FCB /* profile_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 517C62C71BDE07DE00904FCB /* profile_chat.png */; };
+		517C8F7E1BF9C2E80020CBE6 /* SellingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517C8F7D1BF9C2E80020CBE6 /* SellingViewController.m */; };
 		517D552F1BDA0301000EA8FD /* ReportAbuseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517D552E1BDA0301000EA8FD /* ReportAbuseViewController.m */; };
 		517D55321BDA4448000EA8FD /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517D55311BDA4447000EA8FD /* UserProfileViewController.m */; };
 		5181ED161BF58D6600804C29 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5181ED151BF58D6600804C29 /* MyProfileViewController.m */; };
@@ -422,6 +423,8 @@
 		517C62C31BDE07C900904FCB /* profile_addtocolony.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_addtocolony.png; sourceTree = "<group>"; };
 		517C62C61BDE07DE00904FCB /* profile_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_call.png; sourceTree = "<group>"; };
 		517C62C71BDE07DE00904FCB /* profile_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_chat.png; sourceTree = "<group>"; };
+		517C8F7C1BF9C2E80020CBE6 /* SellingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingViewController.h; sourceTree = "<group>"; };
+		517C8F7D1BF9C2E80020CBE6 /* SellingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingViewController.m; sourceTree = "<group>"; };
 		517D552D1BDA0301000EA8FD /* ReportAbuseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportAbuseViewController.h; sourceTree = "<group>"; };
 		517D552E1BDA0301000EA8FD /* ReportAbuseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportAbuseViewController.m; sourceTree = "<group>"; };
 		517D55301BDA4447000EA8FD /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
@@ -1265,6 +1268,8 @@
 				516A614D1BC7A47900D4E890 /* PostCommViewController.m */,
 				51896EAC1BCDFE5D006643AE /* SellerRevViewController.h */,
 				51896EAD1BCDFE5D006643AE /* SellerRevViewController.m */,
+				517C8F7C1BF9C2E80020CBE6 /* SellingViewController.h */,
+				517C8F7D1BF9C2E80020CBE6 /* SellingViewController.m */,
 			);
 			name = Skill;
 			sourceTree = "<group>";
@@ -2119,6 +2124,7 @@
 				674D0F371B7D9A5200B5B80D /* UIImage+JSQMessages.m in Sources */,
 				674D0F401B7D9A5200B5B80D /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				674D0F441B7D9A5200B5B80D /* JSQLocationMediaItem.m in Sources */,
+				517C8F7E1BF9C2E80020CBE6 /* SellingViewController.m in Sources */,
 				674D0F3A1B7D9A5200B5B80D /* JSQMessagesViewController.m in Sources */,
 				674D0F361B7D9A5200B5B80D /* UIDevice+JSQMessages.m in Sources */,
 				676F77E31B96F3060084988A /* UIImage+CropRotate.m in Sources */,

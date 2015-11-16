@@ -55,28 +55,27 @@
                 [WebDataInterface getSavedDocument:_myStkid completion:^(NSObject *obj4, NSError *err4) {
                     
                     
-                    _beeInfoDic = (NSDictionary *)obj;
-                    NSLog(@"stiky bee info -------- %@",_beeInfoDic);
+                        _beeInfoDic = (NSDictionary *)obj;
+                        NSLog(@"stiky bee info -------- %@",_beeInfoDic);
                     
-                    NSDictionary *seeAll = (NSDictionary *)obj2;
-                    _seeAllArray = seeAll[@"result"];
-                    NSLog(@"see all  --------------- %@",_seeAllArray);
+                        NSDictionary *seeAll = (NSDictionary *)obj2;
+                        _seeAllArray = seeAll[@"result"];
+                        NSLog(@"see all  --------------- %@",_seeAllArray);
                     
-                    _buyerMarket = (NSDictionary *)obj3;
-                    _buyerMarketArray = _buyerMarket[@"buyermarkets"];
-                    NSLog(@"buyer market ----- %@",_buyerMarket);
+                        _buyerMarket = (NSDictionary *)obj3;
+                        _buyerMarketArray = _buyerMarket[@"buyermarkets"];
+                        NSLog(@"buyer market ----- %@",_buyerMarket);
+                    
+                        NSDictionary *dict = (NSDictionary *)obj4;
+                        _savedDocuArray = dict[@"documents"];
+                    
+                        NSLog(@"get saved document --- %@",_savedDocuArray);
                     
                     
-                    NSDictionary *dict = (NSDictionary *)obj4;
-                    _savedDocuArray = dict[@"documents"];
-                    
-                    NSLog(@"get saved document --- %@",_savedDocuArray);
-                    
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
+                        dispatch_async(dispatch_get_main_queue(), ^{
                         
                         
-                        [self displayPage];
+                            [self displayPage];
                         
                         
                     });
@@ -87,15 +86,7 @@
     }];
 
     
-    
 }
-
-
-
-
-
-
-
 
 
 
@@ -196,14 +187,12 @@
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(point.x, y, width, 60)];
     iconImageView.image = [UIImage imageNamed:@"profile_yellow_bg"];
     
-    CGFloat iconViewWidth = iconImageView.frame.size.width/4;
-    CGFloat iconViewHeight = iconImageView.frame.size.height;
-    
-    
-    NSString *stkid = [LocalDataInterface retrieveStkid];
-   
     
     /*
+    CGFloat iconViewWidth = iconImageView.frame.size.width/4;
+    CGFloat iconViewHeight = iconImageView.frame.size.height;
+    NSString *stkid = [LocalDataInterface retrieveStkid];
+    
     if (stkid != _stkId)
     {
         // icon view
@@ -253,8 +242,6 @@
         [iconImageView addSubview:tocolonyView];
         [iconImageView addSubview:chatView];
         [iconImageView addSubview:callView];
-        
-        
     }
      
      */
@@ -376,7 +363,6 @@
     }
     
     
-    
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     
     if (seeAllArray.count > 0)
@@ -446,20 +432,18 @@
                 {
                     
                     NSString *thumUrl = [WebDataInterface getFullUrlPath:thumbLocation];
+//                    picImageView.image = [ViewControllerUtil getImageWithPath:thumUrl];
+                    UIImage *image = [ViewControllerUtil getImageWithPath:thumUrl];
                     
-                    picImageView.image = [ViewControllerUtil getImageWithPath:thumUrl];
-                    
-                    //                  UIImage *image = [ViewControllerUtil getImageWithPath:thumUrl];
-                    //
-                    //                  if (!image)
-                    //                  {
-                    //                      image = [UIImage imageNamed:@"Default_skill_photo@2x"];
-                    //                  }
-                    //                  else
-                    //                  {
-                    //                      picImageView.image = image;
-                    //                  }
-                    
+                    if (image)
+                    {
+                        picImageView.image = image;
+                    }
+                    else
+                    {
+                        picImageView.image = [UIImage imageNamed:@"default_seller_post"];
+                    }
+                                        
                     
                     
                     UIImageView *playIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_play@2x"]];
@@ -470,11 +454,22 @@
                 else if (location != (id)[NSNull null])
                 {
                     NSString *url = [WebDataInterface getFullUrlPath:location];
-                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+//                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+                    UIImage *image = [ViewControllerUtil getImageWithPath:url];
+                    if (image)
+                    {
+                        picImageView.image = image;
+                    }
+                    else
+                    {
+                        picImageView.image = [UIImage imageNamed:@"default_seller_post"];
+                    }
+                    
+                    
                 }
                 else
                 {
-                    picImageView.image = [UIImage imageNamed:@"Default_skill_photo@2x"];
+                    picImageView.image = [UIImage imageNamed:@"default_seller_post"];
                 }
                 
                 
@@ -486,11 +481,20 @@
                 if (location != (id)[NSNull null])
                 {
                     NSString *url = [WebDataInterface getFullUrlPath:location];
-                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+//                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+                    UIImage *image = [ViewControllerUtil getImageWithPath:url];
+                    if (image)
+                    {
+                        picImageView.image = image;
+                    }
+                    else
+                    {
+                        picImageView.image = [UIImage imageNamed:@"default_seller_post"];
+                    }
                 }
                 else
                 {
-                    picImageView.image = [UIImage imageNamed:@"Default_skill_photo@2x"];
+                    picImageView.image = [UIImage imageNamed:@"default_seller_post"];
                 }
                 
             }
@@ -636,20 +640,6 @@
         }
         
         
-        //    UIButton * addSkillBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+10, 150, 40)];
-        //    [addSkillBtn setTitle:@"Add Skill" forState:UIControlStateNormal];
-        //    addSkillBtn.backgroundColor = greenColor;
-        //    addSkillBtn.layer.cornerRadius = 5;
-        //    addSkillBtn.layer.masksToBounds = YES;
-        //    CGPoint buttonCenter = addSkillBtn.center;
-        //    buttonCenter.x = _tabView.center.x;
-        //    addSkillBtn.center = buttonCenter;
-        //
-        //
-        //    [_tabView addSubview:addSkillBtn];
-        //
-        //    y = y + addSkillBtn.frame.size.height+30;
-        
     }
     else
     {
@@ -678,19 +668,6 @@
         {
             label.text = @"No posts yet!";
         }
-        
-//        y = label.frame.origin.y+label.frame.size.height +20;
-//        
-//        
-//        UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y, 100, 30)];
-//        [addBtn setTitle:@"Add/Edit" forState:UIControlStateNormal];
-//        [addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        addBtn.backgroundColor = greenColor;
-//        addBtn.layer.cornerRadius = 5;
-//        addBtn.layer.masksToBounds = YES;
-//        CGPoint addCenter = addBtn.center;
-//        addCenter.x = _tabView.center.x;
-//        addBtn.center = addCenter;
         
         
         [_tabView addSubview:imageView];
@@ -725,10 +702,7 @@
     CGFloat y = 0;
     CGFloat width = self.view.frame.size.width;
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
-    
-    //    _tabView.backgroundColor = [UIColor yellowColor];
-    
-    //    NSArray *jobHistoryArray = _beeInfoDic[@"jobhistory"];
+
     
     if (jobhistoryArray.count > 0)
     {
@@ -876,10 +850,6 @@
             label.text = @"No education yet!";
         }
         
-//        y = label.frame.origin.y+label.frame.size.height + 20;
-        
-        
-        
         
         [_tabView addSubview:imageView];
         [_tabView addSubview:label];
@@ -908,20 +878,6 @@
     {
         [view removeFromSuperview];
     }
-    
-    
-    //    for (int i = 0; i < _savedDocuArray.count; i++)
-    //    {
-    //        NSString *location = _savedDocuArray[i][@"location"];
-    //
-    //        NSLog(@"location element ---- %@",location);
-    //
-    //        [_locationDocu insertObject:location atIndex:i];
-    //
-    //        NSLog(@"add location to array ---- %d",i);
-    //    }
-    //
-    //    NSLog(@"location array --- %@",_locationDocu);
     
     
     CGFloat y = 0;
@@ -1020,11 +976,11 @@
             btnCenter.y = docuView.frame.size.height/2;
             saveBtn.center = btnCenter;
             
-            NSString *stkid = [LocalDataInterface retrieveStkid];
-//            if (stkid != _stkId)
-//            {
-//                [docuView addSubview:saveBtn];
-//            }
+//            NSString *stkid = [LocalDataInterface retrieveStkid];
+////            if (stkid != _stkId)
+////            {
+////                [docuView addSubview:saveBtn];
+////            }
             
             [docuView addSubview:nameLabel];
             [docuView addSubview:dateLabel];
@@ -1271,62 +1227,30 @@
 {
     
     NSDictionary *obj = _beeInfoDic[@"document"][sender.tag];
-    
     NSString *name = obj[@"name"];
-    
     NSString *location = obj[@"location"];
-    
-    //    NSLog(@"sender view tag ---- %ld",(long)sender.tag);
-    //    NSLog(@"save button object ------ %@",obj);
-    //    NSLog(@"name ---- %@",name);
-    //
-    //    NSLog(@"location ---- %@",location);
-    //
     NSString *stkid = [LocalDataInterface retrieveStkid];
-    
-    //    NSLog(@"stkid ---- %@",stkid);
-    
-    //    NSString *url = [WebDataInterface getFullUrlPath:location];
     
     [WebDataInterface insertSavedDocument:stkid name:name location:location completion:^(NSObject *obj, NSError *err) {
         
-        //        NSLog(@"obj  ------ %@",obj);
         NSDictionary *dict = (NSDictionary *)obj;
         
-        //        NSLog(@"dict stats ---- %@",dict[@"status"]);
-        //        if (dict) {
         
         if ([dict[@"status"] isEqualToString:@"success"]) {
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                //                if ([dict[@"status"] isEqualToString:@"sucess"]) {
                 
                 [sender setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
                 sender.userInteractionEnabled = NO;
-                //                    
-                //                }
+                
             });
             
         }
         
     }];
     
-    //    get saved document --- {
-    //        documents =     (
-    //                         {
-    //                             createDate = "2015-11-11 15:12:57.000";
-    //                             id = 130;
-    //                             location = "storage/7fd2cfadd496cfb1aacbd74e789cf6b2/document/2015/2015-10-23_15-39-03_1.pdf";
-    //                             name = "chronological-resume-traditional-design.pdf";
-    //                             status = 1;
-    //                             stkid = 15AAAACB;
-    //                             type = 2;
-    //                             updateDate = "<null>";
-    //                         }
-    //
-    
-    
+   
 }
 
 
@@ -1359,12 +1283,6 @@
     [_tabView addSubview:addBtn];
     
 }
-
-
-
-
-
-
 
 
 

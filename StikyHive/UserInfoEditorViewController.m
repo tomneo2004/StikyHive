@@ -67,7 +67,7 @@ UIPickerView *countryPickerView;
 //    NSArray *countries = [LocalDataInterface retrieveAllCountry];
     /////////////////
     
-    NSInteger *status = 1;
+    NSInteger status = 1;
     [WebDataInterface getCountry:status completion:^(NSObject *obj,NSError *err)
      {
          NSDictionary *contry = (NSDictionary *)obj;

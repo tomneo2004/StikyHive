@@ -39,14 +39,6 @@
     _stkId = stkid;
 }
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    
-//    [super viewWillAppear:animated];
-//    self.tabBarController.tabBar.hidden = YES;
-//    
-//}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -73,16 +65,16 @@
                 [WebDataInterface getSavedDocument:stkid completion:^(NSObject *obj4, NSError *err4) {
                     
                     
-                    _beeInfoDic = (NSDictionary *)obj;
-                    NSLog(@"stiky bee info -------- %@",_beeInfoDic);
+                        _beeInfoDic = (NSDictionary *)obj;
+                        NSLog(@"stiky bee info -------- %@",_beeInfoDic);
                 
-                    NSDictionary *seeAll = (NSDictionary *)obj2;
-                    _seeAllArray = seeAll[@"result"];
-//                  NSLog(@"see all  --------------- %@",_seeAllArray);
+                        NSDictionary *seeAll = (NSDictionary *)obj2;
+                        _seeAllArray = seeAll[@"result"];
+//                      NSLog(@"see all  --------------- %@",_seeAllArray);
                 
-                    _buyerMarket = (NSDictionary *)obj3;
-                    _buyerMarketArray = _buyerMarket[@"buyermarkets"];
-//                  NSLog(@"buyer market ----- %@",_buyerMarket);
+                        _buyerMarket = (NSDictionary *)obj3;
+                        _buyerMarketArray = _buyerMarket[@"buyermarkets"];
+//                      NSLog(@"buyer market ----- %@",_buyerMarket);
                     
                     
                         NSDictionary *dict = (NSDictionary *)obj4;
@@ -94,8 +86,7 @@
                         dispatch_async(dispatch_get_main_queue(), ^{
                     
                         
-                        [self displayPage];
-                    
+                            [self displayPage];
                     
                     });
                     
@@ -382,7 +373,7 @@
     
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     
-    if (seeAllArray != (id)[NSNull null])
+    if (seeAllArray.count > 0)
     {
         for (int i = 0; i < seeAllArray.count; i++)
         {
@@ -450,18 +441,18 @@
 
                     NSString *thumUrl = [WebDataInterface getFullUrlPath:thumbLocation];
             
-                    picImageView.image = [ViewControllerUtil getImageWithPath:thumUrl];
-                
-//                  UIImage *image = [ViewControllerUtil getImageWithPath:thumUrl];
-//            
-//                  if (!image)
-//                  {
-//                      image = [UIImage imageNamed:@"Default_skill_photo@2x"];
-//                  }
-//                  else
-//                  {
-//                      picImageView.image = image;
-//                  }
+//                    picImageView.image = [ViewControllerUtil getImageWithPath:thumUrl];
+                    
+                    UIImage *image = [ViewControllerUtil getImageWithPath:thumUrl];
+                    if (image)
+                    {
+                        picImageView.image = image;
+                    }
+                    else
+                    {
+                        picImageView.image = [UIImage imageNamed:@"default_seller_post"];
+                    }
+
             
             
             
@@ -473,11 +464,22 @@
                 else if (location != (id)[NSNull null])
                 {
                     NSString *url = [WebDataInterface getFullUrlPath:location];
-                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+//                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+                    
+                    UIImage *image = [ViewControllerUtil getImageWithPath:url];
+                    if (image)
+                    {
+                        picImageView.image = image;
+                    }
+                    else
+                    {
+                        picImageView.image = [UIImage imageNamed:@"default_seller_post"];
+                    }
+                    
                 }
                 else
                 {
-                    picImageView.image = [UIImage imageNamed:@"Default_skill_photo@2x"];
+                    picImageView.image = [UIImage imageNamed:@"default_seller_post"];
                 }
             
             
@@ -489,7 +491,20 @@
                 if (location != (id)[NSNull null])
                 {
                     NSString *url = [WebDataInterface getFullUrlPath:location];
-                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+//                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+                    
+                    UIImage *image = [ViewControllerUtil getImageWithPath:url];
+                    
+                    if (image)
+                    {
+                        picImageView.image = image;
+                    }
+                    else
+                    {
+                        picImageView.image = [UIImage imageNamed:@"default_seller_post"];
+                    }
+                    
+                    
                 }
                 else
                 {
@@ -708,10 +723,6 @@
     CGFloat y = 0;
     CGFloat width = self.view.frame.size.width;
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
-
-//    _tabView.backgroundColor = [UIColor yellowColor];
-    
-//    NSArray *jobHistoryArray = _beeInfoDic[@"jobhistory"];
     
     if (jobhistoryArray != (id)[NSNull null])
     {
@@ -867,10 +878,6 @@
         
     }
     
-    
-    
-    
-    
     CGRect tabViewFrame = _tabView.frame;
     tabViewFrame.size.height = y;
     _tabView.frame = tabViewFrame;
@@ -885,20 +892,6 @@
     {
         [view removeFromSuperview];
     }
-    
-    
-//    for (int i = 0; i < _savedDocuArray.count; i++)
-//    {
-//        NSString *location = _savedDocuArray[i][@"location"];
-//        
-//        NSLog(@"location element ---- %@",location);
-//        
-//        [_locationDocu insertObject:location atIndex:i];
-//        
-//        NSLog(@"add location to array ---- %d",i);
-//    }
-//    
-//    NSLog(@"location array --- %@",_locationDocu);
     
     
     CGFloat y = 0;
@@ -955,9 +948,6 @@
                         [saveBtn addTarget:self action:@selector(saveBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
                         saveBtn.tag = i;
                         
-//                        NSLog(@"save button tag --- %ld",(long)saveBtn.tag);
-                        
-                        
                     }
 
                 }
@@ -969,13 +959,9 @@
                 //            [_saveBtn setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateSelected];
                 [saveBtn addTarget:self action:@selector(saveBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
                 saveBtn.tag = i;
-                
-//                NSLog(@"save button tag --- %ld",(long)saveBtn.tag);
+
 
             }
-            
-            
-//            NSLog(@"save button tag --- %ld",(long)saveBtn.tag);
             
             
             UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, docuView.frame.size.width-saveBtn.frame.size.width-15, 20)];
@@ -1237,61 +1223,26 @@
 {
     
     NSDictionary *obj = _beeInfoDic[@"document"][sender.tag];
-    
     NSString *name = obj[@"name"];
-    
     NSString *location = obj[@"location"];
-    
-//    NSLog(@"sender view tag ---- %ld",(long)sender.tag);
-//    NSLog(@"save button object ------ %@",obj);
-//    NSLog(@"name ---- %@",name);
-//    
-//    NSLog(@"location ---- %@",location);
-//
     NSString *stkid = [LocalDataInterface retrieveStkid];
-
-//    NSLog(@"stkid ---- %@",stkid);
-    
-//    NSString *url = [WebDataInterface getFullUrlPath:location];
     
     [WebDataInterface insertSavedDocument:stkid name:name location:location completion:^(NSObject *obj, NSError *err) {
         
-//        NSLog(@"obj  ------ %@",obj);
         NSDictionary *dict = (NSDictionary *)obj;
-        
-//        NSLog(@"dict stats ---- %@",dict[@"status"]);
-//        if (dict) {
         
         if ([dict[@"status"] isEqualToString:@"success"]) {
         
             dispatch_async(dispatch_get_main_queue(), ^{
             
-//                if ([dict[@"status"] isEqualToString:@"sucess"]) {
-            
                     [sender setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
                     sender.userInteractionEnabled = NO;
-//                    
-//                }
+
             });
 
         }
   
     }];
-    
-//    get saved document --- {
-//        documents =     (
-//                         {
-//                             createDate = "2015-11-11 15:12:57.000";
-//                             id = 130;
-//                             location = "storage/7fd2cfadd496cfb1aacbd74e789cf6b2/document/2015/2015-10-23_15-39-03_1.pdf";
-//                             name = "chronological-resume-traditional-design.pdf";
-//                             status = 1;
-//                             stkid = 15AAAACB;
-//                             type = 2;
-//                             updateDate = "<null>";
-//                         }
-//
-    
     
 }
 

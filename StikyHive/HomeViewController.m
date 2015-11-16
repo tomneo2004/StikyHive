@@ -90,17 +90,13 @@
         
         [WebDataInterface getBuyerMarket:@"" limit:8 completion:^(NSObject *obj2, NSError *err2)
          {
-             
-             
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 
+//             dispatch_async(dispatch_get_main_queue(), ^{
                  
                  [self dataReceivedSkills:(NSDictionary *)obj];
                  
-                 
                  [self dataReceivedBuyers:(NSDictionary *)obj2];
 
-             });
+//             });
              
              
         }];
@@ -485,11 +481,15 @@
 
 - (IBAction)mainStartButtonPressed:(id)sender
 {
-    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 - (IBAction)startButtonPressed:(id)sender
 {
-    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 @end

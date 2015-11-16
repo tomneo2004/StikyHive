@@ -2261,6 +2261,60 @@
             </objects>
             <point key="canvasLocation" x="-2271" y="978.75"/>
         </scene>
+        <!--Selling View Controller-->
+        <scene sceneID="dDh-ht-Kar">
+            <objects>
+                <viewController storyboardIdentifier="selling_view_controller" id="HBN-0q-jYw" customClass="SellingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K8g-Gb-skY"/>
+                        <viewControllerLayoutGuide type="bottom" id="HLN-82-hvp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cpj-OX-VKg">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmX-gq-6Ug">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HLN-82-hvp" firstAttribute="top" secondItem="jmX-gq-6Ug" secondAttribute="bottom" id="8L4-Bx-ndV"/>
+                            <constraint firstItem="jmX-gq-6Ug" firstAttribute="leading" secondItem="cpj-OX-VKg" secondAttribute="leading" id="91z-CS-pBS"/>
+                            <constraint firstItem="jmX-gq-6Ug" firstAttribute="top" secondItem="cpj-OX-VKg" secondAttribute="top" id="CfS-xE-wbE"/>
+                            <constraint firstAttribute="trailing" secondItem="jmX-gq-6Ug" secondAttribute="trailing" id="OMM-EA-VPi"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="jmX-gq-6Ug"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="91z-CS-pBS"/>
+                                <exclude reference="CfS-xE-wbE"/>
+                                <exclude reference="OMM-EA-VPi"/>
+                                <exclude reference="8L4-Bx-ndV"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="jmX-gq-6Ug"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="91z-CS-pBS"/>
+                                <include reference="CfS-xE-wbE"/>
+                                <include reference="OMM-EA-VPi"/>
+                                <include reference="8L4-Bx-ndV"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="contentScrollView" destination="jmX-gq-6Ug" id="Wap-Lk-Ft7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UCN-Yt-198" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3979.5" y="942.75"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="qvo-Sg-baH">
             <objects>
@@ -2508,6 +2562,7 @@
                         <viewControllerLayoutGuide type="bottom" id="SSm-YW-Rej"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Efb-qO-3a5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0Z-ZF-D7M">
