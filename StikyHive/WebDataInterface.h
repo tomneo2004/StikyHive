@@ -196,7 +196,7 @@
 #define DATA_URL_INSERT_SAVED_DOCU      DATA_URL@"insertSavedDocuemnt/format/json"
 #define DATA_URL_GET_SAVED_DOCUMENT     DATA_URL@"getSavedDocument/format/json"
 #define DATA_URL_GET_URGENT_REQUEST     DATA_URL@"getUrgentRequest/format/json"
-
+#define DATA_URL_GET_RATE               DATA_URL@"getRate/format/json"
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -242,6 +242,7 @@
 + (void)getCountry:(NSInteger)status completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)getCategory:(NSInteger)status completion:(void (^)(NSObject *, NSError *))completion;
+
 + (void)updateImageProfile:(NSString *)stikyid completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)signupWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(NSObject *, NSError *))completion;
@@ -286,6 +287,7 @@
 
 + (void)getUrgentRequest:(NSInteger)limit stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
 
++ (void)getRate:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
 
 ////////  ///////////// END -------------------------------------
 

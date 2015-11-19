@@ -2270,6 +2270,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HLN-82-hvp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cpj-OX-VKg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmX-gq-6Ug">
@@ -2288,10 +2289,10 @@
                                 <exclude reference="jmX-gq-6Ug"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="8L4-Bx-ndV"/>
                                 <exclude reference="91z-CS-pBS"/>
                                 <exclude reference="CfS-xE-wbE"/>
                                 <exclude reference="OMM-EA-VPi"/>
-                                <exclude reference="8L4-Bx-ndV"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -2299,10 +2300,10 @@
                                 <include reference="jmX-gq-6Ug"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="8L4-Bx-ndV"/>
                                 <include reference="91z-CS-pBS"/>
                                 <include reference="CfS-xE-wbE"/>
                                 <include reference="OMM-EA-VPi"/>
-                                <include reference="8L4-Bx-ndV"/>
                             </mask>
                         </variation>
                     </view>

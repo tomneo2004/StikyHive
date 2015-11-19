@@ -85,6 +85,9 @@
             }
         }
         
+        
+//        NSLog(@"industry array --- %@",_industryList);
+//        NSLog(@"category array --- %@",_categoryList);
     }];
 
     

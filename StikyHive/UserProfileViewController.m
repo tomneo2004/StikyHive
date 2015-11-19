@@ -386,6 +386,7 @@
             UIImageView *picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, skillView.frame.size.width, 180)];
 //        picImageView.image = [ViewControllerUtil getImageWithPath:url];
             picImageView.contentMode = UIViewContentModeScaleAspectFit;
+//            picImageView.backgroundColor = [UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1.0];
             
             
             NSString *price = object[@"price"];

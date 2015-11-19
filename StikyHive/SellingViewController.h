@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SellingViewController : UIViewController <UIScrollViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
+@interface SellingViewController : UIViewController <UIScrollViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate, UIWebViewDelegate,UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 
 @end
