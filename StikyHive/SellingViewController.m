@@ -9,6 +9,8 @@
 #import "SellingViewController.h"
 #import "HtmlEditor.h"
 #import "WebDataInterface.h"
+#import "ViewControllerUtil.h"
+#import "SellingViewController2.h"
 
 @interface SellingViewController ()
 
@@ -30,10 +32,16 @@
 @property (nonatomic, strong) UIWebView *descWebView;
 @property (nonatomic, strong) HtmlEditor *descEditor;
 @property (nonatomic, assign) BOOL descEditorLoaded;
+@property (nonatomic, assign) NSString *categoryId;
+@property (nonatomic, assign) NSString *rateId;
+
+
 
 @end
 
 @implementation SellingViewController
+
+//static NSMutableDictionary *Skill_Info;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,11 +52,11 @@
     
     
     
-//    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived:)];
-//    [tapGestureRecognizer setDelegate:self];
-////    tapGestureRecognizer.delegate = self;
-//    [self.view addGestureRecognizer:tapGestureRecognizer];
-//    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived:)];
+    [tapGestureRecognizer setDelegate:self];
+//    tapGestureRecognizer.delegate = self;
+    [self.contentScrollView addGestureRecognizer:tapGestureRecognizer];
+    
     
     _industryArray = [[NSMutableArray alloc] init];
     _categoryArray = [[NSMutableArray alloc] init];
@@ -57,7 +65,6 @@
     [WebDataInterface getCategory:status completion:^(NSObject *obj, NSError *err) {
         
         [WebDataInterface getRate:0 completion:^(NSObject *obj2, NSError *err2) {
-            
         
             dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -73,7 +80,6 @@
                     {
                         [_industryArray addObject:list[i]];
                     
-                        NSLog(@"list obj %@",list[i]);
                     }
                     else if (intType == 2)
                     {
@@ -87,18 +93,14 @@
                 
                 NSDictionary *rate = (NSDictionary *)obj2;
                 _rateArray = rate[@"rate"];
+                
 
-            
                 [self displayPage];
             
             });
         
         }];
     }];
-    
-    
-//    NSLog(@"industry array --- %@",_industryArray);
-//    NSLog(@"category array --- %@",_categoryArray);
     
     
 }
@@ -139,14 +141,14 @@
     
     UILabel *listLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, y+20, 100, 10)];
     listLabel.text = @"List your skill";
-    listLabel.font = [UIFont systemFontOfSize:18];
+    listLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:18];
     [listLabel sizeToFit];
     
     y = listLabel.frame.origin.y+listLabel.frame.size.height+space;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, y, 100, 10)];
     titleLabel.text = @"Skill Title";
-    titleLabel.font = [UIFont systemFontOfSize:16];
+    titleLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
     [titleLabel sizeToFit];
     
     y = y+titleLabel.frame.size.height +10;
@@ -154,13 +156,15 @@
     _titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width-space*2, 40)];
     _titleTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"eg.Accounting"];
     _titleTextField.backgroundColor = textBgColor;
+    _titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0);  //text inset for uitextfield
+    _titleTextField.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
     
     
     y = y + _titleTextField.frame.size.height+20;
     
-    _professBtn = [[UIButton alloc] initWithFrame:CGRectMake(x, y, (width-40)/2, 30)];
+    _professBtn = [[UIButton alloc] initWithFrame:CGRectMake(x, y, (width-40)/2 - 2, 30)];
     [_professBtn setTitle:@"Professional Skill" forState:UIControlStateNormal];
-    _professBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    _professBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
 //    _professBtn.backgroundColor = textBgColor;
     _professBtn.layer.borderWidth = 1;
     _professBtn.layer.borderColor = [UIColor blackColor].CGColor;
@@ -170,10 +174,16 @@
     [_professBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_professBtn addTarget:self action:@selector(professBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    _talentBtn = [[UIButton alloc] initWithFrame:CGRectMake(x+_professBtn.frame.size.width, y, _professBtn.frame.size.width, _professBtn.frame.size.height)];
+    _talentBtn = [[UIButton alloc] initWithFrame:CGRectMake(x+_professBtn.frame.size.width+4, y, _professBtn.frame.size.width, _professBtn.frame.size.height)];
     [_talentBtn setTitle:@"Raw Talent" forState:UIControlStateNormal];
-    _talentBtn.backgroundColor = textBgColor;
+//    _talentBtn.backgroundColor = textBgColor;
     [_talentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _talentBtn.layer.borderWidth = 1;
+    _talentBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    _talentBtn.layer.cornerRadius = 5;
+    _talentBtn.layer.masksToBounds = YES;
+    _talentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+
     [_talentBtn addTarget:self action:@selector(talentBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -182,7 +192,8 @@
     _industryTextField = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width-40, 40)];
     _industryTextField.backgroundColor = textBgColor;
     _industryTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Select Industry"];
-    _industryTextField.textAlignment = NSTextAlignmentFromCTTextAlignment(100);
+//    _industryTextField.textAlignment = NSTextAlignmentFromCTTextAlignment(100);
+    _industryTextField.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0);
     
     _industryPickerView = [[UIPickerView alloc] init];
     _industryPickerView.delegate = self;
@@ -195,6 +206,7 @@
     
     UILabel *priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, y, 50, 16)];
     priceLabel.text = @"Price";
+    priceLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
     
     y = y+priceLabel.frame.size.height +10;
     
@@ -208,6 +220,8 @@
     _priceTextField.backgroundColor = textBgColor;
     _priceTextField.font = [UIFont systemFontOfSize:16];
     _priceTextField.textAlignment = NSTextAlignmentCenter;
+    _priceTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    
     
     UILabel *smLabel = [[UILabel alloc] initWithFrame:CGRectMake(_priceTextField.frame.origin.x+_priceTextField.frame.size.width+5, y+10, 10, 15)];
     smLabel.text = @"/";
@@ -234,6 +248,7 @@
     
     UILabel *summaryLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, y, 100, 20)];
     summaryLabel.text = @"Summary";
+    summaryLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
     
     y = y + summaryLabel.frame.size.height + space/2;
     
@@ -254,6 +269,7 @@
     
     UILabel *descLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, y, 100, 20)];
     descLabel.text = @"Description";
+    descLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
     
     y = y + descLabel.frame.size.height + space/2;
     
@@ -274,6 +290,20 @@
     y = y + _descWebView.frame.size.height+space;
     
     
+    UIColor *greenColor = [UIColor colorWithRed:19.0/255 green:152.0/255 blue:139.0/255 alpha:1.0];
+    
+    UIButton *nextBtn = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width-40, 50)];
+    [nextBtn setTitle:@"Next" forState:UIControlStateNormal];
+    [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    nextBtn.layer.cornerRadius = 5;
+    nextBtn.layer.masksToBounds = YES;
+    nextBtn.backgroundColor = greenColor;
+    [nextBtn addTarget:self action:@selector(nextBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    y = y + nextBtn.frame.size.height + space;
+    
+    
+    
     [_contentScrollView addSubview:listLabel];
     [_contentScrollView addSubview:titleLabel];
     [_contentScrollView addSubview:_titleTextField];
@@ -289,10 +319,105 @@
     [_contentScrollView addSubview:_summaryWebView];
     [_contentScrollView addSubview:descLabel];
     [_contentScrollView addSubview:_descWebView];
+    [_contentScrollView addSubview:nextBtn];
     
     // set scroll view content size
     [_contentScrollView setContentSize:CGSizeMake(width, y)];
 }
+
+- (void)nextBtnTapped:(UITapGestureRecognizer *)sender
+{
+    NSString *titleString = _titleTextField.text;
+    NSString *priceString = _priceTextField.text;
+    NSString *rateString = _rateTextField.text;
+    
+    NSLog(@"category - %@",_categoryId);
+    NSLog(@"rate - %@",_rateId);
+    NSString *industryString = _industryTextField.text;
+    
+    NSString *summaryString = [_summaryWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+    NSString *descString = [_descWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+    NSString *innerSummary = [_summaryWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].innerHTML"];
+    NSString *innerDesc = [_descWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].innerHTML"];
+    
+    
+//    NSLog(@"inner summary --- %@",innerSummary);
+//    NSLog(@"inner desc -- %@",innerDesc);
+//    
+//    NSLog(@"summary string -- %@",summaryString);
+//    NSLog(@"desc string -- %@",descString);
+    
+    if (titleString.length == 0) {
+        [ViewControllerUtil showAlertWithTitle:@"Incomplete Information" andMessage:@"Skill Title not fill in."];
+    }
+    else if (industryString.length == 0)
+    {
+        [ViewControllerUtil showAlertWithTitle:@"Incomplete Information" andMessage:@"Plese select skill."];
+    }
+    else if (innerSummary.length == 0)
+    {
+        [ViewControllerUtil showAlertWithTitle:@"Incomplete Information" andMessage:@"Skill Summary not fill in."];
+    }
+    else if (innerDesc.length == 0)
+    {
+        [ViewControllerUtil showAlertWithTitle:@"Incomplete Information" andMessage:@"Skill Description not fill in."];
+    }
+    else if (priceString.length > 0 && rateString.length == 0)
+    {
+        [ViewControllerUtil showAlertWithTitle:@"Incomplete Information" andMessage:@"Please select rate."];
+    }
+    else
+    {
+//        if (priceString.length > 0 && rateString == 0) {
+//            
+//        }
+        
+        NSMutableDictionary *skillinfo = [[NSMutableDictionary alloc] init];
+        
+        
+        if (priceString.length == 0)
+        {
+            skillinfo[@"price"] = [NSNull null];
+            skillinfo[@"rate"] = [NSNull null];
+        }
+        else
+        {
+            skillinfo[@"price"] = priceString;
+            skillinfo[@"rate"] = _rateId;
+        }
+        
+//        Skill_Info[@"name"] = titleString;
+//        Skill_Info[@"categoryid"] = _categoryId;
+//        Skill_Info[@"summary"] = summaryString;
+//        Skill_Info[@"description"] = descString;
+        
+        skillinfo[@"name"] = titleString;
+        skillinfo[@"categoryid"] = _categoryId;
+        skillinfo[@"summary"] = summaryString;
+        skillinfo[@"description"] = descString;
+        
+        NSString *name = skillinfo[@"name"];
+        NSLog(@"name1 -- %@",name);
+        NSLog(@"name2 -- %@",titleString);
+        NSLog(@"categorid -- %@",skillinfo[@"categoryid"]);
+        NSLog(@"summary -- %@",skillinfo[@"summary"]);
+        NSLog(@"description -- %@",skillinfo[@"description"]);
+        
+        NSLog(@"price -- %@",skillinfo[@"price"]);
+        NSLog(@"rate -- %@",skillinfo[@"rate"]);
+        
+        
+        UIViewController *vc = [SellingViewController2 instantiateForInfo:skillinfo];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        
+        
+    }
+    
+    
+}
+
+
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
@@ -329,7 +454,6 @@
     {
         return 1;
     }
-    
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
@@ -364,10 +488,16 @@
     if (pickerView.tag == 111) {
         NSString *name = _skillArray[row][@"name"];
         _industryTextField.text = name;
+        
+        _categoryId = _skillArray[row][@"id"];
+        
     }
     else
     {
         _rateTextField.text = _rateArray[row][@"name"];
+        
+        _rateId = _rateArray[row][@"id"];
+        
     }
     
     
@@ -377,10 +507,12 @@
 -(void)tapReceived:(UITapGestureRecognizer *)tapGestureRecognizer
 {
     
-    [_titleTextField resignFirstResponder];
-    [_industryTextField resignFirstResponder];
-    [_priceTextField resignFirstResponder];
-    [_rateTextField resignFirstResponder];
+//    [_titleTextField resignFirstResponder];
+//    [_industryTextField resignFirstResponder];
+//    [_priceTextField resignFirstResponder];
+//    [_rateTextField resignFirstResponder];
+    
+    [_contentScrollView endEditing:YES];
     
 }
 
@@ -388,12 +520,19 @@
 {
     _skillArray = [_categoryArray mutableCopy];
     [_industryPickerView reloadAllComponents]; //reload picker view data
+    
+    _talentBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    _professBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    
 }
 
 - (void)professBtnTapped:(UITapGestureRecognizer *)sender
 {
     _skillArray = [_industryArray mutableCopy];
     [_industryPickerView reloadAllComponents];
+    
+    _professBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    _talentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
 }
 
 

@@ -23,6 +23,8 @@
 		51700A8F1BD49F8200294DAD /* review_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51700A8E1BD49F8200294DAD /* review_filled.png */; };
 		51700A921BD4C93500294DAD /* BuyerPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51700A911BD4C93500294DAD /* BuyerPostViewController.m */; };
 		51718BB21BE75700000424E6 /* profile_bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 51718BB11BE75700000424E6 /* profile_bookmark.png */; };
+		5173255F1C02B25E004655D6 /* sell_upload_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 5173255E1C02B25E004655D6 /* sell_upload_video.png */; };
+		517325621C02B3B7004655D6 /* SellingViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 517325611C02B3B7004655D6 /* SellingViewController2.m */; };
 		51760A711BE882F400F36DC6 /* review_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 51760A701BE882F400F36DC6 /* review_empty.png */; };
 		51788CAE1BBD14FE00A96AD7 /* like_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51788CAC1BBD14FE00A96AD7 /* like_filled.png */; };
 		51788CAF1BBD14FE00A96AD7 /* bookmark_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51788CAD1BBD14FE00A96AD7 /* bookmark_filled.png */; };
@@ -402,6 +404,9 @@
 		51700A901BD4C93500294DAD /* BuyerPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerPostViewController.h; sourceTree = "<group>"; };
 		51700A911BD4C93500294DAD /* BuyerPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerPostViewController.m; sourceTree = "<group>"; };
 		51718BB11BE75700000424E6 /* profile_bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_bookmark.png; sourceTree = "<group>"; };
+		5173255E1C02B25E004655D6 /* sell_upload_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sell_upload_video.png; sourceTree = "<group>"; };
+		517325601C02B3B7004655D6 /* SellingViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingViewController2.h; sourceTree = "<group>"; };
+		517325611C02B3B7004655D6 /* SellingViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingViewController2.m; sourceTree = "<group>"; };
 		51760A701BE882F400F36DC6 /* review_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_empty.png; sourceTree = "<group>"; };
 		51788CAC1BBD14FE00A96AD7 /* like_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like_filled.png; sourceTree = "<group>"; };
 		51788CAD1BBD14FE00A96AD7 /* bookmark_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark_filled.png; sourceTree = "<group>"; };
@@ -919,6 +924,7 @@
 		67361F301B830DD500C1374D /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				5173255E1C02B25E004655D6 /* sell_upload_video.png */,
 				517C578B1BF2FF3C00469AA4 /* tick.png */,
 				516617351BF04FF3002BE00B /* icon_doc_save.png */,
 				516617331BF03939002BE00B /* looking.png */,
@@ -1270,6 +1276,8 @@
 				51896EAD1BCDFE5D006643AE /* SellerRevViewController.m */,
 				517C8F7C1BF9C2E80020CBE6 /* SellingViewController.h */,
 				517C8F7D1BF9C2E80020CBE6 /* SellingViewController.m */,
+				517325601C02B3B7004655D6 /* SellingViewController2.h */,
+				517325611C02B3B7004655D6 /* SellingViewController2.m */,
 			);
 			name = Skill;
 			sourceTree = "<group>";
@@ -1842,6 +1850,7 @@
 				674D10141B7DB4CD00B5B80D /* ZSSrightjustify@2x.png in Resources */,
 				674D10021B7DB4CD00B5B80D /* ZSSkeyboard@2x.png in Resources */,
 				674D0DE51B7D91FC00B5B80D /* button_update@2x.png in Resources */,
+				5173255F1C02B25E004655D6 /* sell_upload_video.png in Resources */,
 				674D0FF81B7DB4CD00B5B80D /* ZSShorizontalrule@2x.png in Resources */,
 				674D0E841B7D920E00B5B80D /* indicator_view.png in Resources */,
 				674D10241B7DB4CD00B5B80D /* ZSSunlink@2x.png in Resources */,
@@ -2215,6 +2224,7 @@
 				674D0F4C1B7D9A5200B5B80D /* JSQMessagesCollectionView.m in Sources */,
 				674D10291B7DB4CD00B5B80D /* CYRLayoutManager.m in Sources */,
 				674D0F741B7D9ED800B5B80D /* EntryViewController.m in Sources */,
+				517325621C02B3B7004655D6 /* SellingViewController2.m in Sources */,
 				676F77EE1B96F5600084988A /* UserInfoEditorViewController.m in Sources */,
 				674D0EC81B7D999200B5B80D /* LocalDataInterface.m in Sources */,
 				676F77E11B96F3060084988A /* TOCroppedImageAttributes.m in Sources */,
