@@ -27,4 +27,6 @@
  */
 + (id)createRequestFromDictionary:(NSDictionary *)dic;
 
+- (id)initWithDictionary:(NSDictionary *)dic;
+
 @end

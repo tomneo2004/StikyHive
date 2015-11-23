@@ -2,26 +2,17 @@
 //  RequestCell.m
 //  StikyHive
 //
-//  Created by User on 13/11/15.
+//  Created by User on 16/11/15.
 //  Copyright © 2015 Stiky Hive. All rights reserved.
 //
 
 #import "RequestCell.h"
 #import "WebDataInterface.h"
-#import "ViewControllerUtil.h"
-#import  "ObjectCache.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface RequestCell ()
+@implementation RequestCell
 
-@end
-
-@implementation RequestCell{
-    
-    BOOL _isInit;
-    UIView *_profilePhotoView;
-}
-
-@synthesize imageContainer = _imageContainer;
+@synthesize avatarImageView = _avatarImageView;
 @synthesize titleLabel = _titleLabel;
 @synthesize descLabel = _descLabel;
 @synthesize delegate = _delegate;
@@ -37,74 +28,27 @@
 }
 
 #pragma mark - public interface
-- (void)displayProfilePictureWithURL:(NSString *)url withUniqueId:(NSString *)uniqueId{
+- (void)displayProfilePictureWithURL:(NSString *)url{
     
     NSString *fullURL = [WebDataInterface getFullUrlPath:url];
+    NSURL *requestURL = [NSURL URLWithString:fullURL];
     
-    _profilePhotoView = [[ObjectCache sharedObjectCache] getObjectForKey:uniqueId];
+    [_avatarImageView setImageWithURLRequest:[NSURLRequest requestWithURL:requestURL] placeholderImage:[UIImage imageNamed:@"Default_profile_small@2x"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
+        
+        _avatarImageView.image = image;
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+        
+        
+    }];
     
-    if(_profilePhotoView != nil){
-        
-        _profilePhotoView.center = _imageContainer.center;
-        [self.contentView addSubview:_profilePhotoView];
-    }
-    else{
-        
-        _profilePhotoView = [ViewControllerUtil getViewWithImageURLNormal:fullURL xOffset:0 yOffset:0 width:_imageContainer.bounds.size.width heigth:_imageContainer.bounds.size.height defaultPhoto:@"Default_profile_small@2x"];
-        _profilePhotoView.layer.cornerRadius = _profilePhotoView.bounds.size.width/2;
-        _profilePhotoView.layer.masksToBounds = YES;
-        _profilePhotoView.layer.borderColor = [UIColor whiteColor].CGColor;
-        _profilePhotoView.layer.borderWidth = 1;
-        _profilePhotoView.center = _imageContainer.center;
-        
-        [[ObjectCache sharedObjectCache] setObject:_profilePhotoView forKey:uniqueId];
-        
-        [self.contentView addSubview:_profilePhotoView];
-    }
-   
-    
-    _imageContainer.hidden = YES;
-}
-
-#pragma mark - IBAction
-- (IBAction)didTapImageAttachment:(id)sender{
-    
-    if([_delegate respondsToSelector:@selector(requestCellDidTapImageAttachment:)]){
-        
-        [_delegate requestCellDidTapImageAttachment:self];
-    }
-}
-
-- (IBAction)didTapVoiceCommunication:(id)sender{
-    
-    if([_delegate respondsToSelector:@selector(requestCellDidTapVoiceCommunication:)]){
-        
-        [_delegate requestCellDidTapVoiceCommunication:self];
-    }
-}
-
-- (IBAction)didTapChat:(id)sender{
-    
-    if([_delegate respondsToSelector:@selector(requestCellDidTapChat:)]){
-        [_delegate requestCellDidTapChat:self];
-    }
-}
-
-#pragma mark - internal
-- (void)didTapPersonAvatar:(UITapGestureRecognizer *)recognizer{
-    
-    if([_delegate respondsToSelector:@selector(requestCellDidTapPersonAvatar:)]){
-        
-        [_delegate requestCellDidTapPersonAvatar:self];
-    }
 }
 
 #pragma mark - override
 - (void)prepareForReuse{
     
     _delegate = nil;
-    [_profilePhotoView removeFromSuperview];
-    _profilePhotoView = nil;
+    [_avatarImageView cancelImageRequestOperation];
 }
 
 @end

@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RequestCell.h"
+#import "UrgentRequestCell.h"
+#import "MyRequestCell.h"
+#import "UrgentSectionTitle.h"
+#import "MyRequestSectionTitle.h"
+#import "TitleViewController.h"
 
-@interface CrossPollinateViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, RequestCellDelegate>
+@interface CrossPollinateViewController : TitleViewController<UITableViewDataSource, UITableViewDelegate, UrgentRequestCellDelegate, MyRequestCellDelegate, UrgentSectionTitleDelegate, MyRequestSectionTitleDelegate, UISearchBarDelegate>
 
 
 
