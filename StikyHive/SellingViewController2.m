@@ -18,6 +18,9 @@
 static NSMutableDictionary *Skill_Info;
 
 
+- (IBAction)nextButton:(id)sender {
+}
+
 + (UIViewController *)instantiateForInfo:(NSDictionary *)skillInfo
 {
     Skill_Info = skillInfo.mutableCopy;
@@ -33,7 +36,49 @@ static NSMutableDictionary *Skill_Info;
     
     
     NSLog(@"skill info ---- %@",Skill_Info);
+    
+    
+    [_videoImageView setUserInteractionEnabled:YES];
+    [_videoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(videoImageViewTapped:)]];
+    
+    
+    
+    
+    
+    
 }
+
+
+- (void)videoImageViewTapped:(UITapGestureRecognizer *)tapGestureRecognizer
+{
+    [self showVideoPicker];
+}
+
+
+- (void)showVideoPicker
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+        picker.videoMaximumDuration = MAX_VIDEO_DURATION_DEFAULT;
+        //    picker.videoQuality = UIImagePickerControllerQualityTypeIFrame960x540;
+        picker.videoQuality = UIImagePickerControllerQualityTypeHigh;
+        
+        [self presentViewController:picker animated:YES completion:NULL];
+        NSString *msg = @"Please record in landscape mode to ensure your video is not distorted.";
+        [ViewControllerUtil showAlertWithTitle:@"" andMessage:msg];
+    }
+
+    
+    
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

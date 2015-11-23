@@ -1744,6 +1744,9 @@
                                         <include reference="G8P-lE-jGF"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="nextButton:" destination="coK-j3-7EQ" eventType="touchUpInside" id="CfE-q6-bJ9"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sell_upload_video.png" translatesAutoresizingMaskIntoConstraints="NO" id="3yq-hJ-bCN">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -1829,6 +1832,11 @@
                         </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="recommLabel" destination="tRN-Kz-KiC" id="vmr-6u-1LH"/>
+                        <outlet property="uploadLabel" destination="kAZ-bt-dX1" id="gWa-Bw-LFd"/>
+                        <outlet property="videoImageView" destination="3yq-hJ-bCN" id="Doh-fX-9ht"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Px5-fO-HlI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

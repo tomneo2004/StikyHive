@@ -704,7 +704,7 @@
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
 
     
-    if (jobhistoryArray.count > 0)
+    if (jobhistoryArray != (id)[NSNull null])
     {
         
         for (int i =0; i < jobhistoryArray.count; i++)
