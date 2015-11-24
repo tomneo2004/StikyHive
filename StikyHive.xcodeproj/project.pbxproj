@@ -20,6 +20,8 @@
 		516A614B1BC7617400D4E890 /* SellerCommTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516A614A1BC7617400D4E890 /* SellerCommTableViewController.m */; };
 		516A614E1BC7A47900D4E890 /* PostCommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516A614D1BC7A47900D4E890 /* PostCommViewController.m */; };
 		516BC8691BB13FBE008BE2ED /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BC8681BB13FBE008BE2ED /* PhotoViewController.m */; };
+		516C51621C0410B8002710AA /* SellingViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 516C51611C0410B8002710AA /* SellingViewController3.m */; };
+		516C51641C042299002710AA /* sell_upload_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 516C51631C042299002710AA /* sell_upload_photo.png */; };
 		51700A8F1BD49F8200294DAD /* review_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51700A8E1BD49F8200294DAD /* review_filled.png */; };
 		51700A921BD4C93500294DAD /* BuyerPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51700A911BD4C93500294DAD /* BuyerPostViewController.m */; };
 		51718BB21BE75700000424E6 /* profile_bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 51718BB11BE75700000424E6 /* profile_bookmark.png */; };
@@ -400,6 +402,9 @@
 		516A614D1BC7A47900D4E890 /* PostCommViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommViewController.m; sourceTree = "<group>"; };
 		516BC8671BB13FBE008BE2ED /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		516BC8681BB13FBE008BE2ED /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		516C51601C0410B8002710AA /* SellingViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingViewController3.h; sourceTree = "<group>"; };
+		516C51611C0410B8002710AA /* SellingViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingViewController3.m; sourceTree = "<group>"; };
+		516C51631C042299002710AA /* sell_upload_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sell_upload_photo.png; sourceTree = "<group>"; };
 		51700A8E1BD49F8200294DAD /* review_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_filled.png; sourceTree = "<group>"; };
 		51700A901BD4C93500294DAD /* BuyerPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerPostViewController.h; sourceTree = "<group>"; };
 		51700A911BD4C93500294DAD /* BuyerPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerPostViewController.m; sourceTree = "<group>"; };
@@ -924,6 +929,7 @@
 		67361F301B830DD500C1374D /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				516C51631C042299002710AA /* sell_upload_photo.png */,
 				5173255E1C02B25E004655D6 /* sell_upload_video.png */,
 				517C578B1BF2FF3C00469AA4 /* tick.png */,
 				516617351BF04FF3002BE00B /* icon_doc_save.png */,
@@ -1278,6 +1284,8 @@
 				517C8F7D1BF9C2E80020CBE6 /* SellingViewController.m */,
 				517325601C02B3B7004655D6 /* SellingViewController2.h */,
 				517325611C02B3B7004655D6 /* SellingViewController2.m */,
+				516C51601C0410B8002710AA /* SellingViewController3.h */,
+				516C51611C0410B8002710AA /* SellingViewController3.m */,
 			);
 			name = Skill;
 			sourceTree = "<group>";
@@ -1983,6 +1991,7 @@
 				674D10211B7DB4CD00B5B80D /* ZSSundo.png in Resources */,
 				674D100D1B7DB4CD00B5B80D /* ZSSpicker.png in Resources */,
 				674D0FF01B7DB4CD00B5B80D /* ZSSh3@2x.png in Resources */,
+				516C51641C042299002710AA /* sell_upload_photo.png in Resources */,
 				674D0E551B7D920E00B5B80D /* button_Contact.png in Resources */,
 				5186FE451BD5D691002A51CA /* buyerspost_open.png in Resources */,
 				674D0FFF1B7DB4CD00B5B80D /* ZSSitalic.png in Resources */,
@@ -2229,6 +2238,7 @@
 				674D0EC81B7D999200B5B80D /* LocalDataInterface.m in Sources */,
 				676F77E11B96F3060084988A /* TOCroppedImageAttributes.m in Sources */,
 				674D102E1B7DB4CD00B5B80D /* HRCgUtil.m in Sources */,
+				516C51621C0410B8002710AA /* SellingViewController3.m in Sources */,
 				674D0F571B7D9A5200B5B80D /* JSQMessagesMediaPlaceholderView.m in Sources */,
 				51700A921BD4C93500294DAD /* BuyerPostViewController.m in Sources */,
 				676F77E01B96F3060084988A /* TOActivityCroppedImageProvider.m in Sources */,
