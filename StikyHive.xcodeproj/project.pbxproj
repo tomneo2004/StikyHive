@@ -405,6 +405,10 @@
 		CEFD194F1C04045800A79158 /* DistanceSkill.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD194C1C04045800A79158 /* DistanceSkill.m */; };
 		CEFD19501C04045800A79158 /* SkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD194E1C04045800A79158 /* SkillInfo.m */; };
 		CEFD19521C04047C00A79158 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFD19511C04047C00A79158 /* CoreLocation.framework */; };
+		CEFD19551C0409BC00A79158 /* SearchResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD19541C0409BC00A79158 /* SearchResultTableViewController.m */; };
+		CEFD19581C040F3D00A79158 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD19571C040F3D00A79158 /* SearchResultCell.m */; };
+		CEFD195C1C04123800A79158 /* DistanceTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD195B1C04123800A79158 /* DistanceTitle.m */; };
+		CEFD195E1C04125900A79158 /* DistanceTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFD195D1C04125900A79158 /* DistanceTitle.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -975,6 +979,13 @@
 		CEFD194D1C04045800A79158 /* SkillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillInfo.h; sourceTree = "<group>"; };
 		CEFD194E1C04045800A79158 /* SkillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillInfo.m; sourceTree = "<group>"; };
 		CEFD19511C04047C00A79158 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CEFD19531C0409BC00A79158 /* SearchResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultTableViewController.h; sourceTree = "<group>"; };
+		CEFD19541C0409BC00A79158 /* SearchResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultTableViewController.m; sourceTree = "<group>"; };
+		CEFD19561C040F3D00A79158 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
+		CEFD19571C040F3D00A79158 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
+		CEFD195A1C04123800A79158 /* DistanceTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceTitle.h; sourceTree = "<group>"; };
+		CEFD195B1C04123800A79158 /* DistanceTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceTitle.m; sourceTree = "<group>"; };
+		CEFD195D1C04125900A79158 /* DistanceTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceTitle.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1990,12 +2001,27 @@
 		CEFD194A1C04044200A79158 /* SearchResult */ = {
 			isa = PBXGroup;
 			children = (
+				CEFD19591C04120E00A79158 /* DistanceTitle */,
 				CEFD194B1C04045800A79158 /* DistanceSkill.h */,
 				CEFD194C1C04045800A79158 /* DistanceSkill.m */,
 				CEFD194D1C04045800A79158 /* SkillInfo.h */,
 				CEFD194E1C04045800A79158 /* SkillInfo.m */,
+				CEFD19531C0409BC00A79158 /* SearchResultTableViewController.h */,
+				CEFD19541C0409BC00A79158 /* SearchResultTableViewController.m */,
+				CEFD19561C040F3D00A79158 /* SearchResultCell.h */,
+				CEFD19571C040F3D00A79158 /* SearchResultCell.m */,
 			);
 			name = SearchResult;
+			sourceTree = "<group>";
+		};
+		CEFD19591C04120E00A79158 /* DistanceTitle */ = {
+			isa = PBXGroup;
+			children = (
+				CEFD195A1C04123800A79158 /* DistanceTitle.h */,
+				CEFD195B1C04123800A79158 /* DistanceTitle.m */,
+				CEFD195D1C04125900A79158 /* DistanceTitle.xib */,
+			);
+			name = DistanceTitle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2272,6 +2298,7 @@
 				CEE93A181BF4490100B292BA /* buzzr_navi.png in Resources */,
 				674D0E8F1B7D920E00B5B80D /* Grey@2x.png in Resources */,
 				674D104E1B7DC41100B5B80D /* logo.png in Resources */,
+				CEFD195E1C04125900A79158 /* DistanceTitle.xib in Resources */,
 				674D0FFD1B7DB4CD00B5B80D /* ZSSinsertkeyword.png in Resources */,
 				674D0E891B7D920E00B5B80D /* Payment_button_yes_I_want_it@2x.png in Resources */,
 				674D100F1B7DB4CD00B5B80D /* ZSSquicklink.png in Resources */,
@@ -2474,6 +2501,7 @@
 				674D0F5A1B7D9A5200B5B80D /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				674D0F481B7D9A5200B5B80D /* JSQMessagesBubbleImage.m in Sources */,
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
+				CEFD19581C040F3D00A79158 /* SearchResultCell.m in Sources */,
 				674D0F341B7D9A5200B5B80D /* NSString+JSQMessages.m in Sources */,
 				674D0F771B7D9F2200B5B80D /* HtmlEditor.m in Sources */,
 				674D0EC11B7D98CA00B5B80D /* UserSkillViewController3.m in Sources */,
@@ -2494,6 +2522,7 @@
 				51896EAE1BCDFE5D006643AE /* SellerRevViewController.m in Sources */,
 				674D0F421B7D9A5200B5B80D /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				674D0D9E1B7D913400B5B80D /* FirstViewController.m in Sources */,
+				CEFD195C1C04123800A79158 /* DistanceTitle.m in Sources */,
 				674D0F461B7D9A5200B5B80D /* JSQMessage.m in Sources */,
 				CEE93A261BF47C2600B292BA /* CrossPollinateViewController.m in Sources */,
 				CEE93A2A1BF4852800B292BA /* Request.m in Sources */,
@@ -2532,6 +2561,7 @@
 				674D0F3C1B7D9A5200B5B80D /* JSQMessagesAvatarImageFactory.m in Sources */,
 				517D552F1BDA0301000EA8FD /* ReportAbuseViewController.m in Sources */,
 				CEFD194F1C04045800A79158 /* DistanceSkill.m in Sources */,
+				CEFD19551C0409BC00A79158 /* SearchResultTableViewController.m in Sources */,
 				674D0F6A1B7D9B3100B5B80D /* Skill.m in Sources */,
 				674D0F331B7D9A5200B5B80D /* NSBundle+JSQMessages.m in Sources */,
 			);

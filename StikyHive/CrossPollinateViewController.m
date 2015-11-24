@@ -20,6 +20,7 @@
 #import "RequestPostTableViewController.h"
 #import "SkillInfo.h"
 #import "DistanceSkill.h"
+#import "SearchResultTableViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface CrossPollinateViewController ()
@@ -255,15 +256,9 @@
                         [distSkills removeObject:empty];
                     }
                     
-                    for(DistanceSkill *dSkill in distSkills){
-                        
-                        NSLog(@"distance %@", dSkill.distanceToString);
-                        
-                        for(SkillInfo *info in dSkill.allSkills){
-                            
-                            NSLog(@"name:%@ dist:%@", info.firstname, info.stringFromDistance);
-                        }
-                    }
+                    SearchResultTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchResultTableViewController"];
+                    controller.searchResult = distSkills;
+                    [self.navigationController pushViewController:controller animated:YES];
                     
                     [self.view hideActivityView];
                 }
