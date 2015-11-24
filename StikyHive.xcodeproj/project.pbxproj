@@ -402,6 +402,9 @@
 		CEF7BAA71BFB0FAD009624CC /* AttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF7BAA61BFB0FAD009624CC /* AttachmentViewController.m */; };
 		CEF7BAAB1BFB2704009624CC /* RequestPostTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF7BAAA1BFB2704009624CC /* RequestPostTableViewController.m */; };
 		CEF7E59B1BF58CB100488C2A /* UrgentRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF7E59A1BF58CB100488C2A /* UrgentRequestCell.m */; };
+		CEFD194F1C04045800A79158 /* DistanceSkill.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD194C1C04045800A79158 /* DistanceSkill.m */; };
+		CEFD19501C04045800A79158 /* SkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD194E1C04045800A79158 /* SkillInfo.m */; };
+		CEFD19521C04047C00A79158 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFD19511C04047C00A79158 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -967,6 +970,11 @@
 		CEF7BAAA1BFB2704009624CC /* RequestPostTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestPostTableViewController.m; sourceTree = "<group>"; };
 		CEF7E5991BF58CB100488C2A /* UrgentRequestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrgentRequestCell.h; sourceTree = "<group>"; };
 		CEF7E59A1BF58CB100488C2A /* UrgentRequestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrgentRequestCell.m; sourceTree = "<group>"; };
+		CEFD194B1C04045800A79158 /* DistanceSkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceSkill.h; sourceTree = "<group>"; };
+		CEFD194C1C04045800A79158 /* DistanceSkill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceSkill.m; sourceTree = "<group>"; };
+		CEFD194D1C04045800A79158 /* SkillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillInfo.h; sourceTree = "<group>"; };
+		CEFD194E1C04045800A79158 /* SkillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillInfo.m; sourceTree = "<group>"; };
+		CEFD19511C04047C00A79158 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -974,6 +982,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFD19521C04047C00A79158 /* CoreLocation.framework in Frameworks */,
 				674D0DBF1B7D916200B5B80D /* QuartzCore.framework in Frameworks */,
 				6769CE031B9E89F6003A31DA /* linkedin-sdk.framework in Frameworks */,
 				676BA94B1B9D3F9C001EFEC0 /* FBSDKCoreKit.framework in Frameworks */,
@@ -1821,6 +1830,7 @@
 		CAEAF8256B3A12FB7828D10B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEFD19511C04047C00A79158 /* CoreLocation.framework */,
 				6769CE021B9E89F6003A31DA /* linkedin-sdk.framework */,
 				676BA9491B9D3F9C001EFEC0 /* FBSDKCoreKit.framework */,
 				676BA94A1B9D3F9C001EFEC0 /* FBSDKLoginKit.framework */,
@@ -1854,6 +1864,7 @@
 		CEE93A231BF47C0500B292BA /* CrossPollinate */ = {
 			isa = PBXGroup;
 			children = (
+				CEFD194A1C04044200A79158 /* SearchResult */,
 				CEF7BAA81BFB26D5009624CC /* RequestPost */,
 				CEF7BAA41BFB0F66009624CC /* AttachmentViewController */,
 				CEF7BA9D1BFADD6E009624CC /* RNActivityView */,
@@ -1974,6 +1985,17 @@
 				CEF7BAAA1BFB2704009624CC /* RequestPostTableViewController.m */,
 			);
 			name = RequestPost;
+			sourceTree = "<group>";
+		};
+		CEFD194A1C04044200A79158 /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
+				CEFD194B1C04045800A79158 /* DistanceSkill.h */,
+				CEFD194C1C04045800A79158 /* DistanceSkill.m */,
+				CEFD194D1C04045800A79158 /* SkillInfo.h */,
+				CEFD194E1C04045800A79158 /* SkillInfo.m */,
+			);
+			name = SearchResult;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2485,6 +2507,7 @@
 				674D10331B7DB4CD00B5B80D /* ZSSBarButtonItem.m in Sources */,
 				676F77E71B96F3060084988A /* TOCropToolbar.m in Sources */,
 				5179314F1BB01A290019BB49 /* BuyerPageViewController.m in Sources */,
+				CEFD19501C04045800A79158 /* SkillInfo.m in Sources */,
 				674D10461B7DB4FB00B5B80D /* GKImageCropView.m in Sources */,
 				676ED4581B85CEAB00696985 /* UserVerificationViewController.m in Sources */,
 				674D0F4C1B7D9A5200B5B80D /* JSQMessagesCollectionView.m in Sources */,
@@ -2508,6 +2531,7 @@
 				CEF7BA991BFAC66E009624CC /* MyRequestViewController.m in Sources */,
 				674D0F3C1B7D9A5200B5B80D /* JSQMessagesAvatarImageFactory.m in Sources */,
 				517D552F1BDA0301000EA8FD /* ReportAbuseViewController.m in Sources */,
+				CEFD194F1C04045800A79158 /* DistanceSkill.m in Sources */,
 				674D0F6A1B7D9B3100B5B80D /* Skill.m in Sources */,
 				674D0F331B7D9A5200B5B80D /* NSBundle+JSQMessages.m in Sources */,
 			);

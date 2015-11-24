@@ -18,6 +18,9 @@
 #import "ViewControllerUtil.h"
 #import "UserProfileViewController.h"
 #import "RequestPostTableViewController.h"
+#import "SkillInfo.h"
+#import "DistanceSkill.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface CrossPollinateViewController ()
 
@@ -31,6 +34,7 @@
     NSMutableArray *_sections;
     UrgentSectionTitle *_urgentSectionTitleView;
     MyRequestSectionTitle *_myRequestSectionTitleView;
+    CLLocation *_myLocation;
 }
 
 @synthesize tableView = _tableView;
@@ -126,6 +130,171 @@
     
     return request;
 }
+
+- (void)beginSearchNearbyWithKeyword:(NSString *)keyword{
+    
+    if(keyword != nil && keyword.length > 0){
+        
+        [self.view showActivityViewWithLabel:@"Searching..."];
+        
+        if(_myLocation == nil){
+            
+            [WebDataInterface getMyLocation:[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *error){
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    if(error == nil){
+                        
+                        NSDictionary *dic = (NSDictionary *)obj;
+                        NSDictionary *result = [dic objectForKey:@"result"];
+                        
+                        _myLocation = [[CLLocation alloc] initWithLatitude:[[result objectForKey:@"xCoord"] doubleValue] longitude:[[result objectForKey:@"yCoord"] doubleValue]];
+                        
+                        [self doSearchNearbyWithKeyword:keyword];
+                    }
+                    else{
+                        
+                        [self.view hideActivityView];
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to get geo location" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+                        [alert show];
+                    }
+                });
+                
+            }];
+        }
+        else{
+            
+            [self doSearchNearbyWithKeyword:keyword];
+        }
+        
+    }
+}
+
+- (void)doSearchNearbyWithKeyword:(NSString *)keyword{
+    
+    [WebDataInterface searchNearByCp:[LocalDataInterface retrieveStkid] skillname:keyword completion:^(NSObject *obj, NSError *error){
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if(error == nil){
+                
+                NSDictionary *dic = (NSDictionary *)obj;
+                NSDictionary *result = [dic objectForKey:@"result"];
+                
+                DistanceSkill *dSkill500 = [DistanceSkill createDistanceSkillWithDistance:500.0f];
+                DistanceSkill *dSkill1000 = [DistanceSkill createDistanceSkillWithDistance:1000.0f];
+                DistanceSkill *dSkill2000 = [DistanceSkill createDistanceSkillWithDistance:2000.0f];
+                DistanceSkill *dSkill3000 = [DistanceSkill createDistanceSkillWithDistance:3000.0f];
+                DistanceSkill *dSkill4000 = [DistanceSkill createDistanceSkillWithDistance:4000.0f];
+                DistanceSkill *dSkill5000 = [DistanceSkill createDistanceSkillWithDistance:5000.0f];
+                NSMutableArray *distSkills = [[NSMutableArray alloc] initWithObjects:
+                                              dSkill500,
+                                              dSkill1000,
+                                              dSkill2000,
+                                              dSkill3000,
+                                              dSkill4000,
+                                              dSkill5000,
+                                              nil];
+                
+                int resultCount = 0;
+                
+                for (NSDictionary *data in result) {
+                    
+                    SkillInfo *info = [SkillInfo createSkillInfoFromDictionary:data];
+                    
+                    float dist = [self calculateGEODistFromLocation:_myLocation toLocation:info.geoLocation];
+                    [info setDistanceFromFinder:dist];
+                    
+                    if(dist <= 500){
+                        
+                        [dSkill500 addSkill:info];
+                        resultCount++;
+                    }
+                    else if(dist <=1000){
+                        
+                        [dSkill1000 addSkill:info];
+                        resultCount++;
+                    }
+                    else if(dist <= 2000){
+                        
+                        [dSkill2000 addSkill:info];
+                        resultCount++;
+                    }
+                    else if(dist <= 3000){
+                        
+                        [dSkill3000 addSkill:info];
+                        resultCount++;
+                    }
+                    else if(dist <=4000){
+                        
+                        [dSkill4000 addSkill:info];
+                        resultCount++;
+                    }
+                    else if(dist <= 5000){
+                        
+                        [dSkill5000 addSkill:info];
+                        resultCount++;
+                    }
+                }
+                
+                if(resultCount > 0){
+                    
+                    NSMutableArray *removedObj = [[NSMutableArray alloc] init];
+                    
+                    for(DistanceSkill *dSkill in distSkills){
+                        
+                        if(dSkill.allSkills.count <= 0){
+                            
+                            [removedObj addObject:dSkill];
+                        }
+                    }
+                    
+                    for(DistanceSkill *empty in removedObj){
+                        
+                        [distSkills removeObject:empty];
+                    }
+                    
+                    for(DistanceSkill *dSkill in distSkills){
+                        
+                        NSLog(@"distance %@", dSkill.distanceToString);
+                        
+                        for(SkillInfo *info in dSkill.allSkills){
+                            
+                            NSLog(@"name:%@ dist:%@", info.firstname, info.stringFromDistance);
+                        }
+                    }
+                    
+                    [self.view hideActivityView];
+                }
+                else{
+                    
+                    [self.view hideActivityView];
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No result" message:@"No search result were found" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+                    [alert show];
+                    
+                }
+                
+            }
+            else{
+                
+                [self.view hideActivityView];
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to search" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+                [alert show];
+            }
+        });
+        
+        
+    }];
+}
+
+- (float)calculateGEODistFromLocation:(CLLocation *)fromLocation toLocation:(CLLocation *)toLocation{
+    
+    return (float)[fromLocation distanceFromLocation:toLocation];
+}
+
 
 #pragma mark - UITableViewSouceData delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -362,6 +531,12 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     
     [searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    
+    [searchBar resignFirstResponder];
+    [self beginSearchNearbyWithKeyword:searchBar.text];
 }
 
 /*
