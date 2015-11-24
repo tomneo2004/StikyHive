@@ -63,6 +63,27 @@
 }
 
 
+//- (id) initWithSeller:(NSString *)name
+//           categoryId:(NSInteger)categoryId
+//                price:(float)price
+//               rateId:(NSInteger)rateId
+//              summary:(NSString *)summary
+//          description:(NSString *)desc
+//{
+//    self = [super init];
+//    if (self) {
+//        _name = name;
+//        _categoryId = categoryId;
+//        _price = price;
+//        _rateId = rateId;
+//        _summary = summary;
+//        _desc = desc;
+//    }
+//    
+//    return self;
+//}
+
+
 - (id)initWithCoder:(NSCoder *)decoder
 {
     if (self = [super init])
