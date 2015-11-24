@@ -338,6 +338,10 @@
                         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"user_info_editor_view_controller2"];
                         [self.navigationController pushViewController:vc animated:YES];
                     }
+                    else if (statusInt == 20)
+                    {
+                        [self.navigationController popToRootViewControllerAnimated:YES];
+                    }
 //                    else
 //                    {
 //                    

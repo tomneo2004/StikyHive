@@ -801,6 +801,61 @@
             </objects>
             <point key="canvasLocation" x="-1512" y="2571.75"/>
         </scene>
+        <!--Selling View Controller3-->
+        <scene sceneID="PSg-US-SS3">
+            <objects>
+                <viewController storyboardIdentifier="selling_view_controller_3" id="izC-T4-kTC" customClass="SellingViewController3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x6g-Ml-JlG"/>
+                        <viewControllerLayoutGuide type="bottom" id="E1q-Bq-moZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZyX-fB-h1c">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="1500"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHq-G0-Pyn">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E1q-Bq-moZ" firstAttribute="top" secondItem="ZHq-G0-Pyn" secondAttribute="bottom" id="64y-X4-2Ia"/>
+                            <constraint firstAttribute="trailing" secondItem="ZHq-G0-Pyn" secondAttribute="trailing" id="8hX-T3-WWl"/>
+                            <constraint firstItem="ZHq-G0-Pyn" firstAttribute="top" secondItem="ZyX-fB-h1c" secondAttribute="top" id="9I6-PE-O2d"/>
+                            <constraint firstItem="ZHq-G0-Pyn" firstAttribute="leading" secondItem="ZyX-fB-h1c" secondAttribute="leading" id="fHK-zM-Vgw"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ZHq-G0-Pyn"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="64y-X4-2Ia"/>
+                                <exclude reference="8hX-T3-WWl"/>
+                                <exclude reference="9I6-PE-O2d"/>
+                                <exclude reference="fHK-zM-Vgw"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="ZHq-G0-Pyn"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="64y-X4-2Ia"/>
+                                <include reference="8hX-T3-WWl"/>
+                                <include reference="9I6-PE-O2d"/>
+                                <include reference="fHK-zM-Vgw"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <connections>
+                        <outlet property="contentScrollView" destination="ZHq-G0-Pyn" id="Jv1-8E-duN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hoX-ja-aJr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3979.5" y="2286"/>
+        </scene>
         <!--Post Comm View Controller-->
         <scene sceneID="lGQ-iA-lrb">
             <objects>
@@ -818,7 +873,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YEa-cM-hDW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3744" y="3228.75"/>
+            <point key="canvasLocation" x="-3784.5" y="3309.75"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="dmK-b2-DIH">

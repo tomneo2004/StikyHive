@@ -202,7 +202,14 @@
     
     [WebDataInterface loginWithEmail:emailText password:passwordText completion:^(NSObject *obj, NSError *err)
      {
-         dispatch_async(dispatch_get_main_queue(), ^{[self dataReceivedLogin:(NSDictionary *)obj];});
+         dispatch_async(dispatch_get_main_queue(), ^{
+             
+             
+             [self dataReceivedLogin:(NSDictionary *)obj];
+             
+             
+         });
+         
      }];
     
     _bottomLoginButton.userInteractionEnabled = NO;
@@ -213,9 +220,17 @@
     
     _bottomLoginButton.userInteractionEnabled = YES;
     
+    NSLog(@"dict --- %@",dict);
+    NSLog(@"email --- %@",_emailTextField.text);
+    NSLog(@"pass --- %@",_passwordTextField.text);
+    
+    
+    
     if (dict && dict[@"status"])
     {
         NSString *statusString = dict[@"status"];
+        
+        NSLog(@"login statuys --- %@", statusString);
         
 //        /// TRY
 //        [LocalDataInterface storeUsername:_emailTextField.text];
@@ -279,6 +294,10 @@
     {
         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"user_info_editor_view_controller2"];
         [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (_loginStatus == 20)
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 
     else
