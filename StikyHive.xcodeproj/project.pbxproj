@@ -369,6 +369,8 @@
 		676F77EB1B96F3270084988A /* CropPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676F77EA1B96F3270084988A /* CropPhotoViewController.m */; };
 		676F77EE1B96F5600084988A /* UserInfoEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676F77ED1B96F5600084988A /* UserInfoEditorViewController.m */; };
 		88A4C895FFB7048DDF6EC234 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 988CAEF31E1FF7DE4F6B17F9 /* libPods.a */; };
+		CE0461C21C058E3A00254EBB /* PrepareRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */; };
+		CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
 		CEE93A151BF4490100B292BA /* buzzr_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A061BF4490000B292BA /* buzzr_chat.png */; };
 		CEE93A161BF4490100B292BA /* buzzr_home_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A071BF4490000B292BA /* buzzr_home_btn.png */; };
@@ -926,6 +928,10 @@
 		676F77EC1B96F5600084988A /* UserInfoEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoEditorViewController.h; sourceTree = "<group>"; };
 		676F77ED1B96F5600084988A /* UserInfoEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoEditorViewController.m; sourceTree = "<group>"; };
 		988CAEF31E1FF7DE4F6B17F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE0461C01C058E3A00254EBB /* PrepareRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRequestViewController.h; sourceTree = "<group>"; };
+		CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestViewController.m; sourceTree = "<group>"; };
+		CE0461C31C05ADFD00254EBB /* PrepareRequestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRequestTableViewController.h; sourceTree = "<group>"; };
+		CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestTableViewController.m; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
 		CEE93A061BF4490000B292BA /* buzzr_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_chat.png; sourceTree = "<group>"; };
 		CEE93A071BF4490000B292BA /* buzzr_home_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_home_btn.png; sourceTree = "<group>"; };
@@ -1858,6 +1864,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE0461BF1C058D7500254EBB /* PostRequest */ = {
+			isa = PBXGroup;
+			children = (
+				CE0461C01C058E3A00254EBB /* PrepareRequestViewController.h */,
+				CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */,
+				CE0461C31C05ADFD00254EBB /* PrepareRequestTableViewController.h */,
+				CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */,
+			);
+			name = PostRequest;
+			sourceTree = "<group>";
+		};
 		CEE93A041BF448CA00B292BA /* NewVersion */ = {
 			isa = PBXGroup;
 			children = (
@@ -1883,6 +1900,7 @@
 		CEE93A231BF47C0500B292BA /* CrossPollinate */ = {
 			isa = PBXGroup;
 			children = (
+				CE0461BF1C058D7500254EBB /* PostRequest */,
 				CEFD194A1C04044200A79158 /* SearchResult */,
 				CEF7BAA81BFB26D5009624CC /* RequestPost */,
 				CEF7BAA41BFB0F66009624CC /* AttachmentViewController */,
@@ -2483,6 +2501,7 @@
 				674D10361B7DB4CD00B5B80D /* ZSSTextView.m in Sources */,
 				674D0DA11B7D913400B5B80D /* SecondViewController.m in Sources */,
 				5179314C1BAFDC9D0019BB49 /* Buyer.m in Sources */,
+				CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */,
 				67361F2D1B82D0CB00C1374D /* UserAgreementViewController.m in Sources */,
 				674D0F381B7D9A5200B5B80D /* UIView+JSQMessages.m in Sources */,
 				676F77E21B96F3060084988A /* TOCropViewControllerTransitioning.m in Sources */,
@@ -2555,6 +2574,7 @@
 				517325621C02B3B7004655D6 /* SellingViewController2.m in Sources */,
 				676F77EE1B96F5600084988A /* UserInfoEditorViewController.m in Sources */,
 				674D0EC81B7D999200B5B80D /* LocalDataInterface.m in Sources */,
+				CE0461C21C058E3A00254EBB /* PrepareRequestViewController.m in Sources */,
 				676F77E11B96F3060084988A /* TOCroppedImageAttributes.m in Sources */,
 				CEF464041BF9B50300010D21 /* MyRequestCell.m in Sources */,
 				CEF7BAA21BFADD6E009624CC /* RNActivityView.m in Sources */,

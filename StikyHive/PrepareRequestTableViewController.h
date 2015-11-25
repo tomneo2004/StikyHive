@@ -10,4 +10,6 @@
 
 @interface PrepareRequestTableViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *titleField;
+
 @end
