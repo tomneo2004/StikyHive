@@ -11,6 +11,10 @@
 
 @interface SellingViewController3 ()
 
+
+@property (nonatomic, strong) NSMutableArray *skillImageViews;
+@property (nonatomic, strong) NSMutableArray *selectionIndicators;
+
 @end
 
 @implementation SellingViewController3
@@ -41,6 +45,12 @@ static NSData *Video_Data;
     _contentScrollView.alwaysBounceVertical = YES;
     _contentScrollView.delegate = self;
     
+    _selectionIndicators = @[[NSNumber numberWithBool:NO],
+                             [NSNumber numberWithBool:NO],
+                             [NSNumber numberWithBool:NO],
+                             [NSNumber numberWithBool:NO]].mutableCopy;
+    
+    
     
     CGFloat y = 33;
     CGFloat x = 20;
@@ -52,10 +62,26 @@ static NSData *Video_Data;
     
     y = y + titleLabel.frame.size.height  + 20;
     
+    _skillImageViews = [[NSMutableArray alloc] init];
+    
     
     for (int i = 0; i < 4; i++) {
         
         y = [self createImageView:CGPointMake(20, y) andTarget:i];
+        
+    }
+    
+    NSLog(@"skill image view s --- %@",_skillImageViews);
+    
+    for (int i = 0; i < _skillImageViews.count; i++)
+    {
+        UIGestureRecognizer *rec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedImage:)];
+        [_skillImageViews[i] addGestureRecognizer:rec];
+        [_skillImageViews[i] setUserInteractionEnabled:YES];
+        [_skillImageViews[i] setTag:i];
+        
+        
+        
         
     }
     
@@ -118,6 +144,10 @@ static NSData *Video_Data;
     imageView.image = [UIImage imageNamed:@"sell_upload_photo"];
     [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(photoImageViewTapped:)]];
     
+//    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    [_skillImageViews addObject:imageView];
+    
     
     CGPoint imageViewCenter = imageView.center;
     imageViewCenter.x = self.view.center.x;
@@ -139,6 +169,13 @@ static NSData *Video_Data;
     
     
     return y;
+}
+
+
+- (void)tappedImage:(UITapGestureRecognizer *)sender
+{
+    [self showCropViewControllerWithOptions:_skillImageViews[sender.view.tag] andType:2];
+    _selectionIndicators[sender.view.tag] = [NSNumber numberWithBool:YES];
 }
 
 
