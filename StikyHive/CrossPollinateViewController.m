@@ -32,9 +32,16 @@
 
 @implementation CrossPollinateViewController{
     
+    //contain Section, look Section class
     NSMutableArray *_sections;
+    
+    //the title View for urgent section in table view
     UrgentSectionTitle *_urgentSectionTitleView;
+    
+    //the title View for my request section in table view
     MyRequestSectionTitle *_myRequestSectionTitleView;
+    
+    //user's geo location
     CLLocation *_myLocation;
 }
 
@@ -57,18 +64,21 @@
     
     [super viewWillAppear:animated];
     
+    //pull data from server
     [self pullData];
 }
 
 #pragma mark - Internal
 - (void)pullData{
     
+    //remove old data
     _sections = nil;
     _sections = [[NSMutableArray alloc] init];
     
+    //show activity
     [self.view showActivityViewWithLabel:@"Refreshing..." detailLabel:@"Fetching data"];
     
-    //urgent request for 3 rows of data
+    //urgent request of 3 rows of data
     [WebDataInterface getUrgentRequest:3 stkid:@"" completion:^(NSObject *obj, NSError *error){
         
         //we need to run it on main thread
@@ -85,13 +95,15 @@
                     [urgentRequests addObject:[UrgentRequest createUrgentRequestFromDictionary:data]];
                 }
                 
+                //use section to hold all urgent requests
                 Section *urgentSection = [[Section alloc] initWithDataArray:urgentRequests];
                 
                 [_sections addObject:urgentSection];
                 
-                
+                //my request of 3 row of data
                 [WebDataInterface getUrgentRequest:3 stkid:[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *error){
                     
+                    //we need to run it on main thread
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
                         
@@ -106,15 +118,18 @@
                                 [myRequests addObject:[MyRequest createMyRequestFromDictionary:data]];
                             }
                             
+                            //use section to hold all my requests
                             Section *myRequestSection = [[Section alloc] initWithDataArray:myRequests];
                             
                             [_sections addObject:myRequestSection];
                             
+                            //reload table view
                             [_tableView reloadData];
                             
                             
                         }
                         
+                        //hide activity
                         [self.view hideActivityView];
                     });
                 }];
@@ -124,6 +139,9 @@
     }];
 }
 
+/**
+ * Get request by IndexPath
+ */
 -(Request *)requestByIndexPath:(NSIndexPath *)indexPath{
     
     Section *s = [_sections objectAtIndex:indexPath.section];
@@ -138,10 +156,13 @@
         
         [self.view showActivityViewWithLabel:@"Searching..."];
         
+        //if user's geo location is nil we need to get user's location first
         if(_myLocation == nil){
             
+            //get user's geo location
             [WebDataInterface getMyLocation:[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *error){
                 
+                //we need to run it on main thread
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     if(error == nil){
@@ -149,8 +170,10 @@
                         NSDictionary *dic = (NSDictionary *)obj;
                         NSDictionary *result = [dic objectForKey:@"result"];
                         
+                        //use CLLocation to hold info about user geo location
                         _myLocation = [[CLLocation alloc] initWithLatitude:[[result objectForKey:@"xCoord"] doubleValue] longitude:[[result objectForKey:@"yCoord"] doubleValue]];
                         
+                        //start search nearby skill
                         [self doSearchNearbyWithKeyword:keyword];
                     }
                     else{
@@ -174,8 +197,10 @@
 
 - (void)doSearchNearbyWithKeyword:(NSString *)keyword{
     
+    //search nearby skill
     [WebDataInterface searchNearByCp:[LocalDataInterface retrieveStkid] skillname:keyword completion:^(NSObject *obj, NSError *error){
         
+        //we need to run it on main thread
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if(error == nil){
@@ -183,6 +208,7 @@
                 NSDictionary *dic = (NSDictionary *)obj;
                 NSDictionary *result = [dic objectForKey:@"result"];
                 
+                //create DistanceSkill that are categorized by 500, 1000, 2000, 3000, 4000 and 5000 meters
                 DistanceSkill *dSkill500 = [DistanceSkill createDistanceSkillWithDistance:500.0f];
                 DistanceSkill *dSkill1000 = [DistanceSkill createDistanceSkillWithDistance:1000.0f];
                 DistanceSkill *dSkill2000 = [DistanceSkill createDistanceSkillWithDistance:2000.0f];
@@ -200,6 +226,7 @@
                 
                 int resultCount = 0;
                 
+                //for each nearby skills we found, put them into right DistanceSkill
                 for (NSDictionary *data in result) {
                     
                     SkillInfo *info = [SkillInfo createSkillInfoFromDictionary:data];
@@ -243,6 +270,7 @@
                     
                     NSMutableArray *removedObj = [[NSMutableArray alloc] init];
                     
+                    //check if DistanceSkill has no skill and put into removed array
                     for(DistanceSkill *dSkill in distSkills){
                         
                         if(dSkill.allSkills.count <= 0){
@@ -251,11 +279,13 @@
                         }
                     }
                     
+                    //remove empty DistanceSkill
                     for(DistanceSkill *empty in removedObj){
                         
                         [distSkills removeObject:empty];
                     }
                     
+                    //present SearchResult controller
                     SearchResultTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchResultTableViewController"];
                     controller.searchResult = distSkills;
                     [self.navigationController pushViewController:controller animated:YES];
@@ -285,6 +315,9 @@
     }];
 }
 
+/**
+ * Calculate distance of two geo location
+ */
 - (float)calculateGEODistFromLocation:(CLLocation *)fromLocation toLocation:(CLLocation *)toLocation{
     
     return (float)[fromLocation distanceFromLocation:toLocation];
@@ -318,8 +351,10 @@
     
     Section *s = [_sections objectAtIndex:indexPath.section];
     
+    //use Request type to determine which cell need to present
     Request *request = [s.dataArray objectAtIndex:indexPath.row];
     
+    //if cell is UrgentRequest
     if([request isKindOfClass:[UrgentRequest class]]){
         
         static NSString *cellId = @"UrgentRequestCell";
@@ -341,6 +376,7 @@
         return cell;
     }
     
+    //if cell is MyRequest
     if([request isKindOfClass:[MyRequest class]]){
         
         static NSString *cellId = @"MyRequestCell";
@@ -373,6 +409,7 @@
     Section *s = [_sections objectAtIndex:indexPath.section];
     Request *request = [s.dataArray objectAtIndex:indexPath.row];
     
+    //Present request post controller
     RequestPostTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"RequestPostTableViewController"];
     
     controller.request = request;
@@ -384,6 +421,7 @@
     
     Section *s = [_sections objectAtIndex:section];
     
+    //if section is UrgentRequest
     if([s isSectionAClass:[UrgentRequest class]]){
         
         if(_urgentSectionTitleView == nil){
@@ -396,6 +434,7 @@
         return _urgentSectionTitleView;
     }
     
+    //if section is MyRequest
     if([s isSectionAClass:[MyRequest class]]){
         
         if(_myRequestSectionTitleView == nil){
@@ -415,6 +454,7 @@
     
     Section *s = [_sections objectAtIndex:section];
     
+    //if section is UrgentRequest
     if([s isSectionAClass:[UrgentRequest class]]){
         
         if(_urgentSectionTitleView == nil){
@@ -427,6 +467,7 @@
         return _urgentSectionTitleView.bounds.size.height;
     }
     
+    //if section is MyRequest
     if([s isSectionAClass:[MyRequest class]]){
         
         if(_myRequestSectionTitleView == nil){
@@ -449,6 +490,7 @@
     
     UrgentRequest *urgentRequest = (UrgentRequest *)[self requestByIndexPath:indexPath];
     
+    //present attachment controller with photo url
     AttachmentViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AttachmentViewController"];
     
     controller.attachmentPhotoURL = urgentRequest.photoLocation;
@@ -472,6 +514,7 @@
     
     UrgentRequest *urgentRequest = (UrgentRequest *)[self requestByIndexPath:indexPath];
     
+    //present user profile controller
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"user_profile_view_controller"];
     UserProfileViewController *svc = (UserProfileViewController *)vc;
     [svc setStkID:urgentRequest.stkId];
@@ -486,6 +529,7 @@
     
     MyRequest *myRequest = (MyRequest *)[self requestByIndexPath:indexPath];
     
+    //present user profile controller
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"user_profile_view_controller"];
     UserProfileViewController *svc = (UserProfileViewController *)vc;
     [svc setStkID:myRequest.stkId];

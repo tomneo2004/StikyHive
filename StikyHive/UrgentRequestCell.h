@@ -14,10 +14,24 @@
 @protocol UrgentRequestCellDelegate <NSObject>
 
 @optional
-
+/**
+ * Call when person's proflile picture tapped
+ */
 - (void)urgentRequestCellDidTapPersonAvatar:(UrgentRequestCell *)requestCell;
+
+/**
+ * Call when attachment button tapped
+ */
 - (void)urgentRequestCellDidTapImageAttachment:(UrgentRequestCell *)requestCell;
+
+/**
+ * Call when phone call button tapped
+ */
 - (void)urgentRequestCellDidTapVoiceCommunication:(UrgentRequestCell *)requestCell;
+
+/**
+ * Call when chat button tapped
+ */
 - (void)urgentRequestCellDidTapChat:(UrgentRequestCell *)requestCell;
 
 @end

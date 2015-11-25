@@ -92,8 +92,21 @@
         _name = [dic objectForKey:@"name"];
         _skillDesc = [dic objectForKey:@"skillDesc"];
         _type = [[dic objectForKey:@"type"] integerValue];
-        _firstname = [dic objectForKey:@"firstname"];
-        _lastname = [dic objectForKey:@"lastname"];
+        
+        id firstname = [dic objectForKey:@"firstname"];
+        _firstname = @"";
+        if(firstname != nil && ![firstname isEqual:[NSNull null]]){
+            
+            _firstname = firstname;
+        }
+        
+        id lastname = [dic objectForKey:@"lastname"];
+        _lastname = @"";
+        if(lastname != nil && ![lastname isEqual:[NSNull null]]){
+            
+            _lastname = lastname;
+        }
+
         _profilePicture = [dic objectForKey:@"profilePicture"];
         _beeinfo = [dic objectForKey:@"beeInfo"];
         _latitude = [[dic objectForKey:@"lat"] doubleValue];

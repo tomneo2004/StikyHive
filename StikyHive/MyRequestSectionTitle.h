@@ -11,10 +11,16 @@
 @protocol MyRequestSectionTitleDelegate <NSObject>
 
 @optional
+/**
+ * Call when SeeAll button tapped
+ */
 - (void)myRequestSectionSeeAll;
 
 @end
 
+/**
+ * Represent MyRequestSection title in table view
+ */
 @interface MyRequestSectionTitle : UIView
 
 @property (weak, nonatomic) id delegate;

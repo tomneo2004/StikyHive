@@ -14,7 +14,14 @@
 @protocol MyRequestCellDelegate <NSObject>
 
 @optional
+/**
+ * Call when person's profile picture tapped
+ */
 - (void)myRequestCellDidTapPersonAvatar:(MyRequestCell *)requestCell;
+
+/**
+ * Call when attachement button tapped
+ */
 - (void)myRequestCellDidTapImageAttachment:(MyRequestCell *)requestCell;
 
 @end

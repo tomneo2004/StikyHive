@@ -30,11 +30,16 @@
 #pragma mark - public interface
 - (void)displayProfilePictureWithURL:(NSString *)url{
     
+    //get full url
     NSString *fullURL = [WebDataInterface getFullUrlPath:url];
+    
+    //url request
     NSURL *requestURL = [NSURL URLWithString:fullURL];
     
+    //start download image
     [_avatarImageView setImageWithURLRequest:[NSURLRequest requestWithURL:requestURL] placeholderImage:[UIImage imageNamed:@"Default_profile_small@2x"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
         
+        //set image
         _avatarImageView.image = image;
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
@@ -48,6 +53,8 @@
 - (void)prepareForReuse{
     
     _delegate = nil;
+    
+    //tell download image to cancel
     [_avatarImageView cancelImageRequestOperation];
 }
 

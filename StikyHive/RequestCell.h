@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
 @property (weak, nonatomic) id delegate;
 
+/**
+ * Display person's profile picture
+ */
 - (void)displayProfilePictureWithURL:(NSString *)url;
 
 @end
