@@ -11,3 +11,6 @@ pod 'SendGrid', '~>  0.2.6'
 
 platform :ios, '7.0'
 pod "AFNetworking", "~> 2.0"
+
+pod 'PayPal-iOS-SDK'
+
