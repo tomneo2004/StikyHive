@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) UIImageView *imageViewProfile;
 @property (nonatomic, strong) UIImage *image;
-@property (nonatomic, assign) NSInteger type;
 
 @end
 
@@ -65,10 +64,10 @@
     }
 }
 
-- (void)showCropViewControllerWithOptions:(UIImageView *)imageView andType:(NSInteger)type;
+- (void)showCropViewControllerWithOptions:(UIImageView *)imageView;
 {
     _imageViewProfile = imageView;
-    _type = type;
+    
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
     {
@@ -144,7 +143,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         self.image = image;
-        TOCropViewController *cropController = [[TOCropViewController alloc] initWithImage:image andType:_type];
+        TOCropViewController *cropController = [[TOCropViewController alloc] initWithImage:image];
         cropController.delegate = self;
         [self presentViewController:cropController animated:YES completion:nil];
     }];

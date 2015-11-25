@@ -1069,8 +1069,7 @@
                                                             <exclude reference="iIM-1L-yRf"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="7" y="87" width="98" height="17.5"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="iIM-1L-yRf"/>
                                                         </mask>

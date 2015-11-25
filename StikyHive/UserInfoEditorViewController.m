@@ -121,7 +121,7 @@ UIPickerView *countryPickerView;
     
     //    [self showImagePickerForImageView:_profileImageView];
     
-    [self showCropViewControllerWithOptions:_profileImageView andType:1];
+    [self showCropViewControllerWithOptions:_profileImageView];
 }
 
 

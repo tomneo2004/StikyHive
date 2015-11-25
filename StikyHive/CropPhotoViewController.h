@@ -14,6 +14,6 @@
 
 @interface CropPhotoViewController : TextEditorViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, TOCropViewControllerDelegate>
 
-- (void)showCropViewControllerWithOptions:(UIImageView *)imageView andType:(NSInteger)type;
+- (void)showCropViewControllerWithOptions:(UIImageView *)imageView;
 
 @end

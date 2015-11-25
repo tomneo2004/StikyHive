@@ -104,7 +104,7 @@
  
  @param image The image that will be used to crop.
  */
-- (instancetype)initWithImage:(UIImage *)image andType:(NSInteger)type;
+- (instancetype)initWithImage:(UIImage *)image;
 
 /**
  Play a custom animation of the target image zooming to its position in the crop controller while the background fades in.

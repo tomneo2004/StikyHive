@@ -49,8 +49,6 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
 @property (nonatomic, strong) UIPopoverController *activityPopoverController;
 @property (nonatomic, assign) BOOL inTransition;
 
-@property (nonatomic, assign) NSInteger type;
-
 /* Button callback */
 - (void)cancelButtonTapped;
 - (void)doneButtonTapped;
@@ -65,7 +63,7 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
 
 @implementation TOCropViewController
 
-- (instancetype)initWithImage:(UIImage *)image andType:(NSInteger)type
+- (instancetype)initWithImage:(UIImage *)image
 {
     self = [super init];
     if (self) {
@@ -74,7 +72,6 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
         
         _transitionController = [[TOCropViewControllerTransitioning alloc] init];
         _image = image;
-        _type = type;
     }
     
     return self;
@@ -108,14 +105,7 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
     self.view.backgroundColor = self.cropView.backgroundColor;
     
     //----- Echo -------
-    if (_type == 1) {
-        [self showAspectRatioDialog];
-    }
-    else
-    {
-        [self showAspectRatioDialogRectangle];
-    }
-    
+    [self showAspectRatioDialog];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -260,28 +250,6 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
 }
 
 #pragma mark - Aspect Ratio Handling -
-
-- (void)showAspectRatioDialogRectangle
-{
-    // ------ Echo --------
-    CGSize aspectRatio = CGSizeZero;
-    aspectRatio = CGSizeMake(3.0f, 5.0f);
-    
-    if (self.cropView.cropBoxAspectRatioIsPortrait) {
-        CGFloat width = aspectRatio.width;
-        aspectRatio.width = aspectRatio.height;
-        aspectRatio.height = width;
-    }
-    
-    [self.cropView setAspectLockEnabledWithAspectRatio:aspectRatio animated:YES];
-    self.toolbar.clampButtonGlowing = YES;
-    
-    
-    
-}
-
-
-
 - (void)showAspectRatioDialog
 {
     // ------ Echo --------
