@@ -371,6 +371,8 @@
 		88A4C895FFB7048DDF6EC234 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 988CAEF31E1FF7DE4F6B17F9 /* libPods.a */; };
 		CE0461C21C058E3A00254EBB /* PrepareRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */; };
 		CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */; };
+		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
+		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
 		CEE93A151BF4490100B292BA /* buzzr_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A061BF4490000B292BA /* buzzr_chat.png */; };
 		CEE93A161BF4490100B292BA /* buzzr_home_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A071BF4490000B292BA /* buzzr_home_btn.png */; };
@@ -932,6 +934,8 @@
 		CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestViewController.m; sourceTree = "<group>"; };
 		CE0461C31C05ADFD00254EBB /* PrepareRequestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRequestTableViewController.h; sourceTree = "<group>"; };
 		CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestTableViewController.m; sourceTree = "<group>"; };
+		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
+		CED73E0C1C06F57C00ADB60C /* YelloBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YelloBTN.png; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
 		CEE93A061BF4490000B292BA /* buzzr_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_chat.png; sourceTree = "<group>"; };
 		CEE93A071BF4490000B292BA /* buzzr_home_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_home_btn.png; sourceTree = "<group>"; };
@@ -1878,6 +1882,8 @@
 		CEE93A041BF448CA00B292BA /* NewVersion */ = {
 			isa = PBXGroup;
 			children = (
+				CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */,
+				CED73E0C1C06F57C00ADB60C /* YelloBTN.png */,
 				CEE93A051BF4490000B292BA /* buzzr_call.png */,
 				CEE93A061BF4490000B292BA /* buzzr_chat.png */,
 				CEE93A071BF4490000B292BA /* buzzr_home_btn.png */,
@@ -2325,6 +2331,7 @@
 				CEE93A181BF4490100B292BA /* buzzr_navi.png in Resources */,
 				674D0E8F1B7D920E00B5B80D /* Grey@2x.png in Resources */,
 				674D104E1B7DC41100B5B80D /* logo.png in Resources */,
+				CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */,
 				CEFD195E1C04125900A79158 /* DistanceTitle.xib in Resources */,
 				674D0FFD1B7DB4CD00B5B80D /* ZSSinsertkeyword.png in Resources */,
 				674D0E891B7D920E00B5B80D /* Payment_button_yes_I_want_it@2x.png in Resources */,
@@ -2377,6 +2384,7 @@
 				674D0FF71B7DB4CD00B5B80D /* ZSShorizontalrule.png in Resources */,
 				674D0E561B7D920E00B5B80D /* button_createAccount@2x.png in Resources */,
 				CEE93A1D1BF4490100B292BA /* buzzr_requestform_bee.png in Resources */,
+				CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */,
 				674D105F1B7DCB6B00B5B80D /* OpenSans-ExtraBold.ttf in Resources */,
 				674D0DF81B7D91FC00B5B80D /* Tab_Profile@2x.png in Resources */,
 				674D106A1B7DCB8900B5B80D /* bgothl.ttf in Resources */,

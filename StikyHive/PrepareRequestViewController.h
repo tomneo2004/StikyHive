@@ -7,8 +7,9 @@
 //
 
 #import "CropPhotoViewController.h"
+#import "PrepareRequestTableViewController.h"
 
-@interface PrepareRequestViewController : CropPhotoViewController
+@interface PrepareRequestViewController : CropPhotoViewController<PrepareRequestDelegate>
 
 
 @end

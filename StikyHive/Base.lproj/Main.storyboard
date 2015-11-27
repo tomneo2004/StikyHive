@@ -2682,7 +2682,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buzzr_top.png" translatesAutoresizingMaskIntoConstraints="NO" id="ogU-6I-xKK">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="115.5"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buzzr_top_btn.png" translatesAutoresizingMaskIntoConstraints="NO" id="BtQ-JB-rCS">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buzzr_top_btn(withoutButton).png" translatesAutoresizingMaskIntoConstraints="NO" id="BtQ-JB-rCS">
                                         <rect key="frame" x="0.0" y="115.5" width="600" height="115.5"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0RD-SE-zoB">
@@ -2707,6 +2707,9 @@
                                             <constraint firstItem="XQX-kI-Spx" firstAttribute="centerX" secondItem="0RD-SE-zoB" secondAttribute="centerX" id="a69-vG-FMB"/>
                                         </constraints>
                                     </view>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YelloBTN.png" translatesAutoresizingMaskIntoConstraints="NO" id="JEg-qW-eup">
+                                        <rect key="frame" x="60" y="139" width="480" height="69.5"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -2714,12 +2717,16 @@
                                     <constraint firstItem="ogU-6I-xKK" firstAttribute="leading" secondItem="Imf-UM-ua0" secondAttribute="leading" id="6vA-Pn-p7b"/>
                                     <constraint firstItem="ogU-6I-xKK" firstAttribute="height" secondItem="Imf-UM-ua0" secondAttribute="height" multiplier="0.5" constant="1" id="9jC-vs-JbG"/>
                                     <constraint firstItem="ogU-6I-xKK" firstAttribute="top" secondItem="Imf-UM-ua0" secondAttribute="top" id="ABx-Jt-cDN"/>
+                                    <constraint firstItem="JEg-qW-eup" firstAttribute="height" secondItem="BtQ-JB-rCS" secondAttribute="height" multiplier="0.6" id="J3N-1L-q97"/>
+                                    <constraint firstItem="JEg-qW-eup" firstAttribute="centerX" secondItem="BtQ-JB-rCS" secondAttribute="centerX" id="JCm-AH-JOD"/>
                                     <constraint firstAttribute="trailing" secondItem="BtQ-JB-rCS" secondAttribute="trailing" id="Ovf-lA-UKr"/>
                                     <constraint firstItem="BtQ-JB-rCS" firstAttribute="height" secondItem="Imf-UM-ua0" secondAttribute="height" multiplier="0.5" constant="1" id="PI0-aM-dlg"/>
                                     <constraint firstItem="BtQ-JB-rCS" firstAttribute="top" secondItem="ogU-6I-xKK" secondAttribute="bottom" id="Qas-nG-bBs"/>
+                                    <constraint firstItem="JEg-qW-eup" firstAttribute="centerY" secondItem="BtQ-JB-rCS" secondAttribute="centerY" id="Rhf-N3-Hkt"/>
                                     <constraint firstItem="0RD-SE-zoB" firstAttribute="top" secondItem="Imf-UM-ua0" secondAttribute="top" id="XYB-Fg-WqY"/>
                                     <constraint firstItem="0RD-SE-zoB" firstAttribute="leading" secondItem="Imf-UM-ua0" secondAttribute="leading" id="cL6-4C-nc9"/>
                                     <constraint firstAttribute="trailing" secondItem="0RD-SE-zoB" secondAttribute="trailing" id="fFF-b1-bfW"/>
+                                    <constraint firstItem="JEg-qW-eup" firstAttribute="width" secondItem="BtQ-JB-rCS" secondAttribute="width" multiplier="0.8" id="gFx-I2-Jpl"/>
                                     <constraint firstAttribute="trailing" secondItem="ogU-6I-xKK" secondAttribute="trailing" id="kOb-zT-FMR"/>
                                     <constraint firstItem="0RD-SE-zoB" firstAttribute="height" secondItem="Imf-UM-ua0" secondAttribute="height" multiplier="0.5" constant="1" id="rqP-uW-xPc"/>
                                 </constraints>
@@ -2754,21 +2761,21 @@
                                                             <rect key="frame" x="283" y="8" width="308.5" height="85.5"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEs-na-Ax0">
-                                                                    <rect key="frame" x="62" y="22.5" width="40.5" height="40"/>
+                                                                    <rect key="frame" x="62" y="22" width="40.5" height="40"/>
                                                                     <state key="normal" image="buzzr_img.png"/>
                                                                     <connections>
                                                                         <action selector="didTapImageAttachment:" destination="oZy-ey-LES" eventType="touchUpInside" id="NPU-R9-sbZ"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuQ-0z-UBS">
-                                                                    <rect key="frame" x="164.5" y="22.5" width="40" height="40"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuQ-0z-UBS">
+                                                                    <rect key="frame" x="164" y="22" width="40" height="40"/>
                                                                     <state key="normal" image="buzzr_call.png"/>
                                                                     <connections>
                                                                         <action selector="didTapVoiceCommunication:" destination="oZy-ey-LES" eventType="touchUpInside" id="9Qh-hf-vCu"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4x-V8-3JY">
-                                                                    <rect key="frame" x="267.5" y="22.5" width="40" height="40"/>
+                                                                    <rect key="frame" x="267" y="22" width="40" height="40"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="40" id="Gdp-es-Igr"/>
                                                                         <constraint firstAttribute="height" constant="40" id="aCH-J8-Xj2"/>
@@ -2845,7 +2852,7 @@
                                                             <rect key="frame" x="403" y="8" width="188.5" height="85.5"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZf-RO-osq">
-                                                                    <rect key="frame" x="148.5" y="23" width="40" height="40"/>
+                                                                    <rect key="frame" x="148" y="23" width="40" height="40"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="40" id="GOK-4m-3Ke"/>
                                                                         <constraint firstAttribute="height" constant="40" id="b37-gw-Ayy"/>
@@ -2924,6 +2931,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="viewControllerTitle" value="Cross Pollinate"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="postARequestImageView" destination="JEg-qW-eup" id="YxF-C7-fRc"/>
                         <outlet property="tableView" destination="klW-hM-23a" id="orh-vg-Iyi"/>
                     </connections>
                 </viewController>
@@ -3539,7 +3547,7 @@
         <!--Prepare Request View Controller-->
         <scene sceneID="TH7-9g-Ud1">
             <objects>
-                <viewController id="h6d-0w-nz9" customClass="PrepareRequestViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrepareRequestViewController" id="h6d-0w-nz9" customClass="PrepareRequestViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8bM-KD-LAM"/>
                         <viewControllerLayoutGuide type="bottom" id="InK-Iv-6De"/>
@@ -3583,7 +3591,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="9s7-ys-tN0">
                         <rect key="frame" x="0.0" y="0.0" width="540" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="DU7-VX-sse">
                                 <cells>
@@ -3594,13 +3602,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post a request" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTC-Xj-DLk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post a request" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wTC-Xj-DLk">
                                                     <rect key="frame" x="135" y="15" width="270" height="41"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="30"/>
                                                     <color key="textColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="to StikyBees near you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2J-Zz-ALI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="to StikyBees near you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="n2J-Zz-ALI">
                                                     <rect key="frame" x="135" y="56" width="270" height="40.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -3661,7 +3669,7 @@ Post a request to nearby users for just $5.</string>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfG-eL-EKO">
                                                     <rect key="frame" x="8" y="8" width="524" height="27.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y5F-oN-RfB">
@@ -3708,7 +3716,7 @@ Post a request to nearby users for just $5.</string>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpc-ad-5Sv">
                                                     <rect key="frame" x="8" y="8" width="524" height="27.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="characters left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jY-hd-ENu">
@@ -3727,7 +3735,7 @@ Post a request to nearby users for just $5.</string>
                                                     <rect key="frame" x="8" y="35.5" width="524" height="227"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="0.87264864689999999" blue="0.74267013959999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -3800,7 +3808,20 @@ Post a request to nearby users for just $5.</string>
                     </tableView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="540" height="1000"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxTitleCharacter">
+                            <integer key="value" value="50"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="maxDescCharacter">
+                            <integer key="value" value="200"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="attachmentImageView" destination="RmJ-I1-eOL" id="PkO-9i-DSn"/>
+                        <outlet property="descChaLimitLabel" destination="0fv-ZH-83s" id="zwY-BX-nW7"/>
+                        <outlet property="descTextView" destination="5f0-lt-Wgm" id="VLU-vV-es7"/>
+                        <outlet property="postRequestImageView" destination="5Jc-2T-oVg" id="7Li-Ow-Qz2"/>
+                        <outlet property="titleChaLimitLabel" destination="D5X-wi-x5t" id="c8T-34-ZLr"/>
                         <outlet property="titleField" destination="Y5F-oN-RfB" id="whe-vm-0PY"/>
                     </connections>
                 </tableViewController>
@@ -7931,6 +7952,7 @@ Post a request to nearby users for just $5.</string>
         <image name="Tab_TnC.png" width="33" height="33"/>
         <image name="Tab_TransactionHistory.png" width="33" height="33"/>
         <image name="Tab_logout.png" width="33" height="33"/>
+        <image name="YelloBTN.png" width="1169" height="192"/>
         <image name="add_profile.png" width="300" height="300"/>
         <image name="button_Call.png" width="40" height="40"/>
         <image name="button_Chat.png" width="35" height="44"/>
@@ -7941,7 +7963,7 @@ Post a request to nearby users for just $5.</string>
         <image name="buzzr_postrequest_btn.png" width="1271" height="167"/>
         <image name="buzzr_requestform_photo.png" width="292" height="292"/>
         <image name="buzzr_top.png" width="1563" height="417"/>
-        <image name="buzzr_top_btn.png" width="1563" height="417"/>
+        <image name="buzzr_top_btn(withoutButton).png" width="1563" height="417"/>
         <image name="home_bg.png" width="480" height="800"/>
         <image name="logo.png" width="300" height="205"/>
         <image name="sell_upload_video.png" width="681" height="384"/>

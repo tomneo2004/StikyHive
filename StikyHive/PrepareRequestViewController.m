@@ -17,11 +17,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    PrepareRequestTableViewController *controller = [self.childViewControllers lastObject];
+    controller.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - PrepareRequestDelegate
+- (void)onTitleDoneEdit:(NSString *)title{
+    
+    NSLog(@"title:%@", title);
+}
+
+- (void)onDescriptionChange:(NSString *)description{
+    
+    NSLog(@"desc:%@", description);
+}
+
+- (void)onAttachementTapWithImageView:(UIImageView *)imageView{
+    
+}
+
+- (void)onPostRequestButtonTap{
+    
 }
 
 /*

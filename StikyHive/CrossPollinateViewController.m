@@ -27,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIImageView *postARequestImageView;
 
 @end
 
@@ -47,12 +48,19 @@
 
 @synthesize tableView = _tableView;
 @synthesize searchBar = _searchBar;
+@synthesize postARequestImageView = _postARequestImageView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     NSLog(@"My stkid is %@", [LocalDataInterface retrieveStkid]);
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(postRequest:)];
+    [tap setNumberOfTapsRequired:1];
+    [tap setNumberOfTouchesRequired:1];
+    
+    [_postARequestImageView addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +77,13 @@
 }
 
 #pragma mark - Internal
+- (void)postRequest:(UIGestureRecognizer *)recognizer{
+
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PrepareRequestViewController"];
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 - (void)pullData{
     
     //remove old data

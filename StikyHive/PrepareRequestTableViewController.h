@@ -8,8 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PrepareRequestTableViewController : UITableViewController
+@protocol PrepareRequestDelegate <NSObject>
 
-@property (weak, nonatomic) IBOutlet UITextField *titleField;
+@optional
+- (void)onTitleDoneEdit:(NSString *)title;
+- (void)onDescriptionChange:(NSString *)description;
+- (void)onAttachementTapWithImageView:(UIImageView *)imageView;
+- (void)onPostRequestButtonTap;
+
+@end
+
+@interface PrepareRequestTableViewController : UITableViewController<UITextFieldDelegate, UITextViewDelegate>
+
+@property (assign, nonatomic) IBInspectable NSUInteger maxTitleCharacter;
+@property (assign, nonatomic) IBInspectable NSUInteger maxDescCharacter;
+@property (weak, nonatomic) id<PrepareRequestDelegate> delegate;
 
 @end
