@@ -115,7 +115,7 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
     }
     else
     {
-        
+        [self showAspectRatioDialogRectangle];
     }
     
 }

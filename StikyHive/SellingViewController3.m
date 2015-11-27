@@ -11,6 +11,9 @@
 
 @interface SellingViewController3 ()
 
+@property (nonatomic, strong) UIImageView *selectImageView;
+@property (nonatomic, strong) NSMutableArray *imageviewArray;
+
 @end
 
 @implementation SellingViewController3
@@ -41,6 +44,7 @@ static NSData *Video_Data;
     _contentScrollView.alwaysBounceVertical = YES;
     _contentScrollView.delegate = self;
     
+    _imageviewArray = [[NSMutableArray alloc] init];
     
     CGFloat y = 33;
     CGFloat x = 20;
@@ -105,7 +109,7 @@ static NSData *Video_Data;
     NSLog(@"humbnail ---- %@",Video_Thumbnail);
     NSLog(@"video --- %@",Video_Data);
     
-    
+    NSLog(@"image view array --- %@",_imageviewArray);
 }
 
 - (CGFloat)createImageView:(CGPoint)point andTarget:(NSInteger)target
@@ -117,6 +121,9 @@ static NSData *Video_Data;
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(point.x, y, width, height)];
     imageView.image = [UIImage imageNamed:@"sell_upload_photo"];
     [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(photoImageViewTapped:)]];
+    [imageView setUserInteractionEnabled:YES];
+    [imageView setTag:target];
+    
     
     
     CGPoint imageViewCenter = imageView.center;
@@ -138,8 +145,22 @@ static NSData *Video_Data;
     [_contentScrollView addSubview:textField];
     
     
+    [_imageviewArray addObject:imageView];
+    
     return y;
 }
+
+- (void)photoImageViewTapped:(UITapGestureRecognizer *)sender
+{
+//    NSInteger tag = sender.view.tag;
+    
+    [self showCropViewControllerWithOptions:_imageviewArray[sender.view.tag] andType:2];
+    
+    NSLog(@"sender view tag --- %ld",(long)sender.view.tag);
+    
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {
