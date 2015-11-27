@@ -43,7 +43,7 @@
     [self showCropViewControllerWithOptions:imageView andType:PHOTO_SOURCE_TYPE_CAMERA];
 }
 
-- (void)onPostRequestButtonTap{
+- (void)onPostRequestButtonTapWithAttachmentImage:(UIImage *)image{
     
 }
 

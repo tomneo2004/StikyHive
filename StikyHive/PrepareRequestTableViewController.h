@@ -14,7 +14,7 @@
 - (void)onTitleDoneEdit:(NSString *)title;
 - (void)onDescriptionChange:(NSString *)description;
 - (void)onAttachementTapWithImageView:(UIImageView *)imageView;
-- (void)onPostRequestButtonTap;
+- (void)onPostRequestButtonTapWithAttachmentImage:(UIImage *)image;
 
 @end
 

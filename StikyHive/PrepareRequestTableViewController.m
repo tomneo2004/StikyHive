@@ -47,6 +47,13 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignInputField:)];
     [self.view addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *attachmentTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onAttachmentTap:)];
+    [_attachmentImageView addGestureRecognizer:attachmentTap];
+    
+    UITapGestureRecognizer *postRequestTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onPostRequestTap:)];
+    [_postRequestImageView addGestureRecognizer:postRequestTap];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -149,6 +156,46 @@
 - (void)updateDescCharacterLimitValue:(NSUInteger)currentTextLength{
  
      _descChaLimitLabel.text = [NSString stringWithFormat:@"%li", (_maxDescCharacter - MIN(currentTextLength, _maxDescCharacter))];
+}
+
+- (void)onAttachmentTap:(UITapGestureRecognizer *)recognizer{
+    
+    if([_delegate respondsToSelector:@selector(onAttachementTapWithImageView:)]){
+        
+        [_delegate onAttachementTapWithImageView:_attachmentImageView];
+    }
+}
+
+- (BOOL)isFormVaild{
+    
+    
+    if(_titleField.text.length <= 0){
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Fill your request title!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        
+        return NO;
+    }
+    
+    if(_descTextView.text.length <= 0){
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Fill your request description!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (void)onPostRequestTap:(UITapGestureRecognizer *)recognizer{
+    
+    [self resignInputField:nil];
+    
+    if([self isFormVaild]){
+        
+        
+    }
 }
 
 #pragma mark - Table view data source

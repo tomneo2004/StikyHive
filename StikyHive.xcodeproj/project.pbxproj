@@ -371,6 +371,7 @@
 		88A4C895FFB7048DDF6EC234 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 988CAEF31E1FF7DE4F6B17F9 /* libPods.a */; };
 		CE0461C21C058E3A00254EBB /* PrepareRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */; };
 		CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */; };
+		CE7AA1771C0804BF00875DE5 /* PostRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */; };
 		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
 		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
@@ -934,6 +935,8 @@
 		CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestViewController.m; sourceTree = "<group>"; };
 		CE0461C31C05ADFD00254EBB /* PrepareRequestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRequestTableViewController.h; sourceTree = "<group>"; };
 		CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestTableViewController.m; sourceTree = "<group>"; };
+		CE7AA1751C0804BF00875DE5 /* PostRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostRequestManager.h; sourceTree = "<group>"; };
+		CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostRequestManager.m; sourceTree = "<group>"; };
 		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
 		CED73E0C1C06F57C00ADB60C /* YelloBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YelloBTN.png; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
@@ -1871,12 +1874,22 @@
 		CE0461BF1C058D7500254EBB /* PostRequest */ = {
 			isa = PBXGroup;
 			children = (
+				CE7AA1741C08048C00875DE5 /* PostReuestManager */,
 				CE0461C01C058E3A00254EBB /* PrepareRequestViewController.h */,
 				CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */,
 				CE0461C31C05ADFD00254EBB /* PrepareRequestTableViewController.h */,
 				CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */,
 			);
 			name = PostRequest;
+			sourceTree = "<group>";
+		};
+		CE7AA1741C08048C00875DE5 /* PostReuestManager */ = {
+			isa = PBXGroup;
+			children = (
+				CE7AA1751C0804BF00875DE5 /* PostRequestManager.h */,
+				CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */,
+			);
+			name = PostReuestManager;
 			sourceTree = "<group>";
 		};
 		CEE93A041BF448CA00B292BA /* NewVersion */ = {
@@ -2494,6 +2507,7 @@
 				516A614B1BC7617400D4E890 /* SellerCommTableViewController.m in Sources */,
 				674D10481B7DB4FB00B5B80D /* GKImagePicker.m in Sources */,
 				674D0F671B7D9B0900B5B80D /* Document.m in Sources */,
+				CE7AA1771C0804BF00875DE5 /* PostRequestManager.m in Sources */,
 				674D0F541B7D9A5200B5B80D /* JSQMessagesLabel.m in Sources */,
 				CEF464011BF9B2A800010D21 /* Section.m in Sources */,
 				674D10451B7DB4FB00B5B80D /* GKImageCropOverlayView.m in Sources */,
