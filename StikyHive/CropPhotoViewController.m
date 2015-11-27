@@ -129,6 +129,7 @@
     
     CGRect imageFrame = CGRectZero;
     imageFrame.size = self.imageViewProfile.image.size;
+//    imageFrame.size = self.imageViewProfile.frame.size;
     
     CGFloat scale = MIN(viewFrame.size.width / imageFrame.size.width, viewFrame.size.height / imageFrame.size.height);
     imageFrame.size.width *= scale;
