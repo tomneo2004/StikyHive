@@ -2708,7 +2708,7 @@
                                         </constraints>
                                     </view>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YelloBTN.png" translatesAutoresizingMaskIntoConstraints="NO" id="JEg-qW-eup">
-                                        <rect key="frame" x="60" y="139" width="480" height="69.5"/>
+                                        <rect key="frame" x="60" y="145" width="480" height="57.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2717,7 +2717,7 @@
                                     <constraint firstItem="ogU-6I-xKK" firstAttribute="leading" secondItem="Imf-UM-ua0" secondAttribute="leading" id="6vA-Pn-p7b"/>
                                     <constraint firstItem="ogU-6I-xKK" firstAttribute="height" secondItem="Imf-UM-ua0" secondAttribute="height" multiplier="0.5" constant="1" id="9jC-vs-JbG"/>
                                     <constraint firstItem="ogU-6I-xKK" firstAttribute="top" secondItem="Imf-UM-ua0" secondAttribute="top" id="ABx-Jt-cDN"/>
-                                    <constraint firstItem="JEg-qW-eup" firstAttribute="height" secondItem="BtQ-JB-rCS" secondAttribute="height" multiplier="0.6" id="J3N-1L-q97"/>
+                                    <constraint firstItem="JEg-qW-eup" firstAttribute="height" secondItem="BtQ-JB-rCS" secondAttribute="height" multiplier="0.5" id="J3N-1L-q97"/>
                                     <constraint firstItem="JEg-qW-eup" firstAttribute="centerX" secondItem="BtQ-JB-rCS" secondAttribute="centerX" id="JCm-AH-JOD"/>
                                     <constraint firstAttribute="trailing" secondItem="BtQ-JB-rCS" secondAttribute="trailing" id="Ovf-lA-UKr"/>
                                     <constraint firstItem="BtQ-JB-rCS" firstAttribute="height" secondItem="Imf-UM-ua0" secondAttribute="height" multiplier="0.5" constant="1" id="PI0-aM-dlg"/>
