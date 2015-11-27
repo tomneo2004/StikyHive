@@ -108,12 +108,14 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
     self.view.backgroundColor = self.cropView.backgroundColor;
     
     //----- Echo -------
-    if (_type == 1) {
+    
+    if (_type ==1)
+    {
         [self showAspectRatioDialog];
     }
     else
     {
-        [self showAspectRatioDialogRectangle];
+        
     }
     
 }
@@ -260,7 +262,6 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
 }
 
 #pragma mark - Aspect Ratio Handling -
-
 - (void)showAspectRatioDialogRectangle
 {
     // ------ Echo --------
@@ -275,8 +276,7 @@ typedef NS_ENUM(NSInteger, TOCropViewControllerAspectRatio) {
     
     [self.cropView setAspectLockEnabledWithAspectRatio:aspectRatio animated:YES];
     self.toolbar.clampButtonGlowing = YES;
-    
-    
+
     
 }
 
