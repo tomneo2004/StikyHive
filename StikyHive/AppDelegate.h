@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define PayPal_Production_ClientID @"AcSMFQEQkBScl878ovjdfbv1w5NcHmD-5u527hspX2WN-7zlTWhdFT6vBngF9W39H9dRzBBtuHqHrQ9x"
+#define PayPal_Sandbox_ClientID @"AWzun8HFikX3vADqPzhntFQKTgdJ3acgWYKF9s1VueI_GC92LsfWpRXeKElpVVUskEs26p65YejBKlO2"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

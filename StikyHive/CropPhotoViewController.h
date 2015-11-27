@@ -16,4 +16,9 @@
 
 - (void)showCropViewControllerWithOptions:(UIImageView *)imageView andType:(NSInteger)type;
 
+/**
+ * Subclass can override this method to do other thing
+ */
+- (void)onImageCropSuccessfulWithImageView:(UIImageView *)imageView;
+
 @end

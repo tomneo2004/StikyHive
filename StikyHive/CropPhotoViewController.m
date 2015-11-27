@@ -101,6 +101,12 @@
 //    [self presentViewController:photoPickerController animated:YES completion:nil];
 //}
 
+#pragma mark - public interface
+- (void)onImageCropSuccessfulWithImageView:(UIImageView *)imageView{
+    
+    
+}
+
 #pragma mark - Cropper Delegate -
 - (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle
 {
@@ -113,6 +119,9 @@
     self.imageViewProfile.hidden = YES;
     [cropViewController dismissAnimatedFromParentViewController:self withCroppedImage:image toFrame:viewFrame completion:^{
         self.imageViewProfile.hidden = NO;
+        
+        //call successful method so subclass can do their own thing
+        [self onImageCropSuccessfulWithImageView:self.imageViewProfile];
     }];
 }
 

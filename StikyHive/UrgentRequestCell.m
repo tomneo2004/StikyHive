@@ -13,6 +13,9 @@
 
 @interface UrgentRequestCell ()
 
+@property (weak, nonatomic) IBOutlet UIButton *phoneButton;
+@property (weak, nonatomic) IBOutlet UIButton *chatButton;
+
 @end
 
 @implementation UrgentRequestCell{
@@ -21,6 +24,9 @@
     BOOL _isInit;
 
 }
+
+@synthesize phoneButton = _phoneButton;
+@synthesize chatButton = _chatButton;
 
 
 - (void)awakeFromNib {
@@ -65,6 +71,13 @@
         
         [self.delegate urgentRequestCellDidTapPersonAvatar:self];
     }
+}
+
+#pragma mark - setter
+- (void)setIsMyRequest:(BOOL)isMyRequest{
+    
+    _phoneButton.hidden = isMyRequest;
+    _chatButton.hidden = isMyRequest;
 }
 
 #pragma mark - override

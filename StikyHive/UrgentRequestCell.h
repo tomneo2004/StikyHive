@@ -38,5 +38,6 @@
 
 @interface UrgentRequestCell : RequestCell
 
+@property (setter=setIsMyRequest:, nonatomic) BOOL isMyRequest;
 
 @end

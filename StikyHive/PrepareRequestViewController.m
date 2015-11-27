@@ -7,12 +7,16 @@
 //
 
 #import "PrepareRequestViewController.h"
+#import "PostRequestManager.h"
 
 @interface PrepareRequestViewController ()
 
 @end
 
-@implementation PrepareRequestViewController
+@implementation PrepareRequestViewController{
+    
+    BOOL _imageSelected;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -20,6 +24,15 @@
     
     PrepareRequestTableViewController *controller = [self.childViewControllers lastObject];
     controller.delegate = self;
+    
+    _imageSelected = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    self.title = @"Post a request";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,12 +43,12 @@
 #pragma mark - PrepareRequestDelegate
 - (void)onTitleDoneEdit:(NSString *)title{
     
-    NSLog(@"title:%@", title);
+    [PostRequestManager sharedPostRequestManager].title = title;
 }
 
 - (void)onDescriptionChange:(NSString *)description{
     
-    NSLog(@"desc:%@", description);
+    [PostRequestManager sharedPostRequestManager].postDesc = description;
 }
 
 - (void)onAttachementTapWithImageView:(UIImageView *)imageView{
@@ -45,6 +58,17 @@
 
 - (void)onPostRequestButtonTapWithAttachmentImage:(UIImage *)image{
     
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentSummaryViewController"];
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - override
+- (void)onImageCropSuccessfulWithImageView:(UIImageView *)imageView{
+    
+    _imageSelected = YES;
+    
+    [PostRequestManager sharedPostRequestManager].attachmentImage = imageView.image;
 }
 
 /*

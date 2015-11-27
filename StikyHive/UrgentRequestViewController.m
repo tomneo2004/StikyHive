@@ -12,6 +12,7 @@
 #import "UIView+RNActivityView.h"
 #import "AttachmentViewController.h"
 #import "RequestPostTableViewController.h"
+#import "LocalDataInterface.h"
 
 
 @interface UrgentRequestViewController ()
@@ -117,6 +118,7 @@
     
     cell.titleLabel.text = urgentRequest.title;
     cell.descLabel.text = urgentRequest.desc;
+    cell.isMyRequest = [urgentRequest.stkId isEqualToString:[LocalDataInterface retrieveStkid]];
     cell.delegate = self;
     [cell displayProfilePictureWithURL:urgentRequest.profilePicture];
     

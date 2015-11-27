@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *descTextView;
 @property (weak, nonatomic) IBOutlet UILabel *descChaLimitLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *attachmentImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *postRequestImageView;
 
 @end
 
@@ -26,7 +25,6 @@
 @synthesize descTextView = _descTextView;
 @synthesize descChaLimitLabel = _descChaLimitLabel;
 @synthesize attachmentImageView = _attachmentImageView;
-@synthesize postRequestImageView = _postRequestImageView;
 @synthesize maxTitleCharacter = _maxTitleCharacter;
 @synthesize maxDescCharacter = _maxDescCharacter;
 @synthesize delegate = _delegate;
@@ -50,9 +48,6 @@
     
     UITapGestureRecognizer *attachmentTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onAttachmentTap:)];
     [_attachmentImageView addGestureRecognizer:attachmentTap];
-    
-    UITapGestureRecognizer *postRequestTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onPostRequestTap:)];
-    [_postRequestImageView addGestureRecognizer:postRequestTap];
     
 }
 
@@ -150,12 +145,12 @@
 #pragma mark - internal
 - (void)updateTitleCharacterLimitValue:(NSUInteger)currentTextLength{
     
-    _titleChaLimitLabel.text = [NSString stringWithFormat:@"%li", (_maxTitleCharacter - MIN(currentTextLength, _maxTitleCharacter))];
+    _titleChaLimitLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_maxTitleCharacter - MIN(currentTextLength, _maxTitleCharacter))];
 }
 
 - (void)updateDescCharacterLimitValue:(NSUInteger)currentTextLength{
  
-     _descChaLimitLabel.text = [NSString stringWithFormat:@"%li", (_maxDescCharacter - MIN(currentTextLength, _maxDescCharacter))];
+     _descChaLimitLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_maxDescCharacter - MIN(currentTextLength, _maxDescCharacter))];
 }
 
 - (void)onAttachmentTap:(UITapGestureRecognizer *)recognizer{
@@ -188,13 +183,17 @@
     return YES;
 }
 
-- (void)onPostRequestTap:(UITapGestureRecognizer *)recognizer{
+#pragma mark - IBAction
+- (IBAction)onPostRequestTap:(id)sender{
     
     [self resignInputField:nil];
     
     if([self isFormVaild]){
         
-        
+        if([_delegate respondsToSelector:@selector(onPostRequestButtonTapWithAttachmentImage:)]){
+            
+            [_delegate onPostRequestButtonTapWithAttachmentImage:_attachmentImageView.image];
+        }
     }
 }
 
