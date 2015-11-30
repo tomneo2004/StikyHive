@@ -57,7 +57,8 @@ static NSData *Video_Data;
     y = y + titleLabel.frame.size.height  + 20;
     
     
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++)
+    {
         
         y = [self createImageView:CGPointMake(20, y) andTarget:i];
         
@@ -158,7 +159,7 @@ static NSData *Video_Data;
     
     NSLog(@"sender view tag --- %ld",(long)sender.view.tag);
     
-    
+    NSLog(@"select image veiw --- %@",_imageviewArray[sender.view.tag]);
 }
 
 

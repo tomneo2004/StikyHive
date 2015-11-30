@@ -199,6 +199,7 @@
 #define DATA_URL_GET_RATE               DATA_URL@"getRate/format/json"
 #define DATA_URL_GET_MY_LOCATION        DATA_URL@"getMyLocation/format/json"
 #define DATA_URL_SEARCH_NEAR_BY_CP      DATA_URL@"searchNearByCP/format/json"
+#define DATA_URL_INSERT_URGENT_REQUEST  DATA_URL@"insertUrgentRequest/format/json"
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -229,6 +230,8 @@
 #define POST_PARAMETER_BUYER_ID         @"id"
 #define POST_PARAMETER_LOCATION         @"location"
 #define POST_PARAMETER_NAMESKILL        @"skillName"
+#define POST_PARAMETER_TITLE            @"title"
+#define POST_PARAMETER_DESC             @"desc"
 
 
 //#define DATA_URL_USER_VERIFY            DATA_URL@"varify"
@@ -296,6 +299,7 @@
 
 + (void)searchNearByCp:(NSString *)stkid skillname:(NSString *)skillname completion:(void (^)(NSObject *, NSError *))completion;
 
++ (void)insertUrgentRequest:(NSString *)stkid title:(NSString *)title desc:(NSString *)desc completion:(void (^)(NSObject *, NSError *))completion;
 
 
 ////////  ///////////// END -------------------------------------
