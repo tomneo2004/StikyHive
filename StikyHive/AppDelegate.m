@@ -10,6 +10,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <linkedin-sdk/LISDK.h>
+#import "PayPalMobile.h"
 
 
 
@@ -42,6 +43,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //paypal setup
+    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : PayPal_Production_ClientID, PayPalEnvironmentSandbox : PayPal_Sandbox_ClientID}];
     
     // --- Set the Global appearance of to Navigation Bar and bottom Tab Bar --- //
     

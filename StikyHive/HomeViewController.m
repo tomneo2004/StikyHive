@@ -90,13 +90,15 @@
         
         [WebDataInterface getBuyerMarket:@"" limit:8 completion:^(NSObject *obj2, NSError *err2)
          {
-             dispatch_async(dispatch_get_main_queue(), ^{
+             
+             
+            // dispatch_async(dispatch_get_main_queue(), ^{
                  
                  [self dataReceivedSkills:(NSDictionary *)obj];
                  
                  [self dataReceivedBuyers:(NSDictionary *)obj2];
 
-             });
+            // });
              
              
         }];

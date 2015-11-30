@@ -235,7 +235,8 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 
 + (void)fileRequestUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid cpid:(NSInteger)cpid
 {
-    NSData *imageData =UIImageJPEGRepresentation(profileImage, 1.0);
+    //change compression value to 0.0 from 1.0 so image might be under 1mb
+    NSData *imageData =UIImageJPEGRepresentation(profileImage, 0.0);
     
     NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/filerequestupload.php?stkid=%@&cpId=%ld",stikyid,(long)cpid];
     
