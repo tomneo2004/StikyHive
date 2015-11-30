@@ -232,6 +232,36 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     [self requestData:DATA_URL_INSERT_URGENT_REQUEST withParameters:params completion:completion];
 }
 
+
++ (void)fileRequestUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid cpid:(NSInteger)cpid
+{
+    NSData *imageData =UIImageJPEGRepresentation(profileImage, 1.0);
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/filerequestupload.php?stkid=%@&cpId=%ld",stikyid,(long)cpid];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    // NSString *boundary = [NSString stringWithString:@"---------------------------14737809831466499882746641449"];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploaded_file\"; filename=\1\r\n"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    // [body appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    
+}
+
+
 //+ (void)saveStikyBee:(NSString *)email password:(NSString *)password firstname:(NSString *)firstname lastname:(NSString *)lastname dob:(NSString *)dob address:(NSString *)address country:(NSString *)countryISO postalcode:(NSString *)postalcode skillname:(NSString *)skillname1 skillid1:(NSInteger)skillid1 skilltype1:(NSInteger)skilltype1 talentname:(NSString *)talentname1 talentid:(NSInteger)talentid1 talenttype:(NSInteger)talenttype1 completion:(void (^)(NSObject *, NSError *))completion
 //{
 //    NSDictionary *params = @{POST_PARAMETER_EMAIL:email,

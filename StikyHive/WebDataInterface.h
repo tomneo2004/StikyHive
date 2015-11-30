@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #define CONTENT_BOUNDARY @"---------------------------14737809831466499882746641449"
 
@@ -301,6 +302,7 @@
 
 + (void)insertUrgentRequest:(NSString *)stkid title:(NSString *)title desc:(NSString *)desc completion:(void (^)(NSObject *, NSError *))completion;
 
++ (void)fileRequestUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid cpid:(NSInteger)cpid;
 
 ////////  ///////////// END -------------------------------------
 
