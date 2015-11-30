@@ -376,6 +376,55 @@
 		676F77EB1B96F3270084988A /* CropPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676F77EA1B96F3270084988A /* CropPhotoViewController.m */; };
 		676F77EE1B96F5600084988A /* UserInfoEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676F77ED1B96F5600084988A /* UserInfoEditorViewController.m */; };
 		88A4C895FFB7048DDF6EC234 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 988CAEF31E1FF7DE4F6B17F9 /* libPods.a */; };
+		CE0461C21C058E3A00254EBB /* PrepareRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */; };
+		CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */; };
+		CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */; };
+		CE1375D01C084FAA00201989 /* PaymentSuccessfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */; };
+		CE7AA1771C0804BF00875DE5 /* PostRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */; };
+		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
+		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
+		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
+		CEE93A151BF4490100B292BA /* buzzr_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A061BF4490000B292BA /* buzzr_chat.png */; };
+		CEE93A161BF4490100B292BA /* buzzr_home_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A071BF4490000B292BA /* buzzr_home_btn.png */; };
+		CEE93A171BF4490100B292BA /* buzzr_img.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A081BF4490000B292BA /* buzzr_img.png */; };
+		CEE93A181BF4490100B292BA /* buzzr_navi.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A091BF4490000B292BA /* buzzr_navi.png */; };
+		CEE93A191BF4490100B292BA /* buzzr_paymentsummary_bee.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A0A1BF4490000B292BA /* buzzr_paymentsummary_bee.png */; };
+		CEE93A1A1BF4490100B292BA /* buzzr_postrequest_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A0B1BF4490000B292BA /* buzzr_postrequest_btn.png */; };
+		CEE93A1B1BF4490100B292BA /* buzzr_proceedpayment.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A0C1BF4490000B292BA /* buzzr_proceedpayment.png */; };
+		CEE93A1C1BF4490100B292BA /* buzzr_request_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A0D1BF4490000B292BA /* buzzr_request_bg.png */; };
+		CEE93A1D1BF4490100B292BA /* buzzr_requestform_bee.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A0E1BF4490000B292BA /* buzzr_requestform_bee.png */; };
+		CEE93A1E1BF4490100B292BA /* buzzr_requestform_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A0F1BF4490000B292BA /* buzzr_requestform_photo.png */; };
+		CEE93A1F1BF4490100B292BA /* buzzr_requestsuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A101BF4490000B292BA /* buzzr_requestsuccess.png */; };
+		CEE93A201BF4490100B292BA /* buzzr_top_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A111BF4490000B292BA /* buzzr_top_btn.png */; };
+		CEE93A211BF4490100B292BA /* buzzr_top.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A121BF4490000B292BA /* buzzr_top.png */; };
+		CEE93A221BF4490100B292BA /* buzzr_upload_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A131BF4490000B292BA /* buzzr_upload_btn.png */; };
+		CEE93A261BF47C2600B292BA /* CrossPollinateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE93A251BF47C2600B292BA /* CrossPollinateViewController.m */; };
+		CEE93A2A1BF4852800B292BA /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE93A291BF4852800B292BA /* Request.m */; };
+		CEF464011BF9B2A800010D21 /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464001BF9B2A800010D21 /* Section.m */; };
+		CEF464041BF9B50300010D21 /* MyRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464031BF9B50300010D21 /* MyRequestCell.m */; };
+		CEF464071BF9BA8600010D21 /* RequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464061BF9BA8600010D21 /* RequestCell.m */; };
+		CEF4640A1BF9C41200010D21 /* UrgentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464091BF9C41200010D21 /* UrgentRequest.m */; };
+		CEF4640D1BF9C42100010D21 /* MyRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF4640C1BF9C42100010D21 /* MyRequest.m */; };
+		CEF4640F1BF9CB2B00010D21 /* UrgentSectionTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF4640E1BF9CB2B00010D21 /* UrgentSectionTitle.xib */; };
+		CEF464111BF9CB4700010D21 /* MyRequestSectionTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF464101BF9CB4700010D21 /* MyRequestSectionTitle.xib */; };
+		CEF464151BF9CBB800010D21 /* UrgentSectionTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464141BF9CBB800010D21 /* UrgentSectionTitle.m */; };
+		CEF464181BF9CBD500010D21 /* MyRequestSectionTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464171BF9CBD500010D21 /* MyRequestSectionTitle.m */; };
+		CEF4641C1BF9D1A700010D21 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF4641B1BF9D1A700010D21 /* Helper.m */; };
+		CEF7BA951BFAC64C009624CC /* UrgentRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF7BA941BFAC64C009624CC /* UrgentRequestViewController.m */; };
+		CEF7BA991BFAC66E009624CC /* MyRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF7BA981BFAC66E009624CC /* MyRequestViewController.m */; };
+		CEF7BA9C1BFAD2D6009624CC /* TitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF7BA9B1BFAD2D6009624CC /* TitleViewController.m */; };
+		CEF7BAA21BFADD6E009624CC /* RNActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF7BA9F1BFADD6E009624CC /* RNActivityView.m */; };
+		CEF7BAA31BFADD6E009624CC /* UIView+RNActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF7BAA11BFADD6E009624CC /* UIView+RNActivityView.m */; };
+		CEF7BAA71BFB0FAD009624CC /* AttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF7BAA61BFB0FAD009624CC /* AttachmentViewController.m */; };
+		CEF7BAAB1BFB2704009624CC /* RequestPostTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF7BAAA1BFB2704009624CC /* RequestPostTableViewController.m */; };
+		CEF7E59B1BF58CB100488C2A /* UrgentRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF7E59A1BF58CB100488C2A /* UrgentRequestCell.m */; };
+		CEFD194F1C04045800A79158 /* DistanceSkill.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD194C1C04045800A79158 /* DistanceSkill.m */; };
+		CEFD19501C04045800A79158 /* SkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD194E1C04045800A79158 /* SkillInfo.m */; };
+		CEFD19521C04047C00A79158 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFD19511C04047C00A79158 /* CoreLocation.framework */; };
+		CEFD19551C0409BC00A79158 /* SearchResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD19541C0409BC00A79158 /* SearchResultTableViewController.m */; };
+		CEFD19581C040F3D00A79158 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD19571C040F3D00A79158 /* SearchResultCell.m */; };
+		CEFD195C1C04123800A79158 /* DistanceTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD195B1C04123800A79158 /* DistanceTitle.m */; };
+		CEFD195E1C04125900A79158 /* DistanceTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFD195D1C04125900A79158 /* DistanceTitle.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -900,6 +949,83 @@
 		676F77EC1B96F5600084988A /* UserInfoEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoEditorViewController.h; sourceTree = "<group>"; };
 		676F77ED1B96F5600084988A /* UserInfoEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoEditorViewController.m; sourceTree = "<group>"; };
 		988CAEF31E1FF7DE4F6B17F9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE0461C01C058E3A00254EBB /* PrepareRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRequestViewController.h; sourceTree = "<group>"; };
+		CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestViewController.m; sourceTree = "<group>"; };
+		CE0461C31C05ADFD00254EBB /* PrepareRequestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRequestTableViewController.h; sourceTree = "<group>"; };
+		CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestTableViewController.m; sourceTree = "<group>"; };
+		CE1375C81C083E1F00201989 /* PaymentSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSummaryViewController.h; sourceTree = "<group>"; };
+		CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryViewController.m; sourceTree = "<group>"; };
+		CE1375CE1C084FAA00201989 /* PaymentSuccessfulViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSuccessfulViewController.h; sourceTree = "<group>"; };
+		CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSuccessfulViewController.m; sourceTree = "<group>"; };
+		CE7AA1751C0804BF00875DE5 /* PostRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostRequestManager.h; sourceTree = "<group>"; };
+		CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostRequestManager.m; sourceTree = "<group>"; };
+		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
+		CED73E0C1C06F57C00ADB60C /* YelloBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YelloBTN.png; sourceTree = "<group>"; };
+		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
+		CEE93A061BF4490000B292BA /* buzzr_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_chat.png; sourceTree = "<group>"; };
+		CEE93A071BF4490000B292BA /* buzzr_home_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_home_btn.png; sourceTree = "<group>"; };
+		CEE93A081BF4490000B292BA /* buzzr_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_img.png; sourceTree = "<group>"; };
+		CEE93A091BF4490000B292BA /* buzzr_navi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_navi.png; sourceTree = "<group>"; };
+		CEE93A0A1BF4490000B292BA /* buzzr_paymentsummary_bee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_paymentsummary_bee.png; sourceTree = "<group>"; };
+		CEE93A0B1BF4490000B292BA /* buzzr_postrequest_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_postrequest_btn.png; sourceTree = "<group>"; };
+		CEE93A0C1BF4490000B292BA /* buzzr_proceedpayment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_proceedpayment.png; sourceTree = "<group>"; };
+		CEE93A0D1BF4490000B292BA /* buzzr_request_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_request_bg.png; sourceTree = "<group>"; };
+		CEE93A0E1BF4490000B292BA /* buzzr_requestform_bee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_requestform_bee.png; sourceTree = "<group>"; };
+		CEE93A0F1BF4490000B292BA /* buzzr_requestform_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_requestform_photo.png; sourceTree = "<group>"; };
+		CEE93A101BF4490000B292BA /* buzzr_requestsuccess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_requestsuccess.png; sourceTree = "<group>"; };
+		CEE93A111BF4490000B292BA /* buzzr_top_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_top_btn.png; sourceTree = "<group>"; };
+		CEE93A121BF4490000B292BA /* buzzr_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_top.png; sourceTree = "<group>"; };
+		CEE93A131BF4490000B292BA /* buzzr_upload_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_upload_btn.png; sourceTree = "<group>"; };
+		CEE93A241BF47C2600B292BA /* CrossPollinateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrossPollinateViewController.h; sourceTree = "<group>"; };
+		CEE93A251BF47C2600B292BA /* CrossPollinateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrossPollinateViewController.m; sourceTree = "<group>"; };
+		CEE93A281BF4852800B292BA /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
+		CEE93A291BF4852800B292BA /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+		CEF463FF1BF9B2A800010D21 /* Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Section.h; sourceTree = "<group>"; };
+		CEF464001BF9B2A800010D21 /* Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Section.m; sourceTree = "<group>"; };
+		CEF464021BF9B50300010D21 /* MyRequestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestCell.h; sourceTree = "<group>"; };
+		CEF464031BF9B50300010D21 /* MyRequestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRequestCell.m; sourceTree = "<group>"; };
+		CEF464051BF9BA8600010D21 /* RequestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestCell.h; sourceTree = "<group>"; };
+		CEF464061BF9BA8600010D21 /* RequestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestCell.m; sourceTree = "<group>"; };
+		CEF464081BF9C41200010D21 /* UrgentRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrgentRequest.h; sourceTree = "<group>"; };
+		CEF464091BF9C41200010D21 /* UrgentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrgentRequest.m; sourceTree = "<group>"; };
+		CEF4640B1BF9C42100010D21 /* MyRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequest.h; sourceTree = "<group>"; };
+		CEF4640C1BF9C42100010D21 /* MyRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRequest.m; sourceTree = "<group>"; };
+		CEF4640E1BF9CB2B00010D21 /* UrgentSectionTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UrgentSectionTitle.xib; sourceTree = "<group>"; };
+		CEF464101BF9CB4700010D21 /* MyRequestSectionTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRequestSectionTitle.xib; sourceTree = "<group>"; };
+		CEF464131BF9CBB800010D21 /* UrgentSectionTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrgentSectionTitle.h; sourceTree = "<group>"; };
+		CEF464141BF9CBB800010D21 /* UrgentSectionTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrgentSectionTitle.m; sourceTree = "<group>"; };
+		CEF464161BF9CBD500010D21 /* MyRequestSectionTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestSectionTitle.h; sourceTree = "<group>"; };
+		CEF464171BF9CBD500010D21 /* MyRequestSectionTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRequestSectionTitle.m; sourceTree = "<group>"; };
+		CEF4641A1BF9D1A700010D21 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		CEF4641B1BF9D1A700010D21 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		CEF7BA931BFAC64C009624CC /* UrgentRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrgentRequestViewController.h; sourceTree = "<group>"; };
+		CEF7BA941BFAC64C009624CC /* UrgentRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrgentRequestViewController.m; sourceTree = "<group>"; };
+		CEF7BA971BFAC66E009624CC /* MyRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestViewController.h; sourceTree = "<group>"; };
+		CEF7BA981BFAC66E009624CC /* MyRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRequestViewController.m; sourceTree = "<group>"; };
+		CEF7BA9A1BFAD2D6009624CC /* TitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleViewController.h; sourceTree = "<group>"; };
+		CEF7BA9B1BFAD2D6009624CC /* TitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleViewController.m; sourceTree = "<group>"; };
+		CEF7BA9E1BFADD6E009624CC /* RNActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNActivityView.h; sourceTree = "<group>"; };
+		CEF7BA9F1BFADD6E009624CC /* RNActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNActivityView.m; sourceTree = "<group>"; };
+		CEF7BAA01BFADD6E009624CC /* UIView+RNActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RNActivityView.h"; sourceTree = "<group>"; };
+		CEF7BAA11BFADD6E009624CC /* UIView+RNActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RNActivityView.m"; sourceTree = "<group>"; };
+		CEF7BAA51BFB0FAD009624CC /* AttachmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentViewController.h; sourceTree = "<group>"; };
+		CEF7BAA61BFB0FAD009624CC /* AttachmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentViewController.m; sourceTree = "<group>"; };
+		CEF7BAA91BFB2704009624CC /* RequestPostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestPostTableViewController.h; sourceTree = "<group>"; };
+		CEF7BAAA1BFB2704009624CC /* RequestPostTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestPostTableViewController.m; sourceTree = "<group>"; };
+		CEF7E5991BF58CB100488C2A /* UrgentRequestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrgentRequestCell.h; sourceTree = "<group>"; };
+		CEF7E59A1BF58CB100488C2A /* UrgentRequestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrgentRequestCell.m; sourceTree = "<group>"; };
+		CEFD194B1C04045800A79158 /* DistanceSkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceSkill.h; sourceTree = "<group>"; };
+		CEFD194C1C04045800A79158 /* DistanceSkill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceSkill.m; sourceTree = "<group>"; };
+		CEFD194D1C04045800A79158 /* SkillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillInfo.h; sourceTree = "<group>"; };
+		CEFD194E1C04045800A79158 /* SkillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillInfo.m; sourceTree = "<group>"; };
+		CEFD19511C04047C00A79158 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CEFD19531C0409BC00A79158 /* SearchResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultTableViewController.h; sourceTree = "<group>"; };
+		CEFD19541C0409BC00A79158 /* SearchResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultTableViewController.m; sourceTree = "<group>"; };
+		CEFD19561C040F3D00A79158 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
+		CEFD19571C040F3D00A79158 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
+		CEFD195A1C04123800A79158 /* DistanceTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceTitle.h; sourceTree = "<group>"; };
+		CEFD195B1C04123800A79158 /* DistanceTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceTitle.m; sourceTree = "<group>"; };
+		CEFD195D1C04125900A79158 /* DistanceTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceTitle.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -907,6 +1033,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFD19521C04047C00A79158 /* CoreLocation.framework in Frameworks */,
 				674D0DBF1B7D916200B5B80D /* QuartzCore.framework in Frameworks */,
 				6769CE031B9E89F6003A31DA /* linkedin-sdk.framework in Frameworks */,
 				676BA94B1B9D3F9C001EFEC0 /* FBSDKCoreKit.framework in Frameworks */,
@@ -1024,6 +1151,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CEE93A231BF47C0500B292BA /* CrossPollinate */,
 				517931461BAFBD540019BB49 /* Buyer */,
 				676600E71BA185FB003A84D8 /* HtmlDocs */,
 				674D0F711B7D9EC000B5B80D /* UserAccount */,
@@ -1159,6 +1287,7 @@
 		674D0E0E1B7D920E00B5B80D /* CrossPollinate */ = {
 			isa = PBXGroup;
 			children = (
+				CEE93A041BF448CA00B292BA /* NewVersion */,
 				674D0E0F1B7D920E00B5B80D /* CP_attach_icon@2x.png */,
 				674D0E101B7D920E00B5B80D /* CP_bg@2x.png */,
 				674D0E111B7D920E00B5B80D /* CP_button_back_to_cp@2x.png */,
@@ -1764,12 +1893,239 @@
 		CAEAF8256B3A12FB7828D10B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEFD19511C04047C00A79158 /* CoreLocation.framework */,
 				6769CE021B9E89F6003A31DA /* linkedin-sdk.framework */,
 				676BA9491B9D3F9C001EFEC0 /* FBSDKCoreKit.framework */,
 				676BA94A1B9D3F9C001EFEC0 /* FBSDKLoginKit.framework */,
 				988CAEF31E1FF7DE4F6B17F9 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE0461BF1C058D7500254EBB /* PostRequest */ = {
+			isa = PBXGroup;
+			children = (
+				CE1375CD1C084F6F00201989 /* PaymentSuccessfulViewController */,
+				CE1375CC1C084F5A00201989 /* PaymentSummaryViewController */,
+				CE7AA1741C08048C00875DE5 /* PostReuestManager */,
+				CE1375CB1C083E7400201989 /* PrepareRequestViewController */,
+			);
+			name = PostRequest;
+			sourceTree = "<group>";
+		};
+		CE1375CB1C083E7400201989 /* PrepareRequestViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE0461C01C058E3A00254EBB /* PrepareRequestViewController.h */,
+				CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */,
+				CE0461C31C05ADFD00254EBB /* PrepareRequestTableViewController.h */,
+				CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */,
+			);
+			name = PrepareRequestViewController;
+			sourceTree = "<group>";
+		};
+		CE1375CC1C084F5A00201989 /* PaymentSummaryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE1375C81C083E1F00201989 /* PaymentSummaryViewController.h */,
+				CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */,
+			);
+			name = PaymentSummaryViewController;
+			sourceTree = "<group>";
+		};
+		CE1375CD1C084F6F00201989 /* PaymentSuccessfulViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE1375CE1C084FAA00201989 /* PaymentSuccessfulViewController.h */,
+				CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */,
+			);
+			name = PaymentSuccessfulViewController;
+			sourceTree = "<group>";
+		};
+		CE7AA1741C08048C00875DE5 /* PostReuestManager */ = {
+			isa = PBXGroup;
+			children = (
+				CE7AA1751C0804BF00875DE5 /* PostRequestManager.h */,
+				CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */,
+			);
+			name = PostReuestManager;
+			sourceTree = "<group>";
+		};
+		CEE93A041BF448CA00B292BA /* NewVersion */ = {
+			isa = PBXGroup;
+			children = (
+				CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */,
+				CED73E0C1C06F57C00ADB60C /* YelloBTN.png */,
+				CEE93A051BF4490000B292BA /* buzzr_call.png */,
+				CEE93A061BF4490000B292BA /* buzzr_chat.png */,
+				CEE93A071BF4490000B292BA /* buzzr_home_btn.png */,
+				CEE93A081BF4490000B292BA /* buzzr_img.png */,
+				CEE93A091BF4490000B292BA /* buzzr_navi.png */,
+				CEE93A0A1BF4490000B292BA /* buzzr_paymentsummary_bee.png */,
+				CEE93A0B1BF4490000B292BA /* buzzr_postrequest_btn.png */,
+				CEE93A0C1BF4490000B292BA /* buzzr_proceedpayment.png */,
+				CEE93A0D1BF4490000B292BA /* buzzr_request_bg.png */,
+				CEE93A0E1BF4490000B292BA /* buzzr_requestform_bee.png */,
+				CEE93A0F1BF4490000B292BA /* buzzr_requestform_photo.png */,
+				CEE93A101BF4490000B292BA /* buzzr_requestsuccess.png */,
+				CEE93A111BF4490000B292BA /* buzzr_top_btn.png */,
+				CEE93A121BF4490000B292BA /* buzzr_top.png */,
+				CEE93A131BF4490000B292BA /* buzzr_upload_btn.png */,
+			);
+			name = NewVersion;
+			sourceTree = "<group>";
+		};
+		CEE93A231BF47C0500B292BA /* CrossPollinate */ = {
+			isa = PBXGroup;
+			children = (
+				CE0461BF1C058D7500254EBB /* PostRequest */,
+				CEFD194A1C04044200A79158 /* SearchResult */,
+				CEF7BAA81BFB26D5009624CC /* RequestPost */,
+				CEF7BAA41BFB0F66009624CC /* AttachmentViewController */,
+				CEF7BA9D1BFADD6E009624CC /* RNActivityView */,
+				CEF7BA961BFAC651009624CC /* MyRequestViewController */,
+				CEF7BA921BFAC623009624CC /* UrgentRequestViewController */,
+				CEF7BA911BFAC5E6009624CC /* CrossPollinateViewController */,
+				CEF464191BF9D18700010D21 /* Helper */,
+				CEF7BA9A1BFAD2D6009624CC /* TitleViewController.h */,
+				CEF7BA9B1BFAD2D6009624CC /* TitleViewController.m */,
+			);
+			name = CrossPollinate;
+			sourceTree = "<group>";
+		};
+		CEE93A271BF484FD00B292BA /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				CEE93A281BF4852800B292BA /* Request.h */,
+				CEE93A291BF4852800B292BA /* Request.m */,
+				CEF464081BF9C41200010D21 /* UrgentRequest.h */,
+				CEF464091BF9C41200010D21 /* UrgentRequest.m */,
+				CEF4640B1BF9C42100010D21 /* MyRequest.h */,
+				CEF4640C1BF9C42100010D21 /* MyRequest.m */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		CEF463FE1BF9B29200010D21 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				CEF463FF1BF9B2A800010D21 /* Section.h */,
+				CEF464001BF9B2A800010D21 /* Section.m */,
+			);
+			name = Section;
+			sourceTree = "<group>";
+		};
+		CEF464121BF9CB9200010D21 /* SectionTitle */ = {
+			isa = PBXGroup;
+			children = (
+				CEF4640E1BF9CB2B00010D21 /* UrgentSectionTitle.xib */,
+				CEF464101BF9CB4700010D21 /* MyRequestSectionTitle.xib */,
+				CEF464131BF9CBB800010D21 /* UrgentSectionTitle.h */,
+				CEF464141BF9CBB800010D21 /* UrgentSectionTitle.m */,
+				CEF464161BF9CBD500010D21 /* MyRequestSectionTitle.h */,
+				CEF464171BF9CBD500010D21 /* MyRequestSectionTitle.m */,
+			);
+			name = SectionTitle;
+			sourceTree = "<group>";
+		};
+		CEF464191BF9D18700010D21 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CEF4641A1BF9D1A700010D21 /* Helper.h */,
+				CEF4641B1BF9D1A700010D21 /* Helper.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		CEF7BA911BFAC5E6009624CC /* CrossPollinateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEE93A271BF484FD00B292BA /* Request */,
+				CEF463FE1BF9B29200010D21 /* Section */,
+				CEF464121BF9CB9200010D21 /* SectionTitle */,
+				CEE93A241BF47C2600B292BA /* CrossPollinateViewController.h */,
+				CEE93A251BF47C2600B292BA /* CrossPollinateViewController.m */,
+				CEF7E5991BF58CB100488C2A /* UrgentRequestCell.h */,
+				CEF7E59A1BF58CB100488C2A /* UrgentRequestCell.m */,
+				CEF464021BF9B50300010D21 /* MyRequestCell.h */,
+				CEF464031BF9B50300010D21 /* MyRequestCell.m */,
+				CEF464051BF9BA8600010D21 /* RequestCell.h */,
+				CEF464061BF9BA8600010D21 /* RequestCell.m */,
+			);
+			name = CrossPollinateViewController;
+			sourceTree = "<group>";
+		};
+		CEF7BA921BFAC623009624CC /* UrgentRequestViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEF7BA931BFAC64C009624CC /* UrgentRequestViewController.h */,
+				CEF7BA941BFAC64C009624CC /* UrgentRequestViewController.m */,
+			);
+			name = UrgentRequestViewController;
+			sourceTree = "<group>";
+		};
+		CEF7BA961BFAC651009624CC /* MyRequestViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEF7BA971BFAC66E009624CC /* MyRequestViewController.h */,
+				CEF7BA981BFAC66E009624CC /* MyRequestViewController.m */,
+			);
+			name = MyRequestViewController;
+			sourceTree = "<group>";
+		};
+		CEF7BA9D1BFADD6E009624CC /* RNActivityView */ = {
+			isa = PBXGroup;
+			children = (
+				CEF7BA9E1BFADD6E009624CC /* RNActivityView.h */,
+				CEF7BA9F1BFADD6E009624CC /* RNActivityView.m */,
+				CEF7BAA01BFADD6E009624CC /* UIView+RNActivityView.h */,
+				CEF7BAA11BFADD6E009624CC /* UIView+RNActivityView.m */,
+			);
+			path = RNActivityView;
+			sourceTree = "<group>";
+		};
+		CEF7BAA41BFB0F66009624CC /* AttachmentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEF7BAA51BFB0FAD009624CC /* AttachmentViewController.h */,
+				CEF7BAA61BFB0FAD009624CC /* AttachmentViewController.m */,
+			);
+			name = AttachmentViewController;
+			sourceTree = "<group>";
+		};
+		CEF7BAA81BFB26D5009624CC /* RequestPost */ = {
+			isa = PBXGroup;
+			children = (
+				CEF7BAA91BFB2704009624CC /* RequestPostTableViewController.h */,
+				CEF7BAAA1BFB2704009624CC /* RequestPostTableViewController.m */,
+			);
+			name = RequestPost;
+			sourceTree = "<group>";
+		};
+		CEFD194A1C04044200A79158 /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
+				CEFD19591C04120E00A79158 /* DistanceTitle */,
+				CEFD194B1C04045800A79158 /* DistanceSkill.h */,
+				CEFD194C1C04045800A79158 /* DistanceSkill.m */,
+				CEFD194D1C04045800A79158 /* SkillInfo.h */,
+				CEFD194E1C04045800A79158 /* SkillInfo.m */,
+				CEFD19531C0409BC00A79158 /* SearchResultTableViewController.h */,
+				CEFD19541C0409BC00A79158 /* SearchResultTableViewController.m */,
+				CEFD19561C040F3D00A79158 /* SearchResultCell.h */,
+				CEFD19571C040F3D00A79158 /* SearchResultCell.m */,
+			);
+			name = SearchResult;
+			sourceTree = "<group>";
+		};
+		CEFD19591C04120E00A79158 /* DistanceTitle */ = {
+			isa = PBXGroup;
+			children = (
+				CEFD195A1C04123800A79158 /* DistanceTitle.h */,
+				CEFD195B1C04123800A79158 /* DistanceTitle.m */,
+				CEFD195D1C04125900A79158 /* DistanceTitle.xib */,
+			);
+			name = DistanceTitle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1883,6 +2239,7 @@
 				674D10141B7DB4CD00B5B80D /* ZSSrightjustify@2x.png in Resources */,
 				674D10021B7DB4CD00B5B80D /* ZSSkeyboard@2x.png in Resources */,
 				674D0DE51B7D91FC00B5B80D /* button_update@2x.png in Resources */,
+				CEF464111BF9CB4700010D21 /* MyRequestSectionTitle.xib in Resources */,
 				5173255F1C02B25E004655D6 /* sell_upload_video.png in Resources */,
 				674D0FF81B7DB4CD00B5B80D /* ZSShorizontalrule@2x.png in Resources */,
 				674D0E841B7D920E00B5B80D /* indicator_view.png in Resources */,
@@ -1930,21 +2287,26 @@
 				674D0FE01B7DB4CD00B5B80D /* editor.html in Resources */,
 				674D0DE01B7D91FC00B5B80D /* button_next@2x.png in Resources */,
 				674D0FF11B7DB4CD00B5B80D /* ZSSh4.png in Resources */,
+				CEE93A1B1BF4490100B292BA /* buzzr_proceedpayment.png in Resources */,
 				674D10191B7DB4CD00B5B80D /* ZSSsuperscript.png in Resources */,
 				674D0E5A1B7D920E00B5B80D /* button_Login_Facebook.png in Resources */,
+				CEE93A1C1BF4490100B292BA /* buzzr_request_bg.png in Resources */,
 				517B6E901BD73D5C00561063 /* share-email.png in Resources */,
 				674D10641B7DCB6B00B5B80D /* OpenSans-Regular.ttf in Resources */,
 				517B6E951BD73D6800561063 /* share-twitter.png in Resources */,
 				516A61161BB51CAE008579B6 /* like.png in Resources */,
 				674D0DE91B7D91FC00B5B80D /* Header_3@2x.jpg in Resources */,
+				CEE93A201BF4490100B292BA /* buzzr_top_btn.png in Resources */,
 				674D0DED1B7D91FC00B5B80D /* Tab_About@2x.png in Resources */,
 				674D0FFA1B7DB4CD00B5B80D /* ZSSimage@2x.png in Resources */,
 				674D0E6D1B7D920E00B5B80D /* Add_skill_photo@2x.png in Resources */,
 				674D0E751B7D920E00B5B80D /* logo.png in Resources */,
+				CEE93A221BF4490100B292BA /* buzzr_upload_btn.png in Resources */,
 				674D10151B7DB4CD00B5B80D /* ZSSstrikethrough.png in Resources */,
 				674D0E4F1B7D920E00B5B80D /* button_AddContact.png in Resources */,
 				674D0FF31B7DB4CD00B5B80D /* ZSSh5.png in Resources */,
 				517C62C41BDE07C900904FCB /* profile_addcontact.png in Resources */,
+				CEE93A151BF4490100B292BA /* buzzr_chat.png in Resources */,
 				674D0DE41B7D91FC00B5B80D /* button_small_update@2x.png in Resources */,
 				516617341BF03939002BE00B /* looking.png in Resources */,
 				516A61101BB4ED50008579B6 /* profile_bg - Copy.png in Resources */,
@@ -1999,6 +2361,7 @@
 				674D0DF11B7D91FC00B5B80D /* Tab_CrossPollinate@2x.png in Resources */,
 				676767541B81CBD70093F70D /* uicheckbox_checked.png in Resources */,
 				674D0E881B7D920E00B5B80D /* Payment_button_proceed@2x.png in Resources */,
+				CEE93A171BF4490100B292BA /* buzzr_img.png in Resources */,
 				674D105D1B7DCB6B00B5B80D /* OpenSans-Bold.ttf in Resources */,
 				674D0DE61B7D91FC00B5B80D /* button_upload@2x.png in Resources */,
 				674D0E581B7D920E00B5B80D /* button_FileSharing.png in Resources */,
@@ -2032,6 +2395,7 @@
 				516A61121BB4FBC4008579B6 /* skillpage-bg.png in Resources */,
 				674D0DF71B7D91FC00B5B80D /* Tab_Privacy@2x.png in Resources */,
 				674D0E691B7D920E00B5B80D /* CP_Search@2x.png in Resources */,
+				CEE93A191BF4490100B292BA /* buzzr_paymentsummary_bee.png in Resources */,
 				674D0E831B7D920E00B5B80D /* indicator_review.png in Resources */,
 				516617361BF04FF3002BE00B /* icon_doc_save.png in Resources */,
 				674D0DEE1B7D91FC00B5B80D /* Tab_Call@2x.png in Resources */,
@@ -2040,8 +2404,11 @@
 				674D0FE51B7DB4CD00B5B80D /* ZSScenterjustify.png in Resources */,
 				674D10271B7DB4CD00B5B80D /* ZSSviewsource.png in Resources */,
 				674D0E921B7D920E00B5B80D /* audio_message@2x.png in Resources */,
+				CEE93A181BF4490100B292BA /* buzzr_navi.png in Resources */,
 				674D0E8F1B7D920E00B5B80D /* Grey@2x.png in Resources */,
 				674D104E1B7DC41100B5B80D /* logo.png in Resources */,
+				CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */,
+				CEFD195E1C04125900A79158 /* DistanceTitle.xib in Resources */,
 				674D0FFD1B7DB4CD00B5B80D /* ZSSinsertkeyword.png in Resources */,
 				674D0E891B7D920E00B5B80D /* Payment_button_yes_I_want_it@2x.png in Resources */,
 				674D100F1B7DB4CD00B5B80D /* ZSSquicklink.png in Resources */,
@@ -2054,7 +2421,9 @@
 				674D0E771B7D920E00B5B80D /* hive.png in Resources */,
 				674D0E791B7D920E00B5B80D /* hive_icon@2x-old2.png in Resources */,
 				674D0E651B7D920E00B5B80D /* CP_icon@2x.png in Resources */,
+				CEF4640F1BF9CB2B00010D21 /* UrgentSectionTitle.xib in Resources */,
 				674D0E5C1B7D920E00B5B80D /* button_signup.png in Resources */,
+				CEE93A1A1BF4490100B292BA /* buzzr_postrequest_btn.png in Resources */,
 				674D10001B7DB4CD00B5B80D /* ZSSitalic@2x.png in Resources */,
 				674D0E511B7D920E00B5B80D /* button_call_header@2x.png in Resources */,
 				674D10091B7DB4CD00B5B80D /* ZSSoutdent.png in Resources */,
@@ -2062,6 +2431,7 @@
 				674D0DEA1B7D91FC00B5B80D /* icon_add@2x.png in Resources */,
 				674D0E7A1B7D920E00B5B80D /* hive_icon@2x.png in Resources */,
 				674D100B1B7DB4CD00B5B80D /* ZSSparagraph.png in Resources */,
+				CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */,
 				674D10101B7DB4CD00B5B80D /* ZSSquicklink@2x.png in Resources */,
 				674D0E911B7D920E00B5B80D /* skill_reviews@2x.png in Resources */,
 				674D0FE91B7DB4CD00B5B80D /* ZSSforcejustify.png in Resources */,
@@ -2069,6 +2439,7 @@
 				51788CAE1BBD14FE00A96AD7 /* like_filled.png in Resources */,
 				5186FE4A1BD5EA08002A51CA /* buyerspost_job_time.png in Resources */,
 				674D0E701B7D920E00B5B80D /* Default_profile_header@2x.png in Resources */,
+				CEE93A1F1BF4490100B292BA /* buzzr_requestsuccess.png in Resources */,
 				674D0FE21B7DB4CD00B5B80D /* ZSSbgcolor@2x.png in Resources */,
 				674D0DEF1B7D91FC00B5B80D /* Tab_Chat@2x.png in Resources */,
 				674D10161B7DB4CD00B5B80D /* ZSSstrikethrough@2x.png in Resources */,
@@ -2081,12 +2452,15 @@
 				517C62C11BDDDAA600904FCB /* profile_yellow_bg.png in Resources */,
 				51851C9E1BB251CE007CFBC2 /* skillpg-call.png in Resources */,
 				674D0E871B7D920E00B5B80D /* Payment_button_maybe_later@2x.png in Resources */,
+				CEE93A1E1BF4490100B292BA /* buzzr_requestform_photo.png in Resources */,
 				674D0FFB1B7DB4CD00B5B80D /* ZSSindent.png in Resources */,
 				674D100C1B7DB4CD00B5B80D /* ZSSparagraph@2x.png in Resources */,
 				674D0E8B1B7D920E00B5B80D /* Payment_note@2x.png in Resources */,
 				674D10631B7DCB6B00B5B80D /* OpenSans-LightItalic.ttf in Resources */,
 				674D0FF71B7DB4CD00B5B80D /* ZSShorizontalrule.png in Resources */,
 				674D0E561B7D920E00B5B80D /* button_createAccount@2x.png in Resources */,
+				CEE93A1D1BF4490100B292BA /* buzzr_requestform_bee.png in Resources */,
+				CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */,
 				674D105F1B7DCB6B00B5B80D /* OpenSans-ExtraBold.ttf in Resources */,
 				674D0DF81B7D91FC00B5B80D /* Tab_Profile@2x.png in Resources */,
 				674D106A1B7DCB8900B5B80D /* bgothl.ttf in Resources */,
@@ -2099,6 +2473,7 @@
 				674D0E5B1B7D920E00B5B80D /* button_SH_login@2x.png in Resources */,
 				51AC3C5D1BA6ABA8004DA21C /* slide-0820-02.png in Resources */,
 				674D0E671B7D920E00B5B80D /* CP_main_button@2x.png in Resources */,
+				CEE93A211BF4490100B292BA /* buzzr_top.png in Resources */,
 				674D0FF61B7DB4CD00B5B80D /* ZSSh6@2x.png in Resources */,
 				674D10041B7DB4CD00B5B80D /* ZSSleftjustify@2x.png in Resources */,
 				674D0E501B7D920E00B5B80D /* button_Call@2x.png in Resources */,
@@ -2109,6 +2484,7 @@
 				674D0E8C1B7D920E00B5B80D /* Payment_Subscription@2x.png in Resources */,
 				674D0E801B7D920E00B5B80D /* Home_Header4@2x-3.png in Resources */,
 				674D0E7D1B7D920E00B5B80D /* Home_button_start_selling@2x.png in Resources */,
+				CEE93A161BF4490100B292BA /* buzzr_home_btn.png in Resources */,
 				674D0E7F1B7D920E00B5B80D /* Home_Header4@2x-2.png in Resources */,
 				674D10071B7DB4CD00B5B80D /* ZSSorderedlist.png in Resources */,
 				674D0F4F1B7D9A5200B5B80D /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
@@ -2174,6 +2550,8 @@
 				674D0F441B7D9A5200B5B80D /* JSQLocationMediaItem.m in Sources */,
 				517C8F7E1BF9C2E80020CBE6 /* SellingViewController.m in Sources */,
 				674D0F3A1B7D9A5200B5B80D /* JSQMessagesViewController.m in Sources */,
+				CEF464151BF9CBB800010D21 /* UrgentSectionTitle.m in Sources */,
+				CEF7BA951BFAC64C009624CC /* UrgentRequestViewController.m in Sources */,
 				674D0F361B7D9A5200B5B80D /* UIDevice+JSQMessages.m in Sources */,
 				676F77E31B96F3060084988A /* UIImage+CropRotate.m in Sources */,
 				674D102A1B7DB4CD00B5B80D /* CYRTextStorage.m in Sources */,
@@ -2181,8 +2559,12 @@
 				674D102C1B7DB4CD00B5B80D /* CYRToken.m in Sources */,
 				674D0F4B1B7D9A5200B5B80D /* JSQMessagesCellTextView.m in Sources */,
 				674D0F4A1B7D9A5200B5B80D /* JSQVideoMediaItem.m in Sources */,
+				CE1375D01C084FAA00201989 /* PaymentSuccessfulViewController.m in Sources */,
+				CEF464181BF9CBD500010D21 /* MyRequestSectionTitle.m in Sources */,
 				674D0ECE1B7D9A2400B5B80D /* PushNotificationDataInterface.m in Sources */,
 				676A15121B8450BC00BB224B /* UserInfoEditorViewController2.m in Sources */,
+				CEF4641C1BF9D1A700010D21 /* Helper.m in Sources */,
+				CEF7E59B1BF58CB100488C2A /* UrgentRequestCell.m in Sources */,
 				674D0EC01B7D98CA00B5B80D /* UserSkillViewController2.m in Sources */,
 				516A614E1BC7A47900D4E890 /* PostCommViewController.m in Sources */,
 				674D10471B7DB4FB00B5B80D /* GKImageCropViewController.m in Sources */,
@@ -2190,7 +2572,9 @@
 				516A614B1BC7617400D4E890 /* SellerCommTableViewController.m in Sources */,
 				674D10481B7DB4FB00B5B80D /* GKImagePicker.m in Sources */,
 				674D0F671B7D9B0900B5B80D /* Document.m in Sources */,
+				CE7AA1771C0804BF00875DE5 /* PostRequestManager.m in Sources */,
 				674D0F541B7D9A5200B5B80D /* JSQMessagesLabel.m in Sources */,
+				CEF464011BF9B2A800010D21 /* Section.m in Sources */,
 				674D10451B7DB4FB00B5B80D /* GKImageCropOverlayView.m in Sources */,
 				676BE94D1B93F72C003168F4 /* LogoutViewController.m in Sources */,
 				674D0F391B7D9A5200B5B80D /* JSQMessagesKeyboardController.m in Sources */,
@@ -2205,14 +2589,17 @@
 				674D10361B7DB4CD00B5B80D /* ZSSTextView.m in Sources */,
 				674D0DA11B7D913400B5B80D /* SecondViewController.m in Sources */,
 				5179314C1BAFDC9D0019BB49 /* Buyer.m in Sources */,
+				CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */,
 				67361F2D1B82D0CB00C1374D /* UserAgreementViewController.m in Sources */,
 				674D0F381B7D9A5200B5B80D /* UIView+JSQMessages.m in Sources */,
 				676F77E21B96F3060084988A /* TOCropViewControllerTransitioning.m in Sources */,
 				51694D6B1BABE9C4007722F1 /* SkillVideoPlayer.m in Sources */,
 				5181ED161BF58D6600804C29 /* MyProfileViewController.m in Sources */,
 				674D0F5D1B7D9A5200B5B80D /* JSQSystemSoundPlayer.m in Sources */,
+				CEF464071BF9BA8600010D21 /* RequestCell.m in Sources */,
 				517D55321BDA4448000EA8FD /* UserProfileViewController.m in Sources */,
 				676F77EB1B96F3270084988A /* CropPhotoViewController.m in Sources */,
+				CEF7BA9C1BFAD2D6009624CC /* TitleViewController.m in Sources */,
 				674D0F6D1B7D9B6F00B5B80D /* WebDataInterface.m in Sources */,
 				674D0EBF1B7D98CA00B5B80D /* UserSkillViewController1.m in Sources */,
 				674D10301B7DB4CD00B5B80D /* HRColorPickerView.m in Sources */,
@@ -2230,6 +2617,7 @@
 				674D0F5A1B7D9A5200B5B80D /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				674D0F481B7D9A5200B5B80D /* JSQMessagesBubbleImage.m in Sources */,
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
+				CEFD19581C040F3D00A79158 /* SearchResultCell.m in Sources */,
 				674D0F341B7D9A5200B5B80D /* NSString+JSQMessages.m in Sources */,
 				674D0F771B7D9F2200B5B80D /* HtmlEditor.m in Sources */,
 				674D0EC11B7D98CA00B5B80D /* UserSkillViewController3.m in Sources */,
@@ -2237,6 +2625,7 @@
 				517931491BAFBD750019BB49 /* BuyerCollectionViewController.m in Sources */,
 				674D0F3F1B7D9A5200B5B80D /* JSQMessagesTimestampFormatter.m in Sources */,
 				674D10491B7DB4FB00B5B80D /* GKResizeableCropOverlayView.m in Sources */,
+				CEF4640A1BF9C41200010D21 /* UrgentRequest.m in Sources */,
 				674D0F601B7D9A9A00B5B80D /* ViewControllerUtil.m in Sources */,
 				674D0F3D1B7D9A5200B5B80D /* JSQMessagesBubbleImageFactory.m in Sources */,
 				674D0F531B7D9A5200B5B80D /* JSQMessagesInputToolbar.m in Sources */,
@@ -2250,34 +2639,49 @@
 				51896EAE1BCDFE5D006643AE /* SellerRevViewController.m in Sources */,
 				674D0F421B7D9A5200B5B80D /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				674D0D9E1B7D913400B5B80D /* FirstViewController.m in Sources */,
+				CEFD195C1C04123800A79158 /* DistanceTitle.m in Sources */,
 				674D0F461B7D9A5200B5B80D /* JSQMessage.m in Sources */,
+				CEE93A261BF47C2600B292BA /* CrossPollinateViewController.m in Sources */,
+				CEE93A2A1BF4852800B292BA /* Request.m in Sources */,
 				674D0F4D1B7D9A5200B5B80D /* JSQMessagesCollectionViewCell.m in Sources */,
 				674D104C1B7DB79A00B5B80D /* HomeViewController.m in Sources */,
 				674D10311B7DB4CD00B5B80D /* HRColorPickerViewController.m in Sources */,
 				676600E51BA1325A003A84D8 /* ResetPassViewController.m in Sources */,
+				CEF7BAAB1BFB2704009624CC /* RequestPostTableViewController.m in Sources */,
 				674D0D981B7D913400B5B80D /* main.m in Sources */,
 				676F77E81B96F3060084988A /* TOCropView.m in Sources */,
 				674D10331B7DB4CD00B5B80D /* ZSSBarButtonItem.m in Sources */,
 				676F77E71B96F3060084988A /* TOCropToolbar.m in Sources */,
 				5179314F1BB01A290019BB49 /* BuyerPageViewController.m in Sources */,
+				CEFD19501C04045800A79158 /* SkillInfo.m in Sources */,
 				674D10461B7DB4FB00B5B80D /* GKImageCropView.m in Sources */,
 				676ED4581B85CEAB00696985 /* UserVerificationViewController.m in Sources */,
 				674D0F4C1B7D9A5200B5B80D /* JSQMessagesCollectionView.m in Sources */,
+				CEF7BAA71BFB0FAD009624CC /* AttachmentViewController.m in Sources */,
 				674D10291B7DB4CD00B5B80D /* CYRLayoutManager.m in Sources */,
 				674D0F741B7D9ED800B5B80D /* EntryViewController.m in Sources */,
 				517325621C02B3B7004655D6 /* SellingViewController2.m in Sources */,
 				676F77EE1B96F5600084988A /* UserInfoEditorViewController.m in Sources */,
 				674D0EC81B7D999200B5B80D /* LocalDataInterface.m in Sources */,
+				CE0461C21C058E3A00254EBB /* PrepareRequestViewController.m in Sources */,
+				CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */,
 				676F77E11B96F3060084988A /* TOCroppedImageAttributes.m in Sources */,
+				CEF464041BF9B50300010D21 /* MyRequestCell.m in Sources */,
+				CEF7BAA21BFADD6E009624CC /* RNActivityView.m in Sources */,
 				674D102E1B7DB4CD00B5B80D /* HRCgUtil.m in Sources */,
+				CEF7BAA31BFADD6E009624CC /* UIView+RNActivityView.m in Sources */,
+				CEF4640D1BF9C42100010D21 /* MyRequest.m in Sources */,
 				516C51621C0410B8002710AA /* SellingViewController3.m in Sources */,
 				674D0F571B7D9A5200B5B80D /* JSQMessagesMediaPlaceholderView.m in Sources */,
 				51700A921BD4C93500294DAD /* BuyerPostViewController.m in Sources */,
 				676F77E01B96F3060084988A /* TOActivityCroppedImageProvider.m in Sources */,
 				674D0F351B7D9A5200B5B80D /* UIColor+JSQMessages.m in Sources */,
 				674D10351B7DB4CD00B5B80D /* ZSSRichTextEditor.m in Sources */,
+				CEF7BA991BFAC66E009624CC /* MyRequestViewController.m in Sources */,
 				674D0F3C1B7D9A5200B5B80D /* JSQMessagesAvatarImageFactory.m in Sources */,
 				517D552F1BDA0301000EA8FD /* ReportAbuseViewController.m in Sources */,
+				CEFD194F1C04045800A79158 /* DistanceSkill.m in Sources */,
+				CEFD19551C0409BC00A79158 /* SearchResultTableViewController.m in Sources */,
 				674D0F6A1B7D9B3100B5B80D /* Skill.m in Sources */,
 				674D0F331B7D9A5200B5B80D /* NSBundle+JSQMessages.m in Sources */,
 			);
@@ -2428,6 +2832,7 @@
 			baseConfigurationReference = 42735513B3CB550D88CCB8A7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/queeboon/Downloads/FacebookSDKs-iOS-20150813",
@@ -2445,6 +2850,7 @@
 			baseConfigurationReference = 5BD589799144B88408CD0618 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/queeboon/Downloads/FacebookSDKs-iOS-20150813",
