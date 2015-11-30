@@ -223,6 +223,14 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
++ (void)insertUrgentRequest:(NSString *)stkid title:(NSString *)title desc:(NSString *)desc completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_TITLE:title,
+                             POST_PARAMETER_DESC:desc};
+    
+    [self requestData:DATA_URL_INSERT_URGENT_REQUEST withParameters:params completion:completion];
+}
 
 //+ (void)saveStikyBee:(NSString *)email password:(NSString *)password firstname:(NSString *)firstname lastname:(NSString *)lastname dob:(NSString *)dob address:(NSString *)address country:(NSString *)countryISO postalcode:(NSString *)postalcode skillname:(NSString *)skillname1 skillid1:(NSInteger)skillid1 skilltype1:(NSInteger)skilltype1 talentname:(NSString *)talentname1 talentid:(NSInteger)talentid1 talenttype:(NSInteger)talenttype1 completion:(void (^)(NSObject *, NSError *))completion
 //{

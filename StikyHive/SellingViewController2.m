@@ -9,6 +9,7 @@
 #import "SellingViewController2.h"
 #import "ViewControllerUtil.h"
 #import "SellingViewController3.h"
+#import "SellingViewController33.h"
 
 @interface SellingViewController2 ()
 
@@ -232,8 +233,13 @@ static NSMutableDictionary *Skill_Info;
 - (IBAction)nextButton:(id)sender
 {
     
+//    UIImage *img = _videoImageView.image;
+//    UIViewController *vc = [SellingViewController3 instantiateForInfo:Skill_Info videoThumb:img andVideodata:_videoData];
+//    
+//    [self.navigationController pushViewController:vc animated:YES];
+    
     UIImage *img = _videoImageView.image;
-    UIViewController *vc = [SellingViewController3 instantiateForInfo:Skill_Info videoThumb:img andVideodata:_videoData];
+    UIViewController *vc = [SellingViewController33 instantiateForInfo:Skill_Info videoThumb:img andVideodata:_videoData];
     
     [self.navigationController pushViewController:vc animated:YES];
     
