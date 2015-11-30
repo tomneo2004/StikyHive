@@ -7,6 +7,10 @@
 //
 
 #import "PaymentSummaryViewController.h"
+#import "WebDataInterface.h"
+#import "LocalDataInterface.h"
+#import "PostRequestManager.h"
+#import "UIView+RNActivityView.h"
 
 @interface PaymentSummaryViewController ()
 
@@ -88,8 +92,6 @@
 - (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController didCompletePayment:(PayPalPayment *)completedPayment {
 
     [self uploadDataToServer];
-    
-    
 }
 
 - (void)payPalPaymentDidCancel:(PayPalPaymentViewController *)paymentViewController {
@@ -100,14 +102,42 @@
 #pragma mark - internal
 - (void)uploadDataToServer{
     
-    // Dismiss the PayPalPaymentViewController.
-    [self dismissViewControllerAnimated:YES completion:^{
+    PostRequestManager *mgr = [PostRequestManager sharedPostRequestManager];
     
-        PaymentSuccessfulViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentSuccessfulViewController"];
-        controller.delegate = self;
+    [self.view showActivityViewWithLabel:@"Uploading..." detailLabel:@"Uploading your request"];
+    //upload urgent request to server
+    [WebDataInterface insertUrgentRequest:[LocalDataInterface retrieveStkid] title:mgr.title desc:mgr.postDesc completion:^(NSObject *obj, NSError *error){
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self.navigationController presentViewController:controller animated:YES completion:nil];
+            if(error != nil){
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to upload data to server" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                
+                [alert show];
+                
+                [self.view hideActivityView];
+                
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                
+                return ;
+            }
+            
+            [self.view hideActivityView];
+            
+            // Dismiss the PayPalPaymentViewController.
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+                //push payment successful controller
+                PaymentSuccessfulViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PaymentSuccessfulViewController"];
+                controller.delegate = self;
+                
+                [self.navigationController presentViewController:controller animated:YES completion:nil];
+            }];
+        });
     }];
+    
+    
 }
 
 #pragma mark - PaymentSuccessful delegate

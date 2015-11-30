@@ -38,6 +38,9 @@
 
 @interface UrgentRequestCell : RequestCell
 
+/**
+ * YES to mark this cell is user's request, otherwise NO
+ */
 @property (setter=setIsMyRequest:, nonatomic) BOOL isMyRequest;
 
 @end

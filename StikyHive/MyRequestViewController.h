@@ -10,6 +10,9 @@
 #import "MyRequestCell.h"
 #import "TitleViewController.h"
 
+/**
+ * MyRequestViewController manage to display all my request
+ */
 @interface MyRequestViewController : TitleViewController<UITableViewDataSource, UITableViewDelegate, MyRequestCellDelegate>
 
 @end

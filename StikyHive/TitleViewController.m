@@ -21,6 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //deal with back button title
     if(_backButtonTitle.length > 0 && self.navigationController != nil){
         
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
@@ -29,6 +30,7 @@
     }
     
     
+    //deal controller's title
     if(_viewControllerTitle.length > 0 && self.navigationController != nil){
         
         [self setTitle:_viewControllerTitle];

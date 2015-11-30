@@ -38,6 +38,7 @@
     
     [super viewWillAppear:animated];
     
+    //start pulling data from server
     [self pullData];
 }
 

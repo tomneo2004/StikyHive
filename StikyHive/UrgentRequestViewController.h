@@ -10,6 +10,9 @@
 #import "UrgentRequestCell.h"
 #import "TitleViewController.h"
 
+/**
+ * UrgentRequestViewController manage to display all rugent request
+ */
 @interface UrgentRequestViewController : TitleViewController<UITableViewDataSource, UITableViewDelegate, UrgentRequestCellDelegate>
 
 @end

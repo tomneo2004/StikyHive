@@ -10,6 +10,9 @@
 
 @interface UrgentRequest : Request
 
+/**
+ * Return a UrgentRequest
+ */
 + (UrgentRequest *)createUrgentRequestFromDictionary:(NSDictionary *)dic;
 
 @end

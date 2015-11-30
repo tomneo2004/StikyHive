@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TitleViewController.h"
 
+/**
+ * AttachmentViewController manage to display a photo attachment in request
+ */
 @interface AttachmentViewController : TitleViewController
 
 /**

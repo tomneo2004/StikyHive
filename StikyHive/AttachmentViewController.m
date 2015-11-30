@@ -30,13 +30,14 @@
     
     [super viewWillAppear:animated];
     
+    //if no url then set a default photo
     if(_attachmentPhotoURL == nil || [_attachmentPhotoURL isEqual:[NSNull null]]){
         
         [_attachmentImageView setImage:[UIImage imageNamed:@"Default_buyer_post"]];
         return;
     }
     
-    
+    //download photo
     if(_attachmentPhotoURL.length > 0){
         
         NSURL *photoURL = [NSURL URLWithString:[WebDataInterface getFullUrlPath:_attachmentPhotoURL]];

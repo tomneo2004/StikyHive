@@ -10,6 +10,9 @@
 
 @interface MyRequest : Request
 
+/**
+ * Return a MyRequest
+ */
 + (MyRequest *)createMyRequestFromDictionary:(NSDictionary *)dic;
 
 @end
