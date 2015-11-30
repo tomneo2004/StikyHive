@@ -33,6 +33,12 @@
 		517931491BAFBD750019BB49 /* BuyerCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517931481BAFBD750019BB49 /* BuyerCollectionViewController.m */; };
 		5179314C1BAFDC9D0019BB49 /* Buyer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179314B1BAFDC9D0019BB49 /* Buyer.m */; };
 		5179314F1BB01A290019BB49 /* BuyerPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179314E1BB01A290019BB49 /* BuyerPageViewController.m */; };
+		517A1C5E1C0C2382004017E4 /* subplan.png in Resources */ = {isa = PBXBuildFile; fileRef = 517A1C591C0C2382004017E4 /* subplan.png */; };
+		517A1C5F1C0C2382004017E4 /* subplan1.png in Resources */ = {isa = PBXBuildFile; fileRef = 517A1C5A1C0C2382004017E4 /* subplan1.png */; };
+		517A1C601C0C2382004017E4 /* subplan2.png in Resources */ = {isa = PBXBuildFile; fileRef = 517A1C5B1C0C2382004017E4 /* subplan2.png */; };
+		517A1C611C0C2382004017E4 /* subplan3.png in Resources */ = {isa = PBXBuildFile; fileRef = 517A1C5C1C0C2382004017E4 /* subplan3.png */; };
+		517A1C621C0C2382004017E4 /* subplan4.png in Resources */ = {isa = PBXBuildFile; fileRef = 517A1C5D1C0C2382004017E4 /* subplan4.png */; };
+		517A1C651C0C2B72004017E4 /* SellingViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = 517A1C641C0C2B72004017E4 /* SellingViewController4.m */; };
 		517B6E901BD73D5C00561063 /* share-email.png in Resources */ = {isa = PBXBuildFile; fileRef = 517B6E8C1BD73D5C00561063 /* share-email.png */; };
 		517B6E911BD73D5C00561063 /* share-facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 517B6E8D1BD73D5C00561063 /* share-facebook.png */; };
 		517B6E921BD73D5C00561063 /* share-google.png in Resources */ = {isa = PBXBuildFile; fileRef = 517B6E8E1BD73D5C00561063 /* share-google.png */; };
@@ -422,6 +428,13 @@
 		5179314B1BAFDC9D0019BB49 /* Buyer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Buyer.m; sourceTree = "<group>"; };
 		5179314D1BB01A290019BB49 /* BuyerPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerPageViewController.h; sourceTree = "<group>"; };
 		5179314E1BB01A290019BB49 /* BuyerPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerPageViewController.m; sourceTree = "<group>"; };
+		517A1C591C0C2382004017E4 /* subplan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subplan.png; sourceTree = "<group>"; };
+		517A1C5A1C0C2382004017E4 /* subplan1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subplan1.png; sourceTree = "<group>"; };
+		517A1C5B1C0C2382004017E4 /* subplan2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subplan2.png; sourceTree = "<group>"; };
+		517A1C5C1C0C2382004017E4 /* subplan3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subplan3.png; sourceTree = "<group>"; };
+		517A1C5D1C0C2382004017E4 /* subplan4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subplan4.png; sourceTree = "<group>"; };
+		517A1C631C0C2B72004017E4 /* SellingViewController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingViewController4.h; sourceTree = "<group>"; };
+		517A1C641C0C2B72004017E4 /* SellingViewController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingViewController4.m; sourceTree = "<group>"; };
 		517B6E8C1BD73D5C00561063 /* share-email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-email.png"; sourceTree = "<group>"; };
 		517B6E8D1BD73D5C00561063 /* share-facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-facebook.png"; sourceTree = "<group>"; };
 		517B6E8E1BD73D5C00561063 /* share-google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-google.png"; sourceTree = "<group>"; };
@@ -932,6 +945,11 @@
 		67361F301B830DD500C1374D /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				517A1C591C0C2382004017E4 /* subplan.png */,
+				517A1C5A1C0C2382004017E4 /* subplan1.png */,
+				517A1C5B1C0C2382004017E4 /* subplan2.png */,
+				517A1C5C1C0C2382004017E4 /* subplan3.png */,
+				517A1C5D1C0C2382004017E4 /* subplan4.png */,
 				516C51631C042299002710AA /* sell_upload_photo.png */,
 				5173255E1C02B25E004655D6 /* sell_upload_video.png */,
 				517C578B1BF2FF3C00469AA4 /* tick.png */,
@@ -1291,6 +1309,8 @@
 				516C51611C0410B8002710AA /* SellingViewController3.m */,
 				5184DD4F1C08639A008F434B /* SellingViewController33.h */,
 				5184DD501C08639A008F434B /* SellingViewController33.m */,
+				517A1C631C0C2B72004017E4 /* SellingViewController4.h */,
+				517A1C641C0C2B72004017E4 /* SellingViewController4.m */,
 			);
 			name = Skill;
 			sourceTree = "<group>";
@@ -1887,6 +1907,7 @@
 				674D0DF01B7D91FC00B5B80D /* Tab_Contacts@2x.png in Resources */,
 				674D0DEC1B7D91FC00B5B80D /* icon_play@2x.png in Resources */,
 				674D0E521B7D920E00B5B80D /* button_Call_Plus@2x.png in Resources */,
+				517A1C621C0C2382004017E4 /* subplan4.png in Resources */,
 				674D0DFA1B7D91FC00B5B80D /* Tab_TransactionHistory@2x.png in Resources */,
 				517C62C91BDE07DE00904FCB /* profile_chat.png in Resources */,
 				674D0E901B7D920E00B5B80D /* Yellow@2x.png in Resources */,
@@ -1950,6 +1971,7 @@
 				674D10201B7DB4CD00B5B80D /* ZSSunderline@2x.png in Resources */,
 				674D0E861B7D920E00B5B80D /* Payment_button_ApplyPromo@2x.png in Resources */,
 				67361F341B830F6300C1374D /* add_profile.png in Resources */,
+				517A1C5F1C0C2382004017E4 /* subplan1.png in Resources */,
 				674D0E531B7D920E00B5B80D /* button_Chat.png in Resources */,
 				674D0E851B7D920E00B5B80D /* launch_image.jpg in Resources */,
 				674D0E731B7D920E00B5B80D /* Default_skill_photo@2x.png in Resources */,
@@ -1982,6 +2004,7 @@
 				674D0E581B7D920E00B5B80D /* button_FileSharing.png in Resources */,
 				674D0E6E1B7D920E00B5B80D /* Add_skill_video@2x.png in Resources */,
 				674D0F311B7D9A5200B5B80D /* JSQMessagesAssets.bundle in Resources */,
+				517A1C601C0C2382004017E4 /* subplan2.png in Resources */,
 				676F77DF1B96F3060084988A /* TOCropViewControllerLocalizable.strings in Resources */,
 				516A61141BB51598008579B6 /* bookmark.png in Resources */,
 				674D0FE61B7DB4CD00B5B80D /* ZSScenterjustify@2x.png in Resources */,
@@ -1998,6 +2021,7 @@
 				674D0FF01B7DB4CD00B5B80D /* ZSSh3@2x.png in Resources */,
 				516C51641C042299002710AA /* sell_upload_photo.png in Resources */,
 				674D0E551B7D920E00B5B80D /* button_Contact.png in Resources */,
+				517A1C5E1C0C2382004017E4 /* subplan.png in Resources */,
 				5186FE451BD5D691002A51CA /* buyerspost_open.png in Resources */,
 				674D0FFF1B7DB4CD00B5B80D /* ZSSitalic.png in Resources */,
 				674D0E761B7D920E00B5B80D /* entry_screen@2x.jpg in Resources */,
@@ -2070,6 +2094,7 @@
 				674D0FFC1B7DB4CD00B5B80D /* ZSSindent@2x.png in Resources */,
 				674D0DEB1B7D91FC00B5B80D /* icon_edit@2x.png in Resources */,
 				674D10661B7DCB6B00B5B80D /* OpenSans-SemiboldItalic.ttf in Resources */,
+				517A1C611C0C2382004017E4 /* subplan3.png in Resources */,
 				674D101A1B7DB4CD00B5B80D /* ZSSsuperscript@2x.png in Resources */,
 				674D0E5B1B7D920E00B5B80D /* button_SH_login@2x.png in Resources */,
 				51AC3C5D1BA6ABA8004DA21C /* slide-0820-02.png in Resources */,
@@ -2219,6 +2244,7 @@
 				516BC8691BB13FBE008BE2ED /* PhotoViewController.m in Sources */,
 				674D0F431B7D9A5200B5B80D /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
 				51694D6E1BAC27BC007722F1 /* SelectableImageView.m in Sources */,
+				517A1C651C0C2B72004017E4 /* SellingViewController4.m in Sources */,
 				674D0F581B7D9A5200B5B80D /* JSQMessagesToolbarContentView.m in Sources */,
 				674D0F451B7D9A5200B5B80D /* JSQMediaItem.m in Sources */,
 				51896EAE1BCDFE5D006643AE /* SellerRevViewController.m in Sources */,

@@ -94,8 +94,8 @@ static NSData *Video_Data;
     
     
     
-    
-    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_4"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
