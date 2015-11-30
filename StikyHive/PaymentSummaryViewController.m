@@ -29,6 +29,8 @@
     
     [super viewWillAppear:animated];
     
+    [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentSandbox];
+/*
 #ifdef DEBUG
     
     [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentSandbox];
@@ -38,7 +40,7 @@
     [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentProduction];
     
 #endif
-
+*/
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,6 +107,7 @@
     PostRequestManager *mgr = [PostRequestManager sharedPostRequestManager];
     
     [self.view showActivityViewWithLabel:@"Uploading..." detailLabel:@"Uploading your request"];
+    
     //upload urgent request to server
     [WebDataInterface insertUrgentRequest:[LocalDataInterface retrieveStkid] title:mgr.title desc:mgr.postDesc completion:^(NSObject *obj, NSError *error){
     
@@ -123,6 +126,14 @@
                 return ;
             }
             
+            NSDictionary *dic = [(NSDictionary *)obj objectForKey:@"result"];
+            
+            //upload photo to server
+            [WebDataInterface fileRequestUpload:mgr.attachmentImage stikyid:[LocalDataInterface retrieveStkid] cpid:[[dic objectForKey:@"cpId"] integerValue]];
+            
+            
+            
+            //hide activity
             [self.view hideActivityView];
             
             // Dismiss the PayPalPaymentViewController.
