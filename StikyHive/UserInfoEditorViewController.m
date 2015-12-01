@@ -67,7 +67,7 @@ UIPickerView *countryPickerView;
 //    NSArray *countries = [LocalDataInterface retrieveAllCountry];
     /////////////////
     
-    NSInteger *status = 1;
+    NSInteger status = 1;
     [WebDataInterface getCountry:status completion:^(NSObject *obj,NSError *err)
      {
          NSDictionary *contry = (NSDictionary *)obj;
@@ -121,7 +121,7 @@ UIPickerView *countryPickerView;
     
     //    [self showImagePickerForImageView:_profileImageView];
     
-    [self showCropViewControllerWithOptions:_profileImageView];
+    [self showCropViewControllerWithOptions:_profileImageView andType:1];
 }
 
 

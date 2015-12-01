@@ -34,6 +34,13 @@
 @property (nonatomic, copy) NSString *skillThumbLocation;
 @property (nonatomic, copy) NSString *profileLocation;
 
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, assign) NSInteger categoryId;
+@property (nonatomic, assign) float price;
+@property (nonatomic, assign) NSInteger rateId;
+@property (nonatomic, copy) NSString *summary;
+@property (nonatomic, copy) NSString *desc;
+
 /////
 
 // skillType set after init
@@ -56,6 +63,13 @@
     skillThumbLocation:(NSString *)skillThumbLocation
        profileLocation:(NSString *)profileLocation
     skillVideoLocation:(NSString *)skillVideoLocation;
+
+//- (id) initWithSeller:(NSString *)name
+//           categoryId:(NSInteger)categoryId
+//                price:(float)price
+//               rateId:(NSInteger)rateId
+//              summary:(NSString *)summary
+//                 desc:(NSString *)desc;
 
 
 @end

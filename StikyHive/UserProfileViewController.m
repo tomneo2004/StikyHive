@@ -25,7 +25,8 @@
 @property (nonatomic, strong) UIButton *activityBtn;
 @property (nonatomic, strong) UIButton *postBtn;
 @property (nonatomic, strong) NSDictionary *buyerMarket;
-
+@property (nonatomic, strong) NSArray *savedDocuArray;;
+@property (nonatomic, strong) NSMutableArray *locationDocu;
 
 
 @end
@@ -38,13 +39,6 @@
     _stkId = stkid;
 }
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    
-//    [super viewWillAppear:animated];
-//    self.tabBarController.tabBar.hidden = YES;
-//    
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -59,6 +53,7 @@
     NSString *stkid = [LocalDataInterface retrieveStkid];
     NSLog(@"my stk id ----- %@",stkid);
     
+    
     NSLog(@"stkid ---- %@",_stkId);
     
     [WebDataInterface getStikyBeeInfo:_stkId completion:^(NSObject *obj, NSError *err) {
@@ -67,27 +62,35 @@
             
             [WebDataInterface getBuyerMarketByStkid:_stkId limit:0 completion:^(NSObject *obj3, NSError *err3) {
                 
-                
-                _beeInfoDic = (NSDictionary *)obj;
-                NSLog(@"stiky bee info -------- %@",_beeInfoDic);
-                
-                NSDictionary *seeAll = (NSDictionary *)obj2;
-                _seeAllArray = seeAll[@"result"];
-                NSLog(@"see all  --------------- %@",_seeAllArray);
-                
-                _buyerMarket = (NSDictionary *)obj3;
-                _buyerMarketArray = _buyerMarket[@"buyermarkets"];
-                NSLog(@"buyer market ----- %@",_buyerMarket);
-                
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
+                [WebDataInterface getSavedDocument:stkid completion:^(NSObject *obj4, NSError *err4) {
                     
                     
+                        _beeInfoDic = (NSDictionary *)obj;
+                        NSLog(@"stiky bee info -------- %@",_beeInfoDic);
+                
+                        NSDictionary *seeAll = (NSDictionary *)obj2;
+                        _seeAllArray = seeAll[@"result"];
+//                      NSLog(@"see all  --------------- %@",_seeAllArray);
+                
+                        _buyerMarket = (NSDictionary *)obj3;
+                        _buyerMarketArray = _buyerMarket[@"buyermarkets"];
+//                      NSLog(@"buyer market ----- %@",_buyerMarket);
                     
-                     [self displayPage];
                     
+                        NSDictionary *dict = (NSDictionary *)obj4;
+                        _savedDocuArray = dict[@"documents"];
                     
-                });
+                        NSLog(@"get saved document --- %@",_savedDocuArray);
+                    
+                
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                        
+                            [self displayPage];
+                    
+                    });
+                    
+                }];
             }];
         }];
     }];
@@ -347,7 +350,6 @@
     
     [self skillTab:_seeAllArray isSkill:YES];
     
-
     
     [_contentScrollView addSubview:_tabView];
 
@@ -371,7 +373,7 @@
     
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     
-    if (seeAllArray != (id)[NSNull null])
+    if (seeAllArray.count > 0)
     {
         for (int i = 0; i < seeAllArray.count; i++)
         {
@@ -384,6 +386,7 @@
             UIImageView *picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, skillView.frame.size.width, 180)];
 //        picImageView.image = [ViewControllerUtil getImageWithPath:url];
             picImageView.contentMode = UIViewContentModeScaleAspectFit;
+//            picImageView.backgroundColor = [UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1.0];
             
             
             NSString *price = object[@"price"];
@@ -439,18 +442,18 @@
 
                     NSString *thumUrl = [WebDataInterface getFullUrlPath:thumbLocation];
             
-                    picImageView.image = [ViewControllerUtil getImageWithPath:thumUrl];
-                
-//                  UIImage *image = [ViewControllerUtil getImageWithPath:thumUrl];
-//            
-//                  if (!image)
-//                  {
-//                      image = [UIImage imageNamed:@"Default_skill_photo@2x"];
-//                  }
-//                  else
-//                  {
-//                      picImageView.image = image;
-//                  }
+//                    picImageView.image = [ViewControllerUtil getImageWithPath:thumUrl];
+                    
+                    UIImage *image = [ViewControllerUtil getImageWithPath:thumUrl];
+                    if (image)
+                    {
+                        picImageView.image = image;
+                    }
+                    else
+                    {
+                        picImageView.image = [UIImage imageNamed:@"default_seller_post"];
+                    }
+
             
             
             
@@ -462,11 +465,22 @@
                 else if (location != (id)[NSNull null])
                 {
                     NSString *url = [WebDataInterface getFullUrlPath:location];
-                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+//                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+                    
+                    UIImage *image = [ViewControllerUtil getImageWithPath:url];
+                    if (image)
+                    {
+                        picImageView.image = image;
+                    }
+                    else
+                    {
+                        picImageView.image = [UIImage imageNamed:@"default_seller_post"];
+                    }
+                    
                 }
                 else
                 {
-                    picImageView.image = [UIImage imageNamed:@"Default_skill_photo@2x"];
+                    picImageView.image = [UIImage imageNamed:@"default_seller_post"];
                 }
             
             
@@ -478,7 +492,20 @@
                 if (location != (id)[NSNull null])
                 {
                     NSString *url = [WebDataInterface getFullUrlPath:location];
-                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+//                    picImageView.image = [ViewControllerUtil getImageWithPath:url];
+                    
+                    UIImage *image = [ViewControllerUtil getImageWithPath:url];
+                    
+                    if (image)
+                    {
+                        picImageView.image = image;
+                    }
+                    else
+                    {
+                        picImageView.image = [UIImage imageNamed:@"default_seller_post"];
+                    }
+                    
+                    
                 }
                 else
                 {
@@ -697,10 +724,6 @@
     CGFloat y = 0;
     CGFloat width = self.view.frame.size.width;
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
-
-//    _tabView.backgroundColor = [UIColor yellowColor];
-    
-//    NSArray *jobHistoryArray = _beeInfoDic[@"jobhistory"];
     
     if (jobhistoryArray != (id)[NSNull null])
     {
@@ -856,10 +879,6 @@
         
     }
     
-    
-    
-    
-    
     CGRect tabViewFrame = _tabView.frame;
     tabViewFrame.size.height = y;
     _tabView.frame = tabViewFrame;
@@ -874,6 +893,7 @@
     {
         [view removeFromSuperview];
     }
+    
     
     CGFloat y = 0;
     CGFloat x = 20;
@@ -899,32 +919,50 @@
             UIView *docuView = [[UIView alloc] initWithFrame:CGRectMake(x, y+10, width - 40, 80)];
             docuView.backgroundColor = [UIColor whiteColor];
             
-            
+            NSString *location = objcet[@"location"];
             
             
             
             UIButton *saveBtn= [[UIButton alloc] initWithFrame:CGRectMake(docuView.frame.size.width-40, 10, 30, 30)];
+    
             
-            NSString *typeString = objcet[@"type"];
-            NSInteger type = [typeString integerValue];
-            
-            if (type == 1) {
+            //check document is saved or not
+            if (_savedDocuArray.count > 0)
+            {
+                for (NSDictionary *dictionary in _savedDocuArray)
+                {
+                    
+                    NSString *locationDict = dictionary[@"location"];
+                    
+                    if ([location isEqualToString:locationDict])
+                    {
+                        [saveBtn setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
+                        saveBtn.userInteractionEnabled = NO;
+                        break;
+                        
+                    }
+                    else
+                    {
+                        
+                        [saveBtn setImage:[UIImage imageNamed:@"icon_doc_save"] forState:UIControlStateNormal];
+                        //            [_saveBtn setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateSelected];
+                        [saveBtn addTarget:self action:@selector(saveBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+                        saveBtn.tag = i;
+                        
+                    }
+
+                }
+                
+            }
+            else
+            {
                 [saveBtn setImage:[UIImage imageNamed:@"icon_doc_save"] forState:UIControlStateNormal];
                 //            [_saveBtn setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateSelected];
                 [saveBtn addTarget:self action:@selector(saveBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
                 saveBtn.tag = i;
-                
-                NSLog(@"save button tag --- %ld",(long)saveBtn.tag);
+
 
             }
-            else
-            {
-                [saveBtn setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
-            }
-            
-            
-            
-//            NSLog(@"save button tag --- %ld",(long)saveBtn.tag);
             
             
             UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, docuView.frame.size.width-saveBtn.frame.size.width-15, 20)];
@@ -949,9 +987,7 @@
             NSString *stkid = [LocalDataInterface retrieveStkid];
             if (stkid != _stkId)
             {
-
                 [docuView addSubview:saveBtn];
-  
             }
             
             [docuView addSubview:nameLabel];
@@ -1064,9 +1100,7 @@
     }
     else
     {
-
         [self skillTab:_buyerMarketArray isSkill:NO];
-        
     }
     
 }
@@ -1117,11 +1151,10 @@
     CGPoint labelCenter = label.center;
     labelCenter.x = _tabView.center.x;
     label.center = labelCenter;
-    
-   
     label.text = @"No activity yet!";
     
     [_tabView addSubview:label];
+    
     
     y = 50;
     
@@ -1163,7 +1196,6 @@
     [_documentBtn setTitleColor:greyColor forState:UIControlStateNormal];
     [_activityBtn setTitleColor:greyColor forState:UIControlStateNormal];
     [_postBtn setTitleColor:greyColor forState:UIControlStateNormal];
-
     
     NSArray *educationArray = _beeInfoDic[@"education"];
     
@@ -1192,44 +1224,26 @@
 {
     
     NSDictionary *obj = _beeInfoDic[@"document"][sender.tag];
-    
     NSString *name = obj[@"name"];
-    
     NSString *location = obj[@"location"];
-    
-//    NSLog(@"sender view tag ---- %ld",(long)sender.tag);
-//    NSLog(@"save button object ------ %@",obj);
-//    NSLog(@"name ---- %@",name);
-//    
-//    NSLog(@"location ---- %@",location);
-//    
     NSString *stkid = [LocalDataInterface retrieveStkid];
-
-//    NSLog(@"stkid ---- %@",stkid);
-    
-//    NSString *url = [WebDataInterface getFullUrlPath:location];
     
     [WebDataInterface insertSavedDocument:stkid name:name location:location completion:^(NSObject *obj, NSError *err) {
         
-        NSLog(@"obj  ------ %@",obj);
         NSDictionary *dict = (NSDictionary *)obj;
-//        if (dict) {
+        
+        if ([dict[@"status"] isEqualToString:@"success"]) {
         
             dispatch_async(dispatch_get_main_queue(), ^{
             
-//                if ([dict[@"status"] isEqualToString:@"sucess"]) {
-            
                     [sender setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
                     sender.userInteractionEnabled = NO;
-                    
-//                }
+
             });
 
-//        }
+        }
   
     }];
-    
-    
     
 }
 

@@ -14,6 +14,11 @@
 
 @interface CropPhotoViewController : TextEditorViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, TOCropViewControllerDelegate>
 
-- (void)showCropViewControllerWithOptions:(UIImageView *)imageView;
+- (void)showCropViewControllerWithOptions:(UIImageView *)imageView andType:(NSInteger)type;
+
+/**
+ * Subclass can override this method to do other thing
+ */
+- (void)onImageCropSuccessfulWithImageView:(UIImageView *)imageView;
 
 @end

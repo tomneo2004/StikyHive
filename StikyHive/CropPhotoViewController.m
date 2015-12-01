@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) UIImageView *imageViewProfile;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, assign) NSInteger type;
 
 @end
 
@@ -64,12 +65,13 @@
     }
 }
 
-- (void)showCropViewControllerWithOptions:(UIImageView *)imageView;
+- (void)showCropViewControllerWithOptions:(UIImageView *)imageView andType:(NSInteger)type;
 {
     _imageViewProfile = imageView;
+    _type = type;
     
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
         //        [[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Existing", nil] showFromBarButtonItem:sender animated:YES];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Select Photo Souce"
                                                        delegate:self cancelButtonTitle:@"Cancel"
@@ -99,6 +101,12 @@
 //    [self presentViewController:photoPickerController animated:YES completion:nil];
 //}
 
+#pragma mark - public interface
+- (void)onImageCropSuccessfulWithImageView:(UIImageView *)imageView{
+    
+    
+}
+
 #pragma mark - Cropper Delegate -
 - (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle
 {
@@ -111,6 +119,9 @@
     self.imageViewProfile.hidden = YES;
     [cropViewController dismissAnimatedFromParentViewController:self withCroppedImage:image toFrame:viewFrame completion:^{
         self.imageViewProfile.hidden = NO;
+        
+        //call successful method so subclass can do their own thing
+        [self onImageCropSuccessfulWithImageView:self.imageViewProfile];
     }];
 }
 
@@ -127,6 +138,7 @@
     
     CGRect imageFrame = CGRectZero;
     imageFrame.size = self.imageViewProfile.image.size;
+//    imageFrame.size = self.imageViewProfile.frame.size;
     
     CGFloat scale = MIN(viewFrame.size.width / imageFrame.size.width, viewFrame.size.height / imageFrame.size.height);
     imageFrame.size.width *= scale;
@@ -142,7 +154,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         self.image = image;
-        TOCropViewController *cropController = [[TOCropViewController alloc] initWithImage:image];
+        TOCropViewController *cropController = [[TOCropViewController alloc] initWithImage:image andType:_type];
         cropController.delegate = self;
         [self presentViewController:cropController animated:YES completion:nil];
     }];

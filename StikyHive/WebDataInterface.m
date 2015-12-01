@@ -185,6 +185,88 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
                              POST_PARAMETER_LOCATION:location};
     [self requestData:DATA_URL_INSERT_SAVED_DOCU withParameters:params completion:completion];
     
+}
+
++ (void)getSavedDocument:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid};
+    [self requestData:DATA_URL_GET_SAVED_DOCUMENT withParameters:params completion:completion];
+}
+
+
++ (void)getUrgentRequest:(NSInteger)limit stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_LIMIT:[NSNumber numberWithInteger:limit],
+                             POST_PARAMETER_STKID:stkid};
+    [self requestData:DATA_URL_GET_URGENT_REQUEST withParameters:params completion:completion];
+}
+
++ (void)getRate:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *parmas = @{POST_PARAMETER_LIMIT:[NSNumber numberWithInteger:limit]};
+    [self requestData:DATA_URL_GET_RATE withParameters:parmas completion:completion];
+}
+
+
++ (void)getMyLocation:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid};
+    [self requestData:DATA_URL_GET_MY_LOCATION withParameters:params completion:completion];
+}
+
++ (void)searchNearByCp:(NSString *)stkid skillname:(NSString *)skillname completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_NAMESKILL:skillname};
+    
+    [self requestData:DATA_URL_SEARCH_NEAR_BY_CP withParameters:params completion:completion];
+}
+
+
++ (void)insertUrgentRequest:(NSString *)stkid title:(NSString *)title desc:(NSString *)desc completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_TITLE:title,
+                             POST_PARAMETER_DESC:desc};
+    
+    [self requestData:DATA_URL_INSERT_URGENT_REQUEST withParameters:params completion:completion];
+}
+
+
+
+
+
+
+
+
+
+
++ (void)fileRequestUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid cpid:(NSInteger)cpid
+{
+    //change compression value to 0.0 from 1.0 so image might be under 1mb
+    NSData *imageData =UIImageJPEGRepresentation(profileImage, 0.0);
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/filerequestupload.php?stkid=%@&cpId=%ld",stikyid,(long)cpid];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    // NSString *boundary = [NSString stringWithString:@"---------------------------14737809831466499882746641449"];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploaded_file\"; filename=\1\r\n"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    // [body appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     
 }
 

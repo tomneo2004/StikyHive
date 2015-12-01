@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UrgentSectionTitle">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse urgent requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M58-m5-Y9U">
+                    <rect key="frame" x="8" y="8" width="464" height="28"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                    <color key="textColor" red="0.96901321409999996" green="0.95062877779999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMj-cy-fkY">
+                    <rect key="frame" x="472" y="8" width="120" height="28"/>
+                    <state key="normal" title="See All">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="seeAll:" destination="iN0-l3-epB" eventType="touchUpInside" id="XjD-fq-qvd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.94117647058823528" green="0.3529411764705882" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="M58-m5-Y9U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="41g-Sr-1vc"/>
+                <constraint firstItem="aMj-cy-fkY" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="Vtk-h9-rk4"/>
+                <constraint firstItem="aMj-cy-fkY" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.2" id="XYN-BT-ET2"/>
+                <constraint firstItem="M58-m5-Y9U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="cRb-Xe-ex3"/>
+                <constraint firstItem="M58-m5-Y9U" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="k6Z-uC-PYR"/>
+                <constraint firstItem="aMj-cy-fkY" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="mOT-ym-hk4"/>
+                <constraint firstItem="aMj-cy-fkY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="sDB-4k-BUG"/>
+                <constraint firstItem="aMj-cy-fkY" firstAttribute="leading" secondItem="M58-m5-Y9U" secondAttribute="trailing" id="vyy-ca-ggS"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

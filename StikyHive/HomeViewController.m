@@ -92,15 +92,13 @@
          {
              
              
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 
+            // dispatch_async(dispatch_get_main_queue(), ^{
                  
                  [self dataReceivedSkills:(NSDictionary *)obj];
                  
-                 
                  [self dataReceivedBuyers:(NSDictionary *)obj2];
 
-             });
+            // });
              
              
         }];
@@ -124,6 +122,7 @@
     
 }
 
+// For shortening the refresh control distance.
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView.contentOffset.y < -150 && !_refreshControl.refreshing)
@@ -339,6 +338,10 @@
                         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"user_info_editor_view_controller2"];
                         [self.navigationController pushViewController:vc animated:YES];
                     }
+                    else if (statusInt == 20)
+                    {
+                        [self.navigationController popToRootViewControllerAnimated:YES];
+                    }
 //                    else
 //                    {
 //                    
@@ -485,11 +488,15 @@
 
 - (IBAction)mainStartButtonPressed:(id)sender
 {
-    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 - (IBAction)startButtonPressed:(id)sender
 {
-    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 @end

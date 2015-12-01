@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #define CONTENT_BOUNDARY @"---------------------------14737809831466499882746641449"
 
@@ -194,7 +195,12 @@
 //#define DATA_URL_GET_SELL_ALL           DATA_URL@"getSellAll/format/json"
 #define DATA_URL_GET_STIKY_BEE_INFO     DATA_URL@"getStikyBeeInfo/format/json"
 #define DATA_URL_INSERT_SAVED_DOCU      DATA_URL@"insertSavedDocuemnt/format/json"
-
+#define DATA_URL_GET_SAVED_DOCUMENT     DATA_URL@"getSavedDocument/format/json"
+#define DATA_URL_GET_URGENT_REQUEST     DATA_URL@"getUrgentRequest/format/json"
+#define DATA_URL_GET_RATE               DATA_URL@"getRate/format/json"
+#define DATA_URL_GET_MY_LOCATION        DATA_URL@"getMyLocation/format/json"
+#define DATA_URL_SEARCH_NEAR_BY_CP      DATA_URL@"searchNearByCP/format/json"
+#define DATA_URL_INSERT_URGENT_REQUEST  DATA_URL@"insertUrgentRequest/format/json"
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -224,6 +230,9 @@
 #define POST_PARAMETER_RATE             @"rating"
 #define POST_PARAMETER_BUYER_ID         @"id"
 #define POST_PARAMETER_LOCATION         @"location"
+#define POST_PARAMETER_NAMESKILL        @"skillName"
+#define POST_PARAMETER_TITLE            @"title"
+#define POST_PARAMETER_DESC             @"desc"
 
 
 //#define DATA_URL_USER_VERIFY            DATA_URL@"varify"
@@ -236,9 +245,11 @@
 
 ///////// Echo ///////////////////////////////////////////////////////////////
 
+
 + (void)getCountry:(NSInteger)status completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)getCategory:(NSInteger)status completion:(void (^)(NSObject *, NSError *))completion;
+
 + (void)updateImageProfile:(NSString *)stikyid completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)signupWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(NSObject *, NSError *))completion;
@@ -278,6 +289,20 @@
 + (void)getStikyBeeInfo:(NSString *)stikyid completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)insertSavedDocument:(NSString *)stkid name:(NSString *)name location:(NSString *)location completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)getSavedDocument:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)getUrgentRequest:(NSInteger)limit stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)getRate:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)getMyLocation:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)searchNearByCp:(NSString *)stkid skillname:(NSString *)skillname completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)insertUrgentRequest:(NSString *)stkid title:(NSString *)title desc:(NSString *)desc completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)fileRequestUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid cpid:(NSInteger)cpid;
 
 ////////  ///////////// END -------------------------------------
 
