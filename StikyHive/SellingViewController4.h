@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SellingViewController4 : UIViewController <UIScrollViewDelegate>
+@interface SellingViewController4 : UIViewController <UIScrollViewDelegate, UIAlertViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
