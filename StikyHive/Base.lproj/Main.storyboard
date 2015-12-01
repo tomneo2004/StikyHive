@@ -1328,7 +1328,7 @@
                                                 <exclude reference="kx4-9t-LIY"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="0.0" y="109" width="400" height="160"/>
                                             <mask key="constraints">
                                                 <include reference="kx4-9t-LIY"/>
@@ -1383,7 +1383,7 @@
                                                 <exclude reference="uwM-rz-vFy"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="420" width="400" height="150"/>
                                             <mask key="constraints">
                                                 <include reference="uwM-rz-vFy"/>
@@ -1409,7 +1409,7 @@
                                     </imageView>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFV-PL-6Ul">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="320" y="146" width="51" height="31"/>
                                         </variation>
                                     </switch>
@@ -1424,7 +1424,7 @@
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKh-o2-knG">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="320" y="451" width="51" height="31"/>
                                         </variation>
                                         <connections>
@@ -3391,11 +3391,11 @@
             </objects>
             <point key="canvasLocation" x="-105" y="804.75"/>
         </scene>
-        <!--Cross Pollinate-->
+        <!--Buzzr-->
         <scene sceneID="kap-bW-RYn">
             <objects>
                 <navigationController id="vJt-sz-cqA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cross Pollinate" image="Tab_CrossPollinate.png" id="oRK-HT-vOv"/>
+                    <tabBarItem key="tabBarItem" title="Buzzr" image="Tab_CrossPollinate.png" id="oRK-HT-vOv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cX2-XF-SXM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -5097,11 +5097,11 @@ Cross Pollinate!</string>
             </objects>
             <point key="canvasLocation" x="3183" y="1701.75"/>
         </scene>
-        <!--Transaction History-->
+        <!--Saved Documents-->
         <scene sceneID="M4u-LW-yOK">
             <objects>
                 <navigationController id="6TY-Yz-5hu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Transaction History" image="Tab_TransactionHistory.png" id="V3U-vr-sZr"/>
+                    <tabBarItem key="tabBarItem" title="Saved Documents" image="Tab_logout.png" id="V3U-vr-sZr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OBt-Iw-4gd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -5143,11 +5143,11 @@ Cross Pollinate!</string>
             </objects>
             <point key="canvasLocation" x="3822" y="1696.5"/>
         </scene>
-        <!--Reading List-->
+        <!--Update Profile-->
         <scene sceneID="TX9-Qv-vkJ">
             <objects>
                 <navigationController id="qEi-zr-i2o" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Reading List" image="Tab_TransactionHistory.png" id="SHa-U8-84e"/>
+                    <tabBarItem key="tabBarItem" title="Update Profile" image="Tab_logout.png" id="SHa-U8-84e"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YNY-Kg-l18">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -5189,11 +5189,11 @@ Cross Pollinate!</string>
             </objects>
             <point key="canvasLocation" x="4491" y="1692.75"/>
         </scene>
-        <!--About Us-->
+        <!--My Skills-->
         <scene sceneID="Yj3-f7-ccB">
             <objects>
                 <navigationController id="2F7-nU-Q9D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About Us" image="Tab_About.png" id="aVl-qJ-Fcv"/>
+                    <tabBarItem key="tabBarItem" title="My Skills" image="Tab_logout.png" id="aVl-qJ-Fcv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ksp-aM-Ivp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -5235,11 +5235,11 @@ Cross Pollinate!</string>
             </objects>
             <point key="canvasLocation" x="5118" y="1688.25"/>
         </scene>
-        <!--Terms and Conditions-->
+        <!--My Posts-->
         <scene sceneID="Fdv-fC-dNk">
             <objects>
                 <navigationController id="c0U-mG-lHK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Terms and Conditions" image="Tab_TnC.png" id="xQj-Kd-gHk"/>
+                    <tabBarItem key="tabBarItem" title="My Posts" image="Tab_logout.png" id="xQj-Kd-gHk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lI4-rJ-9hX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -5281,11 +5281,11 @@ Cross Pollinate!</string>
             </objects>
             <point key="canvasLocation" x="5764.5" y="1688.25"/>
         </scene>
-        <!--Privacy-->
+        <!--Sold-->
         <scene sceneID="mh0-Hx-mWX">
             <objects>
                 <navigationController id="BoS-Ol-fES" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Privacy" image="Tab_Privacy.png" id="n4B-dT-aWa"/>
+                    <tabBarItem key="tabBarItem" title="Sold" image="Tab_logout.png" id="n4B-dT-aWa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gUv-5Y-jht">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -5326,6 +5326,92 @@ Cross Pollinate!</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoG-IB-RxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8224.5" y="1701.75"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="eMg-88-iqR">
+            <objects>
+                <tableViewController id="8Q7-TM-yTA" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Iep-bs-5kw">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rbe-Yx-VHC">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rbe-Yx-VHC" id="xNv-ch-tfM">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8Q7-TM-yTA" id="2wQ-Ug-jLh"/>
+                            <outlet property="delegate" destination="8Q7-TM-yTA" id="Cnc-Hh-Z8X"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="uVF-Q4-amb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SpX-Qe-uSk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6435" y="1679.25"/>
+        </scene>
+        <!--Bought-->
+        <scene sceneID="wVz-zn-GMQ">
+            <objects>
+                <navigationController id="cRu-BK-M0M" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bought" image="Tab_logout.png" id="kdK-cg-N4Z"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Sr-gQ-oaM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8Q7-TM-yTA" kind="relationship" relationship="rootViewController" id="pvu-3l-Ehe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qTT-A0-PJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6435" y="795.75"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="rYd-GR-aaq">
+            <objects>
+                <tableViewController id="WIf-d3-DCx" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aOh-gj-mM2">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Hl8-Hn-64C">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hl8-Hn-64C" id="fJN-Ya-6n8">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WIf-d3-DCx" id="9j5-1M-8rl"/>
+                            <outlet property="delegate" destination="WIf-d3-DCx" id="Re2-Pk-eHt"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="gas-H2-bhn"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zIc-kg-BpT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7122" y="1671.75"/>
+        </scene>
+        <!--Subscription Info-->
+        <scene sceneID="i37-8B-Mb4">
+            <objects>
+                <navigationController id="htI-jm-Fut" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Subscription Info" image="Tab_logout.png" id="zSq-PN-gfw"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BuZ-Wf-igm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="WIf-d3-DCx" kind="relationship" relationship="rootViewController" id="ZQA-SN-XuS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Na7-Sv-zHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7084.5" y="795.75"/>
         </scene>
         <!--Logout-->
         <scene sceneID="dYK-04-Zm0">
@@ -5455,7 +5541,7 @@ Cross Pollinate!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igj-vy-Ibg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6430.5" y="795.75"/>
+            <point key="canvasLocation" x="7797" y="795.75"/>
         </scene>
         <!--Entry View Controller-->
         <scene sceneID="9Rv-Gc-nm6">
@@ -8347,12 +8433,14 @@ Cross Pollinate!</string>
                         <segue destination="2F7-nU-Q9D" kind="relationship" relationship="viewControllers" id="mTW-XS-NfQ"/>
                         <segue destination="c0U-mG-lHK" kind="relationship" relationship="viewControllers" id="Hue-5t-71N"/>
                         <segue destination="BoS-Ol-fES" kind="relationship" relationship="viewControllers" id="X0t-cl-zaV"/>
-                        <segue destination="1Wi-Ey-Qs1" kind="relationship" relationship="viewControllers" id="Mvu-MC-TnQ"/>
+                        <segue destination="cRu-BK-M0M" kind="relationship" relationship="viewControllers" id="dKW-fM-oTw"/>
+                        <segue destination="htI-jm-Fut" kind="relationship" relationship="viewControllers" id="8CJ-sU-i8t"/>
+                        <segue destination="1Wi-Ey-Qs1" kind="relationship" relationship="viewControllers" id="0CV-l9-ZPo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2643" y="8.25"/>
+            <point key="canvasLocation" x="6051" y="-0.75"/>
         </scene>
         <!--User Verification View Controller-->
         <scene sceneID="BCU-cG-iUN">
@@ -8986,16 +9074,12 @@ Cross Pollinate!</string>
         <image name="Home_HDivider.png" width="320" height="2"/>
         <image name="Home_button_professional.png" width="180" height="100"/>
         <image name="Home_button_raw_talent.png" width="181" height="100"/>
-        <image name="Tab_About.png" width="33" height="33"/>
         <image name="Tab_Chat.png" width="33" height="33"/>
         <image name="Tab_Contacts.png" width="33" height="33"/>
         <image name="Tab_CrossPollinate.png" width="33" height="33"/>
         <image name="Tab_Home.png" width="33" height="33"/>
         <image name="Tab_Notifications.png" width="33" height="33"/>
-        <image name="Tab_Privacy.png" width="33" height="33"/>
         <image name="Tab_Profile.png" width="33" height="33"/>
-        <image name="Tab_TnC.png" width="33" height="33"/>
-        <image name="Tab_TransactionHistory.png" width="33" height="33"/>
         <image name="Tab_logout.png" width="33" height="33"/>
         <image name="YelloBTN.png" width="1169" height="192"/>
         <image name="add_profile.png" width="300" height="300"/>
