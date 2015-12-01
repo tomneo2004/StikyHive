@@ -12,5 +12,12 @@
 
 
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
+@property (strong, nonatomic) IBOutlet UISwitch *switchBtn1;
+@property (strong, nonatomic) IBOutlet UISwitch *switchBtn2;
+@property (strong, nonatomic) IBOutlet UISwitch *switchBtn3;
+@property (strong, nonatomic) IBOutlet UISwitch *switchBtn4;
+- (IBAction)switchBtn2Pressed:(id)sender;
+- (IBAction)switchBtn3Pressed:(id)sender;
+- (IBAction)switchBtn4Pressed:(id)sender;
 
 @end
