@@ -62,6 +62,8 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -5008,9 +5010,51 @@ Cross Pollinate!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Ms-jR-5JF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Ms-jR-5JF">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="101" id="i88-td-mXb" customClass="DocumentTableViewCell">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="101"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i88-td-mXb" id="3bi-xm-qHa">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVE-Vp-Fx6">
+                                                    <rect key="frame" x="8" y="8" width="584" height="50.5"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYB-RT-sZg">
+                                                    <rect key="frame" x="8" y="58.5" width="584" height="34"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="LVE-Vp-Fx6" firstAttribute="height" secondItem="3bi-xm-qHa" secondAttribute="height" multiplier="0.5" id="8us-fa-8rT"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="YYB-RT-sZg" secondAttribute="trailing" id="D2T-5Z-a6Q"/>
+                                                <constraint firstItem="YYB-RT-sZg" firstAttribute="top" secondItem="LVE-Vp-Fx6" secondAttribute="bottom" id="Eh6-xk-oiJ"/>
+                                                <constraint firstItem="LVE-Vp-Fx6" firstAttribute="leading" secondItem="3bi-xm-qHa" secondAttribute="leadingMargin" id="Oyj-0H-RTH"/>
+                                                <constraint firstItem="YYB-RT-sZg" firstAttribute="leading" secondItem="3bi-xm-qHa" secondAttribute="leadingMargin" id="Yxq-a0-30c"/>
+                                                <constraint firstItem="LVE-Vp-Fx6" firstAttribute="top" secondItem="3bi-xm-qHa" secondAttribute="topMargin" id="cD4-ep-U2R"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="YYB-RT-sZg" secondAttribute="bottom" id="eqr-6n-B8T"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LVE-Vp-Fx6" secondAttribute="trailing" id="g6D-yw-z3L"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="YYB-RT-sZg" id="dEo-yC-kdG"/>
+                                            <outlet property="titleLabel" destination="LVE-Vp-Fx6" id="1RB-Oa-gWV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="q52-Nk-Txn" id="Dt5-3N-Dgn"/>
+                                    <outlet property="delegate" destination="q52-Nk-Txn" id="Ws9-wO-VKT"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -5022,6 +5066,9 @@ Cross Pollinate!</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6Sc-w1-mnk"/>
+                    <connections>
+                        <outlet property="tableView" destination="6Ms-jR-5JF" id="ZOr-u3-xmT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNl-DK-bwe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
