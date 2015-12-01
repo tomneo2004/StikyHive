@@ -13,7 +13,7 @@
 #import "MyRequestSectionTitle.h"
 #import "TitleViewController.h"
 
-@interface CrossPollinateViewController : TitleViewController<UITableViewDataSource, UITableViewDelegate, UrgentRequestCellDelegate, MyRequestCellDelegate, UrgentSectionTitleDelegate, MyRequestSectionTitleDelegate, UISearchBarDelegate>
+@interface CrossPollinateViewController : TitleViewController<UITableViewDataSource, UITableViewDelegate, UrgentRequestCellDelegate, MyRequestCellDelegate, UrgentSectionTitleDelegate, MyRequestSectionTitleDelegate, UISearchBarDelegate, UINavigationControllerDelegate>
 
 
 
