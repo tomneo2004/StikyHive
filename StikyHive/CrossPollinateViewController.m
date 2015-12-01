@@ -44,6 +44,8 @@
     
     //user's geo location
     CLLocation *_myLocation;
+    
+    BOOL _shouldUpdate;
 }
 
 @synthesize tableView = _tableView;
@@ -61,6 +63,10 @@
     [tap setNumberOfTouchesRequired:1];
     
     [_postARequestImageView addGestureRecognizer:tap];
+    
+    self.navigationController.delegate = self;
+    
+    _shouldUpdate = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,7 +79,15 @@
     [super viewWillAppear:animated];
     
     //pull data from server
-    [self pullData];
+    if(_shouldUpdate)
+        [self pullData];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    
+    [super viewDidDisappear:animated];
+    
+    _shouldUpdate = YES;
 }
 
 #pragma mark - Internal
@@ -592,6 +606,14 @@
     
     [searchBar resignFirstResponder];
     [self beginSearchNearbyWithKeyword:searchBar.text];
+}
+
+#pragma mark - UINavigationViewController delegate
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    
+    _shouldUpdate = NO;
+    
+    return nil;
 }
 
 /*
