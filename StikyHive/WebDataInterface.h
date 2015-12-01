@@ -201,6 +201,7 @@
 #define DATA_URL_GET_MY_LOCATION        DATA_URL@"getMyLocation/format/json"
 #define DATA_URL_SEARCH_NEAR_BY_CP      DATA_URL@"searchNearByCP/format/json"
 #define DATA_URL_INSERT_URGENT_REQUEST  DATA_URL@"insertUrgentRequest/format/json"
+#define DATA_URL_DELETE_DOCUMENT        DATA_URL@"deleteDocument/format/json"
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -233,6 +234,7 @@
 #define POST_PARAMETER_NAMESKILL        @"skillName"
 #define POST_PARAMETER_TITLE            @"title"
 #define POST_PARAMETER_DESC             @"desc"
+#define POST_PARAMETER_DOCUMENT_ID      @"id"
 
 
 //#define DATA_URL_USER_VERIFY            DATA_URL@"varify"
@@ -303,6 +305,8 @@
 + (void)insertUrgentRequest:(NSString *)stkid title:(NSString *)title desc:(NSString *)desc completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)fileRequestUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid cpid:(NSInteger)cpid;
+
++ (void)deleteDocuments:(NSArray *)idArray completion:(void (^)(NSObject *, NSError *))completion;
 
 ////////  ///////////// END -------------------------------------
 

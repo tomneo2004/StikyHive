@@ -233,7 +233,20 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
-
++ (void)deleteDocuments:(NSArray *)idArray completion:(void (^)(NSObject *, NSError *))completion
+{
+    for (int i = 0; i < idArray.count; i++)
+    {
+        NSString *idString = idArray[i];
+        NSInteger idInt = [idString integerValue];
+        
+        NSDictionary *params = @{POST_PARAMETER_DOCUMENT_ID:[NSNumber numberWithInteger:idInt]};
+        
+        [self requestData:DATA_URL_DELETE_DOCUMENT withParameters:params completion:completion];
+        
+    }
+    
+}
 
 
 

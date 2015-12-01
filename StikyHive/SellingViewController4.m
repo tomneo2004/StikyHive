@@ -11,6 +11,8 @@
 
 @interface SellingViewController4 ()
 
+
+
 @end
 
 @implementation SellingViewController4
@@ -51,7 +53,7 @@
         {
             NSLog(@"add now");
             
-            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_3"];
+            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_33"];
             [self.navigationController pushViewController:vc animated:YES];
             
             
@@ -80,6 +82,9 @@
         else
         {
             NSLog(@"add now");
+            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_2"];
+            [self.navigationController pushViewController:vc animated:YES];
+
         }
     }
     else if (alertView.tag == 302)
