@@ -7,6 +7,7 @@
 //
 
 #import "SellingViewController4.h"
+#import "ViewControllerUtil.h"
 
 @interface SellingViewController4 ()
 
@@ -49,6 +50,11 @@
         else
         {
             NSLog(@"add now");
+            
+            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_3"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
         }
     }
     else if (alertView.tag == 202)
