@@ -13,6 +13,8 @@
 #import "AttachmentViewController.h"
 #import "RequestPostTableViewController.h"
 #import "LocalDataInterface.h"
+#import "ViewControllerUtil.h"
+#import "UserProfileViewController.h"
 
 
 @interface UrgentRequestViewController ()
@@ -166,7 +168,16 @@
 
 - (void)urgentRequestCellDidTapPersonAvatar:(UrgentRequestCell *)requestCell{
     
-    NSLog(@"urgent on person avatar");
+    NSIndexPath *indexPath = [_tableView indexPathForCell:requestCell];
+    
+    UrgentRequest *urgentRequest = (UrgentRequest *)[self requestByIndexPath:indexPath];
+    
+    //present user profile controller
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"user_profile_view_controller"];
+    UserProfileViewController *svc = (UserProfileViewController *)vc;
+    [svc setStkID:urgentRequest.stkId];
+    
+    [self.navigationController pushViewController:svc animated:YES];
 }
 
 /*
