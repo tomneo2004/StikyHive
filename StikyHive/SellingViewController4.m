@@ -24,7 +24,10 @@
     
     [_contentScrollView setContentSize:CGSizeMake(self.view.frame.size.width, 800)];
     
-    
+    _switchBtn1.userInteractionEnabled = NO;
+    [_switchBtn2 setOn:NO animated:YES];
+    [_switchBtn3 setOn:NO animated:YES];
+    [_switchBtn4 setOn:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,4 +45,26 @@
 }
 */
 
+- (IBAction)switchBtn2Pressed:(id)sender
+{
+    if ([_switchBtn2 isOn])
+    {
+        NSLog(@"toggle on");
+        
+        UIAlertView *btn2AlertOn = [[UIAlertView alloc] initWithTitle:@"Add 4 Photos" message:@"Do you want to add 4 Photos now?" delegate:self cancelButtonTitle:@"Add Latter" otherButtonTitles:@"Yes,Now", nil];
+        
+    }
+    else
+    {
+        NSLog(@"toggle off");
+    }
+    
+    
+}
+
+- (IBAction)switchBtn3Pressed:(id)sender {
+}
+
+- (IBAction)switchBtn4Pressed:(id)sender {
+}
 @end
