@@ -380,6 +380,7 @@
 		CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */; };
 		CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */; };
 		CE1375D01C084FAA00201989 /* PaymentSuccessfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */; };
+		CE68DA8B1C0D9AE0000CB49F /* SavedDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */; };
 		CE7AA1771C0804BF00875DE5 /* PostRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */; };
 		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
 		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
@@ -957,6 +958,8 @@
 		CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryViewController.m; sourceTree = "<group>"; };
 		CE1375CE1C084FAA00201989 /* PaymentSuccessfulViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSuccessfulViewController.h; sourceTree = "<group>"; };
 		CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSuccessfulViewController.m; sourceTree = "<group>"; };
+		CE68DA891C0D9AE0000CB49F /* SavedDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedDocumentsViewController.h; sourceTree = "<group>"; };
+		CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedDocumentsViewController.m; sourceTree = "<group>"; };
 		CE7AA1751C0804BF00875DE5 /* PostRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostRequestManager.h; sourceTree = "<group>"; };
 		CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostRequestManager.m; sourceTree = "<group>"; };
 		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
@@ -1151,6 +1154,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CE68DA881C0D9ABF000CB49F /* SavedDocuments */,
 				CEE93A231BF47C0500B292BA /* CrossPollinate */,
 				517931461BAFBD540019BB49 /* Buyer */,
 				676600E71BA185FB003A84D8 /* HtmlDocs */,
@@ -1942,6 +1946,15 @@
 			name = PaymentSuccessfulViewController;
 			sourceTree = "<group>";
 		};
+		CE68DA881C0D9ABF000CB49F /* SavedDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				CE68DA891C0D9AE0000CB49F /* SavedDocumentsViewController.h */,
+				CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */,
+			);
+			name = SavedDocuments;
+			sourceTree = "<group>";
+		};
 		CE7AA1741C08048C00875DE5 /* PostReuestManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -2650,6 +2663,7 @@
 				CEF7BAAB1BFB2704009624CC /* RequestPostTableViewController.m in Sources */,
 				674D0D981B7D913400B5B80D /* main.m in Sources */,
 				676F77E81B96F3060084988A /* TOCropView.m in Sources */,
+				CE68DA8B1C0D9AE0000CB49F /* SavedDocumentsViewController.m in Sources */,
 				674D10331B7DB4CD00B5B80D /* ZSSBarButtonItem.m in Sources */,
 				676F77E71B96F3060084988A /* TOCropToolbar.m in Sources */,
 				5179314F1BB01A290019BB49 /* BuyerPageViewController.m in Sources */,
