@@ -29,8 +29,7 @@
     
     [super viewWillAppear:animated];
     
-    [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentSandbox];
-/*
+
 #ifdef DEBUG
     
     [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentSandbox];
@@ -40,7 +39,7 @@
     [PayPalMobile preconnectWithEnvironment:PayPalEnvironmentProduction];
     
 #endif
-*/
+
 }
 
 - (void)didReceiveMemoryWarning {
