@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "TitleViewController.h"
 
-@interface SavedDocumentsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface SavedDocumentsViewController : TitleViewController<UITableViewDataSource, UITableViewDelegate, UIDocumentInteractionControllerDelegate, UINavigationControllerDelegate>
 
 @end
