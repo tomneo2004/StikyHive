@@ -27,4 +27,29 @@
  */
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 
+/**
+ * Get document path
+ */
++ (NSString *)documentPaht;
+
+/**
+ * Get the path of a file in document
+ */
++ (NSString *)filePathFromDocument:(NSString *)fileName extension:(NSString *)fileExtension;
+
+/**
+ * Is file exist in document
+ */
++ (BOOL)isFileExistInDocument:(NSString *)fileName extension:(NSString *)fileExtension;
+
+/**
+ * Delete file in document
+ */
++ (BOOL)deleteFileInDocument:(NSString *)fileName extension:(NSString *)fileExtension;
+
+/**
+ * Write file into document
+ */
++ (BOOL)writeFileIntoDocumentWithData:(NSData *)data withFileName:(NSString *)fileName withFileExtension:(NSString *)fileExtension;
+
 @end

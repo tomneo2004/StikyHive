@@ -91,4 +91,61 @@
     return newImage;
 }
 
++ (NSString *)documentPaht{
+    
+    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [searchPaths objectAtIndex:0];
+    
+    return documentPath;
+}
+
++ (NSString *)filePathFromDocument:(NSString *)fileName extension:(NSString *)fileExtension{
+    
+    if([self isFileExistInDocument:fileName extension:fileExtension]){
+        
+        NSString *fullPath = [[self documentPaht] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", fileName, fileExtension]];
+        
+        return fullPath;
+    }
+    
+    return nil;
+}
+
++ (BOOL)isFileExistInDocument:(NSString *)fileName extension:(NSString *)fileExtension{
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *fullPath = [[self documentPaht] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", fileName, fileExtension]];
+    
+    return [fileManager fileExistsAtPath:fullPath];
+}
+
++ (BOOL)deleteFileInDocument:(NSString *)fileName extension:(NSString *)fileExtension{
+    
+    if([self isFileExistInDocument:fileName extension:fileExtension]){
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        NSString *fullPath = [[self documentPaht] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", fileName, fileExtension]];
+        
+        NSError *error = nil;
+        
+        [fileManager removeItemAtPath:fullPath error:&error];
+        
+        if(error != nil)
+            return NO;
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
++ (BOOL)writeFileIntoDocumentWithData:(NSData *)data withFileName:(NSString *)fileName withFileExtension:(NSString *)fileExtension{
+    
+    NSString *fullPath = [[self documentPaht] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@", fileName, fileExtension]];
+    
+    return [data writeToFile:fullPath atomically:YES];
+}
+
 @end

@@ -381,6 +381,10 @@
 		CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */; };
 		CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */; };
 		CE1375D01C084FAA00201989 /* PaymentSuccessfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */; };
+		CE3EFDED1C0EC5AA00281FC6 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */; };
+		CE68DA8B1C0D9AE0000CB49F /* SavedDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */; };
+		CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8D1C0D9E8D000CB49F /* DocumentTableViewCell.m */; };
+		CE68DA911C0DA0F6000CB49F /* DocumentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */; };
 		CE7AA1771C0804BF00875DE5 /* PostRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */; };
 		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
 		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
@@ -960,6 +964,14 @@
 		CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryViewController.m; sourceTree = "<group>"; };
 		CE1375CE1C084FAA00201989 /* PaymentSuccessfulViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSuccessfulViewController.h; sourceTree = "<group>"; };
 		CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSuccessfulViewController.m; sourceTree = "<group>"; };
+		CE3EFDEB1C0EC5AA00281FC6 /* PDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewController.h; sourceTree = "<group>"; };
+		CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFViewController.m; sourceTree = "<group>"; };
+		CE68DA891C0D9AE0000CB49F /* SavedDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedDocumentsViewController.h; sourceTree = "<group>"; };
+		CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedDocumentsViewController.m; sourceTree = "<group>"; };
+		CE68DA8C1C0D9E8D000CB49F /* DocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentTableViewCell.h; sourceTree = "<group>"; };
+		CE68DA8D1C0D9E8D000CB49F /* DocumentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentTableViewCell.m; sourceTree = "<group>"; };
+		CE68DA8F1C0DA0F6000CB49F /* DocumentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentInfo.h; sourceTree = "<group>"; };
+		CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentInfo.m; sourceTree = "<group>"; };
 		CE7AA1751C0804BF00875DE5 /* PostRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostRequestManager.h; sourceTree = "<group>"; };
 		CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostRequestManager.m; sourceTree = "<group>"; };
 		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
@@ -1154,6 +1166,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CE68DA881C0D9ABF000CB49F /* SavedDocuments */,
 				CEE93A231BF47C0500B292BA /* CrossPollinate */,
 				517931461BAFBD540019BB49 /* Buyer */,
 				676600E71BA185FB003A84D8 /* HtmlDocs */,
@@ -1947,6 +1960,21 @@
 			name = PaymentSuccessfulViewController;
 			sourceTree = "<group>";
 		};
+		CE68DA881C0D9ABF000CB49F /* SavedDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				CE68DA891C0D9AE0000CB49F /* SavedDocumentsViewController.h */,
+				CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */,
+				CE68DA8C1C0D9E8D000CB49F /* DocumentTableViewCell.h */,
+				CE68DA8D1C0D9E8D000CB49F /* DocumentTableViewCell.m */,
+				CE68DA8F1C0DA0F6000CB49F /* DocumentInfo.h */,
+				CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */,
+				CE3EFDEB1C0EC5AA00281FC6 /* PDFViewController.h */,
+				CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */,
+			);
+			name = SavedDocuments;
+			sourceTree = "<group>";
+		};
 		CE7AA1741C08048C00875DE5 /* PostReuestManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -2629,6 +2657,7 @@
 				674D0EC11B7D98CA00B5B80D /* UserSkillViewController3.m in Sources */,
 				674D0F321B7D9A5200B5B80D /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
 				517931491BAFBD750019BB49 /* BuyerCollectionViewController.m in Sources */,
+				CE68DA911C0DA0F6000CB49F /* DocumentInfo.m in Sources */,
 				674D0F3F1B7D9A5200B5B80D /* JSQMessagesTimestampFormatter.m in Sources */,
 				674D10491B7DB4FB00B5B80D /* GKResizeableCropOverlayView.m in Sources */,
 				CEF4640A1BF9C41200010D21 /* UrgentRequest.m in Sources */,
@@ -2656,6 +2685,7 @@
 				CEF7BAAB1BFB2704009624CC /* RequestPostTableViewController.m in Sources */,
 				674D0D981B7D913400B5B80D /* main.m in Sources */,
 				676F77E81B96F3060084988A /* TOCropView.m in Sources */,
+				CE68DA8B1C0D9AE0000CB49F /* SavedDocumentsViewController.m in Sources */,
 				674D10331B7DB4CD00B5B80D /* ZSSBarButtonItem.m in Sources */,
 				676F77E71B96F3060084988A /* TOCropToolbar.m in Sources */,
 				5179314F1BB01A290019BB49 /* BuyerPageViewController.m in Sources */,
@@ -2666,8 +2696,10 @@
 				CEF7BAA71BFB0FAD009624CC /* AttachmentViewController.m in Sources */,
 				674D10291B7DB4CD00B5B80D /* CYRLayoutManager.m in Sources */,
 				674D0F741B7D9ED800B5B80D /* EntryViewController.m in Sources */,
+				CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */,
 				517325621C02B3B7004655D6 /* SellingViewController2.m in Sources */,
 				676F77EE1B96F5600084988A /* UserInfoEditorViewController.m in Sources */,
+				CE3EFDED1C0EC5AA00281FC6 /* PDFViewController.m in Sources */,
 				674D0EC81B7D999200B5B80D /* LocalDataInterface.m in Sources */,
 				CE0461C21C058E3A00254EBB /* PrepareRequestViewController.m in Sources */,
 				CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */,
