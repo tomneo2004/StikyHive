@@ -1614,7 +1614,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YEa-cM-hDW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3784.5" y="3309.75"/>
+            <point key="canvasLocation" x="-3808.5" y="3035.25"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="dmK-b2-DIH">
@@ -1662,6 +1662,119 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udk-gg-Ze7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3943.5" y="4545"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9K9-RK-RTm">
+            <objects>
+                <viewController id="YB0-td-vt0" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qvY-6g-hCg"/>
+                        <viewControllerLayoutGuide type="bottom" id="MGt-fU-R9m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w3w-Zp-hWk">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreorless.png" translatesAutoresizingMaskIntoConstraints="NO" id="C6q-9t-OKY">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="125" y="37" width="151" height="113"/>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add $6 for extra 6 months" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izo-eN-CSk">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.074509803921568626" green="0.58039215686274515" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="140" y="172" width="120" height="49"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Just $1 per month)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHu-RT-X6o">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="121" y="229" width="158" height="21"/>
+                                </variation>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJX-9M-r9A">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.043137254901960784" green="0.57647058823529407" blue="0.51764705882352946" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="268" width="360" height="2"/>
+                                </variation>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHV-Rc-oq5">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.25098039215686274" green="0.1803921568627451" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Yes, I want it ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="487" width="360" height="45"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5S-h1-hsE">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.99607843137254903" green="0.83529411764705885" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="May be later">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="561" width="360" height="45"/>
+                                </variation>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Your subscription will be extended" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpg-aZ-LfA">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="293" width="240" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Your selected features(except 'Be Featured') will be extexded at no extra charge" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCu-JA-M7O">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="347" width="364" height="70"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.96078431372549022" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="C6q-9t-OKY"/>
+                                <exclude reference="izo-eN-CSk"/>
+                                <exclude reference="IHu-RT-X6o"/>
+                                <exclude reference="ZJX-9M-r9A"/>
+                                <exclude reference="oHV-Rc-oq5"/>
+                                <exclude reference="O5S-h1-hsE"/>
+                                <exclude reference="wpg-aZ-LfA"/>
+                                <exclude reference="WCu-JA-M7O"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="C6q-9t-OKY"/>
+                                <include reference="izo-eN-CSk"/>
+                                <include reference="IHu-RT-X6o"/>
+                                <include reference="ZJX-9M-r9A"/>
+                                <include reference="oHV-Rc-oq5"/>
+                                <include reference="O5S-h1-hsE"/>
+                                <include reference="wpg-aZ-LfA"/>
+                                <include reference="WCu-JA-M7O"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sIe-j7-o97" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4707" y="3769.5"/>
         </scene>
         <!--Buyer Post View Controller-->
         <scene sceneID="hz0-PK-oDV">
@@ -9193,6 +9306,7 @@ Cross Pollinate!</string>
         <image name="buzzr_top_btn(withoutButton).png" width="1563" height="417"/>
         <image name="home_bg.png" width="480" height="800"/>
         <image name="logo.png" width="300" height="205"/>
+        <image name="moreorless.png" width="664" height="675"/>
         <image name="sell_upload_photo.png" width="681" height="384"/>
         <image name="sell_upload_video.png" width="681" height="384"/>
         <image name="smiley.png" width="250" height="250"/>

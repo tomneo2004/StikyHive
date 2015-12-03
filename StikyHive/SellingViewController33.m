@@ -97,7 +97,7 @@ static NSData *Video_Data;
         }
         
         
-        CGFloat y = _textField4.frame.origin.y + 30;
+        CGFloat y = 896 + 30;
         CGFloat imageW = 240;
         CGFloat imageH = 145;
         
@@ -113,22 +113,24 @@ static NSData *Video_Data;
         _imageView5.center = center5;
         _imageView5.image = [UIImage imageNamed:@"sell_upload_photo"];
         
-        y = y + _imageView5.frame.size.height + 30;
+        y = y + imageH + 30;
         
         
         _imageView6 = [[UIImageView alloc] initWithFrame:CGRectMake(20, y, imageW, imageH)];
         CGPoint center6 = _imageView6.center;
         center6.x = _contentViewController.center.x;
         _imageView5.center = center5;
+        _imageView6.image = [UIImage imageNamed:@"sell_upload_photo"];
         
-        y = y + _imageView6.frame.size.height + 30;
+        y = y + imageH + 30;
 
         _imageView7 = [[UIImageView alloc] initWithFrame:CGRectMake(20, y, imageW, imageH)];
         CGPoint center7 = _imageView7.center;
         center7.x = _contentViewController.center.x;
         _imageView7.center = center7;
+        _imageView7.image = [UIImage imageNamed:@"sell_upload_photo"];
         
-        y = y + _imageView7.frame.size.height + 30;
+        y = y + imageH + 30;
 
         
         
@@ -136,8 +138,9 @@ static NSData *Video_Data;
         CGPoint center8 = _imageView8.center;
         center8.x = _contentViewController.center.x;
         _imageView8.center = center8;
+        _imageView8.image = [UIImage imageNamed:@"sell_upload_photo"];
         
-        y = y + _imageView8.frame.size.height + 30;
+        y = y + imageH + 30;
 
         
         

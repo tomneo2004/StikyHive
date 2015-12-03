@@ -23,6 +23,7 @@
 		516BC8691BB13FBE008BE2ED /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BC8681BB13FBE008BE2ED /* PhotoViewController.m */; };
 		516C51621C0410B8002710AA /* SellingViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 516C51611C0410B8002710AA /* SellingViewController3.m */; };
 		516C51641C042299002710AA /* sell_upload_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 516C51631C042299002710AA /* sell_upload_photo.png */; };
+		516F58A61C102D9700E4FD41 /* moreorless.png in Resources */ = {isa = PBXBuildFile; fileRef = 516F58A51C102D9700E4FD41 /* moreorless.png */; };
 		51700A8F1BD49F8200294DAD /* review_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51700A8E1BD49F8200294DAD /* review_filled.png */; };
 		51700A921BD4C93500294DAD /* BuyerPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51700A911BD4C93500294DAD /* BuyerPostViewController.m */; };
 		51718BB21BE75700000424E6 /* profile_bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 51718BB11BE75700000424E6 /* profile_bookmark.png */; };
@@ -468,6 +469,7 @@
 		516C51601C0410B8002710AA /* SellingViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingViewController3.h; sourceTree = "<group>"; };
 		516C51611C0410B8002710AA /* SellingViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingViewController3.m; sourceTree = "<group>"; };
 		516C51631C042299002710AA /* sell_upload_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sell_upload_photo.png; sourceTree = "<group>"; };
+		516F58A51C102D9700E4FD41 /* moreorless.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moreorless.png; sourceTree = "<group>"; };
 		51700A8E1BD49F8200294DAD /* review_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_filled.png; sourceTree = "<group>"; };
 		51700A901BD4C93500294DAD /* BuyerPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerPostViewController.h; sourceTree = "<group>"; };
 		51700A911BD4C93500294DAD /* BuyerPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerPostViewController.m; sourceTree = "<group>"; };
@@ -1087,6 +1089,7 @@
 		67361F301B830DD500C1374D /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				516F58A51C102D9700E4FD41 /* moreorless.png */,
 				517A1C591C0C2382004017E4 /* subplan.png */,
 				517A1C5A1C0C2382004017E4 /* subplan1.png */,
 				517A1C5B1C0C2382004017E4 /* subplan2.png */,
@@ -2508,6 +2511,7 @@
 				674D0E671B7D920E00B5B80D /* CP_main_button@2x.png in Resources */,
 				CEE93A211BF4490100B292BA /* buzzr_top.png in Resources */,
 				674D0FF61B7DB4CD00B5B80D /* ZSSh6@2x.png in Resources */,
+				516F58A61C102D9700E4FD41 /* moreorless.png in Resources */,
 				674D10041B7DB4CD00B5B80D /* ZSSleftjustify@2x.png in Resources */,
 				674D0E501B7D920E00B5B80D /* button_Call@2x.png in Resources */,
 				674D0E981B7D925D00B5B80D /* home_bg.png in Resources */,
