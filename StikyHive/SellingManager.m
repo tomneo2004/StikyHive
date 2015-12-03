@@ -16,6 +16,18 @@
     NSMutableArray *_photoArray;
     BOOL _photoStatus;
     BOOL _videoStatus;
+    
+    NSString *_skillName;
+    NSString *_skillCategoryId;
+    NSString *_skillSummary;
+    NSString *_skillDesc;
+    NSString *_skillPrice;
+    NSString *_skillRate;
+    
+    
+    UIImage *_videoImage;
+    NSData *_video;
+    
 }
 
 static SellingManager *_instance;
@@ -46,7 +58,46 @@ static SellingManager *_instance;
     _videoStatus = videoStatus;
 }
 
+- (void)setSkillName:(NSString *)skillName
+{
+    _skillName = skillName;
+}
 
+- (void)setSkillCategoryId:(NSString *)skillCategoryId
+{
+    _skillCategoryId = skillCategoryId;
+}
+
+- (void)setSkillSummary:(NSString *)skillSummary
+{
+    _skillSummary = skillSummary;
+}
+
+
+- (void)setSkillDesc:(NSString *)skillDesc
+{
+    _skillDesc = skillDesc;
+}
+
+- (void)setSkillPrice:(NSString *)skillPrice
+{
+    _skillPrice = skillPrice;
+}
+
+- (void)setSkillRate:(NSString *)skillRate
+{
+    _skillRate = skillRate;
+}
+
+- (void)setVideoImage:(UIImage *)videoImage
+{
+    _videoImage = videoImage;
+}
+
+- (void)setVideo:(NSData *)video
+{
+    _video = video;
+}
 
 
 #pragma mark - Getter
@@ -65,8 +116,45 @@ static SellingManager *_instance;
     return _videoStatus;
 }
 
+- (NSString *)getSkillName
+{
+    return _skillName;
+}
 
+- (NSString *)getSkillCategoryId
+{
+    return _skillCategoryId;
+}
 
+- (NSString *)getSkillSummary
+{
+    return _skillSummary;
+}
+
+- (NSString *)getSkillDesc
+{
+    return _skillDesc;
+}
+
+- (NSString *)getSkillPrce
+{
+    return _skillPrice;
+}
+
+- (NSString *)getSkillRate
+{
+    return _skillRate;
+}
+
+- (UIImage *)getVideoImage
+{
+    return _videoImage;
+}
+
+- (NSData *)getVideo
+{
+    return _video;
+}
 
 
 

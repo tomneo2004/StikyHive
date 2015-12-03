@@ -260,9 +260,15 @@ static NSMutableDictionary *Skill_Info;
 //    
 //    [self.navigationController pushViewController:vc animated:YES];
     
-    UIImage *img = _videoImageView.image;
-    UIViewController *vc = [SellingViewController33 instantiateForInfo:Skill_Info videoThumb:img andVideodata:_videoData];
+//    UIImage *img = _videoImageView.image;
+//    UIViewController *vc = [SellingViewController33 instantiateForInfo:Skill_Info videoThumb:img andVideodata:_videoData];
     
+    
+    [SellingManager sharedSellingManager].videoImage = _videoImageView.image;
+    [SellingManager sharedSellingManager].video = _videoData;
+    
+    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_33"];
     [self.navigationController pushViewController:vc animated:YES];
     
 }

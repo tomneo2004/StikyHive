@@ -11,6 +11,7 @@
 #import "WebDataInterface.h"
 #import "ViewControllerUtil.h"
 #import "SellingViewController2.h"
+#import "SellingManager.h"
 
 @interface SellingViewController ()
 
@@ -379,11 +380,17 @@
         {
             skillinfo[@"price"] = [NSNull null];
             skillinfo[@"rate"] = [NSNull null];
+            
+            [SellingManager sharedSellingManager].skillPrice = [NSNull null];
+            [SellingManager sharedSellingManager].skillRate = [NSNull null];
         }
         else
         {
             skillinfo[@"price"] = priceString;
             skillinfo[@"rate"] = _rateId;
+            
+            [SellingManager sharedSellingManager].skillPrice = priceString;
+            [SellingManager sharedSellingManager].skillRate = _rateId;
         }
         
 //        Skill_Info[@"name"] = titleString;
@@ -396,6 +403,13 @@
         skillinfo[@"summary"] = summaryString;
         skillinfo[@"description"] = descString;
         
+        [SellingManager sharedSellingManager].skillName = titleString;
+        [SellingManager sharedSellingManager].skillCategoryId = _categoryId;
+        [SellingManager sharedSellingManager].skillSummary = summaryString;
+        [SellingManager sharedSellingManager].skillDesc = descString;
+        
+        
+        
         NSString *name = skillinfo[@"name"];
         NSLog(@"name1 -- %@",name);
         NSLog(@"name2 -- %@",titleString);
@@ -407,8 +421,12 @@
         NSLog(@"rate -- %@",skillinfo[@"rate"]);
         
         
-        UIViewController *vc = [SellingViewController2 instantiateForInfo:skillinfo];
+//        UIViewController *vc = [SellingViewController2 instantiateForInfo:skillinfo];
+//        [self.navigationController pushViewController:vc animated:YES];
+        
+        UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_2"];
         [self.navigationController pushViewController:vc animated:YES];
+
         
         
         

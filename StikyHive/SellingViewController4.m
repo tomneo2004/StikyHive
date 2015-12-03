@@ -74,9 +74,11 @@
         {
             NSLog(@"add now");
             
-//            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_33"];
+            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_33"];
             
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            
+            [self.navigationController pushViewController:vc animated:YES];
             
             
         }

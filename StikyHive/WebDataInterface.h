@@ -202,6 +202,7 @@
 #define DATA_URL_SEARCH_NEAR_BY_CP      DATA_URL@"searchNearByCP/format/json"
 #define DATA_URL_INSERT_URGENT_REQUEST  DATA_URL@"insertUrgentRequest/format/json"
 #define DATA_URL_DELETE_DOCUMENT        DATA_URL@"deleteDocument/format/json"
+#define DATA_URL_SELECT_SUBINFO         DATA_URL@"selectSubInfo/format/json"
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -307,6 +308,15 @@
 + (void)fileRequestUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid cpid:(NSInteger)cpid;
 
 + (void)deleteDocuments:(NSArray *)idArray completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)selectSubInfo:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
+
+
+
+
+
+
+
 
 ////////  ///////////// END -------------------------------------
 
