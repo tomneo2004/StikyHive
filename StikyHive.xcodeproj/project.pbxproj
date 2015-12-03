@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		516617341BF03939002BE00B /* looking.png in Resources */ = {isa = PBXBuildFile; fileRef = 516617331BF03939002BE00B /* looking.png */; };
 		516617361BF04FF3002BE00B /* icon_doc_save.png in Resources */ = {isa = PBXBuildFile; fileRef = 516617351BF04FF3002BE00B /* icon_doc_save.png */; };
+		5168F2381C0ECE8E0087C0BF /* SellingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5168F2371C0ECE8E0087C0BF /* SellingManager.m */; };
 		51694D6B1BABE9C4007722F1 /* SkillVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 51694D6A1BABE9C4007722F1 /* SkillVideoPlayer.m */; };
 		51694D6E1BAC27BC007722F1 /* SelectableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51694D6D1BAC27BC007722F1 /* SelectableImageView.m */; };
 		51694D711BAC27EA007722F1 /* SelectableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51694D701BAC27EA007722F1 /* SelectableLabel.m */; };
@@ -441,6 +442,8 @@
 		42735513B3CB550D88CCB8A7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		516617331BF03939002BE00B /* looking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = looking.png; sourceTree = "<group>"; };
 		516617351BF04FF3002BE00B /* icon_doc_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_doc_save.png; sourceTree = "<group>"; };
+		5168F2361C0ECE8E0087C0BF /* SellingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingManager.h; sourceTree = "<group>"; };
+		5168F2371C0ECE8E0087C0BF /* SellingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingManager.m; sourceTree = "<group>"; };
 		51694D691BABE9C4007722F1 /* SkillVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillVideoPlayer.h; sourceTree = "<group>"; };
 		51694D6A1BABE9C4007722F1 /* SkillVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillVideoPlayer.m; sourceTree = "<group>"; };
 		51694D6C1BAC27BC007722F1 /* SelectableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectableImageView.h; sourceTree = "<group>"; };
@@ -1440,6 +1443,8 @@
 				5184DD501C08639A008F434B /* SellingViewController33.m */,
 				517A1C631C0C2B72004017E4 /* SellingViewController4.h */,
 				517A1C641C0C2B72004017E4 /* SellingViewController4.m */,
+				5168F2361C0ECE8E0087C0BF /* SellingManager.h */,
+				5168F2371C0ECE8E0087C0BF /* SellingManager.m */,
 			);
 			name = Skill;
 			sourceTree = "<group>";
@@ -2545,6 +2550,7 @@
 				674D102F1B7DB4CD00B5B80D /* HRColorCursor.m in Sources */,
 				674D0F631B7D9AD800B5B80D /* UserInfo.m in Sources */,
 				51851C991BB24E35007CFBC2 /* SkillPageViewController.m in Sources */,
+				5168F2381C0ECE8E0087C0BF /* SellingManager.m in Sources */,
 				674D0F371B7D9A5200B5B80D /* UIImage+JSQMessages.m in Sources */,
 				674D0F401B7D9A5200B5B80D /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				674D0F441B7D9A5200B5B80D /* JSQLocationMediaItem.m in Sources */,

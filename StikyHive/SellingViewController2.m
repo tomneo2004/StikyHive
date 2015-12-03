@@ -10,10 +10,12 @@
 #import "ViewControllerUtil.h"
 #import "SellingViewController3.h"
 #import "SellingViewController33.h"
+#import "SellingManager.h"
 
 @interface SellingViewController2 ()
 
 @property (nonatomic, strong) NSData *videoData;
+@property (nonatomic, strong) UIImageView *secondVideo;
 
 @end
 
@@ -43,6 +45,26 @@ static NSMutableDictionary *Skill_Info;
     [_videoImageView setUserInteractionEnabled:YES];
     [_videoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(videoImageViewTapped:)]];
     
+
+    
+    BOOL videoStatus = [SellingManager sharedSellingManager].videoStatus;
+    if (videoStatus)
+    {
+        _secondVideo = [[UIImageView alloc] initWithFrame:CGRectMake(_videoImageView.frame.origin.x, _videoImageView.frame.origin.y+_videoImageView.frame.size.height +120, 240, 145)];
+        CGPoint center = _secondVideo.center;
+        center.x = self.view.center.x;
+        _secondVideo.center = center;
+        
+        
+        _secondVideo.image = [UIImage imageNamed:@"sell_upload_video"];
+        [self.view addSubview:_secondVideo];
+        
+        
+        CGRect labelFrame = _recommLabel.frame;
+        labelFrame.origin.y = _secondVideo.frame.origin.y + _secondVideo.frame.size.height + 120;
+        _recommLabel.frame = labelFrame;
+        
+    }
 
     
     

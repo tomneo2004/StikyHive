@@ -8,6 +8,7 @@
 
 #import "SellingViewController4.h"
 #import "ViewControllerUtil.h"
+#import "SellingManager.h"
 
 @interface SellingViewController4 ()
 
@@ -28,9 +29,29 @@
     [_contentScrollView setContentSize:CGSizeMake(self.view.frame.size.width, 800)];
     
     _switchBtn1.userInteractionEnabled = NO;
-    [_switchBtn2 setOn:NO animated:YES];
-    [_switchBtn3 setOn:NO animated:YES];
+    
+    
     [_switchBtn4 setOn:NO animated:YES];
+    
+    BOOL status = [SellingManager sharedSellingManager].photoStatus;
+    BOOL videoStatus = [SellingManager sharedSellingManager].videoStatus;
+    if (status) {
+        [_switchBtn2 setOn:YES animated:YES];
+    }
+    else
+    {
+       [_switchBtn2 setOn:NO animated:YES]; 
+    }
+    if (videoStatus) {
+        [_switchBtn3 setOn:YES animated:YES];
+    }
+    else
+    {
+       [_switchBtn3 setOn:NO animated:YES];
+    }
+
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,8 +74,9 @@
         {
             NSLog(@"add now");
             
-            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_33"];
-            [self.navigationController pushViewController:vc animated:YES];
+//            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_33"];
+            
+            [self.navigationController popViewControllerAnimated:YES];
             
             
         }
@@ -69,6 +91,8 @@
         else
         {
             NSLog(@"yes");
+            
+            [SellingManager sharedSellingManager].photoStatus = NO;
         }
     }
     else if (alertView.tag == 301)
@@ -83,6 +107,7 @@
         {
             NSLog(@"add now");
             UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_2"];
+//            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
             [self.navigationController pushViewController:vc animated:YES];
 
         }
@@ -97,6 +122,7 @@
         else
         {
             NSLog(@"yes");
+            [SellingManager sharedSellingManager].videoStatus = NO;
         }
     }
 
@@ -114,6 +140,9 @@
         
         btn2AlertOn.tag = 201;
         [btn2AlertOn show];
+        
+        
+        [SellingManager sharedSellingManager].photoStatus = YES;
     }
     else
     {
@@ -139,6 +168,8 @@
         
         btn3AlertOn.tag = 301;
         [btn3AlertOn show];
+        
+        [SellingManager sharedSellingManager].videoStatus = YES;
 
     }
     else

@@ -28,6 +28,19 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *textField4;
 
+@property (strong, nonatomic) IBOutlet UIButton *nextBtn;
+
+@property (strong, nonatomic) IBOutlet UILabel *descLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *originLabel;
+
+
+
+
+
+
+
+
 
 
 - (IBAction)nextButtonPressed:(id)sender;

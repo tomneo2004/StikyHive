@@ -243,9 +243,7 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
         NSDictionary *params = @{POST_PARAMETER_DOCUMENT_ID:[NSNumber numberWithInteger:idInt]};
         
         [self requestData:DATA_URL_DELETE_DOCUMENT withParameters:params completion:completion];
-        
     }
-    
 }
 
 
