@@ -30,6 +30,7 @@
     NSInteger _removedCount;
     AFHTTPRequestOperation *_downloadOp;
     BOOL _shouldUpdate;
+    NSDateFormatter *_dateFormatter;
 }
 
 @synthesize tableView = _tableView;
@@ -40,6 +41,8 @@
     
     _removedDocumentInfo = [[NSMutableArray alloc] init];
     _tableView.allowsSelectionDuringEditing = YES;
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    [_dateFormatter setDateFormat:@"dd MMM yyyy"];
     _shouldUpdate = YES;
 }
 
@@ -330,10 +333,7 @@
     
     cell.titleLabel.text = info.documentName;
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd MMM yyyy"];
-    
-    cell.dateLabel.text = [formatter stringFromDate:info.createDate];
+    cell.dateLabel.text = [_dateFormatter stringFromDate:info.createDate];
     
     if(tableView.isEditing){
         
