@@ -128,9 +128,10 @@
             NSDictionary *dic = [(NSDictionary *)obj objectForKey:@"result"];
             
             //upload photo to server
-            [WebDataInterface fileRequestUpload:mgr.attachmentImage stikyid:[LocalDataInterface retrieveStkid] cpid:[[dic objectForKey:@"cpId"] integerValue]];
+            if(mgr.attachmentImage != nil)
+                [WebDataInterface fileRequestUpload:mgr.attachmentImage stikyid:[LocalDataInterface retrieveStkid] cpid:[[dic objectForKey:@"cpId"] integerValue]];
             
-            
+            [mgr clearCurrentPostRequest];
             
             //hide activity
             [self.view hideActivityView];
