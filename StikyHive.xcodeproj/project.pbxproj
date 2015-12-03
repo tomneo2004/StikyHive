@@ -386,6 +386,9 @@
 		CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8D1C0D9E8D000CB49F /* DocumentTableViewCell.m */; };
 		CE68DA911C0DA0F6000CB49F /* DocumentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */; };
 		CE7AA1771C0804BF00875DE5 /* PostRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */; };
+		CE9C7CE31C10288100326710 /* SubscriptionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE21C10288100326710 /* SubscriptionInfoViewController.m */; };
+		CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE51C1029E700326710 /* SubInfoCell.m */; };
+		CE9C7CE91C102ED600326710 /* SubInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE81C102ED600326710 /* SubInfo.m */; };
 		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
 		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
@@ -974,6 +977,12 @@
 		CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentInfo.m; sourceTree = "<group>"; };
 		CE7AA1751C0804BF00875DE5 /* PostRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostRequestManager.h; sourceTree = "<group>"; };
 		CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostRequestManager.m; sourceTree = "<group>"; };
+		CE9C7CE11C10288100326710 /* SubscriptionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionInfoViewController.h; sourceTree = "<group>"; };
+		CE9C7CE21C10288100326710 /* SubscriptionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionInfoViewController.m; sourceTree = "<group>"; };
+		CE9C7CE41C1029E700326710 /* SubInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubInfoCell.h; sourceTree = "<group>"; };
+		CE9C7CE51C1029E700326710 /* SubInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfoCell.m; sourceTree = "<group>"; };
+		CE9C7CE71C102ED600326710 /* SubInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubInfo.h; sourceTree = "<group>"; };
+		CE9C7CE81C102ED600326710 /* SubInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfo.m; sourceTree = "<group>"; };
 		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
 		CED73E0C1C06F57C00ADB60C /* YelloBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YelloBTN.png; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
@@ -1166,6 +1175,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CE9C7CE01C10285C00326710 /* SubscriptionInfo */,
 				CE68DA881C0D9ABF000CB49F /* SavedDocuments */,
 				CEE93A231BF47C0500B292BA /* CrossPollinate */,
 				517931461BAFBD540019BB49 /* Buyer */,
@@ -1984,6 +1994,19 @@
 			name = PostReuestManager;
 			sourceTree = "<group>";
 		};
+		CE9C7CE01C10285C00326710 /* SubscriptionInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CE9C7CE11C10288100326710 /* SubscriptionInfoViewController.h */,
+				CE9C7CE21C10288100326710 /* SubscriptionInfoViewController.m */,
+				CE9C7CE41C1029E700326710 /* SubInfoCell.h */,
+				CE9C7CE51C1029E700326710 /* SubInfoCell.m */,
+				CE9C7CE71C102ED600326710 /* SubInfo.h */,
+				CE9C7CE81C102ED600326710 /* SubInfo.m */,
+			);
+			name = SubscriptionInfo;
+			sourceTree = "<group>";
+		};
 		CEE93A041BF448CA00B292BA /* NewVersion */ = {
 			isa = PBXGroup;
 			children = (
@@ -2618,6 +2641,7 @@
 				674D0F491B7D9A5200B5B80D /* JSQPhotoMediaItem.m in Sources */,
 				5184DD511C08639A008F434B /* SellingViewController33.m in Sources */,
 				51C0A7E91BC6115600860CD3 /* SellerCommViewController.m in Sources */,
+				CE9C7CE91C102ED600326710 /* SubInfo.m in Sources */,
 				674D0F551B7D9A5200B5B80D /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				674D0F471B7D9A5200B5B80D /* JSQMessagesAvatarImage.m in Sources */,
 				674D10361B7DB4CD00B5B80D /* ZSSTextView.m in Sources */,
@@ -2708,6 +2732,8 @@
 				CEF7BAA21BFADD6E009624CC /* RNActivityView.m in Sources */,
 				674D102E1B7DB4CD00B5B80D /* HRCgUtil.m in Sources */,
 				CEF7BAA31BFADD6E009624CC /* UIView+RNActivityView.m in Sources */,
+				CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */,
+				CE9C7CE31C10288100326710 /* SubscriptionInfoViewController.m in Sources */,
 				CEF4640D1BF9C42100010D21 /* MyRequest.m in Sources */,
 				516C51621C0410B8002710AA /* SellingViewController3.m in Sources */,
 				674D0F571B7D9A5200B5B80D /* JSQMessagesMediaPlaceholderView.m in Sources */,
