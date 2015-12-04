@@ -19,5 +19,6 @@
 - (IBAction)switchBtn2Pressed:(id)sender;
 - (IBAction)switchBtn3Pressed:(id)sender;
 - (IBAction)switchBtn4Pressed:(id)sender;
+- (IBAction)nextBtn:(id)sender;
 
 @end

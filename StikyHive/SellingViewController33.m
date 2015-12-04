@@ -111,7 +111,7 @@ static NSData *Video_Data;
         CGPoint center5 = _imageView5.center;
         center5.x = _contentViewController.center.x;
         _imageView5.center = center5;
-        _imageView5.image = [UIImage imageNamed:@"sell_upload_photo"];
+//        _imageView5.image = [UIImage imageNamed:@"sell_upload_photo"];
         
         y = y + imageH + 30;
         
@@ -144,10 +144,12 @@ static NSData *Video_Data;
 
         
         
-        [_contentViewController addSubview:_imageView5];
+//        [_contentViewController addSubview:_imageView5];
         [_contentViewController addSubview:_imageView6];
         [_contentViewController addSubview:_imageView7];
         [_contentViewController addSubview:_imageView8];
+        
+        [_contentViewController addSubview:[_imageView5 initWithImage:[UIImage imageNamed:@"sell_upload_photo"]]];
         
         
         [_contentViewController setContentSize:CGSizeMake(self.view.frame.size.width, y)];
@@ -164,6 +166,11 @@ static NSData *Video_Data;
         
         _skillImageViews = @[_imageView1,_imageView2,_imageView3,_imageView4];
         
+        
+        
+        [_contentViewController addSubview:[_imageView1 initWithImage:[UIImage imageNamed:@"sell_upload_photo"]]];
+        [_contentViewController addSubview:[_imageView2 initWithImage:[UIImage imageNamed:@"sell_upload_photo"]]];
+        [_contentViewController addSubview:[_imageView3 initWithImage:[UIImage imageNamed:@"sell_upload_photo"]]];
     }
     
     

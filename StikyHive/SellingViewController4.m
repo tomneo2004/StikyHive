@@ -201,4 +201,12 @@
     
     
 }
+
+- (IBAction)nextBtn:(id)sender
+{
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"promotion_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+
+    
+}
 @end

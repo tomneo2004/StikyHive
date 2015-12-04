@@ -203,6 +203,7 @@
 #define DATA_URL_INSERT_URGENT_REQUEST  DATA_URL@"insertUrgentRequest/format/json"
 #define DATA_URL_DELETE_DOCUMENT        DATA_URL@"deleteDocument/format/json"
 #define DATA_URL_SELECT_SUBINFO         DATA_URL@"selectSubInfo/format/json"
+#define DATA_URL_SELECT_CONTACT         DATA_URL@"selectContacts/format/json"
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -311,7 +312,7 @@
 
 + (void)selectSubInfo:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
 
-
++ (void)selectContacts:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
 
 
 
