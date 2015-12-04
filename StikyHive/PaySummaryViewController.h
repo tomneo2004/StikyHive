@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PaySummaryViewController : UIViewController
+@interface PaySummaryViewController : UIViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 
+@property (strong, nonatomic) IBOutlet UILabel *basicLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *defDurationLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *defUnitLabel;
 
 
 

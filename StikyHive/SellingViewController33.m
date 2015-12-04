@@ -276,9 +276,9 @@ static NSData *Video_Data;
     }
     
     
-    if (checkArray.count > 0)
-    {
-        
+//    if (checkArray.count > 0)
+//    {
+    
         [SellingManager sharedSellingManager].photoArray = [_imageFileArray mutableCopy];
         
         NSLog(@"selling manager array --- %@",[SellingManager sharedSellingManager].photoArray);
@@ -287,13 +287,13 @@ static NSData *Video_Data;
         
         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_4"];
         [self.navigationController pushViewController:vc animated:YES];
-    }
-    else
-    {
-        
-        [ViewControllerUtil showAlertWithTitle:@"" andMessage:@"Please upload at least one photo"];
-        
-    }
+//    }
+//    else
+//    {
+//        
+//        [ViewControllerUtil showAlertWithTitle:@"" andMessage:@"Please upload at least one photo"];
+//        
+//    }
     
     
   }

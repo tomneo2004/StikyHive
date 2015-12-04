@@ -28,6 +28,8 @@
     UIImage *_videoImage;
     NSData *_video;
     
+    
+    BOOL _promotionStatus;
 }
 
 static SellingManager *_instance;
@@ -99,6 +101,11 @@ static SellingManager *_instance;
     _video = video;
 }
 
+- (void)setPromotionStatus:(BOOL)promotionStatus
+{
+    _promotionStatus = promotionStatus;
+}
+
 
 #pragma mark - Getter
 - (NSMutableArray *)getPhotos
@@ -154,6 +161,11 @@ static SellingManager *_instance;
 - (NSData *)getVideo
 {
     return _video;
+}
+
+- (BOOL)getPromotionStatus
+{
+    return _promotionStatus;
 }
 
 

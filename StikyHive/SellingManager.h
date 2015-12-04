@@ -26,6 +26,7 @@
 @property (setter=setVideoImage:, getter=getVideoImage, nonatomic) UIImage *videoImage;
 @property (setter=setVideo:, getter=getVideo, nonatomic) NSData *video;
 
+@property (setter=setPromotionStatus:, getter=getPromotionStatus, nonatomic) BOOL promotionStatus;
 
 
 + (SellingManager *)sharedSellingManager;

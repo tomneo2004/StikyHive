@@ -154,11 +154,11 @@
     
     y = y+titleLabel.frame.size.height +10;
     
-    _titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width-space*2, 40)];
+    _titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width-space*2, 50)];
     _titleTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"eg.Accounting"];
     _titleTextField.backgroundColor = textBgColor;
     _titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0);  //text inset for uitextfield
-    _titleTextField.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
+    _titleTextField.font = [UIFont fontWithName:@"OpenSans-Light" size:17];
     
     
     y = y + _titleTextField.frame.size.height+20;
@@ -190,7 +190,7 @@
     
     y = y+_talentBtn.frame.size.height+space/2;
     
-    _industryTextField = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width-40, 40)];
+    _industryTextField = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width-40, 50)];
     _industryTextField.backgroundColor = textBgColor;
     _industryTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Select Industry"];
 //    _industryTextField.textAlignment = NSTextAlignmentFromCTTextAlignment(100);
@@ -347,6 +347,11 @@
 //    
 //    NSLog(@"summary string -- %@",summaryString);
 //    NSLog(@"desc string -- %@",descString);
+    
+    
+    
+    
+    
     
     if (titleString.length == 0) {
         [ViewControllerUtil showAlertWithTitle:@"Incomplete Information" andMessage:@"Skill Title not fill in."];

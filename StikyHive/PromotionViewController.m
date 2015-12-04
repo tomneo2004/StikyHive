@@ -8,6 +8,7 @@
 
 #import "PromotionViewController.h"
 #import "ViewControllerUtil.h"
+#import "SellingManager.h"
 
 @interface PromotionViewController ()
 
@@ -38,6 +39,8 @@
 - (IBAction)wantBtnPressed:(id)sender
 {
     
+    [SellingManager sharedSellingManager].promotionStatus = YES;
+    
     
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_summary_view_controller"];
     [self.navigationController pushViewController:vc animated:YES];
@@ -48,6 +51,8 @@
 
 - (IBAction)laterBtnPressed:(id)sender
 {
+    
+    [SellingManager sharedSellingManager].promotionStatus = NO;
     
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_summary_view_controller"];
     [self.navigationController pushViewController:vc animated:YES];
