@@ -411,6 +411,9 @@
 		CEE93A221BF4490100B292BA /* buzzr_upload_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A131BF4490000B292BA /* buzzr_upload_btn.png */; };
 		CEE93A261BF47C2600B292BA /* CrossPollinateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE93A251BF47C2600B292BA /* CrossPollinateViewController.m */; };
 		CEE93A2A1BF4852800B292BA /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE93A291BF4852800B292BA /* Request.m */; };
+		CEEDB18D1C11681B009C3DC5 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEDB18C1C11681B009C3DC5 /* ContactViewController.m */; };
+		CEEDB1901C116899009C3DC5 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEDB18F1C116899009C3DC5 /* ContactCell.m */; };
+		CEEDB1931C116CF4009C3DC5 /* ContactInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEDB1921C116CF4009C3DC5 /* ContactInfo.m */; };
 		CEF464011BF9B2A800010D21 /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464001BF9B2A800010D21 /* Section.m */; };
 		CEF464041BF9B50300010D21 /* MyRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464031BF9B50300010D21 /* MyRequestCell.m */; };
 		CEF464071BF9BA8600010D21 /* RequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464061BF9BA8600010D21 /* RequestCell.m */; };
@@ -1012,6 +1015,12 @@
 		CEE93A251BF47C2600B292BA /* CrossPollinateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrossPollinateViewController.m; sourceTree = "<group>"; };
 		CEE93A281BF4852800B292BA /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		CEE93A291BF4852800B292BA /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+		CEEDB18B1C11681B009C3DC5 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		CEEDB18C1C11681B009C3DC5 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
+		CEEDB18E1C116899009C3DC5 /* ContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
+		CEEDB18F1C116899009C3DC5 /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
+		CEEDB1911C116CF4009C3DC5 /* ContactInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactInfo.h; sourceTree = "<group>"; };
+		CEEDB1921C116CF4009C3DC5 /* ContactInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactInfo.m; sourceTree = "<group>"; };
 		CEF463FF1BF9B2A800010D21 /* Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Section.h; sourceTree = "<group>"; };
 		CEF464001BF9B2A800010D21 /* Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Section.m; sourceTree = "<group>"; };
 		CEF464021BF9B50300010D21 /* MyRequestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestCell.h; sourceTree = "<group>"; };
@@ -1184,6 +1193,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CEEDB18A1C116802009C3DC5 /* Contacts */,
 				CE9C7CE01C10285C00326710 /* SubscriptionInfo */,
 				CE68DA881C0D9ABF000CB49F /* SavedDocuments */,
 				CEE93A231BF47C0500B292BA /* CrossPollinate */,
@@ -2075,6 +2085,19 @@
 			name = Request;
 			sourceTree = "<group>";
 		};
+		CEEDB18A1C116802009C3DC5 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				CEEDB18B1C11681B009C3DC5 /* ContactViewController.h */,
+				CEEDB18C1C11681B009C3DC5 /* ContactViewController.m */,
+				CEEDB18E1C116899009C3DC5 /* ContactCell.h */,
+				CEEDB18F1C116899009C3DC5 /* ContactCell.m */,
+				CEEDB1911C116CF4009C3DC5 /* ContactInfo.h */,
+				CEEDB1921C116CF4009C3DC5 /* ContactInfo.m */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
 		CEF463FE1BF9B29200010D21 /* Section */ = {
 			isa = PBXGroup;
 			children = (
@@ -2616,6 +2639,7 @@
 				674D0F631B7D9AD800B5B80D /* UserInfo.m in Sources */,
 				51851C991BB24E35007CFBC2 /* SkillPageViewController.m in Sources */,
 				5168F2381C0ECE8E0087C0BF /* SellingManager.m in Sources */,
+				CEEDB1901C116899009C3DC5 /* ContactCell.m in Sources */,
 				674D0F371B7D9A5200B5B80D /* UIImage+JSQMessages.m in Sources */,
 				674D0F401B7D9A5200B5B80D /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				674D0F441B7D9A5200B5B80D /* JSQLocationMediaItem.m in Sources */,
@@ -2730,6 +2754,8 @@
 				676F77E71B96F3060084988A /* TOCropToolbar.m in Sources */,
 				5179314F1BB01A290019BB49 /* BuyerPageViewController.m in Sources */,
 				CEFD19501C04045800A79158 /* SkillInfo.m in Sources */,
+				CEEDB1931C116CF4009C3DC5 /* ContactInfo.m in Sources */,
+				CEEDB18D1C11681B009C3DC5 /* ContactViewController.m in Sources */,
 				674D10461B7DB4FB00B5B80D /* GKImageCropView.m in Sources */,
 				676ED4581B85CEAB00696985 /* UserVerificationViewController.m in Sources */,
 				674D0F4C1B7D9A5200B5B80D /* JSQMessagesCollectionView.m in Sources */,
