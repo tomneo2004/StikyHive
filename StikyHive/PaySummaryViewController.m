@@ -7,8 +7,13 @@
 //
 
 #import "PaySummaryViewController.h"
+#import "SellingManager.h"
 
 @interface PaySummaryViewController ()
+
+@property (nonatomic, strong) NSString *basicDuration;
+@property (nonatomic, strong) NSString *basicUnit;
+@property (nonatomic, assign) NSInteger duration;
 
 @end
 
@@ -22,14 +27,40 @@
     _contentScrollView.delegate = self;
     [_contentScrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1000)];
     
-    
-    
-    
     _basicLabel.layer.borderWidth = 2;
     _basicLabel.layer.borderColor = [UIColor colorWithRed:0/255 green:139.0/255 blue:123.0/255 alpha:1.0].CGColor;
     
     
+    
+    BOOL promotion = [SellingManager sharedSellingManager].promotionStatus;
+    NSLog(@"promotion or not ---- %d",promotion);
+    
+    if (promotion)
+    {
+        _basicDuration = @"18mths";
+        _duration = 18;
+//        _basicUnit = 
+        
+        _defDurationLabel.text = _basicDuration;
+        
+        
+        
+        
+        
+    }
+    else
+    {
+        _duration = 12;
+        
+    
+        
+    }
+    
+    
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

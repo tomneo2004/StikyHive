@@ -204,6 +204,7 @@
 #define DATA_URL_DELETE_DOCUMENT        DATA_URL@"deleteDocument/format/json"
 #define DATA_URL_SELECT_SUBINFO         DATA_URL@"selectSubInfo/format/json"
 #define DATA_URL_SELECT_CONTACT         DATA_URL@"selectContacts/format/json"
+#define DATA_URL_SELECT_SOLD_INFO       DATA_URL@"selectSoldInfo/format/json"
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -314,6 +315,7 @@
 
 + (void)selectContacts:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
 
++ (void)selectSoldInfo:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
 
 
 
