@@ -389,6 +389,10 @@
 		CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8D1C0D9E8D000CB49F /* DocumentTableViewCell.m */; };
 		CE68DA911C0DA0F6000CB49F /* DocumentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */; };
 		CE7AA1771C0804BF00875DE5 /* PostRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */; };
+		CE9B8EC61C16C34D0022653B /* BoughtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B8EC51C16C34D0022653B /* BoughtViewController.m */; };
+		CE9B8EC91C16C3620022653B /* BoughtInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B8EC81C16C3620022653B /* BoughtInfo.m */; };
+		CE9B8ECC1C16C37A0022653B /* BoughtCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B8ECB1C16C37A0022653B /* BoughtCell.m */; };
+		CE9B8ED01C16CAE50022653B /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B8ECF1C16CAE50022653B /* HCSStarRatingView.m */; };
 		CE9C7CE31C10288100326710 /* SubscriptionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE21C10288100326710 /* SubscriptionInfoViewController.m */; };
 		CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE51C1029E700326710 /* SubInfoCell.m */; };
 		CE9C7CE91C102ED600326710 /* SubInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE81C102ED600326710 /* SubInfo.m */; };
@@ -991,6 +995,14 @@
 		CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentInfo.m; sourceTree = "<group>"; };
 		CE7AA1751C0804BF00875DE5 /* PostRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostRequestManager.h; sourceTree = "<group>"; };
 		CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostRequestManager.m; sourceTree = "<group>"; };
+		CE9B8EC41C16C34D0022653B /* BoughtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoughtViewController.h; sourceTree = "<group>"; };
+		CE9B8EC51C16C34D0022653B /* BoughtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoughtViewController.m; sourceTree = "<group>"; };
+		CE9B8EC71C16C3620022653B /* BoughtInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoughtInfo.h; sourceTree = "<group>"; };
+		CE9B8EC81C16C3620022653B /* BoughtInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoughtInfo.m; sourceTree = "<group>"; };
+		CE9B8ECA1C16C37A0022653B /* BoughtCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoughtCell.h; sourceTree = "<group>"; };
+		CE9B8ECB1C16C37A0022653B /* BoughtCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoughtCell.m; sourceTree = "<group>"; };
+		CE9B8ECE1C16CAE50022653B /* HCSStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSStarRatingView.h; sourceTree = "<group>"; };
+		CE9B8ECF1C16CAE50022653B /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
 		CE9C7CE11C10288100326710 /* SubscriptionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionInfoViewController.h; sourceTree = "<group>"; };
 		CE9C7CE21C10288100326710 /* SubscriptionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionInfoViewController.m; sourceTree = "<group>"; };
 		CE9C7CE41C1029E700326710 /* SubInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubInfoCell.h; sourceTree = "<group>"; };
@@ -1202,6 +1214,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CE9B8EC31C16C32C0022653B /* Bought */,
 				CEEDB1941C118B09009C3DC5 /* Sold */,
 				CEEDB18A1C116802009C3DC5 /* Contacts */,
 				CE9C7CE01C10285C00326710 /* SubscriptionInfo */,
@@ -2027,6 +2040,29 @@
 			name = PostReuestManager;
 			sourceTree = "<group>";
 		};
+		CE9B8EC31C16C32C0022653B /* Bought */ = {
+			isa = PBXGroup;
+			children = (
+				CE9B8ECD1C16CACE0022653B /* HCSStarRatingView */,
+				CE9B8EC41C16C34D0022653B /* BoughtViewController.h */,
+				CE9B8EC51C16C34D0022653B /* BoughtViewController.m */,
+				CE9B8ECA1C16C37A0022653B /* BoughtCell.h */,
+				CE9B8ECB1C16C37A0022653B /* BoughtCell.m */,
+				CE9B8EC71C16C3620022653B /* BoughtInfo.h */,
+				CE9B8EC81C16C3620022653B /* BoughtInfo.m */,
+			);
+			name = Bought;
+			sourceTree = "<group>";
+		};
+		CE9B8ECD1C16CACE0022653B /* HCSStarRatingView */ = {
+			isa = PBXGroup;
+			children = (
+				CE9B8ECE1C16CAE50022653B /* HCSStarRatingView.h */,
+				CE9B8ECF1C16CAE50022653B /* HCSStarRatingView.m */,
+			);
+			name = HCSStarRatingView;
+			sourceTree = "<group>";
+		};
 		CE9C7CE01C10285C00326710 /* SubscriptionInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -2699,6 +2735,7 @@
 				CEEDB1971C118B24009C3DC5 /* SoldViewController.m in Sources */,
 				674D0F391B7D9A5200B5B80D /* JSQMessagesKeyboardController.m in Sources */,
 				674D0F521B7D9A5200B5B80D /* JSQMessagesComposerTextView.m in Sources */,
+				CE9B8ECC1C16C37A0022653B /* BoughtCell.m in Sources */,
 				676600E21BA12C65003A84D8 /* ForgotPassViewController.m in Sources */,
 				674D10441B7DB4FB00B5B80D /* GKCropBorderView.m in Sources */,
 				674D0F491B7D9A5200B5B80D /* JSQPhotoMediaItem.m in Sources */,
@@ -2736,6 +2773,7 @@
 				674D10321B7DB4CD00B5B80D /* HRColorUtil.m in Sources */,
 				674D0EB71B7D984200B5B80D /* SearchSellViewController.m in Sources */,
 				674D0F3E1B7D9A5200B5B80D /* JSQMessagesMediaViewBubbleImageMasker.m in Sources */,
+				CE9B8EC91C16C3620022653B /* BoughtInfo.m in Sources */,
 				674D0F5A1B7D9A5200B5B80D /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				674D0F481B7D9A5200B5B80D /* JSQMessagesBubbleImage.m in Sources */,
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
@@ -2746,6 +2784,8 @@
 				674D0F321B7D9A5200B5B80D /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
 				517931491BAFBD750019BB49 /* BuyerCollectionViewController.m in Sources */,
 				CE68DA911C0DA0F6000CB49F /* DocumentInfo.m in Sources */,
+				CE9B8ED01C16CAE50022653B /* HCSStarRatingView.m in Sources */,
+				CE9B8EC61C16C34D0022653B /* BoughtViewController.m in Sources */,
 				674D0F3F1B7D9A5200B5B80D /* JSQMessagesTimestampFormatter.m in Sources */,
 				674D10491B7DB4FB00B5B80D /* GKResizeableCropOverlayView.m in Sources */,
 				CEF4640A1BF9C41200010D21 /* UrgentRequest.m in Sources */,
