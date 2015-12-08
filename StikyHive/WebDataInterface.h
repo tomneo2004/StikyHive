@@ -206,6 +206,7 @@
 #define DATA_URL_SELECT_CONTACT         DATA_URL@"selectContacts/format/json"
 #define DATA_URL_SELECT_SOLD_INFO       DATA_URL@"selectSoldInfo/format/json"
 #define DATA_URL_CREATE_UPDATE_SUB_PLAN DATA_URL@"createUpdateSubPlan/format/json"
+#define DATA_URL_SELECT_BOUGHT_INFO     DATA_URL@"selectBoughtInfo/format/json"
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -358,7 +359,7 @@
 
 + (void)createUpdateSubPlan:(NSString *)stkid skillId:(NSInteger)skillId name:(NSString *)name description:(NSString *)description catId:(NSInteger)catId type:(NSInteger)type summary:(NSString *)summary price:(NSDecimalNumber *)price rateId:(NSInteger)rateId subId1:(NSInteger)subId1 subMonth:(NSInteger)subMonth subPrice:(NSDecimalNumber *)subPrice subTotal:(NSDecimalNumber *)subTotal subType:(NSInteger)subType status1:(NSInteger)status1 subId3:(NSInteger)subId3 photoMonth:(NSInteger)photoMonth photoPrice:(NSDecimalNumber *)photoPrice photoTotal:(NSDecimalNumber *)photoTotal photoType:(NSInteger)photoType status3:(NSInteger)status3 subId4:(NSInteger)subId4 videoMonth:(NSInteger)videoMonth videoPrice:(NSDecimalNumber *)videoPrice videoTotal:(NSDecimalNumber *)videoTotal videoType:(NSInteger)videoType status4:(NSInteger)status4 subId5:(NSInteger)subId5 extendMonth:(NSInteger)extendMonth extendPrice:(NSDecimalNumber *)extendPrice extendTotal:(NSDecimalNumber *)extendTotal extendType:(NSInteger)extendType status5:(NSInteger)status5 subId2:(NSInteger)subId2 extraMonth:(NSInteger)extraMonth extraPrice:(NSDecimalNumber *)extraPrice extraTotal:(NSDecimalNumber *)extraTotal extraType:(NSInteger)extraType status2:(NSInteger)status2 completion:(void (^)(NSObject *, NSError *))completion;
 
-
++ (void)selectBoughtInfo:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
 
 
 

@@ -392,12 +392,12 @@
             [SellingManager sharedSellingManager].skillRate = rateIdInt;
            
         }
-//        else
-//        {
-//            [SellingManager sharedSellingManager].skillPrice = NAN;
-//            [SellingManager sharedSellingManager].skillRate = [NSNull null];
-//            
-//        }
+        else
+        {
+            [SellingManager sharedSellingManager].skillPrice = nil;
+            [SellingManager sharedSellingManager].skillRate = nil;
+        
+        }
         
 //        Skill_Info[@"name"] = titleString;
 //        Skill_Info[@"categoryid"] = _categoryId;

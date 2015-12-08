@@ -269,47 +269,53 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     [self requestData:DATA_URL_SELECT_SOLD_INFO withParameters:params completion:completion];
 }
 
-
-+ (void)createUpdateSubPlan:(NSString *)stkid skillId:(NSInteger)skillId name:(NSString *)name description:(NSString *)description catId:(NSInteger)catId type:(NSInteger)type summary:(NSString *)summary price:(float)price rateId:(NSInteger)rateId subId1:(NSInteger)subId1 subMonth:(NSInteger)subMonth subPrice:(float)subPrice subTotal:(float)subTotal subType:(NSInteger)subType status1:(NSInteger)status1 subId3:(NSInteger)subId3 photoMonth:(NSInteger)photoMonth photoPrice:(float)photoPrice photoTotal:(float)photoTocal photoType:(NSInteger)photoType status3:(NSInteger)status3 subId4:(NSInteger)subId4 videoMonth:(NSInteger)videoMonth videoPrice:(float)videoPrice videoTotal:(float)videoTotal videoType:(NSInteger)videoType status4:(NSInteger)status4 subId2:(NSInteger)subId2 extraMonth:(NSInteger)extraMonth extraPrice:(float)extraPrice extendTotal:(float)extendTotal extraTotal:(float)extraTotal status2:(NSInteger)status2 completion:(void (^)(NSObject *, NSError *))completion
++ (void)selectBoughtInfo:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion
 {
-    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
-                             POST_PARAMETER_SKILL_ID:[NSNumber numberWithInteger:skillId],
-                             POST_PARAMETER_NAME:name,
-                             POST_PARAMETER_DESCRIPTION:description,
-                             POST_PARAMETER_CATEGORY_ID:[NSNumber numberWithInteger:catId],
-                             POST_PARAMETER_TYPE:[NSNumber numberWithInteger:type],
-                             POST_PARAMETER_SUMMARY:summary,
-                             POST_PARAMETER_PRICE:[NSNumber numberWithFloat:price],
-                             POST_PARAMETER_RATEID:[NSNumber numberWithInteger:rateId],
-                             POST_PARAMETER_SUBID1:[NSNumber numberWithInteger:subId1],
-                             POST_PARAMETER_SUBMONTH:[NSNumber numberWithInteger:subMonth],
-                             POST_PARAMETER_SUBPRICE:[NSNumber numberWithFloat:subPrice],
-                             POST_PARAMETER_SUBTOTAL:[NSNumber numberWithFloat:subTotal],
-                             POST_PARAMETER_SUBTYPE:[NSNumber numberWithInteger:subType],
-                             POST_PARAMETER_STATUS1:[NSNumber numberWithInteger:status1],
-                             POST_PARAMETER_SUBID3:[NSNumber numberWithInteger:subId3],
-                             POST_PARAMETER_PHOTO_MONTH:[NSNumber numberWithInteger:photoMonth],
-                             POST_PARAMETER_PHOTO_PRICE:[NSNumber numberWithFloat:photoPrice],
-                             POST_PARAMETER_PHOTO_TOTAL:[NSNumber numberWithFloat:photoTocal],
-                             POST_PARAMETER_PHOTO_TYPE:[NSNumber numberWithInteger:photoType],
-                             POST_PARAMETER_STATUS3:[NSNumber numberWithInteger:status3],
-                             POST_PARAMETER_SUBID4:[NSNumber numberWithInteger:subId4],
-                             POST_PARAMETER_VIDEO_MONTH:[NSNumber numberWithInteger:videoMonth],
-                             POST_PARAMETER_VIDEO_PRICE:[NSNumber numberWithFloat:videoPrice],
-                             POST_PARAMETER_VIDEO_TOTAL:[NSNumber numberWithFloat:videoTotal],
-                             POST_PARAMETER_VIDEO_TYPE:[NSNumber numberWithInteger:videoType],
-                             POST_PARAMETER_STATUS4:[NSNumber numberWithInteger:status4],
-                             POST_PARAMETER_SUBID2:[NSNumber numberWithInteger:subId2],
-                             POST_PARAMETER_EXTRA_MONTH:[NSNumber numberWithInteger:extraMonth],
-                             POST_PARAMETER_EXTRA_PRICE:[NSNumber numberWithFloat:extraPrice],
-                             POST_PARAMETER_EXTEND_TOTAL:[NSNumber numberWithFloat:extendTotal],
-                             POST_PARAMETER_EXTRA_TOTAL:[NSNumber numberWithFloat:extendTotal],
-                             POST_PARAMETER_STATUS2:[NSNumber numberWithInteger:status2]};
-    
-                             
-    [self requestData:DATA_URL_CREATE_UPDATE_SUB_PLAN withParameters:params completion:completion];
-    
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid};
+    [self requestData:DATA_URL_SELECT_BOUGHT_INFO withParameters:params completion:completion];
 }
+
+
+//+ (void)createUpdateSubPlan:(NSString *)stkid skillId:(NSInteger)skillId name:(NSString *)name description:(NSString *)description catId:(NSInteger)catId type:(NSInteger)type summary:(NSString *)summary price:(float)price rateId:(NSInteger)rateId subId1:(NSInteger)subId1 subMonth:(NSInteger)subMonth subPrice:(float)subPrice subTotal:(float)subTotal subType:(NSInteger)subType status1:(NSInteger)status1 subId3:(NSInteger)subId3 photoMonth:(NSInteger)photoMonth photoPrice:(float)photoPrice photoTotal:(float)photoTocal photoType:(NSInteger)photoType status3:(NSInteger)status3 subId4:(NSInteger)subId4 videoMonth:(NSInteger)videoMonth videoPrice:(float)videoPrice videoTotal:(float)videoTotal videoType:(NSInteger)videoType status4:(NSInteger)status4 subId2:(NSInteger)subId2 extraMonth:(NSInteger)extraMonth extraPrice:(float)extraPrice extendTotal:(float)extendTotal extraTotal:(float)extraTotal status2:(NSInteger)status2 completion:(void (^)(NSObject *, NSError *))completion
+//{
+//    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
+//                             POST_PARAMETER_SKILL_ID:[NSNumber numberWithInteger:skillId],
+//                             POST_PARAMETER_NAME:name,
+//                             POST_PARAMETER_DESCRIPTION:description,
+//                             POST_PARAMETER_CATEGORY_ID:[NSNumber numberWithInteger:catId],
+//                             POST_PARAMETER_TYPE:[NSNumber numberWithInteger:type],
+//                             POST_PARAMETER_SUMMARY:summary,
+//                             POST_PARAMETER_PRICE:[NSNumber numberWithFloat:price],
+//                             POST_PARAMETER_RATEID:[NSNumber numberWithInteger:rateId],
+//                             POST_PARAMETER_SUBID1:[NSNumber numberWithInteger:subId1],
+//                             POST_PARAMETER_SUBMONTH:[NSNumber numberWithInteger:subMonth],
+//                             POST_PARAMETER_SUBPRICE:[NSNumber numberWithFloat:subPrice],
+//                             POST_PARAMETER_SUBTOTAL:[NSNumber numberWithFloat:subTotal],
+//                             POST_PARAMETER_SUBTYPE:[NSNumber numberWithInteger:subType],
+//                             POST_PARAMETER_STATUS1:[NSNumber numberWithInteger:status1],
+//                             POST_PARAMETER_SUBID3:[NSNumber numberWithInteger:subId3],
+//                             POST_PARAMETER_PHOTO_MONTH:[NSNumber numberWithInteger:photoMonth],
+//                             POST_PARAMETER_PHOTO_PRICE:[NSNumber numberWithFloat:photoPrice],
+//                             POST_PARAMETER_PHOTO_TOTAL:[NSNumber numberWithFloat:photoTocal],
+//                             POST_PARAMETER_PHOTO_TYPE:[NSNumber numberWithInteger:photoType],
+//                             POST_PARAMETER_STATUS3:[NSNumber numberWithInteger:status3],
+//                             POST_PARAMETER_SUBID4:[NSNumber numberWithInteger:subId4],
+//                             POST_PARAMETER_VIDEO_MONTH:[NSNumber numberWithInteger:videoMonth],
+//                             POST_PARAMETER_VIDEO_PRICE:[NSNumber numberWithFloat:videoPrice],
+//                             POST_PARAMETER_VIDEO_TOTAL:[NSNumber numberWithFloat:videoTotal],
+//                             POST_PARAMETER_VIDEO_TYPE:[NSNumber numberWithInteger:videoType],
+//                             POST_PARAMETER_STATUS4:[NSNumber numberWithInteger:status4],
+//                             POST_PARAMETER_SUBID2:[NSNumber numberWithInteger:subId2],
+//                             POST_PARAMETER_EXTRA_MONTH:[NSNumber numberWithInteger:extraMonth],
+//                             POST_PARAMETER_EXTRA_PRICE:[NSNumber numberWithFloat:extraPrice],
+//                             POST_PARAMETER_EXTEND_TOTAL:[NSNumber numberWithFloat:extendTotal],
+//                             POST_PARAMETER_EXTRA_TOTAL:[NSNumber numberWithFloat:extendTotal],
+//                             POST_PARAMETER_STATUS2:[NSNumber numberWithInteger:status2]};
+//    
+//                             
+//    [self requestData:DATA_URL_CREATE_UPDATE_SUB_PLAN withParameters:params completion:completion];
+//    
+//}
 
 + (void)createUpdateSubPlan:(NSString *)stkid skillId:(NSInteger)skillId name:(NSString *)name description:(NSString *)description catId:(NSInteger)catId type:(NSInteger)type summary:(NSString *)summary price:(NSDecimalNumber *)price rateId:(NSInteger)rateId subId1:(NSInteger)subId1 subMonth:(NSInteger)subMonth subPrice:(NSDecimalNumber *)subPrice subTotal:(NSDecimalNumber *)subTotal subType:(NSInteger)subType status1:(NSInteger)status1 subId3:(NSInteger)subId3 photoMonth:(NSInteger)photoMonth photoPrice:(NSDecimalNumber *)photoPrice photoTotal:(NSDecimalNumber *)photoTotal photoType:(NSInteger)photoType status3:(NSInteger)status3 subId4:(NSInteger)subId4 videoMonth:(NSInteger)videoMonth videoPrice:(NSDecimalNumber *)videoPrice videoTotal:(NSDecimalNumber *)videoTotal videoType:(NSInteger)videoType status4:(NSInteger)status4 subId5:(NSInteger)subId5 extendMonth:(NSInteger)extendMonth extendPrice:(NSDecimalNumber *)extendPrice extendTotal:(NSDecimalNumber *)extendTotal extendType:(NSInteger)extendType status5:(NSInteger)status5 subId2:(NSInteger)subId2 extraMonth:(NSInteger)extraMonth extraPrice:(NSDecimalNumber *)extraPrice extraTotal:(NSDecimalNumber *)extraTotal extraType:(NSInteger)extraType status2:(NSInteger)status2 completion:(void (^)(NSObject *, NSError *))completion
 {
