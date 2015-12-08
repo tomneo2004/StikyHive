@@ -205,6 +205,7 @@
 #define DATA_URL_SELECT_SUBINFO         DATA_URL@"selectSubInfo/format/json"
 #define DATA_URL_SELECT_CONTACT         DATA_URL@"selectContacts/format/json"
 #define DATA_URL_SELECT_SOLD_INFO       DATA_URL@"selectSoldInfo/format/json"
+#define DATA_URL_CREATE_UPDATE_SUB_PLAN DATA_URL@"createUpdateSubPlan/format/json"
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -238,6 +239,44 @@
 #define POST_PARAMETER_TITLE            @"title"
 #define POST_PARAMETER_DESC             @"desc"
 #define POST_PARAMETER_DOCUMENT_ID      @"id"
+#define POST_PARAMETER_DESCRIPTION      @"description"
+#define POST_PARAMETER_SUMMARY          @"summary"
+#define POST_PARAMETER_PRICE            @"price"
+#define POST_PARAMETER_RATEID           @"rateId"
+#define POST_PARAMETER_SUBID1           @"subId1"
+#define POST_PARAMETER_SUBMONTH         @"subMonth"
+#define POST_PARAMETER_SUBPRICE         @"subPrice"
+#define POST_PARAMETER_SUBTOTAL         @"subTotal"
+#define POST_PARAMETER_SUBTYPE          @"subType"
+#define POST_PARAMETER_STATUS1          @"status1"
+#define POST_PARAMETER_SUBID3           @"subId3"
+#define POST_PARAMETER_PHOTO_MONTH      @"photoMonth"
+#define POST_PARAMETER_PHOTO_PRICE      @"photoPrice"
+#define POST_PARAMETER_PHOTO_TOTAL      @"photoTotal"
+#define POST_PARAMETER_PHOTO_TYPE       @"photoType"
+#define POST_PARAMETER_STATUS3          @"status3"
+#define POST_PARAMETER_SUBID4           @"subId4"
+#define POST_PARAMETER_VIDEO_MONTH      @"videoMonth"
+#define POST_PARAMETER_VIDEO_PRICE      @"videoPrice"
+#define POST_PARAMETER_VIDEO_TOTAL      @"videoTotal"
+#define POST_PARAMETER_VIDEO_TYPE       @"videoType"
+#define POST_PARAMETER_STATUS4          @"status4"
+#define POST_PARAMETER_SUBID2           @"subId2"
+#define POST_PARAMETER_EXTRA_MONTH      @"extraMonth"
+#define POST_PARAMETER_EXTRA_PRICE      @"extraPrice"
+#define POST_PARAMETER_EXTEND_TOTAL     @"extendTotal"
+#define POST_PARAMETER_EXTRA_TOTAL      @"extraTotal"
+#define POST_PARAMETER_EXTRA_TYPE       @"extraType"
+#define POST_PARAMETER_STATUS2          @"status2"
+#define POST_PARAMETER_SUBID5           @"subId5"
+#define POST_PARAMETER_EXTEND_MONTH     @"extendMonth"
+#define POST_PARAMETER_EXTEND_PRICE     @"extendPrice"
+#define POST_PARAMETER_EXTEND_TYPE      @"extendType"
+#define POST_PARAMETER_STATUS5          @"status5"
+
+
+
+
 
 
 //#define DATA_URL_USER_VERIFY            DATA_URL@"varify"
@@ -316,6 +355,8 @@
 + (void)selectContacts:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)selectSoldInfo:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)createUpdateSubPlan:(NSString *)stkid skillId:(NSInteger)skillId name:(NSString *)name description:(NSString *)description catId:(NSInteger)catId type:(NSInteger)type summary:(NSString *)summary price:(NSDecimalNumber *)price rateId:(NSInteger)rateId subId1:(NSInteger)subId1 subMonth:(NSInteger)subMonth subPrice:(NSDecimalNumber *)subPrice subTotal:(NSDecimalNumber *)subTotal subType:(NSInteger)subType status1:(NSInteger)status1 subId3:(NSInteger)subId3 photoMonth:(NSInteger)photoMonth photoPrice:(NSDecimalNumber *)photoPrice photoTotal:(NSDecimalNumber *)photoTotal photoType:(NSInteger)photoType status3:(NSInteger)status3 subId4:(NSInteger)subId4 videoMonth:(NSInteger)videoMonth videoPrice:(NSDecimalNumber *)videoPrice videoTotal:(NSDecimalNumber *)videoTotal videoType:(NSInteger)videoType status4:(NSInteger)status4 subId5:(NSInteger)subId5 extendMonth:(NSInteger)extendMonth extendPrice:(NSDecimalNumber *)extendPrice extendTotal:(NSDecimalNumber *)extendTotal extendType:(NSInteger)extendType status5:(NSInteger)status5 subId2:(NSInteger)subId2 extraMonth:(NSInteger)extraMonth extraPrice:(NSDecimalNumber *)extraPrice extraTotal:(NSDecimalNumber *)extraTotal extraType:(NSInteger)extraType status2:(NSInteger)status2 completion:(void (^)(NSObject *, NSError *))completion;
 
 
 

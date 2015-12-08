@@ -16,13 +16,15 @@
     NSMutableArray *_photoArray;
     BOOL _photoStatus;
     BOOL _videoStatus;
+    BOOL _videoExtendStatus;
     
     NSString *_skillName;
-    NSString *_skillCategoryId;
+    NSInteger _skillCategoryId;
     NSString *_skillSummary;
     NSString *_skillDesc;
-    NSString *_skillPrice;
-    NSString *_skillRate;
+    NSDecimalNumber *_skillPrice;
+    NSInteger _skillRate;
+    NSInteger _skillType;
     
     
     UIImage *_videoImage;
@@ -60,12 +62,17 @@ static SellingManager *_instance;
     _videoStatus = videoStatus;
 }
 
+- (void)setVideoExtendStatus:(BOOL)videoExtendStatus
+{
+    _videoExtendStatus = videoExtendStatus;
+}
+
 - (void)setSkillName:(NSString *)skillName
 {
     _skillName = skillName;
 }
 
-- (void)setSkillCategoryId:(NSString *)skillCategoryId
+- (void)setSkillCategoryId:(NSInteger)skillCategoryId
 {
     _skillCategoryId = skillCategoryId;
 }
@@ -81,14 +88,19 @@ static SellingManager *_instance;
     _skillDesc = skillDesc;
 }
 
-- (void)setSkillPrice:(NSString *)skillPrice
+- (void)setSkillPrice:(NSDecimalNumber *)skillPrice
 {
     _skillPrice = skillPrice;
 }
 
-- (void)setSkillRate:(NSString *)skillRate
+- (void)setSkillRate:(NSInteger)skillRate
 {
     _skillRate = skillRate;
+}
+
+- (void)setSkillType:(NSInteger)skillType
+{
+    _skillType = skillType;
 }
 
 - (void)setVideoImage:(UIImage *)videoImage
@@ -123,12 +135,17 @@ static SellingManager *_instance;
     return _videoStatus;
 }
 
+- (BOOL)getVideoExtendStatus
+{
+    return _videoExtendStatus;
+}
+
 - (NSString *)getSkillName
 {
     return _skillName;
 }
 
-- (NSString *)getSkillCategoryId
+- (NSInteger)getSkillCategoryId
 {
     return _skillCategoryId;
 }
@@ -143,12 +160,12 @@ static SellingManager *_instance;
     return _skillDesc;
 }
 
-- (NSString *)getSkillPrce
+- (NSDecimalNumber *)getSkillPrce
 {
     return _skillPrice;
 }
 
-- (NSString *)getSkillRate
+- (NSInteger)getSkillRate
 {
     return _skillRate;
 }
@@ -167,6 +184,12 @@ static SellingManager *_instance;
 {
     return _promotionStatus;
 }
+
+- (NSInteger)getSkillType
+{
+    return _skillType;
+}
+
 
 
 

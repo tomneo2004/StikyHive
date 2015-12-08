@@ -35,7 +35,7 @@
 @property (nonatomic, assign) BOOL descEditorLoaded;
 @property (nonatomic, assign) NSString *categoryId;
 @property (nonatomic, assign) NSString *rateId;
-
+@property (nonatomic, assign) NSInteger skillType;
 
 
 @end
@@ -61,6 +61,8 @@
     
     _industryArray = [[NSMutableArray alloc] init];
     _categoryArray = [[NSMutableArray alloc] init];
+    _skillType = 1;
+    
     
     NSInteger status = 1;
     [WebDataInterface getCategory:status completion:^(NSObject *obj, NSError *err) {
@@ -351,8 +353,6 @@
     
     
     
-    
-    
     if (titleString.length == 0) {
         [ViewControllerUtil showAlertWithTitle:@"Incomplete Information" andMessage:@"Skill Title not fill in."];
     }
@@ -378,52 +378,55 @@
 //            
 //        }
         
-        NSMutableDictionary *skillinfo = [[NSMutableDictionary alloc] init];
+//        NSMutableDictionary *skillinfo = [[NSMutableDictionary alloc] init];
         
         
-        if (priceString.length == 0)
+        if (priceString.length > 0)
         {
-            skillinfo[@"price"] = [NSNull null];
-            skillinfo[@"rate"] = [NSNull null];
+//            skillinfo[@"price"] = [NSNull null];
+//            skillinfo[@"rate"] = [NSNull null];
+            NSDecimalNumber *priceFloat = [NSDecimalNumber decimalNumberWithString:priceString];
+            NSInteger rateIdInt = [_rateId integerValue];
             
-            [SellingManager sharedSellingManager].skillPrice = [NSNull null];
-            [SellingManager sharedSellingManager].skillRate = [NSNull null];
+            [SellingManager sharedSellingManager].skillPrice = priceFloat;
+            [SellingManager sharedSellingManager].skillRate = rateIdInt;
+           
         }
-        else
-        {
-            skillinfo[@"price"] = priceString;
-            skillinfo[@"rate"] = _rateId;
-            
-            [SellingManager sharedSellingManager].skillPrice = priceString;
-            [SellingManager sharedSellingManager].skillRate = _rateId;
-        }
+//        else
+//        {
+//            [SellingManager sharedSellingManager].skillPrice = NAN;
+//            [SellingManager sharedSellingManager].skillRate = [NSNull null];
+//            
+//        }
         
 //        Skill_Info[@"name"] = titleString;
 //        Skill_Info[@"categoryid"] = _categoryId;
 //        Skill_Info[@"summary"] = summaryString;
 //        Skill_Info[@"description"] = descString;
         
-        skillinfo[@"name"] = titleString;
-        skillinfo[@"categoryid"] = _categoryId;
-        skillinfo[@"summary"] = summaryString;
-        skillinfo[@"description"] = descString;
+//        skillinfo[@"name"] = titleString;
+//        skillinfo[@"categoryid"] = _categoryId;
+//        skillinfo[@"summary"] = summaryString;
+//        skillinfo[@"description"] = descString;
+        
+        NSInteger categriInt = [_categoryId integerValue];
         
         [SellingManager sharedSellingManager].skillName = titleString;
-        [SellingManager sharedSellingManager].skillCategoryId = _categoryId;
+        [SellingManager sharedSellingManager].skillCategoryId = categriInt;
         [SellingManager sharedSellingManager].skillSummary = summaryString;
         [SellingManager sharedSellingManager].skillDesc = descString;
+        [SellingManager sharedSellingManager].skillType = _skillType;
         
         
-        
-        NSString *name = skillinfo[@"name"];
-        NSLog(@"name1 -- %@",name);
-        NSLog(@"name2 -- %@",titleString);
-        NSLog(@"categorid -- %@",skillinfo[@"categoryid"]);
-        NSLog(@"summary -- %@",skillinfo[@"summary"]);
-        NSLog(@"description -- %@",skillinfo[@"description"]);
-        
-        NSLog(@"price -- %@",skillinfo[@"price"]);
-        NSLog(@"rate -- %@",skillinfo[@"rate"]);
+//        NSString *name = skillinfo[@"name"];
+//        NSLog(@"name1 -- %@",name);
+//        NSLog(@"name2 -- %@",titleString);
+//        NSLog(@"categorid -- %@",skillinfo[@"categoryid"]);
+//        NSLog(@"summary -- %@",skillinfo[@"summary"]);
+//        NSLog(@"description -- %@",skillinfo[@"description"]);
+//        
+//        NSLog(@"price -- %@",skillinfo[@"price"]);
+//        NSLog(@"rate -- %@",skillinfo[@"rate"]);
         
         
 //        UIViewController *vc = [SellingViewController2 instantiateForInfo:skillinfo];
@@ -432,12 +435,8 @@
         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_2"];
         [self.navigationController pushViewController:vc animated:YES];
 
-        
-        
-        
+
     }
-    
-    
 }
 
 
@@ -547,6 +546,8 @@
     _talentBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     _professBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     
+    _skillType = 2;
+    
 }
 
 - (void)professBtnTapped:(UITapGestureRecognizer *)sender
@@ -556,6 +557,8 @@
     
     _professBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     _talentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    
+    _skillType = 1;
 }
 
 

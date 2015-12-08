@@ -188,16 +188,23 @@
 
 - (IBAction)switchBtn4Pressed:(id)sender
 {
-//    if ([_switchBtn4 isOn])
-//    {
-//        NSLog(@"toggle on");
-//        
+    if ([_switchBtn4 isOn])
+    {
+        NSLog(@"toggle on");
+        
 //        UIAlertView *btn4AlertOn = [[UIAlertView alloc] initWithTitle:@"Add a Video" message:@"Do you want to add a Video now?" delegate:self cancelButtonTitle:@"Add Latter" otherButtonTitles:@"Yes,Now", nil];
 //        
 //        btn4AlertOn.tag = 301;
 //        [btn4AlertOn show];
-//
-//    }
+
+        
+        [SellingManager sharedSellingManager].videoExtendStatus = YES;
+        
+    }
+    else
+    {
+        [SellingManager sharedSellingManager].videoExtendStatus = NO;
+    }
     
     
 }
