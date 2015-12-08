@@ -414,6 +414,9 @@
 		CEEDB18D1C11681B009C3DC5 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEDB18C1C11681B009C3DC5 /* ContactViewController.m */; };
 		CEEDB1901C116899009C3DC5 /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEDB18F1C116899009C3DC5 /* ContactCell.m */; };
 		CEEDB1931C116CF4009C3DC5 /* ContactInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEDB1921C116CF4009C3DC5 /* ContactInfo.m */; };
+		CEEDB1971C118B24009C3DC5 /* SoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEDB1961C118B24009C3DC5 /* SoldViewController.m */; };
+		CEEDB19A1C118D12009C3DC5 /* SoldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEDB1991C118D12009C3DC5 /* SoldCell.m */; };
+		CEEDB19D1C118D27009C3DC5 /* SoldInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEDB19C1C118D27009C3DC5 /* SoldInfo.m */; };
 		CEF464011BF9B2A800010D21 /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464001BF9B2A800010D21 /* Section.m */; };
 		CEF464041BF9B50300010D21 /* MyRequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464031BF9B50300010D21 /* MyRequestCell.m */; };
 		CEF464071BF9BA8600010D21 /* RequestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF464061BF9BA8600010D21 /* RequestCell.m */; };
@@ -1021,6 +1024,12 @@
 		CEEDB18F1C116899009C3DC5 /* ContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
 		CEEDB1911C116CF4009C3DC5 /* ContactInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactInfo.h; sourceTree = "<group>"; };
 		CEEDB1921C116CF4009C3DC5 /* ContactInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactInfo.m; sourceTree = "<group>"; };
+		CEEDB1951C118B24009C3DC5 /* SoldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoldViewController.h; sourceTree = "<group>"; };
+		CEEDB1961C118B24009C3DC5 /* SoldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoldViewController.m; sourceTree = "<group>"; };
+		CEEDB1981C118D12009C3DC5 /* SoldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoldCell.h; sourceTree = "<group>"; };
+		CEEDB1991C118D12009C3DC5 /* SoldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoldCell.m; sourceTree = "<group>"; };
+		CEEDB19B1C118D27009C3DC5 /* SoldInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoldInfo.h; sourceTree = "<group>"; };
+		CEEDB19C1C118D27009C3DC5 /* SoldInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoldInfo.m; sourceTree = "<group>"; };
 		CEF463FF1BF9B2A800010D21 /* Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Section.h; sourceTree = "<group>"; };
 		CEF464001BF9B2A800010D21 /* Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Section.m; sourceTree = "<group>"; };
 		CEF464021BF9B50300010D21 /* MyRequestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestCell.h; sourceTree = "<group>"; };
@@ -1193,6 +1202,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CEEDB1941C118B09009C3DC5 /* Sold */,
 				CEEDB18A1C116802009C3DC5 /* Contacts */,
 				CE9C7CE01C10285C00326710 /* SubscriptionInfo */,
 				CE68DA881C0D9ABF000CB49F /* SavedDocuments */,
@@ -2098,6 +2108,19 @@
 			name = Contacts;
 			sourceTree = "<group>";
 		};
+		CEEDB1941C118B09009C3DC5 /* Sold */ = {
+			isa = PBXGroup;
+			children = (
+				CEEDB1951C118B24009C3DC5 /* SoldViewController.h */,
+				CEEDB1961C118B24009C3DC5 /* SoldViewController.m */,
+				CEEDB1981C118D12009C3DC5 /* SoldCell.h */,
+				CEEDB1991C118D12009C3DC5 /* SoldCell.m */,
+				CEEDB19B1C118D27009C3DC5 /* SoldInfo.h */,
+				CEEDB19C1C118D27009C3DC5 /* SoldInfo.m */,
+			);
+			name = Sold;
+			sourceTree = "<group>";
+		};
 		CEF463FE1BF9B29200010D21 /* Section */ = {
 			isa = PBXGroup;
 			children = (
@@ -2636,6 +2659,7 @@
 			files = (
 				674D0F411B7D9A5200B5B80D /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
 				674D102F1B7DB4CD00B5B80D /* HRColorCursor.m in Sources */,
+				CEEDB19D1C118D27009C3DC5 /* SoldInfo.m in Sources */,
 				674D0F631B7D9AD800B5B80D /* UserInfo.m in Sources */,
 				51851C991BB24E35007CFBC2 /* SkillPageViewController.m in Sources */,
 				5168F2381C0ECE8E0087C0BF /* SellingManager.m in Sources */,
@@ -2672,6 +2696,7 @@
 				CEF464011BF9B2A800010D21 /* Section.m in Sources */,
 				674D10451B7DB4FB00B5B80D /* GKImageCropOverlayView.m in Sources */,
 				676BE94D1B93F72C003168F4 /* LogoutViewController.m in Sources */,
+				CEEDB1971C118B24009C3DC5 /* SoldViewController.m in Sources */,
 				674D0F391B7D9A5200B5B80D /* JSQMessagesKeyboardController.m in Sources */,
 				674D0F521B7D9A5200B5B80D /* JSQMessagesComposerTextView.m in Sources */,
 				676600E21BA12C65003A84D8 /* ForgotPassViewController.m in Sources */,
@@ -2786,6 +2811,7 @@
 				CEF7BA991BFAC66E009624CC /* MyRequestViewController.m in Sources */,
 				674D0F3C1B7D9A5200B5B80D /* JSQMessagesAvatarImageFactory.m in Sources */,
 				517D552F1BDA0301000EA8FD /* ReportAbuseViewController.m in Sources */,
+				CEEDB19A1C118D12009C3DC5 /* SoldCell.m in Sources */,
 				CEFD194F1C04045800A79158 /* DistanceSkill.m in Sources */,
 				CEFD19551C0409BC00A79158 /* SearchResultTableViewController.m in Sources */,
 				674D0F6A1B7D9B3100B5B80D /* Skill.m in Sources */,
