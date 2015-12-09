@@ -72,8 +72,12 @@
         _lastname = [dic objectForKey:@"lastname"];
         _price = [[dic objectForKey:@"price"] doubleValue];
         _rateName = [dic objectForKey:@"rateName"];
-        _thumbnailLocation = [dic objectForKey:@"thumbnailLocation"];
-        _photoLocation = [dic objectForKey:@"photoLocation"];
+        
+        if(![[dic objectForKey:@"thumbnailLocation"] isEqual:[NSNull null]])
+            _thumbnailLocation = [dic objectForKey:@"thumbnailLocation"];
+        
+        if(![[dic objectForKey:@"photoLocation"] isEqual:[NSNull null]])
+            _photoLocation = [dic objectForKey:@"photoLocation"];
     }
     
     return self;

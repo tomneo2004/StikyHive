@@ -22,6 +22,7 @@
     
     NSMutableArray *_boughtInfos;
     NSDateFormatter *_dateFormatter;
+    ReadReviewViewController *_readReviewController;
 }
 
 @synthesize tableView = _tableView;
@@ -131,9 +132,14 @@
     cell.boughtFromLabel.text = [NSString stringWithFormat:@"%@ %@", info.firstname, info.lastname];
     cell.onLabel.text = [_dateFormatter stringFromDate:info.createDate];
     cell.titleLabel.text = info.skillName;
-    cell.priceLabel.text = [NSString stringWithFormat:@"$%.2f/%@", info.price, info.rateName];
+    cell.priceLabel.text = [NSString stringWithFormat:@"$%.2f %@", info.price, info.rateName];
     cell.rating = info.rating;
-    [cell displayPhotoWithURL:info.photoLocation];
+    
+    if(info.thumbnailLocation != nil)
+        [cell displayPhotoWithURL:info.thumbnailLocation];
+    else
+        [cell displayPhotoWithURL:info.photoLocation];
+    
     cell.delegate = self;
     
     return cell;
@@ -142,9 +148,33 @@
 #pragma mark - BoughtCell delegate
 - (void)onReadReviewTap:(BoughtCell *)cell{
     
+    BoughtInfo *info = [_boughtInfos objectAtIndex:[_tableView indexPathForCell:cell].row];
+    
+    _readReviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ReadReviewViewController"];
+    [_readReviewController presentOverlay:^(OverlayViewController * controller){
+    
+        _readReviewController.reviewTitle = info.skillName;
+        _readReviewController.rating = info.rating;
+        _readReviewController.review = info.review;
+        _readReviewController.delegate = self;
+    }];
 }
 
 - (void)onEditReviewTap:(BoughtCell *)cell{
+    
+}
+
+#pragma mark - ReadReviewController delegate
+- (void)onEditTap:(ReadReviewViewController *)controller{
+    
+    [controller dismissOverlay:^{
+    
+        _readReviewController = nil;
+    }];
+}
+
+- (void)onClose{
+    
     
 }
 

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TitleViewController.h"
 #import "BoughtCell.h"
+#import "ReadReviewViewController.h"
 
-@interface BoughtViewController : TitleViewController<UITableViewDataSource, UITableViewDelegate, BoughtCellDelegate>
+@interface BoughtViewController : TitleViewController<UITableViewDataSource, UITableViewDelegate, BoughtCellDelegate, ReadReviewViewControllerDelegate>
 
 @end
