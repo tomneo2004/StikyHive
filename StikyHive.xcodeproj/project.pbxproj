@@ -25,6 +25,7 @@
 		516C51641C042299002710AA /* sell_upload_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 516C51631C042299002710AA /* sell_upload_photo.png */; };
 		516F58A61C102D9700E4FD41 /* moreorless.png in Resources */ = {isa = PBXBuildFile; fileRef = 516F58A51C102D9700E4FD41 /* moreorless.png */; };
 		516F58A91C104A4000E4FD41 /* PromotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516F58A81C104A4000E4FD41 /* PromotionViewController.m */; };
+		516F7EB21C17DF69005FEF8A /* PaySucessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516F7EB11C17DF69005FEF8A /* PaySucessViewController.m */; };
 		51700A8F1BD49F8200294DAD /* review_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51700A8E1BD49F8200294DAD /* review_filled.png */; };
 		51700A921BD4C93500294DAD /* BuyerPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51700A911BD4C93500294DAD /* BuyerPostViewController.m */; };
 		51718BB21BE75700000424E6 /* profile_bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 51718BB11BE75700000424E6 /* profile_bookmark.png */; };
@@ -483,6 +484,8 @@
 		516F58A51C102D9700E4FD41 /* moreorless.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moreorless.png; sourceTree = "<group>"; };
 		516F58A71C104A4000E4FD41 /* PromotionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromotionViewController.h; sourceTree = "<group>"; };
 		516F58A81C104A4000E4FD41 /* PromotionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionViewController.m; sourceTree = "<group>"; };
+		516F7EB01C17DF69005FEF8A /* PaySucessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaySucessViewController.h; sourceTree = "<group>"; };
+		516F7EB11C17DF69005FEF8A /* PaySucessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaySucessViewController.m; sourceTree = "<group>"; };
 		51700A8E1BD49F8200294DAD /* review_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_filled.png; sourceTree = "<group>"; };
 		51700A901BD4C93500294DAD /* BuyerPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerPostViewController.h; sourceTree = "<group>"; };
 		51700A911BD4C93500294DAD /* BuyerPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerPostViewController.m; sourceTree = "<group>"; };
@@ -659,7 +662,7 @@
 		674D0E3E1B7D920E00B5B80D /* Payment_note@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Payment_note@2x.png"; sourceTree = "<group>"; };
 		674D0E3F1B7D920E00B5B80D /* Payment_Subscription@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Payment_Subscription@2x.png"; sourceTree = "<group>"; };
 		674D0E401B7D920E00B5B80D /* Payment_Summary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Payment_Summary@2x.png"; sourceTree = "<group>"; };
-		674D0E411B7D920E00B5B80D /* Payment_thankyou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Payment_thankyou@2x.png"; sourceTree = "<group>"; };
+		674D0E411B7D920E00B5B80D /* Payment_thankyou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Payment_thankyou@2x.png"; path = "Payment/Payment_thankyou@2x.png"; sourceTree = "<group>"; };
 		674D0E431B7D920E00B5B80D /* Grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grey@2x.png"; sourceTree = "<group>"; };
 		674D0E441B7D920E00B5B80D /* Yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow@2x.png"; sourceTree = "<group>"; };
 		674D0E451B7D920E00B5B80D /* skill_reviews@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "skill_reviews@2x.png"; sourceTree = "<group>"; };
@@ -1122,6 +1125,7 @@
 		67361F301B830DD500C1374D /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				674D0E411B7D920E00B5B80D /* Payment_thankyou@2x.png */,
 				516F58A51C102D9700E4FD41 /* moreorless.png */,
 				517A1C591C0C2382004017E4 /* subplan.png */,
 				517A1C5A1C0C2382004017E4 /* subplan1.png */,
@@ -1402,7 +1406,6 @@
 				674D0E3E1B7D920E00B5B80D /* Payment_note@2x.png */,
 				674D0E3F1B7D920E00B5B80D /* Payment_Subscription@2x.png */,
 				674D0E401B7D920E00B5B80D /* Payment_Summary@2x.png */,
-				674D0E411B7D920E00B5B80D /* Payment_thankyou@2x.png */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -1501,6 +1504,8 @@
 				516F58A81C104A4000E4FD41 /* PromotionViewController.m */,
 				5174454D1C113D2400153C0C /* PaySummaryViewController.h */,
 				5174454E1C113D2400153C0C /* PaySummaryViewController.m */,
+				516F7EB01C17DF69005FEF8A /* PaySucessViewController.h */,
+				516F7EB11C17DF69005FEF8A /* PaySucessViewController.m */,
 			);
 			name = Skill;
 			sourceTree = "<group>";
@@ -2772,6 +2777,7 @@
 				674D10311B7DB4CD00B5B80D /* HRColorPickerViewController.m in Sources */,
 				676600E51BA1325A003A84D8 /* ResetPassViewController.m in Sources */,
 				CEF7BAAB1BFB2704009624CC /* RequestPostTableViewController.m in Sources */,
+				516F7EB21C17DF69005FEF8A /* PaySucessViewController.m in Sources */,
 				674D0D981B7D913400B5B80D /* main.m in Sources */,
 				676F77E81B96F3060084988A /* TOCropView.m in Sources */,
 				CE68DA8B1C0D9AE0000CB49F /* SavedDocumentsViewController.m in Sources */,

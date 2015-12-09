@@ -23,7 +23,7 @@
     NSString *_skillSummary;
     NSString *_skillDesc;
     NSDecimalNumber *_skillPrice;
-    NSInteger _skillRate;
+    NSString *_skillRate;
     NSInteger _skillType;
     
     
@@ -93,7 +93,7 @@ static SellingManager *_instance;
     _skillPrice = skillPrice;
 }
 
-- (void)setSkillRate:(NSInteger)skillRate
+- (void)setSkillRate:(NSString *)skillRate
 {
     _skillRate = skillRate;
 }
@@ -165,7 +165,7 @@ static SellingManager *_instance;
     return _skillPrice;
 }
 
-- (NSInteger)getSkillRate
+- (NSString *)getSkillRate
 {
     return _skillRate;
 }

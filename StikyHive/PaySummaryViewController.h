@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PayPalMobile.h"
 
-@interface PaySummaryViewController : UIViewController <UIScrollViewDelegate>
+
+@interface PaySummaryViewController : UIViewController <UIScrollViewDelegate,PayPalPaymentDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 

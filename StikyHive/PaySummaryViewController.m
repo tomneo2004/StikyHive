@@ -10,13 +10,23 @@
 #import "SellingManager.h"
 #import "LocalDataInterface.h"
 #import "WebDataInterface.h"
+#import "PaySucessViewController.h"
+#import "ViewControllerUtil.h"
+#import "UIView+RNActivityView.h"
+
 
 @interface PaySummaryViewController ()
+
+@property (nonatomic, strong, readwrite) PayPalConfiguration *payPalConfiguration;
 
 @property (nonatomic, strong) NSString *basicDuration;
 @property (nonatomic, strong) NSString *basicUnit;
 @property (nonatomic, assign) NSInteger duration;
 @property (nonatomic, assign) BOOL promotion;
+//@property (nonatomic, assign) NSInteger subMonth;
+//@property (nonatomic, assign) NSDecimalNumber *subPrice;
+//@property (nonatomic, assign) NSInteger subType;
+@property (nonatomic, strong) NSDictionary *subDict;
 
 @end
 
@@ -50,10 +60,32 @@
         
     }
     
-    CGFloat y = 0;
-    y = [self displayContent];
+    [WebDataInterface getSubscriptionPlan:1 completion:^(NSObject *obj, NSError *err)
+    {
+        NSLog(@"subscription palan ==== %@",obj);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            CGFloat y = 0;
+            y = [self displayContent];
+            
+            [_contentScrollView setContentSize:CGSizeMake(self.view.frame.size.width, y)];
+
+            NSDictionary *dict = (NSDictionary *)obj;
+            NSArray *dictArray = dict[@"plans"];
+            _subDict = dictArray[0];
+            NSLog(@"sub dict --- %@",_subDict);
+            
+            
+            
+            
+            
+        });
+        
+        
+        
+    }];
     
-    [_contentScrollView setContentSize:CGSizeMake(self.view.frame.size.width, y)];
+    
     
 //    [self displayContent];
 }
@@ -336,37 +368,103 @@
     NSInteger type = [SellingManager sharedSellingManager].skillType;
     NSString *summary = [SellingManager sharedSellingManager].skillSummary;
     NSDecimalNumber *price = [SellingManager sharedSellingManager].skillPrice;
-    NSInteger rateId = [SellingManager sharedSellingManager].skillRate;
+    NSString *rateIdString = [SellingManager sharedSellingManager].skillRate;
+    NSInteger rateId = [rateIdString integerValue];
     
-    NSLog(@"photo status -- %d",photoStatus);
-    NSLog(@"videoStatus --- %d ",videoStatus);
-    NSLog(@"videoExtendStatus --- %d ",videoExtendStatus);
-    NSLog(@"promotion --- %d ",_promotion);
-    NSLog(@"stkid --- %@ ",[LocalDataInterface retrieveStkid]);
-    NSLog(@"name --- %@ ",[SellingManager sharedSellingManager].skillName);
-    NSLog(@"description --- %@ ",[SellingManager sharedSellingManager].skillDesc);
-    NSLog(@"catId --- %ld ",(long)[SellingManager sharedSellingManager].skillCategoryId);
-    NSLog(@"type --- %ld ",(long)[SellingManager sharedSellingManager].skillType);
-    NSLog(@"summary --- %@ ",[SellingManager sharedSellingManager].skillSummary);
-    NSLog(@"rateId --- %ld ",(long)rateId);
-    NSLog(@"price --- %ld ",(long)price);
+//    NSLog(@"photo status -- %d",photoStatus);
+//    NSLog(@"videoStatus --- %d ",videoStatus);
+//    NSLog(@"videoExtendStatus --- %d ",videoExtendStatus);
+//    NSLog(@"promotion --- %d ",_promotion);
+//    NSLog(@"stkid --- %@ ",[LocalDataInterface retrieveStkid]);
+    NSLog(@"name --- %@ ",name);
+//    NSLog(@"description --- %@ ",[SellingManager sharedSellingManager].skillDesc);
+//    NSLog(@"catId --- %ld ",(long)[SellingManager sharedSellingManager].skillCategoryId);
+//    NSLog(@"type --- %ld ",(long)[SellingManager sharedSellingManager].skillType);
+//    NSLog(@"summary --- %@ ",[SellingManager sharedSellingManager].skillSummary);
+//    NSLog(@"rateId --- %ld ",(long)rateId);
+//    NSLog(@"price --- %ld ",(long)price);
 
     
+    NSString *subMonthString = _subDict[@"duration"];
+    NSString *subPriceString = _subDict[@"price"];
+    NSInteger subMonthInt = [subMonthString integerValue];
+//    NSDecimalNumber *subMonthNumber = [NSDecimalNumber decimalNumberWithDecimal:[ decimalValue]];
+    NSDecimalNumber *subPriceNumber = [NSDecimalNumber decimalNumberWithString:subPriceString];
+    NSDecimalNumber *subTotal = [subPriceNumber decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"12"]];
     
-    
+    NSLog(@"sub total -- %@",subTotal);
+    NSDecimalNumber *zero = [[NSDecimalNumber alloc] initWithFloat:0.0];
     
     
     if (photoStatus || videoStatus || videoExtendStatus || _promotion)
     {
         NSLog(@"yes choice");
+        
+        
+        PayPalPayment *payment = [[PayPalPayment alloc] init];
+        payment.amount = [[NSDecimalNumber alloc] initWithString:@"5.00"];
+        payment.currencyCode = @"SGD";
+        payment.shortDescription = @"Post a request";
+        payment.intent = PayPalPaymentIntentSale;
+        if (!payment.processable)
+        {
+            
+        }
+        
+        PayPalPaymentViewController *paymentViewController;
+        paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment
+                                                                       configuration:self.payPalConfiguration
+                                                                            delegate:self];
+        
+        [self presentViewController:paymentViewController animated:YES completion:nil];
+        
+        
+        
+        NSLog(@"shsdfe");
+        
+//        
+//        if (photoStatus)
+//        {
+//            
+//        }
+//        if (videoStatus)
+//        {
+//            
+//        }
+//        if (videoStatus)
+//        {
+//            
+//        }
+//        if (videoExtendStatus)
+//        {
+//            
+//        }
+        
+        
+        
+        
+        
+        
     }
     else
     {
-        [WebDataInterface createUpdateSubPlan:stkid skillId:skillId name:name description:description catId:catId type:type summary:summary price:price rateId:rateId subId1:0 subMonth:0 subPrice:0 subTotal:0 subType:0 status1:0 subId3:0 photoMonth:0 photoPrice:0 photoTotal:0 photoType:0 status3:0 subId4:0 videoMonth:0 videoPrice:0 videoTotal:0 videoType:0 status4:0 subId5:0 extendMonth:0 extendPrice:0 extendTotal:0 extendType:0 status5:0 subId2:0 extraMonth:0 extraPrice:0 extraTotal:0 extraType:0 status2:0 completion:^(NSObject *obj, NSError *err)
+//        [self.view showActivityViewWithLabel:@"Uploading" detailLabel:@"Uploading your request"];
+        [self.view showActivityViewWithLabel:@"Uploading"];
+        
+        
+        [WebDataInterface createUpdateSubPlan:stkid skillId:skillId name:name description:description catId:catId type:type summary:summary price:price rateId:rateId subId1:0 subMonth:subMonthInt subPrice:subPriceNumber subTotal:subTotal subType:1 status1:1 subId3:0 photoMonth:0 photoPrice:zero photoTotal:zero photoType:0 status3:0 subId4:0 videoMonth:0 videoPrice:zero videoTotal:zero videoType:0 status4:0 subId5:0 extendMonth:0 extendPrice:zero extendTotal:zero extendType:0 status5:0 subId2:0 extraMonth:0 extraPrice:zero extraTotal:zero extraType:0 status2:0 completion:^(NSObject *obj, NSError *err)
         {
             
             NSLog(@"obj ---- %@ ",obj);
             NSLog(@"err ---- %@",err);
+            
+            NSDictionary *createDict = (NSDictionary *)obj;
+            NSString *skillString = createDict[@"skillId"];
+            NSInteger skillId = [skillString integerValue];
+            
+            
+            [self.view hideActivityView];
+            
         }];
     
         
@@ -378,6 +476,55 @@
     
 }
 
+
+#pragma mark - PayPalPaymentDelegate
+- (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController didCompletePayment:(PayPalPayment *)completedPayment
+{
+    
+    [self uploadDataToServer];
+    
+//    
+//    PaySucessViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"pay_sucess_view_controller"];
+//    
+//    [self.navigationController presentViewController:controller animated:YES completion:nil];
+    
+//    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_sucess_view_controller"];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+}
+
+- (void)payPalPaymentDidCancel:(PayPalPaymentViewController *)paymentViewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - upload
+- (void)uploadDataToServer
+{
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+        
+        UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_sucess_view_controller"];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        
+    }];
+
+    
+    
+    
+}
 
 
 - (void)didReceiveMemoryWarning {
