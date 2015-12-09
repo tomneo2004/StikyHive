@@ -386,16 +386,17 @@
 //            skillinfo[@"price"] = [NSNull null];
 //            skillinfo[@"rate"] = [NSNull null];
             NSDecimalNumber *priceFloat = [NSDecimalNumber decimalNumberWithString:priceString];
-            NSInteger rateIdInt = [_rateId integerValue];
+//            NSNumber *rateIdInt = [NSNumber numberWithInteger:[_rateId integerValue]];
             
             [SellingManager sharedSellingManager].skillPrice = priceFloat;
-            [SellingManager sharedSellingManager].skillRate = rateIdInt;
+            [SellingManager sharedSellingManager].skillRate = _rateId;
            
         }
         else
         {
-            [SellingManager sharedSellingManager].skillPrice = nil;
-            [SellingManager sharedSellingManager].skillRate = nil;
+            NSDecimalNumber *zero = [[NSDecimalNumber alloc] initWithFloat:0.0];
+            [SellingManager sharedSellingManager].skillPrice = zero;
+            [SellingManager sharedSellingManager].skillRate = @"0";
         
         }
         

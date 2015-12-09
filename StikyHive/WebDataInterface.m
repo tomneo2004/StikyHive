@@ -368,7 +368,22 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     
 }
 
++ (void)getSubscriptionPlan:(NSInteger)status completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STATUS:[NSNumber numberWithInteger:status]};
+    [self requestData:DATA_URL_GET_SUBSCRIPTION_PLAN withParameters:params completion:completion];
+}
 
+
++ (void)editComment:(NSInteger)commentId rating:(NSInteger)rating review:(NSString *)review stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_COMMENT_ID:[NSNumber numberWithInteger:commentId],
+                             POST_PARAMETER_RATE:[NSNumber numberWithInteger:rating],
+                             POST_PARAMETER_REVIEW:review,
+                             POST_PARAMETER_STKID:stkid};
+    
+    [self requestData:DATA_URL_EDIT_COMMENT withParameters:params completion:completion];
+}
 
 
 
