@@ -23,10 +23,17 @@
 @property (nonatomic, strong) NSString *basicUnit;
 @property (nonatomic, assign) NSInteger duration;
 @property (nonatomic, assign) BOOL promotion;
+@property (nonatomic, assign) BOOL photoStatus;
+@property (nonatomic, assign) BOOL videoStatus;
+@property (nonatomic, assign) BOOL videoExtendStatus;
 //@property (nonatomic, assign) NSInteger subMonth;
 //@property (nonatomic, assign) NSDecimalNumber *subPrice;
 //@property (nonatomic, assign) NSInteger subType;
 @property (nonatomic, strong) NSDictionary *subDict;
+@property (nonatomic, strong) NSDictionary *photoDict;
+@property (nonatomic, strong) NSDictionary *videoDict;
+@property (nonatomic, strong) NSDictionary *extendDict;
+@property (nonatomic, strong) NSDictionary *extraDict;
 
 @end
 
@@ -41,7 +48,9 @@
     _basicLabel.layer.borderWidth = 2;
     _basicLabel.layer.borderColor = [UIColor colorWithRed:0/255 green:139.0/255 blue:123.0/255 alpha:1.0].CGColor;
     
-    
+    _photoStatus = [SellingManager sharedSellingManager].photoStatus;
+    _videoStatus = [SellingManager sharedSellingManager].videoStatus;
+    _videoExtendStatus = [SellingManager sharedSellingManager].videoExtendStatus;
     _promotion = [SellingManager sharedSellingManager].promotionStatus;
 //    NSLog(@"promotion or not ---- %d",promotion);
     
@@ -60,6 +69,8 @@
         
     }
     
+    [self.view showActivityViewWithLabel:@"Loading..."];
+    
     [WebDataInterface getSubscriptionPlan:1 completion:^(NSObject *obj, NSError *err)
     {
         NSLog(@"subscription palan ==== %@",obj);
@@ -74,31 +85,33 @@
             NSArray *dictArray = dict[@"plans"];
             _subDict = dictArray[0];
             NSLog(@"sub dict --- %@",_subDict);
+            _photoDict = dictArray[2];
+            _videoDict = dictArray[3];
+            _extendDict = dictArray[4];
+            _extraDict = dictArray[1];
+            NSLog(@"photo dict --- %@",_photoDict);
+            NSLog(@"video dict --- %@",_videoDict);
+            NSLog(@"extend dict --- %@",_extendDict);
+            NSLog(@"extra dict --- %@",_extraDict);
             
-            
-            
-            
+            [self.view hideActivityView];
             
         });
-        
-        
         
     }];
     
     
-    
-//    [self displayContent];
 }
 
 
 - (CGFloat)displayContent
 {
-    BOOL photoStatus = [SellingManager sharedSellingManager].photoStatus;
-    BOOL videoStatus = [SellingManager sharedSellingManager].videoStatus;
-    BOOL videoExtendStatus = [SellingManager sharedSellingManager].videoExtendStatus;
+//    BOOL photoStatus = [SellingManager sharedSellingManager].photoStatus;
+//    BOOL videoStatus = [SellingManager sharedSellingManager].videoStatus;
+//    BOOL videoExtendStatus = [SellingManager sharedSellingManager].videoExtendStatus;
 //    _promotion = [SellingManager sharedSellingManager].promotionStatus;
     
-    NSLog(@"promotion (display content)--- %d ",_promotion);
+//    NSLog(@"promotion (display content)--- %d ",_promotion);
     
     UIColor *greenColor =  [UIColor colorWithRed:0/255 green:139.0/255 blue:123.0/255 alpha:1.0];
     
@@ -108,7 +121,7 @@
     float price = 0.0;
     
     
-    if (photoStatus || videoStatus || videoExtendStatus || _promotion)
+    if (_photoStatus || _videoStatus || _videoExtendStatus || _promotion)
     {
         UILabel *addOnFeatureLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, y, 80, 55)];
         addOnFeatureLabel.text = @"Add-on Features";
@@ -140,7 +153,7 @@
         
         
         
-        if (photoStatus)
+        if (_photoStatus)
         {
             UILabel *itemLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, y, 45, 15)];
             itemLabel.text = @"Add 4 Photos";
@@ -172,7 +185,7 @@
             y = y + 15 +15;
             
         }
-        if (videoStatus)
+        if (_videoStatus)
         {
             UILabel *itemLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, y, 45, 15)];
             itemLabel.text = @"Add a Video";
@@ -206,7 +219,7 @@
             
             
         }
-        if(videoExtendStatus)
+        if(_videoExtendStatus)
         {
             UILabel *itemLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, y, 45, 15)];
             itemLabel.text = @"Extended Video";
@@ -355,34 +368,35 @@
 
 - (void)payBtnTapped:(UITapGestureRecognizer *)sender
 {
-    BOOL photoStatus = [SellingManager sharedSellingManager].photoStatus;
-    BOOL videoStatus = [SellingManager sharedSellingManager].videoStatus;
-    BOOL videoExtendStatus = [SellingManager sharedSellingManager].videoExtendStatus;
+//    BOOL photoStatus = [SellingManager sharedSellingManager].photoStatus;
+//    BOOL videoStatus = [SellingManager sharedSellingManager].videoStatus;
+//    BOOL videoExtendStatus = [SellingManager sharedSellingManager].videoExtendStatus;
 //    _promotion = [SellingManager sharedSellingManager].promotionStatus;
     
+    //    NSLog(@"photo status -- %d",photoStatus);
+    //    NSLog(@"videoStatus --- %d ",videoStatus);
+    //    NSLog(@"videoExtendStatus --- %d ",videoExtendStatus);
+    //    NSLog(@"promotion --- %d ",_promotion);
+    //    NSLog(@"stkid --- %@ ",[LocalDataInterface retrieveStkid]);
+    //    NSLog(@"description --- %@ ",[SellingManager sharedSellingManager].skillDesc);
+    //    NSLog(@"catId --- %ld ",(long)[SellingManager sharedSellingManager].skillCategoryId);
+    //    NSLog(@"type --- %ld ",(long)[SellingManager sharedSellingManager].skillType);
+    //    NSLog(@"summary --- %@ ",[SellingManager sharedSellingManager].skillSummary);
+    //    NSLog(@"rateId --- %ld ",(long)rateId);
+    //    NSLog(@"price --- %ld ",(long)price);
+
+    SellingManager *smg = [SellingManager sharedSellingManager];
     NSString *stkid = [LocalDataInterface retrieveStkid];
     NSInteger skillId = 0;
-    NSString *name = [SellingManager sharedSellingManager].skillName;
-    NSString *description = [SellingManager sharedSellingManager].skillDesc;
-    NSInteger catId = [SellingManager sharedSellingManager].skillCategoryId;
-    NSInteger type = [SellingManager sharedSellingManager].skillType;
-    NSString *summary = [SellingManager sharedSellingManager].skillSummary;
-    NSDecimalNumber *price = [SellingManager sharedSellingManager].skillPrice;
+//    NSString *name = [SellingManager sharedSellingManager].skillName;
+//    NSString *description = [SellingManager sharedSellingManager].skillDesc;
+//    NSInteger catId = [SellingManager sharedSellingManager].skillCategoryId;
+//    NSInteger type = [SellingManager sharedSellingManager].skillType;
+//    NSString *summary = [SellingManager sharedSellingManager].skillSummary;
+//    NSDecimalNumber *price = [SellingManager sharedSellingManager].skillPrice;
     NSString *rateIdString = [SellingManager sharedSellingManager].skillRate;
     NSInteger rateId = [rateIdString integerValue];
     
-//    NSLog(@"photo status -- %d",photoStatus);
-//    NSLog(@"videoStatus --- %d ",videoStatus);
-//    NSLog(@"videoExtendStatus --- %d ",videoExtendStatus);
-//    NSLog(@"promotion --- %d ",_promotion);
-//    NSLog(@"stkid --- %@ ",[LocalDataInterface retrieveStkid]);
-    NSLog(@"name --- %@ ",name);
-//    NSLog(@"description --- %@ ",[SellingManager sharedSellingManager].skillDesc);
-//    NSLog(@"catId --- %ld ",(long)[SellingManager sharedSellingManager].skillCategoryId);
-//    NSLog(@"type --- %ld ",(long)[SellingManager sharedSellingManager].skillType);
-//    NSLog(@"summary --- %@ ",[SellingManager sharedSellingManager].skillSummary);
-//    NSLog(@"rateId --- %ld ",(long)rateId);
-//    NSLog(@"price --- %ld ",(long)price);
 
     
     NSString *subMonthString = _subDict[@"duration"];
@@ -395,20 +409,14 @@
     NSLog(@"sub total -- %@",subTotal);
     NSDecimalNumber *zero = [[NSDecimalNumber alloc] initWithFloat:0.0];
     
-    
-    if (photoStatus || videoStatus || videoExtendStatus || _promotion)
+    if (_photoStatus || _videoStatus || _videoExtendStatus || _promotion)
     {
-        NSLog(@"yes choice");
-        
-        
         PayPalPayment *payment = [[PayPalPayment alloc] init];
         payment.amount = [[NSDecimalNumber alloc] initWithString:@"5.00"];
         payment.currencyCode = @"SGD";
         payment.shortDescription = @"Post a request";
         payment.intent = PayPalPaymentIntentSale;
-        if (!payment.processable)
-        {
-            
+        if (!payment.processable){
         }
         
         PayPalPaymentViewController *paymentViewController;
@@ -417,42 +425,12 @@
                                                                             delegate:self];
         
         [self presentViewController:paymentViewController animated:YES completion:nil];
-        
-        
-        
-        NSLog(@"shsdfe");
-        
-//        
-//        if (photoStatus)
-//        {
-//            
-//        }
-//        if (videoStatus)
-//        {
-//            
-//        }
-//        if (videoStatus)
-//        {
-//            
-//        }
-//        if (videoExtendStatus)
-//        {
-//            
-//        }
-        
-        
-        
-        
-        
-        
     }
     else
     {
-//        [self.view showActivityViewWithLabel:@"Uploading" detailLabel:@"Uploading your request"];
         [self.view showActivityViewWithLabel:@"Uploading"];
         
-        
-        [WebDataInterface createUpdateSubPlan:stkid skillId:skillId name:name description:description catId:catId type:type summary:summary price:price rateId:rateId subId1:0 subMonth:subMonthInt subPrice:subPriceNumber subTotal:subTotal subType:1 status1:1 subId3:0 photoMonth:0 photoPrice:zero photoTotal:zero photoType:0 status3:0 subId4:0 videoMonth:0 videoPrice:zero videoTotal:zero videoType:0 status4:0 subId5:0 extendMonth:0 extendPrice:zero extendTotal:zero extendType:0 status5:0 subId2:0 extraMonth:0 extraPrice:zero extraTotal:zero extraType:0 status2:0 completion:^(NSObject *obj, NSError *err)
+        [WebDataInterface createUpdateSubPlan:stkid skillId:skillId name:smg.skillName description:smg.skillDesc catId:smg.skillCategoryId type:smg.skillType summary:smg.skillSummary price:smg.skillPrice rateId:rateId subId1:0 subMonth:subMonthInt subPrice:subPriceNumber subTotal:subTotal subType:1 status1:1 subId3:0 photoMonth:0 photoPrice:zero photoTotal:zero photoType:0 status3:0 subId4:0 videoMonth:0 videoPrice:zero videoTotal:zero videoType:0 status4:0 subId5:0 extendMonth:0 extendPrice:zero extendTotal:zero extendType:0 status5:0 subId2:0 extraMonth:0 extraPrice:zero extraTotal:zero extraType:0 status2:0 completion:^(NSObject *obj, NSError *err)
         {
             
             NSLog(@"obj ---- %@ ",obj);
@@ -503,12 +481,85 @@
 #pragma mark - upload
 - (void)uploadDataToServer
 {
+    NSString *stkid = [LocalDataInterface retrieveStkid];
+    NSInteger skillId = 0;
+    NSString *rateIdString = [SellingManager sharedSellingManager].skillRate;
+    NSInteger rateId = [rateIdString integerValue];
+
+    NSString *subMonthString = _subDict[@"duration"];
+    NSString *subPriceString = _subDict[@"price"];
+    NSInteger subMonthInt = [subMonthString integerValue];
+    //    NSDecimalNumber *subMonthNumber = [NSDecimalNumber decimalNumberWithDecimal:[ decimalValue]];
+    NSDecimalNumber *subPriceNumber = [NSDecimalNumber decimalNumberWithString:subPriceString];
+    NSDecimalNumber *subTotal = [subPriceNumber decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"12"]];
+    
+    NSLog(@"sub total -- %@",subTotal);
+    NSDecimalNumber *zero = [[NSDecimalNumber alloc] initWithFloat:0.0];
     
     
+    NSInteger subId3 = 0;
+    NSInteger photoMonth = 0;
+    NSDecimalNumber *photoPrice =zero;
+    NSDecimalNumber *photoTotal = zero;
+    NSInteger photoType = 0;
+    NSInteger status3 = 0;
     
+    NSInteger subId4 = 0;
+    NSInteger videoMonth = 0;
+    NSDecimalNumber *videoPrice =zero;
+    NSDecimalNumber *videoTotal = zero;
+    NSInteger videoType = 0;
+    NSInteger status4 = 0;
+
+    NSInteger subId5 = 0;
+    NSInteger extendMonth = 0;
+    NSDecimalNumber *extendPrice =zero;
+    NSDecimalNumber *extendTotal = zero;
+    NSInteger extendType = 0;
+    NSInteger status5 = 0;
     
+    NSInteger subId2 = 0;
+    NSInteger extraMonth = 0;
+    NSDecimalNumber *extraPrice =zero;
+    NSDecimalNumber *extraTotal = zero;
+    NSInteger extraType = 0;
+    NSInteger status2 = 0;
     
+    SellingManager *smg = [SellingManager sharedSellingManager];
     
+    if (_photoStatus) {
+        photoMonth = [_photoDict[@"duration"] integerValue];
+        photoPrice = [NSDecimalNumber decimalNumberWithString:_photoDict[@"price"]];
+        photoTotal = [photoPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:_photoDict[@"duration"]]];
+        photoType = [_photoDict[@"id"] integerValue];
+        status3 = 1;
+    }
+    if (_videoStatus) {
+        videoMonth = [_videoDict[@"duration"] integerValue];
+        videoPrice = [NSDecimalNumber decimalNumberWithString:_videoDict[@"price"]];
+        videoTotal = [videoPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:_videoDict[@"duration"]]];
+        videoType = [_videoDict[@"id"] integerValue];
+        status3 = 4;
+
+    }
+    if (_videoExtendStatus) {
+        extendMonth = [_extendDict[@"duration"] integerValue];
+        extendPrice = [NSDecimalNumber decimalNumberWithString:_extendDict[@"price"]];
+        extendTotal = [extendPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:_extendDict[@"duration"]]];
+        extendType = [_extendDict[@"id"] integerValue];
+        status5 = 4;
+
+    }
+    if (_promotion) {
+        extraMonth = [_extraDict[@"duration"] integerValue];
+        extraPrice = [NSDecimalNumber decimalNumberWithString:_extraDict[@"price"]];
+        extraTotal = [extraPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:_extraDict[@"duration"]]];
+        extraType = [_extraDict[@"id"] integerValue];
+        status2 = 4;
+
+    }
+    
+//    [WebDataInterface createUpdateSubPlan:stkid skillId:skillId name:<#(NSString *)#> description:<#(NSString *)#> catId:<#(NSInteger)#> type:<#(NSInteger)#> summary:<#(NSString *)#> price:<#(NSDecimalNumber *)#> rateId:<#(NSInteger)#> subId1:<#(NSInteger)#> subMonth:<#(NSInteger)#> subPrice:<#(NSDecimalNumber *)#> subTotal:<#(NSDecimalNumber *)#> subType:<#(NSInteger)#> status1:<#(NSInteger)#> subId3:<#(NSInteger)#> photoMonth:<#(NSInteger)#> photoPrice:<#(NSDecimalNumber *)#> photoTotal:<#(NSDecimalNumber *)#> photoType:<#(NSInteger)#> status3:<#(NSInteger)#> subId4:<#(NSInteger)#> videoMonth:<#(NSInteger)#> videoPrice:<#(NSDecimalNumber *)#> videoTotal:<#(NSDecimalNumber *)#> videoType:<#(NSInteger)#> status4:<#(NSInteger)#> subId5:<#(NSInteger)#> extendMonth:<#(NSInteger)#> extendPrice:<#(NSDecimalNumber *)#> extendTotal:<#(NSDecimalNumber *)#> extendType:<#(NSInteger)#> status5:<#(NSInteger)#> subId2:<#(NSInteger)#> extraMonth:<#(NSInteger)#> extraPrice:<#(NSDecimalNumber *)#> extraTotal:<#(NSDecimalNumber *)#> extraType:<#(NSInteger)#> status2:<#(NSInteger)#> completion:<#^(NSObject *, NSError *)completion#>]
     
     
     
