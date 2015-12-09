@@ -23,6 +23,8 @@
     NSMutableArray *_boughtInfos;
     NSDateFormatter *_dateFormatter;
     ReadReviewViewController *_readReviewController;
+    PostReviewViewController * _postReviewController;
+    __weak BoughtInfo *_tmpBoughtInfo;
 }
 
 @synthesize tableView = _tableView;
@@ -149,6 +151,7 @@
 - (void)onReadReviewTap:(BoughtCell *)cell{
     
     BoughtInfo *info = [_boughtInfos objectAtIndex:[_tableView indexPathForCell:cell].row];
+    _tmpBoughtInfo = info;
     
     _readReviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ReadReviewViewController"];
     [_readReviewController presentOverlay:^(OverlayViewController * controller){
@@ -162,6 +165,17 @@
 
 - (void)onEditReviewTap:(BoughtCell *)cell{
     
+    BoughtInfo *info = [_boughtInfos objectAtIndex:[_tableView indexPathForCell:cell].row];
+    _tmpBoughtInfo = info;
+    
+    _postReviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PostReviewViewController"];
+    [_postReviewController presentOverlay:^(OverlayViewController *controller){
+    
+        _postReviewController.rating = info.rating;
+        _postReviewController.review = info.review;
+        _postReviewController.delegate =self;
+        
+    }];
 }
 
 #pragma mark - ReadReviewController delegate
@@ -170,12 +184,37 @@
     [controller dismissOverlay:^{
     
         _readReviewController = nil;
+        
+        _postReviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PostReviewViewController"];
+        [_postReviewController presentOverlay:^(OverlayViewController *controller){
+        
+            _postReviewController.rating = _tmpBoughtInfo.rating;
+            _postReviewController.review = _tmpBoughtInfo.review;
+            _postReviewController.delegate =self;
+            
+        }];
     }];
 }
 
 - (void)onClose{
     
+    _readReviewController = nil;
+}
+
+#pragma mark - PostReviewViewController delegate
+- (void)onPostReviewClose{
     
+    _postReviewController = nil;
+}
+
+- (void)onPostReviewUpdateSuccessful:(PostReviewViewController *)controller{
+    
+    [self pullData];
+}
+
+- (NSString *)commentIdForUpdateReview{
+    
+    return _tmpBoughtInfo.commentId;
 }
 
 /*

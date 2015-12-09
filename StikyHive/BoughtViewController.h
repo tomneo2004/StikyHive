@@ -10,7 +10,8 @@
 #import "TitleViewController.h"
 #import "BoughtCell.h"
 #import "ReadReviewViewController.h"
+#import "PostReviewViewController.h"
 
-@interface BoughtViewController : TitleViewController<UITableViewDataSource, UITableViewDelegate, BoughtCellDelegate, ReadReviewViewControllerDelegate>
+@interface BoughtViewController : TitleViewController<UITableViewDataSource, UITableViewDelegate, BoughtCellDelegate, ReadReviewViewControllerDelegate, PostReviewViewControllerDelegate>
 
 @end
