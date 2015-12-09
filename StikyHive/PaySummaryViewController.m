@@ -481,11 +481,15 @@
 #pragma mark - upload
 - (void)uploadDataToServer
 {
+    [self.view showActivityViewWithLabel:@"Uploading..."];
+    
+    
     NSString *stkid = [LocalDataInterface retrieveStkid];
     NSInteger skillId = 0;
     NSString *rateIdString = [SellingManager sharedSellingManager].skillRate;
     NSInteger rateId = [rateIdString integerValue];
 
+    NSInteger subId1 = 0;
     NSString *subMonthString = _subDict[@"duration"];
     NSString *subPriceString = _subDict[@"price"];
     NSInteger subMonthInt = [subMonthString integerValue];
@@ -530,14 +534,14 @@
     if (_photoStatus) {
         photoMonth = [_photoDict[@"duration"] integerValue];
         photoPrice = [NSDecimalNumber decimalNumberWithString:_photoDict[@"price"]];
-        photoTotal = [photoPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:_photoDict[@"duration"]]];
+        photoTotal = [photoPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"12"]];
         photoType = [_photoDict[@"id"] integerValue];
         status3 = 1;
     }
     if (_videoStatus) {
         videoMonth = [_videoDict[@"duration"] integerValue];
         videoPrice = [NSDecimalNumber decimalNumberWithString:_videoDict[@"price"]];
-        videoTotal = [videoPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:_videoDict[@"duration"]]];
+        videoTotal = [videoPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"12"]];
         videoType = [_videoDict[@"id"] integerValue];
         status3 = 4;
 
@@ -545,7 +549,7 @@
     if (_videoExtendStatus) {
         extendMonth = [_extendDict[@"duration"] integerValue];
         extendPrice = [NSDecimalNumber decimalNumberWithString:_extendDict[@"price"]];
-        extendTotal = [extendPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:_extendDict[@"duration"]]];
+        extendTotal = [extendPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"12"]];
         extendType = [_extendDict[@"id"] integerValue];
         status5 = 4;
 
@@ -553,25 +557,38 @@
     if (_promotion) {
         extraMonth = [_extraDict[@"duration"] integerValue];
         extraPrice = [NSDecimalNumber decimalNumberWithString:_extraDict[@"price"]];
-        extraTotal = [extraPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:_extraDict[@"duration"]]];
+        extraTotal = [extraPrice decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"6"]];
         extraType = [_extraDict[@"id"] integerValue];
         status2 = 4;
 
     }
     
-//    [WebDataInterface createUpdateSubPlan:stkid skillId:skillId name:<#(NSString *)#> description:<#(NSString *)#> catId:<#(NSInteger)#> type:<#(NSInteger)#> summary:<#(NSString *)#> price:<#(NSDecimalNumber *)#> rateId:<#(NSInteger)#> subId1:<#(NSInteger)#> subMonth:<#(NSInteger)#> subPrice:<#(NSDecimalNumber *)#> subTotal:<#(NSDecimalNumber *)#> subType:<#(NSInteger)#> status1:<#(NSInteger)#> subId3:<#(NSInteger)#> photoMonth:<#(NSInteger)#> photoPrice:<#(NSDecimalNumber *)#> photoTotal:<#(NSDecimalNumber *)#> photoType:<#(NSInteger)#> status3:<#(NSInteger)#> subId4:<#(NSInteger)#> videoMonth:<#(NSInteger)#> videoPrice:<#(NSDecimalNumber *)#> videoTotal:<#(NSDecimalNumber *)#> videoType:<#(NSInteger)#> status4:<#(NSInteger)#> subId5:<#(NSInteger)#> extendMonth:<#(NSInteger)#> extendPrice:<#(NSDecimalNumber *)#> extendTotal:<#(NSDecimalNumber *)#> extendType:<#(NSInteger)#> status5:<#(NSInteger)#> subId2:<#(NSInteger)#> extraMonth:<#(NSInteger)#> extraPrice:<#(NSDecimalNumber *)#> extraTotal:<#(NSDecimalNumber *)#> extraType:<#(NSInteger)#> status2:<#(NSInteger)#> completion:<#^(NSObject *, NSError *)completion#>]
     
-    
-    
-    [self dismissViewControllerAnimated:YES completion:^{
+    [WebDataInterface createUpdateSubPlan:stkid skillId:skillId name:smg.skillName description:smg.skillDesc catId:smg.skillCategoryId type:smg.skillType summary:smg.skillSummary price:smg.skillPrice rateId:rateId subId1:subId1 subMonth:subMonthInt subPrice:subPriceNumber subTotal:subTotal subType:1 status1:1 subId3:subId3 photoMonth:photoMonth photoPrice:photoPrice photoTotal:photoTotal photoType:photoType status3:status3 subId4:subId4 videoMonth:videoMonth videoPrice:videoPrice videoTotal:videoTotal videoType:videoType status4:status4 subId5:subId5 extendMonth:extendMonth extendPrice:extendPrice extendTotal:extendTotal extendType:extendType status5:status5 subId2:subId2 extraMonth:extraMonth extraPrice:extraPrice extraTotal:extraTotal extraType:extraType status2:status2 completion:^(NSObject *obj, NSError *err) {
         
         
-        UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_sucess_view_controller"];
-        [self.navigationController pushViewController:vc animated:YES];
+        NSLog(@"obj ---- %@ ",obj);
+        NSLog(@"err ---- %@",err);
+        
+        
+        
+        [self.view hideActivityView];
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+            
+            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_sucess_view_controller"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+        }];
+
+        
         
         
     }];
-
+    
+    
     
     
     

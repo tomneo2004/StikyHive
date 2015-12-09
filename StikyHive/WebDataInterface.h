@@ -364,7 +364,7 @@
 
 + (void)getSubscriptionPlan:(NSInteger)status completion:(void (^)(NSObject *, NSError *))completion;
 
-+ (void)editComment:(NSInteger)commentId rating:(NSString *)rating review:(NSString *)review stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
++ (void)editComment:(NSInteger)commentId rating:(NSInteger)rating review:(NSString *)review stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
 
 ////////  ///////////// END -------------------------------------
 

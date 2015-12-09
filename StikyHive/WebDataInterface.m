@@ -375,10 +375,10 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
-+ (void)editComment:(NSInteger)commentId rating:(NSString *)rating review:(NSString *)review stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion
++ (void)editComment:(NSInteger)commentId rating:(NSInteger)rating review:(NSString *)review stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion
 {
     NSDictionary *params = @{POST_PARAMETER_COMMENT_ID:[NSNumber numberWithInteger:commentId],
-                             POST_PARAMETER_RATE:rating,
+                             POST_PARAMETER_RATE:[NSNumber numberWithInteger:rating],
                              POST_PARAMETER_REVIEW:review,
                              POST_PARAMETER_STKID:stkid};
     
