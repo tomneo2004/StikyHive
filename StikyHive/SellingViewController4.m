@@ -74,7 +74,7 @@
         {
             NSLog(@"add now");
             
-            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_33"];
+            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_table_view_controller"];
             
             
             

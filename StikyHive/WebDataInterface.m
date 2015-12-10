@@ -386,6 +386,22 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
++ (void)updateProfile:(NSString *)stkid fname:(NSString *)fname lname:(NSString *)lname description:(NSString *)description dob:(NSString *)dob address:(NSString *)address countryISO:(NSString *)countryISO postalcode:(NSString *)postalcode completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_F_NAME:fname,
+                             POST_PARAMETER_L_NALE:lname,
+                             POST_PARAMETER_DESCRIPTION:description,
+                             POST_PARAMETER_DOB:dob,
+                             POST_PARAMETER_ADDRESS:address,
+                             POST_PARAMETER_COUNTRY:countryISO,
+                             POST_PARAMETER_POSTAL_CODE:postalcode};
+    
+    [self requestData:DATA_URL_UPDATE_PROFILE withParameters:params completion:completion];
+                             
+}
+
+
 
 
 + (void)fileRequestUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid cpid:(NSInteger)cpid

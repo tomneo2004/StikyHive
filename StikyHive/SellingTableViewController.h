@@ -11,5 +11,6 @@
 #import "CropPhotoViewController.h"
 
 @interface SellingTableViewController : CropPhotoViewController <UITableViewDataSource,UITableViewDelegate,SellingCellDelegate>
+- (IBAction)nextBtnPressed:(id)sender;
 
 @end
