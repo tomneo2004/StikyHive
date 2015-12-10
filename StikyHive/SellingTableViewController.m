@@ -48,6 +48,13 @@
     _numberOfRows = 4;
     
     
+//    _imageFileArray = [smg.photoArray mutableCopy];
+//    NSLog(@"4 image file array --- %@",_imageFileArray);
+    if (smg.videoStatus) {
+        _imageFileArray = [smg.photoArray mutableCopy];
+        NSLog(@"4 image file array --- %@",_imageFileArray);
+    }
+    
     if (smg.photoStatus)
     {
         _numberOfRows = 8;
@@ -59,7 +66,7 @@
             [_imageFileArray insertObject:[NSNull null] atIndex:i];
         }
 
-        NSLog(@"8 image file array");
+        NSLog(@"8 image file array --- %@",_imageFileArray);
     }
     
     _sellTableView.delegate = self;
@@ -105,6 +112,10 @@
     cell.photoImageView.userInteractionEnabled = YES;
 //    [cell displayDefaultImage:@"sell_upload_photo"];
     cell.photoImageView.tag = indexPath.row;
+    
+    if (_imageFileArray[indexPath.row] != [NSNull null]) {
+        cell.photoImageView.image = _imageFileArray[indexPath.row];
+    }
     
     return cell;
 }
