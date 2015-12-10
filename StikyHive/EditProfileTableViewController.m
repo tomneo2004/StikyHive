@@ -101,6 +101,8 @@
                 [_countryInfos addObject:info];
             }
             
+            [_countryPicker reloadAllComponents];
+            
             [WebDataInterface getStikyBeeInfo:[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *error){
             
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -151,16 +153,56 @@
                     else
                         _lastnameTextField.text = nil;
                     
+                    //day of birth
                     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
                     [formatter  setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
                     
                     [_dobPicker setDate:[formatter dateFromString:infoDic[@"dob"]]];
+                    
+                    //address
+                    if(![infoDic[@"address1"] isEqual:[NSNull null]])
+                        _addressTextField.text = infoDic[@"address1"];
+                    
+                    //country
+                    CountryInfo *cInfo = [self countryInfoByISO:infoDic[@"countryISO"]];
+                    if(cInfo != nil){
+                        
+                        [_countryPicker selectRow:[_countryInfos indexOfObject:cInfo] inComponent:0 animated:NO];
+                    }
+                    
+                    //postal code
+                    if(![infoDic[@"postalCode"] isEqual:[NSNull null]])
+                        _postalCodeTextField.text = infoDic[@"postalCode"];
+                    else
+                        _postalCodeTextField.text = nil;
+                    
+                    //description
+                    if(![infoDic[@"description"] isEqual:[NSNull null]]){
+                        
+                        [_descriptionWebView loadHTMLString:infoDic[@"description"] baseURL:nil];
+                    }
                     
                 });
             }];
             
         });
     }];
+}
+
+- (CountryInfo *)countryInfoByISO:(NSString *)countryISO{
+    
+    if(_countryInfos != nil){
+        
+        for(CountryInfo *info in _countryInfos){
+            
+            if([info.countryISO isEqualToString:countryISO]){
+                
+                return info;
+            }
+        }
+    }
+    
+    return nil;
 }
 
 #pragma mark - IBAction
@@ -182,6 +224,13 @@
     }
     
     return 0;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
+    CountryInfo *info = [_countryInfos objectAtIndex:row];
+    
+    return info.countryName;
 }
 
 /*

@@ -998,12 +998,12 @@
                                 <exclude reference="O0H-to-khi"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="9YJ-97-oqG"/>
                                 <exclude reference="cbb-10-tlS"/>
                                 <exclude reference="s80-vS-BF5"/>
                                 <exclude reference="E9a-pN-6sD"/>
                                 <exclude reference="bYn-bE-wOr"/>
                                 <exclude reference="fet-sG-WTD"/>
-                                <exclude reference="9YJ-97-oqG"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1012,12 +1012,12 @@
                                 <include reference="O0H-to-khi"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="9YJ-97-oqG"/>
                                 <include reference="cbb-10-tlS"/>
                                 <include reference="s80-vS-BF5"/>
                                 <include reference="E9a-pN-6sD"/>
                                 <include reference="bYn-bE-wOr"/>
                                 <include reference="fet-sG-WTD"/>
-                                <include reference="9YJ-97-oqG"/>
                             </mask>
                         </variation>
                     </view>
@@ -11154,15 +11154,19 @@ Cross Pollinate!</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="68" id="rcQ-Dh-8Bb">
-                                        <rect key="frame" x="0.0" y="431" width="600" height="68"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="97" id="rcQ-Dh-8Bb">
+                                        <rect key="frame" x="0.0" y="431" width="600" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rcQ-Dh-8Bb" id="iWT-lJ-74X">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="67.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="96.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HIp-5F-gIu">
-                                                    <rect key="frame" x="8" y="8" width="584" height="51.5"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="80.5"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="vQD-8S-0ze" id="Ph5-fr-mm0"/>
+                                                        <outlet property="delegate" destination="vQD-8S-0ze" id="gM5-aZ-bH2"/>
+                                                    </connections>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
@@ -11174,7 +11178,7 @@ Cross Pollinate!</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="RJ7-2d-CoI">
-                                        <rect key="frame" x="0.0" y="499" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="528" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RJ7-2d-CoI" id="Ogn-4M-4N3">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
@@ -11195,7 +11199,7 @@ Cross Pollinate!</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="206" id="RJe-7m-vHd">
-                                        <rect key="frame" x="0.0" y="549" width="600" height="206"/>
+                                        <rect key="frame" x="0.0" y="578" width="600" height="206"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RJe-7m-vHd" id="8cF-QN-a25">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="205.5"/>
@@ -11224,7 +11228,7 @@ Cross Pollinate!</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="8gt-Ic-hEe">
-                                        <rect key="frame" x="0.0" y="755" width="600" height="65"/>
+                                        <rect key="frame" x="0.0" y="784" width="600" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8gt-Ic-hEe" id="u5O-OP-5ZD">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="64.5"/>
