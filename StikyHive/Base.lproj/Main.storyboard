@@ -861,25 +861,37 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload your photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIV-T3-bBN">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="204" id="X4C-8z-6g6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="20" width="204" height="21"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="X4C-8z-6g6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="X4C-8z-6g6"/>
+                                    </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vM9-ax-Ptw">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="85" y="750" width="231" height="30"/>
-                                </variation>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="257" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="O0H-to-khi">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vHQ-WJ-Iur">
+                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.074509803920000006" green="0.58431372550000005" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="nextBtnPressed:" destination="Z02-je-KUF" eventType="touchUpInside" id="rer-Qp-jqx"/>
+                                    </connections>
+                                </button>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sellCell" rowHeight="257" id="oon-M2-hWf" customClass="SellingCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -969,27 +981,47 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="56" width="400" height="664"/>
-                                </variation>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I6P-Jo-5sw" firstAttribute="top" secondItem="O0H-to-khi" secondAttribute="bottom" id="9YJ-97-oqG"/>
+                            <constraint firstItem="O0H-to-khi" firstAttribute="leading" secondItem="Bzb-vF-1qI" secondAttribute="leading" id="E9a-pN-6sD"/>
+                            <constraint firstAttribute="trailing" secondItem="O0H-to-khi" secondAttribute="trailing" id="bYn-bE-wOr"/>
+                            <constraint firstItem="aIV-T3-bBN" firstAttribute="leading" secondItem="Bzb-vF-1qI" secondAttribute="leadingMargin" constant="4" id="cbb-10-tlS"/>
+                            <constraint firstItem="O0H-to-khi" firstAttribute="top" secondItem="aIV-T3-bBN" secondAttribute="bottom" constant="15" id="fet-sG-WTD"/>
+                            <constraint firstItem="aIV-T3-bBN" firstAttribute="top" secondItem="DPJ-xz-xOt" secondAttribute="bottom" id="s80-vS-BF5"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="aIV-T3-bBN"/>
-                                <exclude reference="vM9-ax-Ptw"/>
                                 <exclude reference="O0H-to-khi"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="cbb-10-tlS"/>
+                                <exclude reference="s80-vS-BF5"/>
+                                <exclude reference="E9a-pN-6sD"/>
+                                <exclude reference="bYn-bE-wOr"/>
+                                <exclude reference="fet-sG-WTD"/>
+                                <exclude reference="9YJ-97-oqG"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="aIV-T3-bBN"/>
-                                <include reference="vM9-ax-Ptw"/>
                                 <include reference="O0H-to-khi"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="cbb-10-tlS"/>
+                                <include reference="s80-vS-BF5"/>
+                                <include reference="E9a-pN-6sD"/>
+                                <include reference="bYn-bE-wOr"/>
+                                <include reference="fet-sG-WTD"/>
+                                <include reference="9YJ-97-oqG"/>
                             </mask>
                         </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="sellTableView" destination="O0H-to-khi" id="Vcp-Ts-VUc"/>
                     </connections>
@@ -1512,7 +1544,7 @@
                                                 <exclude reference="kx4-9t-LIY"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="0.0" y="109" width="400" height="160"/>
                                             <mask key="constraints">
                                                 <include reference="kx4-9t-LIY"/>
@@ -1596,7 +1628,7 @@
                                     </imageView>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFV-PL-6Ul">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="320" y="146" width="51" height="31"/>
                                         </variation>
                                     </switch>

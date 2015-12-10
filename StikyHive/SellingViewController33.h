@@ -45,9 +45,9 @@
 
 - (IBAction)nextButtonPressed:(id)sender;
 
-+ (UIViewController *)instantiateForInfo:(NSDictionary *)skillInfo
-                              videoThumb:(UIImage *)thumbImage
-                            andVideodata:(NSData *)videoData;
+//+ (UIViewController *)instantiateForInfo:(NSDictionary *)skillInfo
+//                              videoThumb:(UIImage *)thumbImage
+//                            andVideodata:(NSData *)videoData;
 
 
 @end

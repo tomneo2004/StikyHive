@@ -37,17 +37,17 @@ static NSData *Video_Data;
 
 
 
-+ (UIViewController *)instantiateForInfo:(NSDictionary *)skillInfo
-                              videoThumb:(UIImage *)thumbImage
-                            andVideodata:(NSData *)videoData
-{
-    
-    Skill_Info = skillInfo.mutableCopy;
-    Video_Thumbnail = thumbImage;
-    Video_Data = videoData;
-    
-    return  [ViewControllerUtil instantiateViewController:@"selling_view_controller_33"];
-}
+//+ (UIViewController *)instantiateForInfo:(NSDictionary *)skillInfo
+//                              videoThumb:(UIImage *)thumbImage
+//                            andVideodata:(NSData *)videoData
+//{
+//    
+//    Skill_Info = skillInfo.mutableCopy;
+//    Video_Thumbnail = thumbImage;
+//    Video_Data = videoData;
+//    
+//    return  [ViewControllerUtil instantiateViewController:@"selling_view_controller_33"];
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

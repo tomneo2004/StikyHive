@@ -209,6 +209,7 @@
 #define DATA_URL_SELECT_BOUGHT_INFO     DATA_URL@"selectBoughtInfo/format/json"
 #define DATA_URL_GET_SUBSCRIPTION_PLAN  DATA_URL@"getSubscriptionPlan/format/json"
 #define DATA_URL_EDIT_COMMENT           DATA_URL@"editComment/format/json"
+#define DATA_URL_UPDATE_PROFILE         DATA_URL@"updateProfile/format/json"
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -277,6 +278,9 @@
 #define POST_PARAMETER_EXTEND_TYPE      @"extendType"
 #define POST_PARAMETER_STATUS5          @"status5"
 #define POST_PARAMETER_COMMENT_ID       @"commentId"
+#define POST_PARAMETER_F_NAME           @"fname"
+#define POST_PARAMETER_L_NALE           @"lname"
+
 
 
 
@@ -365,6 +369,8 @@
 + (void)getSubscriptionPlan:(NSInteger)status completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)editComment:(NSInteger)commentId rating:(NSInteger)rating review:(NSString *)review stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)updateProfile:(NSString *)stkid fname:(NSString *)fname lname:(NSString *)lname description:(NSString *)description dob:(NSString *)dob address:(NSString *)address countryISO:(NSString *)countryISO postalcode:(NSString *)postalcode completion:(void (^)(NSObject *, NSError *))completion;
 
 ////////  ///////////// END -------------------------------------
 
