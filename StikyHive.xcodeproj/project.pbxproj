@@ -26,6 +26,8 @@
 		516F58A61C102D9700E4FD41 /* moreorless.png in Resources */ = {isa = PBXBuildFile; fileRef = 516F58A51C102D9700E4FD41 /* moreorless.png */; };
 		516F58A91C104A4000E4FD41 /* PromotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516F58A81C104A4000E4FD41 /* PromotionViewController.m */; };
 		516F7EB21C17DF69005FEF8A /* PaySucessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516F7EB11C17DF69005FEF8A /* PaySucessViewController.m */; };
+		516F7EB51C182EA2005FEF8A /* SellingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516F7EB41C182EA2005FEF8A /* SellingTableViewController.m */; };
+		516F7EB81C183B3F005FEF8A /* SellingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 516F7EB71C183B3F005FEF8A /* SellingCell.m */; };
 		51700A8F1BD49F8200294DAD /* review_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51700A8E1BD49F8200294DAD /* review_filled.png */; };
 		51700A921BD4C93500294DAD /* BuyerPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51700A911BD4C93500294DAD /* BuyerPostViewController.m */; };
 		51718BB21BE75700000424E6 /* profile_bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 51718BB11BE75700000424E6 /* profile_bookmark.png */; };
@@ -493,6 +495,10 @@
 		516F58A81C104A4000E4FD41 /* PromotionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionViewController.m; sourceTree = "<group>"; };
 		516F7EB01C17DF69005FEF8A /* PaySucessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaySucessViewController.h; sourceTree = "<group>"; };
 		516F7EB11C17DF69005FEF8A /* PaySucessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaySucessViewController.m; sourceTree = "<group>"; };
+		516F7EB31C182EA2005FEF8A /* SellingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingTableViewController.h; sourceTree = "<group>"; };
+		516F7EB41C182EA2005FEF8A /* SellingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingTableViewController.m; sourceTree = "<group>"; };
+		516F7EB61C183B3F005FEF8A /* SellingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingCell.h; sourceTree = "<group>"; };
+		516F7EB71C183B3F005FEF8A /* SellingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingCell.m; sourceTree = "<group>"; };
 		51700A8E1BD49F8200294DAD /* review_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_filled.png; sourceTree = "<group>"; };
 		51700A901BD4C93500294DAD /* BuyerPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerPostViewController.h; sourceTree = "<group>"; };
 		51700A911BD4C93500294DAD /* BuyerPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerPostViewController.m; sourceTree = "<group>"; };
@@ -1528,6 +1534,10 @@
 				5174454E1C113D2400153C0C /* PaySummaryViewController.m */,
 				516F7EB01C17DF69005FEF8A /* PaySucessViewController.h */,
 				516F7EB11C17DF69005FEF8A /* PaySucessViewController.m */,
+				516F7EB31C182EA2005FEF8A /* SellingTableViewController.h */,
+				516F7EB41C182EA2005FEF8A /* SellingTableViewController.m */,
+				516F7EB61C183B3F005FEF8A /* SellingCell.h */,
+				516F7EB71C183B3F005FEF8A /* SellingCell.m */,
 			);
 			name = Skill;
 			sourceTree = "<group>";
@@ -2805,6 +2815,7 @@
 				517D55321BDA4448000EA8FD /* UserProfileViewController.m in Sources */,
 				676F77EB1B96F3270084988A /* CropPhotoViewController.m in Sources */,
 				CEF7BA9C1BFAD2D6009624CC /* TitleViewController.m in Sources */,
+				516F7EB81C183B3F005FEF8A /* SellingCell.m in Sources */,
 				674D0F6D1B7D9B6F00B5B80D /* WebDataInterface.m in Sources */,
 				674D0EBF1B7D98CA00B5B80D /* UserSkillViewController1.m in Sources */,
 				674D10301B7DB4CD00B5B80D /* HRColorPickerView.m in Sources */,
@@ -2821,6 +2832,7 @@
 				674D0EB71B7D984200B5B80D /* SearchSellViewController.m in Sources */,
 				674D0F3E1B7D9A5200B5B80D /* JSQMessagesMediaViewBubbleImageMasker.m in Sources */,
 				CE9B8EC91C16C3620022653B /* BoughtInfo.m in Sources */,
+				516F7EB51C182EA2005FEF8A /* SellingTableViewController.m in Sources */,
 				674D0F5A1B7D9A5200B5B80D /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				674D0F481B7D9A5200B5B80D /* JSQMessagesBubbleImage.m in Sources */,
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
