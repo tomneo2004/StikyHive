@@ -104,7 +104,7 @@
     cell.delegate = self;
     cell.photoImageView.userInteractionEnabled = YES;
 //    [cell displayDefaultImage:@"sell_upload_photo"];
-    cell.photoImageView.tag = indexPath;
+    cell.photoImageView.tag = indexPath.row;
     
     return cell;
 }
@@ -159,10 +159,53 @@
 
 - (void)onImageCropSuccessfulWithImageView:(UIImageView *)imageView
 {
-//    if () {
-//        
-//    }
-    
+    if (imageView.tag == 0) {
+        _imageSelected0 = YES;
+        UIImage *image = imageView.image;
+        [_imageFileArray replaceObjectAtIndex:0 withObject:image];
+        
+    }
+    else if (imageView.tag == 1) {
+        _imageSelected1 = YES;
+        UIImage *image = imageView.image;
+        [_imageFileArray replaceObjectAtIndex:1 withObject:image];
+    }
+    else if (imageView.tag == 2) {
+        _imageSelected2 = YES;
+        UIImage *image = imageView.image;
+        [_imageFileArray replaceObjectAtIndex:2 withObject:image];
+    }
+    else if (imageView.tag == 3) {
+        _imageSelected3 = YES;
+        UIImage *image = imageView.image;
+        [_imageFileArray replaceObjectAtIndex:3 withObject:image];
+    }
+    else if (imageView.tag == 4) {
+        _imageSelected4 = YES;
+        UIImage *image = imageView.image;
+        [_imageFileArray replaceObjectAtIndex:4 withObject:image];
+    }
+    else if (imageView.tag == 5) {
+        _imageSelected5 = YES;
+        UIImage *image = imageView.image;
+        [_imageFileArray replaceObjectAtIndex:5 withObject:image];
+    }
+    else if (imageView.tag == 6) {
+        _imageSelected6 = YES;
+        UIImage *image = imageView.image;
+        [_imageFileArray replaceObjectAtIndex:6 withObject:image];
+    }
+    else if (imageView.tag == 7) {
+        _imageSelected7 = YES;
+        UIImage *image = imageView.image;
+        [_imageFileArray replaceObjectAtIndex:7 withObject:image];
+    }
+
+
+
+
+
+
     
     
     
