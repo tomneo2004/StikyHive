@@ -10,6 +10,25 @@
 #import "ActionSheetPicker.h"
 #import "DescEditorViewController.h"
 
-@interface EditProfileTableViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIGestureRecognizerDelegate>
+@class EditProfileTableViewController;
 
+@protocol EditProfileTableViewControllerDelegate <NSObject>
+
+@optional
+- (void)didTapAvatarImage:(UIImageView *)imageView;
+- (void)beginPullingData:(EditProfileTableViewController *)controller;
+- (void)PullingDataSuccessful:(EditProfileTableViewController *)controller;
+- (void)PullingDataFail:(EditProfileTableViewController *)controller;
+- (void)beginUpdateProfile:(EditProfileTableViewController *)controller;
+- (void)updateProfileSuccessful:(EditProfileTableViewController *)controller;
+- (void)updateProfileFail:(EditProfileTableViewController *)controller;
+
+@end
+
+@interface EditProfileTableViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIGestureRecognizerDelegate, UINavigationControllerDelegate, DescEditorViewControllerDelegate>
+
+@property (weak, nonatomic) UINavigationController *navigationController;
+@property (weak, nonatomic) id<EditProfileTableViewControllerDelegate> delegate;
+
+- (void)startPullingData;
 @end

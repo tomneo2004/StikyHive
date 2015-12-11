@@ -162,6 +162,7 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
+    [self onCancel];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

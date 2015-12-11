@@ -14,31 +14,34 @@
 
 @implementation DescEditorViewController
 
+@synthesize delegate = _delegate;
+@synthesize htmlText = _htmlText;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"Description";
+    
+    if(_htmlText != nil){
+        
+        [self setHTML:_htmlText];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    if([_delegate respondsToSelector:@selector(didFinishEditingWithHtmlText:)]){
+        
+        [_delegate didFinishEditingWithHtmlText:[self getHTML]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - IBAction
-- (IBAction)cancel:(id)sender{
-    
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
-    
-        
-    }];
-}
-
-- (IBAction)done:(id)sender{
-    
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
-        
-        
-    }];
 }
 
 /*

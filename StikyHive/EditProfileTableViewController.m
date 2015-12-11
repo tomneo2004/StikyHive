@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *postalCodeTextField;
 @property (weak, nonatomic) IBOutlet UIWebView *descriptionWebView;
 
+
 @end
 
 @implementation EditProfileTableViewController{
@@ -31,6 +32,7 @@
     NSMutableArray *_countryInfos;
     BOOL _circleImage;
     NSDateFormatter *_dateformatter;
+
     
     //current user day of birth
     NSDate *_userDOB;
@@ -49,6 +51,9 @@
 @synthesize countryBtn = _countryBtn;
 @synthesize postalCodeTextField = _postalCodeTextField;
 @synthesize descriptionWebView = _descriptionWebView;
+@synthesize navigationController = _navigationController;
+@synthesize delegate = _delegate;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,6 +73,12 @@
     tap.delegate = self;
     [_descriptionWebView addGestureRecognizer:tap];
     
+    UITapGestureRecognizer *dismissTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissAllInputField)];
+    [dismissTap setNumberOfTapsRequired:1];
+    [dismissTap setNumberOfTouchesRequired:1];
+    [self.view addGestureRecognizer:dismissTap];
+    
+    
     _circleImage = YES;
 }
 
@@ -76,6 +87,11 @@
     [super viewWillAppear:animated];
     
     if(_circleImage){
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeImage)];
+        [tap setNumberOfTapsRequired:1];
+        [tap setNumberOfTouchesRequired:1];
+        [_avatarImageView addGestureRecognizer:tap];
         
         //make person's profile picture circle
         _avatarImageView.layer.cornerRadius = _avatarImageView.bounds.size.width/2;
@@ -87,8 +103,6 @@
         _circleImage = NO;
     }
     
-    
-    [self pullData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,8 +115,19 @@
     return YES;
 }
 
+#pragma mark - public interface
+- (void)startPullingData{
+    
+    [self pullData];
+}
+
 #pragma mark - internal
 - (void)pullData{
+    
+    if([_delegate respondsToSelector:@selector(beginPullingData:)]){
+        
+        [_delegate beginPullingData:self];
+    }
     
     [WebDataInterface getCountry:1 completion:^(NSObject *obj, NSError *error){
         
@@ -111,6 +136,10 @@
             if(error != nil){
                 
                 //tell delegate pull data fail
+                if([_delegate respondsToSelector:@selector(PullingDataFail:)]){
+                    
+                    [_delegate PullingDataFail:self];
+                }
             }
             
             NSDictionary *dic = (NSDictionary *)obj;
@@ -131,6 +160,10 @@
                     if(error != nil){
                         
                         //tell delegate pull data fail
+                        if([_delegate respondsToSelector:@selector(PullingDataFail:)]){
+                            
+                            [_delegate PullingDataFail:self];
+                        }
                     }
                     
                     NSDictionary *infoDic = ((NSDictionary *)obj)[@"stikybee"];
@@ -175,6 +208,7 @@
                         _lastnameTextField.text = nil;
                     
                     //day of birth
+                    [_dateformatter  setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
                     _userDOB = [_dateformatter dateFromString:infoDic[@"dob"]];
                     [_dateformatter setDateFormat:@"MMM-dd-yyyy"];
                     [_dobBtn setTitle:[_dateformatter stringFromDate:_userDOB] forState:UIControlStateNormal];
@@ -207,6 +241,11 @@
                     if(![infoDic[@"description"] isEqual:[NSNull null]]){
                         
                         [_descriptionWebView loadHTMLString:infoDic[@"description"] baseURL:nil];
+                    }
+                    
+                    if([_delegate respondsToSelector:@selector(PullingDataSuccessful:)]){
+                        
+                        [_delegate PullingDataSuccessful:self];
                     }
                     
                 });
@@ -252,19 +291,110 @@
 - (void)onDescriptionTap:(UIGestureRecognizer *)recognizer{
     
     _descViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DescEditorViewController"];
+    _descViewController.htmlText = [_descriptionWebView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"];
+    _descViewController.delegate = self;
+    [_navigationController pushViewController:_descViewController animated:YES];
+}
+
+- (void)dismissAllInputField{
     
-    [self.navigationController presentViewController:_descViewController animated:YES completion:^{
+    [_firstnameTextField resignFirstResponder];
+    [_lastnameTextField resignFirstResponder];
+    [_addressTextField resignFirstResponder];
+    [_postalCodeTextField resignFirstResponder];
+}
+
+- (void)changeImage{
     
+    [self dismissAllInputField];
+    
+    if([_delegate respondsToSelector:@selector(didTapAvatarImage:)]){
         
-    }];
+        [_delegate didTapAvatarImage:_avatarImageView];
+        
+       
+    }
+}
+
+#pragma mark - DescEditorViewController delegate
+- (void)didFinishEditingWithHtmlText:(NSString *)htmlText{
+    
+    [_descriptionWebView loadHTMLString:htmlText baseURL:nil];
 }
 
 #pragma mark - IBAction
 - (IBAction)updateProfile:(id)sender{
     
+    if(_firstnameTextField.text == nil || _firstnameTextField.text.length <= 0){
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter your first name" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        
+        return;
+    }
+    
+    if(_lastnameTextField.text == nil || _lastnameTextField.text.length <= 0){
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter your last name" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        
+        return;
+    }
+    
+    if(_addressTextField.text == nil || _addressTextField.text.length <= 0){
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter your address" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        
+        return;
+    }
+    
+    if(_postalCodeTextField.text == nil || _postalCodeTextField.text.length <= 0){
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter your postal code" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        
+        return;
+    }
+    
+    [_dateformatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *countryISO = ((CountryInfo *)[_countryInfos objectAtIndex:_countryIndex]).countryISO;
+    
+    if([_delegate respondsToSelector:@selector(beginUpdateProfile:)]){
+        
+        [_delegate beginUpdateProfile:self];
+    }
+    
+    [WebDataInterface updateProfile:[LocalDataInterface retrieveStkid] fname:_firstnameTextField.text lname:_lastnameTextField.text description:[_descriptionWebView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"] dob:[_dateformatter stringFromDate:_userDOB] address:_addressTextField.text countryISO:countryISO postalcode:_postalCodeTextField.text completion:^(NSObject *obj, NSError *error) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+        
+            if(error != nil){
+                
+                //tell delegate update profile fail
+                if([_delegate respondsToSelector:@selector(updateProfileFail:)]){
+                    
+                    [_delegate updateProfileFail:self];
+                }
+                
+                return;
+            }
+            
+            [WebDataInterface profileImageUpload:_avatarImageView.image stikyid:[LocalDataInterface retrieveStkid]];
+            
+            //tell delegate upload profile successful
+            if([_delegate respondsToSelector:@selector(updateProfileSuccessful:)]){
+                
+                [_delegate updateProfileSuccessful:self];
+            }
+        });
+        
+    }];
 }
 
 - (IBAction)dobTap:(id)sender{
+    
+    [self dismissAllInputField];
     
     [ActionSheetDatePicker showPickerWithTitle:@"" datePickerMode:UIDatePickerModeDate selectedDate:_userDOB doneBlock:^(ActionSheetDatePicker *picker, id selectedDate, id origin) {
         
@@ -282,6 +412,8 @@
 }
 
 - (IBAction)countryTap:(id)sender{
+    
+    [self dismissAllInputField];
     
     [ActionSheetStringPicker showPickerWithTitle:@"" rows:[self allCountriesName] initialSelection:_countryIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
         
@@ -315,6 +447,13 @@
     CountryInfo *info = [_countryInfos objectAtIndex:row];
     
     return info.countryName;
+}
+
+
+
+#pragma mark - UITableView deleagate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
 }
 
 /*

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditProfileTableViewController.h"
+#import "CropPhotoViewController.h"
 
-@interface UpdateProfileViewController : UIViewController
+@interface UpdateProfileViewController : CropPhotoViewController<EditProfileTableViewControllerDelegate, UINavigationControllerDelegate>
 
 @end

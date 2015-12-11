@@ -8,6 +8,17 @@
 
 #import "ZSSRichTextEditor.h"
 
+@protocol DescEditorViewControllerDelegate <NSObject>
+
+@optional
+- (void)didFinishEditingWithHtmlText:(NSString *)htmlText;
+
+@end
+
 @interface DescEditorViewController : ZSSRichTextEditor
+
+@property (weak, nonatomic) id<DescEditorViewControllerDelegate> delegate;
+
+@property (copy, nonatomic) NSString *htmlText;
 
 @end
