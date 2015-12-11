@@ -39,11 +39,14 @@ static NSMutableDictionary *Skill_Info;
     // Do any additional setup after loading the view.
     
     
-    NSLog(@"skill info ---- %@",Skill_Info);
+//    NSLog(@"skill info ---- %@",Skill_Info);
     
     
     [_videoImageView setUserInteractionEnabled:YES];
-    [_videoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(videoImageViewTapped:)]];
+    
+    UITapGestureRecognizer *tapVideo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(videoImageViewTapped:)];
+    
+    [_videoImageView addGestureRecognizer:tapVideo];
     
 
     
@@ -59,7 +62,7 @@ static NSMutableDictionary *Skill_Info;
         _secondVideo.image = [UIImage imageNamed:@"sell_upload_video"];
         [self.view addSubview:_secondVideo];
         
-        [_secondVideo addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(secondImageViewTapped:)]];
+        [_secondVideo addGestureRecognizer:tapVideo];
         
         CGRect labelFrame = _recommLabel.frame;
         labelFrame.origin.y = _secondVideo.frame.origin.y + _secondVideo.frame.size.height + 120;
@@ -90,8 +93,6 @@ static NSMutableDictionary *Skill_Info;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"select video source" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Camera",@"photo library", nil];
         [alert show];
         
-        
-        
     }
     else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
@@ -118,9 +119,6 @@ static NSMutableDictionary *Skill_Info;
         [self presentModalViewController:picker animated:YES];
         
     }
-
-    
-    
     
 }
 
@@ -177,9 +175,6 @@ static NSMutableDictionary *Skill_Info;
             
         }];
         
-        
-        
-        
     }
 }
 
@@ -230,10 +225,7 @@ static NSMutableDictionary *Skill_Info;
             NSData *data = UIImageJPEGRepresentation (image,1.0);
             
             
-            
 //            [LocalDataInterface storeVideoThumb1:data];
-            
-            
             
             
             dispatch_async(dispatch_get_main_queue(),^{
