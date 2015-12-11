@@ -18,9 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UITextField *firstnameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastnameTextField;
-@property (weak, nonatomic) IBOutlet UIDatePicker *dobPicker;
+@property (weak, nonatomic) IBOutlet UIButton *dobBtn;
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
-@property (weak, nonatomic) IBOutlet UIPickerView *countryPicker;
+@property (weak, nonatomic) IBOutlet UIButton *countryBtn;
 @property (weak, nonatomic) IBOutlet UITextField *postalCodeTextField;
 @property (weak, nonatomic) IBOutlet UIWebView *descriptionWebView;
 
@@ -30,14 +30,23 @@
     
     NSMutableArray *_countryInfos;
     BOOL _circleImage;
+    NSDateFormatter *_dateformatter;
+    
+    //current user day of birth
+    NSDate *_userDOB;
+    
+    //current country index
+    NSInteger _countryIndex;
+    
+    DescEditorViewController *_descViewController;
 }
 
 @synthesize avatarImageView = _avatarImageView;
 @synthesize firstnameTextField = _firstnameTextField;
 @synthesize lastnameTextField = _lastnameTextField;
-@synthesize dobPicker = _dobPicker;
+@synthesize dobBtn = _dobBtn;
 @synthesize addressTextField = _addressTextField;
-@synthesize countryPicker = _countryPicker;
+@synthesize countryBtn = _countryBtn;
 @synthesize postalCodeTextField = _postalCodeTextField;
 @synthesize descriptionWebView = _descriptionWebView;
 
@@ -49,6 +58,15 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    _dateformatter = [[NSDateFormatter alloc]init];
+    [_dateformatter  setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onDescriptionTap:)];
+    [tap setNumberOfTapsRequired:1];
+    [tap setNumberOfTouchesRequired:1];
+    tap.delegate = self;
+    [_descriptionWebView addGestureRecognizer:tap];
     
     _circleImage = YES;
 }
@@ -78,6 +96,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
+
 #pragma mark - internal
 - (void)pullData{
     
@@ -100,8 +123,6 @@
                 
                 [_countryInfos addObject:info];
             }
-            
-            [_countryPicker reloadAllComponents];
             
             [WebDataInterface getStikyBeeInfo:[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *error){
             
@@ -154,10 +175,10 @@
                         _lastnameTextField.text = nil;
                     
                     //day of birth
-                    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-                    [formatter  setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+                    _userDOB = [_dateformatter dateFromString:infoDic[@"dob"]];
+                    [_dateformatter setDateFormat:@"MMM-dd-yyyy"];
+                    [_dobBtn setTitle:[_dateformatter stringFromDate:_userDOB] forState:UIControlStateNormal];
                     
-                    [_dobPicker setDate:[formatter dateFromString:infoDic[@"dob"]]];
                     
                     //address
                     if(![infoDic[@"address1"] isEqual:[NSNull null]])
@@ -167,7 +188,13 @@
                     CountryInfo *cInfo = [self countryInfoByISO:infoDic[@"countryISO"]];
                     if(cInfo != nil){
                         
-                        [_countryPicker selectRow:[_countryInfos indexOfObject:cInfo] inComponent:0 animated:NO];
+                        _countryIndex = [_countryInfos indexOfObject:cInfo];
+                        [_countryBtn setTitle:cInfo.countryName forState:UIControlStateNormal];
+                    }
+                    else{
+                        
+                        _countryIndex = 0;
+                        [_countryBtn setTitle:@"Unknow" forState:UIControlStateNormal];
                     }
                     
                     //postal code
@@ -205,9 +232,66 @@
     return nil;
 }
 
+- (NSArray *)allCountriesName{
+    
+    if(_countryInfos != nil){
+    
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        
+        for(CountryInfo *info in _countryInfos){
+            
+            [arr addObject:info.countryName];
+        }
+        
+        return arr;
+    }
+    
+    return nil;
+}
+
+- (void)onDescriptionTap:(UIGestureRecognizer *)recognizer{
+    
+    _descViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DescEditorViewController"];
+    
+    [self.navigationController presentViewController:_descViewController animated:YES completion:^{
+    
+        
+    }];
+}
+
 #pragma mark - IBAction
 - (IBAction)updateProfile:(id)sender{
     
+}
+
+- (IBAction)dobTap:(id)sender{
+    
+    [ActionSheetDatePicker showPickerWithTitle:@"" datePickerMode:UIDatePickerModeDate selectedDate:_userDOB doneBlock:^(ActionSheetDatePicker *picker, id selectedDate, id origin) {
+        
+        _userDOB = selectedDate;
+        
+        [_dateformatter setDateFormat:@"MMM-dd-yyyy"];
+        
+        [_dobBtn setTitle:[_dateformatter stringFromDate:_userDOB] forState:UIControlStateNormal];
+        
+    } cancelBlock:^(ActionSheetDatePicker *picker) {
+        
+        
+    } origin:sender];
+    
+}
+
+- (IBAction)countryTap:(id)sender{
+    
+    [ActionSheetStringPicker showPickerWithTitle:@"" rows:[self allCountriesName] initialSelection:_countryIndex doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        
+        _countryIndex = selectedIndex;
+        
+        [_countryBtn setTitle:selectedValue forState:UIControlStateNormal];
+        
+    } cancelBlock:^(ActionSheetStringPicker *picker) {
+        
+    } origin:sender];
 }
 
 #pragma mark - UIPickerDataSource delegate

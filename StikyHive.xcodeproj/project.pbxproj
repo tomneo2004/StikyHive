@@ -405,6 +405,7 @@
 		CE9C7CE31C10288100326710 /* SubscriptionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE21C10288100326710 /* SubscriptionInfoViewController.m */; };
 		CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE51C1029E700326710 /* SubInfoCell.m */; };
 		CE9C7CE91C102ED600326710 /* SubInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE81C102ED600326710 /* SubInfo.m */; };
+		CEA325701C1A7116007B1E5C /* DescEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */; };
 		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
 		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
@@ -1036,6 +1037,8 @@
 		CE9C7CE51C1029E700326710 /* SubInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfoCell.m; sourceTree = "<group>"; };
 		CE9C7CE71C102ED600326710 /* SubInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubInfo.h; sourceTree = "<group>"; };
 		CE9C7CE81C102ED600326710 /* SubInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfo.m; sourceTree = "<group>"; };
+		CEA3256E1C1A7116007B1E5C /* DescEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescEditorViewController.h; sourceTree = "<group>"; };
+		CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescEditorViewController.m; sourceTree = "<group>"; };
 		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
 		CED73E0C1C06F57C00ADB60C /* YelloBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YelloBTN.png; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
@@ -2068,6 +2071,8 @@
 				CE24E7FE1C196EB40021F078 /* EditProfileTableViewController.m */,
 				CE24E8001C1970000021F078 /* CountryInfo.h */,
 				CE24E8011C1970000021F078 /* CountryInfo.m */,
+				CEA3256E1C1A7116007B1E5C /* DescEditorViewController.h */,
+				CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */,
 			);
 			name = UpdateProfile;
 			sourceTree = "<group>";
@@ -2804,6 +2809,7 @@
 				674D10471B7DB4FB00B5B80D /* GKImageCropViewController.m in Sources */,
 				674D0EC41B7D991600B5B80D /* TextEditorViewController.m in Sources */,
 				516A614B1BC7617400D4E890 /* SellerCommTableViewController.m in Sources */,
+				CEA325701C1A7116007B1E5C /* DescEditorViewController.m in Sources */,
 				674D10481B7DB4FB00B5B80D /* GKImagePicker.m in Sources */,
 				674D0F671B7D9B0900B5B80D /* Document.m in Sources */,
 				CE7AA1771C0804BF00875DE5 /* PostRequestManager.m in Sources */,

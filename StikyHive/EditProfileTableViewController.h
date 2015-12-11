@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActionSheetPicker.h"
+#import "DescEditorViewController.h"
 
-@interface EditProfileTableViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface EditProfileTableViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIGestureRecognizerDelegate>
 
 @end
