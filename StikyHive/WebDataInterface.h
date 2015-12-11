@@ -354,6 +354,8 @@
 
 + (void)fileRequestUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid cpid:(NSInteger)cpid;
 
++ (void)profileImageUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid;
+
 + (void)deleteDocuments:(NSArray *)idArray completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)selectSubInfo:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;

@@ -59,6 +59,7 @@ static NSMutableDictionary *Skill_Info;
         _secondVideo.image = [UIImage imageNamed:@"sell_upload_video"];
         [self.view addSubview:_secondVideo];
         
+        [_secondVideo addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(secondImageViewTapped:)]];
         
         CGRect labelFrame = _recommLabel.frame;
         labelFrame.origin.y = _secondVideo.frame.origin.y + _secondVideo.frame.size.height + 120;
@@ -72,6 +73,11 @@ static NSMutableDictionary *Skill_Info;
 
 
 - (void)videoImageViewTapped:(UITapGestureRecognizer *)tapGestureRecognizer
+{
+    [self showVideoPicker];
+}
+
+- (void)secondImageViewTapped:(UITapGestureRecognizer *)tapGestureRecognizer
 {
     [self showVideoPicker];
 }
