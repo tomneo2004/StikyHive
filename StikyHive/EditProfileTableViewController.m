@@ -318,6 +318,11 @@
     }
 }
 
+- (NSString *)convertHtmlToServer:html{
+    
+    return [html stringByReplacingOccurrencesOfString:@"style=\"background-color:" withString:@"stile=\"background-color:"];
+}
+
 #pragma mark - DescEditorViewController delegate
 - (void)didFinishEditingWithHtmlText:(NSString *)htmlText{
     
@@ -367,7 +372,7 @@
         [_delegate beginUpdateProfile:self];
     }
     
-    [WebDataInterface updateProfile:[LocalDataInterface retrieveStkid] fname:_firstnameTextField.text lname:_lastnameTextField.text description:[_descriptionWebView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"] dob:[_dateformatter stringFromDate:_userDOB] address:_addressTextField.text countryISO:countryISO postalcode:_postalCodeTextField.text completion:^(NSObject *obj, NSError *error) {
+    [WebDataInterface updateProfile:[LocalDataInterface retrieveStkid] fname:_firstnameTextField.text lname:_lastnameTextField.text description:[self convertHtmlToServer:[_descriptionWebView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"]] dob:[_dateformatter stringFromDate:_userDOB] address:_addressTextField.text countryISO:countryISO postalcode:_postalCodeTextField.text completion:^(NSObject *obj, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
         
