@@ -21,4 +21,6 @@
  */
 - (void)onImageCropSuccessfulWithImageView:(UIImageView *)imageView;
 
+- (void)onCancel;
+
 @end

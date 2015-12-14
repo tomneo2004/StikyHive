@@ -388,6 +388,9 @@
 		CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */; };
 		CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */; };
 		CE1375D01C084FAA00201989 /* PaymentSuccessfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */; };
+		CE24E7FC1C196E960021F078 /* UpdateProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24E7FB1C196E960021F078 /* UpdateProfileViewController.m */; };
+		CE24E7FF1C196EB40021F078 /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24E7FE1C196EB40021F078 /* EditProfileTableViewController.m */; };
+		CE24E8021C1970000021F078 /* CountryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24E8011C1970000021F078 /* CountryInfo.m */; };
 		CE3EFDED1C0EC5AA00281FC6 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */; };
 		CE68DA8B1C0D9AE0000CB49F /* SavedDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */; };
 		CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8D1C0D9E8D000CB49F /* DocumentTableViewCell.m */; };
@@ -402,6 +405,7 @@
 		CE9C7CE31C10288100326710 /* SubscriptionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE21C10288100326710 /* SubscriptionInfoViewController.m */; };
 		CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE51C1029E700326710 /* SubInfoCell.m */; };
 		CE9C7CE91C102ED600326710 /* SubInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE81C102ED600326710 /* SubInfo.m */; };
+		CEA325701C1A7116007B1E5C /* DescEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */; };
 		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
 		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
@@ -999,6 +1003,12 @@
 		CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryViewController.m; sourceTree = "<group>"; };
 		CE1375CE1C084FAA00201989 /* PaymentSuccessfulViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSuccessfulViewController.h; sourceTree = "<group>"; };
 		CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSuccessfulViewController.m; sourceTree = "<group>"; };
+		CE24E7FA1C196E960021F078 /* UpdateProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateProfileViewController.h; sourceTree = "<group>"; };
+		CE24E7FB1C196E960021F078 /* UpdateProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateProfileViewController.m; sourceTree = "<group>"; };
+		CE24E7FD1C196EB40021F078 /* EditProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileTableViewController.h; sourceTree = "<group>"; };
+		CE24E7FE1C196EB40021F078 /* EditProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileTableViewController.m; sourceTree = "<group>"; };
+		CE24E8001C1970000021F078 /* CountryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryInfo.h; sourceTree = "<group>"; };
+		CE24E8011C1970000021F078 /* CountryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryInfo.m; sourceTree = "<group>"; };
 		CE3EFDEB1C0EC5AA00281FC6 /* PDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewController.h; sourceTree = "<group>"; };
 		CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFViewController.m; sourceTree = "<group>"; };
 		CE68DA891C0D9AE0000CB49F /* SavedDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedDocumentsViewController.h; sourceTree = "<group>"; };
@@ -1027,6 +1037,8 @@
 		CE9C7CE51C1029E700326710 /* SubInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfoCell.m; sourceTree = "<group>"; };
 		CE9C7CE71C102ED600326710 /* SubInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubInfo.h; sourceTree = "<group>"; };
 		CE9C7CE81C102ED600326710 /* SubInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfo.m; sourceTree = "<group>"; };
+		CEA3256E1C1A7116007B1E5C /* DescEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescEditorViewController.h; sourceTree = "<group>"; };
+		CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescEditorViewController.m; sourceTree = "<group>"; };
 		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
 		CED73E0C1C06F57C00ADB60C /* YelloBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YelloBTN.png; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
@@ -1357,6 +1369,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CE24E7F91C196E6D0021F078 /* UpdateProfile */,
 				CE9B8EC31C16C32C0022653B /* Bought */,
 				CEEDB1941C118B09009C3DC5 /* Sold */,
 				CEEDB18A1C116802009C3DC5 /* Contacts */,
@@ -2047,6 +2060,21 @@
 				CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */,
 			);
 			name = PaymentSuccessfulViewController;
+			sourceTree = "<group>";
+		};
+		CE24E7F91C196E6D0021F078 /* UpdateProfile */ = {
+			isa = PBXGroup;
+			children = (
+				CE24E7FA1C196E960021F078 /* UpdateProfileViewController.h */,
+				CE24E7FB1C196E960021F078 /* UpdateProfileViewController.m */,
+				CE24E7FD1C196EB40021F078 /* EditProfileTableViewController.h */,
+				CE24E7FE1C196EB40021F078 /* EditProfileTableViewController.m */,
+				CE24E8001C1970000021F078 /* CountryInfo.h */,
+				CE24E8011C1970000021F078 /* CountryInfo.m */,
+				CEA3256E1C1A7116007B1E5C /* DescEditorViewController.h */,
+				CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */,
+			);
+			name = UpdateProfile;
 			sourceTree = "<group>";
 		};
 		CE68DA881C0D9ABF000CB49F /* SavedDocuments */ = {
@@ -2780,6 +2808,7 @@
 				674D10471B7DB4FB00B5B80D /* GKImageCropViewController.m in Sources */,
 				674D0EC41B7D991600B5B80D /* TextEditorViewController.m in Sources */,
 				516A614B1BC7617400D4E890 /* SellerCommTableViewController.m in Sources */,
+				CEA325701C1A7116007B1E5C /* DescEditorViewController.m in Sources */,
 				516718EA1C1A799E003E9902 /* ZSSTextView.m in Sources */,
 				674D10481B7DB4FB00B5B80D /* GKImagePicker.m in Sources */,
 				674D0F671B7D9B0900B5B80D /* Document.m in Sources */,
@@ -2822,6 +2851,9 @@
 				674D0ECB1B7D99FC00B5B80D /* SellerCollectionViewController.m in Sources */,
 				51694D711BAC27EA007722F1 /* SelectableLabel.m in Sources */,
 				CE9054D21C17CB9300144078 /* OverlayViewController.m in Sources */,
+				CE24E7FC1C196E960021F078 /* UpdateProfileViewController.m in Sources */,
+				CE24E8021C1970000021F078 /* CountryInfo.m in Sources */,
+				674D102B1B7DB4CD00B5B80D /* CYRTextView.m in Sources */,
 				674D0F501B7D9A5200B5B80D /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				674D0F701B7D9BC200B5B80D /* PhotoPickerViewController.m in Sources */,
 				676F77E61B96F3060084988A /* TOCropScrollView.m in Sources */,
@@ -2847,6 +2879,7 @@
 				674D0F3F1B7D9A5200B5B80D /* JSQMessagesTimestampFormatter.m in Sources */,
 				674D10491B7DB4FB00B5B80D /* GKResizeableCropOverlayView.m in Sources */,
 				CEF4640A1BF9C41200010D21 /* UrgentRequest.m in Sources */,
+				CE24E7FF1C196EB40021F078 /* EditProfileTableViewController.m in Sources */,
 				674D0F601B7D9A9A00B5B80D /* ViewControllerUtil.m in Sources */,
 				674D0F3D1B7D9A5200B5B80D /* JSQMessagesBubbleImageFactory.m in Sources */,
 				674D0F531B7D9A5200B5B80D /* JSQMessagesInputToolbar.m in Sources */,
