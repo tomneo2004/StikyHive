@@ -140,6 +140,8 @@
                     
                     [_delegate PullingDataFail:self];
                 }
+                
+                return;
             }
             
             NSDictionary *dic = (NSDictionary *)obj;

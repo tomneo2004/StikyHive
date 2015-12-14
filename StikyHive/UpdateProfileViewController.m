@@ -48,8 +48,6 @@
 - (void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
-    
-    _shouldUpdate = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,6 +69,8 @@
 - (void)PullingDataSuccessful:(EditProfileTableViewController *)controller{
     
     [self.view hideActivityView];
+    
+    _shouldUpdate = NO;
 }
 
 - (void)PullingDataFail:(EditProfileTableViewController *)controller{
@@ -111,6 +111,8 @@
     
     if([fromVC isKindOfClass:[DescEditorViewController class]])
         _shouldUpdate = NO;
+    else
+        _shouldUpdate = YES;
     
     return nil;
 }
