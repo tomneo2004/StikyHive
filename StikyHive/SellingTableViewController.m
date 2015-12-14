@@ -9,6 +9,7 @@
 #import "SellingTableViewController.h"
 #import "SellingManager.h"
 #import "ViewControllerUtil.h"
+#import "ImageCaption.h"
 
 @interface SellingTableViewController ()
 
@@ -28,6 +29,7 @@
 
 @property (nonatomic, strong) NSMutableArray *imageFileArray;
 @property (nonatomic, strong) NSMutableDictionary *imageDict;
+@property (nonatomic, strong) NSMutableArray *addArray;
 
 @end
 
@@ -47,7 +49,7 @@
     
     _numberOfRows = 4;
     
-    
+    _addArray = [[NSMutableArray alloc] init];
 //    _imageFileArray = [smg.photoArray mutableCopy];
 //    NSLog(@"4 image file array --- %@",_imageFileArray);
     if (smg.videoStatus) {
@@ -110,8 +112,10 @@
     
     cell.delegate = self;
     cell.photoImageView.userInteractionEnabled = YES;
+    
 //    [cell displayDefaultImage:@"sell_upload_photo"];
     cell.photoImageView.tag = indexPath.row;
+    cell.captionTextField.tag = indexPath.row;
     
     if (_imageFileArray[indexPath.row] != [NSNull null])
     {
@@ -148,16 +152,26 @@
 - (IBAction)nextBtnPressed:(id)sender
 {
     NSMutableArray *checkArray = [[NSMutableArray alloc] init];
+    NSMutableArray *imagecaptionArray = [[NSMutableArray alloc] init];
+    
     for (int i = 0; i < _imageFileArray.count; i++) {
         if (_imageFileArray[i] != [NSNull null]) {
             [checkArray addObject:_imageFileArray[i]];
+            
+            UITextField *textfield = (UITextField *)[_sellTableView viewWithTag:i];
+            ImageCaption *imcp = [[ImageCaption alloc] initWithImage:_imageFileArray[i] caption:textfield.text];
+            [imagecaptionArray addObject:imcp];
         }
     }
     
     if (checkArray.count > 0)
     {
         
+        
+        
         [SellingManager sharedSellingManager].photoArray = [_imageFileArray mutableCopy];
+        [SellingManager sharedSellingManager].photoCaption = [imagecaptionArray mutableCopy];
+        NSLog(@"photo caption array ---- %@");
     
         NSLog(@"selling manager array --- %@",[SellingManager sharedSellingManager].photoArray);
         
@@ -181,6 +195,10 @@
         _imageSelected0 = YES;
         UIImage *image = imageView.image;
         [_imageFileArray replaceObjectAtIndex:0 withObject:image];
+        
+//        UITextField *textfield = (UITextField *)[_sellTableView viewWithTag:0];
+//        ImageCaption *imcp = [[ImageCaption alloc] initWithImage:imageView.image caption:textfield.text];
+//        [_addArray addObject:imcp];
         
     }
     else if (imageView.tag == 1) {

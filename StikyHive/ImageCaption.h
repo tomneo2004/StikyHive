@@ -12,7 +12,11 @@
 @interface ImageCaption : NSObject
 
 
-@property (setter=setImage:, getter=getImage, nonatomic) UIImage *image;
-@property (setter=setCaption:, getter=getCaption, nonatomic) NSString *caption;
+@property (nonatomic, copy) UIImage *image;
+@property (nonatomic, copy) NSString *caption;
+
+
+- (id)initWithImage:(UIImage *)image caption:(NSString *)caption;
+
 
 @end

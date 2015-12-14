@@ -13,6 +13,10 @@
 
 
 @property (setter=setPhotos:, getter=getPhotos, nonatomic) NSMutableArray *photoArray;
+
+@property (setter=setPhotoCaption:, getter=getPhotoCaption, nonatomic) NSMutableArray*photoCaption;
+
+
 @property (setter=setPhotoStatus:, getter=getPhotoStatus, nonatomic) BOOL photoStatus;
 @property (setter=setVideoStatus:, getter=getVideoStatus, nonatomic) BOOL videoStatus;
 @property (setter=setVideoExtendStatus:, getter=getVideoExtendStatus, nonatomic) BOOL videoExtendStatus;

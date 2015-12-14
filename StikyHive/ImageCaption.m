@@ -8,16 +8,23 @@
 
 #import "ImageCaption.h"
 
-@implementation ImageCaption{
+@implementation ImageCaption
+
+
+- (id)initWithImage:(UIImage *)image caption:(NSString *)caption
+{
+    self = [super init];
     
-    UIImage *_image;
-    NSString *_caption;
+    if (self) {
+        
+        _image = image;
+        _caption = caption;
+        
     
+    }
+    
+    return self;
 }
-
-
-
-
 
 
 

@@ -14,6 +14,9 @@
 
 @implementation SellingManager {
     NSMutableArray *_photoArray;
+    
+    NSMutableArray *_photoCaption;
+    
     BOOL _photoStatus;
     BOOL _videoStatus;
     BOOL _videoExtendStatus;
@@ -51,6 +54,11 @@ static SellingManager *_instance;
 - (void)setPhotos:(NSMutableArray *)photoArray
 {
     _photoArray = photoArray;
+}
+
+- (void)setPhotoCaption:(NSMutableArray *)photoCaption
+{
+    _photoCaption = photoCaption;
 }
 
 - (void)setPhotoStatus:(BOOL)photoStatus
@@ -129,6 +137,11 @@ static SellingManager *_instance;
 - (NSMutableArray *)getPhotos
 {
     return _photoArray;
+}
+
+- (NSMutableArray *)getPhotoCaption
+{
+    return _photoCaption;
 }
 
 - (BOOL)getPhotoStatus

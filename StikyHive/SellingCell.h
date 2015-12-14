@@ -21,6 +21,7 @@
 @interface SellingCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (strong, nonatomic) IBOutlet UITextField *captionTextField;
 
 @property (weak, nonatomic) id<SellingCellDelegate> delegate;
 
