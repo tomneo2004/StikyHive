@@ -34,10 +34,10 @@
     
 }
 
-- (void)displayDefaultImage:(NSString *)defaultImage
-{
-    _photoImageView.image = [UIImage imageNamed:defaultImage];
-}
+//- (void)displayDefaultImage:(NSString *)defaultImage
+//{
+//    _photoImageView.image = [UIImage imageNamed:defaultImage];
+//}
 
 
 #pragma mark - override

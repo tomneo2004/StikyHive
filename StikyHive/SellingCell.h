@@ -25,6 +25,6 @@
 @property (weak, nonatomic) id<SellingCellDelegate> delegate;
 
 
-- (void)displayDefaultImage:(NSString *)defaultImage;
+//- (void)displayDefaultImage:(NSString *)defaultImage;
 
 @end

@@ -26,6 +26,7 @@
     NSString *_skillRate;
     NSInteger _skillType;
     
+    BOOL _profileTap;
     
     UIImage *_videoImage;
     NSData *_video;
@@ -118,6 +119,11 @@ static SellingManager *_instance;
     _promotionStatus = promotionStatus;
 }
 
+- (void)setProfileTap:(BOOL)profileTap
+{
+    _profileTap = profileTap;
+}
+
 
 #pragma mark - Getter
 - (NSMutableArray *)getPhotos
@@ -188,6 +194,11 @@ static SellingManager *_instance;
 - (NSInteger)getSkillType
 {
     return _skillType;
+}
+
+- (BOOL)getProfileTap
+{
+    return _profileTap;
 }
 
 

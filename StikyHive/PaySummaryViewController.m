@@ -437,11 +437,46 @@
             NSLog(@"err ---- %@",err);
             
             NSDictionary *createDict = (NSDictionary *)obj;
-            NSString *skillString = createDict[@"skillId"];
-            NSInteger skillId = [skillString integerValue];
+//            NSInteger skillId = [createDict[@"skillId"] integerValue];
+            
+            if (createDict && [createDict[@"status"] isEqualToString:@"success"])
+            {
+                
+                NSInteger skillid = [createDict[@"skillId"] integerValue];
+                [WebDataInterface updateSubSkillStatus:skillid duration:subMonthInt completion:^(NSObject *objS, NSError *errS) {
+                    
+                    NSLog(@"obj skill ---- %@ ",objS);
+                    NSLog(@"err skill --- %@",errS);
+                    
+                    NSDictionary *dictS = (NSDictionary *)objS;
+                    
+                    if (dictS && [dictS[@"status"] isEqualToString:@"success"])
+                    {
+                        UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_sucess_view_controller"];
+                        [self.navigationController pushViewController:vc animated:YES];
+                        
+                        
+//                        [WebDataInterface skillImageUpload:smg.photoArray stikyid:stkid skillId:skillid type:1 editFlage:NO photoId:0 caption:<#(NSString *)#>];
+                        
+                    }
+                    
+                }];
+                
+                
+            }
+
+            
+            
             
             
             [self.view hideActivityView];
+            
+//            [self dismissViewControllerAnimated:YES completion:^{
+
+            
+            
+                
+//            }];
             
         }];
     
@@ -569,6 +604,21 @@
         
         NSLog(@"obj ---- %@ ",obj);
         NSLog(@"err ---- %@",err);
+        NSDictionary *dict = (NSDictionary *)obj;
+        if (dict && [dict[@"status"] isEqualToString:@"success"])
+        {
+            
+            NSInteger skillid = [dict[@"skillId"] integerValue];
+            [WebDataInterface updateSubSkillStatus:skillid duration:subMonthInt completion:^(NSObject *objS, NSError *errS) {
+                
+                NSLog(@"obj skill ---- %@ ",objS);
+                NSLog(@"err skill --- %@",errS);
+                
+            }];
+            
+            
+        }
+        
         
         
         

@@ -31,6 +31,8 @@
 @property (setter=setPromotionStatus:, getter=getPromotionStatus, nonatomic) BOOL promotionStatus;
 
 
+@property (setter=setProfileTap:, getter=getProfileTap, nonatomic) BOOL profileTap;
+
 + (SellingManager *)sharedSellingManager;
 
 - (void)clearCurrentSelling;

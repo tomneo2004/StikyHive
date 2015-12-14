@@ -7,6 +7,8 @@
 //
 
 #import "PaySucessViewController.h"
+#import "ViewControllerUtil.h"
+#import "SellingManager.h"
 
 @interface PaySucessViewController ()
 
@@ -19,13 +21,32 @@
     // Do any additional setup after loading the view.
 }
 
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.navigationItem.hidesBackButton = YES;
+}
 
 
 - (IBAction)viewMySkillBtnPressed:(id)sender
 {
+//    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"my_profile_view_controller"];
+////    [self.navigationController presentationController:vc animated:YES];
+//    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    
+//    self.tabBarController.selectedIndex = 3;
+    
+//    UITabBarController *tabc = [[UITabBarController alloc] init];
+//    tabc.selectedViewController = [tabc.viewControllers objectAtIndex:3];
+    
+//    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    [SellingManager sharedSellingManager].profileTap = YES;
     
     
+//    }];
+
 }
 
 

@@ -113,8 +113,14 @@
 //    [cell displayDefaultImage:@"sell_upload_photo"];
     cell.photoImageView.tag = indexPath.row;
     
-    if (_imageFileArray[indexPath.row] != [NSNull null]) {
+    if (_imageFileArray[indexPath.row] != [NSNull null])
+    {
         cell.photoImageView.image = _imageFileArray[indexPath.row];
+        NSLog(@"image copy ---  %ld",(long)indexPath.row);
+    }
+    else
+    {
+        NSLog(@"no image --- %ld",(long)indexPath.row);
     }
     
     return cell;
@@ -158,6 +164,7 @@
     
         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_4"];
         [self.navigationController pushViewController:vc animated:YES];
+        
         
     }
     else

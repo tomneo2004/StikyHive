@@ -204,9 +204,6 @@
                                                     <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="301" y="603" width="41" height="28"/>
-                                                </variation>
                                                 <connections>
                                                     <action selector="seeAllByerButtonPressed:" destination="j4L-Eb-UJY" eventType="touchUpInside" id="OaB-Wn-rge"/>
                                                 </connections>
@@ -218,9 +215,6 @@
                                                     <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="302" y="299" width="41" height="28"/>
-                                                </variation>
                                                 <connections>
                                                     <action selector="seeAllSellerButtonPressed:" destination="j4L-Eb-UJY" eventType="touchUpInside" id="OVi-Hu-VPx"/>
                                                 </connections>
@@ -850,6 +844,24 @@
             </objects>
             <point key="canvasLocation" x="-1512" y="2571.75"/>
         </scene>
+        <!--Html Editor-->
+        <scene sceneID="0Sh-pM-dxP">
+            <objects>
+                <viewController id="Xnu-Xj-BaI" customClass="HtmlEditor" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p7D-dI-hwR"/>
+                        <viewControllerLayoutGuide type="bottom" id="yES-Vk-Phg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7WJ-0l-I83">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Se3-t2-aSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5391" y="1521.75"/>
+        </scene>
         <!--Selling Table View Controller-->
         <scene sceneID="SCG-dL-etL">
             <objects>
@@ -1000,12 +1012,12 @@
                                 <exclude reference="O0H-to-khi"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="9YJ-97-oqG"/>
                                 <exclude reference="cbb-10-tlS"/>
                                 <exclude reference="s80-vS-BF5"/>
                                 <exclude reference="E9a-pN-6sD"/>
                                 <exclude reference="bYn-bE-wOr"/>
                                 <exclude reference="fet-sG-WTD"/>
-                                <exclude reference="9YJ-97-oqG"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1014,12 +1026,12 @@
                                 <include reference="O0H-to-khi"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="9YJ-97-oqG"/>
                                 <include reference="cbb-10-tlS"/>
                                 <include reference="s80-vS-BF5"/>
                                 <include reference="E9a-pN-6sD"/>
                                 <include reference="bYn-bE-wOr"/>
                                 <include reference="fet-sG-WTD"/>
-                                <include reference="9YJ-97-oqG"/>
                             </mask>
                         </variation>
                     </view>
@@ -1546,7 +1558,7 @@
                                                 <exclude reference="kx4-9t-LIY"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="109" width="400" height="160"/>
                                             <mask key="constraints">
                                                 <include reference="kx4-9t-LIY"/>
@@ -1621,7 +1633,7 @@
                                                 <exclude reference="fCv-Ce-Z4m"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="0.0" y="570" width="400" height="149"/>
                                             <mask key="constraints">
                                                 <include reference="fCv-Ce-Z4m"/>
@@ -1630,7 +1642,7 @@
                                     </imageView>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFV-PL-6Ul">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="320" y="146" width="51" height="31"/>
                                         </variation>
                                     </switch>
@@ -1654,7 +1666,7 @@
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gu0-wb-6L0">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="320" y="600" width="51" height="31"/>
                                         </variation>
                                         <connections>
@@ -2185,7 +2197,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="zDn-4r-MOO"/>
                                 </constraints>
-                                <state key="normal" title="View my skills">
+                                <state key="normal" title="View my profile">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -3763,8 +3775,7 @@
                                                 <exclude reference="QTg-t8-DT1"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="20" y="302" width="53" height="16.5"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="QTg-t8-DT1"/>
                                             </mask>
@@ -3785,8 +3796,7 @@
                                                 <exclude reference="vHP-ZQ-NoE"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="302" y="301" width="40" height="24.5"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="vHP-ZQ-NoE"/>
                                             </mask>
@@ -3807,8 +3817,7 @@
                                                 <exclude reference="AOn-G6-jUU"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="328" width="400" height="180"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="0b8-CD-Gkr"/>
                                                 <exclude reference="AOn-G6-jUU"/>
@@ -3839,8 +3848,7 @@
                                                 <exclude reference="Ydg-dl-mWy"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="40" y="528" width="320" height="50"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="LzZ-EP-Slg"/>
                                                 <include reference="Ydg-dl-mWy"/>
@@ -3863,8 +3871,7 @@
                                                 <exclude reference="tbc-Eb-Wwo"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="22" y="511" width="356" height="1"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="KdP-Gs-U9h"/>
                                                 <include reference="tbc-Eb-Wwo"/>
@@ -3884,8 +3891,7 @@
                                                 <exclude reference="eKk-Uc-YXl"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="22" y="594" width="356" height="1"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="O0i-Et-ysd"/>
                                                 <include reference="eKk-Uc-YXl"/>
@@ -3907,8 +3913,7 @@
                                                 <exclude reference="fsS-u1-Qhw"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="20" y="607" width="55" height="20"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="7Al-fW-ZR4"/>
                                                 <include reference="fsS-u1-Qhw"/>
@@ -3930,8 +3935,7 @@
                                                 <exclude reference="yL0-7j-RUt"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="302" y="604" width="40" height="28"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="yL0-7j-RUt"/>
                                             </mask>
@@ -3952,8 +3956,7 @@
                                                 <exclude reference="YBB-a6-5kU"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="637" width="400" height="180"/>
+                                        <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="G2F-sK-s2h"/>
                                                 <exclude reference="YBB-a6-5kU"/>
@@ -5121,25 +5124,16 @@
                                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="8" y="43" width="95" height="20"/>
-                                                            </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXn-4d-jmS">
                                                             <rect key="frame" x="8" y="79.5" width="60" height="27.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                                             <color key="textColor" red="0.0" green="0.65490196078431373" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="8" y="78" width="53" height="23.5"/>
-                                                            </variation>
                                                         </label>
                                                         <webView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Miq-DL-X2E">
                                                             <rect key="frame" x="8" y="122" width="584" height="147"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="8" y="116.5" width="584" height="152.5"/>
-                                                            </variation>
                                                         </webView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="0.52000000000000002" colorSpace="calibratedRGB"/>
@@ -5250,18 +5244,12 @@
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.65490196079999996" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="20" width="184" height="20"/>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYe-Gl-dcN">
                                                     <rect key="frame" x="178.5" y="58.5" width="113.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="118" y="55" width="73.5" height="18"/>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4n-ai-lmG">
                                                     <rect key="frame" x="8" y="58" width="170.5" height="18"/>
@@ -5381,18 +5369,12 @@
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="30"/>
                                                     <color key="textColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="135" y="15" width="270" height="35"/>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="to StikyBees near you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="n2J-Zz-ALI">
                                                     <rect key="frame" x="135" y="56" width="270" height="40.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="135" y="50" width="270" height="46.5"/>
-                                                    </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buzzr_paymentsummary_bee.png" translatesAutoresizingMaskIntoConstraints="NO" id="JA7-0y-ALb">
                                                     <rect key="frame" x="413" y="8" width="119" height="88.5"/>
@@ -5451,35 +5433,23 @@ Post a request to nearby users for just S$5.</string>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="8" width="524" height="23.5"/>
-                                                    </variation>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y5F-oN-RfB">
                                                     <rect key="frame" x="8" y="35.5" width="524" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="31.5" width="524" height="30"/>
-                                                    </variation>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="characters left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q41-nv-fxD">
                                                     <rect key="frame" x="419" y="65.5" width="113" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.29344223484848475" green="0.29344223484848475" blue="0.29344223484848475" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="423.5" y="61.5" width="108.5" height="20"/>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5X-wi-x5t">
                                                     <rect key="frame" x="389.5" y="65.5" width="29.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.29344223484848475" green="0.29344223484848475" blue="0.29344223484848475" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="395" y="61.5" width="28.5" height="20"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="0.87264864689999999" blue="0.74267013959999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -5510,36 +5480,24 @@ Post a request to nearby users for just S$5.</string>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="8" width="524" height="23.5"/>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="characters left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jY-hd-ENu">
                                                     <rect key="frame" x="419" y="262.5" width="113" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="423.5" y="266" width="108.5" height="20"/>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fv-ZH-83s">
                                                     <rect key="frame" x="389.5" y="262.5" width="29.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="395" y="266" width="28.5" height="20"/>
-                                                    </variation>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5f0-lt-Wgm">
                                                     <rect key="frame" x="8" y="35.5" width="524" height="227"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="31.5" width="524" height="234.5"/>
-                                                    </variation>
                                                 </textView>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="0.87264864689999999" blue="0.74267013959999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -6183,7 +6141,7 @@ Cross Pollinate!</string>
         <!--My Profile View Controller-->
         <scene sceneID="GhC-Is-1NE">
             <objects>
-                <viewController id="5yc-a9-Ilv" customClass="MyProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="my_profile_view_controller" id="5yc-a9-Ilv" customClass="MyProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jL3-oI-UW6"/>
                         <viewControllerLayoutGuide type="bottom" id="SSm-YW-Rej"/>
@@ -6482,9 +6440,6 @@ Cross Pollinate!</string>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.65490196079999996" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="8" width="384" height="23.5"/>
-                                                    </variation>
                                                 </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AZ7-hx-oxF">
                                                     <rect key="frame" x="0.0" y="35" width="600" height="118"/>
@@ -6494,27 +6449,18 @@ Cross Pollinate!</string>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="8" y="0.0" width="54.5" height="20"/>
-                                                            </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KE-sI-tr5">
                                                             <rect key="frame" x="288" y="0.0" width="24" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="189" y="0.0" width="22.5" height="20"/>
-                                                            </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="For" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6t-jz-arv">
                                                             <rect key="frame" x="566" y="0.0" width="26" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="366.5" y="0.0" width="25.5" height="20"/>
-                                                            </variation>
                                                         </label>
                                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96E-uu-ccJ">
                                                             <rect key="frame" x="8" y="35" width="584" height="2"/>
@@ -6522,36 +6468,24 @@ Cross Pollinate!</string>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="2" id="Hu6-nd-p5Q"/>
                                                             </constraints>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="8" y="30" width="384" height="2"/>
-                                                            </variation>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tcb-dX-bD3">
                                                             <rect key="frame" x="8" y="56" width="180" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="8" y="48" width="120" height="20"/>
-                                                            </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JWj-ag-peb">
                                                             <rect key="frame" x="210" y="56" width="180" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="140" y="48" width="120" height="20"/>
-                                                            </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dV0-17-fXt">
                                                             <rect key="frame" x="412" y="56" width="180" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="272" y="48" width="120" height="20"/>
-                                                            </variation>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -6575,9 +6509,6 @@ Cross Pollinate!</string>
                                                         <constraint firstItem="96E-uu-ccJ" firstAttribute="top" secondItem="0KE-sI-tr5" secondAttribute="bottom" multiplier="1.5" id="qeC-lD-SeF"/>
                                                         <constraint firstItem="JWj-ag-peb" firstAttribute="centerX" secondItem="0KE-sI-tr5" secondAttribute="centerX" id="wt1-Z6-ohR"/>
                                                     </constraints>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="31" width="400" height="122"/>
-                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -6600,9 +6531,6 @@ Cross Pollinate!</string>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="34" width="400" height="652.5"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="meQ-M7-7il" id="uQP-Lg-Q8o"/>
                                     <outlet property="delegate" destination="meQ-M7-7il" id="xqT-Bk-Lrd"/>
@@ -6613,9 +6541,6 @@ Cross Pollinate!</string>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="25"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="16" y="0.0" width="368" height="29.5"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.84925426136363624" green="0.84925426136363624" blue="0.84925426136363624" alpha="1" colorSpace="calibratedRGB"/>
@@ -6680,24 +6605,36 @@ Cross Pollinate!</string>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="8" width="95" height="20"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XX2-Zj-UGW">
                                                     <rect key="frame" x="110" y="8" width="43" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="104.5" y="8" width="42" height="20"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2I-gG-psI">
                                                     <rect key="frame" x="549" y="8" width="43" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="350" y="8" width="42" height="20"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inO-HE-Wku">
                                                     <rect key="frame" x="523" y="8" width="24" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="325.5" y="8" width="22.5" height="20"/>
+                                                    </variation>
                                                 </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nq6-UU-t8V">
                                                     <rect key="frame" x="8" y="38.5" width="584" height="2"/>
@@ -6705,6 +6642,9 @@ Cross Pollinate!</string>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="2" id="0Co-v1-bDW"/>
                                                     </constraints>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="35" width="384" height="2"/>
+                                                    </variation>
                                                 </view>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VCv-DY-1pB">
                                                     <rect key="frame" x="8" y="267" width="584" height="2"/>
@@ -6713,27 +6653,42 @@ Cross Pollinate!</string>
                                                         <constraint firstAttribute="height" constant="2" id="wdh-Nf-shn"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="2" id="ynd-sT-wUa"/>
                                                     </constraints>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="263.5" width="384" height="2"/>
+                                                    </variation>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lHT-gS-1Z1">
                                                     <rect key="frame" x="8" y="48.5" width="240" height="211"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="45" width="160" height="211"/>
+                                                    </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GRO-ta-HEp">
                                                     <rect key="frame" x="256" y="114" width="336" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.65490196079999996" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="176" y="116" width="216" height="20"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Paid through StikyPay" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yIT-Sm-B0M">
                                                     <rect key="frame" x="256" y="142" width="336" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="176" y="140.5" width="216" height="20"/>
+                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XER-4L-GXy">
                                                     <rect key="frame" x="256" y="171" width="336" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="176" y="166" width="216" height="20"/>
+                                                    </variation>
                                                 </label>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IBV-eH-BY4" customClass="HCSStarRatingView">
                                                     <rect key="frame" x="8" y="277" width="240" height="44"/>
@@ -6872,12 +6827,18 @@ Cross Pollinate!</string>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                         <color key="textColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="8" y="8" width="100" height="23.5"/>
+                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HeJ-T5-XYG">
                                         <rect key="frame" x="8" y="43" width="50.5" height="27.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                         <color key="textColor" red="0.0" green="0.65490196079999996" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="8" y="39" width="49" height="23.5"/>
+                                        </variation>
                                     </label>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1kT-vH-51t" customClass="HCSStarRatingView">
                                         <rect key="frame" x="127" y="88" width="255" height="33"/>
@@ -6887,6 +6848,9 @@ Cross Pollinate!</string>
                                             <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="Grey.png"/>
                                             <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="Yellow.png"/>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="85" y="80" width="170" height="44"/>
+                                        </variation>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="O4m-KO-lRz">
                                         <rect key="frame" x="8" y="129" width="494" height="132"/>
@@ -6894,6 +6858,9 @@ Cross Pollinate!</string>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="8" y="132" width="324" height="176"/>
+                                        </variation>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rS8-lM-eq9">
                                         <rect key="frame" x="8" y="284" width="494" height="30"/>
@@ -6907,6 +6874,9 @@ Cross Pollinate!</string>
                                                 <integer key="value" value="6"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="8" y="331" width="324" height="93"/>
+                                        </variation>
                                         <connections>
                                             <action selector="editTap:" destination="xSA-n3-ch0" eventType="touchUpInside" id="ocq-6x-5fZ"/>
                                         </connections>
@@ -6917,6 +6887,9 @@ Cross Pollinate!</string>
                                         <state key="normal" title="X">
                                             <color key="titleColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="302" y="8" width="30" height="36"/>
+                                        </variation>
                                         <connections>
                                             <action selector="closeTap:" destination="xSA-n3-ch0" eventType="touchUpInside" id="8up-id-flR"/>
                                         </connections>
@@ -6991,6 +6964,9 @@ Cross Pollinate!</string>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="8" y="8" width="120" height="23.5"/>
+                                        </variation>
                                     </label>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HeH-kW-NLj" customClass="HCSStarRatingView">
                                         <rect key="frame" x="127.5" y="35.5" width="255" height="33"/>
@@ -7001,12 +6977,18 @@ Cross Pollinate!</string>
                                             <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="Grey.png"/>
                                             <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="Yellow.png"/>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="85" y="31.5" width="170" height="44"/>
+                                        </variation>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rate transaction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVP-rI-fzn">
                                         <rect key="frame" x="190.5" y="68.5" width="129.5" height="23.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="107.5" y="75.5" width="125" height="20"/>
+                                        </variation>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="u00-QU-1Ut">
                                         <rect key="frame" x="8" y="92" width="494" height="132"/>
@@ -7019,6 +7001,9 @@ Cross Pollinate!</string>
                                                 <integer key="value" value="6"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="8" y="95.5" width="324" height="176"/>
+                                        </variation>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jw-fw-69k">
                                         <rect key="frame" x="8" y="232" width="494" height="49.5"/>
@@ -7032,6 +7017,9 @@ Cross Pollinate!</string>
                                                 <integer key="value" value="6"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="8" y="279.5" width="324" height="66"/>
+                                        </variation>
                                         <connections>
                                             <action selector="save:" destination="LQo-SC-hJP" eventType="touchUpInside" id="csj-l1-fkb"/>
                                         </connections>
@@ -7042,6 +7030,9 @@ Cross Pollinate!</string>
                                         <state key="normal" title="X">
                                             <color key="titleColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="302" y="8" width="30" height="36"/>
+                                        </variation>
                                         <connections>
                                             <action selector="close:" destination="LQo-SC-hJP" eventType="touchUpInside" id="Q81-ow-1h7"/>
                                         </connections>

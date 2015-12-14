@@ -210,6 +210,7 @@
 #define DATA_URL_GET_SUBSCRIPTION_PLAN  DATA_URL@"getSubscriptionPlan/format/json"
 #define DATA_URL_EDIT_COMMENT           DATA_URL@"editComment/format/json"
 #define DATA_URL_UPDATE_PROFILE         DATA_URL@"updateProfile/format/json"
+#define DATA_URL_UPDATE_SUBSKILL_STATUS DATA_URL@"updateSubSkillStatus/format/json"
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -280,7 +281,7 @@
 #define POST_PARAMETER_COMMENT_ID       @"commentId"
 #define POST_PARAMETER_F_NAME           @"fname"
 #define POST_PARAMETER_L_NALE           @"lname"
-
+#define POST_PARAMETER_DURATION         @"duration"
 
 
 
@@ -354,8 +355,6 @@
 
 + (void)fileRequestUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid cpid:(NSInteger)cpid;
 
-+ (void)profileImageUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid;
-
 + (void)deleteDocuments:(NSArray *)idArray completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)selectSubInfo:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
@@ -373,6 +372,16 @@
 + (void)editComment:(NSInteger)commentId rating:(NSInteger)rating review:(NSString *)review stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)updateProfile:(NSString *)stkid fname:(NSString *)fname lname:(NSString *)lname description:(NSString *)description dob:(NSString *)dob address:(NSString *)address countryISO:(NSString *)countryISO postalcode:(NSString *)postalcode completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)updateSubSkillStatus:(NSInteger)skillId duration:(NSInteger)duration completion:(void (^)(NSObject *, NSError *))completion;
+
+
+
+
+
++ (void)profileImageUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid;
+
++ (void)skillImageUpload:(NSArray *)imageArray stikyid:(NSString *)stikyid skillId:(NSInteger)skillId type:(NSInteger)type editFlage:(BOOL)editFlage photoId:(NSInteger)photoId caption:(NSString *)caption;
 
 ////////  ///////////// END -------------------------------------
 

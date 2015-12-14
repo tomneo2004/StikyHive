@@ -14,6 +14,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     self.enabledToolbarItems = @[ZSSRichTextEditorToolbarUndo,
                                  ZSSRichTextEditorToolbarRedo,
                                  ZSSRichTextEditorToolbarBold,

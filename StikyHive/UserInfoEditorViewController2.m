@@ -258,23 +258,6 @@
         //    NSInteger *talentid1 = 2;
         NSString * talenttype1 = @"2";
         
-        //    NSLog(@"iddf ----- %d",skillid1);
-        //    NSLog(@"iddf ----- %d",talentid1);
-        
-//        NSLog(@"email : ---- %@",email);
-//        NSLog(@"pass : ----- %@",pass);
-//        NSLog(@"firstname ----- %@",firstName);
-//        NSLog(@"lastname ----- %@",surName);
-//        NSLog(@"address ----- %@",address);
-//        NSLog(@"postalcode ----- %@",postalCode);
-//        NSLog(@"country ----- %@",country);
-//        NSLog(@"dob ----- %@",dob);
-//        NSLog(@"skillname ----- %@",skillname1);
-//        NSLog(@"skillid ----- %@",industryInt);
-//        NSLog(@"skilltype ----- %@",skilltype1);
-//        NSLog(@"talentname ----- %@",talentname1);
-//        NSLog(@"talentid ----- %@",categoryid);
-//        NSLog(@"talentype ----- %@",talenttype1);
         
         [WebDataInterface saveStikyBeeInfo:email password:pass firstname:firstName lastname:surName dob:dob address:address country:country postalcode:postalCode skillname1:skillname1 skillid1:industryInt skilltype1:skilltype1 talentname1:talentname1 talentid1:categoryid talenttype1:talenttype1 completion:^(NSObject *obj,NSError *err)
          {

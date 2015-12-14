@@ -10,6 +10,7 @@
 #import "ViewControllerUtil.h"
 #import "LocalDataInterface.h"
 #import "WebDataInterface.h"
+#import "UIView+RNActivityView.h"
 
 @interface MyProfileViewController ()
 
@@ -41,10 +42,27 @@
     _contentScrollView.alwaysBounceVertical = YES;
     _contentScrollView.delegate = self;
     
+//    ///////
+//    
+//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+//    
+//    [dateFormat setDateFormat:@"YYYY-MM-dd"];
+//    
+//    NSDate *dateString = [dateFormat dateFromString:@"1990-03-18"];
+//    NSString *date = [dateFormat stringFromDate:dateString];
+//    
+//    [WebDataInterface updateProfile:@"15AAAAHV" fname:@"dfdf" lname:@"sdfe" description:@"df" dob:date address:@"dfsd" countryISO:@"dfd" postalcode:@"dfdfd" completion:^(NSObject *obj, NSError *err) {
+//        
+//        NSLog(@"obj --- %@",obj);
+//        NSLog(@"err --- %@",err);
+//    }];
+//    //////
+    
     self.view.backgroundColor = [UIColor colorWithRed:247.0/255 green:247.0/255 blue:247.0/255 alpha:1.0];
     
     _myStkid = [LocalDataInterface retrieveStkid];
     
+    [self.view showActivityViewWithLabel:@"Loading..."];
     
     [WebDataInterface getStikyBeeInfo:_myStkid completion:^(NSObject *obj, NSError *err) {
         
@@ -74,17 +92,17 @@
                     
                         dispatch_async(dispatch_get_main_queue(), ^{
                         
-                        
+                            
                             [self displayPage];
                         
-                        
+                            [self.view hideActivityView];
+                            
                     });
                     
                 }];
             }];
         }];
     }];
-
     
 }
 
@@ -1208,6 +1226,8 @@
 
 - (void)skillTabTapped:(UITapGestureRecognizer *)sender
 {
+    [self.view showActivityViewWithLabel:@"Loading.."];
+    
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     UIColor *greyColor = [UIColor colorWithRed:109.0/255 green:110.0/255 blue:113.0/255 alpha:1.0];
     
@@ -1220,6 +1240,8 @@
     
     
     [self skillTab:_seeAllArray isSkill:YES];
+    
+    [self.view hideActivityView];
     
 }
 

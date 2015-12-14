@@ -121,6 +121,7 @@
 		5173255F1C02B25E004655D6 /* sell_upload_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 5173255E1C02B25E004655D6 /* sell_upload_video.png */; };
 		517325621C02B3B7004655D6 /* SellingViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 517325611C02B3B7004655D6 /* SellingViewController2.m */; };
 		5174454F1C113D2400153C0C /* PaySummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5174454E1C113D2400153C0C /* PaySummaryViewController.m */; };
+		5174C1F21C1E908000A6B2CF /* ImageCaption.m in Sources */ = {isa = PBXBuildFile; fileRef = 5174C1F11C1E908000A6B2CF /* ImageCaption.m */; };
 		51760A711BE882F400F36DC6 /* review_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 51760A701BE882F400F36DC6 /* review_empty.png */; };
 		51788CAE1BBD14FE00A96AD7 /* like_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51788CAC1BBD14FE00A96AD7 /* like_filled.png */; };
 		51788CAF1BBD14FE00A96AD7 /* bookmark_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51788CAD1BBD14FE00A96AD7 /* bookmark_filled.png */; };
@@ -609,6 +610,8 @@
 		517325611C02B3B7004655D6 /* SellingViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingViewController2.m; sourceTree = "<group>"; };
 		5174454D1C113D2400153C0C /* PaySummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaySummaryViewController.h; sourceTree = "<group>"; };
 		5174454E1C113D2400153C0C /* PaySummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaySummaryViewController.m; sourceTree = "<group>"; };
+		5174C1F01C1E908000A6B2CF /* ImageCaption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCaption.h; sourceTree = "<group>"; };
+		5174C1F11C1E908000A6B2CF /* ImageCaption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCaption.m; sourceTree = "<group>"; };
 		51760A701BE882F400F36DC6 /* review_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_empty.png; sourceTree = "<group>"; };
 		51788CAC1BBD14FE00A96AD7 /* like_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like_filled.png; sourceTree = "<group>"; };
 		51788CAD1BBD14FE00A96AD7 /* bookmark_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark_filled.png; sourceTree = "<group>"; };
@@ -1662,6 +1665,8 @@
 				516F7EB41C182EA2005FEF8A /* SellingTableViewController.m */,
 				516F7EB61C183B3F005FEF8A /* SellingCell.h */,
 				516F7EB71C183B3F005FEF8A /* SellingCell.m */,
+				5174C1F01C1E908000A6B2CF /* ImageCaption.h */,
+				5174C1F11C1E908000A6B2CF /* ImageCaption.m */,
 			);
 			name = Skill;
 			sourceTree = "<group>";
@@ -2915,6 +2920,7 @@
 				CEFD19551C0409BC00A79158 /* SearchResultTableViewController.m in Sources */,
 				674D0F6A1B7D9B3100B5B80D /* Skill.m in Sources */,
 				674D0F331B7D9A5200B5B80D /* NSBundle+JSQMessages.m in Sources */,
+				5174C1F21C1E908000A6B2CF /* ImageCaption.m in Sources */,
 				516718E61C1A799E003E9902 /* HRColorUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

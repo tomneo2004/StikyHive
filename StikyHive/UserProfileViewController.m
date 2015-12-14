@@ -10,6 +10,7 @@
 #import "WebDataInterface.h"
 #import "ViewControllerUtil.h"
 #import "LocalDataInterface.h"
+#import "UIView+RNActivityView.h"
 
 @interface UserProfileViewController ()
 
@@ -56,6 +57,8 @@
     
     NSLog(@"stkid ---- %@",_stkId);
     
+    [self.view showActivityViewWithLabel:@"Loading..."];
+    
     [WebDataInterface getStikyBeeInfo:_stkId completion:^(NSObject *obj, NSError *err) {
         
         [WebDataInterface getSellAll:0 catId:0 stkid:_stkId actionMaker:stkid completion:^(NSObject *obj2, NSError *err2) {
@@ -87,6 +90,9 @@
                     
                         
                             [self displayPage];
+                            
+                            
+                            [self.view hideActivityView];
                     
                     });
                     
@@ -1043,6 +1049,8 @@
 
 - (void)postsTabTapped:(UITapGestureRecognizer *)sender
 {
+    [self.view showActivityViewWithLabel:@"Loading.."];
+    
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     UIColor *greyColor = [UIColor colorWithRed:109.0/255 green:110.0/255 blue:113.0/255 alpha:1.0];
     
@@ -1103,6 +1111,9 @@
         [self skillTab:_buyerMarketArray isSkill:NO];
     }
     
+    
+    
+    [self.view hideActivityView];
 }
 
 - (void)documentTabTapped:(UITapGestureRecognizer *)sender
@@ -1205,6 +1216,8 @@
 
 - (void)skillTabTapped:(UITapGestureRecognizer *)sender
 {
+    [self.view showActivityViewWithLabel:@"Loading..."];
+    
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     UIColor *greyColor = [UIColor colorWithRed:109.0/255 green:110.0/255 blue:113.0/255 alpha:1.0];
     
@@ -1218,6 +1231,7 @@
                                                           
     [self skillTab:_seeAllArray isSkill:YES];
     
+    [self.view hideActivityView];
 }
 
 - (void)saveBtnTapped:(UIButton *)sender
@@ -1240,7 +1254,6 @@
                     sender.userInteractionEnabled = NO;
 
             });
-
         }
   
     }];

@@ -14,6 +14,7 @@
 #import "SkillPageViewController.h"
 #import "BuyerPostViewController.h"
 #import "UserProfileViewController.h"
+#import "SellingManager.h"
 
 @interface HomeViewController ()
 
@@ -69,7 +70,9 @@
     _imageScrollView.alwaysBounceHorizontal = YES;
     _imageScrollView.delegate = self;
     
-    
+//    if ([SellingManager sharedSellingManager].profileTap) {
+//        [self.tabBarController setSelectedIndex:3];
+//    }
     
      
     // prepare for the imageview scroll view --- page control
@@ -379,6 +382,13 @@
         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"entry_view_controller"];
         [self.navigationController pushViewController:vc animated:YES];
     }
+    
+    if ([SellingManager sharedSellingManager].profileTap)
+    {
+        [self.tabBarController setSelectedIndex:3];
+        [SellingManager sharedSellingManager].profileTap = NO;
+    }
+
  
     
 }
