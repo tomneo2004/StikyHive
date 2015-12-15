@@ -10,7 +10,7 @@
 #import "SellingCell.h"
 #import "CropPhotoViewController.h"
 
-@interface SellingTableViewController : CropPhotoViewController <UITableViewDataSource,UITableViewDelegate,SellingCellDelegate>
+@interface SellingTableViewController : CropPhotoViewController <UITableViewDataSource,UITableViewDelegate,SellingCellDelegate,UIGestureRecognizerDelegate>
 
 - (IBAction)nextBtnPressed:(id)sender;
 

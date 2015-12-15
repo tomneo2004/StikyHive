@@ -28,9 +28,10 @@
 
 #pragma mark - internal
 - (void)didTapImageView:(UITapGestureRecognizer *)sender{
-    if ([_delegate respondsToSelector:@selector(SellingCellDidTapImageView:)]) {
-        [_delegate SellingCellDidTapImageView:self];
+    if ([_delegate respondsToSelector:@selector(SellingCellDidTapImageView:withImageView:)]) {
+        [_delegate SellingCellDidTapImageView:self withImageView:_photoImageView];
     }
+    
     
 }
 
@@ -38,6 +39,18 @@
 //{
 //    _photoImageView.image = [UIImage imageNamed:defaultImage];
 //}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([_delegate respondsToSelector:@selector(SellingCellTextField:caption:)]) {
+        
+        NSString *captionText = textField.text;
+        
+        [_delegate SellingCellTextField:self caption:captionText];
+        
+    }
+    
+}
 
 
 #pragma mark - override
@@ -58,6 +71,8 @@
         
         
         _isInit = YES;
+    
+        _captionTextField.delegate = self;
         
     }
     

@@ -225,6 +225,17 @@ static SellingManager *_instance;
     
 }
 
+- (id)init{
+    
+    if (self = [super init])
+    {
+        
+    _photoCaption = [[NSMutableArray alloc] init];
+        
+    }
+    return self;
+}
+
 
 
 

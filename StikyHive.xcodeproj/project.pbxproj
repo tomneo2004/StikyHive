@@ -2858,7 +2858,6 @@
 				CE9054D21C17CB9300144078 /* OverlayViewController.m in Sources */,
 				CE24E7FC1C196E960021F078 /* UpdateProfileViewController.m in Sources */,
 				CE24E8021C1970000021F078 /* CountryInfo.m in Sources */,
-				674D102B1B7DB4CD00B5B80D /* CYRTextView.m in Sources */,
 				674D0F501B7D9A5200B5B80D /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				674D0F701B7D9BC200B5B80D /* PhotoPickerViewController.m in Sources */,
 				676F77E61B96F3060084988A /* TOCropScrollView.m in Sources */,

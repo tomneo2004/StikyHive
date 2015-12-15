@@ -13,6 +13,7 @@
 #import "PaySucessViewController.h"
 #import "ViewControllerUtil.h"
 #import "UIView+RNActivityView.h"
+#import "ImageCaption.h"
 
 
 @interface PaySummaryViewController ()
@@ -53,6 +54,8 @@
     _videoExtendStatus = [SellingManager sharedSellingManager].videoExtendStatus;
     _promotion = [SellingManager sharedSellingManager].promotionStatus;
 //    NSLog(@"promotion or not ---- %d",promotion);
+    
+        
     
     if (_promotion)
     {
