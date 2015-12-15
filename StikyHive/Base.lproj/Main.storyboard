@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -23,6 +24,8 @@
             <string>OpenSans-Bold</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -5624,7 +5627,7 @@ Post a request to nearby users for just S$5.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="View your payment summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gqB-hI-DiJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View your payment summary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gqB-hI-DiJ">
                                 <rect key="frame" x="20" y="20" width="560" height="34.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="25"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -5643,7 +5646,7 @@ Post a request to nearby users for just S$5.</string>
                                     <rect key="frame" x="150" y="64" width="100" height="100"/>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cross Pollinate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrE-sh-eiM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cross Pollinate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrE-sh-eiM">
                                 <rect key="frame" x="20" y="190" width="560" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -5652,7 +5655,7 @@ Post a request to nearby users for just S$5.</string>
                                     <rect key="frame" x="16" y="185" width="368" height="20"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Urgent Request" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viD-Kl-5xA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Urgent Request" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viD-Kl-5xA">
                                 <rect key="frame" x="20" y="221" width="560" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -5661,7 +5664,7 @@ Post a request to nearby users for just S$5.</string>
                                     <rect key="frame" x="16" y="212" width="368" height="20"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="S$5.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-XF-l7c">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S$5.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-XF-l7c">
                                 <rect key="frame" x="20" y="265" width="560" height="41"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="30"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -5670,7 +5673,7 @@ Post a request to nearby users for just S$5.</string>
                                     <rect key="frame" x="16" y="253" width="368" height="35"/>
                                 </variation>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ylf-eN-P8y">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ylf-eN-P8y">
                                 <rect key="frame" x="35" y="314" width="530" height="1"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -5680,7 +5683,7 @@ Post a request to nearby users for just S$5.</string>
                                     <rect key="frame" x="31" y="296" width="338" height="1"/>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Total in SGD:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4J-Sb-p1K">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total in SGD:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4J-Sb-p1K">
                                 <rect key="frame" x="35" y="324" width="100.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -5689,7 +5692,7 @@ Post a request to nearby users for just S$5.</string>
                                     <rect key="frame" x="31" y="305" width="99.5" height="20"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$5.00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsL-tb-B4D">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5.00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsL-tb-B4D">
                                 <rect key="frame" x="521.5" y="324" width="43.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -5698,7 +5701,7 @@ Post a request to nearby users for just S$5.</string>
                                     <rect key="frame" x="326" y="305" width="43" height="20"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxT-HG-80A">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxT-HG-80A">
                                 <rect key="frame" x="35" y="367" width="530" height="48"/>
                                 <color key="backgroundColor" red="0.0" green="0.65490196079999996" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
@@ -5770,10 +5773,10 @@ Post a request to nearby users for just S$5.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="buzzr_requestsuccess.png" translatesAutoresizingMaskIntoConstraints="NO" id="tUx-GM-Ehn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buzzr_requestsuccess.png" translatesAutoresizingMaskIntoConstraints="NO" id="tUx-GM-Ehn">
                                 <rect key="frame" x="20" y="20" width="560" height="240"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3tF-Oj-nGC">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3tF-Oj-nGC">
                                 <rect key="frame" x="20" y="268" width="560" height="240"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">You've successfully
@@ -5783,7 +5786,7 @@ Cross Pollinate!</string>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLw-Ea-Kxb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLw-Ea-Kxb">
                                 <rect key="frame" x="20" y="516" width="560" height="76"/>
                                 <color key="backgroundColor" red="0.0" green="0.65490196079999996" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
@@ -6265,7 +6268,7 @@ Cross Pollinate!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Update your profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ7-hf-lLd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update your profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ7-hf-lLd">
                                 <rect key="frame" x="20" y="64" width="560" height="27.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.23529411759999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -6295,35 +6298,6 @@ Cross Pollinate!</string>
             </objects>
             <point key="canvasLocation" x="3822" y="1692"/>
         </scene>
-        <!--Root View Controller-->
-        <scene sceneID="2tD-1P-jxf">
-            <objects>
-                <tableViewController id="1Ks-ik-sr8" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fmx-Na-NMX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TG1-aN-ekV">
-                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TG1-aN-ekV" id="HgY-mz-5V8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="1Ks-ik-sr8" id="xut-uP-AM9"/>
-                            <outlet property="delegate" destination="1Ks-ik-sr8" id="KKM-hm-UUq"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="k2j-qa-2DI"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qd3-5k-vpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4491" y="1692.75"/>
-        </scene>
         <!--My Skills-->
         <scene sceneID="Yj3-f7-ccB">
             <objects>
@@ -6334,12 +6308,66 @@ Cross Pollinate!</string>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="1Ks-ik-sr8" kind="relationship" relationship="rootViewController" id="RR5-VH-HyX"/>
+                        <segue destination="1Qg-Ij-s41" kind="relationship" relationship="rootViewController" id="3t2-Sd-3yM"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZ6-Y5-GI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4491" y="795.75"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DYx-ro-lgG">
+            <objects>
+                <viewController id="1Qg-Ij-s41" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k95-3s-PlY"/>
+                        <viewControllerLayoutGuide type="bottom" id="1og-Fs-3in"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JkF-Hi-G8n">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAT-oZ-Qr2">
+                                <rect key="frame" x="20" y="64" width="68" height="23.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5O-hs-0kf">
+                                <rect key="frame" x="20" y="87.5" width="95" height="33"/>
+                                <color key="backgroundColor" red="0.0" green="0.65490196079999996" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Add New Skill">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5hH-os-NSC">
+                                <rect key="frame" x="0.0" y="125.5" width="600" height="425.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5hH-os-NSC" secondAttribute="trailing" id="Aip-w4-VHl"/>
+                            <constraint firstItem="sAT-oZ-Qr2" firstAttribute="leading" secondItem="JkF-Hi-G8n" secondAttribute="leadingMargin" id="YfH-9d-cy4"/>
+                            <constraint firstItem="u5O-hs-0kf" firstAttribute="top" secondItem="sAT-oZ-Qr2" secondAttribute="bottom" id="aKY-ht-2NB"/>
+                            <constraint firstItem="5hH-os-NSC" firstAttribute="top" secondItem="u5O-hs-0kf" secondAttribute="bottom" constant="5" id="aT3-mb-L3c"/>
+                            <constraint firstItem="1og-Fs-3in" firstAttribute="top" secondItem="5hH-os-NSC" secondAttribute="bottom" id="eMp-Ks-TJM"/>
+                            <constraint firstItem="u5O-hs-0kf" firstAttribute="leading" secondItem="JkF-Hi-G8n" secondAttribute="leadingMargin" id="kHe-Rk-IMo"/>
+                            <constraint firstItem="5hH-os-NSC" firstAttribute="leading" secondItem="JkF-Hi-G8n" secondAttribute="leading" id="kkR-Vr-Vd4"/>
+                            <constraint firstItem="sAT-oZ-Qr2" firstAttribute="top" secondItem="k95-3s-PlY" secondAttribute="bottom" id="nb9-Y3-f38"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lqf-sG-N1W"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5cJ-q4-rpy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4491" y="1692"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="5yN-AL-vie">
@@ -6557,7 +6585,7 @@ Cross Pollinate!</string>
                                     <outlet property="delegate" destination="meQ-M7-7il" id="xqT-Bk-Lrd"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your skills have value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aT2-fX-Gws">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your skills have value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aT2-fX-Gws">
                                 <rect key="frame" x="20" y="0.0" width="560" height="34.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="25"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -6601,7 +6629,7 @@ Cross Pollinate!</string>
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Here's all your purchases" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4Y-19-xpg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here's all your purchases" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4Y-19-xpg">
                                 <rect key="frame" x="20" y="0.0" width="560" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="22"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -6711,7 +6739,7 @@ Cross Pollinate!</string>
                                                         <rect key="frame" x="176" y="166" width="216" height="20"/>
                                                     </variation>
                                                 </label>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IBV-eH-BY4" customClass="HCSStarRatingView">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="IBV-eH-BY4" customClass="HCSStarRatingView">
                                                     <rect key="frame" x="8" y="277" width="240" height="44"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="NO"/>
@@ -6720,7 +6748,7 @@ Cross Pollinate!</string>
                                                         <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="Yellow.png"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4b0-Gp-xrl">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4b0-Gp-xrl">
                                                     <rect key="frame" x="256" y="284" width="88" height="30"/>
                                                     <state key="normal" title="Read Review">
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -6729,7 +6757,7 @@ Cross Pollinate!</string>
                                                         <action selector="readReview:" destination="sYw-Ps-SYz" eventType="touchUpInside" id="A6b-Dt-bIY"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dg-bP-tvS">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dg-bP-tvS">
                                                     <rect key="frame" x="352" y="284" width="79" height="30"/>
                                                     <state key="normal" title="Edit Review">
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -6738,7 +6766,7 @@ Cross Pollinate!</string>
                                                         <action selector="editReview:" destination="sYw-Ps-SYz" eventType="touchUpInside" id="VCb-8d-EAX"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZp-Kz-zmz">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZp-Kz-zmz">
                                                     <rect key="frame" x="0.0" y="329" width="600" height="22.5"/>
                                                     <color key="backgroundColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -7117,7 +7145,7 @@ Cross Pollinate!</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MTS-kh-S6g">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MTS-kh-S6g">
                                 <rect key="frame" x="20" y="70.5" width="560" height="34.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="25"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -7126,7 +7154,7 @@ Cross Pollinate!</string>
                                     <rect key="frame" x="16" y="70" width="368" height="29.5"/>
                                 </variation>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="202" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wxi-GX-veA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="202" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wxi-GX-veA">
                                 <rect key="frame" x="20" y="105" width="560" height="446"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>

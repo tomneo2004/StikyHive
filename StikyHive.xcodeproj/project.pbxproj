@@ -1372,6 +1372,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CE56FF2B1C1FB31B00C64567 /* MySkill */,
 				CE24E7F91C196E6D0021F078 /* UpdateProfile */,
 				CE9B8EC31C16C32C0022653B /* Bought */,
 				CEEDB1941C118B09009C3DC5 /* Sold */,
@@ -2080,6 +2081,13 @@
 				CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */,
 			);
 			name = UpdateProfile;
+			sourceTree = "<group>";
+		};
+		CE56FF2B1C1FB31B00C64567 /* MySkill */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MySkill;
 			sourceTree = "<group>";
 		};
 		CE68DA881C0D9ABF000CB49F /* SavedDocuments */ = {
@@ -2858,7 +2866,6 @@
 				CE9054D21C17CB9300144078 /* OverlayViewController.m in Sources */,
 				CE24E7FC1C196E960021F078 /* UpdateProfileViewController.m in Sources */,
 				CE24E8021C1970000021F078 /* CountryInfo.m in Sources */,
-				674D102B1B7DB4CD00B5B80D /* CYRTextView.m in Sources */,
 				674D0F501B7D9A5200B5B80D /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				674D0F701B7D9BC200B5B80D /* PhotoPickerViewController.m in Sources */,
 				676F77E61B96F3060084988A /* TOCropScrollView.m in Sources */,
