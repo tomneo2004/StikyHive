@@ -548,6 +548,8 @@
     
     SellingManager *smg = [SellingManager sharedSellingManager];
     
+    NSArray *photoArray = smg.photoCaption;
+    
     if (_photoStatus) {
         photoMonth = [_photoDict[@"duration"] integerValue];
         photoPrice = [NSDecimalNumber decimalNumberWithString:_photoDict[@"price"]];
@@ -601,9 +603,14 @@
                 if (dictS && [dictS[@"status"] isEqualToString:@"success"])
                 {
                 
-                    for (int i =0; i < smg.photoCaption.count; i++) {
-                        ImageCaption *ic = smg.photoCaption[i];
+                    for (int i =0; i < photoArray.count; i++) {
+                        ImageCaption *ic = photoArray[i];
+                        
+                        NSLog(@"image 888888--- %@",ic.image);
+                        NSLog(@"caption 8888888--- %@",ic.caption);
                         if (ic.image != nil) {
+                            
+                            NSLog(@"upload image with payment !!!!!!!!!");
                         
                             [WebDataInterface skillImageUpload:ic.image stikyid:stkid skillId:skillid type:1 editFlage:NO photoId:0 caption:ic.caption];
                         
