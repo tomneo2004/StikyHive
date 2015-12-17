@@ -151,6 +151,35 @@
 
 - (void)onDeleteTap:(MySkillCell *)cell{
     
+    NSInteger index = [_tableView indexPathForCell:cell].row;
+    
+    MySkillInfo *info = [_mySkillInfos objectAtIndex:index];
+    
+    [self.view showActivityViewWithLabel:@"Refreshing..." detailLabel:@"Fetching data"];
+    
+    [WebDataInterface deleteSell:[info.skillId integerValue] completion:^(NSObject *obj, NSError *error){
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+        
+            if(error != nil){
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to delete skill!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+                
+                [self.view hideActivityView];
+                
+                return ;
+            }
+            else{
+                
+                [_mySkillInfos removeObjectAtIndex:index];
+                [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                
+            }
+            
+            [self.view hideActivityView];
+        });
+    }];
 }
 
 /*
