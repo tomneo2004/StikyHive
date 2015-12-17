@@ -38,18 +38,42 @@
     if(self = [super init]){
         
         _subId = [dic objectForKey:@"id"];
-        _subPlanId = [[dic objectForKey:@"subscriptionplanId"] integerValue];
-        _catId = [[dic objectForKey:@"catId"] integerValue];
-        _skillName = [dic objectForKey:@"skillName"];
-        _summary = [dic objectForKey:@"summary"];
-        _skillDesc = [dic objectForKey:@"skillDescription"];
-        _type = [[dic objectForKey:@"type"] integerValue];
-        _status = [[dic objectForKey:@"status"] integerValue];
-        _rateId = [[dic objectForKey:@"rateId"] integerValue];
+        
+        if(![[dic objectForKey:@"subscriptionplanId"] isEqual:[NSNull null]])
+            _subPlanId = [[dic objectForKey:@"subscriptionplanId"] integerValue];
+        
+        if(![[dic objectForKey:@"catId"] isEqual:[NSNull null]])
+            _catId = [[dic objectForKey:@"catId"] integerValue];
+        
+        if(![[dic objectForKey:@"skillName"] isEqual:[NSNull null]])
+            _skillName = [dic objectForKey:@"skillName"];
+        
+        if(![[dic objectForKey:@"summary"] isEqual:[NSNull null]])
+            _summary = [dic objectForKey:@"summary"];
+        
+        if(![[dic objectForKey:@"skillDescription"] isEqual:[NSNull null]])
+            _skillDesc = [dic objectForKey:@"skillDescription"];
+        
+        if(![[dic objectForKey:@"type"] isEqual:[NSNull null]])
+            _type = [[dic objectForKey:@"type"] integerValue];
+        
+        if(![[dic objectForKey:@"status"] isEqual:[NSNull null]])
+            _status = [[dic objectForKey:@"status"] integerValue];
+        
+        if(![[dic objectForKey:@"rateId"] isEqual:[NSNull null]])
+            _rateId = [[dic objectForKey:@"rateId"] integerValue];
+        
         _rate = [dic objectForKey:@"rate"];
-        _price = [[dic objectForKey:@"price"] doubleValue];
-        _duration = [[dic objectForKey: @"duration"] integerValue];
-        _total = [[dic objectForKey:@"total"] doubleValue];
+        
+        if(![[dic objectForKey:@"price"] isEqual:[NSNull null]])
+            _price = [[dic objectForKey:@"price"] doubleValue];
+        
+        if(![[dic objectForKey:@"duration"] isEqual:[NSNull null]])
+            _duration = [[dic objectForKey: @"duration"] integerValue];
+        
+        if(![[dic objectForKey:@"total"] isEqual:[NSNull null]])
+            _total = [[dic objectForKey:@"total"] doubleValue];
+        
         _originalIssueDate = [dic objectForKey:@"issuedDate"];
         _originalExpireDate = [dic objectForKey:@"expiredDate"];
         
