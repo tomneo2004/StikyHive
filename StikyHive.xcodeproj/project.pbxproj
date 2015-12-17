@@ -407,6 +407,10 @@
 		CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE51C1029E700326710 /* SubInfoCell.m */; };
 		CE9C7CE91C102ED600326710 /* SubInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE81C102ED600326710 /* SubInfo.m */; };
 		CEA325701C1A7116007B1E5C /* DescEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */; };
+		CED3C8771C2251490090DE35 /* MySkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8761C2251490090DE35 /* MySkillViewController.m */; };
+		CED3C87A1C2251B10090DE35 /* MySkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8791C2251B10090DE35 /* MySkillInfo.m */; };
+		CED3C87D1C225D800090DE35 /* MySkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C87C1C225D800090DE35 /* MySkillCell.m */; };
+		CED3C87F1C2265990090DE35 /* icon_delete_with_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3C87E1C2265990090DE35 /* icon_delete_with_bg.png */; };
 		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
 		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
@@ -1042,6 +1046,13 @@
 		CE9C7CE81C102ED600326710 /* SubInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfo.m; sourceTree = "<group>"; };
 		CEA3256E1C1A7116007B1E5C /* DescEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescEditorViewController.h; sourceTree = "<group>"; };
 		CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescEditorViewController.m; sourceTree = "<group>"; };
+		CED3C8751C2251490090DE35 /* MySkillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillViewController.h; sourceTree = "<group>"; };
+		CED3C8761C2251490090DE35 /* MySkillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySkillViewController.m; sourceTree = "<group>"; };
+		CED3C8781C2251B10090DE35 /* MySkillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillInfo.h; sourceTree = "<group>"; };
+		CED3C8791C2251B10090DE35 /* MySkillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySkillInfo.m; sourceTree = "<group>"; };
+		CED3C87B1C225D800090DE35 /* MySkillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillCell.h; sourceTree = "<group>"; };
+		CED3C87C1C225D800090DE35 /* MySkillCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySkillCell.m; sourceTree = "<group>"; };
+		CED3C87E1C2265990090DE35 /* icon_delete_with_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_delete_with_bg.png; sourceTree = "<group>"; };
 		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
 		CED73E0C1C06F57C00ADB60C /* YelloBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YelloBTN.png; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
@@ -1291,6 +1302,7 @@
 		67361F301B830DD500C1374D /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				CED3C87E1C2265990090DE35 /* icon_delete_with_bg.png */,
 				674D0E411B7D920E00B5B80D /* Payment_thankyou@2x.png */,
 				516F58A51C102D9700E4FD41 /* moreorless.png */,
 				517A1C591C0C2382004017E4 /* subplan.png */,
@@ -2086,6 +2098,12 @@
 		CE56FF2B1C1FB31B00C64567 /* MySkill */ = {
 			isa = PBXGroup;
 			children = (
+				CED3C8751C2251490090DE35 /* MySkillViewController.h */,
+				CED3C8761C2251490090DE35 /* MySkillViewController.m */,
+				CED3C8781C2251B10090DE35 /* MySkillInfo.h */,
+				CED3C8791C2251B10090DE35 /* MySkillInfo.m */,
+				CED3C87B1C225D800090DE35 /* MySkillCell.h */,
+				CED3C87C1C225D800090DE35 /* MySkillCell.m */,
 			);
 			name = MySkill;
 			sourceTree = "<group>";
@@ -2619,6 +2637,7 @@
 				516718D21C1A799E003E9902 /* ZSStextcolor@2x.png in Resources */,
 				674D0F511B7D9A5200B5B80D /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				51AC3C5C1BA6ABA8004DA21C /* slide-0820-01.png in Resources */,
+				CED3C87F1C2265990090DE35 /* icon_delete_with_bg.png in Resources */,
 				516C51641C042299002710AA /* sell_upload_photo.png in Resources */,
 				674D0E551B7D920E00B5B80D /* button_Contact.png in Resources */,
 				517A1C5E1C0C2382004017E4 /* subplan.png in Resources */,
@@ -2861,6 +2880,7 @@
 				516F7EB81C183B3F005FEF8A /* SellingCell.m in Sources */,
 				674D0F6D1B7D9B6F00B5B80D /* WebDataInterface.m in Sources */,
 				674D0EBF1B7D98CA00B5B80D /* UserSkillViewController1.m in Sources */,
+				CED3C87A1C2251B10090DE35 /* MySkillInfo.m in Sources */,
 				674D0ECB1B7D99FC00B5B80D /* SellerCollectionViewController.m in Sources */,
 				51694D711BAC27EA007722F1 /* SelectableLabel.m in Sources */,
 				CE9054D21C17CB9300144078 /* OverlayViewController.m in Sources */,
@@ -2900,6 +2920,7 @@
 				674D0F431B7D9A5200B5B80D /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
 				51694D6E1BAC27BC007722F1 /* SelectableImageView.m in Sources */,
 				517A1C651C0C2B72004017E4 /* SellingViewController4.m in Sources */,
+				CED3C87D1C225D800090DE35 /* MySkillCell.m in Sources */,
 				674D0F581B7D9A5200B5B80D /* JSQMessagesToolbarContentView.m in Sources */,
 				674D0F451B7D9A5200B5B80D /* JSQMediaItem.m in Sources */,
 				516F58A91C104A4000E4FD41 /* PromotionViewController.m in Sources */,
@@ -2908,6 +2929,7 @@
 				674D0D9E1B7D913400B5B80D /* FirstViewController.m in Sources */,
 				CEFD195C1C04123800A79158 /* DistanceTitle.m in Sources */,
 				674D0F461B7D9A5200B5B80D /* JSQMessage.m in Sources */,
+				CED3C8771C2251490090DE35 /* MySkillViewController.m in Sources */,
 				CEE93A261BF47C2600B292BA /* CrossPollinateViewController.m in Sources */,
 				CEE93A2A1BF4852800B292BA /* Request.m in Sources */,
 				674D0F4D1B7D9A5200B5B80D /* JSQMessagesCollectionViewCell.m in Sources */,
