@@ -11,6 +11,7 @@
 #import "LocalDataInterface.h"
 #import "WebDataInterface.h"
 #import "MySkillInfo.h"
+#import "SkillViewTableViewController.h"
 
 @interface MySkillViewController ()
 
@@ -146,6 +147,15 @@
 }
 
 - (void)onViewTap:(MySkillCell *)cell{
+    
+    NSInteger index = [_tableView indexPathForCell:cell].row;
+    
+    MySkillInfo *info = [_mySkillInfos objectAtIndex:index];
+    
+    SkillViewTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SkillViewTableViewController"];
+    controller.skillId = info.skillId;
+    
+    [self.navigationController pushViewController:controller animated:YES];
     
 }
 

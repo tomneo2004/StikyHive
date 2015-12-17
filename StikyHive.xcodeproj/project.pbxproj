@@ -411,6 +411,8 @@
 		CED3C87A1C2251B10090DE35 /* MySkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8791C2251B10090DE35 /* MySkillInfo.m */; };
 		CED3C87D1C225D800090DE35 /* MySkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C87C1C225D800090DE35 /* MySkillCell.m */; };
 		CED3C87F1C2265990090DE35 /* icon_delete_with_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3C87E1C2265990090DE35 /* icon_delete_with_bg.png */; };
+		CED3C8831C22946D0090DE35 /* SkillViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8821C22946D0090DE35 /* SkillViewTableViewController.m */; };
+		CED3C8851C2295DD0090DE35 /* icon_eye_open.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3C8841C2295DD0090DE35 /* icon_eye_open.png */; };
 		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
 		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
@@ -1053,6 +1055,9 @@
 		CED3C87B1C225D800090DE35 /* MySkillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillCell.h; sourceTree = "<group>"; };
 		CED3C87C1C225D800090DE35 /* MySkillCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySkillCell.m; sourceTree = "<group>"; };
 		CED3C87E1C2265990090DE35 /* icon_delete_with_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_delete_with_bg.png; sourceTree = "<group>"; };
+		CED3C8811C22946D0090DE35 /* SkillViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillViewTableViewController.h; sourceTree = "<group>"; };
+		CED3C8821C22946D0090DE35 /* SkillViewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillViewTableViewController.m; sourceTree = "<group>"; };
+		CED3C8841C2295DD0090DE35 /* icon_eye_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_eye_open.png; sourceTree = "<group>"; };
 		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
 		CED73E0C1C06F57C00ADB60C /* YelloBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YelloBTN.png; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
@@ -1338,6 +1343,7 @@
 				51788CAD1BBD14FE00A96AD7 /* bookmark_filled.png */,
 				516A5B841BB68D9300668EBB /* default_seller_post.png */,
 				516A61151BB51CAE008579B6 /* like.png */,
+				CED3C8841C2295DD0090DE35 /* icon_eye_open.png */,
 				516A61131BB51598008579B6 /* bookmark.png */,
 				516A61111BB4FBC4008579B6 /* skillpage-bg.png */,
 				516A610F1BB4ED50008579B6 /* profile_bg - Copy.png */,
@@ -2098,6 +2104,7 @@
 		CE56FF2B1C1FB31B00C64567 /* MySkill */ = {
 			isa = PBXGroup;
 			children = (
+				CED3C8801C2294060090DE35 /* SkillView */,
 				CED3C8751C2251490090DE35 /* MySkillViewController.h */,
 				CED3C8761C2251490090DE35 /* MySkillViewController.m */,
 				CED3C8781C2251B10090DE35 /* MySkillInfo.h */,
@@ -2187,6 +2194,15 @@
 				CE9C7CE81C102ED600326710 /* SubInfo.m */,
 			);
 			name = SubscriptionInfo;
+			sourceTree = "<group>";
+		};
+		CED3C8801C2294060090DE35 /* SkillView */ = {
+			isa = PBXGroup;
+			children = (
+				CED3C8811C22946D0090DE35 /* SkillViewTableViewController.h */,
+				CED3C8821C22946D0090DE35 /* SkillViewTableViewController.m */,
+			);
+			name = SkillView;
 			sourceTree = "<group>";
 		};
 		CEE93A041BF448CA00B292BA /* NewVersion */ = {
@@ -2721,6 +2737,7 @@
 				CEE93A1D1BF4490100B292BA /* buzzr_requestform_bee.png in Resources */,
 				CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */,
 				516718C61C1A799E003E9902 /* ZSSredo@2x.png in Resources */,
+				CED3C8851C2295DD0090DE35 /* icon_eye_open.png in Resources */,
 				674D105F1B7DCB6B00B5B80D /* OpenSans-ExtraBold.ttf in Resources */,
 				674D0DF81B7D91FC00B5B80D /* Tab_Profile@2x.png in Resources */,
 				674D106A1B7DCB8900B5B80D /* bgothl.ttf in Resources */,
@@ -2933,6 +2950,7 @@
 				CEE93A261BF47C2600B292BA /* CrossPollinateViewController.m in Sources */,
 				CEE93A2A1BF4852800B292BA /* Request.m in Sources */,
 				674D0F4D1B7D9A5200B5B80D /* JSQMessagesCollectionViewCell.m in Sources */,
+				CED3C8831C22946D0090DE35 /* SkillViewTableViewController.m in Sources */,
 				674D104C1B7DB79A00B5B80D /* HomeViewController.m in Sources */,
 				676600E51BA1325A003A84D8 /* ResetPassViewController.m in Sources */,
 				CEF7BAAB1BFB2704009624CC /* RequestPostTableViewController.m in Sources */,

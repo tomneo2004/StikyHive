@@ -23,8 +23,11 @@
             <string>OpenSans-Bold</string>
             <string>OpenSans-Bold</string>
             <string>OpenSans-Bold</string>
+            <string>OpenSans-Bold</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -6562,6 +6565,145 @@ Cross Pollinate!</string>
             </objects>
             <point key="canvasLocation" x="4491" y="1692"/>
         </scene>
+        <!--Skill View Table View Controller-->
+        <scene sceneID="Ci8-iF-dfC">
+            <objects>
+                <tableViewController storyboardIdentifier="SkillViewTableViewController" id="mg4-q6-bBz" customClass="SkillViewTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vXd-8e-ep3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="8eJ-SW-uVT">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="315" id="DPZ-ri-oK9">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="315"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DPZ-ri-oK9" id="ZQE-ei-p2t">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="314.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7cy-zw-i8A">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="188.5"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXd-er-crb">
+                                                    <rect key="frame" x="0.0" y="188.5" width="600" height="126"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skillpage-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="YOa-UO-IcP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="126"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4Q-vS-Pn0">
+                                                            <rect key="frame" x="8" y="92" width="584" height="26"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="19"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Ed-Ii-GxJ">
+                                                            <rect key="frame" x="537" y="8" width="55" height="55"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="55" id="OPY-88-Ndw"/>
+                                                                <constraint firstAttribute="height" constant="55" id="Pmc-9v-LX0"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvt-ZS-roW">
+                                                            <rect key="frame" x="538.5" y="68" width="53.5" height="23.5"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_eye_open.png" translatesAutoresizingMaskIntoConstraints="NO" id="IAx-Jo-jvY">
+                                                            <rect key="frame" x="475.5" y="8" width="55" height="55"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="55" id="Wx4-dw-zwR"/>
+                                                                <constraint firstAttribute="width" constant="55" id="eNf-UD-3ww"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Views" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSN-2l-jDD">
+                                                            <rect key="frame" x="471" y="69" width="59.5" height="23.5"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="GSN-2l-jDD" firstAttribute="top" secondItem="IAx-Jo-jvY" secondAttribute="bottom" constant="6" id="043-GU-GST"/>
+                                                        <constraint firstItem="7Ed-Ii-GxJ" firstAttribute="top" secondItem="oXd-er-crb" secondAttribute="topMargin" id="5Rw-Kd-WMA"/>
+                                                        <constraint firstAttribute="trailing" secondItem="YOa-UO-IcP" secondAttribute="trailing" id="AHd-gq-WCZ"/>
+                                                        <constraint firstItem="l4Q-vS-Pn0" firstAttribute="bottom" secondItem="oXd-er-crb" secondAttribute="bottomMargin" id="HLf-Xv-zCT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="YOa-UO-IcP" secondAttribute="bottom" id="Iaf-WF-t0B"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="pvt-ZS-roW" secondAttribute="trailing" id="Kry-Xt-Gv2"/>
+                                                        <constraint firstItem="IAx-Jo-jvY" firstAttribute="top" secondItem="7Ed-Ii-GxJ" secondAttribute="top" id="Mm2-Wd-fFD"/>
+                                                        <constraint firstItem="pvt-ZS-roW" firstAttribute="top" secondItem="7Ed-Ii-GxJ" secondAttribute="bottom" constant="5" id="T2D-SN-3i9"/>
+                                                        <constraint firstItem="YOa-UO-IcP" firstAttribute="leading" secondItem="oXd-er-crb" secondAttribute="leading" id="ULX-y5-ICV"/>
+                                                        <constraint firstItem="YOa-UO-IcP" firstAttribute="top" secondItem="oXd-er-crb" secondAttribute="top" id="aAl-fN-JhB"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="l4Q-vS-Pn0" secondAttribute="trailing" id="bBB-bl-K7Q"/>
+                                                        <constraint firstItem="7Ed-Ii-GxJ" firstAttribute="trailing" secondItem="oXd-er-crb" secondAttribute="trailingMargin" id="hDr-gy-chN"/>
+                                                        <constraint firstItem="GSN-2l-jDD" firstAttribute="trailing" secondItem="IAx-Jo-jvY" secondAttribute="trailing" id="l3w-b1-CLb"/>
+                                                        <constraint firstItem="l4Q-vS-Pn0" firstAttribute="leading" secondItem="oXd-er-crb" secondAttribute="leadingMargin" id="pWJ-iU-xtL"/>
+                                                        <constraint firstItem="pvt-ZS-roW" firstAttribute="leading" secondItem="IAx-Jo-jvY" secondAttribute="trailing" constant="8" id="wv7-6Q-c6O"/>
+                                                    </constraints>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gcz-Ec-VUv">
+                                                    <rect key="frame" x="40" y="160" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="ERN-oH-Zwk"/>
+                                                        <constraint firstAttribute="height" constant="60" id="v7w-Im-WHb"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="oXd-er-crb" secondAttribute="bottom" id="0LT-Aw-JJh"/>
+                                                <constraint firstItem="Gcz-Ec-VUv" firstAttribute="top" secondItem="7cy-zw-i8A" secondAttribute="bottom" multiplier="0.85" id="5Jo-xv-D2M"/>
+                                                <constraint firstItem="7cy-zw-i8A" firstAttribute="height" secondItem="ZQE-ei-p2t" secondAttribute="height" multiplier="0.6" id="5RM-0I-Pge"/>
+                                                <constraint firstItem="oXd-er-crb" firstAttribute="width" secondItem="ZQE-ei-p2t" secondAttribute="width" id="5t0-n3-eTS"/>
+                                                <constraint firstItem="oXd-er-crb" firstAttribute="top" secondItem="7cy-zw-i8A" secondAttribute="bottom" id="EpF-wE-HND"/>
+                                                <constraint firstItem="oXd-er-crb" firstAttribute="leading" secondItem="ZQE-ei-p2t" secondAttribute="leading" id="Ude-Wy-RwK"/>
+                                                <constraint firstItem="7cy-zw-i8A" firstAttribute="top" secondItem="ZQE-ei-p2t" secondAttribute="top" id="bpy-2e-fDL"/>
+                                                <constraint firstAttribute="trailing" secondItem="7cy-zw-i8A" secondAttribute="trailing" id="lAX-D3-HAE"/>
+                                                <constraint firstItem="7cy-zw-i8A" firstAttribute="leading" secondItem="ZQE-ei-p2t" secondAttribute="leading" id="vOX-qp-BLg"/>
+                                                <constraint firstItem="Gcz-Ec-VUv" firstAttribute="leading" secondItem="ZQE-ei-p2t" secondAttribute="leadingMargin" multiplier="5" id="wT1-Ht-1vy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Jpm-NS-Yet">
+                                        <rect key="frame" x="0.0" y="315" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jpm-NS-Yet" id="nG7-zq-WMN">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="e9W-7k-0EV">
+                                        <rect key="frame" x="0.0" y="359" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e9W-7k-0EV" id="Wvc-9K-2Bd">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="mg4-q6-bBz" id="c5T-RK-a4r"/>
+                            <outlet property="delegate" destination="mg4-q6-bBz" id="7cX-Ud-Uhi"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="attachmentImageView" destination="7cy-zw-i8A" id="Ml0-LI-oCp"/>
+                        <outlet property="avatarImageView" destination="Gcz-Ec-VUv" id="wA5-BP-TEV"/>
+                        <outlet property="likeCountLabel" destination="pvt-ZS-roW" id="thJ-aH-TKx"/>
+                        <outlet property="likeImageView" destination="7Ed-Ii-GxJ" id="5cZ-UT-Nwl"/>
+                        <outlet property="titleLabel" destination="l4Q-vS-Pn0" id="9gN-lw-fNU"/>
+                        <outlet property="viewCountLabel" destination="GSN-2l-jDD" id="d27-Fy-fS7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oCg-l4-yPg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4491" y="2350"/>
+        </scene>
         <!--Root View Controller-->
         <scene sceneID="5yN-AL-vie">
             <objects>
@@ -11540,10 +11682,13 @@ Cross Pollinate!</string>
         <image name="buzzr_top_btn(withoutButton).png" width="1563" height="417"/>
         <image name="home_bg.png" width="480" height="800"/>
         <image name="icon_delete_with_bg.png" width="64" height="64"/>
+        <image name="icon_eye_open.png" width="42" height="32"/>
+        <image name="like.png" width="50" height="45"/>
         <image name="logo.png" width="300" height="205"/>
         <image name="moreorless.png" width="664" height="675"/>
         <image name="sell_upload_photo.png" width="681" height="384"/>
         <image name="sell_upload_video.png" width="681" height="384"/>
+        <image name="skillpage-bg.png" width="750" height="250"/>
         <image name="smiley.png" width="250" height="250"/>
         <image name="subplan.png" width="720" height="184"/>
         <image name="subplan1.png" width="720" height="295"/>
