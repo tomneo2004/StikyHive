@@ -26,8 +26,8 @@
 
 @implementation SkillViewTableViewController{
     
-    NSString *skillId;
-    NSString *ownerStkId;
+    NSString *_skillsId;
+    NSString *_ownerStkId;
     NSInteger _viewCount;
     NSInteger _likeCount;
     NSInteger _likeId;
@@ -92,7 +92,66 @@
 #pragma mark - internal
 - (void)onLikeTap:(UIGestureRecognizer *)recognizer{
 
+    [self.view showActivityViewWithLabel:@"Updating..."];
     
+    //was liked
+    if(_liked == YES){
+        
+        //make it unlike
+        [WebDataInterface saveReview:[NSString stringWithFormat:@"%li", _likeId] skillId:_skillsId viewCount:@"0" likeCount:@"0" owner:_ownerStkId actionMaker:[LocalDataInterface retrieveStkid] completion:^(NSObject *object, NSError *error){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+                if(error != nil){
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Update fail!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+                else{
+                    
+                    _liked = NO;
+                    
+                    _likeImageView.image = [UIImage imageNamed:@"like"];
+                    
+                    _likeCount -= 1;
+                    
+                    _likeCountLabel.text = [NSString stringWithFormat:@"%li Likes", _likeCount];
+                }
+                
+                [self.view hideActivityView];
+            });
+            
+            
+        }];
+    }
+    else{//was not liked
+        
+        //make it like
+        [WebDataInterface saveReview:[NSString stringWithFormat:@"%li", _likeId] skillId:_skillsId viewCount:@"0" likeCount:@"1" owner:_ownerStkId actionMaker:[LocalDataInterface retrieveStkid] completion:^(NSObject *object, NSError *error){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+                if(error != nil){
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Update fail!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+                else{
+                    
+                    _liked = YES;
+                    
+                    _likeImageView.image = [UIImage imageNamed:@"like_filled"];
+                    
+                    _likeCount += 1;
+                    
+                    _likeCountLabel.text = [NSString stringWithFormat:@"%li Likes", _likeCount];
+                }
+                
+                [self.view hideActivityView];
+            });
+            
+        }];
+    }
 }
 
 - (void)pullData{
@@ -132,10 +191,10 @@
                 else{
                     
                     //skillId
-                    skillId = [skillDic objectForKey:@"id"];
+                    _skillsId = [skillDic objectForKey:@"id"];
                     
                     //owner stkid
-                    ownerStkId = [skillDic objectForKey:@"stkid"];
+                    _ownerStkId = [skillDic objectForKey:@"stkid"];
                     
                     //likedId
                     _likeId = [[skillDic objectForKey:@"likeId"] integerValue];
