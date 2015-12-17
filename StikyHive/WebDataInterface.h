@@ -212,6 +212,7 @@
 #define DATA_URL_UPDATE_PROFILE         DATA_URL@"updateProfile/format/json"
 #define DATA_URL_UPDATE_SUBSKILL_STATUS DATA_URL@"updateSubSkillStatus/format/json"
 #define DATA_URL_DELETE_SELL            DATA_URL@"deleteSell/format/json"
+#define DATA_URL_SAVE_REVIEW            DATA_URL@"saveReview/format/json"
 
 
 
@@ -285,6 +286,11 @@
 #define POST_PARAMETER_L_NALE           @"lname"
 #define POST_PARAMETER_DURATION         @"duration"
 #define POST_PARAMETER_FLAG_MY          @"flagMy"
+#define POST_PARAMETER_REVIEW_ID        @"reviewId"
+#define POST_PARAMETER_VIEW_COUNT       @"viewCount"
+#define POST_PARAMETER_LIKE_COUNT       @"likeCount"
+#define POST_PARAMETER_OWNER            @"owner"
+#define POST_PARAMETER_ACTION_MAKER     @"actionMaker"
 
 
 
@@ -381,6 +387,10 @@
 + (void)updateSubSkillStatus:(NSInteger)skillId duration:(NSInteger)duration completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)deleteSell:(NSInteger)skillId completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)saveReview:(NSString *)reviewId skillId:(NSString *)skillId viewCount:(NSString *)viewCount likeCount:(NSString *)likeCount owner:(NSString *)owner actionMaker:(NSString *)actionMaker completion:(void (^)(NSObject *, NSError *))completion;
+
+
 
 
 
