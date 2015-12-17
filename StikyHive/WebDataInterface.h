@@ -211,6 +211,7 @@
 #define DATA_URL_EDIT_COMMENT           DATA_URL@"editComment/format/json"
 #define DATA_URL_UPDATE_PROFILE         DATA_URL@"updateProfile/format/json"
 #define DATA_URL_UPDATE_SUBSKILL_STATUS DATA_URL@"updateSubSkillStatus/format/json"
+#define DATA_URL_DELETE_SELL            DATA_URL@"deleteSell/format/json"
 
 
 
@@ -379,7 +380,7 @@
 
 + (void)updateSubSkillStatus:(NSInteger)skillId duration:(NSInteger)duration completion:(void (^)(NSObject *, NSError *))completion;
 
-
++ (void)deleteSell:(NSInteger)skillId completion:(void (^)(NSObject *, NSError *))completion;
 
 
 
