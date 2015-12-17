@@ -425,6 +425,17 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     [self requestData:DATA_URL_DELETE_SELL withParameters:params completion:completion];
 }
 
++ (void)saveReview:(NSString *)reviewId skillId:(NSString *)skillId viewCount:(NSString *)viewCount likeCount:(NSString *)likeCount owner:(NSString *)owner actionMaker:(NSString *)actionMaker completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_REVIEW_ID:reviewId,
+                             POST_PARAMETER_SKILL_ID:skillId,
+                             POST_PARAMETER_VIEW_COUNT:viewCount,
+                             POST_PARAMETER_LIKE_COUNT:likeCount,
+                             POST_PARAMETER_OWNER:owner,
+                             POST_PARAMETER_ACTION_MAKER:actionMaker};
+    [self requestData:DATA_URL_SAVE_REVIEW withParameters:params completion:completion];
+}
+
 
 
 
