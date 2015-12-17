@@ -213,6 +213,7 @@
 #define DATA_URL_UPDATE_SUBSKILL_STATUS DATA_URL@"updateSubSkillStatus/format/json"
 
 
+
 #define POST_PARAMETER_EMAIL            @"email"
 #define POST_PARAMETER_PASSWORD         @"password"
 #define POST_PARAMETER_FIRSTNAME        @"firstname"
@@ -282,7 +283,7 @@
 #define POST_PARAMETER_F_NAME           @"fname"
 #define POST_PARAMETER_L_NALE           @"lname"
 #define POST_PARAMETER_DURATION         @"duration"
-
+#define POST_PARAMETER_FLAG_MY          @"flagMy"
 
 
 
@@ -321,6 +322,9 @@
 
 
 + (void)getSellAll:(NSInteger)limit catId:(NSInteger)catId stkid:(NSString *)stkid actionMaker:(NSString *)actionMaker completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)getSellAllMy:(NSInteger)limit catId:(NSInteger)catId stkid:(NSString *)stkid flagMy:(BOOL)flagMy actionMaker:(NSString *)actionMaker completion:(void (^)(NSObject *, NSError *))completion;
+
 
 + (void)getBuyerMarket:(NSString *)skillId limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
 
@@ -381,7 +385,7 @@
 
 + (void)profileImageUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid;
 
-+ (void)skillImageUpload:(NSArray *)imageArray stikyid:(NSString *)stikyid skillId:(NSInteger)skillId type:(NSInteger)type editFlage:(BOOL)editFlage photoId:(NSInteger)photoId caption:(NSString *)caption;
++ (void)skillImageUpload:(UIImage *)image stikyid:(NSString *)stikyid skillId:(NSInteger)skillId type:(NSInteger)type editFlage:(BOOL)editFlage photoId:(NSInteger)photoId caption:(NSString *)caption;
 
 ////////  ///////////// END -------------------------------------
 

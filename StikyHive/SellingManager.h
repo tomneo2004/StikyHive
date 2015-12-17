@@ -30,7 +30,11 @@
 @property (setter=setSkillType:, getter=getSkillType, nonatomic) NSInteger skillType;
 
 @property (setter=setVideoImage:, getter=getVideoImage, nonatomic) UIImage *videoImage;
+
 @property (setter=setVideo:, getter=getVideo, nonatomic) NSData *video;
+@property (setter=setThumbnail:, getter=getThumbnail, nonatomic) NSData *thumbnail;
+@property (setter=setVideo:, getter=getVideo2, nonatomic) NSData *video2;
+@property (setter=setThumbnail2:, getter=getThumbnail2, nonatomic) NSData *thumbnail2;
 
 @property (setter=setPromotionStatus:, getter=getPromotionStatus, nonatomic) BOOL promotionStatus;
 

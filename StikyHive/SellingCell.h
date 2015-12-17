@@ -14,11 +14,15 @@
 
 @optional
 
-- (void)SellingCellDidTapImageView:(SellingCell *)cell;
+- (void)SellingCellDidTapImageView:(SellingCell *)cell withImageView:(UIImageView *)imageView;
+
+- (void)SellingCellTextField:(SellingCell *)cell caption:(NSString *)caption;
+
+//- (void)SellingImageView:(SellingCell *)cell image:(UIImage *)image;
 
 @end
 
-@interface SellingCell : UITableViewCell
+@interface SellingCell : UITableViewCell <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (strong, nonatomic) IBOutlet UITextField *captionTextField;

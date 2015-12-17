@@ -113,6 +113,16 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     
 }
 
++ (void)getSellAllMy:(NSInteger)limit catId:(NSInteger)catId stkid:(NSString *)stkid flagMy:(BOOL)flagMy actionMaker:(NSString *)actionMaker completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_LIMIT:[NSNumber numberWithInteger:limit],
+                             POST_PARAMETER_CATEGORY_ID:[NSNumber numberWithInteger:catId],
+                             POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_FLAG_MY:[NSNumber numberWithBool:flagMy],
+                             POST_PARAMETER_STKID:actionMaker};
+    [self requestData:DATA_URL_GET_SELL_MARKET withParameters:params completion:completion];
+}
+
 + (void)getBuyerMarket:(NSString *)skillId limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion {
     
     NSDictionary *params = @{POST_PARAMETER_SKILL_ID:skillId,
@@ -468,15 +478,15 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 
 }
 
-+ (void)skillImageUpload:(NSArray *)imageArray stikyid:(NSString *)stikyid skillId:(NSInteger)skillId type:(NSInteger)type editFlage:(BOOL)editFlage photoId:(NSInteger)photoId caption:(NSString *)caption
++ (void)skillImageUpload:(UIImage *)image stikyid:(NSString *)stikyid skillId:(NSInteger)skillId type:(NSInteger)type editFlage:(BOOL)editFlage photoId:(NSInteger)photoId caption:(NSString *)caption
 {
-    for (int i = 0; i < imageArray.count; i++)
-    {
-        UIImage *photo = imageArray[i];
     
-        NSData *imageData =UIImageJPEGRepresentation(photo, 0.0);
-        
-        NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/fileupload.php?stkid=%@&skillId=%ld&type=%ld&editFlag=%d&photoId=%ld&caption=%@",stikyid,(long)skillId,(long)type,editFlage,(long)photoId,caption];
+        NSString *encodeCaption = [caption stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    
+        NSData *imageData =UIImageJPEGRepresentation(image, 1.0);
+
+        NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/fileupload.php?stkid=%@&skillId=%ld&type=%ld&editFlag=%d&photoId=%ld&caption=%@",stikyid,(long)skillId,(long)type,editFlage,(long)photoId,encodeCaption];
     
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL:[NSURL URLWithString:urlString]];
@@ -497,7 +507,7 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     
         [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         
-    }
+    
 }
 
 

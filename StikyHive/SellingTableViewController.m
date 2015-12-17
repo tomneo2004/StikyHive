@@ -16,14 +16,9 @@
 @property (nonatomic, assign) NSInteger numberOfRows;
 @property (weak, nonatomic) IBOutlet UITableView *sellTableView;
 
+//@property (nonatomic, assign) NSInteger tmpIndex;
+
 @property (nonatomic, assign) BOOL imageSelected0;
-@property (nonatomic, assign) BOOL imageSelected1;
-@property (nonatomic, assign) BOOL imageSelected2;
-@property (nonatomic, assign) BOOL imageSelected3;
-@property (nonatomic, assign) BOOL imageSelected4;
-@property (nonatomic, assign) BOOL imageSelected5;
-@property (nonatomic, assign) BOOL imageSelected6;
-@property (nonatomic, assign) BOOL imageSelected7;
 
 @property (nonatomic, strong) NSArray *skillImageViews;
 
@@ -31,61 +26,124 @@
 @property (nonatomic, strong) NSMutableDictionary *imageDict;
 @property (nonatomic, strong) NSMutableArray *addArray;
 
+@property (nonatomic, strong) NSMutableArray *imageCapArray;
+
 @end
 
-@implementation SellingTableViewController
+@implementation SellingTableViewController{
+    NSInteger _tmpIndex;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _imageFileArray = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 4; i++)
-    {
-        [_imageFileArray insertObject:[NSNull null] atIndex:i];
+//    _imageFileArray = [[NSMutableArray alloc] init];
+    
+    
+   SellingManager *smg = [SellingManager sharedSellingManager];
+    
+    _imageCapArray = smg.photoCaption;
+    
+    
+    if (!smg.photoStatus) {
+        [self setDefaultImageCount:4];
+//        _numberOfRows = 4;
     }
+    else
+    {
+        [self setDefaultImageCount:8];
+//        _numberOfRows = 8;
+        _imageSelected0 = YES;
+    }
+    
+    
+    NSLog(@"image caption array ----- %@",_imageCapArray);
+    
+    for (int i = 0; i < _imageCapArray.count; i++) {
+        ImageCaption *im = _imageCapArray[i];
+        NSLog(@"image --- %@",im.image);
+        NSLog(@"caption --- %@",im.caption);
+    }
+    
+//    _imageCapArray = [[]
+//    for (int i = 0; i < 4; i++)
+//    {
+//        [_imageFileArray insertObject:[NSNull null] atIndex:i];
+//    }
 
-    SellingManager *smg = [SellingManager sharedSellingManager];
     
-    _numberOfRows = 4;
     
-    _addArray = [[NSMutableArray alloc] init];
+//    _numberOfRows = 4;
+    
+//    _addArray = [[NSMutableArray alloc] init];
 //    _imageFileArray = [smg.photoArray mutableCopy];
 //    NSLog(@"4 image file array --- %@",_imageFileArray);
-    if (smg.videoStatus) {
-        _imageFileArray = [smg.photoArray mutableCopy];
-        NSLog(@"4 image file array --- %@",_imageFileArray);
-    }
+//    if (smg.videoStatus) {
+//        _imageFileArray = [smg.photoArray mutableCopy];
+//        NSLog(@"4 image file array --- %@",_imageFileArray);
+//    }
     
-    if (smg.photoStatus)
-    {
-        _numberOfRows = 8;
-        
-        _imageFileArray = [[SellingManager sharedSellingManager].photoArray mutableCopy];
-        
-        for (int i = 4; i < 8; i++)
-        {
-            [_imageFileArray insertObject:[NSNull null] atIndex:i];
-        }
-
-        NSLog(@"8 image file array --- %@",_imageFileArray);
-    }
+//    if (smg.photoStatus)
+//    {
+//        _numberOfRows = 8;
+//        
+//        _imageFileArray = [[SellingManager sharedSellingManager].photoArray mutableCopy];
+//        
+//        for (int i = 4; i < 8; i++)
+//        {
+//            [_imageFileArray insertObject:[NSNull null] atIndex:i];
+//        }
+//
+//        NSLog(@"8 image file array --- %@",_imageFileArray);
+//    }
     
     _sellTableView.delegate = self;
     _sellTableView.dataSource = self;
     
-    _imageDict = [[NSMutableDictionary alloc] init];
-    NSLog(@"crop dicr ---- %@",_imageDict);
     
-    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived:)];
+    [tapGestureRecognizer setDelegate:self];
+    //    tapGestureRecognizer.delegate = self;
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+
     
 //    [_sellTableView reloadData];
     
 }
 
+- (void)tapReceived:(UITapGestureRecognizer *)tapGestureRecognizer
+{
+    [self.view endEditing:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setDefaultImageCount:(NSInteger)number
+{
+    _numberOfRows = number;
+    
+    if (_imageCapArray.count < number) {
+        NSInteger amountAdd = number - _imageCapArray.count;
+        
+        for (int i = 0; i < amountAdd; i++)
+        {
+            ImageCaption *ic = [[ImageCaption alloc] init];
+            [_imageCapArray addObject:ic];
+        }
+    }
+    else if (_imageCapArray.count > number)
+    {
+        while (_imageCapArray.count > number)
+        {
+            [_imageCapArray removeLastObject];
+        }
+    }
+    
+    
 }
 
 
@@ -113,67 +171,90 @@
     cell.delegate = self;
     cell.photoImageView.userInteractionEnabled = YES;
     
-//    [cell displayDefaultImage:@"sell_upload_photo"];
-    cell.photoImageView.tag = indexPath.row;
-    cell.captionTextField.tag = indexPath.row;
     
-    if (_imageFileArray[indexPath.row] != [NSNull null])
-    {
-        cell.photoImageView.image = _imageFileArray[indexPath.row];
-        NSLog(@"image copy ---  %ld",(long)indexPath.row);
+    ImageCaption *imageCaption = _imageCapArray[indexPath.row];
+    UIImage *ifImage = imageCaption.image;
+    if (ifImage != nil) {
+        cell.photoImageView.image = ifImage;
+        cell.captionTextField.text = imageCaption.caption;
     }
-    else
-    {
-        NSLog(@"no image --- %ld",(long)indexPath.row);
-    }
+//    else
+//    {
+//        cell.photoImageView.image = [UIImage imageNamed:@"sell_upload_photo"];
+//        cell.captionTextField.text = @"";
+//    }
+    
     
     return cell;
 }
 
 #pragma mark - cell delegate
-- (void)SellingCellDidTapImageView:(SellingCell *)cell
+- (void)SellingCellDidTapImageView:(SellingCell *)cell withImageView:(UIImageView *)imageView
 {
+    
+    _tmpIndex = [_sellTableView indexPathForCell:cell].row;
     
     [self showCropViewControllerWithOptions:cell.photoImageView andType:2];
     
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)SellingCellTextField:(SellingCell *)cell caption:(NSString *)caption
+{
+    NSInteger index = [_sellTableView indexPathForCell:cell].row;
+    
+    ImageCaption *data = _imageCapArray[index];
+    data.caption = caption;
+    
 }
-*/
 
 - (IBAction)nextBtnPressed:(id)sender
 {
-    NSMutableArray *checkArray = [[NSMutableArray alloc] init];
-    NSMutableArray *imagecaptionArray = [[NSMutableArray alloc] init];
+//    NSMutableArray *checkArray = [[NSMutableArray alloc] init];
+//    NSMutableArray *imagecaptionArray = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < _imageFileArray.count; i++) {
-        if (_imageFileArray[i] != [NSNull null]) {
-            [checkArray addObject:_imageFileArray[i]];
+//    for (int i = 0; i < _imageFileArray.count; i++) {
+//        if (_imageFileArray[i] != [NSNull null]) {
+//            [checkArray addObject:_imageFileArray[i]];
+//            
+    
             
-            UITextField *textfield = (UITextField *)[_sellTableView viewWithTag:i];
-            ImageCaption *imcp = [[ImageCaption alloc] initWithImage:_imageFileArray[i] caption:textfield.text];
-            [imagecaptionArray addObject:imcp];
-        }
-    }
+//            UITableViewCell *cell = [_sellTableView cellForRowAtIndexPath:
+//                                     [NSIndexPath indexPathForRow:i inSection:1]];
+//            UITextField *textField = (UITextField *)[cell.contentView viewWithTag:i];
+////            UITextField *textfield = (UITextField *)[_sellTableView viewWithTag:i];
+//            NSLog(@"text field --- %@",textField.text);
+//            
+//            ImageCaption *imcp = [[ImageCaption alloc] initWithImage:_imageFileArray[i] caption:textField.text];
+//            [imagecaptionArray addObject:imcp];
+//        }
+//    }
     
-    if (checkArray.count > 0)
+    if (_imageSelected0)
     {
-        
-        
-        
-        [SellingManager sharedSellingManager].photoArray = [_imageFileArray mutableCopy];
-        [SellingManager sharedSellingManager].photoCaption = [imagecaptionArray mutableCopy];
-        NSLog(@"photo caption array ---- %@");
     
-        NSLog(@"selling manager array --- %@",[SellingManager sharedSellingManager].photoArray);
+        
+        
+//        [SellingManager sharedSellingManager].photoArray = [_imageFileArray mutableCopy];
+        [SellingManager sharedSellingManager].photoCaption = [_imageCapArray mutableCopy];
+//        NSLog(@"photo caption array ---- %@",[SellingManager sharedSellingManager].photoCaption);
+//        
+//        NSArray *imagearray = [SellingManager sharedSellingManager].photoCaption;
+//        ImageCaption * imageca = imagearray[0];
+//        NSString *caption = imageca.caption;
+//        NSLog(@"caption array --- %@",imagearray);
+//        NSLog(@"caption ---------- 456 %@",caption);
+
+        
+    
+        NSLog(@"selling manager array --- %@",[SellingManager sharedSellingManager].photoCaption);
+        SellingManager *smg = [SellingManager sharedSellingManager];
+        for (int i = 0; i < smg.photoCaption.count; i++)
+        {
+            ImageCaption *ic = smg.photoCaption[i];
+            NSLog(@"image --- %@",ic.image);
+            NSLog(@"caption --= %@",ic.caption);
+        }
+        
         
     
         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_4"];
@@ -191,59 +272,79 @@
 
 - (void)onImageCropSuccessfulWithImageView:(UIImageView *)imageView
 {
-    if (imageView.tag == 0) {
-        _imageSelected0 = YES;
-        UIImage *image = imageView.image;
-        [_imageFileArray replaceObjectAtIndex:0 withObject:image];
-        
-//        UITextField *textfield = (UITextField *)[_sellTableView viewWithTag:0];
-//        ImageCaption *imcp = [[ImageCaption alloc] initWithImage:imageView.image caption:textfield.text];
-//        [_addArray addObject:imcp];
-        
-    }
-    else if (imageView.tag == 1) {
-        _imageSelected1 = YES;
-        UIImage *image = imageView.image;
-        [_imageFileArray replaceObjectAtIndex:1 withObject:image];
-    }
-    else if (imageView.tag == 2) {
-        _imageSelected2 = YES;
-        UIImage *image = imageView.image;
-        [_imageFileArray replaceObjectAtIndex:2 withObject:image];
-    }
-    else if (imageView.tag == 3) {
-        _imageSelected3 = YES;
-        UIImage *image = imageView.image;
-        [_imageFileArray replaceObjectAtIndex:3 withObject:image];
-    }
-    else if (imageView.tag == 4) {
-        _imageSelected4 = YES;
-        UIImage *image = imageView.image;
-        [_imageFileArray replaceObjectAtIndex:4 withObject:image];
-    }
-    else if (imageView.tag == 5) {
-        _imageSelected5 = YES;
-        UIImage *image = imageView.image;
-        [_imageFileArray replaceObjectAtIndex:5 withObject:image];
-    }
-    else if (imageView.tag == 6) {
-        _imageSelected6 = YES;
-        UIImage *image = imageView.image;
-        [_imageFileArray replaceObjectAtIndex:6 withObject:image];
-    }
-    else if (imageView.tag == 7) {
-        _imageSelected7 = YES;
-        UIImage *image = imageView.image;
-        [_imageFileArray replaceObjectAtIndex:7 withObject:image];
-    }
-
-
-
-
-
-
     
+//   UITableViewCell *cell = [_sellTableView cellForRowAtIndexPath:[NSIndexPath indexPathWithIndex:_tmpIndex]];
+//    
+//    cell.imageView.image = imageView.image;
     
+    ImageCaption *data = _imageCapArray[_tmpIndex];
+    data.image = imageView.image;
+    
+    _imageSelected0 = YES;
+    
+//    if (imageView.tag == 0) {
+//        _imageSelected0 = YES;
+//        UIImage *image = imageView.image;
+////        [_imageFileArray replaceObjectAtIndex:0 withObject:image];
+//        
+//        
+//        ImageCaption *data = _imageCapArray[0];
+//        data.image = image;
+//
+////        UITextField *textfield = (UITextField *)[_sellTableView viewWithTag:0];
+////        ImageCaption *imcp = [[ImageCaption alloc] initWithImage:imageView.image caption:textfield.text];
+////        [_addArray addObject:imcp];
+//        
+//    }
+//    else if (imageView.tag == 1) {
+//        _imageSelected1 = YES;
+//        UIImage *image = imageView.image;
+////        [_imageFileArray replaceObjectAtIndex:1 withObject:image];
+//        ImageCaption *data = _imageCapArray[1];
+//        data.image = image;
+//    }
+//    else if (imageView.tag == 2) {
+//        _imageSelected2 = YES;
+//        UIImage *image = imageView.image;
+////        [_imageFileArray replaceObjectAtIndex:2 withObject:image];
+//        ImageCaption *data = _imageCapArray[2];
+//        data.image = image;
+//    }
+//    else if (imageView.tag == 3) {
+//        _imageSelected3 = YES;
+//        UIImage *image = imageView.image;
+////        [_imageFileArray replaceObjectAtIndex:3 withObject:image];
+//        ImageCaption *data = _imageCapArray[3];
+//        data.image = image;
+//    }
+//    else if (imageView.tag == 4) {
+//        _imageSelected4 = YES;
+//        UIImage *image = imageView.image;
+////        [_imageFileArray replaceObjectAtIndex:4 withObject:image];
+//        ImageCaption *data = _imageCapArray[4];
+//        data.image = image;
+//    }
+//    else if (imageView.tag == 5) {
+//        _imageSelected5 = YES;
+//        UIImage *image = imageView.image;
+////        [_imageFileArray replaceObjectAtIndex:5 withObject:image];
+//        ImageCaption *data = _imageCapArray[5];
+//        data.image = image;
+//    }
+//    else if (imageView.tag == 6) {
+//        _imageSelected6 = YES;
+//        UIImage *image = imageView.image;
+////        [_imageFileArray replaceObjectAtIndex:6 withObject:image];
+//        ImageCaption *data = _imageCapArray[6];
+//        data.image = image;
+//    }
+//    else if (imageView.tag == 7) {
+//        _imageSelected7 = YES;
+//        UIImage *image = imageView.image;
+////        [_imageFileArray replaceObjectAtIndex:7 withObject:image];
+//        ImageCaption *data = _imageCapArray[7];
+//        data.image = image;
+//    }
     
 }
 @end

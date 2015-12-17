@@ -25,11 +25,11 @@ static NSMutableDictionary *Skill_Info;
 
 
 
-+ (UIViewController *)instantiateForInfo:(NSDictionary *)skillInfo
-{
-    Skill_Info = skillInfo.mutableCopy;
-    return [ViewControllerUtil instantiateViewController:@"selling_view_controller_2"];
-}
+//+ (UIViewController *)instantiateForInfo:(NSDictionary *)skillInfo
+//{
+//    Skill_Info = skillInfo.mutableCopy;
+//    return [ViewControllerUtil instantiateViewController:@"selling_view_controller_2"];
+//}
 
 
 
@@ -43,6 +43,7 @@ static NSMutableDictionary *Skill_Info;
     
     
     [_videoImageView setUserInteractionEnabled:YES];
+    
     
     UITapGestureRecognizer *tapVideo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(videoImageViewTapped:)];
     
@@ -58,7 +59,7 @@ static NSMutableDictionary *Skill_Info;
         center.x = self.view.center.x;
         _secondVideo.center = center;
         
-        
+        [_secondVideo setUserInteractionEnabled:YES];
         _secondVideo.image = [UIImage imageNamed:@"sell_upload_video"];
         [self.view addSubview:_secondVideo];
         
@@ -263,6 +264,7 @@ static NSMutableDictionary *Skill_Info;
     
     [SellingManager sharedSellingManager].videoImage = _videoImageView.image;
     [SellingManager sharedSellingManager].video = _videoData;
+    
     
     
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_table_view_controller"];

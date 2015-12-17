@@ -13,6 +13,7 @@
 #import "PaySucessViewController.h"
 #import "ViewControllerUtil.h"
 #import "UIView+RNActivityView.h"
+#import "ImageCaption.h"
 
 
 @interface PaySummaryViewController ()
@@ -54,6 +55,8 @@
     _promotion = [SellingManager sharedSellingManager].promotionStatus;
 //    NSLog(@"promotion or not ---- %d",promotion);
     
+        
+    
     if (_promotion)
     {
         _basicDuration = @"18mths";
@@ -73,7 +76,7 @@
     
     [WebDataInterface getSubscriptionPlan:1 completion:^(NSObject *obj, NSError *err)
     {
-        NSLog(@"subscription palan ==== %@",obj);
+//        NSLog(@"subscription palan ==== %@",obj);
         dispatch_async(dispatch_get_main_queue(), ^{
             
             CGFloat y = 0;
@@ -84,15 +87,15 @@
             NSDictionary *dict = (NSDictionary *)obj;
             NSArray *dictArray = dict[@"plans"];
             _subDict = dictArray[0];
-            NSLog(@"sub dict --- %@",_subDict);
+//            NSLog(@"sub dict --- %@",_subDict);
             _photoDict = dictArray[2];
             _videoDict = dictArray[3];
             _extendDict = dictArray[4];
             _extraDict = dictArray[1];
-            NSLog(@"photo dict --- %@",_photoDict);
-            NSLog(@"video dict --- %@",_videoDict);
-            NSLog(@"extend dict --- %@",_extendDict);
-            NSLog(@"extra dict --- %@",_extraDict);
+//            NSLog(@"photo dict --- %@",_photoDict);
+//            NSLog(@"video dict --- %@",_videoDict);
+//            NSLog(@"extend dict --- %@",_extendDict);
+//            NSLog(@"extra dict --- %@",_extraDict);
             
             [self.view hideActivityView];
             
@@ -368,36 +371,15 @@
 
 - (void)payBtnTapped:(UITapGestureRecognizer *)sender
 {
-//    BOOL photoStatus = [SellingManager sharedSellingManager].photoStatus;
-//    BOOL videoStatus = [SellingManager sharedSellingManager].videoStatus;
-//    BOOL videoExtendStatus = [SellingManager sharedSellingManager].videoExtendStatus;
-//    _promotion = [SellingManager sharedSellingManager].promotionStatus;
-    
-    //    NSLog(@"photo status -- %d",photoStatus);
-    //    NSLog(@"videoStatus --- %d ",videoStatus);
-    //    NSLog(@"videoExtendStatus --- %d ",videoExtendStatus);
-    //    NSLog(@"promotion --- %d ",_promotion);
-    //    NSLog(@"stkid --- %@ ",[LocalDataInterface retrieveStkid]);
-    //    NSLog(@"description --- %@ ",[SellingManager sharedSellingManager].skillDesc);
-    //    NSLog(@"catId --- %ld ",(long)[SellingManager sharedSellingManager].skillCategoryId);
-    //    NSLog(@"type --- %ld ",(long)[SellingManager sharedSellingManager].skillType);
-    //    NSLog(@"summary --- %@ ",[SellingManager sharedSellingManager].skillSummary);
-    //    NSLog(@"rateId --- %ld ",(long)rateId);
-    //    NSLog(@"price --- %ld ",(long)price);
 
     SellingManager *smg = [SellingManager sharedSellingManager];
+    
+    NSLog(@"selling manage -- %@",smg);
+    
     NSString *stkid = [LocalDataInterface retrieveStkid];
     NSInteger skillId = 0;
-//    NSString *name = [SellingManager sharedSellingManager].skillName;
-//    NSString *description = [SellingManager sharedSellingManager].skillDesc;
-//    NSInteger catId = [SellingManager sharedSellingManager].skillCategoryId;
-//    NSInteger type = [SellingManager sharedSellingManager].skillType;
-//    NSString *summary = [SellingManager sharedSellingManager].skillSummary;
-//    NSDecimalNumber *price = [SellingManager sharedSellingManager].skillPrice;
     NSString *rateIdString = [SellingManager sharedSellingManager].skillRate;
     NSInteger rateId = [rateIdString integerValue];
-    
-
     
     NSString *subMonthString = _subDict[@"duration"];
     NSString *subPriceString = _subDict[@"price"];
@@ -406,7 +388,7 @@
     NSDecimalNumber *subPriceNumber = [NSDecimalNumber decimalNumberWithString:subPriceString];
     NSDecimalNumber *subTotal = [subPriceNumber decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithString:@"12"]];
     
-    NSLog(@"sub total -- %@",subTotal);
+//    NSLog(@"sub total -- %@",subTotal);
     NSDecimalNumber *zero = [[NSDecimalNumber alloc] initWithFloat:0.0];
     
     if (_photoStatus || _videoStatus || _videoExtendStatus || _promotion)
@@ -430,6 +412,10 @@
     {
         [self.view showActivityViewWithLabel:@"Uploading"];
         
+        NSArray *photoArray = smg.photoCaption;
+        
+        
+        
         [WebDataInterface createUpdateSubPlan:stkid skillId:skillId name:smg.skillName description:smg.skillDesc catId:smg.skillCategoryId type:smg.skillType summary:smg.skillSummary price:smg.skillPrice rateId:rateId subId1:0 subMonth:subMonthInt subPrice:subPriceNumber subTotal:subTotal subType:1 status1:1 subId3:0 photoMonth:0 photoPrice:zero photoTotal:zero photoType:0 status3:0 subId4:0 videoMonth:0 videoPrice:zero videoTotal:zero videoType:0 status4:0 subId5:0 extendMonth:0 extendPrice:zero extendTotal:zero extendType:0 status5:0 subId2:0 extraMonth:0 extraPrice:zero extraTotal:zero extraType:0 status2:0 completion:^(NSObject *obj, NSError *err)
         {
             
@@ -443,21 +429,38 @@
             {
                 
                 NSInteger skillid = [createDict[@"skillId"] integerValue];
-                [WebDataInterface updateSubSkillStatus:skillid duration:subMonthInt completion:^(NSObject *objS, NSError *errS) {
+                [WebDataInterface updateSubSkillStatus:skillid duration:subMonthInt completion:^(NSObject *objS, NSError *errS)
+                {
                     
-                    NSLog(@"obj skill ---- %@ ",objS);
-                    NSLog(@"err skill --- %@",errS);
+                    NSLog(@"obj skill S ---- %@ ",objS);
+                    NSLog(@"err skill  S--- %@",errS);
                     
                     NSDictionary *dictS = (NSDictionary *)objS;
                     
                     if (dictS && [dictS[@"status"] isEqualToString:@"success"])
                     {
+                        
+                        
+                        for (int i =0; i < photoArray.count; i++) {
+                            ImageCaption *ic = photoArray[i];
+                            NSLog(@"image 77777--- %@",ic.image);
+                            NSLog(@"caption 77777--- %@",ic.caption);
+                            
+                            if (ic.image != nil) {
+                                
+                                NSLog(@"upload image !!!!!!!!!");
+                                
+                                [WebDataInterface skillImageUpload:ic.image stikyid:stkid skillId:skillid type:1 editFlage:NO photoId:0 caption:ic.caption];
+                                
+                            }
+                            
+                        }
+                        
+                        
+                        
                         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_sucess_view_controller"];
                         [self.navigationController pushViewController:vc animated:YES];
-                        
-                        
-//                        [WebDataInterface skillImageUpload:smg.photoArray stikyid:stkid skillId:skillid type:1 editFlage:NO photoId:0 caption:<#(NSString *)#>];
-                        
+
                     }
                     
                 }];
@@ -465,26 +468,13 @@
                 
             }
 
-            
-            
-            
-            
+            [smg clearCurrentSelling];
             [self.view hideActivityView];
             
-//            [self dismissViewControllerAnimated:YES completion:^{
-
-            
-            
-                
-//            }];
             
         }];
-    
-        
         
     }
-    
-    
     
     
 }
@@ -495,14 +485,6 @@
 {
     
     [self uploadDataToServer];
-    
-//    
-//    PaySucessViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"pay_sucess_view_controller"];
-//    
-//    [self.navigationController presentViewController:controller animated:YES completion:nil];
-    
-//    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_sucess_view_controller"];
-//    [self.navigationController pushViewController:vc animated:YES];
     
     
 }
@@ -518,7 +500,7 @@
 {
     [self.view showActivityViewWithLabel:@"Uploading..."];
     
-    
+
     NSString *stkid = [LocalDataInterface retrieveStkid];
     NSInteger skillId = 0;
     NSString *rateIdString = [SellingManager sharedSellingManager].skillRate;
@@ -599,6 +581,7 @@
     }
     
     
+    
     [WebDataInterface createUpdateSubPlan:stkid skillId:skillId name:smg.skillName description:smg.skillDesc catId:smg.skillCategoryId type:smg.skillType summary:smg.skillSummary price:smg.skillPrice rateId:rateId subId1:subId1 subMonth:subMonthInt subPrice:subPriceNumber subTotal:subTotal subType:1 status1:1 subId3:subId3 photoMonth:photoMonth photoPrice:photoPrice photoTotal:photoTotal photoType:photoType status3:status3 subId4:subId4 videoMonth:videoMonth videoPrice:videoPrice videoTotal:videoTotal videoType:videoType status4:status4 subId5:subId5 extendMonth:extendMonth extendPrice:extendPrice extendTotal:extendTotal extendType:extendType status5:status5 subId2:subId2 extraMonth:extraMonth extraPrice:extraPrice extraTotal:extraTotal extraType:extraType status2:status2 completion:^(NSObject *obj, NSError *err) {
         
         
@@ -613,14 +596,30 @@
                 
                 NSLog(@"obj skill ---- %@ ",objS);
                 NSLog(@"err skill --- %@",errS);
+                NSDictionary *dictS = (NSDictionary *)objS;
                 
+                if (dictS && [dictS[@"status"] isEqualToString:@"success"])
+                {
+                
+                    for (int i =0; i < smg.photoCaption.count; i++) {
+                        ImageCaption *ic = smg.photoCaption[i];
+                        if (ic.image != nil) {
+                        
+                            [WebDataInterface skillImageUpload:ic.image stikyid:stkid skillId:skillid type:1 editFlage:NO photoId:0 caption:ic.caption];
+                        
+                        }
+                    
+                    }
+                    
+                }
+
             }];
             
             
         }
         
         
-        
+        [smg clearCurrentSelling];
         
         [self.view hideActivityView];
         
@@ -634,12 +633,7 @@
         }];
 
         
-        
-        
     }];
-    
-    
-    
     
     
 }
