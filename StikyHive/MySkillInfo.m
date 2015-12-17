@@ -51,7 +51,9 @@
     if(self = [super init]){
         
         _subId = [dic objectForKey:@"subId"];
-        _status = [[dic objectForKey:@"status"] integerValue];
+        
+        if(![[dic objectForKey:@"status"] isEqual:[NSNull null]])
+            _status = [[dic objectForKey:@"status"] integerValue];
         
         if(![[dic objectForKey:@"price"] isEqual:[NSNull null]]){
             
@@ -92,10 +94,16 @@
         }
         
         _stkId = [dic objectForKey:@"stkid"];
-        _catId = [[dic  objectForKey:@"catId"] integerValue];
+        
+        if(![[dic objectForKey:@"catId"] isEqual:[NSNull null]])
+            _catId = [[dic  objectForKey:@"catId"] integerValue];
+        
         _name = [dic objectForKey:@"name"];
         _skillDesc = [dic objectForKey:@"skillDesc"];
-        _type = [[dic objectForKey:@"type"] integerValue];
+        
+        if(![[dic objectForKey:@"type"] isEqual:[NSNull null]])
+            _type = [[dic objectForKey:@"type"] integerValue];
+        
         _firstname = [dic objectForKey:@"firstname"];
         _lastname = [dic objectForKey:@"lastname"];
         _profilePicture = [dic objectForKey:@"profilePicture"];
@@ -107,16 +115,22 @@
             _ratename = [dic objectForKey:@"ratename"];
         }
         
-        _likeCount = [[dic objectForKey:@"likeCount"] integerValue];
-        _reviewCount = [[dic objectForKey:@"reviewCount"] integerValue];
+        if(![[dic objectForKey:@"likeCount"] isEqual:[NSNull null]])
+            _likeCount = [[dic objectForKey:@"likeCount"] integerValue];
+        
+        if(![[dic objectForKey:@"reviewCount"] isEqual:[NSNull null]])
+            _reviewCount = [[dic objectForKey:@"reviewCount"] integerValue];
         
         if(![[dic objectForKey:@"rating"] isEqual:[NSNull null]]){
             
             _rating = [[dic objectForKey:@"rating"] integerValue];
         }
         
-        _likeId = [[dic objectForKey:@"likeId"] integerValue];
-        _countOfLikeId = [[dic objectForKey:@"countOfLikeId"] integerValue];
+        if(![[dic objectForKey:@"likeId"] isEqual:[NSNull null]])
+            _likeId = [[dic objectForKey:@"likeId"] integerValue];
+        
+        if(![[dic objectForKey:@"countOfLikeId"] isEqual:[NSNull null]])
+            _countOfLikeId = [[dic objectForKey:@"countOfLikeId"] integerValue];
     }
     
     return self;

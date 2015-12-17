@@ -21,6 +21,7 @@
 @implementation MySkillViewController{
     
     NSMutableArray *_mySkillInfos;
+    NSDateFormatter *_dataFormatter;
 }
 
 @synthesize tableView = _tableView;
@@ -28,6 +29,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _dataFormatter = [[NSDateFormatter alloc] init];
+    [_dataFormatter setDateFormat:@"dd MMM yyyy"];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self pullData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +50,7 @@
 - (void)pullData{
     
     [self.view showActivityViewWithLabel:@"Refreshing..." detailLabel:@"Fetching data"];
-    [WebDataInterface :[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *error){
+    [WebDataInterface getSellAllMy:0 catId:0 stkid:[LocalDataInterface retrieveStkid] flagMy:YES actionMaker:[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *error){
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -54,20 +65,20 @@
                 
                 NSDictionary *dic = (NSDictionary *)obj;
                 
-                if(((NSArray *)dic[@"bought"]).count <=0){
+                if(((NSArray *)dic[@"result"]).count <=0){
                     
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No result" message:@"No bought information!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No result" message:@"No skill information!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alert show];
                     
                 }
                 else{
                     
-                    _boughtInfos = [[NSMutableArray alloc] init];
+                    _mySkillInfos = [[NSMutableArray alloc] init];
                     
-                    for(NSDictionary *data in dic[@"bought"]){
+                    for(NSDictionary *data in dic[@"result"]){
                         
-                        BoughtInfo *info = [BoughtInfo createBoughtInfoFromDictionary:data];
-                        [_boughtInfos addObject:info];
+                        MySkillInfo *info = [MySkillInfo createMySkillInfoFromDictionary:data];
+                        [_mySkillInfos addObject:info];
                     }
                     
                     [_tableView reloadData];
@@ -100,12 +111,33 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
+    if(_mySkillInfos != nil){
+    
+        return _mySkillInfos.count;
+    }
+    
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return nil;
+    static NSString *cellId = @"MySkillCell";
+    
+    MySkillCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    
+    if(cell == nil){
+        
+        cell = [[MySkillCell alloc] init];
+    }
+    
+    MySkillInfo *info = [_mySkillInfos objectAtIndex:indexPath.row];
+    
+    cell.titleLabel.text = info.name;
+    cell.issueDateLabel.text = [_dataFormatter stringFromDate:info.issueDate];
+    cell.expiredDateLabel.text = [_dataFormatter stringFromDate:info.expiredDate];
+    cell.delegate = self;
+    
+    return cell;
 }
 
 #pragma mark - MySkillCell delegate
