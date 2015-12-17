@@ -232,8 +232,6 @@
     if (_imageSelected0)
     {
     
-        
-        
 //        [SellingManager sharedSellingManager].photoArray = [_imageFileArray mutableCopy];
         [SellingManager sharedSellingManager].photoCaption = [_imageCapArray mutableCopy];
 //        NSLog(@"photo caption array ---- %@",[SellingManager sharedSellingManager].photoCaption);
@@ -243,7 +241,7 @@
 //        NSString *caption = imageca.caption;
 //        NSLog(@"caption array --- %@",imagearray);
 //        NSLog(@"caption ---------- 456 %@",caption);
-
+        
         
     
         NSLog(@"selling manager array --- %@",[SellingManager sharedSellingManager].photoCaption);
@@ -273,78 +271,11 @@
 - (void)onImageCropSuccessfulWithImageView:(UIImageView *)imageView
 {
     
-//   UITableViewCell *cell = [_sellTableView cellForRowAtIndexPath:[NSIndexPath indexPathWithIndex:_tmpIndex]];
-//    
-//    cell.imageView.image = imageView.image;
-    
     ImageCaption *data = _imageCapArray[_tmpIndex];
     data.image = imageView.image;
     
     _imageSelected0 = YES;
     
-//    if (imageView.tag == 0) {
-//        _imageSelected0 = YES;
-//        UIImage *image = imageView.image;
-////        [_imageFileArray replaceObjectAtIndex:0 withObject:image];
-//        
-//        
-//        ImageCaption *data = _imageCapArray[0];
-//        data.image = image;
-//
-////        UITextField *textfield = (UITextField *)[_sellTableView viewWithTag:0];
-////        ImageCaption *imcp = [[ImageCaption alloc] initWithImage:imageView.image caption:textfield.text];
-////        [_addArray addObject:imcp];
-//        
-//    }
-//    else if (imageView.tag == 1) {
-//        _imageSelected1 = YES;
-//        UIImage *image = imageView.image;
-////        [_imageFileArray replaceObjectAtIndex:1 withObject:image];
-//        ImageCaption *data = _imageCapArray[1];
-//        data.image = image;
-//    }
-//    else if (imageView.tag == 2) {
-//        _imageSelected2 = YES;
-//        UIImage *image = imageView.image;
-////        [_imageFileArray replaceObjectAtIndex:2 withObject:image];
-//        ImageCaption *data = _imageCapArray[2];
-//        data.image = image;
-//    }
-//    else if (imageView.tag == 3) {
-//        _imageSelected3 = YES;
-//        UIImage *image = imageView.image;
-////        [_imageFileArray replaceObjectAtIndex:3 withObject:image];
-//        ImageCaption *data = _imageCapArray[3];
-//        data.image = image;
-//    }
-//    else if (imageView.tag == 4) {
-//        _imageSelected4 = YES;
-//        UIImage *image = imageView.image;
-////        [_imageFileArray replaceObjectAtIndex:4 withObject:image];
-//        ImageCaption *data = _imageCapArray[4];
-//        data.image = image;
-//    }
-//    else if (imageView.tag == 5) {
-//        _imageSelected5 = YES;
-//        UIImage *image = imageView.image;
-////        [_imageFileArray replaceObjectAtIndex:5 withObject:image];
-//        ImageCaption *data = _imageCapArray[5];
-//        data.image = image;
-//    }
-//    else if (imageView.tag == 6) {
-//        _imageSelected6 = YES;
-//        UIImage *image = imageView.image;
-////        [_imageFileArray replaceObjectAtIndex:6 withObject:image];
-//        ImageCaption *data = _imageCapArray[6];
-//        data.image = image;
-//    }
-//    else if (imageView.tag == 7) {
-//        _imageSelected7 = YES;
-//        UIImage *image = imageView.image;
-////        [_imageFileArray replaceObjectAtIndex:7 withObject:image];
-//        ImageCaption *data = _imageCapArray[7];
-//        data.image = image;
-//    }
     
 }
 @end

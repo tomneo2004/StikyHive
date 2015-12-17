@@ -15,6 +15,7 @@
 #import "PostCommViewController.h"
 #import "SellerRevViewController.h"
 #import "LocalDataInterface.h"
+#import "UIView+RNActivityView.h"
 
 @interface SkillPageViewController ()
 
@@ -103,6 +104,8 @@
     NSString *stkid = [LocalDataInterface retrieveStkid];
     NSLog(@"stk id --- skill page ---- %@",stkid);
     
+    [self.view showActivityViewWithLabel:@"Loading..."];
+    
     [WebDataInterface getSkillById:_Skill_ID stkid:stkid completion:^(NSObject *obj, NSError *err)
     {
         _skillDict = (NSDictionary *)obj;
@@ -137,6 +140,8 @@
         _reviewArray = _commDict[@"reviews"];
         
     }];
+    
+    [self.view hideActivityView];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)awebView

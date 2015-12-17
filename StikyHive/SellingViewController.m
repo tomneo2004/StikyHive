@@ -12,6 +12,8 @@
 #import "ViewControllerUtil.h"
 #import "SellingViewController2.h"
 #import "SellingManager.h"
+#import "UIView+RNActivityView.h"
+
 
 @interface SellingViewController ()
 
@@ -64,6 +66,8 @@
     _skillType = 1;
     
     
+    [self.view showActivityViewWithLabel:@"Loading..."];
+    
     NSInteger status = 1;
     [WebDataInterface getCategory:status completion:^(NSObject *obj, NSError *err) {
         
@@ -99,6 +103,8 @@
                 
 
                 [self displayPage];
+                
+                [self.view hideActivityView];
             
             });
         
