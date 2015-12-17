@@ -19,13 +19,6 @@
 //@property (nonatomic, assign) NSInteger tmpIndex;
 
 @property (nonatomic, assign) BOOL imageSelected0;
-@property (nonatomic, assign) BOOL imageSelected1;
-@property (nonatomic, assign) BOOL imageSelected2;
-@property (nonatomic, assign) BOOL imageSelected3;
-@property (nonatomic, assign) BOOL imageSelected4;
-@property (nonatomic, assign) BOOL imageSelected5;
-@property (nonatomic, assign) BOOL imageSelected6;
-@property (nonatomic, assign) BOOL imageSelected7;
 
 @property (nonatomic, strong) NSArray *skillImageViews;
 
@@ -47,7 +40,6 @@
     
 //    _imageFileArray = [[NSMutableArray alloc] init];
     
-   
     
    SellingManager *smg = [SellingManager sharedSellingManager];
     
@@ -56,15 +48,14 @@
     
     if (!smg.photoStatus) {
         [self setDefaultImageCount:4];
-        _numberOfRows = 4;
+//        _numberOfRows = 4;
     }
     else
     {
         [self setDefaultImageCount:8];
-        _numberOfRows = 8;
+//        _numberOfRows = 8;
+        _imageSelected0 = YES;
     }
-    
-    
     
     
     NSLog(@"image caption array ----- %@",_imageCapArray);
@@ -85,7 +76,7 @@
     
 //    _numberOfRows = 4;
     
-    _addArray = [[NSMutableArray alloc] init];
+//    _addArray = [[NSMutableArray alloc] init];
 //    _imageFileArray = [smg.photoArray mutableCopy];
 //    NSLog(@"4 image file array --- %@",_imageFileArray);
 //    if (smg.videoStatus) {
@@ -110,8 +101,6 @@
     _sellTableView.delegate = self;
     _sellTableView.dataSource = self;
     
-    _imageDict = [[NSMutableDictionary alloc] init];
-    NSLog(@"crop dicr ---- %@",_imageDict);
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived:)];
     [tapGestureRecognizer setDelegate:self];
@@ -140,14 +129,16 @@
     if (_imageCapArray.count < number) {
         NSInteger amountAdd = number - _imageCapArray.count;
         
-        for (int i = 0; i < amountAdd; i++) {
+        for (int i = 0; i < amountAdd; i++)
+        {
             ImageCaption *ic = [[ImageCaption alloc] init];
             [_imageCapArray addObject:ic];
         }
     }
     else if (_imageCapArray.count > number)
     {
-        while (_imageCapArray.count > number) {
+        while (_imageCapArray.count > number)
+        {
             [_imageCapArray removeLastObject];
         }
     }
@@ -180,10 +171,6 @@
     cell.delegate = self;
     cell.photoImageView.userInteractionEnabled = YES;
     
-//    [cell displayDefaultImage:@"sell_upload_photo"];
-    cell.photoImageView.tag = indexPath.row;
-//    cell.captionTextField.tag = indexPath.row;
-    
     
     ImageCaption *imageCaption = _imageCapArray[indexPath.row];
     UIImage *ifImage = imageCaption.image;
@@ -191,17 +178,12 @@
         cell.photoImageView.image = ifImage;
         cell.captionTextField.text = imageCaption.caption;
     }
-    
-    
-//    if (_imageFileArray[indexPath.row] != [NSNull null])
-//    {
-//        cell.photoImageView.image = _imageFileArray[indexPath.row];
-//        NSLog(@"image copy ---  %ld",(long)indexPath.row);
-//    }
 //    else
 //    {
-//        NSLog(@"no image --- %ld",(long)indexPath.row);
+//        cell.photoImageView.image = [UIImage imageNamed:@"sell_upload_photo"];
+//        cell.captionTextField.text = @"";
 //    }
+    
     
     return cell;
 }
@@ -227,7 +209,7 @@
 
 - (IBAction)nextBtnPressed:(id)sender
 {
-    NSMutableArray *checkArray = [[NSMutableArray alloc] init];
+//    NSMutableArray *checkArray = [[NSMutableArray alloc] init];
 //    NSMutableArray *imagecaptionArray = [[NSMutableArray alloc] init];
     
 //    for (int i = 0; i < _imageFileArray.count; i++) {
@@ -247,13 +229,13 @@
 //        }
 //    }
     
-//    if (checkArray.count > 0)
-//    {
+    if (_imageSelected0)
+    {
     
         
         
 //        [SellingManager sharedSellingManager].photoArray = [_imageFileArray mutableCopy];
-//        [SellingManager sharedSellingManager].photoCaption = [_imageCapArray mutableCopy];
+        [SellingManager sharedSellingManager].photoCaption = [_imageCapArray mutableCopy];
 //        NSLog(@"photo caption array ---- %@",[SellingManager sharedSellingManager].photoCaption);
 //        
 //        NSArray *imagearray = [SellingManager sharedSellingManager].photoCaption;
@@ -265,17 +247,25 @@
         
     
         NSLog(@"selling manager array --- %@",[SellingManager sharedSellingManager].photoCaption);
+        SellingManager *smg = [SellingManager sharedSellingManager];
+        for (int i = 0; i < smg.photoCaption.count; i++)
+        {
+            ImageCaption *ic = smg.photoCaption[i];
+            NSLog(@"image --- %@",ic.image);
+            NSLog(@"caption --= %@",ic.caption);
+        }
+        
         
     
         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_4"];
         [self.navigationController pushViewController:vc animated:YES];
         
         
-//    }
-//    else
-//    {
-//        [ViewControllerUtil showAlertWithTitle:@"" andMessage:@"Please upload at least one photo"];
-//    }
+    }
+    else
+    {
+        [ViewControllerUtil showAlertWithTitle:@"" andMessage:@"Please upload at least one photo"];
+    }
 
 }
 
@@ -287,12 +277,10 @@
 //    
 //    cell.imageView.image = imageView.image;
     
-    
-    
-    
     ImageCaption *data = _imageCapArray[_tmpIndex];
     data.image = imageView.image;
     
+    _imageSelected0 = YES;
     
 //    if (imageView.tag == 0) {
 //        _imageSelected0 = YES;

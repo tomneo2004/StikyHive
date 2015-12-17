@@ -32,7 +32,12 @@
     BOOL _profileTap;
     
     UIImage *_videoImage;
+    
     NSData *_video;
+    NSData *_thumbnail;
+    
+    NSData *_video2;
+    NSData *_thumbnail2;
     
     
     BOOL _promotionStatus;
@@ -122,6 +127,23 @@ static SellingManager *_instance;
     _video = video;
 }
 
+- (void)setThumbnail:(NSData *)thumbnail
+{
+    _thumbnail = thumbnail;
+}
+
+- (void)setVideo2:(NSData *)video2
+{
+    _video2 = video2;
+}
+
+- (void)setThumbnail2:(NSData *)thumbnail2
+{
+    _thumbnail2 = thumbnail2;
+}
+
+
+
 - (void)setPromotionStatus:(BOOL)promotionStatus
 {
     _promotionStatus = promotionStatus;
@@ -199,6 +221,21 @@ static SellingManager *_instance;
     return _video;
 }
 
+- (NSData *)getVideo2
+{
+    return _video2;
+}
+
+- (NSData *)getThumbnail
+{
+    return _thumbnail;
+}
+
+- (NSData *)getThumbnail2
+{
+    return _thumbnail2;
+}
+
 - (BOOL)getPromotionStatus
 {
     return _promotionStatus;
@@ -222,6 +259,34 @@ static SellingManager *_instance;
 {
     _photoArray = nil;
     _photoStatus = nil;
+    
+
+    
+    _photoCaption = nil;
+    
+    _photoStatus = nil;
+    _videoStatus = nil;
+    _videoExtendStatus = nil;
+    
+    _skillName = nil;
+    _skillCategoryId = nil;
+    _skillSummary = nil;
+    _skillDesc = nil;
+    _skillPrice = nil;
+    _skillRate = nil;
+    _skillType = nil;
+    
+    _profileTap = nil;
+    
+    _videoImage = nil;
+    _video = nil;
+    _video2 = nil;
+    
+    _thumbnail = nil;
+    _thumbnail2 = nil;
+    
+    _promotionStatus = nil;
+
     
 }
 

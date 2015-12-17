@@ -39,7 +39,7 @@
 - (IBAction)nextButton:(id)sender;
 
 
-+ (UIViewController *)instantiateForInfo:(NSDictionary *)skillInfo;
+//+ (UIViewController *)instantiateForInfo:(NSDictionary *)skillInfo;
 
 
 @end

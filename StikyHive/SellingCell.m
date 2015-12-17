@@ -58,7 +58,8 @@
 {
     [super layoutSubviews];
     
-    if (!_isInit) {
+    if (!_isInit)
+    {
         
         for (UIGestureRecognizer *g in self.photoImageView.gestureRecognizers) {
             [self.photoImageView removeGestureRecognizer:g];
@@ -76,13 +77,16 @@
         
     }
     
-    
 }
 
 #pragma mark - override
 - (void)prepareForReuse
 {
     _delegate = nil;
+    
+    _photoImageView.image = [UIImage imageNamed:@"sell_upload_photo"];
+    
+    _captionTextField.text = nil;
     
 }
 
