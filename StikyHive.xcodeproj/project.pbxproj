@@ -389,12 +389,17 @@
 		CE02CED31C17FD2400B58819 /* PostReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE02CED21C17FD2400B58819 /* PostReviewViewController.m */; };
 		CE0461C21C058E3A00254EBB /* PrepareRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */; };
 		CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */; };
+		CE0519051C23B41D004519E6 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0519041C23B41D004519E6 /* CommentsViewController.m */; };
+		CE0519081C23B435004519E6 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0519071C23B435004519E6 /* ReviewsViewController.m */; };
+		CE05190B1C23BA8D004519E6 /* CommentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE05190A1C23BA8D004519E6 /* CommentInfo.m */; };
 		CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */; };
 		CE1375D01C084FAA00201989 /* PaymentSuccessfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */; };
 		CE24E7FC1C196E960021F078 /* UpdateProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24E7FB1C196E960021F078 /* UpdateProfileViewController.m */; };
 		CE24E7FF1C196EB40021F078 /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24E7FE1C196EB40021F078 /* EditProfileTableViewController.m */; };
 		CE24E8021C1970000021F078 /* CountryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24E8011C1970000021F078 /* CountryInfo.m */; };
 		CE3EFDED1C0EC5AA00281FC6 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */; };
+		CE51A3B01C23FF9500652B90 /* AllCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */; };
+		CE51A3B31C2403FE00652B90 /* ReviewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51A3B21C2403FE00652B90 /* ReviewInfo.m */; };
 		CE68DA8B1C0D9AE0000CB49F /* SavedDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */; };
 		CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8D1C0D9E8D000CB49F /* DocumentTableViewCell.m */; };
 		CE68DA911C0DA0F6000CB49F /* DocumentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */; };
@@ -1012,6 +1017,12 @@
 		CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestViewController.m; sourceTree = "<group>"; };
 		CE0461C31C05ADFD00254EBB /* PrepareRequestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRequestTableViewController.h; sourceTree = "<group>"; };
 		CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestTableViewController.m; sourceTree = "<group>"; };
+		CE0519031C23B41D004519E6 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		CE0519041C23B41D004519E6 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		CE0519061C23B435004519E6 /* ReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewsViewController.h; sourceTree = "<group>"; };
+		CE0519071C23B435004519E6 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
+		CE0519091C23BA8D004519E6 /* CommentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInfo.h; sourceTree = "<group>"; };
+		CE05190A1C23BA8D004519E6 /* CommentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentInfo.m; sourceTree = "<group>"; };
 		CE1375C81C083E1F00201989 /* PaymentSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSummaryViewController.h; sourceTree = "<group>"; };
 		CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryViewController.m; sourceTree = "<group>"; };
 		CE1375CE1C084FAA00201989 /* PaymentSuccessfulViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSuccessfulViewController.h; sourceTree = "<group>"; };
@@ -1024,6 +1035,10 @@
 		CE24E8011C1970000021F078 /* CountryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryInfo.m; sourceTree = "<group>"; };
 		CE3EFDEB1C0EC5AA00281FC6 /* PDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewController.h; sourceTree = "<group>"; };
 		CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFViewController.m; sourceTree = "<group>"; };
+		CE51A3AE1C23FF9500652B90 /* AllCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCommentViewController.h; sourceTree = "<group>"; };
+		CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCommentViewController.m; sourceTree = "<group>"; };
+		CE51A3B11C2403FE00652B90 /* ReviewInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewInfo.h; sourceTree = "<group>"; };
+		CE51A3B21C2403FE00652B90 /* ReviewInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewInfo.m; sourceTree = "<group>"; };
 		CE68DA891C0D9AE0000CB49F /* SavedDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedDocumentsViewController.h; sourceTree = "<group>"; };
 		CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedDocumentsViewController.m; sourceTree = "<group>"; };
 		CE68DA8C1C0D9E8D000CB49F /* DocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentTableViewCell.h; sourceTree = "<group>"; };
@@ -1367,6 +1382,7 @@
 		674D0D891B7D913400B5B80D = {
 			isa = PBXGroup;
 			children = (
+				674D0DBE1B7D916200B5B80D /* QuartzCore.framework */,
 				5167182C1C1A799E003E9902 /* ZZSSource */,
 				676F77BA1B96F3060084988A /* TOCropViewController */,
 				674D104F1B7DCB5B00B5B80D /* Fonds */,
@@ -1375,7 +1391,6 @@
 				674D0F2D1B7D9A5200B5B80D /* JSQSystemSoundPlayer */,
 				674D0DFB1B7D920E00B5B80D /* images */,
 				674D0DC01B7D91FC00B5B80D /* icons */,
-				674D0DBE1B7D916200B5B80D /* QuartzCore.framework */,
 				674D0D941B7D913400B5B80D /* StikyHive */,
 				674D0DB11B7D913400B5B80D /* StikyHiveTests */,
 				674D0D931B7D913400B5B80D /* Products */,
@@ -2207,6 +2222,16 @@
 			children = (
 				CED3C8811C22946D0090DE35 /* SkillViewTableViewController.h */,
 				CED3C8821C22946D0090DE35 /* SkillViewTableViewController.m */,
+				CE0519031C23B41D004519E6 /* CommentsViewController.h */,
+				CE0519041C23B41D004519E6 /* CommentsViewController.m */,
+				CE0519061C23B435004519E6 /* ReviewsViewController.h */,
+				CE0519071C23B435004519E6 /* ReviewsViewController.m */,
+				CE0519091C23BA8D004519E6 /* CommentInfo.h */,
+				CE05190A1C23BA8D004519E6 /* CommentInfo.m */,
+				CE51A3B11C2403FE00652B90 /* ReviewInfo.h */,
+				CE51A3B21C2403FE00652B90 /* ReviewInfo.m */,
+				CE51A3AE1C23FF9500652B90 /* AllCommentViewController.h */,
+				CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */,
 			);
 			name = SkillView;
 			sourceTree = "<group>";
@@ -2924,6 +2949,7 @@
 				674D0F481B7D9A5200B5B80D /* JSQMessagesBubbleImage.m in Sources */,
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
 				CEFD19581C040F3D00A79158 /* SearchResultCell.m in Sources */,
+				CE51A3B31C2403FE00652B90 /* ReviewInfo.m in Sources */,
 				674D0F341B7D9A5200B5B80D /* NSString+JSQMessages.m in Sources */,
 				674D0F771B7D9F2200B5B80D /* HtmlEditor.m in Sources */,
 				516718E71C1A799E003E9902 /* ZSSBarButtonItem.m in Sources */,
@@ -2961,6 +2987,7 @@
 				CED3C8831C22946D0090DE35 /* SkillViewTableViewController.m in Sources */,
 				674D104C1B7DB79A00B5B80D /* HomeViewController.m in Sources */,
 				676600E51BA1325A003A84D8 /* ResetPassViewController.m in Sources */,
+				CE05190B1C23BA8D004519E6 /* CommentInfo.m in Sources */,
 				CEF7BAAB1BFB2704009624CC /* RequestPostTableViewController.m in Sources */,
 				516718E31C1A799E003E9902 /* HRColorCursor.m in Sources */,
 				516F7EB21C17DF69005FEF8A /* PaySucessViewController.m in Sources */,
@@ -2979,8 +3006,10 @@
 				CEF7BAA71BFB0FAD009624CC /* AttachmentViewController.m in Sources */,
 				674D0F741B7D9ED800B5B80D /* EntryViewController.m in Sources */,
 				CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */,
+				CE51A3B01C23FF9500652B90 /* AllCommentViewController.m in Sources */,
 				517325621C02B3B7004655D6 /* SellingViewController2.m in Sources */,
 				676F77EE1B96F5600084988A /* UserInfoEditorViewController.m in Sources */,
+				CE0519051C23B41D004519E6 /* CommentsViewController.m in Sources */,
 				CE3EFDED1C0EC5AA00281FC6 /* PDFViewController.m in Sources */,
 				674D0EC81B7D999200B5B80D /* LocalDataInterface.m in Sources */,
 				516718E91C1A799E003E9902 /* ZSSRichTextEditor.m in Sources */,
@@ -2989,6 +3018,7 @@
 				CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */,
 				676F77E11B96F3060084988A /* TOCroppedImageAttributes.m in Sources */,
 				CEF464041BF9B50300010D21 /* MyRequestCell.m in Sources */,
+				CE0519081C23B435004519E6 /* ReviewsViewController.m in Sources */,
 				CEF7BAA21BFADD6E009624CC /* RNActivityView.m in Sources */,
 				CEF7BAA31BFADD6E009624CC /* UIView+RNActivityView.m in Sources */,
 				CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */,

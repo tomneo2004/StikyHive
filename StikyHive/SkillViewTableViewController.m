@@ -10,6 +10,8 @@
 #import "UIView+RNActivityView.h"
 #import "WebDataInterface.h"
 #import "LocalDataInterface.h"
+#import "CommentInfo.h"
+#import "ReviewInfo.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface SkillViewTableViewController ()
@@ -20,6 +22,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *likeImageView;
 @property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *viewCountLabel;
+@property (weak, nonatomic) IBOutlet UIWebView *overviewWebView;
+@property (weak, nonatomic) IBOutlet UIWebView *descWebView;
+@property (weak, nonatomic) IBOutlet UIView *commentContainer;
+@property (weak, nonatomic) IBOutlet UIView *reviewContainer;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
 
 
 @end
@@ -32,6 +39,8 @@
     NSInteger _likeCount;
     NSInteger _likeId;
     BOOL _liked;
+    NSMutableArray *_comments;
+    NSMutableArray *_reviews;
 }
 
 @synthesize skillId = _skillId;
@@ -41,6 +50,11 @@
 @synthesize likeImageView = _likeImageView;
 @synthesize likeCountLabel = _likeCountLabel;
 @synthesize viewCountLabel = _viewCountLabel;
+@synthesize overviewWebView = _overviewWebView;
+@synthesize descWebView = _descWebView;
+@synthesize commentContainer = _commentContainer;
+@synthesize reviewContainer = _reviewContainer;
+@synthesize segControl = _segControl;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,6 +64,12 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [_segControl addTarget:self action:@selector(onSegmentChangeValue:) forControlEvents:UIControlEventValueChanged];
+    [_segControl setSelectedSegmentIndex:0];
+    _reviewContainer.hidden = YES;
+    _commentContainer.hidden = NO;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -90,6 +110,21 @@
 }
 
 #pragma mark - internal
+- (void)onSegmentChangeValue:(UISegmentedControl *)control{
+    
+    if((control.selectedSegmentIndex | 0) == 0){
+        
+        _commentContainer.hidden = NO;
+        _reviewContainer.hidden = YES;
+    }
+    else if((control.selectedSegmentIndex | 0) == 1){
+        
+        _reviewContainer.hidden = NO;
+        _commentContainer.hidden= YES;
+    }
+    
+}
+
 - (void)onLikeTap:(UIGestureRecognizer *)recognizer{
 
     [self.view showActivityViewWithLabel:@"Updating..."];
@@ -154,6 +189,19 @@
     }
 }
 
+- (id)findViewControllerByClass:(Class)controllerClass{
+    
+    for(UIViewController *c in self.childViewControllers){
+        
+        if([c isKindOfClass:controllerClass]){
+            
+            return c;
+        }
+    }
+    
+    return nil;
+}
+
 - (void)pullData{
     
     if(_skillId == nil || _skillId.length <= 0){
@@ -203,11 +251,15 @@
                     _titleLabel.text = [skillDic objectForKey:@"name"];
                     
                     //like count
-                    _likeCount = [[skillDic objectForKey:@"likeCount"] integerValue];
+                    if(![[skillDic objectForKey:@"likeCount"] isEqual:[NSNull null]])
+                        _likeCount = [[skillDic objectForKey:@"likeCount"] integerValue];
+                    
                     _likeCountLabel.text = [NSString stringWithFormat:@"%li Likes", _likeCount];
                     
                     //view count
-                    _viewCount = [[skillDic objectForKey:@"viewCount"] integerValue];
+                    if(![[skillDic objectForKey:@"viewCount"] isEqual:[NSNull null]])
+                        _viewCount = [[skillDic objectForKey:@"viewCount"] integerValue];
+                    
                     _viewCountLabel.text = [NSString stringWithFormat:@"%li Views", _viewCount];
                     
                     //liked
@@ -239,6 +291,81 @@
                         
                     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
                         
+                        
+                    }];
+                    
+                    //overview
+                    if(![[skillDic objectForKey:@"summary"] isEqual:[NSNull null]])
+                        [_overviewWebView loadHTMLString:[skillDic objectForKey:@"summary"] baseURL:nil];
+                    
+                    //desc
+                    if(![[skillDic objectForKey:@"skillDesc"] isEqual:[NSNull null]])
+                        [_descWebView loadHTMLString:[skillDic objectForKey:@"skillDesc"] baseURL:nil];
+                    
+                    //get comments and review data
+                    [WebDataInterface getCommReviewBySkillId:_skillId completion:^(NSObject *object, NSError *error){
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                            if(error != nil){
+                                
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to get data!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                [alert show];
+                                
+                                [self.view hideActivityView];
+                                
+                                [self.navigationController popViewControllerAnimated:YES];
+                            }
+                            else{
+                                
+                                NSDictionary *dic = (NSDictionary *)object;
+                                
+                                _comments = [[NSMutableArray alloc] init];
+                                
+                                for(NSDictionary *data in dic[@"comments"]){
+                                    
+                                    CommentInfo *info = [CommentInfo createCommentInfoFromDictionary:data];
+                                    [_comments addObject:info];
+                                }
+                                
+                                CommentsViewController *controller = [self findViewControllerByClass:[CommentsViewController class]];
+                                if(controller != nil){
+                                    
+                                    if(_comments.count > 0){
+                                        
+                                        [controller refreshViewWithCommentInfo:[_comments firstObject]];
+                                    }
+                                    else{
+                                        
+                                        [controller refreshViewWithCommentInfo:nil];
+                                    }
+                                }
+                                
+                                _reviews = [[NSMutableArray alloc] init];
+                                
+                                for(NSDictionary *data in dic[@"reviews"]){
+                                    
+                                    ReviewInfo *info = [ReviewInfo createReviewInfoFromDictionary:data];
+                                    [_reviews addObject:info];
+                                }
+                                
+                                //review controller
+                                ReviewsViewController *rcontroller = [self findViewControllerByClass:[ReviewsViewController class]];
+                                if(rcontroller != nil){
+                                    
+                                    if(_reviews.count > 0){
+                                        
+                                        [rcontroller refreshViewWithReviewInfo:[_reviews firstObject]];
+                                    }
+                                    else{
+                                        
+                                        [rcontroller refreshViewWithReviewInfo:nil];
+                                    }
+                                }
+                                
+                                [self.view hideActivityView];
+                            }
+                        });
                         
                     }];
                     

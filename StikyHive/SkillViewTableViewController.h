@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CommentsViewController.h"
+#import "ReviewsViewController.h"
 
 @interface SkillViewTableViewController : UITableViewController
 
