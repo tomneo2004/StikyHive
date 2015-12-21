@@ -30,6 +30,7 @@
 @synthesize reviewTextView = _reviewTextView;
 @synthesize seeAllBtn = _seeAllBtn;
 @synthesize postCommentBtn = _postCommentBtn;
+@synthesize delegate = _delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,11 +64,18 @@
 #pragma mark - IBAction
 - (IBAction)seeAll:(id)sender{
     
-    
+    if([_delegate respondsToSelector:@selector(commentSeeAllTap)]){
+        
+        [_delegate commentSeeAllTap];
+    }
 }
 
 - (IBAction)postComment:(id)sender{
     
+    if([_delegate respondsToSelector:@selector(commentPostCommentTap)]){
+        
+        [_delegate commentPostCommentTap];
+    }
 }
 
 #pragma mark - public interface

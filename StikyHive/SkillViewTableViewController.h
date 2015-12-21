@@ -10,7 +10,7 @@
 #import "CommentsViewController.h"
 #import "ReviewsViewController.h"
 
-@interface SkillViewTableViewController : UITableViewController
+@interface SkillViewTableViewController : UITableViewController<CommentsViewControllerDelegate, ReviewsViewControllerDelegate>
 
 @property (copy, nonatomic) NSString *skillId;
 

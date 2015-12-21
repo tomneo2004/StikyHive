@@ -22,7 +22,7 @@
 @implementation MySkillViewController{
     
     NSMutableArray *_mySkillInfos;
-    NSDateFormatter *_dataFormatter;
+    NSDateFormatter *_dateFormatter;
 }
 
 @synthesize tableView = _tableView;
@@ -31,8 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _dataFormatter = [[NSDateFormatter alloc] init];
-    [_dataFormatter setDateFormat:@"dd MMM yyyy"];
+    _dateFormatter = [[NSDateFormatter alloc] init];
+    [_dateFormatter setDateFormat:@"dd MMM yyyy"];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -134,8 +134,8 @@
     MySkillInfo *info = [_mySkillInfos objectAtIndex:indexPath.row];
     
     cell.titleLabel.text = info.name;
-    cell.issueDateLabel.text = [_dataFormatter stringFromDate:info.issueDate];
-    cell.expiredDateLabel.text = [_dataFormatter stringFromDate:info.expiredDate];
+    cell.issueDateLabel.text = [_dateFormatter stringFromDate:info.issueDate];
+    cell.expiredDateLabel.text = [_dateFormatter stringFromDate:info.expiredDate];
     cell.delegate = self;
     
     return cell;

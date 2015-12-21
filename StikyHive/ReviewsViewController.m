@@ -30,6 +30,7 @@
 @synthesize reviewTextView = _reviewTextView;
 @synthesize nameLabel = _nameLabel;
 @synthesize seeAllBtn = _seeAllBtn;
+@synthesize delegate = _delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -56,6 +57,10 @@
 #pragma mark - IBAction
 - (IBAction)seeAll:(id)sender{
     
+    if([_delegate respondsToSelector:@selector(reviewSeeAllTap)]){
+        
+        [_delegate reviewSeeAllTap];
+    }
 }
 
 #pragma mark - public interface

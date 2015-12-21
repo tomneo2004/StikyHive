@@ -9,9 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "CommentInfo.h"
 
+@protocol CommentsViewControllerDelegate <NSObject>
+
+@optional
+- (void)commentSeeAllTap;
+- (void)commentPostCommentTap;
+
+@end
+
 @interface CommentsViewController : UIViewController
 
+@property (weak, nonatomic) id<CommentsViewControllerDelegate> delegate;
 
 - (void)refreshViewWithCommentInfo:(CommentInfo *)info;
+
 
 @end

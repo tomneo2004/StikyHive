@@ -400,6 +400,11 @@
 		CE3EFDED1C0EC5AA00281FC6 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */; };
 		CE51A3B01C23FF9500652B90 /* AllCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */; };
 		CE51A3B31C2403FE00652B90 /* ReviewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51A3B21C2403FE00652B90 /* ReviewInfo.m */; };
+		CE5D4A451C279179005C07D4 /* SeeAllCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A441C279179005C07D4 /* SeeAllCommentViewController.m */; };
+		CE5D4A491C279540005C07D4 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A481C279540005C07D4 /* CommentCell.m */; };
+		CE5D4A4C1C27A649005C07D4 /* PostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A4B1C27A649005C07D4 /* PostCommentViewController.m */; };
+		CE5D4A511C27AF8E005C07D4 /* SeeAllReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A501C27AF8E005C07D4 /* SeeAllReviewViewController.m */; };
+		CE5D4A541C27B065005C07D4 /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A531C27B065005C07D4 /* ReviewCell.m */; };
 		CE68DA8B1C0D9AE0000CB49F /* SavedDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */; };
 		CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8D1C0D9E8D000CB49F /* DocumentTableViewCell.m */; };
 		CE68DA911C0DA0F6000CB49F /* DocumentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */; };
@@ -1039,6 +1044,16 @@
 		CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCommentViewController.m; sourceTree = "<group>"; };
 		CE51A3B11C2403FE00652B90 /* ReviewInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewInfo.h; sourceTree = "<group>"; };
 		CE51A3B21C2403FE00652B90 /* ReviewInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewInfo.m; sourceTree = "<group>"; };
+		CE5D4A431C279179005C07D4 /* SeeAllCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeeAllCommentViewController.h; sourceTree = "<group>"; };
+		CE5D4A441C279179005C07D4 /* SeeAllCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeeAllCommentViewController.m; sourceTree = "<group>"; };
+		CE5D4A471C279540005C07D4 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		CE5D4A481C279540005C07D4 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		CE5D4A4A1C27A649005C07D4 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommentViewController.h; sourceTree = "<group>"; };
+		CE5D4A4B1C27A649005C07D4 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommentViewController.m; sourceTree = "<group>"; };
+		CE5D4A4F1C27AF8E005C07D4 /* SeeAllReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeeAllReviewViewController.h; sourceTree = "<group>"; };
+		CE5D4A501C27AF8E005C07D4 /* SeeAllReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeeAllReviewViewController.m; sourceTree = "<group>"; };
+		CE5D4A521C27B065005C07D4 /* ReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
+		CE5D4A531C27B065005C07D4 /* ReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
 		CE68DA891C0D9AE0000CB49F /* SavedDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedDocumentsViewController.h; sourceTree = "<group>"; };
 		CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedDocumentsViewController.m; sourceTree = "<group>"; };
 		CE68DA8C1C0D9E8D000CB49F /* DocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentTableViewCell.h; sourceTree = "<group>"; };
@@ -2125,6 +2140,7 @@
 		CE56FF2B1C1FB31B00C64567 /* MySkill */ = {
 			isa = PBXGroup;
 			children = (
+				CE5D4A4D1C27A651005C07D4 /* PostComment */,
 				CED3C8801C2294060090DE35 /* SkillView */,
 				CED3C8751C2251490090DE35 /* MySkillViewController.h */,
 				CED3C8761C2251490090DE35 /* MySkillViewController.m */,
@@ -2134,6 +2150,37 @@
 				CED3C87C1C225D800090DE35 /* MySkillCell.m */,
 			);
 			name = MySkill;
+			sourceTree = "<group>";
+		};
+		CE5D4A461C279316005C07D4 /* SeeAllComments */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D4A431C279179005C07D4 /* SeeAllCommentViewController.h */,
+				CE5D4A441C279179005C07D4 /* SeeAllCommentViewController.m */,
+				CE5D4A471C279540005C07D4 /* CommentCell.h */,
+				CE5D4A481C279540005C07D4 /* CommentCell.m */,
+			);
+			name = SeeAllComments;
+			sourceTree = "<group>";
+		};
+		CE5D4A4D1C27A651005C07D4 /* PostComment */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D4A4A1C27A649005C07D4 /* PostCommentViewController.h */,
+				CE5D4A4B1C27A649005C07D4 /* PostCommentViewController.m */,
+			);
+			name = PostComment;
+			sourceTree = "<group>";
+		};
+		CE5D4A4E1C27AA55005C07D4 /* SeeAllReview */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D4A4F1C27AF8E005C07D4 /* SeeAllReviewViewController.h */,
+				CE5D4A501C27AF8E005C07D4 /* SeeAllReviewViewController.m */,
+				CE5D4A521C27B065005C07D4 /* ReviewCell.h */,
+				CE5D4A531C27B065005C07D4 /* ReviewCell.m */,
+			);
+			name = SeeAllReview;
 			sourceTree = "<group>";
 		};
 		CE68DA881C0D9ABF000CB49F /* SavedDocuments */ = {
@@ -2220,6 +2267,8 @@
 		CED3C8801C2294060090DE35 /* SkillView */ = {
 			isa = PBXGroup;
 			children = (
+				CE5D4A4E1C27AA55005C07D4 /* SeeAllReview */,
+				CE5D4A461C279316005C07D4 /* SeeAllComments */,
 				CED3C8811C22946D0090DE35 /* SkillViewTableViewController.h */,
 				CED3C8821C22946D0090DE35 /* SkillViewTableViewController.m */,
 				CE0519031C23B41D004519E6 /* CommentsViewController.h */,
@@ -2942,15 +2991,18 @@
 				674D0D9B1B7D913400B5B80D /* AppDelegate.m in Sources */,
 				516718DE1C1A799E003E9902 /* CYRTextStorage.m in Sources */,
 				674D0EB71B7D984200B5B80D /* SearchSellViewController.m in Sources */,
+				CE5D4A541C27B065005C07D4 /* ReviewCell.m in Sources */,
 				674D0F3E1B7D9A5200B5B80D /* JSQMessagesMediaViewBubbleImageMasker.m in Sources */,
 				CE9B8EC91C16C3620022653B /* BoughtInfo.m in Sources */,
 				516F7EB51C182EA2005FEF8A /* SellingTableViewController.m in Sources */,
 				674D0F5A1B7D9A5200B5B80D /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				674D0F481B7D9A5200B5B80D /* JSQMessagesBubbleImage.m in Sources */,
+				CE5D4A4C1C27A649005C07D4 /* PostCommentViewController.m in Sources */,
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
 				CEFD19581C040F3D00A79158 /* SearchResultCell.m in Sources */,
 				CE51A3B31C2403FE00652B90 /* ReviewInfo.m in Sources */,
 				674D0F341B7D9A5200B5B80D /* NSString+JSQMessages.m in Sources */,
+				CE5D4A511C27AF8E005C07D4 /* SeeAllReviewViewController.m in Sources */,
 				674D0F771B7D9F2200B5B80D /* HtmlEditor.m in Sources */,
 				516718E71C1A799E003E9902 /* ZSSBarButtonItem.m in Sources */,
 				674D0EC11B7D98CA00B5B80D /* UserSkillViewController3.m in Sources */,
@@ -2961,6 +3013,7 @@
 				CE9B8EC61C16C34D0022653B /* BoughtViewController.m in Sources */,
 				674D0F3F1B7D9A5200B5B80D /* JSQMessagesTimestampFormatter.m in Sources */,
 				674D10491B7DB4FB00B5B80D /* GKResizeableCropOverlayView.m in Sources */,
+				CE5D4A451C279179005C07D4 /* SeeAllCommentViewController.m in Sources */,
 				CEF4640A1BF9C41200010D21 /* UrgentRequest.m in Sources */,
 				CE24E7FF1C196EB40021F078 /* EditProfileTableViewController.m in Sources */,
 				674D0F601B7D9A9A00B5B80D /* ViewControllerUtil.m in Sources */,
@@ -2999,6 +3052,7 @@
 				CEFD19501C04045800A79158 /* SkillInfo.m in Sources */,
 				CEEDB1931C116CF4009C3DC5 /* ContactInfo.m in Sources */,
 				CEEDB18D1C11681B009C3DC5 /* ContactViewController.m in Sources */,
+				CE5D4A491C279540005C07D4 /* CommentCell.m in Sources */,
 				516718E51C1A799E003E9902 /* HRColorPickerViewController.m in Sources */,
 				674D10461B7DB4FB00B5B80D /* GKImageCropView.m in Sources */,
 				676ED4581B85CEAB00696985 /* UserVerificationViewController.m in Sources */,

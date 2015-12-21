@@ -9,7 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "ReviewInfo.h"
 
+@protocol ReviewsViewControllerDelegate <NSObject>
+
+@optional
+- (void)reviewSeeAllTap;
+
+@end
+
 @interface ReviewsViewController : UIViewController
+
+@property (weak, nonatomic) id<ReviewsViewControllerDelegate> delegate;
 
 - (void)refreshViewWithReviewInfo:(ReviewInfo *)info;
 

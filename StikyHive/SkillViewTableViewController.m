@@ -13,6 +13,8 @@
 #import "CommentInfo.h"
 #import "ReviewInfo.h"
 #import "UIImageView+AFNetworking.h"
+#import "SeeAllCommentViewController.h"
+#import "SeeAllReviewViewController.h"
 
 @interface SkillViewTableViewController ()
 
@@ -328,7 +330,11 @@
                                     [_comments addObject:info];
                                 }
                                 
+                                [_segControl setTitle:[NSString stringWithFormat:@"Comments (%li)", _comments.count] forSegmentAtIndex:0];
+                                
                                 CommentsViewController *controller = [self findViewControllerByClass:[CommentsViewController class]];
+                                controller.delegate = self;
+                                
                                 if(controller != nil){
                                     
                                     if(_comments.count > 0){
@@ -348,9 +354,13 @@
                                     ReviewInfo *info = [ReviewInfo createReviewInfoFromDictionary:data];
                                     [_reviews addObject:info];
                                 }
+                                 
+                                [_segControl setTitle:[NSString stringWithFormat:@"Reviews (%li)", _reviews.count] forSegmentAtIndex:1];
                                 
                                 //review controller
                                 ReviewsViewController *rcontroller = [self findViewControllerByClass:[ReviewsViewController class]];
+                                rcontroller.delegate = self;
+                                
                                 if(rcontroller != nil){
                                     
                                     if(_reviews.count > 0){
@@ -382,6 +392,28 @@
             
         });
     }];
+}
+
+#pragma mark - CommentsViewController delegate
+- (void)commentSeeAllTap{
+    
+    SeeAllCommentViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SeeAllCommentViewController"];
+    controller.commentsData = _comments;
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)commentPostCommentTap{
+    
+}
+
+#pragma mark - ReviewsViewController delegate
+- (void)reviewSeeAllTap{
+    
+    SeeAllReviewViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SeeAllReviewViewController"];
+    controller.reviewsData = _reviews;
+    
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 /*
