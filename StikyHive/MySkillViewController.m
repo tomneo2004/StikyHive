@@ -12,6 +12,7 @@
 #import "WebDataInterface.h"
 #import "MySkillInfo.h"
 #import "SkillViewTableViewController.h"
+#import "SkillPageViewController.h"
 
 @interface MySkillViewController ()
 
@@ -152,10 +153,17 @@
     
     MySkillInfo *info = [_mySkillInfos objectAtIndex:index];
     
+    /*
     SkillViewTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SkillViewTableViewController"];
     controller.skillId = info.skillId;
     
     [self.navigationController pushViewController:controller animated:YES];
+    */
+    
+    SkillPageViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"skill_page_view_controller"];
+    [controller setSkillID:info.skillId];
+    [self.navigationController pushViewController:controller animated:YES];
+    
     
 }
 
