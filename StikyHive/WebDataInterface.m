@@ -506,10 +506,9 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     
         NSString *encodeCaption = [caption stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    
         NSData *imageData =UIImageJPEGRepresentation(image, 1.0);
 
-        NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/fileupload.php?stkid=%@&skillId=%ld&type=%ld&editFlag=%d&photoId=%ld&caption=%@",stikyid,(long)skillId,(long)type,editFlage,(long)photoId,encodeCaption];
+        NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/photoupload.php?stkid=%@&skillId=%ld&type=%ld&editFlag=%d&photoId=%ld&caption=%@",stikyid,(long)skillId,(long)type,editFlage,(long)photoId,encodeCaption];
     
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL:[NSURL URLWithString:urlString]];
@@ -530,6 +529,37 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     
         [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         
+    
+}
+
+
++ (void)skillImageUploadTest:(UIImage *)image stikyid:(NSString *)stikyid type:(NSInteger)type editFlage:(BOOL)editFlage photoId:(NSInteger)photoId caption:(NSString *)caption
+{
+    NSString *encodeCaption = [caption stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSData *imageData =UIImageJPEGRepresentation(image, 1.0);
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/photoupload.php?stkid=%@&type=%ld&editFlag=%d&photoId=%ld&caption=%@",stikyid,(long)type,editFlage,(long)photoId,encodeCaption];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploaded_file\"; filename=\1\r\n"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    //         [body appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+ 
     
 }
 

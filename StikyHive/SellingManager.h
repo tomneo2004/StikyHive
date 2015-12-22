@@ -41,6 +41,9 @@
 
 @property (setter=setProfileTap:, getter=getProfileTap, nonatomic) BOOL profileTap;
 
+@property (setter=setIsEditSkill:, getter=getIsEditSkill, nonatomic) BOOL isEditSkill;
+
+
 + (SellingManager *)sharedSellingManager;
 
 - (void)clearCurrentSelling;

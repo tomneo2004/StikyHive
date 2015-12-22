@@ -60,7 +60,7 @@
     _mainScrollView.alwaysBounceVertical = YES;
     [_mainScrollView addSubview:_refreshControl];
     _mainScrollView.delegate = self;
-    [_mainScrollView setContentSize:CGSizeMake(_mainScrollView.frame.size.width,1565)];
+    [_mainScrollView setContentSize:CGSizeMake(_mainScrollView.frame.size.width,1665)];
     
     [_mainScrollView setContentOffset:CGPointMake(0, -180) animated:YES]; // Force pull to refresh
     
@@ -81,6 +81,8 @@
     
     UIImageView *p2 = [[UIImageView alloc] initWithFrame:CGRectMake(width, 0, width, 290)];
     p2.image = [UIImage imageNamed:@"slide-0820-02"];
+    
+    
     
     [_imageScrollView addSubview:p1];
     [_imageScrollView addSubview:p2];
@@ -506,6 +508,13 @@
 - (IBAction)startButtonPressed:(id)sender
 {
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
+
+- (IBAction)postBuyBtnPressed:(id)sender
+{
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"post_buy_view_controller"];
     [self.navigationController pushViewController:vc animated:YES];
 
 }

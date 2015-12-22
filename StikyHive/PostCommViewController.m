@@ -11,6 +11,7 @@
 #import "WebDataInterface.h"
 #import "SkillPageViewController.h"
 #import "ViewControllerUtil.h"
+#import "UIView+RNActivityView.h"
 
 @interface PostCommViewController ()
 
@@ -85,6 +86,9 @@
     NSString *stkid = [LocalDataInterface retrieveStkid];
     NSString *review = _commTextView.text;
     
+    [self.view showActivityViewWithLabel:@"Updating..."];
+    
+    
     [WebDataInterface postSellerComments:_skillid reviewer:stkid review:review type:1 rating:0 completion:^(NSObject *obj, NSError *err) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -98,6 +102,8 @@
                     [navigationController popViewControllerAnimated:YES];
                 }
             }
+            
+            [self.view hideActivityView];
         });
         
     }];

@@ -450,7 +450,9 @@
                                 
                                 NSLog(@"upload image !!!!!!!!!");
                                 
-                                [WebDataInterface skillImageUpload:ic.image stikyid:stkid skillId:skillid type:1 editFlage:NO photoId:0 caption:ic.caption];
+//                                [WebDataInterface skillImageUpload:ic.image stikyid:stkid skillId:skillid type:1 editFlage:NO photoId:0 caption:ic.caption];
+                                
+                                [WebDataInterface skillImageUploadTest:ic.image stikyid:stkid type:1 editFlage:NO photoId:0 caption:ic.caption];
                                 
                             }
                             
@@ -612,7 +614,9 @@
                             
                             NSLog(@"upload image with payment !!!!!!!!!");
                         
-                            [WebDataInterface skillImageUpload:ic.image stikyid:stkid skillId:skillid type:1 editFlage:NO photoId:0 caption:ic.caption];
+//                            [WebDataInterface skillImageUpload:ic.image stikyid:stkid skillId:skillid type:1 editFlage:NO photoId:0 caption:ic.caption];
+                            
+                            [WebDataInterface skillImageUploadTest:ic.image stikyid:stkid type:1 editFlage:NO photoId:0 caption:ic.caption];
                         
                         }
                     

@@ -34,6 +34,7 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *mainStartSellButton;
 
+@property (strong, nonatomic) IBOutlet UILabel *browseLabel;
 
 - (IBAction)pageControl:(UIPageControl *)sender;
 
@@ -44,5 +45,6 @@
 - (IBAction)mainStartButtonPressed:(id)sender;
 - (IBAction)startButtonPressed:(id)sender;
 
+- (IBAction)postBuyBtnPressed:(id)sender;
 
 @end

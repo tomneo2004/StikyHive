@@ -398,6 +398,8 @@
 
 + (void)skillImageUpload:(UIImage *)image stikyid:(NSString *)stikyid skillId:(NSInteger)skillId type:(NSInteger)type editFlage:(BOOL)editFlage photoId:(NSInteger)photoId caption:(NSString *)caption;
 
++ (void)skillImageUploadTest:(UIImage *)image stikyid:(NSString *)stikyid type:(NSInteger)type editFlage:(BOOL)editFlage photoId:(NSInteger)photoId caption:(NSString *)caption;
+
 ////////  ///////////// END -------------------------------------
 
 
