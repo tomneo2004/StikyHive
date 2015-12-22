@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "56F86C072D2BEFB966E2F6EC"
-               BuildableName = "libSMTPAPI.a"
-               BlueprintName = "SMTPAPI"
+               BlueprintIdentifier = "DCF8B1FCC01C95CD4D8AEDBD"
+               BuildableName = "libRadioButton.a"
+               BlueprintName = "RadioButton"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

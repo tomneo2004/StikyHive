@@ -151,6 +151,7 @@
 		517C8F7E1BF9C2E80020CBE6 /* SellingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517C8F7D1BF9C2E80020CBE6 /* SellingViewController.m */; };
 		517D552F1BDA0301000EA8FD /* ReportAbuseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517D552E1BDA0301000EA8FD /* ReportAbuseViewController.m */; };
 		517D55321BDA4448000EA8FD /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517D55311BDA4447000EA8FD /* UserProfileViewController.m */; };
+		517FE2981C23C08800E8CC7E /* PostBuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517FE2971C23C08800E8CC7E /* PostBuyViewController.m */; };
 		5181ED161BF58D6600804C29 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5181ED151BF58D6600804C29 /* MyProfileViewController.m */; };
 		5184DD511C08639A008F434B /* SellingViewController33.m in Sources */ = {isa = PBXBuildFile; fileRef = 5184DD501C08639A008F434B /* SellingViewController33.m */; };
 		51851C991BB24E35007CFBC2 /* SkillPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51851C981BB24E35007CFBC2 /* SkillPageViewController.m */; };
@@ -654,6 +655,8 @@
 		517D552E1BDA0301000EA8FD /* ReportAbuseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportAbuseViewController.m; sourceTree = "<group>"; };
 		517D55301BDA4447000EA8FD /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		517D55311BDA4447000EA8FD /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		517FE2961C23C08800E8CC7E /* PostBuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostBuyViewController.h; sourceTree = "<group>"; };
+		517FE2971C23C08800E8CC7E /* PostBuyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostBuyViewController.m; sourceTree = "<group>"; };
 		5181ED141BF58D6600804C29 /* MyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileViewController.h; sourceTree = "<group>"; };
 		5181ED151BF58D6600804C29 /* MyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileViewController.m; sourceTree = "<group>"; };
 		5184DD4F1C08639A008F434B /* SellingViewController33.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingViewController33.h; sourceTree = "<group>"; };
@@ -1292,6 +1295,15 @@
 			name = Buyer;
 			sourceTree = "<group>";
 		};
+		517FE2951C23C05700E8CC7E /* PostToBuy */ = {
+			isa = PBXGroup;
+			children = (
+				517FE2961C23C08800E8CC7E /* PostBuyViewController.h */,
+				517FE2971C23C08800E8CC7E /* PostBuyViewController.m */,
+			);
+			name = PostToBuy;
+			sourceTree = "<group>";
+		};
 		67361F301B830DD500C1374D /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -1378,6 +1390,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				517FE2951C23C05700E8CC7E /* PostToBuy */,
 				CE24E7F91C196E6D0021F078 /* UpdateProfile */,
 				CE9B8EC31C16C32C0022653B /* Bought */,
 				CEEDB1941C118B09009C3DC5 /* Sold */,
@@ -2850,6 +2863,7 @@
 				CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */,
 				67361F2D1B82D0CB00C1374D /* UserAgreementViewController.m in Sources */,
 				674D0F381B7D9A5200B5B80D /* UIView+JSQMessages.m in Sources */,
+				517FE2981C23C08800E8CC7E /* PostBuyViewController.m in Sources */,
 				676F77E21B96F3060084988A /* TOCropViewControllerTransitioning.m in Sources */,
 				51694D6B1BABE9C4007722F1 /* SkillVideoPlayer.m in Sources */,
 				5181ED161BF58D6600804C29 /* MyProfileViewController.m in Sources */,

@@ -41,6 +41,8 @@
     
     
     BOOL _promotionStatus;
+    
+    BOOL _isEditSkill;
 }
 
 static SellingManager *_instance;
@@ -154,6 +156,11 @@ static SellingManager *_instance;
     _profileTap = profileTap;
 }
 
+- (void)setIsEditSkill:(BOOL)isEditSkill
+{
+    _isEditSkill = isEditSkill;
+}
+
 
 #pragma mark - Getter
 - (NSMutableArray *)getPhotos
@@ -251,6 +258,11 @@ static SellingManager *_instance;
     return _profileTap;
 }
 
+- (BOOL)getIsEditSkill
+{
+    return _isEditSkill;
+}
+
 
 
 
@@ -288,6 +300,7 @@ static SellingManager *_instance;
     _promotionStatus = nil;
 
     
+    _isEditSkill = nil;
 }
 
 - (id)init{
