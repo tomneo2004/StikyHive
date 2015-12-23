@@ -420,6 +420,9 @@
 		CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE51C1029E700326710 /* SubInfoCell.m */; };
 		CE9C7CE91C102ED600326710 /* SubInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE81C102ED600326710 /* SubInfo.m */; };
 		CEA325701C1A7116007B1E5C /* DescEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */; };
+		CEC8A1DA1C2A787300558608 /* MyPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1D91C2A787300558608 /* MyPostViewController.m */; };
+		CEC8A1DD1C2A78FD00558608 /* MyPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */; };
+		CEC8A1E01C2A7CE900558608 /* MyPostInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1DF1C2A7CE900558608 /* MyPostInfo.m */; };
 		CED3C8771C2251490090DE35 /* MySkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8761C2251490090DE35 /* MySkillViewController.m */; };
 		CED3C87A1C2251B10090DE35 /* MySkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8791C2251B10090DE35 /* MySkillInfo.m */; };
 		CED3C87D1C225D800090DE35 /* MySkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C87C1C225D800090DE35 /* MySkillCell.m */; };
@@ -1085,6 +1088,12 @@
 		CE9C7CE81C102ED600326710 /* SubInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfo.m; sourceTree = "<group>"; };
 		CEA3256E1C1A7116007B1E5C /* DescEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescEditorViewController.h; sourceTree = "<group>"; };
 		CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescEditorViewController.m; sourceTree = "<group>"; };
+		CEC8A1D81C2A787300558608 /* MyPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostViewController.h; sourceTree = "<group>"; };
+		CEC8A1D91C2A787300558608 /* MyPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostViewController.m; sourceTree = "<group>"; };
+		CEC8A1DB1C2A78FD00558608 /* MyPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostCell.h; sourceTree = "<group>"; };
+		CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostCell.m; sourceTree = "<group>"; };
+		CEC8A1DE1C2A7CE900558608 /* MyPostInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostInfo.h; sourceTree = "<group>"; };
+		CEC8A1DF1C2A7CE900558608 /* MyPostInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostInfo.m; sourceTree = "<group>"; };
 		CED3C8751C2251490090DE35 /* MySkillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillViewController.h; sourceTree = "<group>"; };
 		CED3C8761C2251490090DE35 /* MySkillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySkillViewController.m; sourceTree = "<group>"; };
 		CED3C8781C2251B10090DE35 /* MySkillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillInfo.h; sourceTree = "<group>"; };
@@ -1438,6 +1447,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CEC8A1D71C2A70DE00558608 /* MyPost */,
 				CE56FF2B1C1FB31B00C64567 /* MySkill */,
 				517FE2951C23C05700E8CC7E /* PostToBuy */,
 				CE24E7F91C196E6D0021F078 /* UpdateProfile */,
@@ -2277,6 +2287,19 @@
 			name = SubscriptionInfo;
 			sourceTree = "<group>";
 		};
+		CEC8A1D71C2A70DE00558608 /* MyPost */ = {
+			isa = PBXGroup;
+			children = (
+				CEC8A1D81C2A787300558608 /* MyPostViewController.h */,
+				CEC8A1D91C2A787300558608 /* MyPostViewController.m */,
+				CEC8A1DB1C2A78FD00558608 /* MyPostCell.h */,
+				CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */,
+				CEC8A1DE1C2A7CE900558608 /* MyPostInfo.h */,
+				CEC8A1DF1C2A7CE900558608 /* MyPostInfo.m */,
+			);
+			name = MyPost;
+			sourceTree = "<group>";
+		};
 		CED3C8801C2294060090DE35 /* SkillView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2923,6 +2946,7 @@
 				CEEDB19D1C118D27009C3DC5 /* SoldInfo.m in Sources */,
 				674D0F631B7D9AD800B5B80D /* UserInfo.m in Sources */,
 				51851C991BB24E35007CFBC2 /* SkillPageViewController.m in Sources */,
+				CEC8A1DA1C2A787300558608 /* MyPostViewController.m in Sources */,
 				5168F2381C0ECE8E0087C0BF /* SellingManager.m in Sources */,
 				CEEDB1901C116899009C3DC5 /* ContactCell.m in Sources */,
 				674D0F371B7D9A5200B5B80D /* UIImage+JSQMessages.m in Sources */,
@@ -3043,6 +3067,7 @@
 				674D0F451B7D9A5200B5B80D /* JSQMediaItem.m in Sources */,
 				516F58A91C104A4000E4FD41 /* PromotionViewController.m in Sources */,
 				51896EAE1BCDFE5D006643AE /* SellerRevViewController.m in Sources */,
+				CEC8A1DD1C2A78FD00558608 /* MyPostCell.m in Sources */,
 				674D0F421B7D9A5200B5B80D /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				674D0D9E1B7D913400B5B80D /* FirstViewController.m in Sources */,
 				CEFD195C1C04123800A79158 /* DistanceTitle.m in Sources */,
@@ -3076,6 +3101,7 @@
 				CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */,
 				CE51A3B01C23FF9500652B90 /* AllCommentViewController.m in Sources */,
 				517325621C02B3B7004655D6 /* SellingViewController2.m in Sources */,
+				CEC8A1E01C2A7CE900558608 /* MyPostInfo.m in Sources */,
 				676F77EE1B96F5600084988A /* UserInfoEditorViewController.m in Sources */,
 				CE0519051C23B41D004519E6 /* CommentsViewController.m in Sources */,
 				CE3EFDED1C0EC5AA00281FC6 /* PDFViewController.m in Sources */,
