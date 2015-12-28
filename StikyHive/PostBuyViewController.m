@@ -11,6 +11,8 @@
 #import "ViewControllerUtil.h"
 #import "WebDataInterface.h"
 #import "UIView+RNActivityView.h"
+#import "HtmlEditor.h"
+#import "BuyManager.h"
 
 
 @interface PostBuyViewController ()
@@ -22,10 +24,15 @@
 @property (nonatomic, strong) NSArray *rateArray;
 @property (nonatomic, strong) UIPickerView *industryPickerView;
 @property (nonatomic, assign) NSString *categoryId;
-@property (nonatomic, assign) NSString *rateId;
+@property (nonatomic, assign) NSInteger rateId;
 @property (nonatomic, assign) NSInteger skillType;
 @property (nonatomic, strong) NSArray *hhArray;
 @property (nonatomic, strong) NSArray *mmArray;
+@property (nonatomic, assign) BOOL descEditorLoaded;
+@property (nonatomic, assign) BOOL respEditorLoaded;
+@property (nonatomic, strong) HtmlEditor *descEditor;
+@property (nonatomic, strong) HtmlEditor *respEditor;
+@property (nonatomic, strong) BuyManager *buyManager;
 
 @end
 
@@ -41,6 +48,8 @@
     
     [_contentScrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1200)];
     
+    _buyManager = [BuyManager sharedBuyManager];
+    
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived:)];
     [tapGestureRecognizer setDelegate:self];
@@ -49,7 +58,9 @@
     
     _industryArray = [[NSMutableArray alloc] init];
     _categoryArray = [[NSMutableArray alloc] init];
-    _skillType = 1;
+//    _skillType = 1;
+    
+    _buyManager.type = 1;
     
     _hhArray = @[@"00",@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23"];
     _mmArray = @[@"00",@"05",@"10",@"15",@"20",@"25",@"30",@"35",@"40",@"45",@"50",@"55"];
@@ -171,6 +182,27 @@
     toMMPickerView.dataSource = self;
     toMMPickerView.tag = 666;
     [_toMMTextField setInputView:toMMPickerView];
+    
+    
+    
+    _descWebView.delegate = self;
+    _descWebView.tag = 777;
+    
+    UITapGestureRecognizer *tapCatcher = [[UITapGestureRecognizer alloc] init];
+    [tapCatcher setNumberOfTapsRequired:1];
+    [tapCatcher setDelegate:self];
+    
+    [_descWebView addGestureRecognizer:tapCatcher];
+    
+    _respWebView.delegate = self;
+    _respWebView.tag = 888;
+    
+    UITapGestureRecognizer *tapCatcher2 = [[UITapGestureRecognizer alloc] init];
+    [tapCatcher2 setNumberOfTapsRequired:1];
+    [tapCatcher2 setDelegate:self];
+    
+    [_respWebView addGestureRecognizer:tapCatcher2];
+    
 
 }
 
@@ -189,6 +221,40 @@
 {
     self.tabBarController.tabBar.hidden = YES;
     
+    if (_descEditorLoaded) {
+        [_descWebView loadHTMLString:[_descEditor getHTML] baseURL:nil];
+        _descEditorLoaded = NO;
+    }
+    else if (_respEditorLoaded)
+    {
+        [_respWebView loadHTMLString:[_respEditor getHTML] baseURL:nil];
+        _respEditorLoaded = NO;
+    }
+
+    
+    
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    
+    if ([otherGestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] && !_descEditorLoaded && gestureRecognizer.view.tag == 777)
+    {
+        _descEditorLoaded = YES;
+        _descEditor = [[HtmlEditor alloc] init];
+        [_descEditor setHTML:[_descWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"]];
+        [self.navigationController pushViewController:_descEditor animated:YES];
+        
+    }
+    else if ([otherGestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] && !_respEditorLoaded && gestureRecognizer.view.tag == 888)
+    {
+        _respEditorLoaded = YES;
+        _respEditor = [[HtmlEditor alloc] init];
+        [_respEditor setHTML:[_respWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"]];
+        [self.navigationController pushViewController:_respEditor animated:YES];
+    }
+    
+    return YES;
 }
 
 #pragma mark - picker view delegate
@@ -268,7 +334,7 @@
     {
         _rateTextField.text = _rateArray[row][@"name"];
         
-        _rateId = _rateArray[row][@"id"];
+        _rateId = [_rateArray[row][@"id"] integerValue];
         
     }
     else if (pickerView.tag == 333)
@@ -298,6 +364,53 @@
 {
     
     
+    
+    if (_individualRBtn.isSelected)
+    {
+        _buyManager.personType = 2;
+    }
+    else
+    {
+        _buyManager.personType = 1;
+    }
+    
+    if (_fulltRBtn.isSelected) {
+        _buyManager.jobType = 1;
+    }
+    else{
+        _buyManager.jobType = 2;
+    }
+    
+    if (_openRBtn.isSelected) {
+        _buyManager.availability = 1;
+    }
+    else
+    {
+        _buyManager.availability = 0;
+    }
+    
+    _buyManager.name = _nameTextField.text;
+    
+    
+    NSString *priceString = _priceTextField.text;
+    
+    if (priceString.length > 0) {
+        NSDecimalNumber *priceFloat = [NSDecimalNumber decimalNumberWithString:priceString];
+        _buyManager.price = priceFloat;
+        _buyManager.rateId = _rateId;
+        
+    }
+    else
+    {
+        NSDecimalNumber *zero = [[NSDecimalNumber alloc] initWithFloat:0.0];
+        _buyManager.price = zero;
+        _buyManager.rateId =[@"0" integerValue];
+    }
+    
+    _buyManager.catId = [_categoryId integerValue];
+    
+    
+    
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"buyer_photo_view_controller"];
     [self.navigationController pushViewController:vc animated:YES];
     
@@ -311,7 +424,8 @@
 //    _professBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
 //    _talentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     
-    _skillType = 1;
+//    _skillType = 1;
+    _buyManager.type = 1;
 }
 
 - (IBAction)rawBtnTapped:(id)sender
@@ -322,7 +436,8 @@
 //    _talentBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
 //    _professBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     
-    _skillType = 2;
+//    _skillType = 2;
+    _buyManager.type = 2;
 }
 
 - (IBAction)onPersonTypeRTapped:(RadioButton *)sender

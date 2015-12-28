@@ -127,6 +127,7 @@
 		51760A711BE882F400F36DC6 /* review_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 51760A701BE882F400F36DC6 /* review_empty.png */; };
 		51788CAE1BBD14FE00A96AD7 /* like_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51788CAC1BBD14FE00A96AD7 /* like_filled.png */; };
 		51788CAF1BBD14FE00A96AD7 /* bookmark_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51788CAD1BBD14FE00A96AD7 /* bookmark_filled.png */; };
+		5178BFB31C3129B400588ECE /* BuyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5178BFB21C3129B400588ECE /* BuyManager.m */; };
 		517931491BAFBD750019BB49 /* BuyerCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517931481BAFBD750019BB49 /* BuyerCollectionViewController.m */; };
 		5179314C1BAFDC9D0019BB49 /* Buyer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179314B1BAFDC9D0019BB49 /* Buyer.m */; };
 		5179314F1BB01A290019BB49 /* BuyerPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5179314E1BB01A290019BB49 /* BuyerPageViewController.m */; };
@@ -647,6 +648,8 @@
 		51760A701BE882F400F36DC6 /* review_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_empty.png; sourceTree = "<group>"; };
 		51788CAC1BBD14FE00A96AD7 /* like_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like_filled.png; sourceTree = "<group>"; };
 		51788CAD1BBD14FE00A96AD7 /* bookmark_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark_filled.png; sourceTree = "<group>"; };
+		5178BFB11C3129B400588ECE /* BuyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyManager.h; sourceTree = "<group>"; };
+		5178BFB21C3129B400588ECE /* BuyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyManager.m; sourceTree = "<group>"; };
 		517931471BAFBD750019BB49 /* BuyerCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerCollectionViewController.h; sourceTree = "<group>"; };
 		517931481BAFBD750019BB49 /* BuyerCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerCollectionViewController.m; sourceTree = "<group>"; };
 		5179314A1BAFDC9D0019BB49 /* Buyer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Buyer.h; sourceTree = "<group>"; };
@@ -1396,6 +1399,8 @@
 				517FE2971C23C08800E8CC7E /* PostBuyViewController.m */,
 				5172BB8E1C2A826100C8AB14 /* BuyerPhotoViewController.h */,
 				5172BB8F1C2A826100C8AB14 /* BuyerPhotoViewController.m */,
+				5178BFB11C3129B400588ECE /* BuyManager.h */,
+				5178BFB21C3129B400588ECE /* BuyManager.m */,
 			);
 			name = PostToBuy;
 			sourceTree = "<group>";
@@ -3108,6 +3113,7 @@
 				516F7EB21C17DF69005FEF8A /* PaySucessViewController.m in Sources */,
 				674D0D981B7D913400B5B80D /* main.m in Sources */,
 				676F77E81B96F3060084988A /* TOCropView.m in Sources */,
+				5178BFB31C3129B400588ECE /* BuyManager.m in Sources */,
 				CE68DA8B1C0D9AE0000CB49F /* SavedDocumentsViewController.m in Sources */,
 				676F77E71B96F3060084988A /* TOCropToolbar.m in Sources */,
 				5179314F1BB01A290019BB49 /* BuyerPageViewController.m in Sources */,

@@ -445,6 +445,32 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
++ (void)saveBuyerMarket:(NSString *)stkid type:(NSInteger)type name:(NSString *)name description:(NSString *)description respons:(NSString *)respons active:(NSInteger)active catId:(NSInteger)catId jobType:(NSInteger)jobType personType:(NSInteger)personType availability:(NSInteger)availability startTime:(NSString *)startTime endTime:(NSString *)endTime price:(NSDecimalNumber *)price rateId:(NSInteger)rateId completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_TYPE:[NSNumber numberWithInteger:type],
+                             POST_PARAMETER_NAME:name,
+                             POST_PARAMETER_DESCRIPTION:description,
+                             POST_PARAMETER_RESPONS:respons,
+                             POST_PARAMETER_ACTIVE:[NSNumber numberWithInteger:active],
+                             POST_PARAMETER_CATEGORY_ID:[NSNumber numberWithInteger:catId],
+                             POST_PARAMETER_JOB_TYPE:[NSNumber numberWithInteger:jobType],
+                             POST_PARAMETER_PERSON_TYPE:[NSNumber numberWithInteger:personType],
+                             POST_PARAMETER_AVAILABILITY:[NSNumber numberWithInteger:availability],
+                             POST_PARAMETER_START_TIME:startTime,
+                             POST_PARAMETER_END_TIME:endTime,
+                             POST_PARAMETER_PRICE:price,
+                             POST_PARAMETER_RATEID:[NSNumber numberWithInteger:rateId]};
+    
+    
+    [self requestData:DATA_URL_SAVE_BUYER_MARKET withParameters:params completion:completion];
+}
+
+
+
+
+
+
 
 
 

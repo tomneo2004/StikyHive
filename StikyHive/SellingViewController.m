@@ -68,7 +68,8 @@
     _categoryArray = [[NSMutableArray alloc] init];
     _skillType = 1;
     
-    _smg = [[SellingManager alloc] init];
+//    _smg = [[SellingManager alloc] init];
+    _smg = [SellingManager sharedSellingManager];
     
     // Testing value
 //    _smg.isSkillId = nil;
@@ -114,7 +115,7 @@
                 
 //                NSString *skillid = @"11562";
                 _smg.isSkillId =  @"11562";
-                if (_smg.isSkillId) {
+                if (_smg.isSkillId != nil) {
                     NSString *stkid = [LocalDataInterface retrieveStkid];
                     [WebDataInterface getSkillById:_smg.isSkillId stkid:stkid completion:^(NSObject *obj, NSError *err)
                      {
@@ -564,9 +565,7 @@
         _rateTextField.text = _rateArray[row][@"name"];
         
         _rateId = _rateArray[row][@"id"];
-        
     }
-    
     
 }
 
@@ -607,14 +606,7 @@
 }
 
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

@@ -23,12 +23,16 @@
 @property (strong, nonatomic) IBOutlet UITextField *rateTextField;
 @property (strong, nonatomic) IBOutlet UITextField *industryTextField;
 
+@property (strong, nonatomic) IBOutlet UITextField *nameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *priceTextField;
 
 @property (strong, nonatomic) IBOutlet UITextField *fromHHTextField;
 @property (strong, nonatomic) IBOutlet UITextField *fromMMTextField;
 @property (strong, nonatomic) IBOutlet UITextField *toHHTextField;
 @property (strong, nonatomic) IBOutlet UITextField *toMMTextField;
 
+@property (strong, nonatomic) IBOutlet UIWebView *descWebView;
+@property (strong, nonatomic) IBOutlet UIWebView *respWebView;
 
 
 - (IBAction)nextBtnPressed:(id)sender;

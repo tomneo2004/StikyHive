@@ -214,6 +214,7 @@
 #define DATA_URL_DELETE_SELL            DATA_URL@"deleteSell/format/json"
 #define DATA_URL_SAVE_REVIEW            DATA_URL@"saveReview/format/json"
 #define DATA_URL_DELETE_BUYER_POST      DATA_URL@"deleteBuyerPost/format/json"
+#define DATA_URL_SAVE_BUYER_MARKET      DATA_URL@"saveBuyerMarket/format/json"
 
 
 
@@ -292,7 +293,15 @@
 #define POST_PARAMETER_LIKE_COUNT       @"likeCount"
 #define POST_PARAMETER_OWNER            @"owner"
 #define POST_PARAMETER_ACTION_MAKER     @"actionMaker"
-#define POST_PARAMETER_BUYERID         @"buyerId"
+#define POST_PARAMETER_BUYERID          @"buyerId"
+#define POST_PARAMETER_RESPONS          @"respons"
+#define POST_PARAMETER_ACTIVE           @"active"
+#define POST_PARAMETER_JOB_TYPE         @"jobType"
+#define POST_PARAMETER_PERSON_TYPE      @"personType"
+#define POST_PARAMETER_AVAILABILITY     @"availability"
+#define POST_PARAMETER_START_TIME       @"startTime"
+#define POST_PARAMETER_END_TIME         @"endTime"
+
 
 
 
@@ -394,6 +403,14 @@
 
 
 + (void)deleteBuyerPost:(NSInteger)buyerId stkid:(NSString *)stkid limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
+
+
+
++ (void)saveBuyerMarket:(NSString *)stkid type:(NSInteger)type name:(NSString *)name description:(NSString *)description respons:(NSString *)respons active:(NSInteger)active catId:(NSInteger)catId jobType:(NSInteger)jobType personType:(NSInteger)personType availability:(NSInteger)availability startTime:(NSString *)startTime endTime:(NSString *)endTime price:(NSDecimalNumber *)price rateId:(NSInteger)rateId completion:(void (^)(NSObject *, NSError *))completion;
+
+
+
+
 
 
 

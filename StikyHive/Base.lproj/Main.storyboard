@@ -1726,7 +1726,7 @@
                                                 <exclude reference="uwM-rz-vFy"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="420" width="400" height="150"/>
                                             <mask key="constraints">
                                                 <include reference="uwM-rz-vFy"/>
@@ -1743,7 +1743,7 @@
                                                 <exclude reference="fCv-Ce-Z4m"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="0.0" y="570" width="400" height="149"/>
                                             <mask key="constraints">
                                                 <include reference="fCv-Ce-Z4m"/>
@@ -1767,7 +1767,7 @@
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKh-o2-knG">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="320" y="451" width="51" height="31"/>
                                         </variation>
                                         <connections>
@@ -1776,7 +1776,7 @@
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gu0-wb-6L0">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="320" y="600" width="51" height="31"/>
                                         </variation>
                                         <connections>
@@ -3490,13 +3490,17 @@
                     <size key="freeformSize" width="400" height="1200"/>
                     <connections>
                         <outlet property="contentScrollView" destination="ah3-ZZ-bfg" id="oyc-H9-NrH"/>
+                        <outlet property="descWebView" destination="gS3-YJ-OKd" id="WGy-Ab-2Hu"/>
                         <outlet property="fromHHTextField" destination="7rB-xb-6Ts" id="aZa-FB-E6z"/>
                         <outlet property="fromMMTextField" destination="Hqe-hm-lBO" id="nyG-jB-029"/>
                         <outlet property="fulltRBtn" destination="RkA-s6-OoJ" id="IL3-Qu-tSu"/>
                         <outlet property="individualRBtn" destination="Zjf-lz-YVH" id="q5F-OL-sKD"/>
                         <outlet property="industryTextField" destination="vTN-NY-Xlc" id="XK9-iO-D29"/>
+                        <outlet property="nameTextField" destination="xvj-XI-8dx" id="Rvy-QG-9NP"/>
                         <outlet property="openRBtn" destination="cm5-6W-hUZ" id="z5m-x4-JdZ"/>
+                        <outlet property="priceTextField" destination="LUY-Xd-9yo" id="Sa6-gM-n20"/>
                         <outlet property="rateTextField" destination="GSM-HK-Jkk" id="50k-sE-znO"/>
+                        <outlet property="respWebView" destination="Nv8-b0-FuS" id="OTv-Rb-yv6"/>
                         <outlet property="toHHTextField" destination="fBG-WZ-xVY" id="Owf-vh-nMa"/>
                         <outlet property="toMMTextField" destination="Y5f-Ie-EXC" id="GQm-Ey-oiX"/>
                     </connections>
