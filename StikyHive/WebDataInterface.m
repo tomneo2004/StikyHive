@@ -450,9 +450,6 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 
 
 
-
-
-
 + (void)fileRequestUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid cpid:(NSInteger)cpid
 {
     //change compression value to 0.0 from 1.0 so image might be under 1mb
