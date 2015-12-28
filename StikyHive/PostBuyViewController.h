@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface PostBuyViewController : UIViewController <UIScrollViewDelegate>
+@interface PostBuyViewController : UIViewController <UIScrollViewDelegate, UITextFieldDelegate, UIPickerViewDelegate,UIPickerViewDataSource, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 
@@ -24,8 +24,22 @@
 @property (strong, nonatomic) IBOutlet UIButton *openRBtn;
 @property (strong, nonatomic) IBOutlet UIButton *closeRBtn;
 
+@property (strong, nonatomic) IBOutlet UITextField *rateTextField;
+@property (strong, nonatomic) IBOutlet UITextField *industryTextField;
 
 - (IBAction)nextBtnPressed:(id)sender;
+
+- (IBAction)professionalBtnTapped:(id)sender;
+
+- (IBAction)rawBtnTapped:(id)sender;
+
+
+- (IBAction)onPersonTypeRTapped:(id)sender;
+
+
+- (IBAction)onJobTypeRTapped:(id)sender;
+
+- (IBAction)onAvailabitityRTapped:(id)sender;
 
 
 
