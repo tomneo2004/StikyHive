@@ -114,15 +114,16 @@
     CGRect rect = CGRectMake(0,0,w,h);
     UIGraphicsBeginImageContext(rect.size);
     [image drawInRect:rect];
-    UIImage *picture1 = UIGraphicsGetImageFromCurrentImageContext();
+     //    UIImage *picture1 = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    //  NSData *imageData = UIImagePNGRepresentation(picture1);
-    NSData *imgData = UIImageJPEGRepresentation(picture1, 1.0);
-    UIImage *img = [UIImage imageWithData:imgData];
+     //      NSData *imageData = UIImagePNGRepresentation(picture1);
+//    NSData *imgData = UIImageJPEGRepresentation(picture1, 1.0);
+//    UIImage *img = [UIImage imageWithData:imgData];
     
 //    UIImageView *imageView = [[UIImageView alloc] initWithImage: img];
-    UIImageView *imageView = [[UIImageView alloc] init];
+    
+    __block UIImageView *imageView = [[UIImageView alloc] init];
     [imageView setImageWithURLRequest:[NSURLRequest requestWithURL:imageURL] placeholderImage:[UIImage imageNamed:defaultPhotoName] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         imageView.image = image;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
