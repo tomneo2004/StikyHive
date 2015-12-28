@@ -103,6 +103,7 @@
     
     NSString *stkid = [LocalDataInterface retrieveStkid];
     NSLog(@"stk id --- skill page ---- %@",stkid);
+    NSLog(@"skill id --- skill page --- %@",_Skill_ID);
     
     [self.view showActivityViewWithLabel:@"Loading..."];
     
@@ -295,33 +296,6 @@
         
         
         
-//        CGFloat x = point.x;
-//        for (int i = 0; i < phoArr.count; i ++)
-//        {
-//            UIImageView *imview = [[UIImageView alloc] initWithFrame:CGRectMake(x, point.y, width, 290)];
-//            NSString *location = phoArr[i][@"location"];
-//            NSString *url = [WebDataInterface getFullUrlPath:location];
-//            UIImage *image = [ViewControllerUtil getImageWithPath:url];
-//            imview.image = image;
-//            
-//            [_photoScrollView addSubview:imview];
-//            
-//            x = x + width;
-//            
-//            NSLog(@"photo array url ------- %@",url);
-//        }
-//        
-//        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(self.view.center.x/4 , point.y+250, 320, 36)];
-//        
-//        
-//        CGPoint center = _pageControl.center;
-//        center.x = _contentScrollView.center.x;
-//        _pageControl.center = center;
-//    
-//        _pageControl.numberOfPages = phoArr.count;
-//        [_pageControl addTarget:self action:@selector(pageControl:) forControlEvents:UIControlEventValueChanged];
-//        
-//        _photoScrollView.contentSize = CGSizeMake(phoArr.count*378, _photoScrollView.frame.size.height);
         
     }
     

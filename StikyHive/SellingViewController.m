@@ -13,6 +13,7 @@
 #import "SellingViewController2.h"
 #import "SellingManager.h"
 #import "UIView+RNActivityView.h"
+#import "LocalDataInterface.h"
 
 
 @interface SellingViewController ()
@@ -38,6 +39,8 @@
 @property (nonatomic, assign) NSString *categoryId;
 @property (nonatomic, assign) NSString *rateId;
 @property (nonatomic, assign) NSInteger skillType;
+@property (nonatomic, strong) NSDictionary *skillDict;
+@property (nonatomic, strong) SellingManager *smg;
 
 
 @end
@@ -64,6 +67,8 @@
     _industryArray = [[NSMutableArray alloc] init];
     _categoryArray = [[NSMutableArray alloc] init];
     _skillType = 1;
+    
+    _smg = [[SellingManager alloc] init];
     
     
     [self.view showActivityViewWithLabel:@"Loading..."];
@@ -100,6 +105,25 @@
                 
                 NSDictionary *rate = (NSDictionary *)obj2;
                 _rateArray = rate[@"rate"];
+                NSLog(@"skill array --- %@",_skillArray);
+                NSLog(@"rate array --- %@",_rateArray);
+                
+                
+                NSString *skillid = @"11562";
+                _smg.isSkillId =  @"11562";
+                if (skillid) {
+                    NSString *stkid = [LocalDataInterface retrieveStkid];
+                    [WebDataInterface getSkillById:skillid stkid:stkid completion:^(NSObject *obj, NSError *err)
+                     {
+                         
+                         _skillDict = (NSDictionary *)obj;
+                         NSLog(@"skill dict ---- %@",_skillDict);
+                         
+                     }];
+
+                }
+                
+                
                 
 
                 [self displayPage];
@@ -167,6 +191,10 @@
     _titleTextField.backgroundColor = textBgColor;
     _titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0);  //text inset for uitextfield
     _titleTextField.font = [UIFont fontWithName:@"OpenSans-Light" size:17];
+    if (_smg.isSkillId){
+        NSDictionary *array = _skillDict[@"resultSkill"];
+        _titleTextField.text = array[@"name"];
+    }
     
     
     y = y + _titleTextField.frame.size.height+20;
@@ -230,6 +258,13 @@
     _priceTextField.font = [UIFont systemFontOfSize:16];
     _priceTextField.textAlignment = NSTextAlignmentCenter;
     _priceTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    if (_smg.isSkillId){
+        NSDictionary *array = _skillDict[@"resultSkill"];
+        NSString *price = array[@"price"];
+        if (price != nil) {
+            _priceTextField.text = price;
+        }
+    }
     
     
     UILabel *smLabel = [[UILabel alloc] initWithFrame:CGRectMake(_priceTextField.frame.origin.x+_priceTextField.frame.size.width+5, y+10, 10, 15)];
@@ -340,8 +375,8 @@
     NSString *priceString = _priceTextField.text;
     NSString *rateString = _rateTextField.text;
     
-    NSLog(@"category - %@",_categoryId);
-    NSLog(@"rate - %@",_rateId);
+//    NSLog(@"category - %@",_categoryId);
+//    NSLog(@"rate - %@",_rateId);
     NSString *industryString = _industryTextField.text;
     
     NSString *summaryString = [_summaryWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];

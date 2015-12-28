@@ -8,6 +8,7 @@
 
 #import "PostBuyViewController.h"
 #import "RadioButton.h"
+#import "ViewControllerUtil.h"
 
 
 
@@ -42,4 +43,12 @@
 
 
 
+- (IBAction)nextBtnPressed:(id)sender
+{
+    
+    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"buyer_photo_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 @end
