@@ -10,6 +10,7 @@
 #import "PhotoViewController.h"
 #import "LocalDataInterface.h"
 #import "UIImageView+AFNetworking.h"
+#import "ThumbnailView.h"
 
 
 @implementation ViewControllerUtil
@@ -90,7 +91,7 @@
                    defaultPhoto:(NSString *)defaultPhotoName
 {
     
-    
+    /*
     NSURL *imageURL = [NSURL URLWithString:imageURLStr];
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     UIImage *image = [UIImage imageWithData:imageData];
@@ -138,6 +139,19 @@
     CGRect frame = CGRectMake(x, y, w, h);
     UIView *subview = [[UIView alloc] initWithFrame:frame];
     [subview addSubview:imageView];
+    
+    return subview;
+     */
+    
+    
+    
+    NSURL *imageURL = [NSURL URLWithString:imageURLStr];;
+    
+    CGRect frame = CGRectMake(x, y, w, h);
+    ThumbnailView * subview = [[ThumbnailView alloc] initWithFrame:frame];
+    [subview setTag:tag];
+    [subview setTapTarget:target andAction:sel];
+   [subview displayImageWithURL:imageURL withWidth:w withHeight:h withDefaultPhotoName:defaultPhotoName];
     
     return subview;
 }

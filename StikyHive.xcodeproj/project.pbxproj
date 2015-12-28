@@ -422,6 +422,7 @@
 		CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE51C1029E700326710 /* SubInfoCell.m */; };
 		CE9C7CE91C102ED600326710 /* SubInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE81C102ED600326710 /* SubInfo.m */; };
 		CEA325701C1A7116007B1E5C /* DescEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */; };
+		CEBDDFE31C30E05200CF54D8 /* ThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBDDFE21C30E05200CF54D8 /* ThumbnailView.m */; };
 		CEC8A1DA1C2A787300558608 /* MyPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1D91C2A787300558608 /* MyPostViewController.m */; };
 		CEC8A1DD1C2A78FD00558608 /* MyPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */; };
 		CEC8A1E01C2A7CE900558608 /* MyPostInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1DF1C2A7CE900558608 /* MyPostInfo.m */; };
@@ -1093,6 +1094,8 @@
 		CE9C7CE81C102ED600326710 /* SubInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfo.m; sourceTree = "<group>"; };
 		CEA3256E1C1A7116007B1E5C /* DescEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescEditorViewController.h; sourceTree = "<group>"; };
 		CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescEditorViewController.m; sourceTree = "<group>"; };
+		CEBDDFE11C30E05200CF54D8 /* ThumbnailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailView.h; sourceTree = "<group>"; };
+		CEBDDFE21C30E05200CF54D8 /* ThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailView.m; sourceTree = "<group>"; };
 		CEC8A1D81C2A787300558608 /* MyPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostViewController.h; sourceTree = "<group>"; };
 		CEC8A1D91C2A787300558608 /* MyPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostViewController.m; sourceTree = "<group>"; };
 		CEC8A1DB1C2A78FD00558608 /* MyPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostCell.h; sourceTree = "<group>"; };
@@ -1713,6 +1716,8 @@
 				674D0EB61B7D984200B5B80D /* SearchSellViewController.m */,
 				676F77E91B96F3270084988A /* CropPhotoViewController.h */,
 				676F77EA1B96F3270084988A /* CropPhotoViewController.m */,
+				CEBDDFE11C30E05200CF54D8 /* ThumbnailView.h */,
+				CEBDDFE21C30E05200CF54D8 /* ThumbnailView.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -3048,6 +3053,7 @@
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
 				CEFD19581C040F3D00A79158 /* SearchResultCell.m in Sources */,
 				CE51A3B31C2403FE00652B90 /* ReviewInfo.m in Sources */,
+				CEBDDFE31C30E05200CF54D8 /* ThumbnailView.m in Sources */,
 				674D0F341B7D9A5200B5B80D /* NSString+JSQMessages.m in Sources */,
 				CE5D4A511C27AF8E005C07D4 /* SeeAllReviewViewController.m in Sources */,
 				674D0F771B7D9F2200B5B80D /* HtmlEditor.m in Sources */,
