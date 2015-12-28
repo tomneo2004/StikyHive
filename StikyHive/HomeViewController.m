@@ -96,6 +96,7 @@
         [WebDataInterface getBuyerMarket:@"" limit:8 completion:^(NSObject *obj2, NSError *err2)
          {
              
+             NSLog(@"view did load...");
              
             // dispatch_async(dispatch_get_main_queue(), ^{
                  
@@ -150,6 +151,8 @@
               {
                   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
                                  {
+                                     
+                                     NSLog(@"scroll view did scroll updaating....");
                 
                                      [self dataReceivedSkills:(NSDictionary *)obj];
                                      

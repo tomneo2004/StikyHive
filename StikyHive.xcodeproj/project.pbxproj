@@ -118,6 +118,8 @@
 		51700A8F1BD49F8200294DAD /* review_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51700A8E1BD49F8200294DAD /* review_filled.png */; };
 		51700A921BD4C93500294DAD /* BuyerPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51700A911BD4C93500294DAD /* BuyerPostViewController.m */; };
 		51718BB21BE75700000424E6 /* profile_bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 51718BB11BE75700000424E6 /* profile_bookmark.png */; };
+		5172BB901C2A826100C8AB14 /* BuyerPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5172BB8F1C2A826100C8AB14 /* BuyerPhotoViewController.m */; };
+		5172BB921C2A84A700C8AB14 /* icon_buy_add_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5172BB911C2A84A700C8AB14 /* icon_buy_add_photo.png */; };
 		5173255F1C02B25E004655D6 /* sell_upload_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 5173255E1C02B25E004655D6 /* sell_upload_video.png */; };
 		517325621C02B3B7004655D6 /* SellingViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 517325611C02B3B7004655D6 /* SellingViewController2.m */; };
 		5174454F1C113D2400153C0C /* PaySummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5174454E1C113D2400153C0C /* PaySummaryViewController.m */; };
@@ -631,6 +633,9 @@
 		51700A901BD4C93500294DAD /* BuyerPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerPostViewController.h; sourceTree = "<group>"; };
 		51700A911BD4C93500294DAD /* BuyerPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerPostViewController.m; sourceTree = "<group>"; };
 		51718BB11BE75700000424E6 /* profile_bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_bookmark.png; sourceTree = "<group>"; };
+		5172BB8E1C2A826100C8AB14 /* BuyerPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerPhotoViewController.h; sourceTree = "<group>"; };
+		5172BB8F1C2A826100C8AB14 /* BuyerPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerPhotoViewController.m; sourceTree = "<group>"; };
+		5172BB911C2A84A700C8AB14 /* icon_buy_add_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_buy_add_photo.png; sourceTree = "<group>"; };
 		5173255E1C02B25E004655D6 /* sell_upload_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sell_upload_video.png; sourceTree = "<group>"; };
 		517325601C02B3B7004655D6 /* SellingViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingViewController2.h; sourceTree = "<group>"; };
 		517325611C02B3B7004655D6 /* SellingViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingViewController2.m; sourceTree = "<group>"; };
@@ -1355,6 +1360,8 @@
 			children = (
 				517FE2961C23C08800E8CC7E /* PostBuyViewController.h */,
 				517FE2971C23C08800E8CC7E /* PostBuyViewController.m */,
+				5172BB8E1C2A826100C8AB14 /* BuyerPhotoViewController.h */,
+				5172BB8F1C2A826100C8AB14 /* BuyerPhotoViewController.m */,
 			);
 			name = PostToBuy;
 			sourceTree = "<group>";
@@ -1363,6 +1370,7 @@
 			isa = PBXGroup;
 			children = (
 				CED3C87E1C2265990090DE35 /* icon_delete_with_bg.png */,
+				5172BB911C2A84A700C8AB14 /* icon_buy_add_photo.png */,
 				517B19331C22B21100F956FE /* checked@2x.png */,
 				517B19351C22B21100F956FE /* unchecked@2x.png */,
 				674D0E411B7D920E00B5B80D /* Payment_thankyou@2x.png */,
@@ -2765,6 +2773,7 @@
 				516A61141BB51598008579B6 /* bookmark.png in Resources */,
 				516A5B851BB68D9300668EBB /* default_seller_post.png in Resources */,
 				674D0E601B7D920E00B5B80D /* CP_bg@2x.png in Resources */,
+				5172BB921C2A84A700C8AB14 /* icon_buy_add_photo.png in Resources */,
 				516718AF1C1A799E003E9902 /* ZSSindent.png in Resources */,
 				676767561B81CBE10093F70D /* uicheckbox_unchecked.png in Resources */,
 				516718D21C1A799E003E9902 /* ZSStextcolor@2x.png in Resources */,
@@ -3124,6 +3133,7 @@
 				51700A921BD4C93500294DAD /* BuyerPostViewController.m in Sources */,
 				676F77E01B96F3060084988A /* TOActivityCroppedImageProvider.m in Sources */,
 				674D0F351B7D9A5200B5B80D /* UIColor+JSQMessages.m in Sources */,
+				5172BB901C2A826100C8AB14 /* BuyerPhotoViewController.m in Sources */,
 				CEF7BA991BFAC66E009624CC /* MyRequestViewController.m in Sources */,
 				674D0F3C1B7D9A5200B5B80D /* JSQMessagesAvatarImageFactory.m in Sources */,
 				517D552F1BDA0301000EA8FD /* ReportAbuseViewController.m in Sources */,

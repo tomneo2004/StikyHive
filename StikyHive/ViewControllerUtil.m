@@ -9,6 +9,8 @@
 #import "ViewControllerUtil.h"
 #import "PhotoViewController.h"
 #import "LocalDataInterface.h"
+#import "UIImageView+AFNetworking.h"
+
 
 @implementation ViewControllerUtil
 
@@ -119,10 +121,18 @@
     NSData *imgData = UIImageJPEGRepresentation(picture1, 1.0);
     UIImage *img = [UIImage imageWithData:imgData];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage: img];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage: img];
+    UIImageView *imageView = [[UIImageView alloc] init];
+    [imageView setImageWithURLRequest:[NSURLRequest requestWithURL:imageURL] placeholderImage:[UIImage imageNamed:defaultPhotoName] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        imageView.image = image;
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+        
+    }];
+    
     imageView.userInteractionEnabled = YES;
     [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:target action:sel]];
     imageView.tag = tag;
+    
     
     CGRect frame = CGRectMake(x, y, w, h);
     UIView *subview = [[UIView alloc] initWithFrame:frame];

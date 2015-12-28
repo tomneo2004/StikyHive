@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *closeRBtn;
 
 
+- (IBAction)nextBtnPressed:(id)sender;
 
 
 

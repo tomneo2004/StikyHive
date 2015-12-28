@@ -213,6 +213,7 @@
 #define DATA_URL_UPDATE_SUBSKILL_STATUS DATA_URL@"updateSubSkillStatus/format/json"
 #define DATA_URL_DELETE_SELL            DATA_URL@"deleteSell/format/json"
 #define DATA_URL_SAVE_REVIEW            DATA_URL@"saveReview/format/json"
+#define DATA_URL_DELETE_BUYER_POST      DATA_URL@"deleteBuyerPost/format/json"
 
 
 
@@ -291,6 +292,7 @@
 #define POST_PARAMETER_LIKE_COUNT       @"likeCount"
 #define POST_PARAMETER_OWNER            @"owner"
 #define POST_PARAMETER_ACTION_MAKER     @"actionMaker"
+#define POST_PARAMETER_BUYERID         @"buyerId"
 
 
 
@@ -389,6 +391,9 @@
 + (void)deleteSell:(NSInteger)skillId completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)saveReview:(NSString *)reviewId skillId:(NSString *)skillId viewCount:(NSString *)viewCount likeCount:(NSString *)likeCount owner:(NSString *)owner actionMaker:(NSString *)actionMaker completion:(void (^)(NSObject *, NSError *))completion;
+
+
++ (void)deleteBuyerPost:(NSInteger)buyerId stkid:(NSString *)stkid limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
 
 
 

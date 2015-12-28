@@ -42,7 +42,7 @@
     
     BOOL _promotionStatus;
     
-    BOOL _isEditSkill;
+    NSString *_isSkillId;
 }
 
 static SellingManager *_instance;
@@ -156,9 +156,9 @@ static SellingManager *_instance;
     _profileTap = profileTap;
 }
 
-- (void)setIsEditSkill:(BOOL)isEditSkill
+- (void)setIsSkillId:(NSString *)isSkillId
 {
-    _isEditSkill = isEditSkill;
+    _isSkillId = isSkillId;
 }
 
 
@@ -258,9 +258,9 @@ static SellingManager *_instance;
     return _profileTap;
 }
 
-- (BOOL)getIsEditSkill
+- (BOOL)getIsSkillId
 {
-    return _isEditSkill;
+    return _isSkillId;
 }
 
 
@@ -300,7 +300,7 @@ static SellingManager *_instance;
     _promotionStatus = nil;
 
     
-    _isEditSkill = nil;
+    _isSkillId = nil;
 }
 
 - (id)init{

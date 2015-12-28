@@ -436,6 +436,15 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     [self requestData:DATA_URL_SAVE_REVIEW withParameters:params completion:completion];
 }
 
++ (void)deleteBuyerPost:(NSInteger)buyerId stkid:(NSString *)stkid limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_BUYERID:[NSNumber numberWithInteger:buyerId],
+                             POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_LIMIT:[NSNumber numberWithInteger:limit]};
+    [self requestData:DATA_URL_DELETE_BUYER_POST withParameters:params completion:completion];
+}
+
+
 
 
 
