@@ -1341,6 +1341,37 @@
 			path = "Third Party";
 			sourceTree = "<group>";
 		};
+		5178BFB01C311EAD00588ECE /* StartSelling */ = {
+			isa = PBXGroup;
+			children = (
+				517C8F7C1BF9C2E80020CBE6 /* SellingViewController.h */,
+				517C8F7D1BF9C2E80020CBE6 /* SellingViewController.m */,
+				517325601C02B3B7004655D6 /* SellingViewController2.h */,
+				517325611C02B3B7004655D6 /* SellingViewController2.m */,
+				516C51601C0410B8002710AA /* SellingViewController3.h */,
+				516C51611C0410B8002710AA /* SellingViewController3.m */,
+				5184DD4F1C08639A008F434B /* SellingViewController33.h */,
+				5184DD501C08639A008F434B /* SellingViewController33.m */,
+				517A1C631C0C2B72004017E4 /* SellingViewController4.h */,
+				517A1C641C0C2B72004017E4 /* SellingViewController4.m */,
+				5168F2361C0ECE8E0087C0BF /* SellingManager.h */,
+				5168F2371C0ECE8E0087C0BF /* SellingManager.m */,
+				516F58A71C104A4000E4FD41 /* PromotionViewController.h */,
+				516F58A81C104A4000E4FD41 /* PromotionViewController.m */,
+				5174454D1C113D2400153C0C /* PaySummaryViewController.h */,
+				5174454E1C113D2400153C0C /* PaySummaryViewController.m */,
+				516F7EB01C17DF69005FEF8A /* PaySucessViewController.h */,
+				516F7EB11C17DF69005FEF8A /* PaySucessViewController.m */,
+				516F7EB31C182EA2005FEF8A /* SellingTableViewController.h */,
+				516F7EB41C182EA2005FEF8A /* SellingTableViewController.m */,
+				516F7EB61C183B3F005FEF8A /* SellingCell.h */,
+				516F7EB71C183B3F005FEF8A /* SellingCell.m */,
+				5174C1F01C1E908000A6B2CF /* ImageCaption.h */,
+				5174C1F11C1E908000A6B2CF /* ImageCaption.m */,
+			);
+			name = StartSelling;
+			sourceTree = "<group>";
+		};
 		517931461BAFBD540019BB49 /* Buyer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1725,6 +1756,7 @@
 		674D0EB81B7D987100B5B80D /* Skill */ = {
 			isa = PBXGroup;
 			children = (
+				5178BFB01C311EAD00588ECE /* StartSelling */,
 				51694D691BABE9C4007722F1 /* SkillVideoPlayer.h */,
 				51694D6A1BABE9C4007722F1 /* SkillVideoPlayer.m */,
 				674D0F681B7D9B3100B5B80D /* Skill.h */,
@@ -1747,30 +1779,6 @@
 				516A614D1BC7A47900D4E890 /* PostCommViewController.m */,
 				51896EAC1BCDFE5D006643AE /* SellerRevViewController.h */,
 				51896EAD1BCDFE5D006643AE /* SellerRevViewController.m */,
-				517C8F7C1BF9C2E80020CBE6 /* SellingViewController.h */,
-				517C8F7D1BF9C2E80020CBE6 /* SellingViewController.m */,
-				517325601C02B3B7004655D6 /* SellingViewController2.h */,
-				517325611C02B3B7004655D6 /* SellingViewController2.m */,
-				516C51601C0410B8002710AA /* SellingViewController3.h */,
-				516C51611C0410B8002710AA /* SellingViewController3.m */,
-				5184DD4F1C08639A008F434B /* SellingViewController33.h */,
-				5184DD501C08639A008F434B /* SellingViewController33.m */,
-				517A1C631C0C2B72004017E4 /* SellingViewController4.h */,
-				517A1C641C0C2B72004017E4 /* SellingViewController4.m */,
-				5168F2361C0ECE8E0087C0BF /* SellingManager.h */,
-				5168F2371C0ECE8E0087C0BF /* SellingManager.m */,
-				516F58A71C104A4000E4FD41 /* PromotionViewController.h */,
-				516F58A81C104A4000E4FD41 /* PromotionViewController.m */,
-				5174454D1C113D2400153C0C /* PaySummaryViewController.h */,
-				5174454E1C113D2400153C0C /* PaySummaryViewController.m */,
-				516F7EB01C17DF69005FEF8A /* PaySucessViewController.h */,
-				516F7EB11C17DF69005FEF8A /* PaySucessViewController.m */,
-				516F7EB31C182EA2005FEF8A /* SellingTableViewController.h */,
-				516F7EB41C182EA2005FEF8A /* SellingTableViewController.m */,
-				516F7EB61C183B3F005FEF8A /* SellingCell.h */,
-				516F7EB71C183B3F005FEF8A /* SellingCell.m */,
-				5174C1F01C1E908000A6B2CF /* ImageCaption.h */,
-				5174C1F11C1E908000A6B2CF /* ImageCaption.m */,
 			);
 			name = Skill;
 			sourceTree = "<group>";
