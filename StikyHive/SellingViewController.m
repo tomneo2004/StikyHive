@@ -71,7 +71,7 @@
     _smg = [[SellingManager alloc] init];
     
     // Testing value
-    _smg.isSkillId = nil;
+//    _smg.isSkillId = nil;
     
     
     [self.view showActivityViewWithLabel:@"Loading..."];
@@ -112,11 +112,11 @@
                 NSLog(@"rate array --- %@",_rateArray);
                 
                 
-                NSString *skillid = @"11562";
+//                NSString *skillid = @"11562";
                 _smg.isSkillId =  @"11562";
-                if (skillid) {
+                if (_smg.isSkillId) {
                     NSString *stkid = [LocalDataInterface retrieveStkid];
-                    [WebDataInterface getSkillById:skillid stkid:stkid completion:^(NSObject *obj, NSError *err)
+                    [WebDataInterface getSkillById:_smg.isSkillId stkid:stkid completion:^(NSObject *obj, NSError *err)
                      {
                          
                          _skillDict = (NSDictionary *)obj;
