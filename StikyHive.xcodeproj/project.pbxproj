@@ -392,12 +392,22 @@
 		CE02CED31C17FD2400B58819 /* PostReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE02CED21C17FD2400B58819 /* PostReviewViewController.m */; };
 		CE0461C21C058E3A00254EBB /* PrepareRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */; };
 		CE0461C51C05ADFD00254EBB /* PrepareRequestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */; };
+		CE0519051C23B41D004519E6 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0519041C23B41D004519E6 /* CommentsViewController.m */; };
+		CE0519081C23B435004519E6 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0519071C23B435004519E6 /* ReviewsViewController.m */; };
+		CE05190B1C23BA8D004519E6 /* CommentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE05190A1C23BA8D004519E6 /* CommentInfo.m */; };
 		CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */; };
 		CE1375D01C084FAA00201989 /* PaymentSuccessfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */; };
 		CE24E7FC1C196E960021F078 /* UpdateProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24E7FB1C196E960021F078 /* UpdateProfileViewController.m */; };
 		CE24E7FF1C196EB40021F078 /* EditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24E7FE1C196EB40021F078 /* EditProfileTableViewController.m */; };
 		CE24E8021C1970000021F078 /* CountryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24E8011C1970000021F078 /* CountryInfo.m */; };
 		CE3EFDED1C0EC5AA00281FC6 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */; };
+		CE51A3B01C23FF9500652B90 /* AllCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */; };
+		CE51A3B31C2403FE00652B90 /* ReviewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51A3B21C2403FE00652B90 /* ReviewInfo.m */; };
+		CE5D4A451C279179005C07D4 /* SeeAllCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A441C279179005C07D4 /* SeeAllCommentViewController.m */; };
+		CE5D4A491C279540005C07D4 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A481C279540005C07D4 /* CommentCell.m */; };
+		CE5D4A4C1C27A649005C07D4 /* PostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A4B1C27A649005C07D4 /* PostCommentViewController.m */; };
+		CE5D4A511C27AF8E005C07D4 /* SeeAllReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A501C27AF8E005C07D4 /* SeeAllReviewViewController.m */; };
+		CE5D4A541C27B065005C07D4 /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A531C27B065005C07D4 /* ReviewCell.m */; };
 		CE68DA8B1C0D9AE0000CB49F /* SavedDocumentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */; };
 		CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8D1C0D9E8D000CB49F /* DocumentTableViewCell.m */; };
 		CE68DA911C0DA0F6000CB49F /* DocumentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */; };
@@ -412,6 +422,16 @@
 		CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE51C1029E700326710 /* SubInfoCell.m */; };
 		CE9C7CE91C102ED600326710 /* SubInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE81C102ED600326710 /* SubInfo.m */; };
 		CEA325701C1A7116007B1E5C /* DescEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */; };
+		CEBDDFE31C30E05200CF54D8 /* ThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBDDFE21C30E05200CF54D8 /* ThumbnailView.m */; };
+		CEC8A1DA1C2A787300558608 /* MyPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1D91C2A787300558608 /* MyPostViewController.m */; };
+		CEC8A1DD1C2A78FD00558608 /* MyPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */; };
+		CEC8A1E01C2A7CE900558608 /* MyPostInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1DF1C2A7CE900558608 /* MyPostInfo.m */; };
+		CED3C8771C2251490090DE35 /* MySkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8761C2251490090DE35 /* MySkillViewController.m */; };
+		CED3C87A1C2251B10090DE35 /* MySkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8791C2251B10090DE35 /* MySkillInfo.m */; };
+		CED3C87D1C225D800090DE35 /* MySkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C87C1C225D800090DE35 /* MySkillCell.m */; };
+		CED3C87F1C2265990090DE35 /* icon_delete_with_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3C87E1C2265990090DE35 /* icon_delete_with_bg.png */; };
+		CED3C8831C22946D0090DE35 /* SkillViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8821C22946D0090DE35 /* SkillViewTableViewController.m */; };
+		CED3C8851C2295DD0090DE35 /* icon_eye_open.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3C8841C2295DD0090DE35 /* icon_eye_open.png */; };
 		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
 		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
@@ -1014,6 +1034,12 @@
 		CE0461C11C058E3A00254EBB /* PrepareRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestViewController.m; sourceTree = "<group>"; };
 		CE0461C31C05ADFD00254EBB /* PrepareRequestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareRequestTableViewController.h; sourceTree = "<group>"; };
 		CE0461C41C05ADFD00254EBB /* PrepareRequestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareRequestTableViewController.m; sourceTree = "<group>"; };
+		CE0519031C23B41D004519E6 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		CE0519041C23B41D004519E6 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		CE0519061C23B435004519E6 /* ReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewsViewController.h; sourceTree = "<group>"; };
+		CE0519071C23B435004519E6 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
+		CE0519091C23BA8D004519E6 /* CommentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInfo.h; sourceTree = "<group>"; };
+		CE05190A1C23BA8D004519E6 /* CommentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentInfo.m; sourceTree = "<group>"; };
 		CE1375C81C083E1F00201989 /* PaymentSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSummaryViewController.h; sourceTree = "<group>"; };
 		CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryViewController.m; sourceTree = "<group>"; };
 		CE1375CE1C084FAA00201989 /* PaymentSuccessfulViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSuccessfulViewController.h; sourceTree = "<group>"; };
@@ -1026,6 +1052,20 @@
 		CE24E8011C1970000021F078 /* CountryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryInfo.m; sourceTree = "<group>"; };
 		CE3EFDEB1C0EC5AA00281FC6 /* PDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFViewController.h; sourceTree = "<group>"; };
 		CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFViewController.m; sourceTree = "<group>"; };
+		CE51A3AE1C23FF9500652B90 /* AllCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllCommentViewController.h; sourceTree = "<group>"; };
+		CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCommentViewController.m; sourceTree = "<group>"; };
+		CE51A3B11C2403FE00652B90 /* ReviewInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewInfo.h; sourceTree = "<group>"; };
+		CE51A3B21C2403FE00652B90 /* ReviewInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewInfo.m; sourceTree = "<group>"; };
+		CE5D4A431C279179005C07D4 /* SeeAllCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeeAllCommentViewController.h; sourceTree = "<group>"; };
+		CE5D4A441C279179005C07D4 /* SeeAllCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeeAllCommentViewController.m; sourceTree = "<group>"; };
+		CE5D4A471C279540005C07D4 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		CE5D4A481C279540005C07D4 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		CE5D4A4A1C27A649005C07D4 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommentViewController.h; sourceTree = "<group>"; };
+		CE5D4A4B1C27A649005C07D4 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommentViewController.m; sourceTree = "<group>"; };
+		CE5D4A4F1C27AF8E005C07D4 /* SeeAllReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeeAllReviewViewController.h; sourceTree = "<group>"; };
+		CE5D4A501C27AF8E005C07D4 /* SeeAllReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeeAllReviewViewController.m; sourceTree = "<group>"; };
+		CE5D4A521C27B065005C07D4 /* ReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
+		CE5D4A531C27B065005C07D4 /* ReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
 		CE68DA891C0D9AE0000CB49F /* SavedDocumentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedDocumentsViewController.h; sourceTree = "<group>"; };
 		CE68DA8A1C0D9AE0000CB49F /* SavedDocumentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedDocumentsViewController.m; sourceTree = "<group>"; };
 		CE68DA8C1C0D9E8D000CB49F /* DocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentTableViewCell.h; sourceTree = "<group>"; };
@@ -1054,6 +1094,24 @@
 		CE9C7CE81C102ED600326710 /* SubInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfo.m; sourceTree = "<group>"; };
 		CEA3256E1C1A7116007B1E5C /* DescEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescEditorViewController.h; sourceTree = "<group>"; };
 		CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescEditorViewController.m; sourceTree = "<group>"; };
+		CEBDDFE11C30E05200CF54D8 /* ThumbnailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailView.h; sourceTree = "<group>"; };
+		CEBDDFE21C30E05200CF54D8 /* ThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailView.m; sourceTree = "<group>"; };
+		CEC8A1D81C2A787300558608 /* MyPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostViewController.h; sourceTree = "<group>"; };
+		CEC8A1D91C2A787300558608 /* MyPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostViewController.m; sourceTree = "<group>"; };
+		CEC8A1DB1C2A78FD00558608 /* MyPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostCell.h; sourceTree = "<group>"; };
+		CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostCell.m; sourceTree = "<group>"; };
+		CEC8A1DE1C2A7CE900558608 /* MyPostInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostInfo.h; sourceTree = "<group>"; };
+		CEC8A1DF1C2A7CE900558608 /* MyPostInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostInfo.m; sourceTree = "<group>"; };
+		CED3C8751C2251490090DE35 /* MySkillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillViewController.h; sourceTree = "<group>"; };
+		CED3C8761C2251490090DE35 /* MySkillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySkillViewController.m; sourceTree = "<group>"; };
+		CED3C8781C2251B10090DE35 /* MySkillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillInfo.h; sourceTree = "<group>"; };
+		CED3C8791C2251B10090DE35 /* MySkillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySkillInfo.m; sourceTree = "<group>"; };
+		CED3C87B1C225D800090DE35 /* MySkillCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillCell.h; sourceTree = "<group>"; };
+		CED3C87C1C225D800090DE35 /* MySkillCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySkillCell.m; sourceTree = "<group>"; };
+		CED3C87E1C2265990090DE35 /* icon_delete_with_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_delete_with_bg.png; sourceTree = "<group>"; };
+		CED3C8811C22946D0090DE35 /* SkillViewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillViewTableViewController.h; sourceTree = "<group>"; };
+		CED3C8821C22946D0090DE35 /* SkillViewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillViewTableViewController.m; sourceTree = "<group>"; };
+		CED3C8841C2295DD0090DE35 /* icon_eye_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_eye_open.png; sourceTree = "<group>"; };
 		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
 		CED73E0C1C06F57C00ADB60C /* YelloBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YelloBTN.png; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
@@ -1314,6 +1372,7 @@
 		67361F301B830DD500C1374D /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				CED3C87E1C2265990090DE35 /* icon_delete_with_bg.png */,
 				5172BB911C2A84A700C8AB14 /* icon_buy_add_photo.png */,
 				517B19331C22B21100F956FE /* checked@2x.png */,
 				517B19351C22B21100F956FE /* unchecked@2x.png */,
@@ -1352,6 +1411,7 @@
 				51788CAD1BBD14FE00A96AD7 /* bookmark_filled.png */,
 				516A5B841BB68D9300668EBB /* default_seller_post.png */,
 				516A61151BB51CAE008579B6 /* like.png */,
+				CED3C8841C2295DD0090DE35 /* icon_eye_open.png */,
 				516A61131BB51598008579B6 /* bookmark.png */,
 				516A61111BB4FBC4008579B6 /* skillpage-bg.png */,
 				516A610F1BB4ED50008579B6 /* profile_bg - Copy.png */,
@@ -1369,6 +1429,7 @@
 		674D0D891B7D913400B5B80D = {
 			isa = PBXGroup;
 			children = (
+				674D0DBE1B7D916200B5B80D /* QuartzCore.framework */,
 				5167182C1C1A799E003E9902 /* ZZSSource */,
 				676F77BA1B96F3060084988A /* TOCropViewController */,
 				674D104F1B7DCB5B00B5B80D /* Fonds */,
@@ -1377,7 +1438,6 @@
 				674D0F2D1B7D9A5200B5B80D /* JSQSystemSoundPlayer */,
 				674D0DFB1B7D920E00B5B80D /* images */,
 				674D0DC01B7D91FC00B5B80D /* icons */,
-				674D0DBE1B7D916200B5B80D /* QuartzCore.framework */,
 				674D0D941B7D913400B5B80D /* StikyHive */,
 				674D0DB11B7D913400B5B80D /* StikyHiveTests */,
 				674D0D931B7D913400B5B80D /* Products */,
@@ -1398,6 +1458,8 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CEC8A1D71C2A70DE00558608 /* MyPost */,
+				CE56FF2B1C1FB31B00C64567 /* MySkill */,
 				517FE2951C23C05700E8CC7E /* PostToBuy */,
 				CE24E7F91C196E6D0021F078 /* UpdateProfile */,
 				CE9B8EC31C16C32C0022653B /* Bought */,
@@ -1654,6 +1716,8 @@
 				674D0EB61B7D984200B5B80D /* SearchSellViewController.m */,
 				676F77E91B96F3270084988A /* CropPhotoViewController.h */,
 				676F77EA1B96F3270084988A /* CropPhotoViewController.m */,
+				CEBDDFE11C30E05200CF54D8 /* ThumbnailView.h */,
+				CEBDDFE21C30E05200CF54D8 /* ThumbnailView.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -2109,6 +2173,52 @@
 			name = UpdateProfile;
 			sourceTree = "<group>";
 		};
+		CE56FF2B1C1FB31B00C64567 /* MySkill */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D4A4D1C27A651005C07D4 /* PostComment */,
+				CED3C8801C2294060090DE35 /* SkillView */,
+				CED3C8751C2251490090DE35 /* MySkillViewController.h */,
+				CED3C8761C2251490090DE35 /* MySkillViewController.m */,
+				CED3C8781C2251B10090DE35 /* MySkillInfo.h */,
+				CED3C8791C2251B10090DE35 /* MySkillInfo.m */,
+				CED3C87B1C225D800090DE35 /* MySkillCell.h */,
+				CED3C87C1C225D800090DE35 /* MySkillCell.m */,
+			);
+			name = MySkill;
+			sourceTree = "<group>";
+		};
+		CE5D4A461C279316005C07D4 /* SeeAllComments */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D4A431C279179005C07D4 /* SeeAllCommentViewController.h */,
+				CE5D4A441C279179005C07D4 /* SeeAllCommentViewController.m */,
+				CE5D4A471C279540005C07D4 /* CommentCell.h */,
+				CE5D4A481C279540005C07D4 /* CommentCell.m */,
+			);
+			name = SeeAllComments;
+			sourceTree = "<group>";
+		};
+		CE5D4A4D1C27A651005C07D4 /* PostComment */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D4A4A1C27A649005C07D4 /* PostCommentViewController.h */,
+				CE5D4A4B1C27A649005C07D4 /* PostCommentViewController.m */,
+			);
+			name = PostComment;
+			sourceTree = "<group>";
+		};
+		CE5D4A4E1C27AA55005C07D4 /* SeeAllReview */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D4A4F1C27AF8E005C07D4 /* SeeAllReviewViewController.h */,
+				CE5D4A501C27AF8E005C07D4 /* SeeAllReviewViewController.m */,
+				CE5D4A521C27B065005C07D4 /* ReviewCell.h */,
+				CE5D4A531C27B065005C07D4 /* ReviewCell.m */,
+			);
+			name = SeeAllReview;
+			sourceTree = "<group>";
+		};
 		CE68DA881C0D9ABF000CB49F /* SavedDocuments */ = {
 			isa = PBXGroup;
 			children = (
@@ -2188,6 +2298,40 @@
 				CE9C7CE81C102ED600326710 /* SubInfo.m */,
 			);
 			name = SubscriptionInfo;
+			sourceTree = "<group>";
+		};
+		CEC8A1D71C2A70DE00558608 /* MyPost */ = {
+			isa = PBXGroup;
+			children = (
+				CEC8A1D81C2A787300558608 /* MyPostViewController.h */,
+				CEC8A1D91C2A787300558608 /* MyPostViewController.m */,
+				CEC8A1DB1C2A78FD00558608 /* MyPostCell.h */,
+				CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */,
+				CEC8A1DE1C2A7CE900558608 /* MyPostInfo.h */,
+				CEC8A1DF1C2A7CE900558608 /* MyPostInfo.m */,
+			);
+			name = MyPost;
+			sourceTree = "<group>";
+		};
+		CED3C8801C2294060090DE35 /* SkillView */ = {
+			isa = PBXGroup;
+			children = (
+				CE5D4A4E1C27AA55005C07D4 /* SeeAllReview */,
+				CE5D4A461C279316005C07D4 /* SeeAllComments */,
+				CED3C8811C22946D0090DE35 /* SkillViewTableViewController.h */,
+				CED3C8821C22946D0090DE35 /* SkillViewTableViewController.m */,
+				CE0519031C23B41D004519E6 /* CommentsViewController.h */,
+				CE0519041C23B41D004519E6 /* CommentsViewController.m */,
+				CE0519061C23B435004519E6 /* ReviewsViewController.h */,
+				CE0519071C23B435004519E6 /* ReviewsViewController.m */,
+				CE0519091C23BA8D004519E6 /* CommentInfo.h */,
+				CE05190A1C23BA8D004519E6 /* CommentInfo.m */,
+				CE51A3B11C2403FE00652B90 /* ReviewInfo.h */,
+				CE51A3B21C2403FE00652B90 /* ReviewInfo.m */,
+				CE51A3AE1C23FF9500652B90 /* AllCommentViewController.h */,
+				CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */,
+			);
+			name = SkillView;
 			sourceTree = "<group>";
 		};
 		CEE93A041BF448CA00B292BA /* NewVersion */ = {
@@ -2641,6 +2785,7 @@
 				674D0F511B7D9A5200B5B80D /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				517B19381C22B21100F956FE /* unchecked@2x.png in Resources */,
 				51AC3C5C1BA6ABA8004DA21C /* slide-0820-01.png in Resources */,
+				CED3C87F1C2265990090DE35 /* icon_delete_with_bg.png in Resources */,
 				516C51641C042299002710AA /* sell_upload_photo.png in Resources */,
 				674D0E551B7D920E00B5B80D /* button_Contact.png in Resources */,
 				517A1C5E1C0C2382004017E4 /* subplan.png in Resources */,
@@ -2724,6 +2869,7 @@
 				CEE93A1D1BF4490100B292BA /* buzzr_requestform_bee.png in Resources */,
 				CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */,
 				516718C61C1A799E003E9902 /* ZSSredo@2x.png in Resources */,
+				CED3C8851C2295DD0090DE35 /* icon_eye_open.png in Resources */,
 				674D105F1B7DCB6B00B5B80D /* OpenSans-ExtraBold.ttf in Resources */,
 				674D0DF81B7D91FC00B5B80D /* Tab_Profile@2x.png in Resources */,
 				674D106A1B7DCB8900B5B80D /* bgothl.ttf in Resources */,
@@ -2814,6 +2960,7 @@
 				CEEDB19D1C118D27009C3DC5 /* SoldInfo.m in Sources */,
 				674D0F631B7D9AD800B5B80D /* UserInfo.m in Sources */,
 				51851C991BB24E35007CFBC2 /* SkillPageViewController.m in Sources */,
+				CEC8A1DA1C2A787300558608 /* MyPostViewController.m in Sources */,
 				5168F2381C0ECE8E0087C0BF /* SellingManager.m in Sources */,
 				CEEDB1901C116899009C3DC5 /* ContactCell.m in Sources */,
 				674D0F371B7D9A5200B5B80D /* UIImage+JSQMessages.m in Sources */,
@@ -2884,6 +3031,7 @@
 				516F7EB81C183B3F005FEF8A /* SellingCell.m in Sources */,
 				674D0F6D1B7D9B6F00B5B80D /* WebDataInterface.m in Sources */,
 				674D0EBF1B7D98CA00B5B80D /* UserSkillViewController1.m in Sources */,
+				CED3C87A1C2251B10090DE35 /* MySkillInfo.m in Sources */,
 				674D0ECB1B7D99FC00B5B80D /* SellerCollectionViewController.m in Sources */,
 				51694D711BAC27EA007722F1 /* SelectableLabel.m in Sources */,
 				CE9054D21C17CB9300144078 /* OverlayViewController.m in Sources */,
@@ -2895,14 +3043,19 @@
 				674D0D9B1B7D913400B5B80D /* AppDelegate.m in Sources */,
 				516718DE1C1A799E003E9902 /* CYRTextStorage.m in Sources */,
 				674D0EB71B7D984200B5B80D /* SearchSellViewController.m in Sources */,
+				CE5D4A541C27B065005C07D4 /* ReviewCell.m in Sources */,
 				674D0F3E1B7D9A5200B5B80D /* JSQMessagesMediaViewBubbleImageMasker.m in Sources */,
 				CE9B8EC91C16C3620022653B /* BoughtInfo.m in Sources */,
 				516F7EB51C182EA2005FEF8A /* SellingTableViewController.m in Sources */,
 				674D0F5A1B7D9A5200B5B80D /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				674D0F481B7D9A5200B5B80D /* JSQMessagesBubbleImage.m in Sources */,
+				CE5D4A4C1C27A649005C07D4 /* PostCommentViewController.m in Sources */,
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
 				CEFD19581C040F3D00A79158 /* SearchResultCell.m in Sources */,
+				CE51A3B31C2403FE00652B90 /* ReviewInfo.m in Sources */,
+				CEBDDFE31C30E05200CF54D8 /* ThumbnailView.m in Sources */,
 				674D0F341B7D9A5200B5B80D /* NSString+JSQMessages.m in Sources */,
+				CE5D4A511C27AF8E005C07D4 /* SeeAllReviewViewController.m in Sources */,
 				674D0F771B7D9F2200B5B80D /* HtmlEditor.m in Sources */,
 				516718E71C1A799E003E9902 /* ZSSBarButtonItem.m in Sources */,
 				674D0EC11B7D98CA00B5B80D /* UserSkillViewController3.m in Sources */,
@@ -2913,6 +3066,7 @@
 				CE9B8EC61C16C34D0022653B /* BoughtViewController.m in Sources */,
 				674D0F3F1B7D9A5200B5B80D /* JSQMessagesTimestampFormatter.m in Sources */,
 				674D10491B7DB4FB00B5B80D /* GKResizeableCropOverlayView.m in Sources */,
+				CE5D4A451C279179005C07D4 /* SeeAllCommentViewController.m in Sources */,
 				CEF4640A1BF9C41200010D21 /* UrgentRequest.m in Sources */,
 				CE24E7FF1C196EB40021F078 /* EditProfileTableViewController.m in Sources */,
 				674D0F601B7D9A9A00B5B80D /* ViewControllerUtil.m in Sources */,
@@ -2923,19 +3077,24 @@
 				674D0F431B7D9A5200B5B80D /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
 				51694D6E1BAC27BC007722F1 /* SelectableImageView.m in Sources */,
 				517A1C651C0C2B72004017E4 /* SellingViewController4.m in Sources */,
+				CED3C87D1C225D800090DE35 /* MySkillCell.m in Sources */,
 				674D0F581B7D9A5200B5B80D /* JSQMessagesToolbarContentView.m in Sources */,
 				674D0F451B7D9A5200B5B80D /* JSQMediaItem.m in Sources */,
 				516F58A91C104A4000E4FD41 /* PromotionViewController.m in Sources */,
 				51896EAE1BCDFE5D006643AE /* SellerRevViewController.m in Sources */,
+				CEC8A1DD1C2A78FD00558608 /* MyPostCell.m in Sources */,
 				674D0F421B7D9A5200B5B80D /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				674D0D9E1B7D913400B5B80D /* FirstViewController.m in Sources */,
 				CEFD195C1C04123800A79158 /* DistanceTitle.m in Sources */,
 				674D0F461B7D9A5200B5B80D /* JSQMessage.m in Sources */,
+				CED3C8771C2251490090DE35 /* MySkillViewController.m in Sources */,
 				CEE93A261BF47C2600B292BA /* CrossPollinateViewController.m in Sources */,
 				CEE93A2A1BF4852800B292BA /* Request.m in Sources */,
 				674D0F4D1B7D9A5200B5B80D /* JSQMessagesCollectionViewCell.m in Sources */,
+				CED3C8831C22946D0090DE35 /* SkillViewTableViewController.m in Sources */,
 				674D104C1B7DB79A00B5B80D /* HomeViewController.m in Sources */,
 				676600E51BA1325A003A84D8 /* ResetPassViewController.m in Sources */,
+				CE05190B1C23BA8D004519E6 /* CommentInfo.m in Sources */,
 				CEF7BAAB1BFB2704009624CC /* RequestPostTableViewController.m in Sources */,
 				516718E31C1A799E003E9902 /* HRColorCursor.m in Sources */,
 				516F7EB21C17DF69005FEF8A /* PaySucessViewController.m in Sources */,
@@ -2947,6 +3106,7 @@
 				CEFD19501C04045800A79158 /* SkillInfo.m in Sources */,
 				CEEDB1931C116CF4009C3DC5 /* ContactInfo.m in Sources */,
 				CEEDB18D1C11681B009C3DC5 /* ContactViewController.m in Sources */,
+				CE5D4A491C279540005C07D4 /* CommentCell.m in Sources */,
 				516718E51C1A799E003E9902 /* HRColorPickerViewController.m in Sources */,
 				674D10461B7DB4FB00B5B80D /* GKImageCropView.m in Sources */,
 				676ED4581B85CEAB00696985 /* UserVerificationViewController.m in Sources */,
@@ -2954,8 +3114,11 @@
 				CEF7BAA71BFB0FAD009624CC /* AttachmentViewController.m in Sources */,
 				674D0F741B7D9ED800B5B80D /* EntryViewController.m in Sources */,
 				CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */,
+				CE51A3B01C23FF9500652B90 /* AllCommentViewController.m in Sources */,
 				517325621C02B3B7004655D6 /* SellingViewController2.m in Sources */,
+				CEC8A1E01C2A7CE900558608 /* MyPostInfo.m in Sources */,
 				676F77EE1B96F5600084988A /* UserInfoEditorViewController.m in Sources */,
+				CE0519051C23B41D004519E6 /* CommentsViewController.m in Sources */,
 				CE3EFDED1C0EC5AA00281FC6 /* PDFViewController.m in Sources */,
 				674D0EC81B7D999200B5B80D /* LocalDataInterface.m in Sources */,
 				516718E91C1A799E003E9902 /* ZSSRichTextEditor.m in Sources */,
@@ -2964,6 +3127,7 @@
 				CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */,
 				676F77E11B96F3060084988A /* TOCroppedImageAttributes.m in Sources */,
 				CEF464041BF9B50300010D21 /* MyRequestCell.m in Sources */,
+				CE0519081C23B435004519E6 /* ReviewsViewController.m in Sources */,
 				CEF7BAA21BFADD6E009624CC /* RNActivityView.m in Sources */,
 				CEF7BAA31BFADD6E009624CC /* UIView+RNActivityView.m in Sources */,
 				CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */,
