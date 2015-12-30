@@ -170,6 +170,8 @@
 		51AC3C5C1BA6ABA8004DA21C /* slide-0820-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 51AC3C5A1BA6ABA8004DA21C /* slide-0820-01.png */; };
 		51AC3C5D1BA6ABA8004DA21C /* slide-0820-02.png in Resources */ = {isa = PBXBuildFile; fileRef = 51AC3C5B1BA6ABA8004DA21C /* slide-0820-02.png */; };
 		51C0A7E91BC6115600860CD3 /* SellerCommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51C0A7E81BC6115600860CD3 /* SellerCommViewController.m */; };
+		51C2568D1C337DF1007E6581 /* BuySucessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51C2568C1C337DF1007E6581 /* BuySucessViewController.m */; };
+		51C2568F1C33907B007E6581 /* upload_buyer.png in Resources */ = {isa = PBXBuildFile; fileRef = 51C2568E1C33907B007E6581 /* upload_buyer.png */; };
 		67361F2D1B82D0CB00C1374D /* UserAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67361F2C1B82D0CB00C1374D /* UserAgreementViewController.m */; };
 		67361F2F1B830D3B00C1374D /* smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = 67361F2E1B830D3B00C1374D /* smiley.png */; };
 		67361F341B830F6300C1374D /* add_profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 67361F331B830F6300C1374D /* add_profile.png */; };
@@ -705,6 +707,9 @@
 		51AC3C5B1BA6ABA8004DA21C /* slide-0820-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slide-0820-02.png"; sourceTree = "<group>"; };
 		51C0A7E71BC6115600860CD3 /* SellerCommViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerCommViewController.h; sourceTree = "<group>"; };
 		51C0A7E81BC6115600860CD3 /* SellerCommViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerCommViewController.m; sourceTree = "<group>"; };
+		51C2568B1C337DF1007E6581 /* BuySucessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuySucessViewController.h; sourceTree = "<group>"; };
+		51C2568C1C337DF1007E6581 /* BuySucessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuySucessViewController.m; sourceTree = "<group>"; };
+		51C2568E1C33907B007E6581 /* upload_buyer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload_buyer.png; sourceTree = "<group>"; };
 		5BD589799144B88408CD0618 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		67361F2B1B82D0CB00C1374D /* UserAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAgreementViewController.h; sourceTree = "<group>"; };
 		67361F2C1B82D0CB00C1374D /* UserAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAgreementViewController.m; sourceTree = "<group>"; };
@@ -1401,6 +1406,8 @@
 				5172BB8F1C2A826100C8AB14 /* BuyerPhotoViewController.m */,
 				5178BFB11C3129B400588ECE /* BuyManager.h */,
 				5178BFB21C3129B400588ECE /* BuyManager.m */,
+				51C2568B1C337DF1007E6581 /* BuySucessViewController.h */,
+				51C2568C1C337DF1007E6581 /* BuySucessViewController.m */,
 			);
 			name = PostToBuy;
 			sourceTree = "<group>";
@@ -1408,6 +1415,7 @@
 		67361F301B830DD500C1374D /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				51C2568E1C33907B007E6581 /* upload_buyer.png */,
 				CED3C87E1C2265990090DE35 /* icon_delete_with_bg.png */,
 				5172BB911C2A84A700C8AB14 /* icon_buy_add_photo.png */,
 				517B19331C22B21100F956FE /* checked@2x.png */,
@@ -2694,6 +2702,7 @@
 				516718A41C1A799E003E9902 /* ZSSh3@2x.png in Resources */,
 				674D0E6F1B7D920E00B5B80D /* Default_buyer_post.png in Resources */,
 				674D0E661B7D920E00B5B80D /* CP_icon_take_photo@2x.png in Resources */,
+				51C2568F1C33907B007E6581 /* upload_buyer.png in Resources */,
 				516718D41C1A799E003E9902 /* ZSSunderline@2x.png in Resources */,
 				674D0E4E1B7D920E00B5B80D /* app_icon_beta.png in Resources */,
 				51718BB21BE75700000424E6 /* profile_bookmark.png in Resources */,
@@ -3034,6 +3043,7 @@
 				674D0F381B7D9A5200B5B80D /* UIView+JSQMessages.m in Sources */,
 				517FE2981C23C08800E8CC7E /* PostBuyViewController.m in Sources */,
 				676F77E21B96F3060084988A /* TOCropViewControllerTransitioning.m in Sources */,
+				51C2568D1C337DF1007E6581 /* BuySucessViewController.m in Sources */,
 				51694D6B1BABE9C4007722F1 /* SkillVideoPlayer.m in Sources */,
 				5181ED161BF58D6600804C29 /* MyProfileViewController.m in Sources */,
 				674D0F5D1B7D9A5200B5B80D /* JSQSystemSoundPlayer.m in Sources */,

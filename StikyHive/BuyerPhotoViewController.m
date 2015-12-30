@@ -8,6 +8,10 @@
 
 #import "BuyerPhotoViewController.h"
 #import "LocalDataInterface.h"
+#import "WebDataInterface.h"
+#import "BuyManager.h"
+#import "ViewControllerUtil.h"
+#import "UIView+RNActivityView.h"
 
 @interface BuyerPhotoViewController ()
 
@@ -88,17 +92,66 @@
 
 - (IBAction)nextBtnPressed:(id)sender
 {
-    if (_imageSelected) {
+    
+    BuyManager *bmg = [BuyManager sharedBuyManager];
+    NSString *stkid = [LocalDataInterface retrieveStkid];
+    NSInteger active = 1;
+    NSString *time = @"00:00";
+    
+    [self.view showActivityViewWithLabel:@"Uploading..."];
+    
+    [WebDataInterface saveBuyerMarket:stkid type:bmg.type name:bmg.name description:bmg.desc respons:bmg.resp active:active catId:bmg.catId jobType:bmg.jobType personType:bmg.personType availability:bmg.availability startTime:time endTime:time price:bmg.price rateId:bmg.rateId completion:^(NSObject *obj, NSError *err) {
         
-        NSLog(@"have image");
-        UIImage *image = _photoImageView.image;
-        NSString *stkid = [LocalDataInterface retrieveStkid];
-        NSInteger buyer = 197;
         
-        [self uploadImage:image stikyid:stkid type:2 buyerId:buyer editFlag:NO];
+        NSLog(@"obj --- %@", obj);
+        NSDictionary *dict = (NSDictionary *)obj;
+        if (dict && [dict[@"status"] isEqualToString:@"success"])
+        {
+            
+            
+                if (_imageSelected) {
+            
+                    NSLog(@"have image");
+                    UIImage *image = _photoImageView.image;
+                    NSString *stkid = [LocalDataInterface retrieveStkid];
+//                    NSInteger buyer = 197;
+            
+                    [self uploadImage:image stikyid:stkid type:2 buyerId:[dict[@"buyerId"] integerValue] editFlag:NO];
+                    
+                    
+                }
+            
+            
+            [self.view hideActivityView];
+
+            
+            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"buy_sucess_view_controller"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+        }
         
         
-    }
+        
+        
+        
+    }];
+    
+    
+    
+    
+    
+//    if (_imageSelected) {
+//        
+//        NSLog(@"have image");
+//        UIImage *image = _photoImageView.image;
+//        NSString *stkid = [LocalDataInterface retrieveStkid];
+//        NSInteger buyer = 197;
+//        
+//        [self uploadImage:image stikyid:stkid type:2 buyerId:buyer editFlag:NO];
+//        
+//        
+//    }
     
     
     

@@ -10,6 +10,7 @@
 #import "WebDataInterface.h"
 #import "ViewControllerUtil.h"
 #import "ReportAbuseViewController.h"
+#import "UIView+RNActivityView.h"
 
 @interface BuyerPostViewController ()
 @property (assign, nonatomic) NSInteger buyerId;
@@ -75,6 +76,8 @@
     NSString *fontFormat = @"<span style=\"font-family: %@; font-size: %i\">%@</span>";
     
     
+    [self.view showActivityViewWithLabel:@"Loading..."];
+    
     [WebDataInterface getBuyerMarketById:_buyerId completion:^(NSObject *obj, NSError *err) {
         NSDictionary *buyermarket = (NSDictionary *)obj;
         
@@ -97,6 +100,8 @@
                 [_buyerWebView loadHTMLString:_buyerHtml baseURL:nil];
                 
                 
+                
+                [self.view hideActivityView];
             });
         }
     }];
@@ -298,9 +303,9 @@
     CGFloat y = point.y + 10;
     
     UILabel *postDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, y, 180, 30)];
-    postDateLabel.font = [UIFont fontWithName:@"OpenSans-Regular" size:8];
+    postDateLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:14];
     UILabel *expireDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 170, y, 150, 30)];
-    expireDateLabel.font = [UIFont fontWithName:@"OpenSans-Regular" size:8];
+    expireDateLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:14];
     expireDateLabel.textAlignment = NSTextAlignmentRight;
     
     NSDateFormatter *formate = [[NSDateFormatter alloc] init];
@@ -509,7 +514,8 @@
 {
     CGFloat y = point.y;
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, y, width-40, 200)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, y, width-40, width-40)];
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, y, width-40, 200)];
     if (_picLocation != (id)[NSNull null])
     {
         NSString *url = [WebDataInterface getFullUrlPath:_picLocation];
@@ -522,6 +528,10 @@
         imageView.image = [UIImage imageNamed:@"Default_buyer_post"];
     }
     
+    
+    CGPoint imageCenter = imageView.center;
+    imageCenter.x = self.view.center.x;
+    imageView.center = imageCenter;
     
     NSLog(@"picture location -------------90 ---- %@",_picLocation);
     

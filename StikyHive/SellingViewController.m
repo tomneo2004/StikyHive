@@ -113,11 +113,11 @@
                 NSLog(@"rate array --- %@",_rateArray);
                 
                 
-//                NSString *skillid = @"11562";
+                NSString *skillid = @"11562";
                 _smg.isSkillId =  @"11562";
-                if (_smg.isSkillId != nil) {
+//                if (_smg.isSkillId != nil) {
                     NSString *stkid = [LocalDataInterface retrieveStkid];
-                    [WebDataInterface getSkillById:_smg.isSkillId stkid:stkid completion:^(NSObject *obj, NSError *err)
+                    [WebDataInterface getSkillById:skillid stkid:stkid completion:^(NSObject *obj, NSError *err)
                      {
                          
                          _skillDict = (NSDictionary *)obj;
@@ -125,7 +125,7 @@
                          
                      }];
 
-                }
+//                }
                 
                 
                 
@@ -195,10 +195,10 @@
     _titleTextField.backgroundColor = textBgColor;
     _titleTextField.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0);  //text inset for uitextfield
     _titleTextField.font = [UIFont fontWithName:@"OpenSans-Light" size:17];
-    if (_smg.isSkillId){
-        NSDictionary *array = _skillDict[@"resultSkill"];
-        _titleTextField.text = array[@"name"];
-    }
+//    if (_smg.isSkillId){
+//        NSDictionary *array = _skillDict[@"resultSkill"];
+//        _titleTextField.text = array[@"name"];
+//    }
     
     
     y = y + _titleTextField.frame.size.height+20;

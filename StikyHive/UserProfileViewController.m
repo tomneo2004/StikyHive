@@ -70,6 +70,9 @@
                     
                         _beeInfoDic = (NSDictionary *)obj;
                         NSLog(@"stiky bee info -------- %@",_beeInfoDic);
+//                    NSDictionary *stkDict = _beeInfoDic[@"stikybee"];
+//                    NSString *stkString = stkDict[@"stkid"];
+//                    NSLog(@"stkid ---- %@",stkString);
                 
                         NSDictionary *seeAll = (NSDictionary *)obj2;
                         _seeAllArray = seeAll[@"result"];
@@ -199,6 +202,7 @@
     
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(point.x, y, width, 60)];
     iconImageView.image = [UIImage imageNamed:@"profile_yellow_bg"];
+    iconImageView.userInteractionEnabled = YES;
     
     CGFloat iconViewWidth = iconImageView.frame.size.width/4;
     CGFloat iconViewHeight = iconImageView.frame.size.height;
@@ -210,8 +214,10 @@
     {
         // icon view
         UIView *contactView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, iconViewWidth, iconViewHeight)];
+        contactView.userInteractionEnabled = YES;
 //      contactView.backgroundColor = [UIColor redColor];
         UIButton *contactBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 35, 30)];
+        [contactBtn addTarget:self action:@selector(contactBtnPressed:) forControlEvents:UIControlEventTouchUpInside]; //contact button
         [contactBtn setImage:[UIImage imageNamed:@"profile_addcontact"] forState:UIControlStateNormal];
         CGPoint contactBtnCenter = contactBtn.center;
         contactBtnCenter.x = contactView.center.x;
@@ -1256,6 +1262,36 @@
             });
         }
   
+    }];
+    
+}
+
+- (void)contactBtnPressed:(UIButton *)sender
+{
+    // save contact
+    
+    NSDictionary *stkDict = _beeInfoDic[@"stikybee"];
+    NSString *stkString = stkDict[@"stkid"];
+    NSLog(@"stkid ---- %@",stkString);
+    NSString *stkid = [LocalDataInterface retrieveStkid];
+    
+//    [self.view showActivityViewWithLabel:@"Loading"];
+    
+    [WebDataInterface insertContact:stkid contactId:stkString completion:^(NSObject *obj, NSError *err)
+    {
+        NSLog(@"save contact tapped !!!!");
+        NSLog(@"save contact obj --- %@",obj);
+        NSDictionary *dict = (NSDictionary *)obj;
+        if (dict && [dict[@"status"] isEqualToString:@"success"])
+        {
+            
+            
+            
+            
+            
+        }
+        
+//        [self.view hideActivityView];
     }];
     
 }

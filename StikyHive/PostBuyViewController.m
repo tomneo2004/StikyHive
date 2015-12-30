@@ -260,21 +260,6 @@
 #pragma mark - picker view delegate
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-//    if (pickerView.tag == 111)
-//    {
-//        return 1;
-//    }
-//    else if (pickerView.tag == 222)
-//    {
-//        return 1;
-//    }
-//    else if (pickerView.tag == 333)
-//    {
-//        return 1;
-//    }
-//    else{
-//        return 1;
-//    }
     return 1;
 }
 
@@ -363,6 +348,13 @@
 - (IBAction)nextBtnPressed:(id)sender
 {
     
+    NSString *descString = [_descWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+    NSString *respString = [_respWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+    NSString *innerDesc = [_descWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].innerHTML"];
+    NSString *innerResp = [_respWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].innerHTML"];
+    
+    
+    
     
     
     if (_individualRBtn.isSelected)
@@ -409,6 +401,8 @@
     
     _buyManager.catId = [_categoryId integerValue];
     
+    _buyManager.desc = descString;
+    _buyManager.resp = respString;
     
     
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"buyer_photo_view_controller"];

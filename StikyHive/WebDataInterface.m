@@ -467,6 +467,16 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
++ (void)insertContact:(NSString *)stkid contactId:(NSString *)contactId completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_CONTACT_ID:contactId};
+    [self requestData:DATA_URL_INSERT_CONTACT withParameters:params completion:completion];
+    
+}
+
+
+
 
 
 
