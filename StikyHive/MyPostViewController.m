@@ -12,6 +12,8 @@
 #import "WebDataInterface.h"
 #import "MyPostInfo.h"
 #import "UIImageView+AFNetworking.h"
+#import "BuyerPostViewController.h"
+#import "ViewControllerUtil.h"
 
 @interface MyPostViewController ()
 
@@ -148,7 +150,16 @@
 
 - (void)onViewTap:(MyPostCell *)cell{
     
+    NSInteger index = [_tableView indexPathForCell:cell].row;
     
+    MyPostInfo *info = [_myPostInfos objectAtIndex:index];
+    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"buyer_post_view_controlller"];
+    BuyerPostViewController *svc = (BuyerPostViewController *)vc;
+    [svc setBuyerId:[info.postId integerValue]];
+    [svc setPictureLocation:info.location];
+    
+    [self.navigationController pushViewController:svc animated:YES];
 }
 
 - (void)onDeleteTap:(MyPostCell *)cell{
