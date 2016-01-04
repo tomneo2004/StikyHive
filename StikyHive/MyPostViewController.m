@@ -104,6 +104,8 @@
 #pragma mark - IBAction
 - (IBAction)addPost:(id)sender{
     
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"post_buy_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource delegate
