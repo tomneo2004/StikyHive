@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "MyPostCell.h"
 
-@interface MyPostViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MyPostCellDelegate>
+@interface MyPostViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MyPostCellDelegate, UIAlertViewDelegate>
 
 @end
