@@ -25,6 +25,7 @@
     
     NSMutableArray *_mySkillInfos;
     NSDateFormatter *_dateFormatter;
+    NSInteger _tmpDeleteIndex;
 }
 
 @synthesize tableView = _tableView;
@@ -172,35 +173,47 @@
 
 - (void)onDeleteTap:(MySkillCell *)cell{
     
-    NSInteger index = [_tableView indexPathForCell:cell].row;
+    _tmpDeleteIndex = [_tableView indexPathForCell:cell].row;
     
-    MySkillInfo *info = [_mySkillInfos objectAtIndex:index];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete" message:@"Do you want to delete?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    [alert show];
     
-    [self.view showActivityViewWithLabel:@"Refreshing..." detailLabel:@"Fetching data"];
     
-    [WebDataInterface deleteSell:[info.skillId integerValue] completion:^(NSObject *obj, NSError *error){
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex{
     
-        dispatch_async(dispatch_get_main_queue(), ^{
+    if(buttonIndex == 1){
         
-            if(error != nil){
+        MySkillInfo *info = [_mySkillInfos objectAtIndex:_tmpDeleteIndex];
+        
+        [self.view showActivityViewWithLabel:@"Refreshing..." detailLabel:@"Fetching data"];
+        
+        [WebDataInterface deleteSell:[info.skillId integerValue] completion:^(NSObject *obj, NSError *error){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to delete skill!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
+                if(error != nil){
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to delete skill!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                    
+                    [self.view hideActivityView];
+                    
+                    return ;
+                }
+                else{
+                    
+                    [_mySkillInfos removeObjectAtIndex:_tmpDeleteIndex];
+                    [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_tmpDeleteIndex inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    
+                }
                 
                 [self.view hideActivityView];
-                
-                return ;
-            }
-            else{
-                
-                [_mySkillInfos removeObjectAtIndex:index];
-                [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-                
-            }
-            
-            [self.view hideActivityView];
-        });
-    }];
+            });
+        }];
+    }
 }
 
 /*
