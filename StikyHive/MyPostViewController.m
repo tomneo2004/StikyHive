@@ -54,7 +54,7 @@
 - (void)pullData{
     
     [self.view showActivityViewWithLabel:@"Refreshing..." detailLabel:@"Fetching data"];
-    [WebDataInterface getBuyerMarket:[LocalDataInterface retrieveStkid] limit:0 completion:^(NSObject *obj, NSError *error){
+    [WebDataInterface getBuyerMarketByStkid:[LocalDataInterface retrieveStkid] limit:0 completion:^(NSObject *obj, NSError *error){
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
