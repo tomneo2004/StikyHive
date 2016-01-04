@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "MySkillCell.h"
 
-@interface MySkillViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MySkillCellDelegate>
+@interface MySkillViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MySkillCellDelegate, UIAlertViewDelegate>
 
 @end
