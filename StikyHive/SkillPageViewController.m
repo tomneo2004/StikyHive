@@ -112,38 +112,48 @@
     
     [WebDataInterface getSkillById:_Skill_ID stkid:stkid completion:^(NSObject *obj, NSError *err)
     {
-        _skillDict = (NSDictionary *)obj;
+        [WebDataInterface getCommReviewBySkillId:_Skill_ID completion:^(NSObject *obj2, NSError *err2)
+         {
+             _commDict = (NSDictionary *)obj2;
+             _commentsArray = _commDict[@"comments"];
+             _reviewArray = _commDict[@"reviews"];
+             
         
-        if (_skillDict)
-        {
-            NSLog(@"skill dict 777 ----- %@",_skillDict);
+        
+             _skillDict = (NSDictionary *)obj;
+        
+             if (_skillDict)
+             {
+                 NSLog(@"skill dict 777 ----- %@",_skillDict);
             
-            dispatch_async(dispatch_get_main_queue(), ^{
+                 dispatch_async(dispatch_get_main_queue(), ^{
         
-                NSString *skillHtmlec = _skillDict[@"resultSkill"][@"summary"];
-                NSString *sellerHtmlec = _skillDict[@"resultSkill"][@"skillDesc"];
-                NSString *sellerInfoec = _skillDict[@"resultSkill"][@"beeInfo"];
+                     NSString *skillHtmlec = _skillDict[@"resultSkill"][@"summary"];
+                     NSString *sellerHtmlec = _skillDict[@"resultSkill"][@"skillDesc"];
+                     NSString *sellerInfoec = _skillDict[@"resultSkill"][@"beeInfo"];
 
-                _skillHtml = skillHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,skillHtmlec] : @"";
-                _sellerHtml = sellerHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,sellerHtmlec] : @"";
-                _sellerInfo = sellerInfoec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,sellerInfoec] : @"";
+                     _skillHtml = skillHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,skillHtmlec] : @"";
+                     _sellerHtml = sellerHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,sellerHtmlec] : @"";
+                     _sellerInfo = sellerInfoec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,sellerInfoec] : @"";
                 
                 
-                    [_skillDescWebView loadHTMLString:_skillHtml baseURL:nil];
-                    [_sellerDescWebView loadHTMLString:_sellerHtml baseURL:nil];
-                    [_sellerInfoWebView loadHTMLString:_sellerInfo baseURL:nil];
+                     [_skillDescWebView loadHTMLString:_skillHtml baseURL:nil];
+                     [_sellerDescWebView loadHTMLString:_sellerHtml baseURL:nil];
+                     [_sellerInfoWebView loadHTMLString:_sellerInfo baseURL:nil];
                 
-            });
-        }
+                 });
+             }
+             
+        }];
     }];
     
-    [WebDataInterface getCommReviewBySkillId:_Skill_ID completion:^(NSObject *obj, NSError *err)
-    {
-        _commDict = (NSDictionary *)obj;
-        _commentsArray = _commDict[@"comments"];
-        _reviewArray = _commDict[@"reviews"];
-        
-    }];
+//    [WebDataInterface getCommReviewBySkillId:_Skill_ID completion:^(NSObject *obj2, NSError *err2)
+//    {
+//        _commDict = (NSDictionary *)obj2;
+//        _commentsArray = _commDict[@"comments"];
+//        _reviewArray = _commDict[@"reviews"];
+//        
+//    }];
     
 //    [self.view hideActivityView];
 }
@@ -904,10 +914,6 @@
     email.text = @"hello world";
     
     [sendgrid sendWithWeb:email];
-  
-    
-    
-    
     
 }
 
