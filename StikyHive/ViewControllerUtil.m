@@ -149,7 +149,7 @@
     
     CGRect frame = CGRectMake(x, y, w, h);
     ThumbnailView * subview = [[ThumbnailView alloc] initWithFrame:frame];
-    [subview setTag:tag];
+    [subview setImageViewTag:tag];
     [subview setTapTarget:target andAction:sel];
    [subview displayImageWithURL:imageURL withWidth:w withHeight:h withDefaultPhotoName:defaultPhotoName];
     
