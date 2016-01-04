@@ -401,8 +401,8 @@
     
     _buyManager.catId = [_categoryId integerValue];
     
-    _buyManager.desc = descString;
-    _buyManager.resp = respString;
+    _buyManager.desc = innerDesc;
+    _buyManager.resp = innerResp;
     
     
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"buyer_photo_view_controller"];

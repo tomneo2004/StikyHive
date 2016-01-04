@@ -69,9 +69,6 @@
                 [WebDataInterface getSavedDocument:stkid completion:^(NSObject *obj4, NSError *err4) {
                     
                     [WebDataInterface selectContacts:stkid completion:^(NSObject *obj5, NSError *err5) {
-                        
-                    
-                    
                     
                             _beeInfoDic = (NSDictionary *)obj;
 //                            NSLog(@"stiky bee info -------- %@",_beeInfoDic);
@@ -222,8 +219,15 @@
     
     
     NSString *stkid = [LocalDataInterface retrieveStkid];
+//    NSLog(@"my stkid -- %@",stkid);
+//    NSLog(@"stkid -- %@",_stkId);
+    //    if (stkid != _stkId)
     
-    if (stkid != _stkId)
+    if ([_stkId isEqualToString:stkid])
+    {
+        //not display
+    }
+    else
     {
         // icon view
         UIView *contactView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, iconViewWidth, iconViewHeight)];
@@ -236,6 +240,7 @@
         contactBtnCenter.x = contactView.center.x;
         _contactBtn.center = contactBtnCenter;
         [contactView addSubview:_contactBtn];
+        
         //-------check contact exist or not ---------
         for (int i = 0; i<_contactArray.count; i++)
         {

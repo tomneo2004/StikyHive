@@ -60,7 +60,7 @@
     _mainScrollView.alwaysBounceVertical = YES;
     [_mainScrollView addSubview:_refreshControl];
     _mainScrollView.delegate = self;
-    [_mainScrollView setContentSize:CGSizeMake(_mainScrollView.frame.size.width,1665)];
+    [_mainScrollView setContentSize:CGSizeMake(_mainScrollView.frame.size.width,1700)];
     
     [_mainScrollView setContentOffset:CGPointMake(0, -180) animated:YES]; // Force pull to refresh
     

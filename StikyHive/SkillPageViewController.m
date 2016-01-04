@@ -282,7 +282,6 @@
             
             x = x + width;
             
-            NSLog(@"photo array url ------- %@",url);
         }
         
         _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(self.view.center.x/4 , point.y+210, 320, 36)];
@@ -868,7 +867,7 @@
     
     NSLog(@"email pressed");
     
-    UIAlertView *emailAlert = [[UIAlertView alloc] initWithTitle:@"" message:@"Do you want send email?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    UIAlertView *emailAlert = [[UIAlertView alloc] initWithTitle:@"Decision" message:@"Are you sure to send email?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     [emailAlert show];
     
     
@@ -886,7 +885,7 @@
         
         [self sendEmail];
         
-        [self.view makeToast:@"Email sent" duration:1.0 position:CSToastPositionCenter];
+        [self.view makeToast:@"Your Email has been sent" duration:1.0 position:CSToastPositionCenter];
         
     }
 }

@@ -84,7 +84,7 @@
 }
 
 - (void)beginUpdateProfile:(EditProfileTableViewController *)controller{
-    
+     
     [self.view showActivityViewWithLabel:@"Updating profile..."];
 }
 

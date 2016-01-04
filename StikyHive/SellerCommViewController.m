@@ -51,9 +51,6 @@
      {
          _commDict = (NSDictionary *)obj;
          
-         
-        
-//         NSLog(@"comment array 11111 ---- %@", _commentsArray);
          if (_commDict) {
              dispatch_async(dispatch_get_main_queue(), ^{
                  
@@ -176,23 +173,10 @@
 
 
 
-
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
-
-
-
-
-
 
 
 @end

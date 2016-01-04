@@ -459,20 +459,9 @@
         
         [SellingManager sharedSellingManager].skillName = titleString;
         [SellingManager sharedSellingManager].skillCategoryId = categriInt;
-        [SellingManager sharedSellingManager].skillSummary = summaryString;
-        [SellingManager sharedSellingManager].skillDesc = descString;
+        [SellingManager sharedSellingManager].skillSummary = innerSummary;
+        [SellingManager sharedSellingManager].skillDesc = innerDesc;
         [SellingManager sharedSellingManager].skillType = _skillType;
-        
-        
-//        NSString *name = skillinfo[@"name"];
-//        NSLog(@"name1 -- %@",name);
-//        NSLog(@"name2 -- %@",titleString);
-//        NSLog(@"categorid -- %@",skillinfo[@"categoryid"]);
-//        NSLog(@"summary -- %@",skillinfo[@"summary"]);
-//        NSLog(@"description -- %@",skillinfo[@"description"]);
-//        
-//        NSLog(@"price -- %@",skillinfo[@"price"]);
-//        NSLog(@"rate -- %@",skillinfo[@"rate"]);
         
         
 //        UIViewController *vc = [SellingViewController2 instantiateForInfo:skillinfo];
