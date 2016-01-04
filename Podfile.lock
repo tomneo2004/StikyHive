@@ -33,6 +33,7 @@ PODS:
     - AFNetworking (~> 2.0)
     - SMTPAPI
   - SMTPAPI (0.2.0)
+  - Toast (3.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0 (~> 2.0.4)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - PayPal-iOS-SDK
   - RadioButton
   - SendGrid (~> 0.2.6)
+  - Toast (~> 3.0)
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: 860466cb4a66854e6acb590071ecee404b48f49d
@@ -49,5 +51,6 @@ SPEC CHECKSUMS:
   RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
   SendGrid: dc8275118d276ad56cfbb8a9ebcdecf0a4387f36
   SMTPAPI: 84bcd13fb0c572a7a16c2045ebb4f32c97892c90
+  Toast: 32c59229abfcf41850162b83bb9259dc84372473
 
 COCOAPODS: 0.38.2

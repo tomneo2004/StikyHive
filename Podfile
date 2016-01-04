@@ -19,3 +19,6 @@ pod 'PayPal-iOS-SDK'
 pod 'ActionSheetPicker-3.0', '~> 2.0.4'
 
 pod 'RadioButton'
+
+platform :ios, '7.0'
+pod 'Toast', '~> 3.0'

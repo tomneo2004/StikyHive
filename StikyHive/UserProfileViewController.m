@@ -28,7 +28,8 @@
 @property (nonatomic, strong) NSDictionary *buyerMarket;
 @property (nonatomic, strong) NSArray *savedDocuArray;;
 @property (nonatomic, strong) NSMutableArray *locationDocu;
-
+@property (nonatomic, strong) NSArray *contactArray;
+@property (nonatomic, strong) UIButton *contactBtn;
 
 @end
 
@@ -67,37 +68,49 @@
                 
                 [WebDataInterface getSavedDocument:stkid completion:^(NSObject *obj4, NSError *err4) {
                     
+                    [WebDataInterface selectContacts:stkid completion:^(NSObject *obj5, NSError *err5) {
+                        
                     
-                        _beeInfoDic = (NSDictionary *)obj;
-                        NSLog(@"stiky bee info -------- %@",_beeInfoDic);
-//                    NSDictionary *stkDict = _beeInfoDic[@"stikybee"];
-//                    NSString *stkString = stkDict[@"stkid"];
-//                    NSLog(@"stkid ---- %@",stkString);
+                    
+                    
+                            _beeInfoDic = (NSDictionary *)obj;
+//                            NSLog(@"stiky bee info -------- %@",_beeInfoDic);
+//                      NSDictionary *stkDict = _beeInfoDic[@"stikybee"];
+//                      NSString *stkString = stkDict[@"stkid"];
+//                      NSLog(@"stkid ---- %@",stkString);
                 
-                        NSDictionary *seeAll = (NSDictionary *)obj2;
-                        _seeAllArray = seeAll[@"result"];
-//                      NSLog(@"see all  --------------- %@",_seeAllArray);
+                            NSDictionary *seeAll = (NSDictionary *)obj2;
+                            _seeAllArray = seeAll[@"result"];
+//                          NSLog(@"see all  --------------- %@",_seeAllArray);
                 
-                        _buyerMarket = (NSDictionary *)obj3;
-                        _buyerMarketArray = _buyerMarket[@"buyermarkets"];
-//                      NSLog(@"buyer market ----- %@",_buyerMarket);
+                            _buyerMarket = (NSDictionary *)obj3;
+                            _buyerMarketArray = _buyerMarket[@"buyermarkets"];
+//                          NSLog(@"buyer market ----- %@",_buyerMarket);
                     
                     
-                        NSDictionary *dict = (NSDictionary *)obj4;
-                        _savedDocuArray = dict[@"documents"];
-                    
-                        NSLog(@"get saved document --- %@",_savedDocuArray);
+                            NSDictionary *dict = (NSDictionary *)obj4;
+                            _savedDocuArray = dict[@"documents"];
+//                            NSLog(@"get saved document --- %@",_savedDocuArray);
+                        
+                        
+                        NSLog(@"select contact --- %@",obj5);
+                        NSDictionary *conDict = (NSDictionary *)obj5;
+                        _contactArray = conDict[@"resultContacts"];
+                        NSLog(@"contact array --- %@",_contactArray);
                     
                 
-                        dispatch_async(dispatch_get_main_queue(), ^{
+                            dispatch_async(dispatch_get_main_queue(), ^{
                     
                         
-                            [self displayPage];
+                                [self displayPage];
                             
                             
-                            [self.view hideActivityView];
-                    
-                    });
+                                [self.view hideActivityView];
+                                
+                        });
+                        
+                       
+                    }];
                     
                 }];
             }];
@@ -216,13 +229,24 @@
         UIView *contactView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, iconViewWidth, iconViewHeight)];
         contactView.userInteractionEnabled = YES;
 //      contactView.backgroundColor = [UIColor redColor];
-        UIButton *contactBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 35, 30)];
-        [contactBtn addTarget:self action:@selector(contactBtnPressed:) forControlEvents:UIControlEventTouchUpInside]; //contact button
-        [contactBtn setImage:[UIImage imageNamed:@"profile_addcontact"] forState:UIControlStateNormal];
-        CGPoint contactBtnCenter = contactBtn.center;
+        _contactBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 35, 30)];
+        [_contactBtn addTarget:self action:@selector(contactBtnPressed:) forControlEvents:UIControlEventTouchUpInside]; //contact button
+        [_contactBtn setImage:[UIImage imageNamed:@"profile_addcontact"] forState:UIControlStateNormal];
+        CGPoint contactBtnCenter = _contactBtn.center;
         contactBtnCenter.x = contactView.center.x;
-        contactBtn.center = contactBtnCenter;
-        [contactView addSubview:contactBtn];
+        _contactBtn.center = contactBtnCenter;
+        [contactView addSubview:_contactBtn];
+        //-------check contact exist or not ---------
+        for (int i = 0; i<_contactArray.count; i++)
+        {
+            NSDictionary *stkDict = _beeInfoDic[@"stikybee"];
+            NSString *stkString = stkDict[@"stkid"];
+            if ([_contactArray[i][@"contactId"] isEqualToString:stkString])
+            {
+                _contactBtn.hidden = YES;
+                break;
+            }
+        }
     
     
         UIView *tocolonyView = [[UIView alloc] initWithFrame:CGRectMake(iconViewWidth, 0, iconViewWidth, iconViewHeight)];
@@ -402,12 +426,13 @@
             
             
             NSString *price = object[@"price"];
-            NSString *rateName = object[@"rateName"];
+            NSString *rateName = object[@"ratename"];
+            
             
             if (price != (id)[NSNull null] && rateName !=(id)[NSNull null])
             {
             
-                UIView *rateView = [[UIView alloc] initWithFrame:CGRectMake(picImageView.frame.size.width-100, picImageView.frame.size.height -50, 100, 30)];
+                UIView *rateView = [[UIView alloc] initWithFrame:CGRectMake(picImageView.frame.size.width-110, picImageView.frame.size.height -50, 110, 30)];
                 rateView.backgroundColor = [UIColor colorWithRed:81.0/255 green:81.0/255 blue:81.0/255 alpha:0.8];
                 
                 
@@ -430,9 +455,14 @@
                 rateLabel.textColor = [UIColor whiteColor];
                 [rateLabel sizeToFit];
                 
+                
+                
                 [rateView addSubview:dollarLabel];
                 [rateView addSubview:priceLabel];
                 [rateView addSubview:rateLabel];
+                
+                
+                [rateView sizeToFit];
 //                rateLabel.textColor = [UIColor whiteColor];
 //            
 //                rateLabel.text = [NSString stringWithFormat:@"S$%@/%@",price,rateName];
@@ -1284,11 +1314,8 @@
         NSDictionary *dict = (NSDictionary *)obj;
         if (dict && [dict[@"status"] isEqualToString:@"success"])
         {
-            
-            
-            
-            
-            
+            _contactBtn.hidden = YES;
+        
         }
         
 //        [self.view hideActivityView];

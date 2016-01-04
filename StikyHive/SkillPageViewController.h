@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SkillPageViewController : UIViewController <UIWebViewDelegate,UIScrollViewDelegate,UITextFieldDelegate>
+@interface SkillPageViewController : UIViewController <UIWebViewDelegate,UIScrollViewDelegate,UITextFieldDelegate, UIAlertViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;

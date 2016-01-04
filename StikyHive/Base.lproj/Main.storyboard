@@ -1744,7 +1744,7 @@
                                                 <exclude reference="fCv-Ce-Z4m"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="570" width="400" height="149"/>
                                             <mask key="constraints">
                                                 <include reference="fCv-Ce-Z4m"/>
@@ -1777,7 +1777,7 @@
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gu0-wb-6L0">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="320" y="600" width="51" height="31"/>
                                         </variation>
                                         <connections>
@@ -2416,6 +2416,7 @@
                         <viewControllerLayoutGuide type="bottom" id="z9s-8J-BMo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sqt-ee-Hc2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buyerspost_hives.png" translatesAutoresizingMaskIntoConstraints="NO" id="iBC-jf-7R5">
@@ -2501,13 +2502,13 @@
                                 <exclude reference="3aO-d4-2na"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Pov-hD-bQj"/>
-                                <exclude reference="Uqe-3H-FHL"/>
                                 <exclude reference="Hwf-hM-zNL"/>
                                 <exclude reference="Xhb-mH-Jbs"/>
                                 <exclude reference="9jd-ZR-pnN"/>
                                 <exclude reference="ZKJ-ld-LvK"/>
                                 <exclude reference="uMj-ua-tmf"/>
+                                <exclude reference="Pov-hD-bQj"/>
+                                <exclude reference="Uqe-3H-FHL"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -2517,13 +2518,13 @@
                                 <include reference="3aO-d4-2na"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Pov-hD-bQj"/>
-                                <include reference="Uqe-3H-FHL"/>
                                 <include reference="Hwf-hM-zNL"/>
                                 <include reference="Xhb-mH-Jbs"/>
                                 <include reference="9jd-ZR-pnN"/>
                                 <include reference="ZKJ-ld-LvK"/>
                                 <include reference="uMj-ua-tmf"/>
+                                <include reference="Pov-hD-bQj"/>
+                                <include reference="Uqe-3H-FHL"/>
                             </mask>
                         </variation>
                     </view>
@@ -3734,8 +3735,6 @@
                                 <exclude reference="TgA-s5-V71"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="kWN-fZ-kl5"/>
-                                <exclude reference="tbk-px-Qbm"/>
                                 <exclude reference="Ri6-ER-fiJ"/>
                                 <exclude reference="gjO-Id-Gd3"/>
                                 <exclude reference="27v-vR-cAh"/>
@@ -3743,6 +3742,8 @@
                                 <exclude reference="XXE-dU-qgM"/>
                                 <exclude reference="pf7-Zt-84u"/>
                                 <exclude reference="wIL-WF-759"/>
+                                <exclude reference="kWN-fZ-kl5"/>
+                                <exclude reference="tbk-px-Qbm"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -3752,8 +3753,6 @@
                                 <include reference="TgA-s5-V71"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="kWN-fZ-kl5"/>
-                                <include reference="tbk-px-Qbm"/>
                                 <include reference="Ri6-ER-fiJ"/>
                                 <include reference="gjO-Id-Gd3"/>
                                 <exclude reference="27v-vR-cAh"/>
@@ -3761,6 +3760,8 @@
                                 <exclude reference="XXE-dU-qgM"/>
                                 <include reference="pf7-Zt-84u"/>
                                 <include reference="wIL-WF-759"/>
+                                <include reference="kWN-fZ-kl5"/>
+                                <include reference="tbk-px-Qbm"/>
                             </mask>
                         </variation>
                     </view>
