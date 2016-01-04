@@ -25,6 +25,7 @@
     
     NSMutableArray *_myPostInfos;
     NSDateFormatter *_dateFormatter;
+    NSInteger _tmpDeleteIndex;
 }
 
 @synthesize tableView = _tableView;
@@ -167,36 +168,46 @@
 - (void)onDeleteTap:(MyPostCell *)cell{
     
     
-    NSInteger index = [_tableView indexPathForCell:cell].row;
+    _tmpDeleteIndex = [_tableView indexPathForCell:cell].row;
     
-    MyPostInfo *info = [_myPostInfos objectAtIndex:index];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete" message:@"Do you want to delete?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    [alert show];
     
-    [self.view showActivityViewWithLabel:@"Refreshing..." detailLabel:@"Fetching data"];
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex{
     
-    [WebDataInterface deleteBuyerPost:[info.postId integerValue] stkid:[LocalDataInterface retrieveStkid] limit:0 completion:^(NSObject *obj, NSError *error){
+    if(buttonIndex == 1){
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+        MyPostInfo *info = [_myPostInfos objectAtIndex:_tmpDeleteIndex];
+        
+        [self.view showActivityViewWithLabel:@"Refreshing..." detailLabel:@"Fetching data"];
+        
+        [WebDataInterface deleteBuyerPost:[info.postId integerValue] stkid:[LocalDataInterface retrieveStkid] limit:0 completion:^(NSObject *obj, NSError *error){
             
-            if(error != nil){
+            dispatch_async(dispatch_get_main_queue(), ^{
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to delete post!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
+                if(error != nil){
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to delete post!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                    
+                    [self.view hideActivityView];
+                    
+                    return ;
+                }
+                else{
+                    
+                    [_myPostInfos removeObjectAtIndex:_tmpDeleteIndex];
+                    [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_tmpDeleteIndex inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    
+                }
                 
                 [self.view hideActivityView];
-                
-                return ;
-            }
-            else{
-                
-                [_myPostInfos removeObjectAtIndex:index];
-                [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-                
-            }
-            
-            [self.view hideActivityView];
-        });
-    }];
-    
+            });
+        }];
+    }
 }
 
 /*
