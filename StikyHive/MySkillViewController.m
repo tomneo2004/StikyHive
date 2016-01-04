@@ -13,6 +13,7 @@
 #import "MySkillInfo.h"
 #import "SkillViewTableViewController.h"
 #import "SkillPageViewController.h"
+#import "ViewControllerUtil.h"
 
 @interface MySkillViewController ()
 
@@ -103,6 +104,8 @@
 #pragma mark - IBAction
 - (IBAction)addSkill:(id)sender{
     
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource delegate
