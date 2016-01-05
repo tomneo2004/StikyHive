@@ -420,6 +420,8 @@
 		CE83C7891C3B605200753B80 /* EducationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C7881C3B605200753B80 /* EducationViewController.m */; };
 		CE83C78C1C3B6B7600753B80 /* EducationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C78B1C3B6B7600753B80 /* EducationInfo.m */; };
 		CE83C78F1C3B731700753B80 /* EducationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C78E1C3B731700753B80 /* EducationCell.m */; };
+		CE83C7921C3B999D00753B80 /* EditEducationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C7911C3B999D00753B80 /* EditEducationTableViewController.m */; };
+		CE83C7951C3BAC8900753B80 /* OtherInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C7941C3BAC8900753B80 /* OtherInfoViewController.m */; };
 		CE9054D21C17CB9300144078 /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9054D11C17CB9300144078 /* OverlayViewController.m */; };
 		CE9054D61C17D25400144078 /* ReadReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9054D51C17D25400144078 /* ReadReviewViewController.m */; };
 		CE9B8EC61C16C34D0022653B /* BoughtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B8EC51C16C34D0022653B /* BoughtViewController.m */; };
@@ -1097,6 +1099,10 @@
 		CE83C78B1C3B6B7600753B80 /* EducationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EducationInfo.m; sourceTree = "<group>"; };
 		CE83C78D1C3B731700753B80 /* EducationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EducationCell.h; sourceTree = "<group>"; };
 		CE83C78E1C3B731700753B80 /* EducationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EducationCell.m; sourceTree = "<group>"; };
+		CE83C7901C3B999D00753B80 /* EditEducationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditEducationTableViewController.h; sourceTree = "<group>"; };
+		CE83C7911C3B999D00753B80 /* EditEducationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditEducationTableViewController.m; sourceTree = "<group>"; };
+		CE83C7931C3BAC8900753B80 /* OtherInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherInfoViewController.h; sourceTree = "<group>"; };
+		CE83C7941C3BAC8900753B80 /* OtherInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherInfoViewController.m; sourceTree = "<group>"; };
 		CE9054D01C17CB9300144078 /* OverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayViewController.h; sourceTree = "<group>"; };
 		CE9054D11C17CB9300144078 /* OverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayViewController.m; sourceTree = "<group>"; };
 		CE9054D41C17D25400144078 /* ReadReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadReviewViewController.h; sourceTree = "<group>"; };
@@ -2301,6 +2307,10 @@
 				CE83C78B1C3B6B7600753B80 /* EducationInfo.m */,
 				CE83C78D1C3B731700753B80 /* EducationCell.h */,
 				CE83C78E1C3B731700753B80 /* EducationCell.m */,
+				CE83C7901C3B999D00753B80 /* EditEducationTableViewController.h */,
+				CE83C7911C3B999D00753B80 /* EditEducationTableViewController.m */,
+				CE83C7931C3BAC8900753B80 /* OtherInfoViewController.h */,
+				CE83C7941C3BAC8900753B80 /* OtherInfoViewController.m */,
 			);
 			name = Education;
 			sourceTree = "<group>";
@@ -3084,6 +3094,7 @@
 				67361F2D1B82D0CB00C1374D /* UserAgreementViewController.m in Sources */,
 				674D0F381B7D9A5200B5B80D /* UIView+JSQMessages.m in Sources */,
 				517FE2981C23C08800E8CC7E /* PostBuyViewController.m in Sources */,
+				CE83C7951C3BAC8900753B80 /* OtherInfoViewController.m in Sources */,
 				676F77E21B96F3060084988A /* TOCropViewControllerTransitioning.m in Sources */,
 				51C2568D1C337DF1007E6581 /* BuySucessViewController.m in Sources */,
 				51694D6B1BABE9C4007722F1 /* SkillVideoPlayer.m in Sources */,
@@ -3123,6 +3134,7 @@
 				674D0F341B7D9A5200B5B80D /* NSString+JSQMessages.m in Sources */,
 				CE5D4A511C27AF8E005C07D4 /* SeeAllReviewViewController.m in Sources */,
 				674D0F771B7D9F2200B5B80D /* HtmlEditor.m in Sources */,
+				CE83C7921C3B999D00753B80 /* EditEducationTableViewController.m in Sources */,
 				516718E71C1A799E003E9902 /* ZSSBarButtonItem.m in Sources */,
 				674D0EC11B7D98CA00B5B80D /* UserSkillViewController3.m in Sources */,
 				674D0F321B7D9A5200B5B80D /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
