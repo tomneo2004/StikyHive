@@ -20,6 +20,7 @@
 
 @implementation EducationViewController{
     
+    BOOL _shouldUpdate;
     NSMutableArray *_educationInfos;
      NSDateFormatter *_dateFormatter;
 }
@@ -32,13 +33,16 @@
     
     _dateFormatter = [[NSDateFormatter alloc] init];
     [_dateFormatter setDateFormat:@"MMM yyyy"];
+    
+    _shouldUpdate = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
     
-    [self pullData];
+    if(_shouldUpdate)
+        [self pullData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,6 +105,11 @@
 #pragma mark - IBAction
 - (IBAction)addNewEducation:(id)sender{
     
+    EditEducationTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"EditEducationTableViewController"];
+    controller.eduInfo = nil;
+    controller.delegate = self;
+    
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -135,6 +144,7 @@
     cell.instituteLabel.text = [NSString stringWithFormat:@"%@, %@", info.institute, info.countryName];
     cell.qualificationLabel.text = info.qualification;
     cell.dateLabel.text = [NSString stringWithFormat:@"%@ - %@", [_dateFormatter stringFromDate:info.fromDate], [_dateFormatter stringFromDate:info.toDate]];
+    cell.delegate = self;
     
     return cell;
 }
@@ -142,12 +152,37 @@
 #pragma mark - EducationCell delegate
 - (void)onEdit:(EducationCell *)cell{
     
+    NSInteger index = [_tableView indexPathForCell:cell].row;
+    EducationInfo *info = [_educationInfos objectAtIndex:index];
+    
+    EditEducationTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"EditEducationTableViewController"];
+    controller.eduInfo = info;
+    controller.delegate = self;
+    
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)onDelete:(EducationCell *)cell{
     
 }
 
+#pragma mark - EditEducationTableViewController delegate
+- (void)onUpdateEducationSuccessful{
+    
+}
+
+- (void)onAddNewEducationSuccessful{
+    
+}
+
+#pragma mark - UINavigationViewController delegate
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    
+    if([fromVC isKindOfClass:[EditEducationTableViewController class]])
+        _shouldUpdate = NO;
+    
+    return nil;
+}
 
 /*
 #pragma mark - Navigation
