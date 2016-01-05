@@ -879,7 +879,6 @@
     
 //    [self addEditBtn:CGPointMake(20, y + 20)];
 //    UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
-    
     UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+20, 100, 30)];
     [addBtn setTitle:@"Add/Edit" forState:UIControlStateNormal];
     [addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -889,9 +888,20 @@
     CGPoint addCenter = addBtn.center;
     addCenter.x = _tabView.center.x;
     addBtn.center = addCenter;
-    [addBtn addTarget:self action:@selector(jobAddBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     [_tabView addSubview:addBtn];
+    
+    
+    if (isExperience) {
+        [addBtn addTarget:self action:@selector(jobAddBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        [addBtn addTarget:self action:@selector(educationAddBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    
 
     
     y = y +50;
@@ -1326,7 +1336,15 @@
     
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"job_history_view_controller"];
     [self.navigationController pushViewController:vc animated:YES];
+    
+//
 
+}
+
+- (void)educationAddBtnPressed:(UITapGestureRecognizer *)sender
+{
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"EducationViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
