@@ -8,9 +8,13 @@
 
 #import "JobHistoryCell.h"
 
-@implementation JobHistoryCell{
-    BOOL _isInit;
-}
+@implementation JobHistoryCell
+
+@synthesize timeLable = _timeLable;
+@synthesize titleLabel = _titleLabel;
+@synthesize countryLabel = _countryLabel;
+@synthesize delegate = _delegate;
+
 
 - (void)awakeFromNib {
     // Initialization code
@@ -24,39 +28,18 @@
 
 - (IBAction)didTapEdit:(id)sender {
     
-    
+    if ([_delegate respondsToSelector:@selector(onEdit:)]) {
+        [_delegate onEdit:self];
+    }
     
 }
 
 - (IBAction)didTapDelete:(id)sender {
-}
-
-#pragma mark - override
-- (void)layoutSubviews{
-    
-    [super layoutSubviews];
-    
-    
-    if (_isInit) {
-        
-        
-        
-        
-        
-        _isInit = YES;
-        
+    if ([_delegate respondsToSelector:@selector(onDelete:)]) {
+        [_delegate onDelete:self];
     }
 }
 
-#pragma mark - override
-- (void)prepareForReuse
-{
-    _titleLabel = nil;
-    _timeLable = nil;
-    _countryLabel = nil;
-    
-    
-}
 
 
 @end
