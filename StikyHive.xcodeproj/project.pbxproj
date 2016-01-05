@@ -417,6 +417,9 @@
 		CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA8D1C0D9E8D000CB49F /* DocumentTableViewCell.m */; };
 		CE68DA911C0DA0F6000CB49F /* DocumentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */; };
 		CE7AA1771C0804BF00875DE5 /* PostRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */; };
+		CE83C7891C3B605200753B80 /* EducationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C7881C3B605200753B80 /* EducationViewController.m */; };
+		CE83C78C1C3B6B7600753B80 /* EducationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C78B1C3B6B7600753B80 /* EducationInfo.m */; };
+		CE83C78F1C3B731700753B80 /* EducationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C78E1C3B731700753B80 /* EducationCell.m */; };
 		CE9054D21C17CB9300144078 /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9054D11C17CB9300144078 /* OverlayViewController.m */; };
 		CE9054D61C17D25400144078 /* ReadReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9054D51C17D25400144078 /* ReadReviewViewController.m */; };
 		CE9B8EC61C16C34D0022653B /* BoughtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B8EC51C16C34D0022653B /* BoughtViewController.m */; };
@@ -1088,6 +1091,12 @@
 		CE68DA901C0DA0F6000CB49F /* DocumentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentInfo.m; sourceTree = "<group>"; };
 		CE7AA1751C0804BF00875DE5 /* PostRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostRequestManager.h; sourceTree = "<group>"; };
 		CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostRequestManager.m; sourceTree = "<group>"; };
+		CE83C7871C3B605200753B80 /* EducationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EducationViewController.h; sourceTree = "<group>"; };
+		CE83C7881C3B605200753B80 /* EducationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EducationViewController.m; sourceTree = "<group>"; };
+		CE83C78A1C3B6B7600753B80 /* EducationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EducationInfo.h; sourceTree = "<group>"; };
+		CE83C78B1C3B6B7600753B80 /* EducationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EducationInfo.m; sourceTree = "<group>"; };
+		CE83C78D1C3B731700753B80 /* EducationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EducationCell.h; sourceTree = "<group>"; };
+		CE83C78E1C3B731700753B80 /* EducationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EducationCell.m; sourceTree = "<group>"; };
 		CE9054D01C17CB9300144078 /* OverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayViewController.h; sourceTree = "<group>"; };
 		CE9054D11C17CB9300144078 /* OverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayViewController.m; sourceTree = "<group>"; };
 		CE9054D41C17D25400144078 /* ReadReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadReviewViewController.h; sourceTree = "<group>"; };
@@ -1519,6 +1528,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CE83C7861C3B5F2800753B80 /* Education */,
 				CEC8A1D71C2A70DE00558608 /* MyPost */,
 				CE56FF2B1C1FB31B00C64567 /* MySkill */,
 				517FE2951C23C05700E8CC7E /* PostToBuy */,
@@ -2280,6 +2290,19 @@
 				CE7AA1761C0804BF00875DE5 /* PostRequestManager.m */,
 			);
 			name = PostReuestManager;
+			sourceTree = "<group>";
+		};
+		CE83C7861C3B5F2800753B80 /* Education */ = {
+			isa = PBXGroup;
+			children = (
+				CE83C7871C3B605200753B80 /* EducationViewController.h */,
+				CE83C7881C3B605200753B80 /* EducationViewController.m */,
+				CE83C78A1C3B6B7600753B80 /* EducationInfo.h */,
+				CE83C78B1C3B6B7600753B80 /* EducationInfo.m */,
+				CE83C78D1C3B731700753B80 /* EducationCell.h */,
+				CE83C78E1C3B731700753B80 /* EducationCell.m */,
+			);
+			name = Education;
 			sourceTree = "<group>";
 		};
 		CE9054CF1C17CB6100144078 /* Overlay */ = {
@@ -3094,6 +3117,7 @@
 				CE5D4A4C1C27A649005C07D4 /* PostCommentViewController.m in Sources */,
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
 				CEFD19581C040F3D00A79158 /* SearchResultCell.m in Sources */,
+				CE83C78F1C3B731700753B80 /* EducationCell.m in Sources */,
 				CE51A3B31C2403FE00652B90 /* ReviewInfo.m in Sources */,
 				CEBDDFE31C30E05200CF54D8 /* ThumbnailView.m in Sources */,
 				674D0F341B7D9A5200B5B80D /* NSString+JSQMessages.m in Sources */,
@@ -3113,6 +3137,7 @@
 				CE24E7FF1C196EB40021F078 /* EditProfileTableViewController.m in Sources */,
 				674D0F601B7D9A9A00B5B80D /* ViewControllerUtil.m in Sources */,
 				674D0F3D1B7D9A5200B5B80D /* JSQMessagesBubbleImageFactory.m in Sources */,
+				CE83C7891C3B605200753B80 /* EducationViewController.m in Sources */,
 				674D0F531B7D9A5200B5B80D /* JSQMessagesInputToolbar.m in Sources */,
 				674D0F4E1B7D9A5200B5B80D /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
 				516BC8691BB13FBE008BE2ED /* PhotoViewController.m in Sources */,
@@ -3130,6 +3155,7 @@
 				CEFD195C1C04123800A79158 /* DistanceTitle.m in Sources */,
 				674D0F461B7D9A5200B5B80D /* JSQMessage.m in Sources */,
 				CED3C8771C2251490090DE35 /* MySkillViewController.m in Sources */,
+				CE83C78C1C3B6B7600753B80 /* EducationInfo.m in Sources */,
 				CEE93A261BF47C2600B292BA /* CrossPollinateViewController.m in Sources */,
 				CEE93A2A1BF4852800B292BA /* Request.m in Sources */,
 				674D0F4D1B7D9A5200B5B80D /* JSQMessagesCollectionViewCell.m in Sources */,
