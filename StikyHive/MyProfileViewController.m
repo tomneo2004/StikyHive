@@ -877,7 +877,22 @@
     }
     
     
-    [self addEditBtn:CGPointMake(20, y + 20)];
+//    [self addEditBtn:CGPointMake(20, y + 20)];
+//    UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
+    
+    UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+20, 100, 30)];
+    [addBtn setTitle:@"Add/Edit" forState:UIControlStateNormal];
+    [addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    addBtn.backgroundColor = greenColor;
+    addBtn.layer.cornerRadius = 5;
+    addBtn.layer.masksToBounds = YES;
+    CGPoint addCenter = addBtn.center;
+    addCenter.x = _tabView.center.x;
+    addBtn.center = addCenter;
+    [addBtn addTarget:self action:@selector(jobAddBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_tabView addSubview:addBtn];
+
     
     y = y +50;
     
@@ -1304,6 +1319,14 @@
 
     [_tabView addSubview:addBtn];
     
+}
+
+- (void)jobAddBtnPressed:(UITapGestureRecognizer *)sender
+{
+    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"job_history_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 

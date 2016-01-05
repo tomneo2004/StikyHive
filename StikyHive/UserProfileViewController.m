@@ -71,7 +71,7 @@
                     [WebDataInterface selectContacts:stkid completion:^(NSObject *obj5, NSError *err5) {
                     
                             _beeInfoDic = (NSDictionary *)obj;
-//                            NSLog(@"stiky bee info -------- %@",_beeInfoDic);
+                            NSLog(@"stiky bee info -------- %@",_beeInfoDic);
 //                      NSDictionary *stkDict = _beeInfoDic[@"stikybee"];
 //                      NSString *stkString = stkDict[@"stkid"];
 //                      NSLog(@"stkid ---- %@",stkString);
