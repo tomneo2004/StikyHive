@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "EducationCell.h"
+#import "EditEducationTableViewController.h"
 
-@interface EducationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, EducationCellDelegate>
+@interface EducationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, EducationCellDelegate, EditDeucationDelegate, UINavigationControllerDelegate>
 
 @end

@@ -63,7 +63,11 @@
             _updateDate = [formatter dateFromString:_originalUpdateDate];
         }
         
-        _otherInfo = [dic objectForKey:@"otherInfo"];
+        if(![[dic objectForKey:@"otherInfo"] isEqual:[NSNull null]])
+            _otherInfo = [dic objectForKey:@"otherInfo"];
+        else
+            _otherInfo = @"";
+        
         _status = [[dic objectForKey:@"status"] integerValue];
         _countryName = [dic objectForKey:@"countryName"];
     }
