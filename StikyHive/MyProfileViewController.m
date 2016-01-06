@@ -696,9 +696,33 @@
         
     }
     
-    [self addEditBtn:CGPointMake(20, y)];
     
-    y = y + 50;
+//    [self addEditBtn:CGPointMake(20, y)]; // -------------------------
+    UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+20, 150, 50)];
+    [addBtn setTitle:@"Add/Edit" forState:UIControlStateNormal];
+    [addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    addBtn.backgroundColor = greenColor;
+    addBtn.layer.cornerRadius = 5;
+    addBtn.layer.masksToBounds = YES;
+    CGPoint addCenter = addBtn.center;
+    addCenter.x = _tabView.center.x;
+    addBtn.center = addCenter;
+    
+    if (isSkill) {
+        [addBtn addTarget:self action:@selector(addSkillTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        [addBtn addTarget:self action:@selector(addBuyerTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    
+    [_tabView addSubview:addBtn];
+
+    
+   
+    
+    y = y + 80;
     
     
     
@@ -879,7 +903,7 @@
     
 //    [self addEditBtn:CGPointMake(20, y + 20)];
 //    UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
-    UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+20, 100, 30)];
+    UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+20, 150, 50)];
     [addBtn setTitle:@"Add/Edit" forState:UIControlStateNormal];
     [addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     addBtn.backgroundColor = greenColor;
@@ -904,7 +928,7 @@
     
 
     
-    y = y +50;
+    y = y +80;
     
     
     CGRect tabViewFrame = _tabView.frame;
@@ -1333,12 +1357,8 @@
 
 - (void)jobAddBtnPressed:(UITapGestureRecognizer *)sender
 {
-    
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"job_history_view_controller"];
     [self.navigationController pushViewController:vc animated:YES];
-    
-//
-
 }
 
 - (void)educationAddBtnPressed:(UITapGestureRecognizer *)sender
@@ -1347,8 +1367,17 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)addSkillTapped:(UITapGestureRecognizer *)sender
+{
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"my_skill_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
-
+- (void)addBuyerTapped:(UITapGestureRecognizer *)sender
+{
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"my_post_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -1357,15 +1386,5 @@
 }
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

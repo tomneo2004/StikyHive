@@ -11,14 +11,16 @@
 #import "LocalDataInterface.h"
 #import "UIView+RNActivityView.h"
 #import "ViewControllerUtil.h"
+#import "JobInfo.h"
 
 @interface JobHistoryViewController ()
 
-@property (nonatomic, strong) NSArray *historyArray;
 
 @end
 
-@implementation JobHistoryViewController
+@implementation JobHistoryViewController{
+    NSMutableArray *_jobInfoArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,8 +37,13 @@
             if (err == nil) {
                 NSDictionary *dict = (NSDictionary *)obj;
                 
-                _historyArray = dict[@"jobhistory"];
+//                _historyArray = dict[@"jobhistory"];
                 
+                _jobInfoArray = [[NSMutableArray alloc] init];
+                for (NSDictionary *data in dict[@"jobhistory"]) {
+                    JobInfo *info = [JobInfo createJobInfoFromDictionary:data];
+                    [_jobInfoArray addObject:info];
+                }
                 
                 [_jobTableView reloadData];
                 
@@ -60,7 +67,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _historyArray.count;
+    if (_jobInfoArray != nil) {
+        return _jobInfoArray.count;
+    }
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -74,10 +85,12 @@
         cell = [[JobHistoryCell alloc] init];
     }
     
-    NSDictionary *job = _historyArray[indexPath.row];
+    JobInfo *info = [_jobInfoArray objectAtIndex:indexPath.row];
+    
+//    NSDictionary *job = _jobInfoArray[indexPath.row];
     NSDateFormatter *formate = [[NSDateFormatter alloc] init];
-    NSString *fromDateString = job[@"fromDate"];
-    NSString *toDate = job[@"toDate"];
+    NSString *fromDateString = info.originalFromDate;
+    NSString *toDate = info.originalToDate;
 
     if (toDate == (id)[NSNull null]) {
         NSDate *today = [NSDate date];
@@ -101,9 +114,10 @@
     }
     
     
-    cell.countryLabel.text = [NSString stringWithFormat:@"%@, %@",job[@"companyName"],job[@"countryName"]];
-    cell.titleLabel.text = [NSString stringWithFormat:@"%@",job[@"jobtitle"]];
+    cell.countryLabel.text = [NSString stringWithFormat:@"%@, %@",info.companyName,info.countryName];
+    cell.titleLabel.text = [NSString stringWithFormat:@"%@",info.jobTitle];
     cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@",fromDateString,toDate];
+    cell.delegate = self;
     
     NSLog(@"");
     
@@ -112,15 +126,19 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
 #pragma mark - JobHistoryCell delegate
 - (void)onEdit:(JobHistoryCell *)cell
 {
+    NSLog(@"on edit pressed");
+    NSInteger index = [_jobTableView indexPathForCell:cell].row;
+    JobInfo *jobInfo = [_jobInfoArray objectAtIndex:index];
     
+    NSLog(@"jobinfo at indext path --- %@",jobInfo);
+    
+    AddJobViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"add_job_view_controller"];
+    vc.jobInfo = jobInfo;
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)onDelete:(JobHistoryCell *)cell
@@ -130,11 +148,8 @@
 
 - (IBAction)addNewBtnTapped:(id)sender
 {
-    
-//
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"add_job_view_controller"];
     [self.navigationController pushViewController:vc animated:YES];
 
-    
 }
 @end

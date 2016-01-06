@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JobHistoryCell.h"
+#import "AddJobViewController.h"
 
 @interface JobHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, JobHistoryCellDelegate>
 
