@@ -297,12 +297,83 @@
         
         if(_isEditing){
             
-            //ToDo: update education info
+            if(_eduInfo == nil){
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No education data can be edited" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            
+            CountryInfo *cInfo = [_countryInfos objectAtIndex:_countryIndex];
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"dd-MM-yyyy"];
+            
+            //update education info
+            [self.view showActivityViewWithLabel:@"Updating..."];
+            [WebDataInterface updateEducation:_eduInfo.educationId stkid:_eduInfo.stkId institute:_instituteTextField.text countryISO:cInfo.countryISO qualification:_qualificationTextField.text fromDate:[formatter stringFromDate:_fromDate] toDate:[formatter stringFromDate:_toDate] otherInfo:[_infoWebView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"] completion:^(NSObject *obj, NSError *error){
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self.view hideActivityView];
+                    
+                    if(error != nil){
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Update fail" message:@"Unable to update education" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                        [alert show];
+                    }
+                    else{
+                        
+                        if([_delegate respondsToSelector:@selector(onUpdateEducationSuccessful)]){
+                            
+                            [_delegate onUpdateEducationSuccessful];
+                        }
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Update successful" message:@"Update education successful" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                        [alert show];
+                        
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }
+                });
+            }];
         }
         else{
             
-            //ToDo: add education info
+            //add education info
+            CountryInfo *cInfo = [_countryInfos objectAtIndex:_countryIndex];
+            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"dd-MM-yyyy"];
+            
+            [self.view showActivityViewWithLabel:@"Updating..."];
+            [WebDataInterface saveEducation:[LocalDataInterface retrieveStkid] institute:_instituteTextField.text countryISO:cInfo.countryISO qualification:_qualificationTextField.text fromDate:[formatter stringFromDate:_fromDate] toDate:[formatter stringFromDate:_toDate] otherInfo:[_infoWebView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"] completion:^(NSObject *obj, NSError *error) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self.view hideActivityView];
+                    
+                    if(error != nil){
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save fail" message:@"Unable to save education" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                        [alert show];
+                    }
+                    else{
+                        
+                        if([_delegate respondsToSelector:@selector(onAddNewEducationSuccessful)]){
+                            
+                            [_delegate onAddNewEducationSuccessful];
+                        }
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save successful" message:@"Save education successful" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                        [alert show];
+                        
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }
+                });
+            }];
         }
+        
     }
 }
 

@@ -23,6 +23,7 @@
     BOOL _shouldUpdate;
     NSMutableArray *_educationInfos;
      NSDateFormatter *_dateFormatter;
+    NSInteger _tmpDeleteIndex;
 }
 
 @synthesize tableView = _tableView;
@@ -164,6 +165,39 @@
 
 - (void)onDelete:(EducationCell *)cell{
     
+    _tmpDeleteIndex = [_tableView indexPathForCell:cell].row;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete" message:@"Do you want to delete this education?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
+    [alert show];
+}
+
+#pragma mark - UIAlertView delegate
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex{
+    
+    if(buttonIndex == 1){
+        
+        EducationInfo *info = [_educationInfos objectAtIndex:_tmpDeleteIndex];
+        
+        [self.view showActivityViewWithLabel:@"Deleting..."];
+        [WebDataInterface deleteEducation:info.educationId completion:^(NSObject *obj, NSError *error){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if(error != nil){
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to delete education!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+                else{
+                    
+                    [_educationInfos removeObjectAtIndex:_tmpDeleteIndex];
+                    [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_tmpDeleteIndex inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                }
+                
+            });
+            
+        }];
+    }
 }
 
 #pragma mark - EditEducationTableViewController delegate
