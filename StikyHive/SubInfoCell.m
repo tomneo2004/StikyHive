@@ -14,6 +14,7 @@
 @synthesize datePostLabel = _datePostLabel;
 @synthesize dateExpireLabel = _dateExpireLabel;
 @synthesize monthsLeftLabel = _monthsLeftLabel;
+@synthesize subPlanLabel = _subPlanLabel;
 
 - (void)awakeFromNib {
     // Initialization code

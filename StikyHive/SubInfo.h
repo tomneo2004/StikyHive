@@ -11,7 +11,7 @@
 @interface SubInfo : NSObject
 
 @property (copy, readonly, nonatomic) NSString *subId;
-@property (assign, readonly, nonatomic) NSInteger subPlanId;
+@property (readonly, nonatomic) NSMutableArray *subPlanId;
 @property (assign, readonly, nonatomic) NSInteger catId;
 @property (copy, readonly, nonatomic) NSString *skillName;
 @property (copy, readonly, nonatomic) NSString *summary;
@@ -27,7 +27,9 @@
 @property (readonly, nonatomic) NSDate *issueDate;
 @property (copy, readonly, nonatomic) NSString *originalExpireDate;
 @property (readonly, nonatomic) NSDate *expireDate;
+@property (readonly, nonatomic) NSString *subPlanString;
 
 + (id)createSubInfoFromDictionary:(NSDictionary *)dic;
+- (void)addSubPlanId:(NSInteger)planId;
 
 @end

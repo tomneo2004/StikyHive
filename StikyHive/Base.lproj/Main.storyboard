@@ -150,6 +150,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -10494,20 +10495,26 @@ Cross Pollinate!</string>
                                     <rect key="frame" x="16" y="70" width="368" height="29.5"/>
                                 </variation>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="202" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wxi-GX-veA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="220" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wxi-GX-veA">
                                 <rect key="frame" x="20" y="105" width="560" height="446"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SubInfoCell" rowHeight="202" id="UpY-oO-hR3" customClass="SubInfoCell">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="202"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SubInfoCell" rowHeight="220" id="UpY-oO-hR3" customClass="SubInfoCell">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UpY-oO-hR3" id="Jzr-2k-COz">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="201.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="219.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEB-WH-6ob">
-                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="161"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="175.5"/>
                                                     <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7QJ-Tb-gpi">
+                                                            <rect key="frame" x="8" y="35.5" width="544" height="23.5"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iI9-5J-DX2">
                                                             <rect key="frame" x="8" y="8" width="544" height="27.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
@@ -10518,7 +10525,7 @@ Cross Pollinate!</string>
                                                             </variation>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1N-AQ-95i">
-                                                            <rect key="frame" x="8" y="43" width="544" height="2"/>
+                                                            <rect key="frame" x="8" y="59" width="544" height="2"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="2" id="Kd5-HJ-88k"/>
@@ -10528,7 +10535,7 @@ Cross Pollinate!</string>
                                                             </variation>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jV8-xm-I2K">
-                                                            <rect key="frame" x="279" y="53" width="2" height="100"/>
+                                                            <rect key="frame" x="279" y="69" width="2" height="98.5"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="2" id="QWL-wZ-NeR"/>
@@ -10538,7 +10545,7 @@ Cross Pollinate!</string>
                                                             </variation>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Posted" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dq9-Pc-K4Y">
-                                                            <rect key="frame" x="8" y="53" width="271" height="23.5"/>
+                                                            <rect key="frame" x="8" y="69" width="271" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -10547,7 +10554,7 @@ Cross Pollinate!</string>
                                                             </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Expiring" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0q-3c-Qe9">
-                                                            <rect key="frame" x="281" y="53" width="271" height="20.5"/>
+                                                            <rect key="frame" x="281" y="69" width="271" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -10556,7 +10563,7 @@ Cross Pollinate!</string>
                                                             </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="93w-Gz-5aC">
-                                                            <rect key="frame" x="8" y="76" width="271" height="76.5"/>
+                                                            <rect key="frame" x="8" y="92" width="271" height="75"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="19"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -10565,7 +10572,7 @@ Cross Pollinate!</string>
                                                             </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D9Z-6J-Cfw">
-                                                            <rect key="frame" x="281" y="73.5" width="271" height="79.5"/>
+                                                            <rect key="frame" x="281" y="89.5" width="271" height="78"/>
                                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="19"/>
                                                             <nil key="highlightedColor"/>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
@@ -10579,10 +10586,11 @@ Cross Pollinate!</string>
                                                         <constraint firstItem="iI9-5J-DX2" firstAttribute="top" secondItem="iEB-WH-6ob" secondAttribute="topMargin" id="4dw-tP-Nem"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="iI9-5J-DX2" secondAttribute="trailing" id="5Sh-dN-tWf"/>
                                                         <constraint firstItem="jV8-xm-I2K" firstAttribute="leading" secondItem="93w-Gz-5aC" secondAttribute="trailing" id="73g-OE-DJe"/>
-                                                        <constraint firstItem="K1N-AQ-95i" firstAttribute="top" secondItem="iI9-5J-DX2" secondAttribute="bottom" constant="7.5" id="8zE-dQ-CXP"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="K1N-AQ-95i" secondAttribute="trailing" id="CIA-Gh-XYD"/>
                                                         <constraint firstItem="dq9-Pc-K4Y" firstAttribute="top" secondItem="K1N-AQ-95i" secondAttribute="bottom" constant="8" id="E1i-Rm-4Sa"/>
+                                                        <constraint firstItem="7QJ-Tb-gpi" firstAttribute="top" secondItem="iI9-5J-DX2" secondAttribute="bottom" id="EKZ-fr-OZV"/>
                                                         <constraint firstItem="93w-Gz-5aC" firstAttribute="top" secondItem="dq9-Pc-K4Y" secondAttribute="bottom" id="Eo9-Nu-mRg"/>
+                                                        <constraint firstItem="K1N-AQ-95i" firstAttribute="top" secondItem="7QJ-Tb-gpi" secondAttribute="bottom" id="FRw-LW-DKl"/>
                                                         <constraint firstItem="dq9-Pc-K4Y" firstAttribute="leading" secondItem="iEB-WH-6ob" secondAttribute="leadingMargin" id="H2V-32-fW4"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="jV8-xm-I2K" secondAttribute="bottom" id="HS2-rs-RCH"/>
                                                         <constraint firstItem="Q0q-3c-Qe9" firstAttribute="top" secondItem="dq9-Pc-K4Y" secondAttribute="top" id="JA2-y7-KAY"/>
@@ -10592,15 +10600,17 @@ Cross Pollinate!</string>
                                                         <constraint firstItem="93w-Gz-5aC" firstAttribute="leading" secondItem="iEB-WH-6ob" secondAttribute="leadingMargin" id="YaE-C4-oZd"/>
                                                         <constraint firstItem="Q0q-3c-Qe9" firstAttribute="leading" secondItem="jV8-xm-I2K" secondAttribute="trailing" id="cew-UR-KFE"/>
                                                         <constraint firstItem="D9Z-6J-Cfw" firstAttribute="top" secondItem="Q0q-3c-Qe9" secondAttribute="bottom" id="drW-bb-llc"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="7QJ-Tb-gpi" secondAttribute="trailing" id="eKH-kN-qQE"/>
                                                         <constraint firstItem="iI9-5J-DX2" firstAttribute="leading" secondItem="iEB-WH-6ob" secondAttribute="leadingMargin" id="egn-Mw-AEt"/>
                                                         <constraint firstItem="K1N-AQ-95i" firstAttribute="leading" secondItem="iEB-WH-6ob" secondAttribute="leadingMargin" id="i25-1s-z9L"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="93w-Gz-5aC" secondAttribute="bottom" id="l0u-CF-d54"/>
                                                         <constraint firstItem="D9Z-6J-Cfw" firstAttribute="leading" secondItem="jV8-xm-I2K" secondAttribute="trailing" id="mdo-Hx-9Sl"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="D9Z-6J-Cfw" secondAttribute="trailing" id="mwl-N5-8Nr"/>
+                                                        <constraint firstItem="7QJ-Tb-gpi" firstAttribute="leading" secondItem="iEB-WH-6ob" secondAttribute="leadingMargin" id="pdL-6X-zgG"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHw-mp-N8g">
-                                                    <rect key="frame" x="8" y="161" width="544" height="40.5"/>
+                                                    <rect key="frame" x="8" y="175.5" width="544" height="44"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -10624,6 +10634,7 @@ Cross Pollinate!</string>
                                             <outlet property="datePostLabel" destination="93w-Gz-5aC" id="8xV-pD-VpT"/>
                                             <outlet property="monthsLeftLabel" destination="UHw-mp-N8g" id="QQR-iR-BFs"/>
                                             <outlet property="skillNameLabel" destination="iI9-5J-DX2" id="Ard-ip-DYZ"/>
+                                            <outlet property="subPlanLabel" destination="7QJ-Tb-gpi" id="Fqp-yp-ql5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
