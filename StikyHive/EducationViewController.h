@@ -10,6 +10,6 @@
 #import "EducationCell.h"
 #import "EditEducationTableViewController.h"
 
-@interface EducationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, EducationCellDelegate, EditDeucationDelegate, UINavigationControllerDelegate>
+@interface EducationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, EducationCellDelegate, EditDeucationDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 
 @end
