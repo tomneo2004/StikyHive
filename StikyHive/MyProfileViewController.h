@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyProfileViewController : UIViewController <UIScrollViewDelegate,UIWebViewDelegate>
+@interface MyProfileViewController : UIViewController <UIScrollViewDelegate,UIWebViewDelegate, UIAlertViewDelegate>
 
 
 

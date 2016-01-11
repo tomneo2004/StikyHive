@@ -51,7 +51,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     _contentScrollView.alwaysBounceVertical = YES;
     _contentScrollView.delegate = self;
@@ -389,14 +388,6 @@
     NSString *innerDesc = [_descWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].innerHTML"];
     
     
-//    NSLog(@"inner summary --- %@",innerSummary);
-//    NSLog(@"inner desc -- %@",innerDesc);
-//    
-//    NSLog(@"summary string -- %@",summaryString);
-//    NSLog(@"desc string -- %@",descString);
-    
-    
-    
     
     if (titleString.length == 0) {
         [ViewControllerUtil showAlertWithTitle:@"Incomplete Information" andMessage:@"Skill Title not fill in."];
@@ -445,15 +436,6 @@
         
         }
         
-//        Skill_Info[@"name"] = titleString;
-//        Skill_Info[@"categoryid"] = _categoryId;
-//        Skill_Info[@"summary"] = summaryString;
-//        Skill_Info[@"description"] = descString;
-        
-//        skillinfo[@"name"] = titleString;
-//        skillinfo[@"categoryid"] = _categoryId;
-//        skillinfo[@"summary"] = summaryString;
-//        skillinfo[@"description"] = descString;
         
         NSInteger categriInt = [_categoryId integerValue];
         
@@ -542,7 +524,8 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if (pickerView.tag == 111) {
+    if (pickerView.tag == 111)
+    {
         NSString *name = _skillArray[row][@"name"];
         _industryTextField.text = name;
         

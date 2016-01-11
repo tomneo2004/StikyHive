@@ -11,7 +11,7 @@
 #import "ActionSheetPicker.h"
 #import "OtherInfoViewController.h"
 
-@interface AddJobViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, OtherInfoViewControllerDelegate>
+@interface AddJobViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, OtherInfoViewControllerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *jobScrollView;
 

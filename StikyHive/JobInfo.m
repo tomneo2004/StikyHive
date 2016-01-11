@@ -32,6 +32,7 @@
         _companyName = [dic objectForKey:@"companyName"];
         _jobTitle = [dic objectForKey:@"jobtitle"];
         _countryISO = [dic objectForKey:@"countryISO"];
+        _originalFromDate = [dic objectForKey:@"fromDate"];
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
         [formatter  setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
@@ -39,7 +40,8 @@
         _fromDate = [formatter dateFromString:_originalFromDate];
         
         _originalToDate = [dic objectForKey:@"toDate"];
-        if (_originalFromDate != nil) {
+//        _toDate = [formatter dateFromString:_originalToDate];
+        if ([_originalFromDate isEqual:[NSNull null]]) {
             _toDate = [formatter dateFromString:_originalToDate];
         }
         

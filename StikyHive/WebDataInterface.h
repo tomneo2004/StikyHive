@@ -85,7 +85,7 @@
 
 
 #define DATA_URL_CREATE_EDUCATION               DATA_URL@"Education/create"
-#define DATA_URL_UPDATE_EDUCATION               DATA_URL@"Education/update"
+//#define DATA_URL_UPDATE_EDUCATION               DATA_URL@"Education/update"
 #define DATA_URL_EDUCATION_OF_ID                DATA_URL@"Education/getEducationOfID"
 #define DATA_URL_EDUCATIONS_FOR_USER            DATA_URL@"Education/getEducationsForUser"
 #define POST_PARAMETER_EDUCATION_ID             @"id"
@@ -216,6 +216,10 @@
 #define DATA_URL_DELETE_BUYER_POST      DATA_URL@"deleteBuyerPost/format/json"
 #define DATA_URL_SAVE_BUYER_MARKET      DATA_URL@"saveBuyerMarket/format/json"
 #define DATA_URL_INSERT_CONTACT         DATA_URL@"insertContact/format/json"
+#define DATA_URL_SAVE_EDUCATION         DATA_URL@"saveEducation/format/json"
+#define DATA_URL_UPDATE_EDUCATION       DATA_URL@"updateEducation/format/json"
+#define DATA_URL_DELETE_EDUCATION       DATA_URL@"deleteEducation/format/json"
+
 
 
 
@@ -303,6 +307,13 @@
 #define POST_PARAMETER_START_TIME       @"startTime"
 #define POST_PARAMETER_END_TIME         @"endTime"
 #define POST_PARAMETER_CONTACT_ID       @"contactId"
+#define POST_PARAMETER_INSTITUTE        @"institute"
+#define POST_PARAMETER_QUALIFICATION    @"qualification"
+#define POST_PARAMETER_FROM_DATE        @"fromDate"
+#define POST_PARAMETER_TO_DATE          @"toDate"
+#define POST_PARAMETER_OTHER_INFO       @"otherInfo"
+#define POST_PARAMETER_ID               @"id"
+
 
 
 
@@ -411,6 +422,14 @@
 + (void)saveBuyerMarket:(NSString *)stkid type:(NSInteger)type name:(NSString *)name description:(NSString *)description respons:(NSString *)respons active:(NSInteger)active catId:(NSInteger)catId jobType:(NSInteger)jobType personType:(NSInteger)personType availability:(NSInteger)availability startTime:(NSString *)startTime endTime:(NSString *)endTime price:(NSDecimalNumber *)price rateId:(NSInteger)rateId completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)insertContact:(NSString *)stkid contactId:(NSString *)contactId completion:(void (^)(NSObject *, NSError *))completion;
+
+
++ (void)saveEducation:(NSString *)stkid institute:(NSString *)institute countryISO:(NSString *)countryISO qualification:(NSString *)qualification fromDate:(NSString *)fromDate toDate:(NSString *)toDate otherInfo:(NSString *)otherInfo completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)updateEducation:(NSInteger)eduid stkid:(NSString *)stkid institute:(NSString *)institute countryISO:(NSString *)countryISO qualification:(NSString *)qualification fromDate:(NSString *)fromDate toDate:(NSString *)toDate otherInfo:(NSString *)otherInfo completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)deleteEducation:(NSInteger)eduid completion:(void (^)(NSObject *, NSError *))completion;
+
 
 
 

@@ -300,10 +300,7 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
 
-    else
-    {
-        
-    }
+    
 }
 
 

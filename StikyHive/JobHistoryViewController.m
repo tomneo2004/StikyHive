@@ -18,15 +18,26 @@
 
 @end
 
-@implementation JobHistoryViewController{
+@implementation JobHistoryViewController {
     NSMutableArray *_jobInfoArray;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _jobTableView.delegate = self;
     _jobTableView.dataSource = self;
+    
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+//    self.tabBarController.tabBar.hidden = YES;
+    
     
     [self.view showActivityViewWithLabel:@"Loading..."];
     
@@ -34,25 +45,41 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            if (err == nil) {
+            if (err != nil)
+            {
+                [ViewControllerUtil showAlertWithTitle:@"Error" andMessage:@"Unable to get data!"];
+            }
+            else
+            {
                 NSDictionary *dict = (NSDictionary *)obj;
                 
-//                _historyArray = dict[@"jobhistory"];
-                
                 _jobInfoArray = [[NSMutableArray alloc] init];
-                for (NSDictionary *data in dict[@"jobhistory"]) {
+                for (NSDictionary *data in dict[@"jobhistory"])
+                {
                     JobInfo *info = [JobInfo createJobInfoFromDictionary:data];
                     [_jobInfoArray addObject:info];
+                    NSLog(@"job talbe ---- %@",info);
                 }
                 
                 [_jobTableView reloadData];
                 
+                
+                [self.view hideActivityView];
+                
+                return;
+  
             }
             
             [self.view hideActivityView];
+            
+            [self.navigationController popViewControllerAnimated:YES];
         });
     }];
+
+    
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -67,7 +94,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (_jobInfoArray != nil) {
+    if (_jobInfoArray != nil)
+    {
         return _jobInfoArray.count;
     }
     
@@ -81,7 +109,8 @@
     
     JobHistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     
-    if (cell == nil) {
+    if (cell == nil)
+    {
         cell = [[JobHistoryCell alloc] init];
     }
     
@@ -92,7 +121,8 @@
     NSString *fromDateString = info.originalFromDate;
     NSString *toDate = info.originalToDate;
 
-    if (toDate == (id)[NSNull null]) {
+    if (toDate == (id)[NSNull null])
+    {
         NSDate *today = [NSDate date];
         [formate setDateFormat:@"MMM yyyy"];
         toDate = [formate stringFromDate:today];
@@ -116,10 +146,9 @@
     
     cell.countryLabel.text = [NSString stringWithFormat:@"%@, %@",info.companyName,info.countryName];
     cell.titleLabel.text = [NSString stringWithFormat:@"%@",info.jobTitle];
-    cell.titleLabel.text = [NSString stringWithFormat:@"%@ - %@",fromDateString,toDate];
+    cell.timeLable.text = [NSString stringWithFormat:@"%@ - %@",fromDateString,toDate];
     cell.delegate = self;
     
-    NSLog(@"");
     
     return cell;
     
@@ -129,11 +158,10 @@
 #pragma mark - JobHistoryCell delegate
 - (void)onEdit:(JobHistoryCell *)cell
 {
-    NSLog(@"on edit pressed");
+    
     NSInteger index = [_jobTableView indexPathForCell:cell].row;
     JobInfo *jobInfo = [_jobInfoArray objectAtIndex:index];
     
-    NSLog(@"jobinfo at indext path --- %@",jobInfo);
     
     AddJobViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"add_job_view_controller"];
     vc.jobInfo = jobInfo;
@@ -144,6 +172,7 @@
 - (void)onDelete:(JobHistoryCell *)cell
 {
     
+    
 }
 
 - (IBAction)addNewBtnTapped:(id)sender
@@ -152,4 +181,5 @@
     [self.navigationController pushViewController:vc animated:YES];
 
 }
+
 @end

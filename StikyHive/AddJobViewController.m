@@ -48,7 +48,7 @@
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived:)];
     [tapGestureRecognizer setDelegate:self];
-    //    tapGestureRecognizer.delegate = self;
+//        tapGestureRecognizer.delegate = self;
     [self.jobScrollView addGestureRecognizer:tapGestureRecognizer];
     
 //    _jobScrollView.userInteractionEnabled = YES;
@@ -76,7 +76,8 @@
 {
     [super viewWillAppear:animated];
     
-    if (_jobInfo != nil) {
+    if (_jobInfo != nil)
+    {
         self.title = @"Update Job";
     }
     else
@@ -85,13 +86,22 @@
     }
     
     
-    if (_shouldPullData) {
-    
+    if (_shouldPullData)
+    {
+        [self pullData];
+        
+    }
+}
+
+- (void)pullData
+{
     [self.view showActivityViewWithLabel:@"Loading..."];
     [WebDataInterface getCountry:1 completion:^(NSObject *obj, NSError *err) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (err != nil) {
-                
+            if (err != nil)
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"no data" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Reload", nil];
+                [alert show];
             }
             else {
                 NSDictionary *dict = (NSDictionary *)obj;
@@ -121,7 +131,15 @@
             
         });
     }];
+}
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        
+    }
+    else
+    {
+        [self pullData];
     }
 }
 
@@ -144,7 +162,8 @@
 }
 
 
-- (void)edit{
+- (void)edit
+{
     _isEdit = YES;
     
     _companyNameTextField.text = _jobInfo.companyName;
@@ -242,7 +261,6 @@
 }
 
 - (void)onEditAdditionInfo1:(UIGestureRecognizer *)recognizer{
-    NSLog(@"on edit add info 111111111111111111111111");
     
     OtherInfoViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"OtherInfoViewController"];
     controller.htmlText = [_infoWebView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"];
@@ -250,8 +268,8 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)didFinishEditingWithHtmlText:(NSString *)htmlText{
-    NSLog(@"did finish editing with ----");
+- (void)didFinishEditingWithHtmlText:(NSString *)htmlText
+{
     [_infoWebView loadHTMLString:htmlText baseURL:nil];
 }
 
