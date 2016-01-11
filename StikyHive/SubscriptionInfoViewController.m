@@ -82,11 +82,35 @@
                     
                     _subInfos = [[NSMutableArray alloc] init];
                     
+                    NSArray *data = dic[@"subInfo"];
+                    
+                    for(int i=0; i<data.count; i++){
+                        
+                        NSArray *subData = data[i];
+                        
+                        if(subData != nil){
+                            
+                            SubInfo *info = [SubInfo createSubInfoFromDictionary:subData[0]];
+                            
+                            for(int j=0; j<subData.count; j++){
+                                
+                                NSDictionary *subDic = subData[j];
+                                
+                                [info addSubPlanId:[subDic[@"subscriptionplanId"] integerValue]];
+                            }
+                            
+                            [_subInfos addObject:info];
+                        }
+                        
+                    }
+                    
+                    /*
                     for(NSArray *data in dic[@"subInfo"]){
                         
                         SubInfo *info = [SubInfo createSubInfoFromDictionary:data[0]];
                         [_subInfos addObject:info];
                     }
+                     */
                     
                     [_tableView reloadData];
                     
@@ -135,6 +159,8 @@
     SubInfo *info = [ _subInfos objectAtIndex:indexPath.row];
     
     cell.skillNameLabel.text = info.skillName;
+    
+    cell.subPlanLabel.text = info.subPlanString;
     
     cell.datePostLabel.text = [_dateFormatter stringFromDate:info.issueDate];
     cell.dateExpireLabel.text = [_dateFormatter stringFromDate:info.expireDate];

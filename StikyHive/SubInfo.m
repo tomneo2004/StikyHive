@@ -27,20 +27,34 @@
 @synthesize issueDate = _issueDate;
 @synthesize originalExpireDate = _originalExpireDate;
 @synthesize expireDate = _expireDate;
+@synthesize subPlanString = _subPlanString;
 
 + (id)createSubInfoFromDictionary:(NSDictionary *)dic{
     
     return [[SubInfo alloc] initWithDictionary:dic];
 }
 
+- (void)addSubPlanId:(NSInteger)planId{
+    
+    if(_subPlanId == nil)
+        _subPlanId = [[NSMutableArray alloc] init];
+    
+    [_subPlanId addObject:[NSNumber numberWithInteger:planId]];
+    
+    [self addSubPlanToStringById:planId];
+}
+
 - (id)initWithDictionary:(NSDictionary *)dic{
     
     if(self = [super init]){
         
+        _subPlanString = @"";
         _subId = [dic objectForKey:@"id"];
         
+        /*
         if(![[dic objectForKey:@"subscriptionplanId"] isEqual:[NSNull null]])
             _subPlanId = [[dic objectForKey:@"subscriptionplanId"] integerValue];
+         */
         
         if(![[dic objectForKey:@"catId"] isEqual:[NSNull null]])
             _catId = [[dic objectForKey:@"catId"] integerValue];
@@ -86,6 +100,39 @@
     }
     
     return self;
+}
+
+- (void)addSubPlanToStringById:(NSInteger)planId{
+    
+    NSString *prefix = @"";
+    if(![_subPlanString isEqualToString:@""]){
+        prefix = @"-";
+    }
+    
+    switch (planId) {
+        case 2:
+            _subPlanString = [_subPlanString stringByAppendingString:[NSString stringWithFormat:@" %@ More or Less", prefix]];
+            break;
+            
+        case 3:
+            _subPlanString = [_subPlanString stringByAppendingString:[NSString stringWithFormat:@" %@ Extra 4 photos", prefix]];
+            break;
+        
+        case 4:
+            _subPlanString = [_subPlanString stringByAppendingString:[NSString stringWithFormat:@" %@ Extra Video", prefix]];
+            break;
+            
+        case 5:
+            _subPlanString = [_subPlanString stringByAppendingString:[NSString stringWithFormat:@" %@ 90sec Video", prefix]];
+            break;
+            
+        case 6:
+            _subPlanString = [_subPlanString stringByAppendingString:[NSString stringWithFormat:@" %@ Priority Feature", prefix]];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end
