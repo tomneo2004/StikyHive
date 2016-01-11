@@ -19,6 +19,8 @@
 @property (readonly, nonatomic) NSDate *toDate;
 @property (copy, readonly, nonatomic) NSString *otherInfo;
 @property (copy, readonly, nonatomic) NSString *countryName;
+@property (assign, readonly, nonatomic) NSInteger jobId;
+@property (copy, readonly, nonatomic) NSString *stkId;
 
 
 + (id)createJobInfoFromDictionary:(NSDictionary *)dic;

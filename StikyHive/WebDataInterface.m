@@ -884,29 +884,29 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     [self requestData:DATA_URL_CREATE_JOB_HISTORY withParameters:params completion:completion];
 }
 
-+ (void)updateJobHistory:(NSInteger)jobID companyName:(NSString *)companyName
-                 country:(NSString *)countryISO jobTitle:(NSString *)title addInfo:(NSString *)info
-                fromDate:(NSString *)fromYYYYMMDD toDate:(NSString *)toYYYYMMDD
-              completion:(void (^)(NSObject *, NSError *))completion
-{
-    NSDictionary *params = @{POST_PARAMETER_JOB_HISTORY_ID:[NSNumber numberWithInteger:jobID],
-                             POST_PARAMETER_JOB_HISTORY_COMPANY_NAME:companyName,
-                             POST_PARAMETER_JOB_HISTORY_COUNTRY:countryISO,
-                             POST_PARAMETER_JOB_HISTORY_JOB_TITLE:title,
-                             POST_PARAMETER_JOB_HISTORY_FROM_DATE:fromYYYYMMDD,
-                             POST_PARAMETER_JOB_HISTORY_ADD_INFO:info};
-
-    if (toYYYYMMDD)
-        params = @{POST_PARAMETER_JOB_HISTORY_ID:[NSNumber numberWithInteger:jobID],
-                   POST_PARAMETER_JOB_HISTORY_COMPANY_NAME:companyName,
-                   POST_PARAMETER_JOB_HISTORY_COUNTRY:countryISO,
-                   POST_PARAMETER_JOB_HISTORY_JOB_TITLE:title,
-                   POST_PARAMETER_JOB_HISTORY_FROM_DATE:fromYYYYMMDD,
-                   POST_PARAMETER_JOB_HISTORY_TO_DATE:toYYYYMMDD,
-                   POST_PARAMETER_JOB_HISTORY_ADD_INFO:info};
-
-    [self requestData:DATA_URL_UPDATE_JOB_HISTORY withParameters:params completion:completion];
-}
+//+ (void)updateJobHistory:(NSInteger)jobID companyName:(NSString *)companyName
+//                 country:(NSString *)countryISO jobTitle:(NSString *)title addInfo:(NSString *)info
+//                fromDate:(NSString *)fromYYYYMMDD toDate:(NSString *)toYYYYMMDD
+//              completion:(void (^)(NSObject *, NSError *))completion
+//{
+//    NSDictionary *params = @{POST_PARAMETER_JOB_HISTORY_ID:[NSNumber numberWithInteger:jobID],
+//                             POST_PARAMETER_JOB_HISTORY_COMPANY_NAME:companyName,
+//                             POST_PARAMETER_JOB_HISTORY_COUNTRY:countryISO,
+//                             POST_PARAMETER_JOB_HISTORY_JOB_TITLE:title,
+//                             POST_PARAMETER_JOB_HISTORY_FROM_DATE:fromYYYYMMDD,
+//                             POST_PARAMETER_JOB_HISTORY_ADD_INFO:info};
+//
+//    if (toYYYYMMDD)
+//        params = @{POST_PARAMETER_JOB_HISTORY_ID:[NSNumber numberWithInteger:jobID],
+//                   POST_PARAMETER_JOB_HISTORY_COMPANY_NAME:companyName,
+//                   POST_PARAMETER_JOB_HISTORY_COUNTRY:countryISO,
+//                   POST_PARAMETER_JOB_HISTORY_JOB_TITLE:title,
+//                   POST_PARAMETER_JOB_HISTORY_FROM_DATE:fromYYYYMMDD,
+//                   POST_PARAMETER_JOB_HISTORY_TO_DATE:toYYYYMMDD,
+//                   POST_PARAMETER_JOB_HISTORY_ADD_INFO:info};
+//
+//    [self requestData:DATA_URL_UPDATE_JOB_HISTORY withParameters:params completion:completion];
+//}
 
 + (void)getJobHistoryForUser:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion
 {

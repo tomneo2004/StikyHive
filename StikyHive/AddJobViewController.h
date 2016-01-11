@@ -11,28 +11,41 @@
 #import "ActionSheetPicker.h"
 #import "OtherInfoViewController.h"
 
+@protocol AddJobDelegate <NSObject>
+
+@optional
+- (void)onUpdateJobSuccessful;
+- (void)onAddNewJobSuccessful;
+
+@end
+
 @interface AddJobViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, OtherInfoViewControllerDelegate, UIAlertViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UIScrollView *jobScrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *jobScrollView;
 
 @property (weak, nonatomic) IBOutlet UITextField *companyNameTextField;
 
-@property (strong, nonatomic) IBOutlet UITextField *countryTextField;
+@property (weak, nonatomic) IBOutlet UITextField *countryTextField;
 
-@property (strong, nonatomic) IBOutlet UITextField *jobTitleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *jobTitleTextField;
 
-@property (strong, nonatomic) IBOutlet UITextField *fromMMTextField;
+@property (weak, nonatomic) IBOutlet UITextField *fromMMTextField;
 
-@property (strong, nonatomic) IBOutlet UITextField *fromYYTextField;
+@property (weak, nonatomic) IBOutlet UITextField *fromYYTextField;
 
-@property (strong, nonatomic) IBOutlet UITextField *toMMTextField;
+@property (weak, nonatomic) IBOutlet UITextField *toMMTextField;
 
-@property (strong, nonatomic) IBOutlet UITextField *toYYTextField;
+@property (weak, nonatomic) IBOutlet UITextField *toYYTextField;
 
-@property (strong, nonatomic) IBOutlet UIButton *checkBox;
-@property (strong, nonatomic) IBOutlet UIWebView *infoWebView;
+@property (weak, nonatomic) IBOutlet UIButton *checkBox;
+@property (weak, nonatomic) IBOutlet UIWebView *infoWebView;
+
+@property (weak, nonatomic) id<AddJobDelegate> delegate;
 
 - (IBAction)checkBoxPressed:(id)sender;
 @property (nonatomic, strong) JobInfo *jobInfo;
+- (IBAction)saveBtnPressed:(id)sender;
+
+
 
 @end

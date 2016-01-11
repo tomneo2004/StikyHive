@@ -20,6 +20,7 @@
 
 @implementation JobHistoryViewController {
     NSMutableArray *_jobInfoArray;
+    NSInteger _tmpDeleteIndex;
 }
 
 - (void)viewDidLoad
@@ -58,7 +59,7 @@
                 {
                     JobInfo *info = [JobInfo createJobInfoFromDictionary:data];
                     [_jobInfoArray addObject:info];
-                    NSLog(@"job talbe ---- %@",info);
+//                    NSLog(@"job talbe ---- %@",info);
                 }
                 
                 [_jobTableView reloadData];
@@ -165,13 +166,25 @@
     
     AddJobViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"add_job_view_controller"];
     vc.jobInfo = jobInfo;
+    vc.delegate = self;
     
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)onDelete:(JobHistoryCell *)cell
 {
+    _tmpDeleteIndex = [_jobTableView indexPathForCell:cell].row;
     
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete" message:@"Do you want to delete this job?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
+    [alert show];
+    
+}
+
+- (void)onUpdateJobSuccessful{
+    
+}
+
+- (void)onAddNewJobSuccessful{
     
 }
 
@@ -179,6 +192,38 @@
 {
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"add_job_view_controller"];
     [self.navigationController pushViewController:vc animated:YES];
+
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1){
+        
+        JobInfo *info = [_jobInfoArray objectAtIndex:_tmpDeleteIndex];
+        
+        [self.view showActivityViewWithLabel:@"Deleting..."];
+        [WebDataInterface deleteJob:info.jobId completion:^(NSObject *obj, NSError *err) {
+        
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.view hideActivityView];
+                
+                if(err != nil){
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to delete job!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
+                else{
+                    
+                    [_jobInfoArray removeObjectAtIndex:_tmpDeleteIndex];
+                    [_jobTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_tmpDeleteIndex inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                }
+                
+            });
+            
+        }];
+    }
 
 }
 

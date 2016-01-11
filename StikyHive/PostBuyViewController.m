@@ -362,14 +362,14 @@
     
     NSString *fromdate = @"";
     NSString *todate = @"";
-    if (_fromMMTextField.text > 0 || _fromHHTextField.text > 0)
+    if (_fromMMTextField.text.length > 0 || _fromHHTextField.text.length > 0)
     {
         fromdate = [NSString stringWithFormat:@"%@:%@",_fromHHTextField.text,_fromMMTextField.text];
         NSLog(@"from date ------ %@",fromdate);
 
     }
     
-    if (_toHHTextField.text > 0 || _toMMTextField.text > 0)
+    if (_toHHTextField.text.length > 0 || _toMMTextField.text.length > 0)
     {
         todate = [NSString stringWithFormat:@"%@:%@",_toHHTextField.text,_toMMTextField.text];
     }

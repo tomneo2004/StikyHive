@@ -10,6 +10,8 @@
 #import "WebDataInterface.h"
 #import "CountryInfo.h"
 #import "UIView+RNActivityView.h"
+#import "LocalDataInterface.h"
+#import "UIView+Toast.h"
 
 @interface AddJobViewController ()
 
@@ -26,6 +28,7 @@
 
 @synthesize jobInfo = _jobInfo;
 @synthesize infoWebView = _infoWebView;
+@synthesize delegate = _delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -180,6 +183,9 @@
     _countryTextField.text = _jobInfo.countryName;
     
     
+    
+    
+    
 }
 
 - (void)addNewJob
@@ -236,6 +242,8 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     _countryTextField.text = [self allCountriesName][row];
+    
+    _countryIndex = row;
 }
 
 - (NSArray *)allCountriesName{
@@ -244,7 +252,8 @@
         
         NSMutableArray *arr = [[NSMutableArray alloc] init];
         
-        for(CountryInfo *info in _countryInfo){
+        for(CountryInfo *info in _countryInfo)
+        {
             
             [arr addObject:info.countryName];
         }
@@ -309,11 +318,144 @@
     {
         _toMMTextField.hidden = NO;
         _toYYTextField.hidden = NO;
+        
+        
     }
     else {
         _toMMTextField.hidden = YES;
         _toYYTextField.hidden = YES;
+        
+        _toYYTextField.text = @"";
+        _toMMTextField.text = @"";
     }
 
+}
+
+
+
+- (IBAction)saveBtnPressed:(id)sender
+{
+    if (_isEdit)
+    {
+        if (_jobInfo == nil)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No job history data can be edited" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+        CountryInfo *cInfo = [_countryInfo objectAtIndex:_countryIndex];
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//        [formatter setDateFormat:@"dd-MM-yyyy"];
+        
+        
+        NSString *fromdate = [NSString stringWithFormat:@"01-%@-%@",_fromMMTextField.text,_fromYYTextField.text];
+        NSString *todate = [NSString stringWithFormat:@"01-%@-%@",_toMMTextField.text,_toYYTextField.text];
+        
+        if (_checkBox.isSelected) {
+            todate = @"";
+        }
+        
+        
+        [self.view showActivityViewWithLabel:@"Upadating..."];
+        [WebDataInterface updateJobHistory:_jobInfo.jobId stkid:_jobInfo.stkId companyName:_companyNameTextField.text countryISO:cInfo.countryISO jobtitle:_jobTitleTextField.text fromDate:fromdate toDate:todate otherInfo:[_infoWebView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"] completion:^(NSObject *obj, NSError *err) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.view hideActivityView];
+                
+                NSLog(@"obj ------ update jot %@",obj);
+                NSLog(@"country iso --- %@",cInfo.countryISO);
+                
+                if (err != nil)
+                {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Update fail" message:@"Unable to update job" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alert show];
+
+                }
+                else
+                {
+                    
+                    if ([_delegate respondsToSelector:@selector(onUpdateJobSuccessful)]) {
+                        [_delegate onUpdateJobSuccessful];
+                    }
+                    
+                    
+                    [self.view makeToast:@"Update successful" duration:3.0 position:CSToastPositionCenter];
+                    
+                    [self.navigationController popViewControllerAnimated:YES];
+                    
+                    
+                }
+                
+            });
+            
+            
+        }];
+        
+        
+    }
+    else
+    {
+        
+        CountryInfo *cInfo = [_countryInfo objectAtIndex:_countryIndex];
+        
+        NSString *fromdate = [NSString stringWithFormat:@"01-%@-%@",_fromMMTextField.text,_fromYYTextField.text];
+        NSString *todate = [NSString stringWithFormat:@"01-%@-%@",_toMMTextField.text,_toYYTextField.text];
+        
+        if (_checkBox.isSelected)
+        {
+            todate = @"";
+        }
+
+        
+        [self.view showActivityViewWithLabel:@"Updating..."];
+        [WebDataInterface saveJobHistory:[LocalDataInterface retrieveStkid] companyName:_companyNameTextField.text countryISO:cInfo.countryISO jobtitle:_jobTitleTextField.text fromDate:fromdate toDate:todate otherInfo:[_infoWebView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"] completion:^(NSObject *obj, NSError *err) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.view hideActivityView];
+                
+                if (err != nil) {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save fail" message:@"Unable to save job" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alert show];
+                }
+                else
+                {
+                    if ([_delegate respondsToSelector:@selector(onAddNewJobSuccessful)]) {
+                        [_delegate onAddNewJobSuccessful];
+                    }
+                    
+                    
+                    [self.view makeToast:@"Save successful" duration:3.0 position:CSToastPositionCenter];
+                    
+                    [self.navigationController popViewControllerAnimated:YES];
+
+                    
+                    
+                }
+                
+                
+            });
+            
+            
+        }];
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 @end

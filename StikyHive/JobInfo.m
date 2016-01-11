@@ -10,6 +10,8 @@
 
 @implementation JobInfo
 
+@synthesize jobId = _jobId;
+@synthesize stkId = _stkId;
 @synthesize companyName = _companyName;
 @synthesize jobTitle = _jobTitle;
 @synthesize countryISO = _countryISO;
@@ -29,6 +31,10 @@
 - (id)initWithDictionary:(NSDictionary *)dic
 {
     if (self = [super init]) {
+        
+        _jobId = [[dic objectForKey:@"id"] integerValue];
+        _stkId = [dic objectForKey:@"stkid"];
+        
         _companyName = [dic objectForKey:@"companyName"];
         _jobTitle = [dic objectForKey:@"jobtitle"];
         _countryISO = [dic objectForKey:@"countryISO"];

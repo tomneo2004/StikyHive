@@ -496,10 +496,10 @@
                        fromDate:(NSString *)fromYYYYMMDD toDate:(NSString *)toYYYYMMDD
                      completion:(void (^)(NSObject *, NSError *))completion;
 
-+ (void)updateJobHistory:(NSInteger)jobID companyName:(NSString *)companyName
-                 country:(NSString *)countryISO jobTitle:(NSString *)title addInfo:(NSString *)info
-                fromDate:(NSString *)fromYYYYMMDD toDate:(NSString *)toYYYYMMDD
-              completion:(void (^)(NSObject *, NSError *))completion;
+//+ (void)updateJobHistory:(NSInteger)jobID companyName:(NSString *)companyName
+//                 country:(NSString *)countryISO jobTitle:(NSString *)title addInfo:(NSString *)info
+//                fromDate:(NSString *)fromYYYYMMDD toDate:(NSString *)toYYYYMMDD
+//              completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)getJobHistoryForUser:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
 
