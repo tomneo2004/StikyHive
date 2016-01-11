@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *datePostLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateExpireLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthsLeftLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subPlanLabel;
 
 @end
