@@ -21,7 +21,7 @@
 
 @end
 
-@implementation MyPostViewController{
+@implementation MyPostViewController{  
     
     NSMutableArray *_myPostInfos;
     NSDateFormatter *_dateFormatter;

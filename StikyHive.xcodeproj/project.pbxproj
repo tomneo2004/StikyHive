@@ -126,6 +126,8 @@
 		5174C1F21C1E908000A6B2CF /* ImageCaption.m in Sources */ = {isa = PBXBuildFile; fileRef = 5174C1F11C1E908000A6B2CF /* ImageCaption.m */; };
 		5175116A1C3B5F70001CD0F0 /* JobHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517511691C3B5F70001CD0F0 /* JobHistoryViewController.m */; };
 		517511701C3B6CEF001CD0F0 /* JobHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5175116F1C3B6CEF001CD0F0 /* JobHistoryCell.m */; };
+		517511731C3BC245001CD0F0 /* AddJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517511721C3BC245001CD0F0 /* AddJobViewController.m */; };
+		517511761C3BCB89001CD0F0 /* JobInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 517511751C3BCB89001CD0F0 /* JobInfo.m */; };
 		51760A711BE882F400F36DC6 /* review_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 51760A701BE882F400F36DC6 /* review_empty.png */; };
 		51788CAE1BBD14FE00A96AD7 /* like_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51788CAC1BBD14FE00A96AD7 /* like_filled.png */; };
 		51788CAF1BBD14FE00A96AD7 /* bookmark_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 51788CAD1BBD14FE00A96AD7 /* bookmark_filled.png */; };
@@ -658,6 +660,10 @@
 		517511691C3B5F70001CD0F0 /* JobHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobHistoryViewController.m; sourceTree = "<group>"; };
 		5175116E1C3B6CEF001CD0F0 /* JobHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobHistoryCell.h; sourceTree = "<group>"; };
 		5175116F1C3B6CEF001CD0F0 /* JobHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobHistoryCell.m; sourceTree = "<group>"; };
+		517511711C3BC245001CD0F0 /* AddJobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddJobViewController.h; sourceTree = "<group>"; };
+		517511721C3BC245001CD0F0 /* AddJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddJobViewController.m; sourceTree = "<group>"; };
+		517511741C3BCB89001CD0F0 /* JobInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobInfo.h; sourceTree = "<group>"; };
+		517511751C3BCB89001CD0F0 /* JobInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobInfo.m; sourceTree = "<group>"; };
 		51760A701BE882F400F36DC6 /* review_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = review_empty.png; sourceTree = "<group>"; };
 		51788CAC1BBD14FE00A96AD7 /* like_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like_filled.png; sourceTree = "<group>"; };
 		51788CAD1BBD14FE00A96AD7 /* bookmark_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark_filled.png; sourceTree = "<group>"; };
@@ -1377,6 +1383,10 @@
 				517511691C3B5F70001CD0F0 /* JobHistoryViewController.m */,
 				5175116E1C3B6CEF001CD0F0 /* JobHistoryCell.h */,
 				5175116F1C3B6CEF001CD0F0 /* JobHistoryCell.m */,
+				517511711C3BC245001CD0F0 /* AddJobViewController.h */,
+				517511721C3BC245001CD0F0 /* AddJobViewController.m */,
+				517511741C3BCB89001CD0F0 /* JobInfo.h */,
+				517511751C3BCB89001CD0F0 /* JobInfo.m */,
 			);
 			name = JobHistory;
 			sourceTree = "<group>";
@@ -3197,6 +3207,7 @@
 				674D0F741B7D9ED800B5B80D /* EntryViewController.m in Sources */,
 				CE68DA8E1C0D9E8D000CB49F /* DocumentTableViewCell.m in Sources */,
 				CE51A3B01C23FF9500652B90 /* AllCommentViewController.m in Sources */,
+				517511731C3BC245001CD0F0 /* AddJobViewController.m in Sources */,
 				517325621C02B3B7004655D6 /* SellingViewController2.m in Sources */,
 				CEC8A1E01C2A7CE900558608 /* MyPostInfo.m in Sources */,
 				676F77EE1B96F5600084988A /* UserInfoEditorViewController.m in Sources */,
@@ -3209,6 +3220,7 @@
 				CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */,
 				676F77E11B96F3060084988A /* TOCroppedImageAttributes.m in Sources */,
 				CEF464041BF9B50300010D21 /* MyRequestCell.m in Sources */,
+				517511761C3BCB89001CD0F0 /* JobInfo.m in Sources */,
 				CE0519081C23B435004519E6 /* ReviewsViewController.m in Sources */,
 				CEF7BAA21BFADD6E009624CC /* RNActivityView.m in Sources */,
 				CEF7BAA31BFADD6E009624CC /* UIView+RNActivityView.m in Sources */,

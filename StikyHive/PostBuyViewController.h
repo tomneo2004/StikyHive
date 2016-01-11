@@ -34,6 +34,8 @@
 @property (strong, nonatomic) IBOutlet UIWebView *descWebView;
 @property (strong, nonatomic) IBOutlet UIWebView *respWebView;
 
+@property (strong, nonatomic) IBOutlet UIButton *professionalBtn;
+@property (strong, nonatomic) IBOutlet UIButton *rawBtn;
 
 - (IBAction)nextBtnPressed:(id)sender;
 

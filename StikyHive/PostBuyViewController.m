@@ -38,7 +38,8 @@
 
 @implementation PostBuyViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -47,6 +48,12 @@
     
     
     [_contentScrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1200)];
+    
+    _professionalBtn.layer.borderWidth = 1;
+    _professionalBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    _rawBtn.layer.borderColor = [UIColor blackColor].CGColor;
+    _rawBtn.layer.borderWidth = 1;
+    _professionalBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     
     _buyManager = [BuyManager sharedBuyManager];
     
@@ -184,6 +191,7 @@
     [_toMMTextField setInputView:toMMPickerView];
     
     
+    _nameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0);
     
     _descWebView.delegate = self;
     _descWebView.tag = 777;
@@ -348,8 +356,8 @@
 - (IBAction)nextBtnPressed:(id)sender
 {
     
-    NSString *descString = [_descWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
-    NSString *respString = [_respWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+//    NSString *descString = [_descWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+//    NSString *respString = [_respWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
     NSString *innerDesc = [_descWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].innerHTML"];
     NSString *innerResp = [_respWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].innerHTML"];
     
@@ -386,7 +394,8 @@
     
     NSString *priceString = _priceTextField.text;
     
-    if (priceString.length > 0) {
+    if (priceString.length > 0)
+     {
         NSDecimalNumber *priceFloat = [NSDecimalNumber decimalNumberWithString:priceString];
         _buyManager.price = priceFloat;
         _buyManager.rateId = _rateId;
@@ -415,8 +424,8 @@
     _skillArray = [_industryArray mutableCopy];
     [_industryPickerView reloadAllComponents];
     
-//    _professBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-//    _talentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    _professionalBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    _rawBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     
 //    _skillType = 1;
     _buyManager.type = 1;
@@ -427,8 +436,8 @@
     _skillArray = [_categoryArray mutableCopy];
     [_industryPickerView reloadAllComponents]; //reload picker view data
     
-//    _talentBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-//    _professBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    _rawBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    _professionalBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     
 //    _skillType = 2;
     _buyManager.type = 2;

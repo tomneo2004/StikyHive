@@ -14,19 +14,19 @@
 
 @optional
 
-
-
+- (void)onEdit:(JobHistoryCell *)cell;
+- (void)onDelete:(JobHistoryCell *)cell;
 
 @end
 
 @interface JobHistoryCell : UITableViewCell
 
 
-@property (strong, nonatomic) IBOutlet UILabel *countryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countryLabel;
 
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
-@property (strong, nonatomic) IBOutlet UILabel *timeLable;
+@property (weak, nonatomic) IBOutlet UILabel *timeLable;
 
 @property (weak, nonatomic) id<JobHistoryCellDelegate> delegate;
 

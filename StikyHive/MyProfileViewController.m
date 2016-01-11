@@ -29,6 +29,8 @@
 @property (nonatomic, strong) NSDictionary *buyerMarket;
 @property (nonatomic, strong) NSArray *savedDocuArray;;
 @property (nonatomic, strong) NSMutableArray *locationDocu;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIScrollView *tabScrollView;
 
 
 
@@ -62,6 +64,13 @@
     
     _myStkid = [LocalDataInterface retrieveStkid];
     
+    [self pullData];
+    
+}
+
+- (void)pullData
+{
+    
     [self.view showActivityViewWithLabel:@"Loading..."];
     
     [WebDataInterface getStikyBeeInfo:_myStkid completion:^(NSObject *obj, NSError *err) {
@@ -73,40 +82,82 @@
                 [WebDataInterface getSavedDocument:_myStkid completion:^(NSObject *obj4, NSError *err4) {
                     
                     
-                        _beeInfoDic = (NSDictionary *)obj;
-                        NSLog(@"stiky bee info -------- %@",_beeInfoDic);
-                    
-                        NSDictionary *seeAll = (NSDictionary *)obj2;
-                        _seeAllArray = seeAll[@"result"];
-                        NSLog(@"see all  --------------- %@",_seeAllArray);
-                    
-                        _buyerMarket = (NSDictionary *)obj3;
-                        _buyerMarketArray = _buyerMarket[@"buyermarkets"];
-                        NSLog(@"buyer market ----- %@",_buyerMarket);
-                    
-                        NSDictionary *dict = (NSDictionary *)obj4;
-                        _savedDocuArray = dict[@"documents"];
-                    
-                        NSLog(@"get saved document --- %@",_savedDocuArray);
-                    
-                    
-                        dispatch_async(dispatch_get_main_queue(), ^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
                         
+                        if (err != nil || err2 != nil || err3 != nil || err4 != nil)
+                        {
+//                            [ViewControllerUtil showAlertWithTitle:@"" andMessage:@""];
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"no data" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Reload", nil];
+                            [alert show];
+                        }
+                        else
+                        {
+                            _beeInfoDic = (NSDictionary *)obj;
+                            NSLog(@"stiky bee info -------- %@",_beeInfoDic);
+                            
+                            NSDictionary *seeAll = (NSDictionary *)obj2;
+                            _seeAllArray = seeAll[@"result"];
+                            NSLog(@"see all  --------------- %@",_seeAllArray);
+                            
+                            _buyerMarket = (NSDictionary *)obj3;
+                            _buyerMarketArray = _buyerMarket[@"buyermarkets"];
+                            NSLog(@"buyer market ----- %@",_buyerMarket);
+                            
+                            NSDictionary *dict = (NSDictionary *)obj4;
+                            _savedDocuArray = dict[@"documents"];
+                            
+                            NSLog(@"get saved document --- %@",_savedDocuArray);
+                            
+                            
                             
                             [self displayPage];
-                        
-                            [self.view hideActivityView];
                             
+                            
+                            
+                        }
+                        
+                        [self.view hideActivityView];
                     });
                     
                 }];
             }];
         }];
     }];
+
+    
     
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self pullData];
+    }
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    
+}
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    if (scrollView.contentOffset.y < -150 && !_refreshControl.refreshing)
+//    {
+//        [_refreshControl beginRefreshing];
+//        
+//        
+//        [_tabView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//        [_contentScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//        
+//        [self pullData];
+//        
+//        [_refreshControl endRefreshing];
+//        
+//    }
+//}
 
 
 - (void)displayPage
@@ -121,9 +172,6 @@
     y = [self displayTabScrollView:CGPointMake(x, y) andWidth:width];
     
     
-    
-    
-    
     [_contentScrollView setContentSize:CGSizeMake(width, y)];
 }
 
@@ -131,13 +179,11 @@
 - (CGFloat)displayTitleBg:(CGPoint)point andWidth:(CGFloat)width
 {
     CGFloat y = point.y;
-    //    UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(point.x, y, width, 200)];
     bgImageView.image = [UIImage imageNamed:@"profile_bg - Copy"];
     
     NSDictionary *stikybee = _beeInfoDic[@"stikybee"];
-    //    NSLog(@"stiky bee ------------- %@",stikybee);
     
     NSString *profileUrl = [WebDataInterface getFullUrlPath:stikybee[@"profilePicture"]];
     UIView *profileView = [ViewControllerUtil getViewWithImageURLNormal:profileUrl xOffset: 100 yOffset:20 width:120.0 heigth:120.0 defaultPhoto:@"Default_profile_small@2x"];
@@ -206,64 +252,6 @@
     iconImageView.image = [UIImage imageNamed:@"profile_yellow_bg"];
     
     
-    /*
-    CGFloat iconViewWidth = iconImageView.frame.size.width/4;
-    CGFloat iconViewHeight = iconImageView.frame.size.height;
-    NSString *stkid = [LocalDataInterface retrieveStkid];
-    
-    if (stkid != _stkId)
-    {
-        // icon view
-        UIView *contactView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, iconViewWidth, iconViewHeight)];
-        //      contactView.backgroundColor = [UIColor redColor];
-        UIButton *contactBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 35, 30)];
-        [contactBtn setImage:[UIImage imageNamed:@"profile_addcontact"] forState:UIControlStateNormal];
-        CGPoint contactBtnCenter = contactBtn.center;
-        contactBtnCenter.x = contactView.center.x;
-        contactBtn.center = contactBtnCenter;
-        [contactView addSubview:contactBtn];
-        
-        
-        UIView *tocolonyView = [[UIView alloc] initWithFrame:CGRectMake(iconViewWidth, 0, iconViewWidth, iconViewHeight)];
-        //      tocolonyView.backgroundColor = [UIColor blueColor];
-        UIButton *tocolonyBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 38, 30)];
-        [tocolonyBtn setImage:[UIImage imageNamed:@"profile_addtocolony"] forState:UIControlStateNormal];
-        CGPoint tocoBtnCenter = tocolonyBtn.center;
-        tocoBtnCenter.x = iconViewWidth/2;
-        tocolonyBtn.center = tocoBtnCenter;
-        //      CGPoint tocolonyBtnCenter = tocolonyBtn.center;
-        //      tocolonyBtnCenter.x = tocolonyView.center.x;
-        //      tocolonyBtn.center = tocolonyBtnCenter;
-        [tocolonyView addSubview:tocolonyBtn];
-        
-        
-        UIView *chatView = [[UIView alloc] initWithFrame:CGRectMake(iconViewWidth*2, 0, iconViewWidth, iconViewHeight)];
-        //      chatView.backgroundColor = [UIColor greenColor];
-        UIButton *chatBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 33, 30)];
-        [chatBtn setImage:[UIImage imageNamed:@"profile_chat"] forState:UIControlStateNormal];
-        CGPoint chatBtnCenter = chatBtn.center;
-        chatBtnCenter.x = iconViewWidth/2;
-        chatBtn.center = chatBtnCenter;
-        [chatView addSubview:chatBtn];
-        
-        
-        
-        UIView *callView = [[UIView alloc] initWithFrame:CGRectMake(iconViewWidth*3, 0, iconViewWidth, iconViewHeight)];
-        UIButton *callBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15, 25, 30)];
-        [callBtn setImage:[UIImage imageNamed:@"profile_call"] forState:UIControlStateNormal];
-        CGPoint callBtnCenter = callBtn.center;
-        callBtnCenter.x = iconViewWidth/2;
-        callBtn.center = callBtnCenter;
-        [callView addSubview:callBtn];
-        
-        [iconImageView addSubview:contactView];
-        [iconImageView addSubview:tocolonyView];
-        [iconImageView addSubview:chatView];
-        [iconImageView addSubview:callView];
-    }
-     
-     */
-    
     [_contentScrollView addSubview:iconImageView];
     
     y = y + iconImageView.frame.size.height;
@@ -282,10 +270,10 @@
     UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     UIColor *greyColor = [UIColor colorWithRed:109.0/255 green:110.0/255 blue:113.0/255 alpha:1.0];
     
-    UIScrollView *tabScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, y, width, height)];
-    tabScrollView.delegate = self;
-    tabScrollView.alwaysBounceHorizontal = YES;
-    tabScrollView.showsHorizontalScrollIndicator = NO;
+    _tabScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, y, width, height)];
+    _tabScrollView.delegate = self;
+    _tabScrollView.alwaysBounceHorizontal = YES;
+    _tabScrollView.showsHorizontalScrollIndicator = NO;
     
     
     _skillBtn = [[UIButton alloc] initWithFrame:CGRectMake(x, 0, 80, height)];
@@ -341,19 +329,19 @@
     
     
     
-    tabScrollView.contentSize = CGSizeMake(x, height);
+    _tabScrollView.contentSize = CGSizeMake(x, height);
     
-    [tabScrollView addSubview:_skillBtn];
-    [tabScrollView addSubview:_experienceBtn];
-    [tabScrollView addSubview:_educationBtn];
-    [tabScrollView addSubview:_documentBtn];
-    [tabScrollView addSubview:_activityBtn];
-    [tabScrollView addSubview:_postBtn];
+    [_tabScrollView addSubview:_skillBtn];
+    [_tabScrollView addSubview:_experienceBtn];
+    [_tabScrollView addSubview:_educationBtn];
+    [_tabScrollView addSubview:_documentBtn];
+    [_tabScrollView addSubview:_activityBtn];
+    [_tabScrollView addSubview:_postBtn];
     
-    [_contentScrollView addSubview:tabScrollView];
+    [_contentScrollView addSubview:_tabScrollView];
     
     
-    y = y + tabScrollView.frame.size.height;
+    y = y + _tabScrollView.frame.size.height;
     
     
     _tabView = [[UIView alloc] initWithFrame:CGRectMake(0, y, width, 600)];
@@ -696,10 +684,31 @@
         
     }
     
-    [self addEditBtn:CGPointMake(20, y)];
     
-    y = y + 50;
+//    [self addEditBtn:CGPointMake(20, y)]; // -------------------------
+    UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+20, 150, 50)];
+    [addBtn setTitle:@"Add/Edit" forState:UIControlStateNormal];
+    [addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    addBtn.backgroundColor = greenColor;
+    addBtn.layer.cornerRadius = 5;
+    addBtn.layer.masksToBounds = YES;
+    CGPoint addCenter = addBtn.center;
+    addCenter.x = _tabView.center.x;
+    addBtn.center = addCenter;
     
+    if (isSkill) {
+        [addBtn addTarget:self action:@selector(addSkillTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        [addBtn addTarget:self action:@selector(addBuyerTapped:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    
+    [_tabView addSubview:addBtn];
+
+    
+    y = y + 80;
     
     
     CGRect tabViewFrame = _tabView.frame;
@@ -879,7 +888,7 @@
     
 //    [self addEditBtn:CGPointMake(20, y + 20)];
 //    UIColor *greenColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
-    UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+20, 100, 30)];
+    UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, y+20, 150, 50)];
     [addBtn setTitle:@"Add/Edit" forState:UIControlStateNormal];
     [addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     addBtn.backgroundColor = greenColor;
@@ -904,7 +913,7 @@
     
 
     
-    y = y +50;
+    y = y +80;
     
     
     CGRect tabViewFrame = _tabView.frame;
@@ -1333,12 +1342,8 @@
 
 - (void)jobAddBtnPressed:(UITapGestureRecognizer *)sender
 {
-    
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"job_history_view_controller"];
     [self.navigationController pushViewController:vc animated:YES];
-    
-//
-
 }
 
 - (void)educationAddBtnPressed:(UITapGestureRecognizer *)sender
@@ -1347,8 +1352,17 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)addSkillTapped:(UITapGestureRecognizer *)sender
+{
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"my_skill_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
-
+- (void)addBuyerTapped:(UITapGestureRecognizer *)sender
+{
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"my_post_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -1357,15 +1371,5 @@
 }
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

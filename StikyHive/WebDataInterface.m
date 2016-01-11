@@ -475,6 +475,41 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     
 }
 
++ (void)saveEducation:(NSString *)stkid institute:(NSString *)institute countryISO:(NSString *)countryISO qualification:(NSString *)qualification fromDate:(NSString *)fromDate toDate:(NSString *)toDate otherInfo:(NSString *)otherInfo completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_INSTITUTE:institute,
+                             POST_PARAMETER_COUNTRY:countryISO,
+                             POST_PARAMETER_QUALIFICATION:qualification,
+                             POST_PARAMETER_FROM_DATE:fromDate,
+                             POST_PARAMETER_TO_DATE:toDate,
+                             POST_PARAMETER_OTHER_INFO:otherInfo};
+    [self requestData:DATA_URL_SAVE_EDUCATION withParameters:params completion:completion];
+}
+
++ (void)updateEducation:(NSInteger)eduid stkid:(NSString *)stkid institute:(NSString *)institute countryISO:(NSString *)countryISO qualification:(NSString *)qualification fromDate:(NSString *)fromDate toDate:(NSString *)toDate otherInfo:(NSString *)otherInfo completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_ID:[NSNumber numberWithInteger:eduid],
+                             POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_INSTITUTE:institute,
+                             POST_PARAMETER_COUNTRY:countryISO,
+                             POST_PARAMETER_QUALIFICATION:qualification,
+                             POST_PARAMETER_FROM_DATE:fromDate,
+                             POST_PARAMETER_TO_DATE:toDate,
+                             POST_PARAMETER_OTHER_INFO:otherInfo};
+    [self requestData:DATA_URL_UPDATE_EDUCATION withParameters:params completion:completion];
+
+}
+
++ (void)deleteEducation:(NSInteger)eduid completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_ID:[NSNumber numberWithInteger:eduid]};
+    [self requestData:DATA_URL_DELETE_EDUCATION withParameters:params completion:completion];
+}
+
+
+
+
 
 
 
