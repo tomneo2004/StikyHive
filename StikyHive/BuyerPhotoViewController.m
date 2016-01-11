@@ -100,7 +100,7 @@
     
     [self.view showActivityViewWithLabel:@"Uploading..."];
     
-    [WebDataInterface saveBuyerMarket:stkid type:bmg.type name:bmg.name description:bmg.desc respons:bmg.resp active:active catId:bmg.catId jobType:bmg.jobType personType:bmg.personType availability:bmg.availability startTime:time endTime:time price:bmg.price rateId:bmg.rateId completion:^(NSObject *obj, NSError *err) {
+    [WebDataInterface saveBuyerMarket:stkid type:bmg.type name:bmg.name description:bmg.desc respons:bmg.resp active:active catId:bmg.catId jobType:bmg.jobType personType:bmg.personType availability:bmg.availability startTime:bmg.fromHH endTime:bmg.toHH price:bmg.price rateId:bmg.rateId completion:^(NSObject *obj, NSError *err) {
         
         
         NSLog(@"obj --- %@", obj);

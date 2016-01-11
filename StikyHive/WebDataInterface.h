@@ -71,7 +71,7 @@
 //#define REQUEST_RESULT_RAW_TALENT       @"raw_talent"
 
 #define DATA_URL_CREATE_JOB_HISTORY             DATA_URL@"JobHistory/create"
-#define DATA_URL_UPDATE_JOB_HISTORY             DATA_URL@"JobHistory/update"
+//#define DATA_URL_UPDATE_JOB_HISTORY             DATA_URL@"JobHistory/update"
 #define DATA_URL_JOB_HISTORY_OF_ID              DATA_URL@"JobHistory/getJobHistoryOfID"
 #define DATA_URL_JOB_HISTORIES_FOR_USER         DATA_URL@"JobHistory/getJobHistoriesForUser"
 #define POST_PARAMETER_JOB_HISTORY_ID           @"id"
@@ -219,6 +219,9 @@
 #define DATA_URL_SAVE_EDUCATION         DATA_URL@"saveEducation/format/json"
 #define DATA_URL_UPDATE_EDUCATION       DATA_URL@"updateEducation/format/json"
 #define DATA_URL_DELETE_EDUCATION       DATA_URL@"deleteEducation/format/json"
+#define DATA_URL_SAVE_JOB_HISTORY       DATA_URL@"saveJobHistory/format/json"
+#define DATA_URL_UPDATE_JOB_HISTORY     DATA_URL@"updateJobHistory/format/json"
+#define DATA_URL_DELETE_JOB             DATA_URL@"deleteJob/format/json"
 
 
 
@@ -313,6 +316,9 @@
 #define POST_PARAMETER_TO_DATE          @"toDate"
 #define POST_PARAMETER_OTHER_INFO       @"otherInfo"
 #define POST_PARAMETER_ID               @"id"
+#define POST_PARAMETER_COMPANY_NAME     @"companyName"
+#define POST_PARAMETER_JOB_TITILE       @"jobtitle"
+
 
 
 
@@ -430,7 +436,11 @@
 
 + (void)deleteEducation:(NSInteger)eduid completion:(void (^)(NSObject *, NSError *))completion;
 
++ (void)saveJobHistory:(NSString *)stkid companyName:(NSString *)companyName countryISO:(NSString *)countryISO jobtitle:(NSString *)jobtitle fromDate:(NSString *)fromDate toDate:(NSString *)toDate otherInfo:(NSString *)otherInfo completion:(void (^)(NSObject *, NSError *))completion;
 
++ (void)updateJobHistory:(NSInteger)jobid stkid:(NSString *)stkid companyName:(NSString *)companyName countryISO:(NSString *)countryISO jobtitle:(NSString *)jobtitle fromDate:(NSString *)fromDate toDate:(NSString *)toDate otherInfo:(NSString *)otherInfo completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)deleteJob:(NSInteger)jobid completion:(void (^)(NSObject *, NSError *))completion;
 
 
 

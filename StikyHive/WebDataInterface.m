@@ -507,7 +507,37 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     [self requestData:DATA_URL_DELETE_EDUCATION withParameters:params completion:completion];
 }
 
++ (void)saveJobHistory:(NSString *)stkid companyName:(NSString *)companyName countryISO:(NSString *)countryISO jobtitle:(NSString *)jobtitle fromDate:(NSString *)fromDate toDate:(NSString *)toDate otherInfo:(NSString *)otherInfo completion:(void (^)(NSObject *, NSError *))completion;
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_COMPANY_NAME:companyName,
+                             POST_PARAMETER_COUNTRY:countryISO,
+                             POST_PARAMETER_JOB_TITILE:jobtitle,
+                             POST_PARAMETER_FROM_DATE:fromDate,
+                             POST_PARAMETER_TO_DATE:toDate,
+                             POST_PARAMETER_OTHER_INFO:otherInfo};
+    [self requestData:DATA_URL_SAVE_JOB_HISTORY withParameters:params completion:completion];
+                             
+}
 
++ (void)updateJobHistory:(NSInteger)jobid stkid:(NSString *)stkid companyName:(NSString *)companyName countryISO:(NSString *)countryISO jobtitle:(NSString *)jobtitle fromDate:(NSString *)fromDate toDate:(NSString *)toDate otherInfo:(NSString *)otherInfo completion:(void (^)(NSObject *, NSError *))completion;
+{
+    NSDictionary *params = @{POST_PARAMETER_ID:[NSNumber numberWithInteger:jobid],
+                             POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_COMPANY_NAME:companyName,
+                             POST_PARAMETER_COUNTRY:countryISO,
+                             POST_PARAMETER_JOB_TITILE:jobtitle,
+                             POST_PARAMETER_FROM_DATE:fromDate,
+                             POST_PARAMETER_TO_DATE:toDate,
+                             POST_PARAMETER_OTHER_INFO:otherInfo};
+    [self requestData:DATA_URL_UPDATE_JOB_HISTORY withParameters:params completion:completion];
+}
+
++ (void)deleteJob:(NSInteger)jobid completion:(void (^)(NSObject *, NSError *))completion;
+{
+    NSDictionary *params = @{POST_PARAMETER_ID:[NSNumber numberWithInteger:jobid]};
+    [self requestData:DATA_URL_DELETE_JOB withParameters:params completion:completion];
+}
 
 
 

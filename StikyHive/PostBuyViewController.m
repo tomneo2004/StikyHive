@@ -71,8 +71,8 @@
     
     _hhArray = @[@"00",@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23"];
     _mmArray = @[@"00",@"05",@"10",@"15",@"20",@"25",@"30",@"35",@"40",@"45",@"50",@"55"];
-    NSLog(@"hh array --- %@",_hhArray);
-    NSLog(@"hh array 4 --- %@",_hhArray[4]);
+    
+    
     
     [self preparePage];
     
@@ -131,8 +131,6 @@
 
 - (void)preparePage
 {
-    
-    
     _rateTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Select rate"];
     _rateTextField.textAlignment = NSTextAlignmentCenter;
     
@@ -173,7 +171,7 @@
     fromMMPickerView.tag = 444;
     [_fromMMTextField setInputView:fromMMPickerView];
     
-    _toHHTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"MM"];
+    _toHHTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"HH"];
     _toHHTextField.textAlignment = NSTextAlignmentCenter;
     UIPickerView *toHHPickerView = [[UIPickerView alloc] init];
     toHHPickerView.delegate = self;
@@ -362,6 +360,22 @@
     NSString *innerResp = [_respWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].innerHTML"];
     
     
+    NSString *fromdate = @"";
+    NSString *todate = @"";
+    if (_fromMMTextField.text > 0 || _fromHHTextField.text > 0)
+    {
+        fromdate = [NSString stringWithFormat:@"%@:%@",_fromHHTextField.text,_fromMMTextField.text];
+        NSLog(@"from date ------ %@",fromdate);
+
+    }
+    
+    if (_toHHTextField.text > 0 || _toMMTextField.text > 0)
+    {
+        todate = [NSString stringWithFormat:@"%@:%@",_toHHTextField.text,_toMMTextField.text];
+    }
+    
+    _buyManager.fromHH = fromdate;
+    _buyManager.toHH = todate;
     
     
     
