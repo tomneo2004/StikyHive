@@ -424,6 +424,8 @@
 		CE83C78F1C3B731700753B80 /* EducationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C78E1C3B731700753B80 /* EducationCell.m */; };
 		CE83C7921C3B999D00753B80 /* EditEducationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C7911C3B999D00753B80 /* EditEducationTableViewController.m */; };
 		CE83C7951C3BAC8900753B80 /* OtherInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C7941C3BAC8900753B80 /* OtherInfoViewController.m */; };
+		CE9029C81C44B1BA00FDAA4D /* EmptyEducationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9029C71C44B1BA00FDAA4D /* EmptyEducationView.m */; };
+		CE9029CA1C44B1DB00FDAA4D /* EmptyEducationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9029C91C44B1DB00FDAA4D /* EmptyEducationView.xib */; };
 		CE9054D21C17CB9300144078 /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9054D11C17CB9300144078 /* OverlayViewController.m */; };
 		CE9054D61C17D25400144078 /* ReadReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9054D51C17D25400144078 /* ReadReviewViewController.m */; };
 		CE9B8EC61C16C34D0022653B /* BoughtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B8EC51C16C34D0022653B /* BoughtViewController.m */; };
@@ -1109,6 +1111,9 @@
 		CE83C7911C3B999D00753B80 /* EditEducationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditEducationTableViewController.m; sourceTree = "<group>"; };
 		CE83C7931C3BAC8900753B80 /* OtherInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherInfoViewController.h; sourceTree = "<group>"; };
 		CE83C7941C3BAC8900753B80 /* OtherInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherInfoViewController.m; sourceTree = "<group>"; };
+		CE9029C61C44B1BA00FDAA4D /* EmptyEducationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyEducationView.h; sourceTree = "<group>"; };
+		CE9029C71C44B1BA00FDAA4D /* EmptyEducationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyEducationView.m; sourceTree = "<group>"; };
+		CE9029C91C44B1DB00FDAA4D /* EmptyEducationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyEducationView.xib; sourceTree = "<group>"; };
 		CE9054D01C17CB9300144078 /* OverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayViewController.h; sourceTree = "<group>"; };
 		CE9054D11C17CB9300144078 /* OverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayViewController.m; sourceTree = "<group>"; };
 		CE9054D41C17D25400144078 /* ReadReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadReviewViewController.h; sourceTree = "<group>"; };
@@ -2321,6 +2326,9 @@
 				CE83C7911C3B999D00753B80 /* EditEducationTableViewController.m */,
 				CE83C7931C3BAC8900753B80 /* OtherInfoViewController.h */,
 				CE83C7941C3BAC8900753B80 /* OtherInfoViewController.m */,
+				CE9029C61C44B1BA00FDAA4D /* EmptyEducationView.h */,
+				CE9029C71C44B1BA00FDAA4D /* EmptyEducationView.m */,
+				CE9029C91C44B1DB00FDAA4D /* EmptyEducationView.xib */,
 			);
 			name = Education;
 			sourceTree = "<group>";
@@ -2839,6 +2847,7 @@
 				517C62C51BDE07C900904FCB /* profile_addtocolony.png in Resources */,
 				517B6E921BD73D5C00561063 /* share-google.png in Resources */,
 				674D0E5F1B7D920E00B5B80D /* CP_attach_icon@2x.png in Resources */,
+				CE9029CA1C44B1DB00FDAA4D /* EmptyEducationView.xib in Resources */,
 				516718A01C1A799E003E9902 /* ZSSh1@2x.png in Resources */,
 				516718B11C1A799E003E9902 /* ZSSinsertkeyword.png in Resources */,
 				674D0F561B7D9A5200B5B80D /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
@@ -3220,6 +3229,7 @@
 				CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */,
 				676F77E11B96F3060084988A /* TOCroppedImageAttributes.m in Sources */,
 				CEF464041BF9B50300010D21 /* MyRequestCell.m in Sources */,
+				CE9029C81C44B1BA00FDAA4D /* EmptyEducationView.m in Sources */,
 				517511761C3BCB89001CD0F0 /* JobInfo.m in Sources */,
 				CE0519081C23B435004519E6 /* ReviewsViewController.m in Sources */,
 				CEF7BAA21BFADD6E009624CC /* RNActivityView.m in Sources */,
