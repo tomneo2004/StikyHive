@@ -11,6 +11,7 @@
 #import "EducationInfo.h"
 #import "WebDataInterface.h"
 #import "LocalDataInterface.h"
+#import "Helper.h"
 
 @interface EducationViewController ()
 
@@ -24,6 +25,7 @@
     NSMutableArray *_educationInfos;
      NSDateFormatter *_dateFormatter;
     NSInteger _tmpDeleteIndex;
+    EmptyEducationView *_emptyView;
 }
 
 @synthesize tableView = _tableView;
@@ -70,13 +72,21 @@
                 
                 NSDictionary *dic = (NSDictionary *)obj;
                 
-                if(((NSArray *)dic[@"education"]).count <=0){
+                if([((NSArray *)dic[@"education"]) isEqual:[NSNull null]] || ((NSArray *)dic[@"education"]).count <= 0){
                     
+                    /*
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No result" message:@"No education information!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alert show];
+                     */
+                    
+                    [self showEmptyView];
+                    
+                    return;
                     
                 }
                 else{
+                    
+                    [self hideEmptyView];
                     
                     _educationInfos = [[NSMutableArray alloc] init];
                     
@@ -101,6 +111,30 @@
             
         });
     }];
+}
+
+- (void)showEmptyView{
+    
+    if(_emptyView == nil){
+        
+        _emptyView = (EmptyEducationView *)[Helper viewFromNib:@"EmptyEducationView" atViewIndex:0 owner:self];
+    }
+    
+    _emptyView.delegate = self;
+    
+    _emptyView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    
+    [self.view addSubview:_emptyView];
+}
+
+- (void)hideEmptyView{
+    
+    if(_emptyView != nil){
+        
+        [_emptyView removeFromSuperview];
+        
+        _emptyView = nil;
+    }
 }
 
 #pragma mark - IBAction
@@ -203,10 +237,12 @@
 #pragma mark - EditEducationTableViewController delegate
 - (void)onUpdateEducationSuccessful{
     
+    [self pullData];
 }
 
 - (void)onAddNewEducationSuccessful{
     
+    [self pullData];
 }
 
 #pragma mark - UINavigationViewController delegate
@@ -216,6 +252,12 @@
         _shouldUpdate = NO;
     
     return nil;
+}
+
+#pragma mark - EmptyEducationViewDelegate
+- (void)onAddInfoTap{
+    
+    [self addNewEducation:nil];
 }
 
 /*
