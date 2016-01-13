@@ -141,6 +141,8 @@
 		517A1C611C0C2382004017E4 /* subplan3.png in Resources */ = {isa = PBXBuildFile; fileRef = 517A1C5C1C0C2382004017E4 /* subplan3.png */; };
 		517A1C621C0C2382004017E4 /* subplan4.png in Resources */ = {isa = PBXBuildFile; fileRef = 517A1C5D1C0C2382004017E4 /* subplan4.png */; };
 		517A1C651C0C2B72004017E4 /* SellingViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = 517A1C641C0C2B72004017E4 /* SellingViewController4.m */; };
+		517AB8AA1C45EEEC00E9F353 /* NoExperienceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517AB8A91C45EEEC00E9F353 /* NoExperienceView.xib */; };
+		517AB8AD1C45F7A000E9F353 /* NoExperienceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 517AB8AC1C45F7A000E9F353 /* NoExperienceView.m */; };
 		517B19361C22B21100F956FE /* checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 517B19331C22B21100F956FE /* checked@2x.png */; };
 		517B19381C22B21100F956FE /* unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 517B19351C22B21100F956FE /* unchecked@2x.png */; };
 		517B6E901BD73D5C00561063 /* share-email.png in Resources */ = {isa = PBXBuildFile; fileRef = 517B6E8C1BD73D5C00561063 /* share-email.png */; };
@@ -684,6 +686,9 @@
 		517A1C5D1C0C2382004017E4 /* subplan4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subplan4.png; sourceTree = "<group>"; };
 		517A1C631C0C2B72004017E4 /* SellingViewController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingViewController4.h; sourceTree = "<group>"; };
 		517A1C641C0C2B72004017E4 /* SellingViewController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellingViewController4.m; sourceTree = "<group>"; };
+		517AB8A91C45EEEC00E9F353 /* NoExperienceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoExperienceView.xib; sourceTree = "<group>"; };
+		517AB8AB1C45F7A000E9F353 /* NoExperienceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoExperienceView.h; sourceTree = "<group>"; };
+		517AB8AC1C45F7A000E9F353 /* NoExperienceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoExperienceView.m; sourceTree = "<group>"; };
 		517B19331C22B21100F956FE /* checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked@2x.png"; sourceTree = "<group>"; };
 		517B19351C22B21100F956FE /* unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unchecked@2x.png"; sourceTree = "<group>"; };
 		517B6E8C1BD73D5C00561063 /* share-email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-email.png"; sourceTree = "<group>"; };
@@ -1392,6 +1397,9 @@
 				517511721C3BC245001CD0F0 /* AddJobViewController.m */,
 				517511741C3BCB89001CD0F0 /* JobInfo.h */,
 				517511751C3BCB89001CD0F0 /* JobInfo.m */,
+				517AB8A91C45EEEC00E9F353 /* NoExperienceView.xib */,
+				517AB8AB1C45F7A000E9F353 /* NoExperienceView.h */,
+				517AB8AC1C45F7A000E9F353 /* NoExperienceView.m */,
 			);
 			name = JobHistory;
 			sourceTree = "<group>";
@@ -2866,6 +2874,7 @@
 				674D0E6E1B7D920E00B5B80D /* Add_skill_video@2x.png in Resources */,
 				674D0F311B7D9A5200B5B80D /* JSQMessagesAssets.bundle in Resources */,
 				517A1C601C0C2382004017E4 /* subplan2.png in Resources */,
+				517AB8AA1C45EEEC00E9F353 /* NoExperienceView.xib in Resources */,
 				676F77DF1B96F3060084988A /* TOCropViewControllerLocalizable.strings in Resources */,
 				516A61141BB51598008579B6 /* bookmark.png in Resources */,
 				516A5B851BB68D9300668EBB /* default_seller_post.png in Resources */,
@@ -3099,6 +3108,7 @@
 				676600E21BA12C65003A84D8 /* ForgotPassViewController.m in Sources */,
 				674D10441B7DB4FB00B5B80D /* GKCropBorderView.m in Sources */,
 				674D0F491B7D9A5200B5B80D /* JSQPhotoMediaItem.m in Sources */,
+				517AB8AD1C45F7A000E9F353 /* NoExperienceView.m in Sources */,
 				516718E01C1A799E003E9902 /* CYRToken.m in Sources */,
 				516718E11C1A799E003E9902 /* HRBrightnessCursor.m in Sources */,
 				5184DD511C08639A008F434B /* SellingViewController33.m in Sources */,

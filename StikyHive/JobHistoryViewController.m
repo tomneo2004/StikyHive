@@ -12,6 +12,7 @@
 #import "UIView+RNActivityView.h"
 #import "ViewControllerUtil.h"
 #import "JobInfo.h"
+#import "Helper.h"
 
 @interface JobHistoryViewController ()
 
@@ -21,6 +22,7 @@
 @implementation JobHistoryViewController {
     NSMutableArray *_jobInfoArray;
     NSInteger _tmpDeleteIndex;
+    NoExperienceView *_noExperienceView;
 }
 
 - (void)viewDidLoad
@@ -56,15 +58,18 @@
                 
                 NSLog(@"job array dict --- %@",dict);
                 
-                if ((NSArray *)dict[@"jobhistory"] == (id)[NSNull null])
+                if ((NSArray *)dict[@"jobhistory"] == (id)[NSNull null] || ((NSArray *)dict[@"jobhistory"]).count <= 0)
                 {
 //                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No result" message:@"No job history information!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 //                    [alert show];
                     
+                    [self showEmptyView];
                     
+                    return;
                 }
                 else
                 {
+                    [self hideEmptyView];
                 
                     _jobInfoArray = [[NSMutableArray alloc] init];
                     for (NSDictionary *data in dict[@"jobhistory"])
@@ -195,6 +200,32 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete" message:@"Do you want to delete this job?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
     [alert show];
     
+}
+
+- (void)showEmptyView
+{
+    if (_noExperienceView == nil) {
+        _noExperienceView = (NoExperienceView *)[Helper viewFromNib:@"no_experience_view" atViewIndex:0 owner:self];
+    }
+    
+    _noExperienceView.delegate = self;
+    
+    _noExperienceView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    [self.view addSubview:_noExperienceView];
+    
+}
+
+- (void)hideEmptyView
+{
+    if (_noExperienceView != nil) {
+        [_noExperienceView removeFromSuperview];
+        _noExperienceView = nil;
+    }
+}
+
+- (void)onAddJobTapped
+{
+    [self addNewBtnTapped:nil];
 }
 
 - (void)onUpdateJobSuccessful{

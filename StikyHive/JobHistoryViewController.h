@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "JobHistoryCell.h"
 #import "AddJobViewController.h"
+#import "NoExperienceView.h"
 
-@interface JobHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, JobHistoryCellDelegate, AddJobDelegate, UIAlertViewDelegate>
+@interface JobHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, JobHistoryCellDelegate, AddJobDelegate, UIAlertViewDelegate, NoExperienceViewDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UITableView *jobTableView;
