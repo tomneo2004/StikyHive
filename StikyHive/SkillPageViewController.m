@@ -200,6 +200,8 @@
     y = [self displayCommentsView:_commentsArray atStartPoint:CGPointMake(x, y) andWidth:width isComm:YES];
     
     
+    y = [self displaySareButton:CGPointMake(x, y) andWidth:width];
+    
     NSString *sellerName = [NSString stringWithFormat:@"%@ %@",_skillDict[@"resultSkill"][@"firstname"],_skillDict[@"resultSkill"][@"lastname"]];
     
     y = y + vspace;
@@ -682,6 +684,78 @@
     }
 }
 
+
+- (CGFloat)displaySareButton:(CGPoint)point andWidth:(CGFloat)width
+{
+    CGFloat y = point.y;
+    
+    //    UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(20, y, width - 40, 1)];
+    //    CGPoint center = lineView.center;
+    //    center.x = self.view.center.x;
+    //    lineView.center = center;
+    //    [lineView setBackgroundColor:[UIColor lightGrayColor]];
+//    [self displayLineView:CGPointMake(20, y) andWith:width];
+    
+    
+    //    UIImageView *reportImageView = [[UIImageView alloc] initWithFrame:CGRectMake(width-80, y+23, 60, 45)];
+    //    reportImageView.image = [UIImage imageNamed:@"reportabuse.png"];
+    
+    UIButton *reportButton = [[UIButton alloc] initWithFrame:CGRectMake(width-80, y+23, 60, 45)];
+    [reportButton setImage:[UIImage imageNamed:@"reportabuse"] forState:UIControlStateNormal];
+    [reportButton addTarget:self action:@selector(reportBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    y = y + 25;
+    
+    UILabel *shareLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, y, 200, 15)];
+    shareLabel.text = @"Share this Skill Page";
+    
+    y = y + 35;
+    
+//    UIButton *emailButton = [[UIButton alloc] initWithFrame:CGRectMake(20, y, 40, 40)];
+//    //    emailButton.backgroundColor = [UIColor lightGrayColor];
+//    [emailButton setImage:[UIImage imageNamed:@"share-email"] forState:UIControlStateNormal];
+//    
+    CGFloat x = 20;
+//
+//    UIButton *twitterButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 40, 40)];
+//    [twitterButton setImage:[UIImage imageNamed:@"share-twitter"] forState:UIControlStateNormal];
+//    x = x + 50;
+    
+    UIButton *fbButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 40, 40)];
+    [fbButton setImage:[UIImage imageNamed:@"share-facebook"] forState:UIControlStateNormal];
+    x = x + 50;
+    
+    UIButton *pintButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 40, 40)];
+    [pintButton setImage:[UIImage imageNamed:@"share-pinterest"] forState:UIControlStateNormal];
+    
+    x = x + 50;
+    
+//    UIButton *googleButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 40, 40)];
+//    [googleButton setImage:[UIImage imageNamed:@"share-google"] forState:UIControlStateNormal];
+    
+    
+    
+    //    [_contentScrollView addSubview:lineView];
+    [_contentScrollView addSubview:reportButton];
+    [_contentScrollView addSubview:shareLabel];
+//    [_contentScrollView addSubview:emailButton];
+//    [_contentScrollView addSubview:twitterButton];
+    [_contentScrollView addSubview:fbButton];
+    [_contentScrollView addSubview:pintButton];
+//    [_contentScrollView addSubview:googleButton];
+    
+    y = y + 70;
+    
+    
+    
+    return y;
+}
+
+
+
+
+
 - (CGFloat)displaySeller:(NSString *)name beeInfo:(NSString *)beeInfo proLocation:(NSString *)profileLocation atStartPoint:(CGPoint)point andWidth:(CGFloat)width
 {
     CGFloat y = point.y;
@@ -717,7 +791,7 @@
     
     
     CGRect sellerFrame = _sellerView.frame;
-    sellerFrame.size.height = sellerLabel.frame.size.height + nameLbel.frame.size.height + _sellerInfoWebView.frame.size.height + 60;
+    sellerFrame.size.height = sellerLabel.frame.size.height + nameLbel.frame.size.height + _sellerInfoWebView.frame.size.height + 80;
     _sellerView.frame = sellerFrame;
     
     [_contentScrollView addSubview:_sellerView];
@@ -860,6 +934,14 @@
 - (void)bookmarkBtnTapped:(UITapGestureRecognizer *)sender
 {
     _bookmarkBtn.selected = !_bookmarkBtn.selected;
+}
+
+- (void)reportBtnTapped:(UITapGestureRecognizer *)sender
+{
+    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"report_abuse_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 - (void)emailBtnPressed:(UITapGestureRecognizer *)sender

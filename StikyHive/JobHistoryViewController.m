@@ -54,20 +54,34 @@
             {
                 NSDictionary *dict = (NSDictionary *)obj;
                 
-                _jobInfoArray = [[NSMutableArray alloc] init];
-                for (NSDictionary *data in dict[@"jobhistory"])
+                NSLog(@"job array dict --- %@",dict);
+                
+                if ((NSArray *)dict[@"jobhistory"] == (id)[NSNull null])
                 {
-                    JobInfo *info = [JobInfo createJobInfoFromDictionary:data];
-                    [_jobInfoArray addObject:info];
-//                    NSLog(@"job talbe ---- %@",info);
+//                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No result" message:@"No job history information!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//                    [alert show];
+                    
+                    
                 }
+                else
+                {
                 
-                [_jobTableView reloadData];
+                    _jobInfoArray = [[NSMutableArray alloc] init];
+                    for (NSDictionary *data in dict[@"jobhistory"])
+                    {
+                        JobInfo *info = [JobInfo createJobInfoFromDictionary:data];
+                        [_jobInfoArray addObject:info];
+//                      NSLog(@"job talbe ---- %@",info);
+                    }
+                
+                    [_jobTableView reloadData];
                 
                 
-                [self.view hideActivityView];
-                
-                return;
+                    [self.view hideActivityView];
+                    
+                    return;
+                    
+                }
   
             }
             
@@ -124,14 +138,16 @@
 
     if (toDate == (id)[NSNull null])
     {
-        NSDate *today = [NSDate date];
-        [formate setDateFormat:@"MMM yyyy"];
-        toDate = [formate stringFromDate:today];
-        
+//        NSDate *today = [NSDate date];
+//        [formate setDateFormat:@"MMM yyyy"];
+//        toDate = [formate stringFromDate:today];
+//        
         [formate setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
         NSDate *fromDateDt = [formate dateFromString:fromDateString];
         [formate setDateFormat:@"MMM yyyy"];
         fromDateString = [formate stringFromDate:fromDateDt];
+        
+        toDate = @"Present";
 
     }
     else
@@ -163,6 +179,7 @@
     NSInteger index = [_jobTableView indexPathForCell:cell].row;
     JobInfo *jobInfo = [_jobInfoArray objectAtIndex:index];
     
+    NSLog(@"job info index --- %@",jobInfo);
     
     AddJobViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"add_job_view_controller"];
     vc.jobInfo = jobInfo;
@@ -218,6 +235,8 @@
                     
                     [_jobInfoArray removeObjectAtIndex:_tmpDeleteIndex];
                     [_jobTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_tmpDeleteIndex inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    
+                    
                 }
                 
             });

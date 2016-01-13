@@ -182,10 +182,40 @@
     _countryIndex = [_countryInfo indexOfObject:[self countryInfoByISO:_jobInfo.countryISO]];
     _countryTextField.text = _jobInfo.countryName;
     
+    if (_jobInfo.originalToDate == (id)[NSNull null]) {
+        _checkBox.selected = YES;
+        
+        _toMMTextField.hidden = YES;
+        _toYYTextField.hidden = YES;
+        
+    }
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+    NSDate *from = [dateFormatter dateFromString:_jobInfo.originalFromDate];
+    
+    NSDate *to;
+    if (_jobInfo.originalToDate != (id)[NSNull null]) {
+        to = [dateFormatter dateFromString:_jobInfo.originalToDate];
+        
+        
+        
+    }
+//    NSDate *to = [dateFormatter dateFromString:_jobInfo.originalToDate];
     
     
+    [dateFormatter setDateFormat:@"yyyy"];
+    NSString *fromYear = [dateFormatter stringFromDate:from];
+    NSString *toYear = [dateFormatter stringFromDate:to];
     
+    [dateFormatter setDateFormat:@"MM"];
+    NSString *fromMM = [dateFormatter stringFromDate:from];
+    NSString *toMM = [dateFormatter stringFromDate:to];
     
+    _fromYYTextField.text = fromYear;
+    _toYYTextField.text = toYear;
+    _fromMMTextField.text = fromMM;
+    _toMMTextField.text = toMM;
 }
 
 - (void)addNewJob
