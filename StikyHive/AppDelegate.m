@@ -12,6 +12,8 @@
 #import <linkedin-sdk/LISDK.h>
 #import "PayPalMobile.h"
 #import <Google/CloudMessaging.h>
+#import "WebDataInterface.h"
+#import "LocalDataInterface.h"
 
 
 
@@ -71,56 +73,6 @@ NSString *const SubscriptionTopic = @"/topics/global";
     
     [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
     
-    //google cloud ------------------------------------------------//
-    _registrationKey = @"onRegistrationCompleted";
-    _messageKey = @"onMessageReceived";
-    
-    NSError* configureError;
-    [[GGLContext sharedInstance] configureWithError:&configureError];
-    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
-    
-    _gcmSenderID = [[[GGLContext sharedInstance] configuration] gcmSenderID];
-    
-    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1)
-    {
-        // iOS 7.1 or earlier
-        UIRemoteNotificationType allNotificationTypes =
-        (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge);
-        [application registerForRemoteNotificationTypes:allNotificationTypes];
-    }else{
-    
-        UIUserNotificationType allNotificationTypes =
-        (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
-        UIUserNotificationSettings *settings =
-        [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-        
-    }
-    
-    GCMConfig *gcmConfig = [GCMConfig defaultConfig];
-    gcmConfig.receiverDelegate = self;
-    [[GCMService sharedInstance] startWithConfig:gcmConfig];
-    // [END start_gcm_service]
-    __weak typeof(self) weakSelf = self;
-    // Handler for registration token request
-    _registrationHandler = ^(NSString *registrationToken, NSError *error){
-        if (registrationToken != nil) {
-            weakSelf.registrationToken = registrationToken;
-            NSLog(@"Registration Token: %@", registrationToken);
-//            [weakSelf subscribeToTopic];
-            NSDictionary *userInfo = @{@"registrationToken":registrationToken};
-            [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
-                                                                object:nil
-                                                              userInfo:userInfo];
-        } else {
-            NSLog(@"Registration to GCM failed with error: %@", error.localizedDescription);
-            NSDictionary *userInfo = @{@"error":error.localizedDescription};
-            [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
-                                                                object:nil
-                                                              userInfo:userInfo];
-        }
-    };
     
     
 //    return YES;
@@ -143,6 +95,77 @@ NSString *const SubscriptionTopic = @"/topics/global";
                                                       options:_registrationOptions
                                                       handler:_registrationHandler];
     
+}
+
+- (void)startGCMService
+{
+    //google cloud ------------------------------------------------//
+    _registrationKey = @"onRegistrationCompleted";
+    _messageKey = @"onMessageReceived";
+    
+    NSError* configureError;
+    [[GGLContext sharedInstance] configureWithError:&configureError];
+    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+    
+    _gcmSenderID = [[[GGLContext sharedInstance] configuration] gcmSenderID];
+    
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1)
+    {
+        // iOS 7.1 or earlier
+        UIRemoteNotificationType allNotificationTypes =
+        (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge);
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:allNotificationTypes];
+    }else{
+        
+        UIUserNotificationType allNotificationTypes =
+        (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
+        UIUserNotificationSettings *settings =
+        [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        
+    }
+    
+    GCMConfig *gcmConfig = [GCMConfig defaultConfig];
+    gcmConfig.receiverDelegate = self;
+    [[GCMService sharedInstance] startWithConfig:gcmConfig];
+    // [END start_gcm_service]
+    __weak typeof(self) weakSelf = self;
+    // Handler for registration token request
+    _registrationHandler = ^(NSString *registrationToken, NSError *error){
+        if (registrationToken != nil) {
+            weakSelf.registrationToken = registrationToken;
+            NSLog(@"Registration Token: %@", registrationToken);
+            
+            [WebDataInterface updateToken:[LocalDataInterface retrieveStkid] token:weakSelf.registrationToken completion:^(NSObject *obj, NSError *err) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSDictionary *dict = (NSDictionary *)obj;
+                    if ([dict[@"status"] isEqualToString:@"success"]) {
+                        
+                        NSLog(@"update token success !!!!!!!!!");
+                        
+                        //            [weakSelf subscribeToTopic];
+                        NSDictionary *userInfo = @{@"registrationToken":registrationToken};
+                        [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
+                                                                            object:nil
+                                                                          userInfo:userInfo];
+                    }
+
+                });
+                
+                
+            }];
+            
+            
+        } else {
+            NSLog(@"Registration to GCM failed with error: %@", error.localizedDescription);
+            NSDictionary *userInfo = @{@"error":error.localizedDescription};
+            [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
+                                                                object:nil
+                                                              userInfo:userInfo];
+        }
+    };
 }
 
 

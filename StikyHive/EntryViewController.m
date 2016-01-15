@@ -13,6 +13,7 @@
 #import <SendGrid/SendGrid.h>
 #import <SendGrid/SendGridEmail.h>
 #import <linkedin-sdk/LISDK.h>
+#import "AppDelegate.h"
 
 @interface EntryViewController ()
 
@@ -250,6 +251,11 @@
                 NSString *name = [NSString stringWithFormat:@"%@ %@",dict[@"stikybee"][@"firstname"],dict[@"stikybee"][@"lastname"]];
                 
                 [LocalDataInterface storeNameOfUser:name];
+                
+                
+                // start GCM service ------------- //
+                [(AppDelegate *)[UIApplication sharedApplication].delegate startGCMService];
+                
                 
                 
                 NSDictionary *stikybee = dict[@"stikybee"];
