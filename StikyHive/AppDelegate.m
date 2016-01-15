@@ -108,7 +108,7 @@ NSString *const SubscriptionTopic = @"/topics/global";
         if (registrationToken != nil) {
             weakSelf.registrationToken = registrationToken;
             NSLog(@"Registration Token: %@", registrationToken);
-            [weakSelf subscribeToTopic];
+//            [weakSelf subscribeToTopic];
             NSDictionary *userInfo = @{@"registrationToken":registrationToken};
             [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
                                                                 object:nil
@@ -146,30 +146,30 @@ NSString *const SubscriptionTopic = @"/topics/global";
 }
 
 
-- (void)subscribeToTopic {
-    // If the app has a registration token and is connected to GCM, proceed to subscribe to the
-    // topic
-    if (_registrationToken && _connectedToGCM) {
-        [[GCMPubSub sharedInstance] subscribeWithToken:_registrationToken
-                                                 topic:SubscriptionTopic
-                                               options:nil
-                                               handler:^(NSError *error) {
-                                                   if (error) {
-                                                       // Treat the "already subscribed" error more gently
-                                                       if (error.code == 3001) {
-                                                           NSLog(@"Already subscribed to %@",
-                                                                 SubscriptionTopic);
-                                                       } else {
-                                                           NSLog(@"Subscription failed: %@",
-                                                                 error.localizedDescription);
-                                                       }
-                                                   } else {
-                                                       self.subscribedToTopic = true;
-                                                       NSLog(@"Subscribed to %@", SubscriptionTopic);
-                                                   }
-                                               }];
-    }
-}
+//- (void)subscribeToTopic {
+//    // If the app has a registration token and is connected to GCM, proceed to subscribe to the
+//    // topic
+//    if (_registrationToken && _connectedToGCM) {
+//        [[GCMPubSub sharedInstance] subscribeWithToken:_registrationToken
+//                                                 topic:SubscriptionTopic
+//                                               options:nil
+//                                               handler:^(NSError *error) {
+//                                                   if (error) {
+//                                                       // Treat the "already subscribed" error more gently
+//                                                       if (error.code == 3001) {
+//                                                           NSLog(@"Already subscribed to %@",
+//                                                                 SubscriptionTopic);
+//                                                       } else {
+//                                                           NSLog(@"Subscription failed: %@",
+//                                                                 error.localizedDescription);
+//                                                       }
+//                                                   } else {
+//                                                       self.subscribedToTopic = true;
+//                                                       NSLog(@"Subscribed to %@", SubscriptionTopic);
+//                                                   }
+//                                               }];
+//    }
+//}
 
 - (void)onTokenRefresh
 {
@@ -209,7 +209,7 @@ NSString *const SubscriptionTopic = @"/topics/global";
             _connectedToGCM = true;
             NSLog(@"Connected to GCM");
             // [START_EXCLUDE]
-            [self subscribeToTopic];
+//            [self subscribeToTopic];
             // [END_EXCLUDE]
         }
     }];

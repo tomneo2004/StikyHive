@@ -223,6 +223,7 @@
 #define DATA_URL_UPDATE_JOB_HISTORY     DATA_URL@"updateJobHistory/format/json"
 #define DATA_URL_DELETE_JOB             DATA_URL@"deleteJob/format/json"
 #define DATA_URL_UPDATE_TOKEN           DATA_URL@"updateToken/format/json"
+#define DATA_URL_SELECT_TOKEN           DATA_URL@"selectToken/format/json"
 
 
 
@@ -446,7 +447,7 @@
 
 + (void)updateToken:(NSString *)stkid token:(NSString *)token completion:(void (^)(NSObject *, NSError *))completion;
 
-
++ (void)selectToken:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
 
 
 
