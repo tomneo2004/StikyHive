@@ -205,7 +205,7 @@
 - (void)showEmptyView
 {
     if (_noExperienceView == nil) {
-        _noExperienceView = (NoExperienceView *)[Helper viewFromNib:@"no_experience_view" atViewIndex:0 owner:self];
+        _noExperienceView = (NoExperienceView *)[Helper viewFromNib:@"NoExperienceView" atViewIndex:0 owner:self];
     }
     
     _noExperienceView.delegate = self;

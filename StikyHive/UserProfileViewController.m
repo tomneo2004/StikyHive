@@ -423,6 +423,12 @@
         
             UIView *skillView = [[UIView alloc] initWithFrame:CGRectMake(20, y+5, width-40, 240)];
             skillView.backgroundColor = [UIColor whiteColor];
+            
+            
+            
+            
+            
+            
         
             UIImageView *picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, skillView.frame.size.width, 180)];
 //        picImageView.image = [ViewControllerUtil getImageWithPath:url];
@@ -483,6 +489,18 @@
             
                 NSString *thumbLocation = object[@"thumbnailLocation"];
                 NSString *location = object[@"location"];
+                
+                
+                
+                
+                // ------ to skill page -------
+                UIGestureRecognizer *viewReongnizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(skillViewTapped:)];
+                [skillView addGestureRecognizer:viewReongnizer];
+                skillView.tag = i;
+                
+                
+                
+                
         
                 if (thumbLocation != (id)[NSNull null])
                 {
@@ -1336,7 +1354,14 @@
     awebView.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, contentHeight);
 }
 
-
+- (void)skillViewTapped:(UITapGestureRecognizer *)sender
+{
+    
+    
+    
+    
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

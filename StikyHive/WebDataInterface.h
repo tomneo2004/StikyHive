@@ -222,6 +222,7 @@
 #define DATA_URL_SAVE_JOB_HISTORY       DATA_URL@"saveJobHistory/format/json"
 #define DATA_URL_UPDATE_JOB_HISTORY     DATA_URL@"updateJobHistory/format/json"
 #define DATA_URL_DELETE_JOB             DATA_URL@"deleteJob/format/json"
+#define DATA_URL_UPDATE_TOKEN           DATA_URL@"updateToken/format/json"
 
 
 
@@ -318,6 +319,7 @@
 #define POST_PARAMETER_ID               @"id"
 #define POST_PARAMETER_COMPANY_NAME     @"companyName"
 #define POST_PARAMETER_JOB_TITILE       @"jobtitle"
+#define POST_PARAMETER_TOKEN            @"token"
 
 
 
@@ -441,6 +443,8 @@
 + (void)updateJobHistory:(NSInteger)jobid stkid:(NSString *)stkid companyName:(NSString *)companyName countryISO:(NSString *)countryISO jobtitle:(NSString *)jobtitle fromDate:(NSString *)fromDate toDate:(NSString *)toDate otherInfo:(NSString *)otherInfo completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)deleteJob:(NSInteger)jobid completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)updateToken:(NSString *)stkid token:(NSString *)token completion:(void (^)(NSObject *, NSError *))completion;
 
 
 

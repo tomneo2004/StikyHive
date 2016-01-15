@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5102A38C1C4789870075116C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5102A38B1C4789870075116C /* GoogleService-Info.plist */; };
 		516617341BF03939002BE00B /* looking.png in Resources */ = {isa = PBXBuildFile; fileRef = 516617331BF03939002BE00B /* looking.png */; };
 		516617361BF04FF3002BE00B /* icon_doc_save.png in Resources */ = {isa = PBXBuildFile; fileRef = 516617351BF04FF3002BE00B /* icon_doc_save.png */; };
 		516718941C1A799E003E9902 /* editor.html in Resources */ = {isa = PBXBuildFile; fileRef = 5167182D1C1A799E003E9902 /* editor.html */; };
@@ -512,6 +513,7 @@
 
 /* Begin PBXFileReference section */
 		42735513B3CB550D88CCB8A7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5102A38B1C4789870075116C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		516617331BF03939002BE00B /* looking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = looking.png; sourceTree = "<group>"; };
 		516617351BF04FF3002BE00B /* icon_doc_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_doc_save.png; sourceTree = "<group>"; };
 		5167182D1C1A799E003E9902 /* editor.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = editor.html; sourceTree = "<group>"; };
@@ -1528,6 +1530,7 @@
 		674D0D891B7D913400B5B80D = {
 			isa = PBXGroup;
 			children = (
+				5102A38B1C4789870075116C /* GoogleService-Info.plist */,
 				674D0DBE1B7D916200B5B80D /* QuartzCore.framework */,
 				5167182C1C1A799E003E9902 /* ZZSSource */,
 				676F77BA1B96F3060084988A /* TOCropViewController */,
@@ -2686,6 +2689,7 @@
 				TargetAttributes = {
 					674D0D911B7D913400B5B80D = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = FJ76M7Y99D;
 					};
 					674D0DAD1B7D913400B5B80D = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -2807,6 +2811,7 @@
 				517B6E951BD73D6800561063 /* share-twitter.png in Resources */,
 				516A61161BB51CAE008579B6 /* like.png in Resources */,
 				674D0DE91B7D91FC00B5B80D /* Header_3@2x.jpg in Resources */,
+				5102A38C1C4789870075116C /* GoogleService-Info.plist in Resources */,
 				516718BC1C1A799E003E9902 /* ZSSorderedlist@2x.png in Resources */,
 				CEE93A201BF4490100B292BA /* buzzr_top_btn.png in Resources */,
 				516718C71C1A799E003E9902 /* ZSSrightjustify.png in Resources */,
@@ -3412,6 +3417,8 @@
 			baseConfigurationReference = 42735513B3CB550D88CCB8A7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3422,6 +3429,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -3430,6 +3438,8 @@
 			baseConfigurationReference = 5BD589799144B88408CD0618 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3440,6 +3450,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

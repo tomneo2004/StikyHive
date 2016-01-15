@@ -11,12 +11,22 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <linkedin-sdk/LISDK.h>
 #import "PayPalMobile.h"
+#import <Google/CloudMessaging.h>
+
 
 
 
 @interface AppDelegate ()
 
+@property(nonatomic, strong) void (^registrationHandler)
+(NSString *registrationToken, NSError *error);
+@property(nonatomic, assign) BOOL connectedToGCM;
+@property(nonatomic, strong) NSString* registrationToken;
+@property(nonatomic, assign) BOOL subscribedToTopic;
+
 @end
+
+NSString *const SubscriptionTopic = @"/topics/global";
 
 @implementation AppDelegate
 
@@ -61,10 +71,116 @@
     
     [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
     
+    //google cloud ------------------------------------------------//
+    _registrationKey = @"onRegistrationCompleted";
+    _messageKey = @"onMessageReceived";
+    
+    NSError* configureError;
+    [[GGLContext sharedInstance] configureWithError:&configureError];
+    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+    
+    _gcmSenderID = [[[GGLContext sharedInstance] configuration] gcmSenderID];
+    
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1)
+    {
+        // iOS 7.1 or earlier
+        UIRemoteNotificationType allNotificationTypes =
+        (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge);
+        [application registerForRemoteNotificationTypes:allNotificationTypes];
+    }else{
+    
+        UIUserNotificationType allNotificationTypes =
+        (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
+        UIUserNotificationSettings *settings =
+        [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        
+    }
+    
+    GCMConfig *gcmConfig = [GCMConfig defaultConfig];
+    gcmConfig.receiverDelegate = self;
+    [[GCMService sharedInstance] startWithConfig:gcmConfig];
+    // [END start_gcm_service]
+    __weak typeof(self) weakSelf = self;
+    // Handler for registration token request
+    _registrationHandler = ^(NSString *registrationToken, NSError *error){
+        if (registrationToken != nil) {
+            weakSelf.registrationToken = registrationToken;
+            NSLog(@"Registration Token: %@", registrationToken);
+            [weakSelf subscribeToTopic];
+            NSDictionary *userInfo = @{@"registrationToken":registrationToken};
+            [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
+                                                                object:nil
+                                                              userInfo:userInfo];
+        } else {
+            NSLog(@"Registration to GCM failed with error: %@", error.localizedDescription);
+            NSDictionary *userInfo = @{@"error":error.localizedDescription};
+            [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
+                                                                object:nil
+                                                              userInfo:userInfo];
+        }
+    };
+    
+    
 //    return YES;
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
 }
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    
+    GGLInstanceIDConfig *instanceIDConfig = [GGLInstanceIDConfig defaultConfig];
+    instanceIDConfig.delegate = self;
+    // Start the GGLInstanceID shared instance with the that config and request a registration
+    // token to enable reception of notifications
+    [[GGLInstanceID sharedInstance] startWithConfig:instanceIDConfig];
+    _registrationOptions = @{kGGLInstanceIDRegisterAPNSOption:deviceToken,
+                             kGGLInstanceIDAPNSServerTypeSandboxOption:@YES};
+    [[GGLInstanceID sharedInstance] tokenWithAuthorizedEntity:_gcmSenderID
+                                                        scope:kGGLInstanceIDScopeGCM
+                                                      options:_registrationOptions
+                                                      handler:_registrationHandler];
+    
+}
+
+
+- (void)subscribeToTopic {
+    // If the app has a registration token and is connected to GCM, proceed to subscribe to the
+    // topic
+    if (_registrationToken && _connectedToGCM) {
+        [[GCMPubSub sharedInstance] subscribeWithToken:_registrationToken
+                                                 topic:SubscriptionTopic
+                                               options:nil
+                                               handler:^(NSError *error) {
+                                                   if (error) {
+                                                       // Treat the "already subscribed" error more gently
+                                                       if (error.code == 3001) {
+                                                           NSLog(@"Already subscribed to %@",
+                                                                 SubscriptionTopic);
+                                                       } else {
+                                                           NSLog(@"Subscription failed: %@",
+                                                                 error.localizedDescription);
+                                                       }
+                                                   } else {
+                                                       self.subscribedToTopic = true;
+                                                       NSLog(@"Subscribed to %@", SubscriptionTopic);
+                                                   }
+                                               }];
+    }
+}
+
+- (void)onTokenRefresh
+{
+    NSLog(@"The GCM registration token needs to be changed.");
+    [[GGLInstanceID sharedInstance] tokenWithAuthorizedEntity:_gcmSenderID
+                                                        scope:kGGLInstanceIDScopeGCM
+                                                      options:_registrationOptions
+                                                      handler:_registrationHandler];
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -83,6 +199,21 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [FBSDKAppEvents activateApp];
+    
+    
+    // Connect to the GCM server to receive non-APNS notifications
+    [[GCMService sharedInstance] connectWithHandler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Could not connect to GCM: %@", error.localizedDescription);
+        } else {
+            _connectedToGCM = true;
+            NSLog(@"Connected to GCM");
+            // [START_EXCLUDE]
+            [self subscribeToTopic];
+            // [END_EXCLUDE]
+        }
+    }];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

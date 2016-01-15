@@ -540,7 +540,12 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
-
++ (void)updateToken:(NSString *)stkid token:(NSString *)token completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_STKID:stkid,
+                             POST_PARAMETER_TOKEN:token};
+    [self requestData:DATA_URL_UPDATE_TOKEN withParameters:params completion:completion];
+}
 
 
 
