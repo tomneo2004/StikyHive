@@ -14,6 +14,7 @@
 #import <SendGrid/SendGridEmail.h>
 #import <linkedin-sdk/LISDK.h>
 #import "AppDelegate.h"
+#import "UIView+RNActivityView.h"
 
 @interface EntryViewController ()
 
@@ -201,6 +202,8 @@
     NSString *emailText = _emailTextField.text;
     NSString *passwordText = _passwordTextField.text;
     
+    [self.view showActivityViewWithLabel:@"Login..."];
+    
     [WebDataInterface loginWithEmail:emailText password:passwordText completion:^(NSObject *obj, NSError *err)
      {
          dispatch_async(dispatch_get_main_queue(), ^{
@@ -208,7 +211,7 @@
              
              [self dataReceivedLogin:(NSDictionary *)obj];
              
-             
+             [self.view hideActivityView];
          });
          
      }];
@@ -233,9 +236,6 @@
         
         NSLog(@"login statuys --- %@", statusString);
         
-//        /// TRY
-//        [LocalDataInterface storeUsername:_emailTextField.text];
-//        [LocalDataInterface storePassword:_passwordTextField.text];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([statusString isEqualToString:@"success"])
@@ -404,9 +404,12 @@
     }
     
     // request server data
+    [self.view showActivityViewWithLabel:@"Loading..."];
     [WebDataInterface signupWithUsername:username password:password completion:^(NSObject *obj,NSError *err)
      {
          [self dataReceived:(NSDictionary *)obj];
+         
+         [self.view hideActivityView];
      }];
     
     _bottomButton.userInteractionEnabled = NO;

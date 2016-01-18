@@ -97,6 +97,35 @@ NSString *const SubscriptionTopic = @"/topics/global";
     
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog(@"Notification received: %@", userInfo);
+    // This works only if the app started the GCM service
+    [[GCMService sharedInstance] appDidReceiveMessage:userInfo];
+    // Handle the received message
+    // [START_EXCLUDE]
+    [[NSNotificationCenter defaultCenter] postNotificationName:_messageKey
+                                                        object:nil
+                                                      userInfo:userInfo];
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    
+    NSLog(@"Notification received: %@", userInfo);
+    // This works only if the app started the GCM service
+    [[GCMService sharedInstance] appDidReceiveMessage:userInfo];
+    // Handle the received message
+    // Invoke the completion handler passing the appropriate UIBackgroundFetchResult value
+    // [START_EXCLUDE]
+    [[NSNotificationCenter defaultCenter] postNotificationName:_messageKey
+                                                        object:nil
+                                                      userInfo:userInfo];
+    completionHandler(UIBackgroundFetchResultNoData);
+    
+}
+
 - (void)startGCMService
 {
     //google cloud ------------------------------------------------//

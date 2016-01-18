@@ -108,6 +108,7 @@
 		516A61161BB51CAE008579B6 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 516A61151BB51CAE008579B6 /* like.png */; };
 		516A614B1BC7617400D4E890 /* SellerCommTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516A614A1BC7617400D4E890 /* SellerCommTableViewController.m */; };
 		516A614E1BC7A47900D4E890 /* PostCommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516A614D1BC7A47900D4E890 /* PostCommViewController.m */; };
+		516A90351C4CA22000584073 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516A90341C4CA22000584073 /* ChatListViewController.m */; };
 		516BC8691BB13FBE008BE2ED /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BC8681BB13FBE008BE2ED /* PhotoViewController.m */; };
 		516C51621C0410B8002710AA /* SellingViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 516C51611C0410B8002710AA /* SellingViewController3.m */; };
 		516C51641C042299002710AA /* sell_upload_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 516C51631C042299002710AA /* sell_upload_photo.png */; };
@@ -634,6 +635,8 @@
 		516A614A1BC7617400D4E890 /* SellerCommTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerCommTableViewController.m; sourceTree = "<group>"; };
 		516A614C1BC7A47900D4E890 /* PostCommViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommViewController.h; sourceTree = "<group>"; };
 		516A614D1BC7A47900D4E890 /* PostCommViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommViewController.m; sourceTree = "<group>"; };
+		516A90331C4CA22000584073 /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
+		516A90341C4CA22000584073 /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
 		516BC8671BB13FBE008BE2ED /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		516BC8681BB13FBE008BE2ED /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		516C51601C0410B8002710AA /* SellingViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellingViewController3.h; sourceTree = "<group>"; };
@@ -1388,6 +1391,15 @@
 			path = "Third Party";
 			sourceTree = "<group>";
 		};
+		516A90321C4CA07200584073 /* StikyChat */ = {
+			isa = PBXGroup;
+			children = (
+				516A90331C4CA22000584073 /* ChatListViewController.h */,
+				516A90341C4CA22000584073 /* ChatListViewController.m */,
+			);
+			name = StikyChat;
+			sourceTree = "<group>";
+		};
 		517511671C3B5F27001CD0F0 /* JobHistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -1560,6 +1572,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				516A90321C4CA07200584073 /* StikyChat */,
 				CE83C7861C3B5F2800753B80 /* Education */,
 				CEC8A1D71C2A70DE00558608 /* MyPost */,
 				CE56FF2B1C1FB31B00C64567 /* MySkill */,
@@ -3204,6 +3217,7 @@
 				CE83C78C1C3B6B7600753B80 /* EducationInfo.m in Sources */,
 				CEE93A261BF47C2600B292BA /* CrossPollinateViewController.m in Sources */,
 				CEE93A2A1BF4852800B292BA /* Request.m in Sources */,
+				516A90351C4CA22000584073 /* ChatListViewController.m in Sources */,
 				674D0F4D1B7D9A5200B5B80D /* JSQMessagesCollectionViewCell.m in Sources */,
 				CED3C8831C22946D0090DE35 /* SkillViewTableViewController.m in Sources */,
 				517511701C3B6CEF001CD0F0 /* JobHistoryCell.m in Sources */,
