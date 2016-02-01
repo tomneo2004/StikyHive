@@ -7,8 +7,15 @@
 //
 
 #import "ChatListViewController.h"
+#import "WebDataInterface.h"
+#import "LocalDataInterface.h"
+#import "ViewControllerUtil.h"
+#import "UIView+RNActivityView.h"
+#import "ChatMessagesViewController.h"
 
 @interface ChatListViewController ()
+
+@property (nonatomic, strong) NSArray *contactsList;
 
 @end
 
@@ -17,40 +24,142 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _chatTableView.delegate = self;
+    _chatTableView.dataSource = self;
+    [self setTitle:@"Stiky Chat"];
+    
+    _chatTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; //Remove empty cells in UITableView
+    
+    }
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    [self.view showActivityViewWithLabel:@"Loading..."];
+    
+    [WebDataInterface checkLastMessage:[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *err) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSDictionary *dict = (NSDictionary *)obj;
+            if (dict && [dict[@"status"] isEqualToString:@"success"])
+            {
+                
+                _contactsList = dict[@"contacts"];
+                
+                NSLog(@"contacts list --- %@",_contactsList);
+                
+                [_chatTableView reloadData];
+                
+//                [self.view hideActivityView];
+//                
+//                return;
+                
+            }
+            
+            
+            [self.view hideActivityView];
+        });
+        
+    }];
+
+    
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
-
+ 
 
 
 #pragma mark - table view datasource -- delegate 
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return 0;
-//}
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    return 1;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UITableViewCell *cell = [[UITableViewCell alloc] init];
-//    return cell;
-//}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _contactsList.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatCell" forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChatCell"];
+    }
+    
+    NSDictionary *dict = _contactsList[indexPath.row];
+    
+    UIImageView *headImageView = (UIImageView *)[cell viewWithTag:CHAT_TABLE_VIEW_IMAGE_VIEW_TAG];
+    UILabel *nameLabel = (UILabel *)[cell viewWithTag:CHAT_TABLE_VIEW_NAME_LABEL_TAG];
+    UILabel *msgLabel = (UILabel *)[cell viewWithTag:CHAT_TABLE_VIEW_MSG_LABLE_TAG];
+    UILabel *timeLabel = (UILabel *)[cell viewWithTag:CHAT_TABLE_VIEW_TIME_LABLE_TAG];
+    
+    
+    NSString *url = [WebDataInterface getFullUrlPath:dict[@"profilePicture"]];
+    headImageView.image = [ViewControllerUtil getImageWithPath:url];
+    
+    NSString *updateString = dict[@"updateDate"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+    NSDate *updateDate = [formatter dateFromString:updateString];
+    
+    NSString *updateDay= @"";
+    
+    BOOL today = [[NSCalendar currentCalendar] isDateInToday:updateDate];
+    
+    if (today)
+    {
+        [formatter setDateFormat:@"hh:mm a"];
+        updateDay = [formatter stringFromDate:updateDate];
+    }
+    else
+    {
+        
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+         updateDay = [formatter stringFromDate:updateDate];
+    }
+    
+    nameLabel.text = [NSString stringWithFormat:@"%@ %@",dict[@"firstname"],dict[@"lastname"]];
+    msgLabel.text = dict[@"message"];
+    timeLabel.text = updateDay;
+    
+    return cell;
+}
 
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    NSDictionary *dict = _contactsList[indexPath.row][@"toStikyBee"];
+    
+    NSString *toStikyBee = _contactsList[indexPath.row][@"toStikyBee"];
+    [self showChatMessagesView:toStikyBee];
+    //    chat_messages_view_controller
+    
+//    ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
+//    [self.navigationController pushViewController:cmvc animated:YES];
+//    
+    
+    
+    NSLog(@"select chat --- %@",toStikyBee);
 
+}
 
-
+- (void)showChatMessagesView:(NSString *)userID
+{
+    [ChatMessagesViewController setToStikyBee:userID];
+    ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
+    [self.navigationController pushViewController:cmvc animated:YES];
+    
+}
 
 
 /*
@@ -63,21 +172,6 @@
 }
 */
 
-- (IBAction)buttonPressed:(id)sender
-{
-//    NSString *userID = @"n24KauC_ExQ:APA91bGzIpfmg3XuIrJoQBNa50qEM2a2OsyV0BplaahsYVN89eAu3t1PrIdtLOpw2PAU-aJRG3aVaOVN3nnMs4JSsAzHioVjHLu9dDTO9n7OX3pC0vRsHQpRioHDwjfgvwz0RV3KylJD";
-//    int nextMessageID = self.messagesSent++;
-//    NSDictionary *message = @{
-//                              @"user" : [NSString stringWithFormat:"%lld", userID],
-//                              @"hello" : @"world"
-//                              };
-//    // kSenderID is the senderID you want to send the message to
-//    NSString *to = [[NSString stringWithFormat:@"%@@gcm.googleapis.com", kSenderID];
-//                    
-//                    [[GCMService sharedInstance] sendTo:to
-//                                          withMessageID:nextMessageID
-//                                                   data:message];
-}
                     
                     
                     

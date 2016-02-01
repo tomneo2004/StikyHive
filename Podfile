@@ -24,3 +24,7 @@ platform :ios, '7.0'
 pod 'Toast', '~> 3.0'
 
 pod 'Google/CloudMessaging'
+
+pod 'EZAudio', '~> 1.1.2'
+
+pod 'JSQMessagesViewController' 

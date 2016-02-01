@@ -14,6 +14,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>EZAudio.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSQSystemSoundPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TPCircularBuffer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Toast.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,7 +62,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0E5D227A89007981FACE8EACB6E2B753</key>
+		<key>06AB107A973DB6115CB3306D48EF66D3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1198B07068011E3122A031B9F323D2AF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>155B82278EBA2433CABB8693E0DA0343</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,27 +82,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>319D68C9944BC65DE9046E0DB29E4AC6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>43F2B67B728CA1B814B4F50514856BDA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>764ABAF5E4339EA5AB651A2A178ACB96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7FF89D9762E863E8600F990B770892E5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>86B913A82687DE314448D704F2C1E9B1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AA67A4E82EA6B3882A6EE89AE4276B4E</key>
+		<key>ACA93E535291FA2B63A638D8A933F5D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>CDCFC3889C0890CBACFCF314D78D3B46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D7E0EAD00AEC44A79931223A9A31C6AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E6FEEF382AF387196FCC2F67B87C4107</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -99,6 +99,7 @@ NSString *const SubscriptionTopic = @"/topics/global";
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    
     NSLog(@"Notification received: %@", userInfo);
     // This works only if the app started the GCM service
     [[GCMService sharedInstance] appDidReceiveMessage:userInfo];
@@ -128,7 +129,7 @@ NSString *const SubscriptionTopic = @"/topics/global";
 
 - (void)startGCMService
 {
-    //google cloud ------------------------------------------------//
+    //google cloud --------------------------------------------------------//
     _registrationKey = @"onRegistrationCompleted";
     _messageKey = @"onMessageReceived";
     
@@ -144,7 +145,9 @@ NSString *const SubscriptionTopic = @"/topics/global";
         UIRemoteNotificationType allNotificationTypes =
         (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge);
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:allNotificationTypes];
-    }else{
+    }
+    else
+    {
         
         UIUserNotificationType allNotificationTypes =
         (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
@@ -162,7 +165,9 @@ NSString *const SubscriptionTopic = @"/topics/global";
     __weak typeof(self) weakSelf = self;
     // Handler for registration token request
     _registrationHandler = ^(NSString *registrationToken, NSError *error){
-        if (registrationToken != nil) {
+       
+        if (registrationToken != nil)
+        {
             weakSelf.registrationToken = registrationToken;
             NSLog(@"Registration Token: %@", registrationToken);
             
@@ -170,24 +175,30 @@ NSString *const SubscriptionTopic = @"/topics/global";
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSDictionary *dict = (NSDictionary *)obj;
-                    if ([dict[@"status"] isEqualToString:@"success"]) {
+                    if ([dict[@"status"] isEqualToString:@"success"])
+                    {
                         
-                        NSLog(@"update token success !!!!!!!!!");
-                        
+                        NSLog(@"update token success !!!!!!!!!--- %@",dict[@"status"]);
                         //            [weakSelf subscribeToTopic];
                         NSDictionary *userInfo = @{@"registrationToken":registrationToken};
                         [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
                                                                             object:nil
                                                                           userInfo:userInfo];
+                        
+                        NSLog(@"user info --- %@",userInfo);
+                    }
+                    else
+                    {
+                        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                        [alert show];
                     }
 
                 });
-                
-                
             }];
             
-            
-        } else {
+        }
+        else
+        {
             NSLog(@"Registration to GCM failed with error: %@", error.localizedDescription);
             NSDictionary *userInfo = @{@"error":error.localizedDescription};
             [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
@@ -196,6 +207,7 @@ NSString *const SubscriptionTopic = @"/topics/global";
         }
     };
 }
+
 
 
 //- (void)subscribeToTopic {
@@ -255,9 +267,12 @@ NSString *const SubscriptionTopic = @"/topics/global";
     
     // Connect to the GCM server to receive non-APNS notifications
     [[GCMService sharedInstance] connectWithHandler:^(NSError *error) {
-        if (error) {
+        if (error)
+        {
             NSLog(@"Could not connect to GCM: %@", error.localizedDescription);
-        } else {
+        }
+        else
+        {
             _connectedToGCM = true;
             NSLog(@"Connected to GCM");
             // [START_EXCLUDE]

@@ -22,6 +22,12 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - CardIO (5.2.2)
+  - EZAudio (1.1.2):
+    - EZAudio/Full (= 1.1.2)
+  - EZAudio/Core (1.1.2)
+  - EZAudio/Full (1.1.2):
+    - EZAudio/Core
+    - TPCircularBuffer (~> 0.0)
   - GGLInstanceID (1.1.5):
     - GoogleIPhoneUtilities (~> 1.0)
     - GoogleNetworkingUtilities (~> 1.0)
@@ -52,6 +58,9 @@ PODS:
   - GoogleSymbolUtilities (1.0.3)
   - GoogleUtilities (1.1.0):
     - GoogleSymbolUtilities (~> 1.0.0)
+  - JSQMessagesViewController (7.2.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - PayPal-iOS-SDK (2.12.7):
     - PayPal-iOS-SDK/CardIO (= 2.12.7)
     - PayPal-iOS-SDK/Core (= 2.12.7)
@@ -64,11 +73,14 @@ PODS:
     - SMTPAPI
   - SMTPAPI (0.2.0)
   - Toast (3.0)
+  - TPCircularBuffer (0.0.1)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0 (~> 2.0.4)
   - AFNetworking (~> 2.0)
+  - EZAudio (~> 1.1.2)
   - Google/CloudMessaging
+  - JSQMessagesViewController
   - PayPal-iOS-SDK
   - RadioButton
   - SendGrid (~> 0.2.6)
@@ -78,6 +90,7 @@ SPEC CHECKSUMS:
   ActionSheetPicker-3.0: 860466cb4a66854e6acb590071ecee404b48f49d
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   CardIO: 2460db0f4936f3441b08d51e3904b436d77ec8fc
+  EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
   GGLInstanceID: 4be9a86f27e87f8cedc9694f521f12949813a7ba
   Google: 97618e118111b998cce1d8dd1bd98b82301d72db
   GoogleCloudMessaging: faa057e30845e7300da31de3777060420b2f6579
@@ -86,10 +99,13 @@ SPEC CHECKSUMS:
   GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
   GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
+  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   PayPal-iOS-SDK: 401d441844bd6f0e08905dcdd7795f44c5ecef6c
   RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
   SendGrid: dc8275118d276ad56cfbb8a9ebcdecf0a4387f36
   SMTPAPI: 84bcd13fb0c572a7a16c2045ebb4f32c97892c90
   Toast: 32c59229abfcf41850162b83bb9259dc84372473
+  TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
 
 COCOAPODS: 0.38.2

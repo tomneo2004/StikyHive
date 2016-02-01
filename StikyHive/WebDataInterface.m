@@ -554,6 +554,25 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
++ (void)checkLastMessage:(NSString *)fromStikyBee completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_FROM_STIKY_BEE:fromStikyBee};
+    [self requestData:DATA_URL_CHECK_LAST_MESSAGE withParameters:params completion:completion];
+}
+
+
++ (void)selectChatMsgs:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion
+{
+    
+    NSDictionary *params = @{POST_PARAMETER_FROM_STIKY_BEE:fromStikyBee,
+                             POST_PARAMETER_TO_STIKY_BEE:toStikyBee,
+                             POST_PARAMETER_LIMIT:[NSNumber numberWithInteger:limit]};
+    [self requestData:DATA_URL_SELECT_CHAT_MSGS withParameters:params completion:completion];
+    
+}
+
+
+
 
 
 

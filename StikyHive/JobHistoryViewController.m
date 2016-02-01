@@ -165,7 +165,6 @@
         toDate = [formate stringFromDate:toDateDt];
     }
     
-    
     cell.countryLabel.text = [NSString stringWithFormat:@"%@, %@",info.companyName,info.countryName];
     cell.titleLabel.text = [NSString stringWithFormat:@"%@",info.jobTitle];
     cell.timeLable.text = [NSString stringWithFormat:@"%@ - %@",fromDateString,toDate];

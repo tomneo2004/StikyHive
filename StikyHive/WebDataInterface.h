@@ -224,7 +224,8 @@
 #define DATA_URL_DELETE_JOB             DATA_URL@"deleteJob/format/json"
 #define DATA_URL_UPDATE_TOKEN           DATA_URL@"updateToken/format/json"
 #define DATA_URL_SELECT_TOKEN           DATA_URL@"selectToken/format/json"
-
+#define DATA_URL_CHECK_LAST_MESSAGE     DATA_URL@"checkLastMsgByUserId/format/json"
+#define DATA_URL_SELECT_CHAT_MSGS       DATA_URL@"selectChatMsgs/format/json"
 
 
 
@@ -321,6 +322,8 @@
 #define POST_PARAMETER_COMPANY_NAME     @"companyName"
 #define POST_PARAMETER_JOB_TITILE       @"jobtitle"
 #define POST_PARAMETER_TOKEN            @"token"
+#define POST_PARAMETER_FROM_STIKY_BEE   @"fromStikyBee"
+#define POST_PARAMETER_TO_STIKY_BEE     @"toStikyBee"
 
 
 
@@ -448,6 +451,13 @@
 + (void)updateToken:(NSString *)stkid token:(NSString *)token completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)selectToken:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)checkLastMessage:(NSString *)fromStikyBee completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)selectChatMsgs:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
+
+
+
 
 
 
