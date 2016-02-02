@@ -205,6 +205,14 @@
 }
 
 
+
++ (UIBarButtonItem *)createBarButton:(NSString *)imageName onTarget:(id)target withSelector:(SEL)sel
+{
+    UIImage *image = [UIImage imageNamed:imageName];
+    UIBarButtonItemStyle style = UIBarButtonItemStylePlain;
+    return [[UIBarButtonItem alloc] initWithImage:image style:style target:target action:sel];
+}
+
 //////////////////////// END /////////////////////////////////
 
 + (BOOL) isLoggedIn
@@ -224,12 +232,7 @@
     return [ViewControllerUtil instantiateViewController:@"entry_view_controller"];
 }
 
-+ (UIBarButtonItem *)createBarButton:(NSString *)imageName onTarget:(id)target withSelector:(SEL)sel
-{
-    UIImage *image = [UIImage imageNamed:imageName];
-    UIBarButtonItemStyle style = UIBarButtonItemStylePlain;
-    return [[UIBarButtonItem alloc] initWithImage:image style:style target:target action:sel];
-}
+
 
 + (UIColor *)colorwithHexString:(NSString *)hexStr alpha:(CGFloat)alpha
 {

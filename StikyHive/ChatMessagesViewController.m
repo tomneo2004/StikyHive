@@ -10,6 +10,7 @@
 
 #import "WebDataInterface.h"
 #import "LocalDataInterface.h"
+#import "ViewControllerUtil.h"
 
 
 
@@ -48,17 +49,31 @@ static NSString *ToStikyBee = nil;
     // Do any additional setup after loading the view.
     
     
+    
+    
     self.senderId = [LocalDataInterface retrieveStkid];
     self.senderDisplayName = @"echo";
     
    
+    _chatData = [[ChatData alloc] initWithIncomingAvatarImage:[UIImage imageNamed:@"Default_profile_small@2x"] incomingID:@"" incomingDisplayName:@"" outgoingID:self.senderId outgoingDisplayName:self.senderDisplayName];
     
     
+//    UIBarButtonItem *callButton = [ViewControllerUtil createBarButton:@"button_call_header" onTarget:self withSelector:@selector(callPressedd)];
+//    callButton.imageInsets = UIEdgeInsetsMake(0, -15, 0, 15);
+//    self.navigationItem.rightBarButtonItems = @[callButton];
+//    self.navigationController.navigationBar.topItem.title = @"";
+    
+    
+    /**
+     * Register custom menu actions for cells
+     */
     [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
     [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"Custom Action" action:@selector(customAction:)]];
     
     
-    
+    /*
+     * Customize toolbar buttons
+     */
     _sendButton = [JSQMessagesToolbarButtonFactory defaultSendButtonItem];
     _pttButton = [JSQMessagesToolbarButtonFactory defaultPPTButtonItem];
     
@@ -76,6 +91,12 @@ static NSString *ToStikyBee = nil;
      }];
     
     
+    
+    
+    
+    
+    _audioImage = [UIImage imageNamed:@"audio_message@2x"];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -83,7 +104,25 @@ static NSString *ToStikyBee = nil;
     [super viewWillAppear:animated];
     
     
+    [self.tabBarController.tabBar setHidden:YES];
     
+    _profileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(290, 2, 36, 36)];
+    _profileImageView.image = [UIImage imageNamed:@"Default_profile_small@2x"];
+    _profileImageView.layer.cornerRadius = 18;
+    _profileImageView.layer.masksToBounds = YES;
+    
+    [self.navigationController.navigationBar addSubview:_profileImageView];
+    
+}
+
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [_profileImageView removeFromSuperview];
+    
+    [super viewWillDisappear:animated];
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,7 +143,18 @@ static NSString *ToStikyBee = nil;
     
 }
 
-
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.text.length > 0)
+    {
+        self.inputToolbar.contentView.rightBarButtonItem = _sendButton;
+    }
+    else
+    {
+        self.inputToolbar.contentView.rightBarButtonItem = _pttButton;
+        self.inputToolbar.contentView.rightBarButtonItem.enabled = YES;
+    }
+}
 
 #pragma mark - JSQMessageViewController method overrides
 
@@ -431,6 +481,27 @@ static NSString *ToStikyBee = nil;
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapCellAtIndexPath:(NSIndexPath *)indexPath touchLocation:(CGPoint)touchLocation
 {
     NSLog(@"Tapped cell at %@!", NSStringFromCGPoint(touchLocation));
+}
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        return;
+    }
+    
+    switch (buttonIndex) {
+        case 0:
+            break;
+        case 1:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 

@@ -12,7 +12,7 @@
 #import "ChatData.h"
 
 
-@interface ChatMessagesViewController : JSQMessagesViewController
+@interface ChatMessagesViewController : JSQMessagesViewController <UIActionSheetDelegate>
 
 
 @property (strong, nonatomic) ChatData *chatData;
