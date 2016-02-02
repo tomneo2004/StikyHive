@@ -385,6 +385,9 @@
 		CE83C78F1C3B731700753B80 /* EducationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C78E1C3B731700753B80 /* EducationCell.m */; };
 		CE83C7921C3B999D00753B80 /* EditEducationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C7911C3B999D00753B80 /* EditEducationTableViewController.m */; };
 		CE83C7951C3BAC8900753B80 /* OtherInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C7941C3BAC8900753B80 /* OtherInfoViewController.m */; };
+		CE8526141C6056D100A9A480 /* AudioRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8526101C6056D100A9A480 /* AudioRecorderViewController.m */; };
+		CE8526151C6056D100A9A480 /* AudioRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8526111C6056D100A9A480 /* AudioRecorderViewController.xib */; };
+		CE8526161C6056D100A9A480 /* AudioRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8526131C6056D100A9A480 /* AudioRecordManager.m */; };
 		CE9029C81C44B1BA00FDAA4D /* EmptyEducationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9029C71C44B1BA00FDAA4D /* EmptyEducationView.m */; };
 		CE9029CA1C44B1DB00FDAA4D /* EmptyEducationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9029C91C44B1DB00FDAA4D /* EmptyEducationView.xib */; };
 		CE9054D21C17CB9300144078 /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9054D11C17CB9300144078 /* OverlayViewController.m */; };
@@ -993,6 +996,11 @@
 		CE83C7911C3B999D00753B80 /* EditEducationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditEducationTableViewController.m; sourceTree = "<group>"; };
 		CE83C7931C3BAC8900753B80 /* OtherInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherInfoViewController.h; sourceTree = "<group>"; };
 		CE83C7941C3BAC8900753B80 /* OtherInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherInfoViewController.m; sourceTree = "<group>"; };
+		CE85260F1C6056D100A9A480 /* AudioRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecorderViewController.h; sourceTree = "<group>"; };
+		CE8526101C6056D100A9A480 /* AudioRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecorderViewController.m; sourceTree = "<group>"; };
+		CE8526111C6056D100A9A480 /* AudioRecorderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioRecorderViewController.xib; sourceTree = "<group>"; };
+		CE8526121C6056D100A9A480 /* AudioRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecordManager.h; sourceTree = "<group>"; };
+		CE8526131C6056D100A9A480 /* AudioRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecordManager.m; sourceTree = "<group>"; };
 		CE9029C61C44B1BA00FDAA4D /* EmptyEducationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyEducationView.h; sourceTree = "<group>"; };
 		CE9029C71C44B1BA00FDAA4D /* EmptyEducationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyEducationView.m; sourceTree = "<group>"; };
 		CE9029C91C44B1DB00FDAA4D /* EmptyEducationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyEducationView.xib; sourceTree = "<group>"; };
@@ -1420,6 +1428,7 @@
 			children = (
 				5102A38B1C4789870075116C /* GoogleService-Info.plist */,
 				674D0DBE1B7D916200B5B80D /* QuartzCore.framework */,
+				CE85260E1C6056D100A9A480 /* AudioRecordManager */,
 				5167182C1C1A799E003E9902 /* ZZSSource */,
 				676F77BA1B96F3060084988A /* TOCropViewController */,
 				674D104F1B7DCB5B00B5B80D /* Fonds */,
@@ -2072,6 +2081,18 @@
 			name = Education;
 			sourceTree = "<group>";
 		};
+		CE85260E1C6056D100A9A480 /* AudioRecordManager */ = {
+			isa = PBXGroup;
+			children = (
+				CE85260F1C6056D100A9A480 /* AudioRecorderViewController.h */,
+				CE8526101C6056D100A9A480 /* AudioRecorderViewController.m */,
+				CE8526111C6056D100A9A480 /* AudioRecorderViewController.xib */,
+				CE8526121C6056D100A9A480 /* AudioRecordManager.h */,
+				CE8526131C6056D100A9A480 /* AudioRecordManager.m */,
+			);
+			path = AudioRecordManager;
+			sourceTree = "<group>";
+		};
 		CE9054CF1C17CB6100144078 /* Overlay */ = {
 			isa = PBXGroup;
 			children = (
@@ -2595,6 +2616,7 @@
 				674D0DF91B7D91FC00B5B80D /* Tab_TnC@2x.png in Resources */,
 				674D0E961B7D920E00B5B80D /* test_profile.png in Resources */,
 				674D10611B7DCB6B00B5B80D /* OpenSans-Italic.ttf in Resources */,
+				CE8526151C6056D100A9A480 /* AudioRecorderViewController.xib in Resources */,
 				674D0DF11B7D91FC00B5B80D /* Tab_CrossPollinate@2x.png in Resources */,
 				676767541B81CBD70093F70D /* uicheckbox_checked.png in Resources */,
 				674D0E881B7D920E00B5B80D /* Payment_button_proceed@2x.png in Resources */,
@@ -2790,6 +2812,7 @@
 				CEEDB19D1C118D27009C3DC5 /* SoldInfo.m in Sources */,
 				674D0F631B7D9AD800B5B80D /* UserInfo.m in Sources */,
 				51851C991BB24E35007CFBC2 /* SkillPageViewController.m in Sources */,
+				CE8526161C6056D100A9A480 /* AudioRecordManager.m in Sources */,
 				CEC8A1DA1C2A787300558608 /* MyPostViewController.m in Sources */,
 				5168F2381C0ECE8E0087C0BF /* SellingManager.m in Sources */,
 				CEEDB1901C116899009C3DC5 /* ContactCell.m in Sources */,
@@ -2808,6 +2831,7 @@
 				CEF4641C1BF9D1A700010D21 /* Helper.m in Sources */,
 				CEF7E59B1BF58CB100488C2A /* UrgentRequestCell.m in Sources */,
 				516718E21C1A799E003E9902 /* HRCgUtil.m in Sources */,
+				CE8526141C6056D100A9A480 /* AudioRecorderViewController.m in Sources */,
 				674D0EC01B7D98CA00B5B80D /* UserSkillViewController2.m in Sources */,
 				516718DF1C1A799E003E9902 /* CYRTextView.m in Sources */,
 				516A614E1BC7A47900D4E890 /* PostCommViewController.m in Sources */,
