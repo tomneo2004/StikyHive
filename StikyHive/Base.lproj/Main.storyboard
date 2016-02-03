@@ -1721,7 +1721,7 @@
                                                 <exclude reference="V6w-Fu-6Oc"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="0.0" y="270" width="400" height="150"/>
                                             <mask key="constraints">
                                                 <include reference="V6w-Fu-6Oc"/>
@@ -1770,7 +1770,7 @@
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNy-gJ-UvX">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="320" y="301" width="51" height="31"/>
                                         </variation>
                                         <connections>

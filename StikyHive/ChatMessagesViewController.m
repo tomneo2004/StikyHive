@@ -58,10 +58,15 @@ static NSString *ToStikyBee = nil;
     _chatData = [[ChatData alloc] initWithIncomingAvatarImage:[UIImage imageNamed:@"Default_profile_small@2x"] incomingID:@"" incomingDisplayName:@"" outgoingID:self.senderId outgoingDisplayName:self.senderDisplayName];
     
     
-//    UIBarButtonItem *callButton = [ViewControllerUtil createBarButton:@"button_call_header" onTarget:self withSelector:@selector(callPressedd)];
-//    callButton.imageInsets = UIEdgeInsetsMake(0, -15, 0, 15);
-//    self.navigationItem.rightBarButtonItems = @[callButton];
-//    self.navigationController.navigationBar.topItem.title = @"";
+    
+    
+//    self.showLoadEarlierMessagesHeader = YES;
+    
+    
+    UIBarButtonItem *callButton = [ViewControllerUtil createBarButton:@"button_call_header" onTarget:self withSelector:@selector(callPressedd)];
+    callButton.imageInsets = UIEdgeInsetsMake(0, -15, 0, 15);
+    self.navigationItem.rightBarButtonItems = @[callButton];
+    self.navigationController.navigationBar.topItem.title = @"";
     
     
     /**
@@ -82,6 +87,9 @@ static NSString *ToStikyBee = nil;
     
     
     
+    /*
+     * Show earlier messages url
+     */
     [WebDataInterface selectChatMsgs:@"15AAAAAE" toStikyBee:@"15AAAABX" limit:7 completion:^(NSObject *obj, NSError *err)
      {
         
@@ -103,6 +111,17 @@ static NSString *ToStikyBee = nil;
 {
     [super viewWillAppear:animated];
     
+    // set chat list backgroud
+    UIImageView *background = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    background.image = [UIImage imageNamed:@"chat_bg"];
+    [background setContentMode:UIViewContentModeScaleAspectFill];
+    [background setClipsToBounds:YES];
+    self.collectionView.backgroundView = background;
+    
+    
+    if (self.delegateModal) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(closePressed:)];
+    }
     
     [self.tabBarController.tabBar setHidden:YES];
     
@@ -128,14 +147,11 @@ static NSString *ToStikyBee = nil;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    
-
-    
 }
 
 - (void)closePressed:(UIBarButtonItem *)sender
 {
-    
+    [self.delegateModal didDismissJSQDemoViewController:self];
 }
 
 - (void)customAction:(id)sender
@@ -155,6 +171,8 @@ static NSString *ToStikyBee = nil;
         self.inputToolbar.contentView.rightBarButtonItem.enabled = YES;
     }
 }
+
+
 
 #pragma mark - JSQMessageViewController method overrides
 
@@ -484,6 +502,16 @@ static NSString *ToStikyBee = nil;
 }
 
 
+- (void)didPressAccessoryButton:(UIButton *)sender
+{
+    [self.inputToolbar.contentView.textView resignFirstResponder];
+    
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Send photo",@"Send file",@"Trasaction", nil];
+    
+    [sheet showFromToolbar:self.inputToolbar];
+}
+
+
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == actionSheet.cancelButtonIndex) {
@@ -502,6 +530,10 @@ static NSString *ToStikyBee = nil;
         default:
             break;
     }
+    
+    [JSQSystemSoundPlayer jsq_playMessageSentSound];
+    [self finishSendingMessageAnimated:YES];
+    
 }
 
 

@@ -7,14 +7,22 @@
 //
 
 #import "JSQMessagesViewController.h"
-
 #import "JSQMessages.h"
 #import "ChatData.h"
+
+@class ChatMessagesViewController;
+
+@protocol ChatMessagesViewControllerDelegate <NSObject>
+
+- (void)didDismissJSQDemoViewController:(ChatMessagesViewController *)vc;
+
+@end
+
 
 
 @interface ChatMessagesViewController : JSQMessagesViewController <UIActionSheetDelegate>
 
-
+@property (weak, nonatomic) id<ChatMessagesViewControllerDelegate> delegateModal;
 @property (strong, nonatomic) ChatData *chatData;
 
 
