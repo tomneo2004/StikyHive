@@ -22,6 +22,7 @@
 #import "DistanceSkill.h"
 #import "SearchResultTableViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "ChatMessagesViewController.h"
 
 @interface CrossPollinateViewController ()
 
@@ -536,6 +537,14 @@
 - (void)urgentRequestCellDidTapChat:(UrgentRequestCell *)requestCell{
     
     NSLog(@"urgent on chat");
+    
+    NSIndexPath *indexPath = [_tableView indexPathForCell:requestCell];
+    
+    UrgentRequest *urgentRequest = (UrgentRequest *)[self requestByIndexPath:indexPath];
+    
+    [ChatMessagesViewController setToStikyBee:urgentRequest.stkId];
+    ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
+    [self.navigationController pushViewController:cmvc animated:YES];
 }
 
 - (void)urgentRequestCellDidTapPersonAvatar:(UrgentRequestCell *)requestCell{

@@ -15,6 +15,7 @@
 #import "LocalDataInterface.h"
 #import "ViewControllerUtil.h"
 #import "UserProfileViewController.h"
+#import "ChatMessagesViewController.h"
 
 
 @interface UrgentRequestViewController ()
@@ -164,6 +165,14 @@
 - (void)urgentRequestCellDidTapChat:(UrgentRequestCell *)requestCell{
     
     NSLog(@"urgent on chat");
+    
+    NSIndexPath *indexPath = [_tableView indexPathForCell:requestCell];
+    
+    UrgentRequest *urgentRequest = (UrgentRequest *)[self requestByIndexPath:indexPath];
+    
+    [ChatMessagesViewController setToStikyBee:urgentRequest.stkId];
+    ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
+    [self.navigationController pushViewController:cmvc animated:YES];
 }
 
 - (void)urgentRequestCellDidTapPersonAvatar:(UrgentRequestCell *)requestCell{

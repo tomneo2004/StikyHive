@@ -145,6 +145,13 @@
 
 - (void)onChatTap:(ContactCell *)cell{
     
+     NSInteger index = [_tableView indexPathForCell:cell].row;
+    
+    ContactInfo *info = [_contactInfos objectAtIndex:index];
+    
+    [ChatMessagesViewController setToStikyBee:info.stkId];
+    ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
+    [self.navigationController pushViewController:cmvc animated:YES];
 }
 
 /*
