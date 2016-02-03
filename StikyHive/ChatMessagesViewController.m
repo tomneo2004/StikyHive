@@ -50,7 +50,6 @@ static NSString *ToStikyBee = nil;
     
     
     
-    
     self.senderId = [LocalDataInterface retrieveStkid];
     self.senderDisplayName = @"echo";
     

@@ -11,6 +11,7 @@
 #import "WebDataInterface.h"
 #import "UIView+RNActivityView.h"
 #import "LocalDataInterface.h"
+#import "ChatMessagesViewController.h"
 
 @interface ContactViewController ()
 
