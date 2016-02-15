@@ -17,6 +17,7 @@
 - (void)onPlayClick;
 - (void)onStopPlayingClick;
 - (void)onDismiss;
+- (void)onConfirm;
 
 @end
 
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UIButton *confirmButton;
 
 @property (nonatomic) IBInspectable UIColor *recordingStatColor;
 @property (nonatomic) IBInspectable UIColor *playingStatColor;
