@@ -96,6 +96,7 @@
         _statusLabel.text = @"";
         [_playButton setTitle:@"Play" forState:UIControlStateNormal];
         [_recordButton setEnabled:YES];
+        [_confirmButton setEnabled:YES];
     });
 }
 
