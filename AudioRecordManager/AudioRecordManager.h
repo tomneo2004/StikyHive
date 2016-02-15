@@ -45,6 +45,11 @@
  */
 - (void)recordingViewDismiss;
 
+/**
+ * Call when user click confirm audio
+ */
+- (void)confirmRecordAudioWithFilePath:(NSString *)audioFilePath;
+
 @end
 
 @interface AudioRecordManager : NSObject<EZRecorderDelegate, EZMicrophoneDelegate, AudioRecorderViewDelegate, EZAudioPlayerDelegate>
