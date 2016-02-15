@@ -505,7 +505,7 @@ static NSString *ToStikyBee = nil;
 {
     [self.inputToolbar.contentView.textView resignFirstResponder];
     
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Send photo",@"Send file",@"Trasaction", nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Send photo",@"Send file",@"Trasaction", @"Record audio", nil];
     
     [sheet showFromToolbar:self.inputToolbar];
 }
@@ -525,6 +525,13 @@ static NSString *ToStikyBee = nil;
             
         }
             break;
+        case 3:
+        {
+            //present audio recording view
+            [[AudioRecordManager sharedAudioRecordManagerWithDelegate:self] presentAudioRecorder];
+            
+            return;
+        }
             
         default:
             break;
@@ -535,6 +542,31 @@ static NSString *ToStikyBee = nil;
     
 }
 
+#pragma mark - AudioRecordManager delegate
 
+- (void)beginRecordingAudio{
+    
+    NSLog(@"begin audio recording");
+}
+
+- (void)endRecordingAudioWithFilePath:(NSString *)audioFilePath{
+    
+    NSLog(@"end audio recording, file at %@", audioFilePath);
+}
+
+- (void)beginPlayingAudio{
+    
+    NSLog(@"being playing record audio");
+}
+
+- (void)endPlayingAudio{
+    
+    NSLog(@"end playing record audio");
+}
+
+- (void)recordingViewDismiss{
+    
+    NSLog(@"audio recording view dismiss");
+}
 
 @end
