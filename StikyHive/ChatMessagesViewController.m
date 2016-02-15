@@ -569,4 +569,9 @@ static NSString *ToStikyBee = nil;
     NSLog(@"audio recording view dismiss");
 }
 
+- (void)confirmRecordAudioWithFilePath:(NSString *)audioFilePath{
+    
+    NSLog(@"confirm using recording audio at path %@", audioFilePath);
+}
+
 @end
