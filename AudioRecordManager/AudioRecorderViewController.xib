@@ -101,7 +101,6 @@
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="onConfirm:" destination="-1" eventType="touchUpInside" id="Qsp-of-t9K"/>
-                                <action selector="onRecord:" destination="-1" eventType="touchUpInside" id="Ivr-vr-ysF"/>
                             </connections>
                         </button>
                     </subviews>
