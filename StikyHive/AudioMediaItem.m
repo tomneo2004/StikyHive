@@ -72,7 +72,7 @@
         CGSize size = [self mediaViewDisplaySize];
         BOOL outgoing = self.appliesMediaViewMaskAsOutgoing;
         UIColor *colorBackground = outgoing ?  [UIColor cyanColor] : [UIColor lightGrayColor];
-        UIColor *colorContent = outgoing ? [UIColor whiteColor] : [UIColor grayColor];
+        UIColor *colorContent = outgoing ? [UIColor whiteColor] : [UIColor whiteColor];
         
         UIImage *icon = [[UIImage jsq_defaultPlayImage] jsq_imageMaskedWithColor:colorContent];
         UIImageView *iconView = [[UIImageView alloc] initWithImage:icon];

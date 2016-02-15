@@ -10,6 +10,7 @@
 #import "UserInfo.h"
 #import "LocalDataInterface.h"
 #import "WebDataInterface.h"
+#import "AudioMediaItem.h"
 
 @implementation ChatData
 
@@ -70,7 +71,13 @@
     [self.messages addObject:[JSQMessage messageWithSenderId:_outgoingUserId displayName:_outgoingDisplayName media:item]];
 }
                                 
-                                
+- (void)addAudioMediaMessageWithURL:(NSString *)audioURL withAudioDuration:(NSInteger)duration{
+    
+    NSURL *audioUrl = [NSURL URLWithString:audioURL];
+    AudioMediaItem *item = [[AudioMediaItem alloc] initWithFileURL:audioUrl Duration:[NSNumber numberWithInteger:duration]];
+    JSQMessage *message = [JSQMessage messageWithSenderId:_outgoingUserId displayName:_outgoingDisplayName media:item];
+    [self.messages addObject:message];
+}
                                 
 
 @end

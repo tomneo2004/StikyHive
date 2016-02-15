@@ -572,6 +572,10 @@ static NSString *ToStikyBee = nil;
 - (void)confirmRecordAudioWithFilePath:(NSString *)audioFilePath{
     
     NSLog(@"confirm using recording audio at path %@", audioFilePath);
+    
+    //upload audio to server before you do following code
+    [self.chatData addAudioMediaMessageWithURL:@"https://" withAudioDuration:10];
+    [self finishSendingMessageAnimated:YES];
 }
 
 @end
