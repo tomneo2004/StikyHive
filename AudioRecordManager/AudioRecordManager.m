@@ -298,10 +298,12 @@ static AudioRecordManager *_instance;
 
 - (void)microphone:(EZMicrophone *)microphone hasBufferList:(AudioBufferList *)bufferList withBufferSize:(UInt32)bufferSize withNumberOfChannels:(UInt32)numberOfChannels{
     
-    if (_isRecording)
-    {
-        [_recorder appendDataFromBufferList:bufferList withBufferSize:bufferSize];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (_isRecording)
+        {
+            [_recorder appendDataFromBufferList:bufferList withBufferSize:bufferSize];
+        }
+    });
 }
 
 #pragma mark - EZAudioRecorderDelegate
@@ -322,12 +324,14 @@ static AudioRecordManager *_instance;
     }
     else{
         
-        [self stopRecording];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self stopRecording];
         
-        if([_delegate respondsToSelector:@selector(endRecordingAudioWithFilePath:)]){
+            if([_delegate respondsToSelector:@selector(endRecordingAudioWithFilePath:)]){
             
-            [_delegate endRecordingAudioWithFilePath:[self recordAudioOutputPath]];
-        }
+                [_delegate endRecordingAudioWithFilePath:[self recordAudioOutputPath]];
+            }
+        });
     }
 }
 
@@ -339,15 +343,18 @@ static AudioRecordManager *_instance;
 #pragma mark - EZAudioPlayerDelegate
 - (void)audioPlayer:(EZAudioPlayer *)audioPlayer reachedEndOfAudioFile:(EZAudioFile *)audioFile{
     
-    if(_isPlayingAudio){
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self stopPlayingAudio];
-        
-        if([_delegate respondsToSelector:@selector(endPlayingAudio)]){
+        if(_isPlayingAudio){
             
-            [_delegate endPlayingAudio];
+            [self stopPlayingAudio];
+            
+            if([_delegate respondsToSelector:@selector(endPlayingAudio)]){
+                
+                [_delegate endPlayingAudio];
+            }
         }
-    }
+    });
 }
 
 - (void)audioPlayer:(EZAudioPlayer *)audioPlayer updatedPosition:(SInt64)framePosition inAudioFile:(EZAudioFile *)audioFile{
@@ -369,12 +376,14 @@ static AudioRecordManager *_instance;
     }
     else{
         
-        [self stopPlayingAudio];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self stopPlayingAudio];
         
-        if([_delegate respondsToSelector:@selector(endPlayingAudio)]){
+            if([_delegate respondsToSelector:@selector(endPlayingAudio)]){
             
-            [_delegate endPlayingAudio];
-        }
+                [_delegate endPlayingAudio];
+            }
+        });
     }
 }
 
