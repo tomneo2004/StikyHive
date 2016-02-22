@@ -86,7 +86,6 @@
 -(void)termsTapped
 {
     
-    
    /*
     
     UIAlertView *termsAlert = [[UIAlertView alloc] initWithTitle:@"Terms & Conditions" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];

@@ -192,7 +192,6 @@ static NSString *ToStikyBee = nil;
         self.inputToolbar.contentView.rightBarButtonItem.enabled = YES;
         
         
-        
     }
 }
 

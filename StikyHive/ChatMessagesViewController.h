@@ -29,7 +29,6 @@
 - (void)closePressed:(UIBarButtonItem *)sender;
 
 
-
 + (void)setToStikyBee:(NSString *)toStikyBee;
 
 
