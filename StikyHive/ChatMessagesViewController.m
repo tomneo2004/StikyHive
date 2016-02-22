@@ -512,11 +512,13 @@ static NSString *ToStikyBee = nil;
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == actionSheet.cancelButtonIndex) {
+    if (buttonIndex == actionSheet.cancelButtonIndex)
+    {
         return;
     }
     
-    switch (buttonIndex) {
+    switch (buttonIndex)
+    {
         case 0:
             break;
         case 1:
