@@ -473,6 +473,35 @@ static AudioRecordManager *_instance;
     }
 }
 
+- (void)onConfirm{
+    
+    if([self isRecordAudioExist]){
+        
+        if([_delegate respondsToSelector:@selector(confirmRecordAudioWithFilePath:)]){
+            
+            [_delegate confirmRecordAudioWithFilePath:[self recordAudioOutputPath]];
+        }
+        
+        if(_audioRecorderController)
+        {
+            [_audioRecorderController.audioPlotGL clear];
+            
+            _audioRecorderController = nil;
+        }
+        
+        [[self rootViewController] dismissViewControllerAnimated:YES completion:nil];
+    }
+    else{
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"No record audio can be used" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:defaultAction];
+        
+        [_audioRecorderController presentViewController:alert animated:YES completion:nil];
+    }
+}
+
 - (void)onDismiss{
     
     if(_isRecording){

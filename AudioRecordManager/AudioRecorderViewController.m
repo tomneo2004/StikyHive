@@ -22,6 +22,7 @@
 @synthesize statusLabel = _statusLabel;
 @synthesize recordButton = _recordButton;
 @synthesize playButton = _playButton;
+@synthesize confirmButton = _confirmButton;
 
 @synthesize recordingStatColor = _recordingStatColor;
 @synthesize playingStatColor = _playingStatColor;
@@ -72,6 +73,7 @@
         _statusLabel.text = @"";
         [_recordButton setTitle:@"Record" forState:UIControlStateNormal];
         [_playButton setEnabled:YES];
+        [_confirmButton setEnabled:YES];
     });
 }
 
@@ -94,6 +96,7 @@
         _statusLabel.text = @"";
         [_playButton setTitle:@"Play" forState:UIControlStateNormal];
         [_recordButton setEnabled:YES];
+        [_confirmButton setEnabled:YES];
     });
 }
 
@@ -105,6 +108,8 @@
             
             [_delegate onStopRecordingClick];
         }
+        
+        [_confirmButton setEnabled:YES];
     }
     else{
         
@@ -112,6 +117,8 @@
             
             [_delegate onRecordingClick];
         }
+        
+        [_confirmButton setEnabled:NO];
     }
     
 }
@@ -124,6 +131,8 @@
             
             [_delegate onStopPlayingClick];
         }
+        
+        [_confirmButton setEnabled:YES];
     }
     else{
         
@@ -131,8 +140,18 @@
             
             [_delegate onPlayClick];
         }
+        
+        [_confirmButton setEnabled:NO];
     }
     
+}
+
+- (IBAction)onConfirm:(id)sender{
+    
+    if([_delegate respondsToSelector:@selector(onConfirm)]){
+        
+        [_delegate onConfirm];
+    }
 }
 
 - (IBAction)onDismiss:(id)sender{
