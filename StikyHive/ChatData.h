@@ -38,4 +38,6 @@
 
 - (void)addVideoMediaMessage;
 
+- (void)addAudioMediaMessageWithURL:(NSString *)audioURL withAudioDuration:(NSInteger)duration;
+
 @end
