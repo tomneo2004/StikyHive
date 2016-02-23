@@ -56,6 +56,9 @@ NSString *const SubscriptionTopic = @"/topics/global";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    _registrationKey = @"onRegistrationCompleted";
+    _messageKey = @"onMessageReceived";
+    
     //paypal setup
     [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : PayPal_Production_ClientID, PayPalEnvironmentSandbox : PayPal_Sandbox_ClientID}];
     
@@ -130,8 +133,6 @@ NSString *const SubscriptionTopic = @"/topics/global";
 - (void)startGCMService
 {
     //google cloud --------------------------------------------------------//
-    _registrationKey = @"onRegistrationCompleted";
-    _messageKey = @"onMessageReceived";
     
     NSError* configureError;
     [[GGLContext sharedInstance] configureWithError:&configureError];

@@ -36,6 +36,9 @@
 
 - (JSQMessage *)addPhotoMessage:(UIImage *)image;
 
+//for incoming photo message
+- (JSQMessage *)addIncomingPhotoMessage:(UIImage *)image;
+
 - (void)addVideoMediaMessage;
 
 - (void)addAudioMediaMessageWithURL:(NSString *)audioURL withAudioDuration:(NSInteger)duration;

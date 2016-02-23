@@ -104,6 +104,8 @@ static NSString *ToStikyBee = nil;
     
     _audioImage = [UIImage imageNamed:@"audio_message@2x"];
     
+    //listen to message receive notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:@"onMessageReceived" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -141,6 +143,8 @@ static NSString *ToStikyBee = nil;
     
     [super viewWillDisappear:animated];
     [self.tabBarController.tabBar setHidden:NO];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"onMessageReceived" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -577,6 +581,54 @@ static NSString *ToStikyBee = nil;
     //upload audio to server before you do following code
     [self.chatData addAudioMediaMessageWithURL:@"https://" withAudioDuration:10];
     [self finishSendingMessageAnimated:YES];
+}
+
+#pragma mark - Message receive notification handler
+- (void)receiveMessage:(NSNotification *)notification{
+    
+    //make sure message is send from the right person
+    if([notification.userInfo[@"recipientStkid"] isEqualToString:ToStikyBee]){
+        
+        [self processMessage:notification.userInfo];
+    }
+}
+
+#pragma mark - Process message
+- (void)processMessage:(NSDictionary *)dic{
+    
+    if([dic[@"message"] isEqualToString:@"null"]){ //make offer
+        
+        NSLog(@"sender make offer");
+    }
+    else if((dic[@"fileName"] != nil) && ([dic[@"message"] rangeOfString:@"<img"].location != NSNotFound) && ([dic[@"msg"] rangeOfString:@"Image"].location != NSNotFound)){//image
+        
+        NSLog(@"sender send Image");
+        
+        NSString *urlStr = [WebDataInterface getFullUrlPath:dic[@"fileName"]];
+        urlStr = [urlStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+        NSURL *imageURL = [NSURL URLWithString:urlStr];
+        UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageURL]];
+        
+        [_chatData addIncomingPhotoMessage:img];
+        
+        [self scrollToBottomAnimated:YES];
+        [self.collectionView reloadData];
+    }
+    else if((dic[@"fileName"] != nil) && ([dic[@"message"] rangeOfString:@"<img"].location != NSNotFound) && ([dic[@"msg"] rangeOfString:@"Voice"].location != NSNotFound)){
+        
+        NSLog(@"sender send audio");
+    }
+    else{
+        
+        //text
+        JSQMessage *textMsg = [[JSQMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:dic[@"msg"]];
+        
+        [_chatData.messages addObject:textMsg];
+        
+        [self scrollToBottomAnimated:YES];
+        [self.collectionView reloadData];
+    }
+    
 }
 
 @end

@@ -63,6 +63,16 @@
     return photoMessage;
 }
 
+- (JSQMessage *)addIncomingPhotoMessage:(UIImage *)image{
+    
+    JSQPhotoMediaItem *photo = [[JSQPhotoMediaItem alloc] initWithImage:image];
+    [photo setAppliesMediaViewMaskAsOutgoing:NO];
+    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:photo];
+    [self.messages addObject:photoMessage];
+    
+    return photoMessage;
+}
+
 
 - (void)addVideoMediaMessage
 {
