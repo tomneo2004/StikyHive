@@ -19,4 +19,6 @@
  */
 @property (copy, nonatomic) NSString *attachmentPhotoURL;
 
+@property (copy, nonatomic) UIImage *image;
+
 @end

@@ -20,6 +20,7 @@
 
 @synthesize attachmentImageView = _attachmentImageView;
 @synthesize attachmentPhotoURL = _attachmentPhotoURL;
+@synthesize image = _image;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +30,13 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
+    
+    if(_image != nil){
+        
+        [_attachmentImageView setImage:_image];
+        
+        return;
+    }
     
     //if no url then set a default photo
     if(_attachmentPhotoURL == nil || [_attachmentPhotoURL isEqual:[NSNull null]]){

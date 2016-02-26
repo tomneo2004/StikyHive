@@ -27,4 +27,6 @@ pod 'Google/CloudMessaging'
 
 pod 'EZAudio', '~> 1.1.2'
 
-pod 'JSQMessagesViewController' 
+pod 'JSQMessagesViewController'
+
+pod 'AFSoundManager' 

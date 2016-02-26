@@ -11,8 +11,16 @@
 #import <CoreLocation/CoreLocation.h>
 #import "JSQMessages.h"
 
+@protocol ChatDataDelegate <NSObject>
+
+@optional
+- (void)onReceivePhotoReadyToPresent;
+
+@end
+
 @interface ChatData : NSObject
 
+@property (weak, nonatomic) id<ChatDataDelegate> delegate;
 
 @property (strong, nonatomic) NSMutableArray *messages;
 
@@ -37,10 +45,12 @@
 - (JSQMessage *)addPhotoMessage:(UIImage *)image;
 
 //for incoming photo message
-- (JSQMessage *)addIncomingPhotoMessage:(UIImage *)image;
+- (JSQMessage *)addIncomingPhotoMessage:(NSString *)imageURL;
 
 - (void)addVideoMediaMessage;
 
 - (void)addAudioMediaMessageWithURL:(NSString *)audioURL withAudioDuration:(NSInteger)duration;
+
+- (void)addIncomingAudioMediaMessage:(NSString *)audioURL;
 
 @end
