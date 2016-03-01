@@ -95,7 +95,7 @@
     
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     op.responseSerializer = [AFImageResponseSerializer serializer];
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [item setImage:responseObject];
         
@@ -106,7 +106,7 @@
         
         [_imgDownloadQueue removeObject:operation];
         
-    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError * error) {
         
         [_imgDownloadQueue removeObject:operation];
     }];

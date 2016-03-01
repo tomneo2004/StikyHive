@@ -13,6 +13,9 @@
 #import "ViewControllerUtil.h"
 #import <Google/CloudMessaging.h>
 
+#import "AttachmentViewController.h"
+#import "AudioMediaItem.h"
+
 #import "ViewControllerUtil.h"
 
 
@@ -83,7 +86,7 @@ static NSString *profilePic = nil;
    
     _chatData = [[ChatData alloc] initWithIncomingAvatarImage:profileImage incomingID:ToStikyBee incomingDisplayName:fullName outgoingID:self.senderId outgoingDisplayName:self.senderDisplayName];
     
-    
+    _chatData.delegate = self;
     
     
 //    self.showLoadEarlierMessagesHeader = YES;
@@ -152,6 +155,9 @@ static NSString *profilePic = nil;
     
     _audioImage = [UIImage imageNamed:@"audio_message@2x"];
     
+    //listen to message receive notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:@"onMessageReceived" object:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -189,6 +195,9 @@ static NSString *profilePic = nil;
     
     [super viewWillDisappear:animated];
     [self.tabBarController.tabBar setHidden:NO];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"onMessageReceived" object:nil];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -598,6 +607,48 @@ static NSString *profilePic = nil;
 //        }
 //    }
     NSLog(@"tapped message bubble");
+    
+    JSQMessage *msg = [_chatData.messages objectAtIndex:indexPath.row];
+    
+    if(msg.media != nil){
+        
+        if([msg.media isKindOfClass:[JSQPhotoMediaItem class]]){
+            
+            JSQPhotoMediaItem *pItem = (JSQPhotoMediaItem *)msg.media;
+            
+            AttachmentViewController *controller = (AttachmentViewController *)[ViewControllerUtil instantiateViewController:@"AttachmentViewController"];
+            controller.image = pItem.image;
+            
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+        else if([msg.media isKindOfClass:[AudioMediaItem class]]){
+            
+            AudioMediaItem *aItem = (AudioMediaItem *)msg.media;
+            
+            /*
+             _mPlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://download.wavetlan.com/SVV/Media/HTTP/3GP/QuickTime/Quicktime_test6_3GPv6_H264_24bit_320x240_AR1.33_24fps_KF1in30_32kbps_AAC-LC_Stereo_44100Hz_64kbps.3gp"]];
+             
+             [_mPlayer setFullscreen:YES animated:YES];
+             _mPlayer.movieSourceType = MPMovieSourceTypeFile;
+             _mPlayer.controlStyle = MPMovieControlStyleFullscreen;
+             [_mPlayer prepareToPlay];
+             [_mPlayer.view setFrame:self.view.bounds];
+             */
+            
+            //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieFinishedCallback:) name:MPMoviePlayerPlaybackDidFinishNotification object:_mPlayer];
+            
+            //[self.view addSubview:_mPlayer.view];
+            //[_mPlayer play];
+            
+            /*
+             _mPlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:@"http://download.wavetlan.com/SVV/Media/HTTP/3GP/QuickTime/Quicktime_test6_3GPv6_H264_24bit_320x240_AR1.33_24fps_KF1in30_32kbps_AAC-LC_Stereo_44100Hz_64kbps.3gp"]];
+             [self presentMoviePlayerViewControllerAnimated:_mPlayer];
+             [_mPlayer.moviePlayer play];
+             */
+            
+            [aItem playAudio];
+        }
+    }
 }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapCellAtIndexPath:(NSIndexPath *)indexPath touchLocation:(CGPoint)touchLocation
@@ -684,5 +735,85 @@ static NSString *profilePic = nil;
     [self.chatData addAudioMediaMessageWithURL:@"https://" withAudioDuration:10];
     [self finishSendingMessageAnimated:YES];
 }
+
+#pragma mark - Message receive notification handler
+- (void)receiveMessage:(NSNotification *)notification{
+    
+    //make sure message is send from the right person
+    if([notification.userInfo[@"recipientStkid"] isEqualToString:ToStikyBee]){
+        
+        [self processMessage:notification.userInfo];
+    }
+}
+
+#pragma mark - Process message
+- (void)processMessage:(NSDictionary *)dic{
+    
+    if([dic[@"message"] isEqualToString:@"null"]){ //make offer
+        
+        NSLog(@"sender make offer");
+    }
+    else if((dic[@"fileName"] != nil) && ([dic[@"message"] rangeOfString:@"<img"].location != NSNotFound) && ([dic[@"msg"] rangeOfString:@"Image"].location != NSNotFound)){//image
+        
+        NSLog(@"sender send Image");
+        
+        NSString *urlStr = [WebDataInterface getFullUrlPath:dic[@"fileName"]];
+        urlStr = [urlStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+        /*
+         NSURL *imageURL = [NSURL URLWithString:urlStr];
+         UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageURL]];
+         */
+        
+        [_chatData addIncomingPhotoMessage:urlStr];
+        
+        [self scrollToBottomAnimated:YES];
+        [self.collectionView reloadData];
+    }
+    else if((dic[@"fileName"] != nil) && ([dic[@"message"] rangeOfString:@"<img"].location != NSNotFound) && ([dic[@"msg"] rangeOfString:@"Voice"].location != NSNotFound)){
+        
+        NSLog(@"sender send audio");
+        
+        NSString *urlStr = [WebDataInterface getFullUrlPath:dic[@"fileName"]];
+        urlStr = [urlStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+        
+        [_chatData addIncomingAudioMediaMessage:urlStr];
+        
+        [self scrollToBottomAnimated:YES];
+        [self.collectionView reloadData];
+    }
+    else{
+        
+        //text
+        JSQMessage *textMsg = [[JSQMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:dic[@"msg"]];
+        
+        [_chatData.messages addObject:textMsg];
+        
+        [self scrollToBottomAnimated:YES];
+        [self.collectionView reloadData];
+    }
+    
+}
+
+#pragma mark - ChatData delegate
+- (void)onReceivePhotoReadyToPresent{
+    
+    [self scrollToBottomAnimated:YES];
+    [self.collectionView reloadData];
+}
+
+//#pragma mark - MPMoviePlayerController notification handler
+//-(void) movieFinishedCallback:(NSNotification*)notification{
+//    
+//    MPMoviePlayerController *player = [notification object];
+//    
+//    [player.view removeFromSuperview];
+//    
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+//    
+//    _mPlayer = nil;
+//}
+
+
+
 
 @end
