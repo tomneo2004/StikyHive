@@ -45,15 +45,16 @@ typedef enum{
         
         _cStatus = APrepare;
         
-        //_fileURL = [fileURL copy];
+        _fileURL = [fileURL copy];
         //NSString *path = [[NSBundle mainBundle] pathForResource:@"Zedd-Stay-The-Night-ft.-Hayley-Williams" ofType:@"3gp"];
         
-        
+        /*
         int r = arc4random_uniform(3);
         if(r==0)
             _fileURL = [NSURL URLWithString:@"http://download.wavetlan.com/SVV/Media/HTTP/3GP/HelixMobileProducer/HelixMobileProducer_test5_3GPv5_MPEG4SP_24bit_176x144_AR1.22_30fps_KFx_320kbps_AAC-LC_Mono_11025Hz_24kbps.3gp"];
         else
             _fileURL = [NSURL URLWithString:@"http://download.wavetlan.com/SVV/Media/HTTP/3GP/Variable/3GP_AAC_48kbps_H263_208kbps_25fps_QCIF.3gp"];
+        */
         
         _duration = duration;
         _cachedAudioImageView = nil;
@@ -106,6 +107,7 @@ typedef enum{
     _downloadOp.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
     
     __weak typeof(self) weakSelf = self;
+    __block typeof (AFSoundItem *) playerItem;
     [_downloadOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Successfully downloaded file to %@", path);
         
@@ -113,8 +115,10 @@ typedef enum{
         
             _cStatus = AReady;
             _playerItem = [[AFSoundItem alloc] initWithDocFile:_filePath];
+            playerItem = _playerItem;
             [weakSelf updateIndicator];
-            
+            __attribute__((unused)) AFSoundPlayback *playback = [[AFSoundPlayback alloc] initWithItem:playerItem];
+            [weakSelf updateTimeLabelWithDuration:[NSNumber numberWithInteger:playerItem.duration]];
         });
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
