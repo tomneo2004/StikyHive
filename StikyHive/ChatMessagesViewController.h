@@ -10,6 +10,8 @@
 #import "JSQMessages.h"
 #import "ChatData.h"
 #import "AudioRecordManager.h"
+#import <MediaPlayer/MediaPlayer.h>
+
 
 @class ChatMessagesViewController;
 
@@ -21,7 +23,7 @@
 
 
 
-@interface ChatMessagesViewController : JSQMessagesViewController <UIActionSheetDelegate, AudioRecordManagerDelegate>
+@interface ChatMessagesViewController : JSQMessagesViewController <UIActionSheetDelegate, AudioRecordManagerDelegate, ChatDataDelegate>
 
 @property (weak, nonatomic) id<ChatMessagesViewControllerDelegate> delegateModal;
 @property (strong, nonatomic) ChatData *chatData;

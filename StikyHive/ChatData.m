@@ -11,6 +11,13 @@
 #import "LocalDataInterface.h"
 #import "WebDataInterface.h"
 #import "AudioMediaItem.h"
+#import "AFNetworking.h"
+
+@interface ChatData ()
+
+@property (strong, nonatomic) NSMutableArray *imgDownloadQueue;
+
+@end
 
 @implementation ChatData
 
@@ -47,7 +54,7 @@
         _outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:blue];
         _incomingBubbleImageData = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor whiteColor]];
         
-        
+        _imgDownloadQueue = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -61,6 +68,51 @@
     [self.messages addObject:photoMessage];
     
     return photoMessage;
+}
+
+- (JSQMessage *)addIncomingPhotoMessage:(NSString *)imageURL{
+    
+    /*
+    JSQPhotoMediaItem *photo = [[JSQPhotoMediaItem alloc] initWithImage:image];
+    [photo setAppliesMediaViewMaskAsOutgoing:NO];
+    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:photo];
+    [self.messages addObject:photoMessage];
+    
+    return photoMessage;
+     */
+    
+    JSQPhotoMediaItem *photo = [[JSQPhotoMediaItem alloc] initWithImage:nil];
+    [photo setAppliesMediaViewMaskAsOutgoing:NO];
+    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:photo];
+    [self.messages addObject:photoMessage];
+    
+    [self startDownloadImageWithPhotoItem:photo WithURL:imageURL];
+    
+    return photoMessage;
+}
+
+- (void)startDownloadImageWithPhotoItem:(JSQPhotoMediaItem *)item WithURL:(NSString *)url{
+    
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    op.responseSerializer = [AFImageResponseSerializer serializer];
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        
+        [item setImage:responseObject];
+        
+        if([_delegate respondsToSelector:@selector(onReceivePhotoReadyToPresent)]){
+            
+            [_delegate onReceivePhotoReadyToPresent];
+        }
+        
+        [_imgDownloadQueue removeObject:operation];
+        
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        
+        [_imgDownloadQueue removeObject:operation];
+    }];
+    
+    [_imgDownloadQueue addObject:op];
+    [op start];
 }
 
 
@@ -77,6 +129,17 @@
     AudioMediaItem *item = [[AudioMediaItem alloc] initWithFileURL:audioUrl Duration:[NSNumber numberWithInteger:duration]];
     JSQMessage *message = [JSQMessage messageWithSenderId:_outgoingUserId displayName:_outgoingDisplayName media:item];
     [self.messages addObject:message];
+}
+
+- (void)addIncomingAudioMediaMessage:(NSString *)audioURL{
+    
+    NSURL *audioUrl = [NSURL URLWithString:audioURL];
+    
+    AudioMediaItem *item = [[AudioMediaItem alloc] initWithFileURL:audioUrl Duration:[NSNumber numberWithInteger:0]];
+    [item setAppliesMediaViewMaskAsOutgoing:NO];
+    JSQMessage *message = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:item];
+    [self.messages addObject:message];
+    
 }
                                 
 
