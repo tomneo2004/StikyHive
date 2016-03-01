@@ -73,7 +73,9 @@ NSString *const SubscriptionTopic = @"/topics/global";
     
     [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
     
+    [self startGCMService];
     
+    //end
     
 //    return YES;
     return [[FBSDKApplicationDelegate sharedInstance] application:application
@@ -95,7 +97,27 @@ NSString *const SubscriptionTopic = @"/topics/global";
                                                       options:_registrationOptions
                                                       handler:_registrationHandler];
     
+    /*
+     *
+     */
+//    GCMConfig *config = [GCMConfig defaultConfig];
+//    config.logLevel = kGCMLogLevelDebug;
+//    config.receiverDelegate = [[GCMReceiver alloc] init];
+//    [config.receiverDelegate] =
+    
 }
+
+// [START receive_apns_token_error]
+- (void)application:(UIApplication *)application
+didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Registration for remote notification failed with error: %@", error.localizedDescription);
+    // [END receive_apns_token_error]
+    NSDictionary *userInfo = @{@"error" :error.localizedDescription};
+    [[NSNotificationCenter defaultCenter] postNotificationName:_registrationKey
+                                                        object:nil
+                                                      userInfo:userInfo];
+}
+
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
@@ -104,6 +126,7 @@ NSString *const SubscriptionTopic = @"/topics/global";
     // This works only if the app started the GCM service
     [[GCMService sharedInstance] appDidReceiveMessage:userInfo];
     // Handle the received message
+    
     // [START_EXCLUDE]
     [[NSNotificationCenter defaultCenter] postNotificationName:_messageKey
                                                         object:nil
@@ -138,6 +161,7 @@ NSString *const SubscriptionTopic = @"/topics/global";
     NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
     
     _gcmSenderID = [[[GGLContext sharedInstance] configuration] gcmSenderID];
+    NSLog(@"gcg sender id ---- %@",_gcmSenderID);
     
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1)
     {
@@ -148,6 +172,8 @@ NSString *const SubscriptionTopic = @"/topics/global";
     }
     else
     {
+        // iOS 8 or later
+        // [END_EXCLUDE]
         
         UIUserNotificationType allNotificationTypes =
         (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
@@ -157,6 +183,8 @@ NSString *const SubscriptionTopic = @"/topics/global";
         [[UIApplication sharedApplication] registerForRemoteNotifications];
         
     }
+    // [END register_for_remote_notifications]
+    // [START start_gcm_service]
     
     GCMConfig *gcmConfig = [GCMConfig defaultConfig];
     gcmConfig.receiverDelegate = self;
@@ -170,6 +198,13 @@ NSString *const SubscriptionTopic = @"/topics/global";
         {
             weakSelf.registrationToken = registrationToken;
             NSLog(@"Registration Token: %@", registrationToken);
+            [weakSelf subscribeToTopic];
+            NSDictionary *userInfo = @{@"registrationToken":registrationToken};
+            [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
+                                                                object:nil
+                                                              userInfo:userInfo];
+
+            
             
             [WebDataInterface updateToken:[LocalDataInterface retrieveStkid] token:weakSelf.registrationToken completion:^(NSObject *obj, NSError *err) {
                 
@@ -180,10 +215,10 @@ NSString *const SubscriptionTopic = @"/topics/global";
                         
                         NSLog(@"update token success !!!!!!!!!--- %@",dict[@"status"]);
                         //            [weakSelf subscribeToTopic];
-                        NSDictionary *userInfo = @{@"registrationToken":registrationToken};
-                        [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
-                                                                            object:nil
-                                                                          userInfo:userInfo];
+//                        NSDictionary *userInfo = @{@"registrationToken":registrationToken};
+//                        [[NSNotificationCenter defaultCenter] postNotificationName:weakSelf.registrationKey
+//                                                                            object:nil
+//                                                                          userInfo:userInfo];
                         
                         NSLog(@"user info --- %@",userInfo);
                     }
@@ -195,6 +230,8 @@ NSString *const SubscriptionTopic = @"/topics/global";
 
                 });
             }];
+            
+            
             
         }
         else
@@ -210,30 +247,30 @@ NSString *const SubscriptionTopic = @"/topics/global";
 
 
 
-//- (void)subscribeToTopic {
-//    // If the app has a registration token and is connected to GCM, proceed to subscribe to the
-//    // topic
-//    if (_registrationToken && _connectedToGCM) {
-//        [[GCMPubSub sharedInstance] subscribeWithToken:_registrationToken
-//                                                 topic:SubscriptionTopic
-//                                               options:nil
-//                                               handler:^(NSError *error) {
-//                                                   if (error) {
-//                                                       // Treat the "already subscribed" error more gently
-//                                                       if (error.code == 3001) {
-//                                                           NSLog(@"Already subscribed to %@",
-//                                                                 SubscriptionTopic);
-//                                                       } else {
-//                                                           NSLog(@"Subscription failed: %@",
-//                                                                 error.localizedDescription);
-//                                                       }
-//                                                   } else {
-//                                                       self.subscribedToTopic = true;
-//                                                       NSLog(@"Subscribed to %@", SubscriptionTopic);
-//                                                   }
-//                                               }];
-//    }
-//}
+- (void)subscribeToTopic {
+    // If the app has a registration token and is connected to GCM, proceed to subscribe to the
+    // topic
+    if (_registrationToken && _connectedToGCM) {
+        [[GCMPubSub sharedInstance] subscribeWithToken:_registrationToken
+                                                 topic:SubscriptionTopic
+                                               options:nil
+                                               handler:^(NSError *error) {
+                                                   if (error) {
+                                                       // Treat the "already subscribed" error more gently
+                                                       if (error.code == 3001) {
+                                                           NSLog(@"Already subscribed to %@",
+                                                                 SubscriptionTopic);
+                                                       } else {
+                                                           NSLog(@"Subscription failed: %@",
+                                                                 error.localizedDescription);
+                                                       }
+                                                   } else {
+                                                       self.subscribedToTopic = true;
+                                                       NSLog(@"Subscribed to %@", SubscriptionTopic);
+                                                   }
+                                               }];
+    }
+}
 
 - (void)onTokenRefresh
 {
@@ -245,16 +282,44 @@ NSString *const SubscriptionTopic = @"/topics/global";
 }
 
 
+// [START upstream_callbacks]
+- (void)willSendDataMessageWithID:(NSString *)messageID error:(NSError *)error {
+    if (error) {
+        // Failed to send the message.
+        NSLog(@"error send msg --- %@",error);
+    } else {
+        // Will send message, you can save the messageID to track the message
+        NSLog(@"will send data message with id");
+        
+    }
+}
+
+
+- (void)didSendDataMessageWithID:(NSString *)messageID {
+    // Did successfully send message identified by messageID
+    
+    NSLog(@"did successfully send msg identified by messageid --- %@",messageID);
+}
+// [END upstream_callbacks]
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
+// [START disconnect_gcm_service]
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    [[GCMService sharedInstance] disconnect];
+    // [START_EXCLUDE]
+    _connectedToGCM = NO;
+    // [END_EXCLUDE]
 }
+// [END disconnect_gcm_service]
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
@@ -276,7 +341,7 @@ NSString *const SubscriptionTopic = @"/topics/global";
             _connectedToGCM = true;
             NSLog(@"Connected to GCM");
             // [START_EXCLUDE]
-//            [self subscribeToTopic];
+            [self subscribeToTopic];
             // [END_EXCLUDE]
         }
     }];

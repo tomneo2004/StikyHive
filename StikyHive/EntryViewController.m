@@ -252,8 +252,10 @@
                 [LocalDataInterface storeNameOfUser:name];
                 
                 
-                // start GCM service ------------- //
-                [(AppDelegate *)[UIApplication sharedApplication].delegate startGCMService];
+                /* start GCM service ------------- 
+                 *
+                 */
+//                [(AppDelegate *)[UIApplication sharedApplication].delegate startGCMService];
                 
                 
                 

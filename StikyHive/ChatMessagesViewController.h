@@ -31,6 +31,6 @@
 
 
 + (void)setToStikyBee:(NSString *)toStikyBee;
-
++ (void)setToStikyBeeInfoArray:(NSArray *)toStikyBeeArray;
 
 @end

@@ -324,7 +324,8 @@
 #define POST_PARAMETER_TOKEN            @"token"
 #define POST_PARAMETER_FROM_STIKY_BEE   @"fromStikyBee"
 #define POST_PARAMETER_TO_STIKY_BEE     @"toStikyBee"
-
+#define POST_PARAMETER_SENDER_ID        @"senderId"
+#define POST_PARAMETER_RECIPIENT_ID     @"recipientId"
 
 
 
@@ -455,6 +456,9 @@
 + (void)checkLastMessage:(NSString *)fromStikyBee completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)selectChatMsgs:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)selectToken:(NSString *)senderId recipientId:(NSString *)recipientId completion:(void (^)(NSObject *, NSError *))completion;
+
 
 
 

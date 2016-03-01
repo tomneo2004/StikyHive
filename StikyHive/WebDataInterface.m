@@ -571,6 +571,14 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     
 }
 
++ (void)selectToken:(NSString *)senderId recipientId:(NSString *)recipientId completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_SENDER_ID:senderId,
+                             POST_PARAMETER_RECIPIENT_ID:recipientId};
+    [self requestData:DATA_URL_SELECT_TOKEN withParameters:params completion:completion];
+}
+
+
 
 
 

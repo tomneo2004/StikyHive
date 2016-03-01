@@ -140,8 +140,13 @@
 {
 //    NSDictionary *dict = _contactsList[indexPath.row][@"toStikyBee"];
     
-    NSString *toStikyBee = _contactsList[indexPath.row][@"toStikyBee"];
-    [self showChatMessagesView:toStikyBee];
+    NSString *toStikyBee = _contactsList[indexPath.row][@"chatStkid"];
+    
+    NSString *fullName = [NSString stringWithFormat:@"%@ %@",_contactsList[indexPath.row][@"firstname"],_contactsList[indexPath.row][@"lastname"]];
+    
+    NSArray *beeInfo = [NSArray arrayWithObjects:_contactsList[indexPath.row][@"chatStkid"],fullName,_contactsList[indexPath.row][@"profilePicture"], nil];
+    
+    [self showChatMessagesView:toStikyBee infoArray:beeInfo];
     //    chat_messages_view_controller
     
 //    ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
@@ -153,9 +158,14 @@
 
 }
 
-- (void)showChatMessagesView:(NSString *)userID
+- (void)showChatMessagesView:(NSString *)userID infoArray:(NSArray *)infoArray
 {
     [ChatMessagesViewController setToStikyBee:userID];
+    
+    
+    
+    [ChatMessagesViewController setToStikyBeeInfoArray:infoArray];
+    
     ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
     [self.navigationController pushViewController:cmvc animated:YES];
     

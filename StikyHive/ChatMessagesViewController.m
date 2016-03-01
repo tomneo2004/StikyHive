@@ -11,7 +11,9 @@
 #import "WebDataInterface.h"
 #import "LocalDataInterface.h"
 #import "ViewControllerUtil.h"
+#import <Google/CloudMessaging.h>
 
+#import "ViewControllerUtil.h"
 
 
 @interface ChatMessagesViewController ()
@@ -26,6 +28,7 @@
 @property (nonatomic, strong) UILabel *pttInfoLabel;
 @property (nonatomic, strong) UILabel *pttTimeLabel;
 
+@property (nonatomic, assign) NSInteger messagesSent;
 
 
 @end
@@ -33,6 +36,10 @@
 @implementation ChatMessagesViewController
 
 static NSString *ToStikyBee = nil;
+static NSString *recipientID = nil;
+static NSString *senderID = nil;
+static NSString *fullName = nil;
+static NSString *profilePic = nil;
 
 + (void)setToStikyBee:(NSString *)toStikyBee
 {
@@ -41,6 +48,16 @@ static NSString *ToStikyBee = nil;
     
 }
 
++ (void)setToStikyBeeInfoArray:(NSArray *)toStikyBeeArray
+{
+    
+    NSLog(@"info array ---- %@",toStikyBeeArray);
+    ToStikyBee = toStikyBeeArray[0];
+    NSLog(@"to stiky bee ---- %@",ToStikyBee);
+    fullName = toStikyBeeArray[1];
+    profilePic = [WebDataInterface getFullUrlPath:toStikyBeeArray[2]];
+    
+}
 
 
 - (void)viewDidLoad
@@ -48,13 +65,23 @@ static NSString *ToStikyBee = nil;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    if (fullName != nil) {
+        self.title = fullName;
+    }
     
     self.senderId = [LocalDataInterface retrieveStkid];
-    self.senderDisplayName = @"echo";
+    
+    self.senderDisplayName = [LocalDataInterface retrieveUsername];
+    
+    
+    UIImage *profileImage = [UIImage imageNamed:@"Default_profile_small@2x"];
+    if (profilePic != nil)
+    {
+        profileImage = [ViewControllerUtil getImageWithPath:profilePic];
+    }
     
    
-    _chatData = [[ChatData alloc] initWithIncomingAvatarImage:[UIImage imageNamed:@"Default_profile_small@2x"] incomingID:@"" incomingDisplayName:@"" outgoingID:self.senderId outgoingDisplayName:self.senderDisplayName];
+    _chatData = [[ChatData alloc] initWithIncomingAvatarImage:profileImage incomingID:ToStikyBee incomingDisplayName:fullName outgoingID:self.senderId outgoingDisplayName:self.senderDisplayName];
     
     
     
@@ -85,18 +112,39 @@ static NSString *ToStikyBee = nil;
     self.inputToolbar.contentView.rightBarButtonItem.enabled = YES;
     
     
+    NSLog(@"my stikid ---- %@",[LocalDataInterface retrieveStkid]);
+    NSLog(@"to stiky bee -- %@",ToStikyBee);
+    [WebDataInterface selectToken:[LocalDataInterface retrieveStkid] recipientId:ToStikyBee completion:^(NSObject *obj, NSError *err) {
+        
+        NSLog(@"token info ---- %@",obj);
+        
+        NSDictionary *dict = (NSDictionary *)obj;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (dict && [dict[@"status"] isEqualToString:@"success"])
+            {
+                recipientID = dict[@"recipientId"][@"deviceToken"];
+                
+                NSLog(@"recipeint id token --- %@",recipientID);
+                senderID = dict[@"senderId"][@"deviceToken"];
+                NSLog(@"recipientid ---- %@",senderID);
+            }
+            
+        });
+    }];
     
     /*
      * Show earlier messages url
      */
-    [WebDataInterface selectChatMsgs:@"15AAAAAE" toStikyBee:@"15AAAABX" limit:7 completion:^(NSObject *obj, NSError *err)
-     {
-        
-         NSLog(@"chat obj--- %@",obj);
-         
-         
-     }];
-    
+//    [WebDataInterface selectChatMsgs:@"15AAAAAE" toStikyBee:@"15AAAABX" limit:7 completion:^(NSObject *obj, NSError *err)
+//     {
+//        
+//         NSLog(@"chat obj--- %@",obj);
+//         
+//         
+//     }];
+//    
     
     
     
@@ -172,7 +220,6 @@ static NSString *ToStikyBee = nil;
 }
 
 
-
 #pragma mark - JSQMessageViewController method overrides
 
 - (void)didPressSendButton:(UIButton *)button withMessageText:(NSString *)text senderId:(NSString *)senderId senderDisplayName:(NSString *)senderDisplayName date:(NSDate *)date
@@ -187,13 +234,72 @@ static NSString *ToStikyBee = nil;
         [self finishSendingMessageAnimated:YES];
         
         
+        // sending message use gcm
+        NSInteger nextMessageID = self.messagesSent++;
+        
+        
+        
+        NSDictionary *data = @{@"fileName":[NSNull null],
+                                   @"msg":text,
+                                   @"offerId":[NSNumber numberWithInteger:0],
+                                   @"offerStatus":[NSNumber numberWithInteger:0],
+                                   @"price":[NSNull null],
+                                   @"rate":[NSNull null],
+                                   @"name":[NSNull null],
+                                   @"message":text,
+                                   @"recipientStkid":ToStikyBee,
+                                   @"chatRecipient":fullName,
+                                   @"chatRecipientUrl":profilePic,
+                                   @"senderToken":senderID,
+                                   @"recipientToken":recipientID};
+        
+        
+        NSLog(@"msg : %@",text);
+        NSLog(@"message : %@",text);
+        NSLog(@"recipientStkid : %@",ToStikyBee);
+        NSLog(@"chatRecipient : %@",fullName);
+        NSLog(@"chatRecipientUrl : %@",profilePic);
+        NSLog(@"senderToken : %@",senderID);
+        NSLog(@"recipientToken : %@",recipientID);
+        
+        //131981869263 ------ sender ID
+        NSLog(@"to-- recipientiD ----- %@",recipientID);
+        NSString *to = [NSString stringWithFormat:@"%@@gcm.googleapis.com",recipientID];
+        
+        [[GCMService sharedInstance] sendMessage:data to:to withId:[NSString stringWithFormat:@"%ld",(long)nextMessageID]];
+        
+        NSLog(@"gcm");
+        NSLog(@"text ----- %@",text);
         
         self.inputToolbar.contentView.rightBarButtonItem = _pttButton;
         self.inputToolbar.contentView.rightBarButtonItem.enabled = YES;
         
+    }
+    else
+    {
         
     }
 }
+
+
+- (void)sendMessage:(NSString *)to
+{
+    // create the request
+    NSString *sendUrl = @"https://android.googleapis.com/gcm/send";
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:sendUrl]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"key=AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk" forHTTPHeaderField:@"Authorization"];
+    [request setTimeoutInterval:60];
+    
+    //prepare the payload
+    
+    
+    
+    
+}
+
 
 #pragma mark - JSQMessages CollectionView DataSource
 
