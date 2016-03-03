@@ -47,6 +47,8 @@
 //for incoming photo message
 - (JSQMessage *)addIncomingPhotoMessage:(NSString *)imageURL;
 
+- (void)addIncomingOfferWithOfferId:(NSInteger)offerId withOfferStatus:(NSInteger)offerStatus withPrice:(double)price withOfferName:(NSString *)offerName withOfferRate:(NSString *)offerRate;
+
 - (void)addVideoMediaMessage;
 
 - (void)addAudioMediaMessageWithURL:(NSString *)audioURL withAudioDuration:(NSInteger)duration;
