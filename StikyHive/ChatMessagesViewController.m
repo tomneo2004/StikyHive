@@ -15,6 +15,7 @@
 
 #import "AttachmentViewController.h"
 #import "AudioMediaItem.h"
+#import "OfferMediaItem.h"
 
 #import "ViewControllerUtil.h"
 
@@ -150,6 +151,8 @@ static NSString *profilePic = nil;
     
     //listen to message receive notification
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:@"onMessageReceived" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferAccept:) name:acceptOfferNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferCancel:) name:cancelOfferNotification object:nil];
     
 }
 
@@ -191,6 +194,8 @@ static NSString *profilePic = nil;
     [self.tabBarController.tabBar setHidden:NO];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"onMessageReceived" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:acceptOfferNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:cancelOfferNotification object:nil];
 
 }
 
@@ -657,29 +662,38 @@ static NSString *profilePic = nil;
             
             AudioMediaItem *aItem = (AudioMediaItem *)msg.media;
             
-            /*
-             _mPlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://download.wavetlan.com/SVV/Media/HTTP/3GP/QuickTime/Quicktime_test6_3GPv6_H264_24bit_320x240_AR1.33_24fps_KF1in30_32kbps_AAC-LC_Stereo_44100Hz_64kbps.3gp"]];
-             
-             [_mPlayer setFullscreen:YES animated:YES];
-             _mPlayer.movieSourceType = MPMovieSourceTypeFile;
-             _mPlayer.controlStyle = MPMovieControlStyleFullscreen;
-             [_mPlayer prepareToPlay];
-             [_mPlayer.view setFrame:self.view.bounds];
-             */
-            
-            //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieFinishedCallback:) name:MPMoviePlayerPlaybackDidFinishNotification object:_mPlayer];
-            
-            //[self.view addSubview:_mPlayer.view];
-            //[_mPlayer play];
-            
-            /*
-             _mPlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:@"http://download.wavetlan.com/SVV/Media/HTTP/3GP/QuickTime/Quicktime_test6_3GPv6_H264_24bit_320x240_AR1.33_24fps_KF1in30_32kbps_AAC-LC_Stereo_44100Hz_64kbps.3gp"]];
-             [self presentMoviePlayerViewControllerAnimated:_mPlayer];
-             [_mPlayer.moviePlayer play];
-             */
-            
             [aItem playAudio];
         }
+        /*
+        else if([msg.media isKindOfClass:[OfferMediaItem class]]){
+            
+            OfferMediaItem *oItem = (OfferMediaItem *)msg.media;
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Offer" message:oItem.fullString preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *acceptAction = [UIAlertAction actionWithTitle:@"Accept" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                //send accept offer
+                NSLog(@"need implement sending accpt offer message");
+            }];
+            
+            UIAlertAction *rejectAction = [UIAlertAction actionWithTitle:@"Reject" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                //send reject offer
+                NSLog(@"need implement sending reject offer message");
+            }];
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                //cancel
+            }];
+            
+            [alertController addAction:acceptAction];
+            [alertController addAction:rejectAction];
+            [alertController addAction:cancelAction];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+         */
     }
 }
 
@@ -768,6 +782,19 @@ static NSString *profilePic = nil;
     [self finishSendingMessageAnimated:YES];
 }
 
+#pragma mark - OfferMediaItem notification handler
+- (void)onOfferAccept:(NSNotification *)notification{
+    
+    //todo:send offer accept
+    NSLog(@"need to implement sending offer accept message");
+}
+
+- (void)onOfferCancel:(NSNotification *)notification{
+    
+    //todo:send offer cancel
+    NSLog(@"need to implement sending offer cancel message");
+}
+
 #pragma mark - Message receive notification handler
 - (void)receiveMessage:(NSNotification *)notification{
     
@@ -783,7 +810,70 @@ static NSString *profilePic = nil;
     
     if([dic[@"message"] isEqualToString:@"null"]){ //make offer
         
-        NSLog(@"sender make offer");
+        BOOL refreshView = NO;
+        
+        if([dic[@"offerStatus"] integerValue]==0 || [dic[@"offerStatus"] integerValue]==2){//make offer
+            
+            NSLog(@"sender make offer");
+            
+            [_chatData addIncomingOfferWithOfferId:[dic[@"offerId"] integerValue] withOfferStatus:[dic[@"offerStatus"] integerValue] withPrice:[dic[@"price"] doubleValue] withOfferName:dic[@"name"] withOfferRate:dic[@"rate"]];
+            
+            refreshView = YES;
+        }
+        /*
+        else if([dic[@"offerStatus"] integerValue]==-1 || [dic[@"offerStatus"] integerValue]==-2){//reject offer
+            
+            JSQMessage *rejectMsg = [[JSQMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:@"Rejected Offer"];
+            
+            [_chatData.messages addObject:rejectMsg];
+            
+            refreshView = YES;
+        }
+        else if([dic[@"offerStatus"] integerValue]==1 || [dic[@"offerStatus"] integerValue]==3){//accept offer
+            
+            if([dic[@"offerStatus"] integerValue]==1){
+                
+                //stikypay
+                AcceptOfferMessage *acceptMsg = [[AcceptOfferMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:@"Accepted Offer. Make payment here"];
+                
+                acceptMsg.stikypay = YES;
+                
+                refreshView = YES;
+            }
+            else if([dic[@"offerStatus"] integerValue]==3){
+                
+                //no stikypay
+                AcceptOfferMessage *acceptMsg = [[AcceptOfferMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:@"Accepted Offer."];
+                
+                acceptMsg.stikypay = NO;
+                
+                refreshView = YES;
+            }
+        }
+        */
+        
+        if(refreshView){
+            
+            [self scrollToBottomAnimated:YES];
+            [self.collectionView reloadData];
+        }
+       
+    }
+    else if([dic[@"message"] rangeOfString:@"<span"].location != NSNotFound){//accept offer
+        
+        [_chatData addincomingAcceptOffer:dic[@"message"]];
+        
+        [self scrollToBottomAnimated:YES];
+        [self.collectionView reloadData];
+    }
+    else if([dic[@"message"] rangeOfString:@"Rejected offer"].location != NSNotFound){//reject offer
+        
+        JSQMessage *rejectMsg = [[JSQMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:dic[@"message"]];
+        
+        [_chatData.messages addObject:rejectMsg];
+        
+        [self scrollToBottomAnimated:YES];
+        [self.collectionView reloadData];
     }
     else if((dic[@"fileName"] != nil) && ([dic[@"message"] rangeOfString:@"<img"].location != NSNotFound) && ([dic[@"msg"] rangeOfString:@"Image"].location != NSNotFound)){//image
         
