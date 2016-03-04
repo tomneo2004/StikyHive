@@ -16,7 +16,6 @@
 #import "AttachmentViewController.h"
 #import "AudioMediaItem.h"
 #import "OfferMediaItem.h"
-#import "AcceptOfferMessage.h"
 
 #import "ViewControllerUtil.h"
 
@@ -159,6 +158,8 @@ static NSString *profilePic = nil;
     
     //listen to message receive notification
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:@"onMessageReceived" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferAccept:) name:acceptOfferNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferCancel:) name:cancelOfferNotification object:nil];
     
 }
 
@@ -199,6 +200,8 @@ static NSString *profilePic = nil;
     [self.tabBarController.tabBar setHidden:NO];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"onMessageReceived" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:acceptOfferNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:cancelOfferNotification object:nil];
 
 }
 
@@ -629,6 +632,7 @@ static NSString *profilePic = nil;
             
             [aItem playAudio];
         }
+        /*
         else if([msg.media isKindOfClass:[OfferMediaItem class]]){
             
             OfferMediaItem *oItem = (OfferMediaItem *)msg.media;
@@ -657,12 +661,7 @@ static NSString *profilePic = nil;
             
             [self presentViewController:alertController animated:YES completion:nil];
         }
-    }
-    else if([msg isKindOfClass:[AcceptOfferMessage class]]){
-        
-        AcceptOfferMessage *aMsg = (AcceptOfferMessage *)msg;
-        NSString *url = [NSString stringWithFormat:@"http://beta.stikyhive.com/adaptivePay?offerId=%li&recipient=%@",(long)aMsg.offerId, [LocalDataInterface retrieveStkid]];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+         */
     }
 }
 
@@ -781,7 +780,7 @@ static NSString *profilePic = nil;
         
         BOOL refreshView = NO;
         
-        if([dic[@"offerStatus"] integerValue]==0 || [dic[@"offerStatus"] integerValue]==2){
+        if([dic[@"offerStatus"] integerValue]==0 || [dic[@"offerStatus"] integerValue]==2){//make offer
             
             NSLog(@"sender make offer");
             
@@ -789,7 +788,8 @@ static NSString *profilePic = nil;
             
             refreshView = YES;
         }
-        else if([dic[@"offerStatus"] integerValue]==-1 || [dic[@"offerStatus"] integerValue]==-2){
+        /*
+        else if([dic[@"offerStatus"] integerValue]==-1 || [dic[@"offerStatus"] integerValue]==-2){//reject offer
             
             JSQMessage *rejectMsg = [[JSQMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:@"Rejected Offer"];
             
@@ -797,7 +797,7 @@ static NSString *profilePic = nil;
             
             refreshView = YES;
         }
-        else if([dic[@"offerStatus"] integerValue]==1 || [dic[@"offerStatus"] integerValue]==3){
+        else if([dic[@"offerStatus"] integerValue]==1 || [dic[@"offerStatus"] integerValue]==3){//accept offer
             
             if([dic[@"offerStatus"] integerValue]==1){
                 
@@ -818,7 +818,7 @@ static NSString *profilePic = nil;
                 refreshView = YES;
             }
         }
-        
+        */
         
         if(refreshView){
             
@@ -826,6 +826,22 @@ static NSString *profilePic = nil;
             [self.collectionView reloadData];
         }
        
+    }
+    else if([dic[@"message"] rangeOfString:@"<span"].location != NSNotFound){//accept offer
+        
+        [_chatData addincomingAcceptOffer:dic[@"message"]];
+        
+        [self scrollToBottomAnimated:YES];
+        [self.collectionView reloadData];
+    }
+    else if([dic[@"message"] rangeOfString:@"Rejected offer"].location != NSNotFound){//reject offer
+        
+        JSQMessage *rejectMsg = [[JSQMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:dic[@"message"]];
+        
+        [_chatData.messages addObject:rejectMsg];
+        
+        [self scrollToBottomAnimated:YES];
+        [self.collectionView reloadData];
     }
     else if((dic[@"fileName"] != nil) && ([dic[@"message"] rangeOfString:@"<img"].location != NSNotFound) && ([dic[@"msg"] rangeOfString:@"Image"].location != NSNotFound)){//image
         

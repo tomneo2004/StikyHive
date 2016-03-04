@@ -14,6 +14,9 @@
 #define hSpace 10
 #define vSpace 8
 #define iconWidth 20
+#define acceptBtnWidth 40
+#define cancelBtnWidth 40
+#define btnSpace 5
 
 
 @interface OfferMediaItem ()
@@ -21,6 +24,8 @@
 @property (nonatomic, strong) UIImageView *cacheImageView;
 @property (nonatomic, strong) UIImageView *stikypayIconView;
 @property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) UIButton *acceptOfferBtn;
+@property (nonatomic, strong) UIButton *cancelOfferBtn;
 
 @end
 
@@ -68,6 +73,11 @@
         CGSize labelSize = [self getSizeForString:_fullString withMaxWidth:size.width/3*2  withMaxHeight:size.height withFont:_label.font];
         _label.frame = CGRectMake(hSpace, vSpace, labelSize.width, labelSize.height);
         
+        
+        
+        
+        
+        
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
         imageView.backgroundColor = colorBackground;
         imageView.clipsToBounds = YES;
@@ -81,12 +91,68 @@
             [imageView addSubview:icon];
         }
         
+        if(!_isOfferInteract){
+            
+            _cancelOfferBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            _cancelOfferBtn.frame = CGRectMake(_label.frame.origin.x+_label.frame.size.width, size.height/2-cancelBtnWidth/2, cancelBtnWidth, cancelBtnWidth);
+            [_cancelOfferBtn setImage:[[UIImage imageNamed:@"icon_offer_decline"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            [_cancelOfferBtn addTarget:self action:@selector(onCancelOffer) forControlEvents:UIControlEventTouchUpInside];
+            _cancelOfferBtn.userInteractionEnabled = YES;
+
+            
+            _acceptOfferBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            _acceptOfferBtn.frame = CGRectMake(_cancelOfferBtn.frame.origin.x+cancelBtnWidth+btnSpace, size.height/2-acceptBtnWidth/2, acceptBtnWidth, acceptBtnWidth);
+            [_acceptOfferBtn setImage:[[UIImage imageNamed:@"icon_offer_accept"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            [_acceptOfferBtn addTarget:self action:@selector(onAcceptOffer) forControlEvents:UIControlEventTouchUpInside];
+            _acceptOfferBtn.userInteractionEnabled = YES;
+
+            
+            [imageView addSubview:_cancelOfferBtn];
+            [imageView addSubview:_acceptOfferBtn];
+        }
         
         [JSQMessagesMediaViewBubbleImageMasker applyBubbleImageMaskToMediaView:imageView isOutgoing:outgoing];
         self.cacheImageView = imageView;
     }
     
+    self.cacheImageView.userInteractionEnabled = YES;
     return self.cacheImageView;
+}
+
+- (void)updateView{
+    
+    if(_isOfferInteract == YES){
+        
+        [_cancelOfferBtn removeFromSuperview];
+        [_acceptOfferBtn removeFromSuperview];
+        
+        if(self.cacheImageView != nil){
+            
+            CGRect oFrame = self.cacheImageView.frame;
+            
+            oFrame.size.width = [[UIScreen mainScreen] bounds].size.width/3*2;
+            
+            self.cacheImageView.frame = oFrame;
+        }
+    }
+}
+
+- (void)onAcceptOffer{
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:acceptOfferNotification object:self];
+    
+    _isOfferInteract = YES;
+    
+    [self updateView];
+}
+
+- (void)onCancelOffer{
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:cancelOfferNotification object:self];
+    
+    _isOfferInteract = YES;
+    
+    [self updateView];
 }
 
 - (CGSize)getSizeForString:(NSString *)string withMaxWidth:(CGFloat)mWidth withMaxHeight:(CGFloat)mHeight withFont:(UIFont *)font{
@@ -109,11 +175,11 @@
     //return CGSizeMake([[UIScreen mainScreen] bounds].size.width/3*2, 300.0f);
     if(_offerStatus == 0){
         
-        return CGSizeMake([[UIScreen mainScreen] bounds].size.width/3*2, vSpace*2 +[self getSizeForString:_fullString withMaxWidth:([[UIScreen mainScreen] bounds].size.width/3*2)/3*2 withMaxHeight:9999 withFont:[UIFont systemFontOfSize:17]].height+iconWidth);
+        return CGSizeMake([[UIScreen mainScreen] bounds].size.width/3*2 + acceptBtnWidth + cancelBtnWidth+btnSpace, vSpace*2 +[self getSizeForString:_fullString withMaxWidth:([[UIScreen mainScreen] bounds].size.width/3*2)/3*2 withMaxHeight:9999 withFont:[UIFont systemFontOfSize:17]].height+iconWidth);
     }
     else{
         
-        return CGSizeMake([[UIScreen mainScreen] bounds].size.width/3*2, vSpace*2 +[self getSizeForString:_fullString withMaxWidth:([[UIScreen mainScreen] bounds].size.width/3*2)/3*2 withMaxHeight:9999 withFont:[UIFont systemFontOfSize:17]].height);
+        return CGSizeMake([[UIScreen mainScreen] bounds].size.width/3*2 + acceptBtnWidth + cancelBtnWidth+btnSpace, vSpace*2 +[self getSizeForString:_fullString withMaxWidth:([[UIScreen mainScreen] bounds].size.width/3*2)/3*2 withMaxHeight:9999 withFont:[UIFont systemFontOfSize:17]].height);
     }
     
 }

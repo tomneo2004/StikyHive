@@ -55,4 +55,6 @@
 
 - (void)addIncomingAudioMediaMessage:(NSString *)audioURL;
 
+- (void)addincomingAcceptOffer:(NSString *)htmlString;
+
 @end

@@ -410,6 +410,7 @@
 		CEC8A1DA1C2A787300558608 /* MyPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1D91C2A787300558608 /* MyPostViewController.m */; };
 		CEC8A1DD1C2A78FD00558608 /* MyPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */; };
 		CEC8A1E01C2A7CE900558608 /* MyPostInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1DF1C2A7CE900558608 /* MyPostInfo.m */; };
+		CED0947D1C892304000EB9DF /* AcceptOfferMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0947C1C892304000EB9DF /* AcceptOfferMediaItem.m */; };
 		CED3C8771C2251490090DE35 /* MySkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8761C2251490090DE35 /* MySkillViewController.m */; };
 		CED3C87A1C2251B10090DE35 /* MySkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8791C2251B10090DE35 /* MySkillInfo.m */; };
 		CED3C87D1C225D800090DE35 /* MySkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C87C1C225D800090DE35 /* MySkillCell.m */; };
@@ -471,7 +472,6 @@
 		CEFD19581C040F3D00A79158 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD19571C040F3D00A79158 /* SearchResultCell.m */; };
 		CEFD195C1C04123800A79158 /* DistanceTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD195B1C04123800A79158 /* DistanceTitle.m */; };
 		CEFD195E1C04125900A79158 /* DistanceTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFD195D1C04125900A79158 /* DistanceTitle.xib */; };
-		CEFD72371C87DEEF0081DAC7 /* AcceptOfferMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFD72361C87DEEF0081DAC7 /* AcceptOfferMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1052,6 +1052,8 @@
 		CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostCell.m; sourceTree = "<group>"; };
 		CEC8A1DE1C2A7CE900558608 /* MyPostInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostInfo.h; sourceTree = "<group>"; };
 		CEC8A1DF1C2A7CE900558608 /* MyPostInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostInfo.m; sourceTree = "<group>"; };
+		CED0947B1C892304000EB9DF /* AcceptOfferMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptOfferMediaItem.h; sourceTree = "<group>"; };
+		CED0947C1C892304000EB9DF /* AcceptOfferMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptOfferMediaItem.m; sourceTree = "<group>"; };
 		CED3C8751C2251490090DE35 /* MySkillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillViewController.h; sourceTree = "<group>"; };
 		CED3C8761C2251490090DE35 /* MySkillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySkillViewController.m; sourceTree = "<group>"; };
 		CED3C8781C2251B10090DE35 /* MySkillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillInfo.h; sourceTree = "<group>"; };
@@ -1147,8 +1149,6 @@
 		CEFD195A1C04123800A79158 /* DistanceTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceTitle.h; sourceTree = "<group>"; };
 		CEFD195B1C04123800A79158 /* DistanceTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceTitle.m; sourceTree = "<group>"; };
 		CEFD195D1C04125900A79158 /* DistanceTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DistanceTitle.xib; sourceTree = "<group>"; };
-		CEFD72351C87DEEF0081DAC7 /* AcceptOfferMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptOfferMessage.h; sourceTree = "<group>"; };
-		CEFD72361C87DEEF0081DAC7 /* AcceptOfferMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptOfferMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1316,8 +1316,8 @@
 				CEF878311C7F024F00286401 /* AudioPlayerManager.m */,
 				CE05B1451C859D2100BE2B42 /* OfferMediaItem.h */,
 				CE05B1461C859D2100BE2B42 /* OfferMediaItem.m */,
-				CEFD72351C87DEEF0081DAC7 /* AcceptOfferMessage.h */,
-				CEFD72361C87DEEF0081DAC7 /* AcceptOfferMessage.m */,
+				CED0947B1C892304000EB9DF /* AcceptOfferMediaItem.h */,
+				CED0947C1C892304000EB9DF /* AcceptOfferMediaItem.m */,
 			);
 			name = StikyChat;
 			sourceTree = "<group>";
@@ -2887,6 +2887,7 @@
 				CEF878321C7F024F00286401 /* AudioPlayerManager.m in Sources */,
 				674D0EC01B7D98CA00B5B80D /* UserSkillViewController2.m in Sources */,
 				516718DF1C1A799E003E9902 /* CYRTextView.m in Sources */,
+				CED0947D1C892304000EB9DF /* AcceptOfferMediaItem.m in Sources */,
 				516A614E1BC7A47900D4E890 /* PostCommViewController.m in Sources */,
 				674D10471B7DB4FB00B5B80D /* GKImageCropViewController.m in Sources */,
 				5175E0371C5613E90094FB89 /* ChatData.m in Sources */,
@@ -2896,7 +2897,6 @@
 				516718EA1C1A799E003E9902 /* ZSSTextView.m in Sources */,
 				674D10481B7DB4FB00B5B80D /* GKImagePicker.m in Sources */,
 				674D0F671B7D9B0900B5B80D /* Document.m in Sources */,
-				CEFD72371C87DEEF0081DAC7 /* AcceptOfferMessage.m in Sources */,
 				CE7AA1771C0804BF00875DE5 /* PostRequestManager.m in Sources */,
 				CEF464011BF9B2A800010D21 /* Section.m in Sources */,
 				674D10451B7DB4FB00B5B80D /* GKImageCropOverlayView.m in Sources */,
