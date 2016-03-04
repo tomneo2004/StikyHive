@@ -364,6 +364,7 @@
 		CE0519051C23B41D004519E6 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0519041C23B41D004519E6 /* CommentsViewController.m */; };
 		CE0519081C23B435004519E6 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0519071C23B435004519E6 /* ReviewsViewController.m */; };
 		CE05190B1C23BA8D004519E6 /* CommentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE05190A1C23BA8D004519E6 /* CommentInfo.m */; };
+		CE05B1471C859D2100BE2B42 /* OfferMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE05B1461C859D2100BE2B42 /* OfferMediaItem.m */; };
 		CE1375CA1C083E1F00201989 /* PaymentSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */; };
 		CE1375D01C084FAA00201989 /* PaymentSuccessfulViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1375CF1C084FAA00201989 /* PaymentSuccessfulViewController.m */; };
 		CE24E7FC1C196E960021F078 /* UpdateProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24E7FB1C196E960021F078 /* UpdateProfileViewController.m */; };
@@ -372,6 +373,9 @@
 		CE3EFDED1C0EC5AA00281FC6 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */; };
 		CE51A3B01C23FF9500652B90 /* AllCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */; };
 		CE51A3B31C2403FE00652B90 /* ReviewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51A3B21C2403FE00652B90 /* ReviewInfo.m */; };
+		CE5AA7551C86BD1E00514C6B /* icon_offer_decline.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5AA7521C86BD1E00514C6B /* icon_offer_decline.png */; };
+		CE5AA7561C86BD1E00514C6B /* icon_offer_accept.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5AA7531C86BD1E00514C6B /* icon_offer_accept.png */; };
+		CE5AA7571C86BD1E00514C6B /* icon_offer_stikypay.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5AA7541C86BD1E00514C6B /* icon_offer_stikypay.png */; };
 		CE5D4A451C279179005C07D4 /* SeeAllCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A441C279179005C07D4 /* SeeAllCommentViewController.m */; };
 		CE5D4A491C279540005C07D4 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A481C279540005C07D4 /* CommentCell.m */; };
 		CE5D4A4C1C27A649005C07D4 /* PostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5D4A4B1C27A649005C07D4 /* PostCommentViewController.m */; };
@@ -406,6 +410,7 @@
 		CEC8A1DA1C2A787300558608 /* MyPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1D91C2A787300558608 /* MyPostViewController.m */; };
 		CEC8A1DD1C2A78FD00558608 /* MyPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */; };
 		CEC8A1E01C2A7CE900558608 /* MyPostInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1DF1C2A7CE900558608 /* MyPostInfo.m */; };
+		CED0947D1C892304000EB9DF /* AcceptOfferMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0947C1C892304000EB9DF /* AcceptOfferMediaItem.m */; };
 		CED3C8771C2251490090DE35 /* MySkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8761C2251490090DE35 /* MySkillViewController.m */; };
 		CED3C87A1C2251B10090DE35 /* MySkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C8791C2251B10090DE35 /* MySkillInfo.m */; };
 		CED3C87D1C225D800090DE35 /* MySkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED3C87C1C225D800090DE35 /* MySkillCell.m */; };
@@ -960,6 +965,8 @@
 		CE0519071C23B435004519E6 /* ReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
 		CE0519091C23BA8D004519E6 /* CommentInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInfo.h; sourceTree = "<group>"; };
 		CE05190A1C23BA8D004519E6 /* CommentInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentInfo.m; sourceTree = "<group>"; };
+		CE05B1451C859D2100BE2B42 /* OfferMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferMediaItem.h; sourceTree = "<group>"; };
+		CE05B1461C859D2100BE2B42 /* OfferMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferMediaItem.m; sourceTree = "<group>"; };
 		CE1375C81C083E1F00201989 /* PaymentSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSummaryViewController.h; sourceTree = "<group>"; };
 		CE1375C91C083E1F00201989 /* PaymentSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentSummaryViewController.m; sourceTree = "<group>"; };
 		CE1375CE1C084FAA00201989 /* PaymentSuccessfulViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentSuccessfulViewController.h; sourceTree = "<group>"; };
@@ -976,6 +983,9 @@
 		CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCommentViewController.m; sourceTree = "<group>"; };
 		CE51A3B11C2403FE00652B90 /* ReviewInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewInfo.h; sourceTree = "<group>"; };
 		CE51A3B21C2403FE00652B90 /* ReviewInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewInfo.m; sourceTree = "<group>"; };
+		CE5AA7521C86BD1E00514C6B /* icon_offer_decline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_offer_decline.png; sourceTree = "<group>"; };
+		CE5AA7531C86BD1E00514C6B /* icon_offer_accept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_offer_accept.png; sourceTree = "<group>"; };
+		CE5AA7541C86BD1E00514C6B /* icon_offer_stikypay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_offer_stikypay.png; sourceTree = "<group>"; };
 		CE5D4A431C279179005C07D4 /* SeeAllCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeeAllCommentViewController.h; sourceTree = "<group>"; };
 		CE5D4A441C279179005C07D4 /* SeeAllCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeeAllCommentViewController.m; sourceTree = "<group>"; };
 		CE5D4A471C279540005C07D4 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
@@ -1042,6 +1052,8 @@
 		CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostCell.m; sourceTree = "<group>"; };
 		CEC8A1DE1C2A7CE900558608 /* MyPostInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostInfo.h; sourceTree = "<group>"; };
 		CEC8A1DF1C2A7CE900558608 /* MyPostInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostInfo.m; sourceTree = "<group>"; };
+		CED0947B1C892304000EB9DF /* AcceptOfferMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptOfferMediaItem.h; sourceTree = "<group>"; };
+		CED0947C1C892304000EB9DF /* AcceptOfferMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptOfferMediaItem.m; sourceTree = "<group>"; };
 		CED3C8751C2251490090DE35 /* MySkillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillViewController.h; sourceTree = "<group>"; };
 		CED3C8761C2251490090DE35 /* MySkillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySkillViewController.m; sourceTree = "<group>"; };
 		CED3C8781C2251B10090DE35 /* MySkillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySkillInfo.h; sourceTree = "<group>"; };
@@ -1302,6 +1314,10 @@
 				CE9936181C71824000815E1B /* AudioMediaItem.m */,
 				CEF878301C7F024F00286401 /* AudioPlayerManager.h */,
 				CEF878311C7F024F00286401 /* AudioPlayerManager.m */,
+				CE05B1451C859D2100BE2B42 /* OfferMediaItem.h */,
+				CE05B1461C859D2100BE2B42 /* OfferMediaItem.m */,
+				CED0947B1C892304000EB9DF /* AcceptOfferMediaItem.h */,
+				CED0947C1C892304000EB9DF /* AcceptOfferMediaItem.m */,
 			);
 			name = StikyChat;
 			sourceTree = "<group>";
@@ -1703,6 +1719,9 @@
 		674D0E461B7D920E00B5B80D /* StikyChat */ = {
 			isa = PBXGroup;
 			children = (
+				CE5AA7521C86BD1E00514C6B /* icon_offer_decline.png */,
+				CE5AA7531C86BD1E00514C6B /* icon_offer_accept.png */,
+				CE5AA7541C86BD1E00514C6B /* icon_offer_stikypay.png */,
 				674D0E471B7D920E00B5B80D /* audio_message@2x.png */,
 				674D0E481B7D920E00B5B80D /* icon_audio@2x.png */,
 			);
@@ -2528,7 +2547,9 @@
 				674D0E571B7D920E00B5B80D /* button_Facebook.png in Resources */,
 				5186FE4B1BD5EA08002A51CA /* buyerspost_job_type.png in Resources */,
 				674D10621B7DCB6B00B5B80D /* OpenSans-Light.ttf in Resources */,
+				CE5AA7551C86BD1E00514C6B /* icon_offer_decline.png in Resources */,
 				516718B61C1A799E003E9902 /* ZSSkeyboard@2x.png in Resources */,
+				CE5AA7571C86BD1E00514C6B /* icon_offer_stikypay.png in Resources */,
 				5167189E1C1A799E003E9902 /* ZSSforcejustify@2x.png in Resources */,
 				674D0DE51B7D91FC00B5B80D /* button_update@2x.png in Resources */,
 				CEF464111BF9CB4700010D21 /* MyRequestSectionTitle.xib in Resources */,
@@ -2703,6 +2724,7 @@
 				CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */,
 				5167189D1C1A799E003E9902 /* ZSSforcejustify.png in Resources */,
 				CEFD195E1C04125900A79158 /* DistanceTitle.xib in Resources */,
+				CE5AA7561C86BD1E00514C6B /* icon_offer_accept.png in Resources */,
 				516718CC1C1A799E003E9902 /* ZSSsubscript@2x.png in Resources */,
 				516718CE1C1A799E003E9902 /* ZSSsuperscript@2x.png in Resources */,
 				516718BF1C1A799E003E9902 /* ZSSparagraph.png in Resources */,
@@ -2865,6 +2887,7 @@
 				CEF878321C7F024F00286401 /* AudioPlayerManager.m in Sources */,
 				674D0EC01B7D98CA00B5B80D /* UserSkillViewController2.m in Sources */,
 				516718DF1C1A799E003E9902 /* CYRTextView.m in Sources */,
+				CED0947D1C892304000EB9DF /* AcceptOfferMediaItem.m in Sources */,
 				516A614E1BC7A47900D4E890 /* PostCommViewController.m in Sources */,
 				674D10471B7DB4FB00B5B80D /* GKImageCropViewController.m in Sources */,
 				5175E0371C5613E90094FB89 /* ChatData.m in Sources */,
@@ -3011,6 +3034,7 @@
 				CEF7BA991BFAC66E009624CC /* MyRequestViewController.m in Sources */,
 				517D552F1BDA0301000EA8FD /* ReportAbuseViewController.m in Sources */,
 				CEEDB19A1C118D12009C3DC5 /* SoldCell.m in Sources */,
+				CE05B1471C859D2100BE2B42 /* OfferMediaItem.m in Sources */,
 				CEFD194F1C04045800A79158 /* DistanceSkill.m in Sources */,
 				CEFD19551C0409BC00A79158 /* SearchResultTableViewController.m in Sources */,
 				674D0F6A1B7D9B3100B5B80D /* Skill.m in Sources */,

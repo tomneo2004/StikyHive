@@ -11,6 +11,8 @@
 #import "LocalDataInterface.h"
 #import "WebDataInterface.h"
 #import "AudioMediaItem.h"
+#import "OfferMediaItem.h"
+#import "AcceptOfferMediaItem.h"
 #import "AFNetworking.h"
 
 @interface ChatData ()
@@ -115,6 +117,14 @@
     [op start];
 }
 
+- (void)addIncomingOfferWithOfferId:(NSInteger)offerId withOfferStatus:(NSInteger)offerStatus withPrice:(double)price withOfferName:(NSString *)offerName withOfferRate:(NSString *)offerRate{
+    
+    OfferMediaItem *item = [[OfferMediaItem alloc] initWithOfferId:offerId withOfferStatus:offerStatus withPrice:price withOfferName:offerName withOfferRate:offerRate];
+    [item setAppliesMediaViewMaskAsOutgoing:NO];
+    JSQMessage *message = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:item];
+    [self.messages addObject:message];
+}
+
 
 - (void)addVideoMediaMessage
 {
@@ -142,5 +152,12 @@
     
 }
                                 
+- (void)addincomingAcceptOffer:(NSString *)htmlString{
+
+    AcceptOfferMediaItem *item = [[AcceptOfferMediaItem alloc] initWithHtmlString:htmlString];
+    [item setAppliesMediaViewMaskAsOutgoing:NO];
+    JSQMessage *message = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:item];
+    [self.messages addObject:message];
+}
 
 @end
