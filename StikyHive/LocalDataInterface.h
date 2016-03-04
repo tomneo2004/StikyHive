@@ -72,6 +72,8 @@
 #define KEY_STKID  @"stkid"
 #define KEY_NAME   @"name"
 
+#define KEY_URL    @"url"
+
 @interface LocalDataInterface : NSObject
 
 ///////
@@ -89,6 +91,10 @@
 
 + (void)storeNameOfUser:(NSString *)name;
 + (NSString *)retrieveNameOfUser;
+
+
++ (void)storeProfileUrl:(NSString *)url;
++ (NSString *)retrieveProfileUrl;
 
 //////////
 

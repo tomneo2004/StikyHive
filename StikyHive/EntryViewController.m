@@ -251,8 +251,10 @@
                 
                 [LocalDataInterface storeNameOfUser:name];
                 
+                NSString *profilepic = dict[@"stikybee"][@"profilePicture"];
                 
-                /* start GCM service ------------- 
+                [LocalDataInterface storeProfileUrl:profilepic];
+                /* start GCM service -------------
                  *
                  */
 //                [(AppDelegate *)[UIApplication sharedApplication].delegate startGCMService];

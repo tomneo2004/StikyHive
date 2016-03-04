@@ -579,6 +579,58 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
++ (void)sendMessage:(NSString*)fileName msg:(NSString *)msg offerId:(NSInteger)offerId offerStatus:(NSInteger)offerStatus price:(NSString *)price rate:(NSString *)rate name:(NSString *)name message:(NSString *)message recipientStkid:(NSString *)recipientStikid chatRecipient:(NSString *)chatRecipient chatRecipientUrl:(NSString *)chatRecipientUrl senderToken:(NSString *)senderToken recipientToken:(NSString *)recipientToken completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{GOOGLE_PARAM_FILE_NAME:fileName,
+                             GOOGLE_PARAM_MSG:msg,
+                             GOOGLE_PARAM_OFFER_ID:[NSNumber numberWithInteger:offerId],
+                             GOOGLE_PARAM_OFFER_STATUS:[NSNumber numberWithInteger:offerStatus],
+                             GOOGLE_PARAM_PRICE:price,
+                             GOOGLE_PARAM_RATE:rate,
+                             GOOGLE_PARAM_NAME:name,
+                             GOOGLE_PARAM_MESSAGE:message,
+                             GOOGLE_PARAM_RECIPIENT_STKID:recipientStikid,
+                             GOOGLE_PARAM_CHAT_RECIPIENT:chatRecipient,
+                             GOOGLE_PARAM_CHAT_RECIPIENTURL:chatRecipientUrl,
+                             GOOGLE_PARAM_SENDER_TOKEN:senderToken,
+                             GOOGLE_PARAM_RECIPIENT_TOKEN:recipientToken};
+//    [self requestData:GOOGLE_SERVICE_URL withParameters:params completion:completion];
+    
+    NSLog(@"google url ---- %@",GOOGLE_SERVICE_URL);
+    NSLog(@"google reques param --- %@",params);
+    [self requestGoogleData:GOOGLE_SERVICE_URL withParameters:params completion:completion];
+}
+
+
++ (void)insertChatMsg:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee message:(NSString *)message createDate:(NSString *)createDate completion:(void (^)(NSObject *, NSError *))completion;
+{
+    NSDictionary *params = @{POST_PARAMETER_FROM_STIKY_BEE:fromStikyBee,
+                             POST_PARAMETER_TO_STIKY_BEE:toStikyBee,
+                             POST_PARAMETER_MESSAGE:message,
+                             POST_PARAMETER_CREATE_DATE:createDate};
+    
+    [self requestData:DATA_URL_INSERT_CHAT_MSG withParameters:params completion:completion];
+}
+
++ (void)checkLastMsg:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee message:(NSString *)message createDate:(NSString *)createDate completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_FROM_STIKY_BEE:fromStikyBee,
+                             POST_PARAMETER_TO_STIKY_BEE:toStikyBee,
+                             POST_PARAMETER_MESSAGE:message,
+                             POST_PARAMETER_CREATE_DATE:createDate};
+    
+    [self requestData:DATA_URL_CHECK_LAST_MSG withParameters:params completion:completion];
+
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1296,6 +1348,39 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
          }
      }];
 }
+
+// echo edit
++ (void)requestGoogleData:(NSString *)url withParameters:(NSDictionary *)params
+         completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [urlRequest setValue:@"key=AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk" forHTTPHeaderField:@"Authorization"];
+    [urlRequest setTimeoutInterval:60];
+        
+    if (params)
+        [urlRequest setHTTPBody:[[self formatParameter:params] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSLog(@"body param --- %@",[self formatParameter:params]);
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         if (data.length > 0 && error == nil)
+         {
+             NSJSONReadingOptions jsonOption = NSJSONReadingAllowFragments;
+             id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:jsonOption error:&error];
+             completion(jsonObject,error);
+         }
+         else
+         {
+             completion(nil,error);
+         }
+     }];
+}
+
 
 
 + (NSString *)formatParameter:(NSDictionary *)paramDict

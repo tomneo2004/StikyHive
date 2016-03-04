@@ -146,7 +146,7 @@
 #define DATA_URL_DOCUMENT_WITH_ID       DATA_URL@"Document/getDocWithID"
 
 #define DATA_URL_PUSH_NOTIFICATION      DATA_URL@"StikyChat/sendNotification"
-#define POST_PARAMETER_MESSAGE          @"message"
+//#define POST_PARAMETER_MESSAGE          @"message"
 #define POST_PARAMETER_RECIPIENT        @"recipient"
 #define POST_PARAMETER_SENDER           @"sender"
 
@@ -226,6 +226,26 @@
 #define DATA_URL_SELECT_TOKEN           DATA_URL@"selectToken/format/json"
 #define DATA_URL_CHECK_LAST_MESSAGE     DATA_URL@"checkLastMsgByUserId/format/json"
 #define DATA_URL_SELECT_CHAT_MSGS       DATA_URL@"selectChatMsgs/format/json"
+#define DATA_URL_INSERT_CHAT_MSG        DATA_URL@"insertChatMsg/format/json"
+#define DATA_URL_CHECK_LAST_MSG         DATA_URL@"checkLastMessage/format/json"
+
+
+
+#define GOOGLE_SERVICE_URL              @"https://android.googleapis.com/gcm/send"
+#define GOOGLE_PARAM_FILE_NAME          @"fileName"
+#define GOOGLE_PARAM_MSG                @"msg"
+#define GOOGLE_PARAM_OFFER_ID           @"offerId"
+#define GOOGLE_PARAM_OFFER_STATUS       @"offerStatus"
+#define GOOGLE_PARAM_PRICE              @"price"
+#define GOOGLE_PARAM_RATE               @"rate"
+#define GOOGLE_PARAM_NAME               @"name"
+#define GOOGLE_PARAM_MESSAGE            @"message"
+#define GOOGLE_PARAM_RECIPIENT_STKID    @"recipientStkid"
+#define GOOGLE_PARAM_CHAT_RECIPIENT     @"chatRecipient"
+#define GOOGLE_PARAM_CHAT_RECIPIENTURL  @"chatRecipientUrl"
+#define GOOGLE_PARAM_SENDER_TOKEN       @"senderToken"
+#define GOOGLE_PARAM_RECIPIENT_TOKEN    @"recipientToken"
+
 
 
 
@@ -326,8 +346,8 @@
 #define POST_PARAMETER_TO_STIKY_BEE     @"toStikyBee"
 #define POST_PARAMETER_SENDER_ID        @"senderId"
 #define POST_PARAMETER_RECIPIENT_ID     @"recipientId"
-
-
+#define POST_PARAMETER_MESSAGE          @"message"
+#define POST_PARAMETER_CREATE_DATE      @"createDate"
 
 
 
@@ -458,6 +478,16 @@
 + (void)selectChatMsgs:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)selectToken:(NSString *)senderId recipientId:(NSString *)recipientId completion:(void (^)(NSObject *, NSError *))completion;
+
+
+
++ (void)sendMessage:(NSString*)fileName msg:(NSString *)msg offerId:(NSInteger)offerId offerStatus:(NSInteger)offerStatus price:(NSString *)price rate:(NSString *)rate name:(NSString *)name message:(NSString *)message recipientStkid:(NSString *)recipientStikid chatRecipient:(NSString *)chatRecipient chatRecipientUrl:(NSString *)chatRecipientUrl senderToken:(NSString *)senderToken recipientToken:(NSString *)recipientToken completion:(void (^)(NSObject *, NSError *))completion;
+
+
++ (void)insertChatMsg:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee message:(NSString *)message createDate:(NSString *)createDate completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)checkLastMsg:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee message:(NSString *)message createDate:(NSString *)createDate completion:(void (^)(NSObject *, NSError *))completion;
+
 
 
 

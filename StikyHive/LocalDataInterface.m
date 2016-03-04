@@ -43,6 +43,17 @@
     return [self retrieveImageForKey:KEY_IMAGE];
 }
 
++ (void)storeProfileUrl:(NSString *)url
+{
+    [self storeString:url forKey:KEY_URL];
+}
+
++ (NSString *)retrieveProfileUrl
+{
+    return [self retrieveStringForKey:KEY_URL];
+}
+
+
 + (void)storeStkid:(NSString *)stkid
 {
     [self storeString:stkid forKey:KEY_STKID];

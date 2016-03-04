@@ -77,11 +77,13 @@ static NSString *profilePic = nil;
     self.senderDisplayName = [LocalDataInterface retrieveUsername];
     
     
-    UIImage *profileImage = [UIImage imageNamed:@"Default_profile_small@2x"];
-    if (profilePic != nil)
-    {
-        profileImage = [ViewControllerUtil getImageWithPath:profilePic];
-    }
+    UIImage *profileImage = [ViewControllerUtil getImageWithPath:[WebDataInterface getFullUrlPath:[LocalDataInterface retrieveProfileUrl]]];
+    NSLog(@"profil image url --- %@",[WebDataInterface getFullUrlPath:[LocalDataInterface retrieveProfileUrl]]);
+//    [UIImage imageNamed:@"Default_profile_small@2x"];
+//    if (profilePic != nil)
+//    {
+//        profileImage = [ViewControllerUtil getImageWithPath:profilePic];
+//    }
     
    
     _chatData = [[ChatData alloc] initWithIncomingAvatarImage:profileImage incomingID:ToStikyBee incomingDisplayName:fullName outgoingID:self.senderId outgoingDisplayName:self.senderDisplayName];
@@ -115,11 +117,7 @@ static NSString *profilePic = nil;
     self.inputToolbar.contentView.rightBarButtonItem.enabled = YES;
     
     
-    NSLog(@"my stikid ---- %@",[LocalDataInterface retrieveStkid]);
-    NSLog(@"to stiky bee -- %@",ToStikyBee);
     [WebDataInterface selectToken:[LocalDataInterface retrieveStkid] recipientId:ToStikyBee completion:^(NSObject *obj, NSError *err) {
-        
-        NSLog(@"token info ---- %@",obj);
         
         NSDictionary *dict = (NSDictionary *)obj;
         
@@ -129,9 +127,7 @@ static NSString *profilePic = nil;
             {
                 recipientID = dict[@"recipientId"][@"deviceToken"];
                 
-                NSLog(@"recipeint id token --- %@",recipientID);
                 senderID = dict[@"senderId"][@"deviceToken"];
-                NSLog(@"recipientid ---- %@",senderID);
             }
             
         });
@@ -148,9 +144,6 @@ static NSString *profilePic = nil;
 //         
 //     }];
 //    
-    
-    
-    
     
     
     _audioImage = [UIImage imageNamed:@"audio_message@2x"];
@@ -172,14 +165,15 @@ static NSString *profilePic = nil;
     self.collectionView.backgroundView = background;
     
     
-    if (self.delegateModal) {
+    if (self.delegateModal)
+    {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(closePressed:)];
     }
     
     [self.tabBarController.tabBar setHidden:YES];
     
     _profileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(290, 2, 36, 36)];
-    _profileImageView.image = [UIImage imageNamed:@"Default_profile_small@2x"];
+    _profileImageView.image = [ViewControllerUtil getImageWithPath:[WebDataInterface getFullUrlPath:[LocalDataInterface retrieveProfileUrl]]];
     _profileImageView.layer.cornerRadius = 18;
     _profileImageView.layer.masksToBounds = YES;
     
@@ -243,46 +237,34 @@ static NSString *profilePic = nil;
         [self finishSendingMessageAnimated:YES];
         
         
-        // sending message use gcm
-        NSInteger nextMessageID = self.messagesSent++;
+        
+        NSString *androidApi = @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks";
+        NSString *iosApi = @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk";
+        [self sendMessages:androidApi text:text];
+        [self sendMessages:iosApi text:text];
         
         
         
-        NSDictionary *data = @{@"fileName":[NSNull null],
-                                   @"msg":text,
-                                   @"offerId":[NSNumber numberWithInteger:0],
-                                   @"offerStatus":[NSNumber numberWithInteger:0],
-                                   @"price":[NSNull null],
-                                   @"rate":[NSNull null],
-                                   @"name":[NSNull null],
-                                   @"message":text,
-                                   @"recipientStkid":ToStikyBee,
-                                   @"chatRecipient":fullName,
-                                   @"chatRecipientUrl":profilePic,
-                                   @"senderToken":senderID,
-                                   @"recipientToken":recipientID};
-        
-        
-        NSLog(@"msg : %@",text);
-        NSLog(@"message : %@",text);
-        NSLog(@"recipientStkid : %@",ToStikyBee);
-        NSLog(@"chatRecipient : %@",fullName);
-        NSLog(@"chatRecipientUrl : %@",profilePic);
-        NSLog(@"senderToken : %@",senderID);
-        NSLog(@"recipientToken : %@",recipientID);
-        
-        //131981869263 ------ sender ID
-        NSLog(@"to-- recipientiD ----- %@",recipientID);
-        NSString *to = [NSString stringWithFormat:@"%@@gcm.googleapis.com",recipientID];
-        
-        [[GCMService sharedInstance] sendMessage:data to:to withId:[NSString stringWithFormat:@"%ld",(long)nextMessageID]];
-        
-        NSLog(@"gcm");
-        NSLog(@"text ----- %@",text);
+        NSDate *now = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        NSString *newDateString = [formatter stringFromDate:now];
+        NSLog(@"newDateString %@", newDateString);
+        [WebDataInterface insertChatMsg:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee message:text createDate:newDateString completion:^(NSObject *obj, NSError *err) {
+            
+            [WebDataInterface checkLastMsg:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee message:text createDate:newDateString completion:^(NSObject *obj2, NSError *err2) {
+                NSLog(@"obj ---- %@",obj);
+                
+                
+                NSLog(@"obj 2 ------ %@",obj2);
+                
+                
+            }];
+        }];
+
         
         self.inputToolbar.contentView.rightBarButtonItem = _pttButton;
         self.inputToolbar.contentView.rightBarButtonItem.enabled = YES;
-        
     }
     else
     {
@@ -290,23 +272,73 @@ static NSString *profilePic = nil;
     }
 }
 
-
-- (void)sendMessage:(NSString *)to
+- (void)sendMessages:(NSString *)api text:(NSString *)text
 {
     // create the request
     NSString *sendUrl = @"https://android.googleapis.com/gcm/send";
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:sendUrl]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"key=AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk" forHTTPHeaderField:@"Authorization"];
-    [request setTimeoutInterval:60];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:sendUrl]];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [urlRequest setValue:[NSString stringWithFormat:@"key=%@",api] forHTTPHeaderField:@"Authorization"];
+    [urlRequest setTimeoutInterval:60];
     
-    //prepare the payload
+    NSDictionary *messages = [self getMessage:recipientID text:text];
     
+    NSData *jsonBody = [NSJSONSerialization dataWithJSONObject:messages options:0 error:nil];
     
+    [urlRequest setHTTPBody:jsonBody];
     
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+        
+        if (data.length > 0 && connectionError == nil)
+        {
+            // NSJSONReadingOptions jsonOption = NSJSONReadingAllowFragments;
+            // id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:jsonOption error:&connectionError];
+            // NSLog(@"json object ----- %@",jsonObject);
+            NSLog(@"response ---- %@",response);
+            NSLog(@"url request --- %@",urlRequest);
+        }
+        else
+        {
+            NSLog(@"error ---- %@",connectionError);
+        }
+        
+    }];
+    
+}
+
+
+- (NSDictionary *)getMessage:(NSString *)to text:(NSString *)text
+{
+    NSDictionary *msg = @{@"to":to,
+                          @"notification": @{
+                                  @"body": text
+                                  },
+                          @"data":@{
+                                  @"fileName":[NSNull null],
+                                  @"msg":text,
+                                  @"offerId":[NSNumber numberWithInteger:0],
+                                  @"offerStatus":[NSNumber numberWithInteger:0],
+                                  @"price":[NSNull null],
+                                  @"rate":[NSNull null],
+                                  @"name":[NSNull null],
+                                  @"message":text,
+                                  @"recipientStkid":[LocalDataInterface retrieveStkid],
+                                  @"chatRecipient":[LocalDataInterface retrieveNameOfUser],
+                                  @"chatRecipientUrl":[LocalDataInterface retrieveProfileUrl],
+                                  @"senderToken":senderID,
+                                  @"recipientToken":recipientID
+                                  }
+                          };
+    
+    NSLog(@"json message ---- %@",msg);
+    
+    NSLog(@"url ---- %@",[LocalDataInterface retrieveProfileUrl]);
+    
+    return msg;
 }
 
 
@@ -800,19 +832,6 @@ static NSString *profilePic = nil;
     [self scrollToBottomAnimated:YES];
     [self.collectionView reloadData];
 }
-
-//#pragma mark - MPMoviePlayerController notification handler
-//-(void) movieFinishedCallback:(NSNotification*)notification{
-//    
-//    MPMoviePlayerController *player = [notification object];
-//    
-//    [player.view removeFromSuperview];
-//    
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
-//    
-//    _mPlayer = nil;
-//}
-
 
 
 
