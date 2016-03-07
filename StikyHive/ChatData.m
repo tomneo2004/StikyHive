@@ -12,6 +12,7 @@
 #import "WebDataInterface.h"
 #import "AudioMediaItem.h"
 #import "OfferMediaItem.h"
+#import "FileMediaItem.h"
 #import "AcceptOfferMediaItem.h"
 #import "AFNetworking.h"
 
@@ -155,6 +156,14 @@
 - (void)addincomingAcceptOffer:(NSString *)htmlString{
 
     AcceptOfferMediaItem *item = [[AcceptOfferMediaItem alloc] initWithHtmlString:htmlString];
+    [item setAppliesMediaViewMaskAsOutgoing:NO];
+    JSQMessage *message = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:item];
+    [self.messages addObject:message];
+}
+
+- (void)addincomingFile:(NSString *)fileURL{
+    
+    FileMediaItem *item = [[FileMediaItem alloc] initWithFileURLString:fileURL];
     [item setAppliesMediaViewMaskAsOutgoing:NO];
     JSQMessage *message = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:item];
     [self.messages addObject:message];
