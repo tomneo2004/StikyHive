@@ -390,6 +390,8 @@
 		CE83C78F1C3B731700753B80 /* EducationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C78E1C3B731700753B80 /* EducationCell.m */; };
 		CE83C7921C3B999D00753B80 /* EditEducationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C7911C3B999D00753B80 /* EditEducationTableViewController.m */; };
 		CE83C7951C3BAC8900753B80 /* OtherInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C7941C3BAC8900753B80 /* OtherInfoViewController.m */; };
+		CE84D0F91C8D73A1005B8E14 /* FileMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE84D0F81C8D73A1005B8E14 /* FileMediaItem.m */; };
+		CE84D0FB1C8D740A005B8E14 /* keep_track.png in Resources */ = {isa = PBXBuildFile; fileRef = CE84D0FA1C8D740A005B8E14 /* keep_track.png */; };
 		CE8526141C6056D100A9A480 /* AudioRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8526101C6056D100A9A480 /* AudioRecorderViewController.m */; };
 		CE8526151C6056D100A9A480 /* AudioRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8526111C6056D100A9A480 /* AudioRecorderViewController.xib */; };
 		CE8526161C6056D100A9A480 /* AudioRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8526131C6056D100A9A480 /* AudioRecordManager.m */; };
@@ -1014,6 +1016,9 @@
 		CE83C7911C3B999D00753B80 /* EditEducationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditEducationTableViewController.m; sourceTree = "<group>"; };
 		CE83C7931C3BAC8900753B80 /* OtherInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherInfoViewController.h; sourceTree = "<group>"; };
 		CE83C7941C3BAC8900753B80 /* OtherInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherInfoViewController.m; sourceTree = "<group>"; };
+		CE84D0F71C8D73A1005B8E14 /* FileMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileMediaItem.h; sourceTree = "<group>"; };
+		CE84D0F81C8D73A1005B8E14 /* FileMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileMediaItem.m; sourceTree = "<group>"; };
+		CE84D0FA1C8D740A005B8E14 /* keep_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keep_track.png; sourceTree = "<group>"; };
 		CE85260F1C6056D100A9A480 /* AudioRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecorderViewController.h; sourceTree = "<group>"; };
 		CE8526101C6056D100A9A480 /* AudioRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecorderViewController.m; sourceTree = "<group>"; };
 		CE8526111C6056D100A9A480 /* AudioRecorderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioRecorderViewController.xib; sourceTree = "<group>"; };
@@ -1318,6 +1323,8 @@
 				CE05B1461C859D2100BE2B42 /* OfferMediaItem.m */,
 				CED0947B1C892304000EB9DF /* AcceptOfferMediaItem.h */,
 				CED0947C1C892304000EB9DF /* AcceptOfferMediaItem.m */,
+				CE84D0F71C8D73A1005B8E14 /* FileMediaItem.h */,
+				CE84D0F81C8D73A1005B8E14 /* FileMediaItem.m */,
 			);
 			name = StikyChat;
 			sourceTree = "<group>";
@@ -1719,6 +1726,7 @@
 		674D0E461B7D920E00B5B80D /* StikyChat */ = {
 			isa = PBXGroup;
 			children = (
+				CE84D0FA1C8D740A005B8E14 /* keep_track.png */,
 				CE5AA7521C86BD1E00514C6B /* icon_offer_decline.png */,
 				CE5AA7531C86BD1E00514C6B /* icon_offer_accept.png */,
 				CE5AA7541C86BD1E00514C6B /* icon_offer_stikypay.png */,
@@ -2782,6 +2790,7 @@
 				674D0DA61B7D913400B5B80D /* Images.xcassets in Resources */,
 				674D0DEB1B7D91FC00B5B80D /* icon_edit@2x.png in Resources */,
 				674D10661B7DCB6B00B5B80D /* OpenSans-SemiboldItalic.ttf in Resources */,
+				CE84D0FB1C8D740A005B8E14 /* keep_track.png in Resources */,
 				517A1C611C0C2382004017E4 /* subplan3.png in Resources */,
 				674D0E5B1B7D920E00B5B80D /* button_SH_login@2x.png in Resources */,
 				516718A61C1A799E003E9902 /* ZSSh4@2x.png in Resources */,
@@ -2954,6 +2963,7 @@
 				674D0F771B7D9F2200B5B80D /* HtmlEditor.m in Sources */,
 				CE83C7921C3B999D00753B80 /* EditEducationTableViewController.m in Sources */,
 				516718E71C1A799E003E9902 /* ZSSBarButtonItem.m in Sources */,
+				CE84D0F91C8D73A1005B8E14 /* FileMediaItem.m in Sources */,
 				674D0EC11B7D98CA00B5B80D /* UserSkillViewController3.m in Sources */,
 				517931491BAFBD750019BB49 /* BuyerCollectionViewController.m in Sources */,
 				CE68DA911C0DA0F6000CB49F /* DocumentInfo.m in Sources */,

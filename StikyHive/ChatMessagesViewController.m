@@ -16,6 +16,7 @@
 #import "AttachmentViewController.h"
 #import "AudioMediaItem.h"
 #import "OfferMediaItem.h"
+#import "FileMediaItem.h"
 
 #import "ViewControllerUtil.h"
 
@@ -33,6 +34,7 @@
 @property (nonatomic, strong) UILabel *pttTimeLabel;
 
 @property (nonatomic, assign) NSInteger messagesSent;
+@property (nonatomic, strong) UIDocumentInteractionController *openFileController;
 
 
 @end
@@ -153,6 +155,7 @@ static NSString *profilePic = nil;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:@"onMessageReceived" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferAccept:) name:acceptOfferNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferCancel:) name:cancelOfferNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFileOpenRequired:) name:openFileRequired object:nil];
     
 }
 
@@ -196,7 +199,7 @@ static NSString *profilePic = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"onMessageReceived" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:acceptOfferNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:cancelOfferNotification object:nil];
-
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:openFileRequired object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -664,6 +667,12 @@ static NSString *profilePic = nil;
             
             [aItem playAudio];
         }
+        else if([msg.media isKindOfClass:[FileMediaItem class]]){
+            
+            FileMediaItem *fItem = (FileMediaItem *)msg.media;
+            
+            [fItem downloadFile];
+        }
         /*
         else if([msg.media isKindOfClass:[OfferMediaItem class]]){
             
@@ -805,6 +814,32 @@ static NSString *profilePic = nil;
     }
 }
 
+#pragma mark - FileMediaItem open file
+- (void)onFileOpenRequired:(NSNotification *)notification{
+    
+    _openFileController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:notification.object]];
+    
+    _openFileController.delegate = self;
+    
+    [_openFileController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
+}
+
+#pragma mark UIDocumentInteractionController delegate
+- (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller{
+    
+    return self;
+}
+
+- (UIView *)documentInteractionControllerViewForPreview:(UIDocumentInteractionController *)controller{
+    
+    return self.view;
+}
+
+- (CGRect)documentInteractionControllerRectForPreview:(UIDocumentInteractionController *)controller{
+    
+    return self.view.frame;
+}
+
 #pragma mark - Process message
 - (void)processMessage:(NSDictionary *)dic{
     
@@ -871,6 +906,13 @@ static NSString *profilePic = nil;
         JSQMessage *rejectMsg = [[JSQMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:dic[@"message"]];
         
         [_chatData.messages addObject:rejectMsg];
+        
+        [self scrollToBottomAnimated:YES];
+        [self.collectionView reloadData];
+    }
+    else if(dic[@"fileName"] != nil && ([dic[@"msg"] rangeOfString:@"File transfer."].location != NSNotFound)){
+        
+        [_chatData addincomingFile:dic[@"fileName"]];
         
         [self scrollToBottomAnimated:YES];
         [self.collectionView reloadData];
