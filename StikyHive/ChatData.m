@@ -72,6 +72,15 @@
     return photoMessage;
 }
 
+- (void)addPhotoMsg:(UIImage *)image
+{
+    JSQPhotoMediaItem *photo = [[JSQPhotoMediaItem alloc] initWithImage:image];
+    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:_outgoingUserId displayName:_outgoingDisplayName media:photo];
+    [self.messages addObject:photoMessage];
+    
+}
+
+
 - (JSQMessage *)addIncomingPhotoMessage:(NSString *)imageURL{
     
     /*

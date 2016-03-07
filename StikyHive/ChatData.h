@@ -44,6 +44,8 @@
 
 - (JSQMessage *)addPhotoMessage:(UIImage *)image;
 
+- (void)addPhotoMsg:(UIImage *)image;
+
 //for incoming photo message
 - (JSQMessage *)addIncomingPhotoMessage:(NSString *)imageURL;
 

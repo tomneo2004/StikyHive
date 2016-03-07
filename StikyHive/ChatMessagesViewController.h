@@ -23,7 +23,7 @@
 
 
 
-@interface ChatMessagesViewController : JSQMessagesViewController <UIActionSheetDelegate, AudioRecordManagerDelegate, ChatDataDelegate>
+@interface ChatMessagesViewController : JSQMessagesViewController <UIActionSheetDelegate, AudioRecordManagerDelegate, ChatDataDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) id<ChatMessagesViewControllerDelegate> delegateModal;
 @property (strong, nonatomic) ChatData *chatData;

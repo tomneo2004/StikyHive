@@ -258,8 +258,8 @@ static NSString *profilePic = nil;
         [WebDataInterface insertChatMsg:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee message:text createDate:newDateString completion:^(NSObject *obj, NSError *err) {
             
             [WebDataInterface checkLastMsg:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee message:text createDate:newDateString completion:^(NSObject *obj2, NSError *err2) {
-                NSLog(@"obj ---- %@",obj);
                 
+                NSLog(@"obj ---- %@",obj);
                 
                 NSLog(@"obj 2 ------ %@",obj2);
                 
@@ -303,8 +303,10 @@ static NSString *profilePic = nil;
             // NSJSONReadingOptions jsonOption = NSJSONReadingAllowFragments;
             // id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:jsonOption error:&connectionError];
             // NSLog(@"json object ----- %@",jsonObject);
+            
             NSLog(@"response ---- %@",response);
-            NSLog(@"url request --- %@",urlRequest);
+            
+            NSLog(@"json object text ");
         }
         else
         {
@@ -340,8 +342,6 @@ static NSString *profilePic = nil;
                           };
     
     NSLog(@"json message ---- %@",msg);
-    
-    NSLog(@"url ---- %@",[LocalDataInterface retrieveProfileUrl]);
     
     return msg;
 }
@@ -723,6 +723,7 @@ static NSString *profilePic = nil;
     switch (buttonIndex)
     {
         case 0:
+            [self showPhotoAction];
             break;
         case 1:
         {
@@ -745,6 +746,68 @@ static NSString *profilePic = nil;
     [self finishSendingMessageAnimated:YES];
     
 }
+
+- (void)showPhotoAction
+{
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        //        [[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Existing", nil] showFromBarButtonItem:sender animated:YES];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Select Photo Souce"
+                                                       delegate:self cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Camera",@"Photo Library", nil];
+        [alert show];
+    }
+    
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        UIImagePickerController *pickerLibrary = [[UIImagePickerController alloc] init];
+        pickerLibrary.sourceType = UIImagePickerControllerSourceTypeCamera;
+        pickerLibrary.delegate = self;
+        [self presentModalViewController:pickerLibrary animated:YES];
+
+    }
+    else if (buttonIndex == 2)
+    {
+        UIImagePickerController *pickerLibrary = [[UIImagePickerController alloc] init];
+        pickerLibrary.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        pickerLibrary.delegate = self;
+        [self presentModalViewController:pickerLibrary animated:YES];
+ 
+    }
+    
+}
+
+#pragma mark - image picker controller delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo
+{
+    UIImage *myImage = image;
+    
+    [self.chatData addPhotoMsg:myImage];
+    
+    [self finishSendingMessageAnimated:YES];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    NSString *androidApi = @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks";
+    NSString *iosApi = @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk";
+    
+    NSLog(@"gcm android api key --- %@",androidApi);
+    NSLog(@"gcm ios api key -- %@",iosApi);
+    
+    
+    
+}
+
+
+
 
 #pragma mark - AudioRecordManager delegate
 
