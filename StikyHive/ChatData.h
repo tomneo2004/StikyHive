@@ -59,4 +59,6 @@
 
 - (void)addincomingAcceptOffer:(NSString *)htmlString;
 
+- (void)addincomingFile:(NSString *)fileURL;
+
 @end

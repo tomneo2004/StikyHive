@@ -109,7 +109,7 @@ typedef enum{
     __weak typeof(self) weakSelf = self;
     __block typeof (AFSoundItem *) playerItem;
     [_downloadOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Successfully downloaded file to %@", path);
+        NSLog(@"Successfully downloaded audio file to %@", path);
         
         dispatch_async(dispatch_get_main_queue(), ^{
         
