@@ -15,6 +15,7 @@
 #import "FileMediaItem.h"
 #import "AcceptOfferMediaItem.h"
 #import "AFNetworking.h"
+#import "ViewControllerUtil.h"
 
 @interface ChatData ()
 
@@ -43,11 +44,13 @@
         _incomingAvatar = [JSQMessagesAvatarImageFactory avatarImageWithImage:image diameter:diameter];
         
         
-        UserInfo *userInfo = [LocalDataInterface getUserFromID:outID];
-        NSString *imagePath = [WebDataInterface getFullUrlPath:userInfo.profilePicture];
+
+        NSString *imagePath = [WebDataInterface getFullUrlPath:[LocalDataInterface retrieveProfileUrl]];
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagePath]];
         UIImage *myImage = [UIImage imageWithData:imageData];
         myImage = myImage ? myImage : [UIImage imageNamed:@"Default_profile_small@2x"];
+
+        
         _outgoingAvatar = [JSQMessagesAvatarImageFactory avatarImageWithImage:myImage diameter:diameter];
 
         

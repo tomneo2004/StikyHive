@@ -80,8 +80,7 @@ static NSString *profilePic = nil;
     self.senderDisplayName = [LocalDataInterface retrieveUsername];
     
     
-    UIImage *profileImage = [ViewControllerUtil getImageWithPath:[WebDataInterface getFullUrlPath:[LocalDataInterface retrieveProfileUrl]]];
-    NSLog(@"profil image url --- %@",[WebDataInterface getFullUrlPath:[LocalDataInterface retrieveProfileUrl]]);
+    UIImage *profileImage = [ViewControllerUtil getImageWithPath:profilePic];
 //    [UIImage imageNamed:@"Default_profile_small@2x"];
 //    if (profilePic != nil)
 //    {
@@ -97,7 +96,7 @@ static NSString *profilePic = nil;
 //    self.showLoadEarlierMessagesHeader = YES;
     
     
-    UIBarButtonItem *callButton = [ViewControllerUtil createBarButton:@"button_call_header" onTarget:self withSelector:@selector(callPressedd)];
+    UIBarButtonItem *callButton = [ViewControllerUtil createBarButton:@"button_call_header" onTarget:self withSelector:@selector(callPressedd:)];
     callButton.imageInsets = UIEdgeInsetsMake(0, -15, 0, 15);
     self.navigationItem.rightBarButtonItems = @[callButton];
     self.navigationController.navigationBar.topItem.title = @"";
@@ -215,6 +214,11 @@ static NSString *profilePic = nil;
 - (void)customAction:(id)sender
 {
     
+}
+
+- (void)callPressedd:(id)sender
+{
+    NSLog(@"call pressed!");
 }
 
 - (void)textViewDidChange:(UITextView *)textView
