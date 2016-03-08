@@ -668,6 +668,48 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     
 }
 
+static NSOperationQueue *queue;
++ (void)uploadAudio:(NSData *)audioData stikyId:(NSString *)stikyId toStikyId:(NSString *)toStikyId completeHandler:(void (^)(NSString *data, NSError *error))handler{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/voicetransfer.php?fromStikyBee=%@&toStikyBee=%@&message=voice&dateTime=%@&url=http://beta.stikyhive.com:81",stikyId, toStikyId, dateString];
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    // NSString *boundary = [NSString stringWithString:@"---------------------------14737809831466499882746641449"];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploaded_file\"; filename=\1\r\n"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    // [body appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:audioData]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    if(queue == nil){
+        
+        queue = [[NSOperationQueue alloc] init];
+    }
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+        
+        if(handler != nil){
+            
+            handler([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], connectionError);
+        }
+    } ];
+}
+
 + (void)profileImageUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid
 {
     NSData *imageData =UIImageJPEGRepresentation(profileImage, 0.0);
@@ -722,8 +764,10 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
         [request setHTTPBody:body];
     
+    
         [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         
+    
     
 }
 
