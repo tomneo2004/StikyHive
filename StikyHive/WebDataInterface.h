@@ -231,6 +231,7 @@
 
 
 
+
 #define GOOGLE_SERVICE_URL              @"https://android.googleapis.com/gcm/send"
 #define GOOGLE_PARAM_FILE_NAME          @"fileName"
 #define GOOGLE_PARAM_MSG                @"msg"
@@ -246,7 +247,7 @@
 #define GOOGLE_PARAM_SENDER_TOKEN       @"senderToken"
 #define GOOGLE_PARAM_RECIPIENT_TOKEN    @"recipientToken"
 
-
+#define VOICE_TRANSFER_URL              @"http://beta.stikyhive.com:81/androidstikyhive/voicetransfer.php?fromStikyBee="
 
 
 #define POST_PARAMETER_EMAIL            @"email"
@@ -501,6 +502,8 @@
 + (void)skillImageUpload:(UIImage *)image stikyid:(NSString *)stikyid skillId:(NSInteger)skillId type:(NSInteger)type editFlage:(BOOL)editFlage photoId:(NSInteger)photoId caption:(NSString *)caption;
 
 + (void)skillImageUploadTest:(UIImage *)image stikyid:(NSString *)stikyid type:(NSInteger)type editFlage:(BOOL)editFlage photoId:(NSInteger)photoId caption:(NSString *)caption;
+
++ (void)voiceTransfer:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee message:(NSString *)message dateTime:(NSString *)dateTime completion:(void (^)(NSObject *, NSError *))completion;
 
 ////////  ///////////// END -------------------------------------
 

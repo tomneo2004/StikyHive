@@ -15,7 +15,7 @@
 #import "WebDataInterface.h"
 #import "LocalDataInterface.h"
 
-
+#import "ChatMessagesViewController.h"
 
 
 @interface AppDelegate ()
@@ -76,6 +76,24 @@ NSString *const SubscriptionTopic = @"/topics/global";
     
     [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
     
+    
+    [self startGCMService];
+    
+    
+//    // check for push notification
+//    UILocalNotification *notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+//    if (notification) {
+//        NSLog(@"app recieved notification from remote %@",notification);
+//        [self application:application didReceiveRemoteNotification:(NSDictionary *)notification];
+//    }
+//    else
+//    {
+//        NSLog(@"app did not recieve notification");
+//    }
+    
+    
+    
+    
     [self startGCMService];
     
     //end
@@ -125,7 +143,11 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     
-    NSLog(@"Notification received: %@", userInfo);
+    
+    
+    
+    
+    NSLog(@"Notification received from gcm: %@", userInfo);
     // This works only if the app started the GCM service
     [[GCMService sharedInstance] appDidReceiveMessage:userInfo];
     // Handle the received message
@@ -134,13 +156,16 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     [[NSNotificationCenter defaultCenter] postNotificationName:_messageKey
                                                         object:nil
                                                       userInfo:userInfo];
+    
+    
+    
 }
 
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     
-    NSLog(@"Notification received: %@", userInfo);
+    NSLog(@"Notification received completion handler: %@", userInfo);
     // This works only if the app started the GCM service
     [[GCMService sharedInstance] appDidReceiveMessage:userInfo];
     // Handle the received message
@@ -149,7 +174,85 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     [[NSNotificationCenter defaultCenter] postNotificationName:_messageKey
                                                         object:nil
                                                       userInfo:userInfo];
+    
     completionHandler(UIBackgroundFetchResultNoData);
+    
+    
+    
+    
+    
+    // testing open chatting page ------
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
+    {
+        // app was already in the foreground
+        NSLog(@"notification received by running app");
+    }
+    else
+    {
+        // app was just brougt from background to foreground
+        NSLog(@"app opened from notification");
+        
+        
+        NSDictionary *info = (NSDictionary *)userInfo;
+        NSLog(@"user info nsdictionary ---- %@",info);
+        
+        
+        
+        
+//        ChatMessagesViewController *controller = (ChatMessagesViewController *)[UIStoryboard instantiateViewControllerWithIdentifier: @"CountrySettings"];
+//        [self.window.rootViewController presentViewController: controller animated:YES completion:nil];
+       
+//        UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
+//        tbc.selectedIndex = 4;
+        
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        ChatMessagesViewController *ivc = [storyboard instantiateViewControllerWithIdentifier:@"chat_messages_view_controller"];
+//        
+//        [ChatMessagesViewController setToStikyBee:info[@"recipientStkid"]];
+        
+//        NSArray *infoArray = [NSArray arrayWithObjects:info[@"recipientStkid"],info[@"chatRecipient"],info[@"fileName"], nil];
+        
+//        [ivc setToStikyBeeInfoArray:infoArray];
+        NSLog(@"stikid --- %@",info[@"recipientStkid"]);
+        NSLog(@"name ---- %@",info[@"chatRecipient"]);
+        NSLog(@"file ------ %@",info[@"fileName"]);
+
+        
+//        [(UINavigationController*)self.window.rootViewController pushViewController:ivc animated:NO];
+        
+        
+        
+        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        ChatMessagesViewController *controller = (ChatMessagesViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"chat_messages_view_controller"];
+        [ChatMessagesViewController setToStikyBee:info[@"recipientStkid"]];
+        
+        NSArray *infoArray = [NSArray arrayWithObjects:info[@"recipientStkid"],info[@"chatRecipient"],info[@"fileName"], nil];
+        
+        [ChatMessagesViewController setToStikyBeeInfoArray:infoArray];
+        
+        controller = [ChatMessagesViewController messagesViewController];
+        
+        [navigationController pushViewController:controller animated:YES];
+        
+        
+        
+        
+        
+        // example
+//        [ChatMessagesViewController setToStikyBee:userID];
+//        
+//        [ChatMessagesViewController setToStikyBeeInfoArray:infoArray];
+//        
+//        ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
+//        [self.navigationController pushViewController:cmvc animated:YES];
+
+        
+    }
+    //
+
+    
+    
     
 }
 
