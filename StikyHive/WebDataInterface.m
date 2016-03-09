@@ -674,6 +674,7 @@ static NSOperationQueue *queue;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    NSLog(@"send date time %@", dateString);
     
     NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/voicetransfer.php?fromStikyBee=%@&toStikyBee=%@&message=voice&dateTime=%@&url=http://beta.stikyhive.com:81",stikyId, toStikyId, dateString];
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
