@@ -75,37 +75,9 @@ static AudioRecordManager *_instance;
         
         _calendar = [NSCalendar currentCalendar];
         
-        //setup audio session, EZMicrophone need audio session to work!
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-        
-        NSError *error;
-        
-        [session setInputGain:1.0f error:&error];
-        if(error){
-            
-            NSLog(@"Error setting up audio session input gain: %@", error.localizedDescription);
-            
-            return nil;
-        }
-        
-        [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:&error];
-        if (error)
-        {
-            NSLog(@"Error setting up audio session: %@. EZMicrophone can't be initialized", error.localizedDescription);
-            
-            return nil;
-        }
-        
-        [session setActive:YES error:&error];
-        if (error)
-        {
-            NSLog(@"Error setting up audio session active: %@. EZMicrophone can't be initialized", error.localizedDescription);
-            
-            return nil;
-        }
     }
     
-    _microphone = [EZMicrophone microphoneWithDelegate:self];
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppTerminate) name:UIApplicationWillTerminateNotification object:nil];
@@ -264,6 +236,37 @@ static AudioRecordManager *_instance;
 }
 
 - (void)presentAudioRecorder{
+    
+    //setup audio session, EZMicrophone need audio session to work!
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+    NSError *error;
+    
+    [session setInputGain:1.0f error:&error];
+    if(error){
+        
+        NSLog(@"Error setting up audio session input gain: %@", error.localizedDescription);
+        
+        return;
+    }
+    
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:&error];
+    if (error)
+    {
+        NSLog(@"Error setting up audio session: %@. EZMicrophone can't be initialized", error.localizedDescription);
+        
+        return;
+    }
+    
+    [session setActive:YES error:&error];
+    if (error)
+    {
+        NSLog(@"Error setting up audio session active: %@. EZMicrophone can't be initialized", error.localizedDescription);
+        
+        return;
+    }
+    
+   _microphone = [EZMicrophone microphoneWithDelegate:self];
     
     _audioRecorderController = [[AudioRecorderViewController alloc] initWithNibName:@"AudioRecorderViewController" bundle:nil];
     
@@ -486,10 +489,7 @@ static AudioRecordManager *_instance;
     
     if([self isRecordAudioExist]){
         
-        if([_delegate respondsToSelector:@selector(confirmRecordAudioWithFilePath:)]){
-            
-            [_delegate confirmRecordAudioWithFilePath:[self recordAudioOutputPath]];
-        }
+        
         
         if(_audioRecorderController)
         {
@@ -498,7 +498,16 @@ static AudioRecordManager *_instance;
             _audioRecorderController = nil;
         }
         
-        [[self rootViewController] dismissViewControllerAnimated:YES completion:nil];
+        [[self rootViewController] dismissViewControllerAnimated:YES completion:^{
+        
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+                if([_delegate respondsToSelector:@selector(confirmRecordAudioWithFilePath:)]){
+                    
+                    [_delegate confirmRecordAudioWithFilePath:[self recordAudioOutputPath]];
+                }
+            });
+        }];
     }
     else{
         

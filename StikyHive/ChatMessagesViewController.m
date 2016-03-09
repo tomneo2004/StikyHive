@@ -12,6 +12,7 @@
 #import "LocalDataInterface.h"
 #import "ViewControllerUtil.h"
 #import <Google/CloudMessaging.h>
+#import "UIView+RNActivityView.h"
 
 #import "AttachmentViewController.h"
 #import "AudioMediaItem.h"
@@ -853,9 +854,27 @@ static NSString *profilePic = nil;
     
     NSLog(@"confirm using recording audio at path %@", audioFilePath);
     
+    [self.view showActivityViewWithLabel:@"Uploading audio..."];
     //upload audio to server before you do following code
-    [self.chatData addAudioMediaMessageWithURL:@"https://" withAudioDuration:10];
-    [self finishSendingMessageAnimated:YES];
+    [WebDataInterface uploadAudio:[NSData dataWithContentsOfFile:audioFilePath] stikyId:[LocalDataInterface retrieveStkid] toStikyId:ToStikyBee completeHandler:^(NSString *data, NSError *error) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if(error != nil){
+                
+                
+                NSLog(@"upload audio fail:%@", error);
+            }
+            else{
+                
+                [self.chatData addAudioMediaMessageWithURL:[WebDataInterface getFullUrlPath:data] withAudioDuration:10];
+                [self finishSendingMessageAnimated:YES];
+            }
+            
+            [self.view hideActivityView];
+        });
+    }];
+    
 }
 
 #pragma mark - OfferMediaItem notification handler
