@@ -494,7 +494,7 @@
 
 
 
-
++ (void)uploadAudio:(NSData *)audioData stikyId:(NSString *)stikyId toStikyId:(NSString *)toStikyId completeHandler:(void (^)(NSString *data, NSError *error))handler;
 
 + (void)profileImageUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid;
 

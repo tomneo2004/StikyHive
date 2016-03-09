@@ -243,11 +243,13 @@ typedef enum{
         
         [_iconView setHidden:NO];
         [_indicator setHidden:YES];
+        [_indicator stopAnimating];
     }
     else if(_cStatus == AReady){
         
         [_iconView setHidden:NO];
         [_indicator setHidden:YES];
+        [_indicator stopAnimating];
     }
 }
 
