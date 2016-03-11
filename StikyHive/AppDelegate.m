@@ -78,7 +78,7 @@ NSString *const SubscriptionTopic = @"/topics/global";
     [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
     
     
-    [self startGCMService];
+//    [self startGCMService];
     
     
 //    // check for push notification
