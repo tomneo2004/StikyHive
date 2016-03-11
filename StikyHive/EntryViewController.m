@@ -257,7 +257,7 @@
                 /* start GCM service -------------
                  *
                  */
-//                [(AppDelegate *)[UIApplication sharedApplication].delegate startGCMService];
+                [(AppDelegate *)[UIApplication sharedApplication].delegate startGCMService];
                 
                 
                 
