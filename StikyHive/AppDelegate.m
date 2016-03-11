@@ -95,7 +95,7 @@ NSString *const SubscriptionTopic = @"/topics/global";
     
     
     
-    [self startGCMService];
+//    [self startGCMService];
     
     //end
     

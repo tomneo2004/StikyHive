@@ -494,6 +494,7 @@
 
 
 
++ (void)sendPhoto:(UIImage *)image fromStikyBee:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee completeHandler:(void (^)(NSString *data, NSError *error))handler;
 
 + (void)uploadAudio:(NSData *)audioData stikyId:(NSString *)stikyId toStikyId:(NSString *)toStikyId completeHandler:(void (^)(NSString *data, NSError *error))handler;
 

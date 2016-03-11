@@ -818,6 +818,10 @@ static NSString *profilePic = nil;
     
     
     
+    [WebDataInterface sendPhoto:myImage fromStikyBee:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee completeHandler:^(NSString *data, NSError *error) {
+        NSLog(@"send photo data ---- %@",data);
+    }];
+    
 }
 
 

@@ -711,6 +711,55 @@ static NSOperationQueue *queue;
     } ];
 }
 
++ (void)sendPhoto:(UIImage *)image fromStikyBee:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee completeHandler:(void (^)(NSString *data, NSError *error))handler
+{
+    NSData *imageData =UIImageJPEGRepresentation(image, 0.0);
+    
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    NSLog(@"send date time %@", dateString);
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/filetransfer.php?fromStikyBee=%@&toStikyBee=%@&message=photo&extension=png&type=image&dateTime=%@&url=http://beta.stikyhive.com:81",fromStikyBee, toStikyBee, dateString];
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    // NSString *boundary = [NSString stringWithString:@"---------------------------14737809831466499882746641449"];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploaded_file\"; filename=\1\r\n"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    // [body appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    if(queue == nil){
+        
+        queue = [[NSOperationQueue alloc] init];
+    }
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+        
+        if(handler != nil){
+            
+            handler([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], connectionError);
+        }
+    } ];
+    
+}
+
+
+
+
 + (void)profileImageUpload:(UIImage *)profileImage stikyid:(NSString *)stikyid
 {
     NSData *imageData =UIImageJPEGRepresentation(profileImage, 0.0);
