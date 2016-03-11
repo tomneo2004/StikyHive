@@ -178,6 +178,7 @@
 		5186FE4A1BD5EA08002A51CA /* buyerspost_job_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 5186FE471BD5EA08002A51CA /* buyerspost_job_time.png */; };
 		5186FE4B1BD5EA08002A51CA /* buyerspost_job_type.png in Resources */ = {isa = PBXBuildFile; fileRef = 5186FE481BD5EA08002A51CA /* buyerspost_job_type.png */; };
 		51896EAE1BCDFE5D006643AE /* SellerRevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51896EAD1BCDFE5D006643AE /* SellerRevViewController.m */; };
+		5198F7791C925D6400FC965D /* NavigChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5198F7781C925D6400FC965D /* NavigChatViewController.m */; };
 		51AC3C5C1BA6ABA8004DA21C /* slide-0820-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 51AC3C5A1BA6ABA8004DA21C /* slide-0820-01.png */; };
 		51AC3C5D1BA6ABA8004DA21C /* slide-0820-02.png in Resources */ = {isa = PBXBuildFile; fileRef = 51AC3C5B1BA6ABA8004DA21C /* slide-0820-02.png */; };
 		51C0A7E91BC6115600860CD3 /* SellerCommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51C0A7E81BC6115600860CD3 /* SellerCommViewController.m */; };
@@ -711,6 +712,8 @@
 		5186FE481BD5EA08002A51CA /* buyerspost_job_type.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyerspost_job_type.png; sourceTree = "<group>"; };
 		51896EAC1BCDFE5D006643AE /* SellerRevViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerRevViewController.h; sourceTree = "<group>"; };
 		51896EAD1BCDFE5D006643AE /* SellerRevViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerRevViewController.m; sourceTree = "<group>"; };
+		5198F7771C925D6400FC965D /* NavigChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigChatViewController.h; sourceTree = "<group>"; };
+		5198F7781C925D6400FC965D /* NavigChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigChatViewController.m; sourceTree = "<group>"; };
 		51AC3C5A1BA6ABA8004DA21C /* slide-0820-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slide-0820-01.png"; sourceTree = "<group>"; };
 		51AC3C5B1BA6ABA8004DA21C /* slide-0820-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slide-0820-02.png"; sourceTree = "<group>"; };
 		51C0A7E71BC6115600860CD3 /* SellerCommViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerCommViewController.h; sourceTree = "<group>"; };
@@ -1325,6 +1328,8 @@
 				CED0947C1C892304000EB9DF /* AcceptOfferMediaItem.m */,
 				CE84D0F71C8D73A1005B8E14 /* FileMediaItem.h */,
 				CE84D0F81C8D73A1005B8E14 /* FileMediaItem.m */,
+				5198F7771C925D6400FC965D /* NavigChatViewController.h */,
+				5198F7781C925D6400FC965D /* NavigChatViewController.m */,
 			);
 			name = StikyChat;
 			sourceTree = "<group>";
@@ -2918,6 +2923,7 @@
 				516718E01C1A799E003E9902 /* CYRToken.m in Sources */,
 				516718E11C1A799E003E9902 /* HRBrightnessCursor.m in Sources */,
 				5184DD511C08639A008F434B /* SellingViewController33.m in Sources */,
+				5198F7791C925D6400FC965D /* NavigChatViewController.m in Sources */,
 				51C0A7E91BC6115600860CD3 /* SellerCommViewController.m in Sources */,
 				CE9C7CE91C102ED600326710 /* SubInfo.m in Sources */,
 				674D0DA11B7D913400B5B80D /* SecondViewController.m in Sources */,

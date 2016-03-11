@@ -161,7 +161,6 @@
     [ChatMessagesViewController setToStikyBee:userID];
     
     
-    
     [ChatMessagesViewController setToStikyBeeInfoArray:infoArray];
     
     ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];

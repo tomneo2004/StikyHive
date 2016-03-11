@@ -16,6 +16,7 @@
 #import "LocalDataInterface.h"
 
 #import "ChatMessagesViewController.h"
+#import "NavigChatViewController.h"
 
 
 @interface AppDelegate ()
@@ -178,9 +179,6 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     completionHandler(UIBackgroundFetchResultNoData);
     
     
-    
-    
-    
     // testing open chatting page ------
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
     {
@@ -195,66 +193,42 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
         
         NSDictionary *info = (NSDictionary *)userInfo;
         NSLog(@"user info nsdictionary ---- %@",info);
-        
-        
-        
-        
-//        ChatMessagesViewController *controller = (ChatMessagesViewController *)[UIStoryboard instantiateViewControllerWithIdentifier: @"CountrySettings"];
-//        [self.window.rootViewController presentViewController: controller animated:YES completion:nil];
-       
-//        UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
-//        tbc.selectedIndex = 4;
-        
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        ChatMessagesViewController *ivc = [storyboard instantiateViewControllerWithIdentifier:@"chat_messages_view_controller"];
-//        
-//        [ChatMessagesViewController setToStikyBee:info[@"recipientStkid"]];
-        
-//        NSArray *infoArray = [NSArray arrayWithObjects:info[@"recipientStkid"],info[@"chatRecipient"],info[@"fileName"], nil];
-        
-//        [ivc setToStikyBeeInfoArray:infoArray];
         NSLog(@"stikid --- %@",info[@"recipientStkid"]);
         NSLog(@"name ---- %@",info[@"chatRecipient"]);
         NSLog(@"file ------ %@",info[@"fileName"]);
+        
+        
+        NavigChatViewController *loginController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"navig_chat_view_controller"]; //or the homeController
+        UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:loginController];
+        [NavigChatViewController setToStikyBee:info[@"recipientStkid"]];
+        
+        NSArray *infoArray = [NSArray arrayWithObjects:info[@"recipientStkid"],info[@"chatRecipient"],info[@"chatRecipientUrl"], nil];
+        
+        [NavigChatViewController setToStikyBeeInfoArray:infoArray];
 
+        loginController = [NavigChatViewController messagesViewController];
         
-//        [(UINavigationController*)self.window.rootViewController pushViewController:ivc animated:NO];
+        self.window.rootViewController = navController;
         
+        [navController pushViewController:loginController animated:YES];
         
-        
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-        ChatMessagesViewController *controller = (ChatMessagesViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"chat_messages_view_controller"];
-        [ChatMessagesViewController setToStikyBee:info[@"recipientStkid"]];
-        
-        NSArray *infoArray = [NSArray arrayWithObjects:info[@"recipientStkid"],info[@"chatRecipient"],info[@"fileName"], nil];
-        
-        [ChatMessagesViewController setToStikyBeeInfoArray:infoArray];
-        
-        controller = [ChatMessagesViewController messagesViewController];
-        
-        [navigationController pushViewController:controller animated:YES];
-        
-        
-        
-        
-        
-        // example
-//        [ChatMessagesViewController setToStikyBee:userID];
-//        
-//        [ChatMessagesViewController setToStikyBeeInfoArray:infoArray];
-//        
-//        ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
-//        [self.navigationController pushViewController:cmvc animated:YES];
-
-        
+       
     }
-    //
-
-    
-    
     
 }
+
+
+- (UIViewController*)topMostController
+{
+    UIViewController *topController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+    return topController;
+}
+
+
+
 
 - (void)startGCMService
 {
