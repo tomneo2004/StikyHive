@@ -94,8 +94,11 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
         [formatter  setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
         
-        _issueDate = [formatter dateFromString:_originalIssueDate];
-        _expireDate = [formatter dateFromString:_originalExpireDate];
+        if(![_originalIssueDate isEqual:[NSNull null]])
+            _issueDate = [formatter dateFromString:_originalIssueDate];
+        
+        if(![_originalExpireDate isEqual:[NSNull null]])
+            _expireDate = [formatter dateFromString:_originalExpireDate];
         
     }
     
