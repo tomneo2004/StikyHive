@@ -149,7 +149,12 @@
     
     ContactInfo *info = [_contactInfos objectAtIndex:index];
     
-    [ChatMessagesViewController setToStikyBee:info.stkId];
+    NSArray *beeInfo = [NSArray arrayWithObjects:info.contactId,[NSString stringWithFormat:@"%@ %@",info.firstName, info.lastName],info.photoPicture, nil];
+    
+    NSLog(@"bee info -------- %@",beeInfo);
+    
+    [ChatMessagesViewController setToStikyBee:info.contactId];
+    [ChatMessagesViewController setToStikyBeeInfoArray:beeInfo];
     ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
     [self.navigationController pushViewController:cmvc animated:YES];
 }

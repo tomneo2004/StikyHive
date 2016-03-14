@@ -254,6 +254,8 @@
                 NSString *profilepic = dict[@"stikybee"][@"profilePicture"];
                 
                 [LocalDataInterface storeProfileUrl:profilepic];
+                
+                
                 /* start GCM service -------------
                  *
                  */

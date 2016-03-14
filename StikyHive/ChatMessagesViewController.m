@@ -253,8 +253,8 @@ static NSString *profilePic = nil;
         
         NSString *androidApi = @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks";
         NSString *iosApi = @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk";
-        [self sendMessages:androidApi text:text];
-        [self sendMessages:iosApi text:text];
+        [self sendMessages:androidApi text:text isSendText:YES];
+        [self sendMessages:iosApi text:text isSendText:YES];
         
         
         
@@ -285,7 +285,7 @@ static NSString *profilePic = nil;
     }
 }
 
-- (void)sendMessages:(NSString *)api text:(NSString *)text
+- (void)sendMessages:(NSString *)api text:(NSString *)text isSendText:(BOOL)isSendText
 {
     // create the request
     NSString *sendUrl = @"https://android.googleapis.com/gcm/send";
@@ -296,7 +296,8 @@ static NSString *profilePic = nil;
     [urlRequest setValue:[NSString stringWithFormat:@"key=%@",api] forHTTPHeaderField:@"Authorization"];
     [urlRequest setTimeoutInterval:60];
     
-    NSDictionary *messages = [self getMessage:recipientID text:text];
+    // get message data
+    NSDictionary *messages = [self getMessage:recipientID text:text isSendText:isSendText];
     
     NSData *jsonBody = [NSJSONSerialization dataWithJSONObject:messages options:0 error:nil];
     
@@ -319,6 +320,7 @@ static NSString *profilePic = nil;
         else
         {
             NSLog(@"error ---- %@",connectionError);
+            
         }
         
     }];
@@ -326,21 +328,34 @@ static NSString *profilePic = nil;
 }
 
 
-- (NSDictionary *)getMessage:(NSString *)to text:(NSString *)text
+- (NSDictionary *)getMessage:(NSString *)to text:(NSString *)text isSendText:(BOOL)isSendText
 {
-    NSDictionary *msg = @{@"to":to,
+    
+    NSString *msg = text;
+    NSString *message = text;
+    if (!isSendText) {
+        msg = @"Image Transfer";
+        message = @"<img";
+    }
+    
+    NSLog(@"is send text ------ %d",isSendText);
+    NSLog(@"msg ======= %@",msg);
+    NSLog(@"message =------- %@",message);
+    
+    
+    NSDictionary *msgDtata = @{@"to":to,
                           @"notification": @{
                                   @"body": text
                                   },
                           @"data":@{
                                   @"fileName":[NSNull null],
-                                  @"msg":text,
+                                  @"msg":msg,
                                   @"offerId":[NSNumber numberWithInteger:0],
                                   @"offerStatus":[NSNumber numberWithInteger:0],
                                   @"price":[NSNull null],
                                   @"rate":[NSNull null],
                                   @"name":[NSNull null],
-                                  @"message":text,
+                                  @"message":message,
                                   @"recipientStkid":[LocalDataInterface retrieveStkid],
                                   @"chatRecipient":[LocalDataInterface retrieveNameOfUser],
                                   @"chatRecipientUrl":[LocalDataInterface retrieveProfileUrl],
@@ -351,7 +366,7 @@ static NSString *profilePic = nil;
     
     NSLog(@"json message ---- %@",msg);
     
-    return msg;
+    return msgDtata;
 }
 
 
@@ -821,6 +836,17 @@ static NSString *profilePic = nil;
     [WebDataInterface sendPhoto:myImage fromStikyBee:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee completeHandler:^(NSString *data, NSError *error) {
         NSLog(@"send photo data ---- %@",data);
     }];
+    
+    
+    
+    [self sendMessages:androidApi text:@"" isSendText:NO];
+    [self sendMessages:iosApi text:@"" isSendText:NO];
+    
+    
+    
+    
+    
+    
     
 }
 
