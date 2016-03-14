@@ -251,13 +251,6 @@ static NSString *profilePic = nil;
         
         
         
-        NSString *androidApi = @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks";
-        NSString *iosApi = @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk";
-        [self sendMessages:androidApi text:text isSendText:YES];
-        [self sendMessages:iosApi text:text isSendText:YES];
-        
-        
-        
         NSDate *now = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
@@ -275,6 +268,14 @@ static NSString *profilePic = nil;
             }];
         }];
 
+        
+        
+        NSString *androidApi = @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks";
+        NSString *iosApi = @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk";
+        [self sendMessages:androidApi text:text isSendText:YES];
+        [self sendMessages:iosApi text:text isSendText:YES];
+
+        
         
         self.inputToolbar.contentView.rightBarButtonItem = _pttButton;
         self.inputToolbar.contentView.rightBarButtonItem.enabled = YES;
@@ -756,9 +757,21 @@ static NSString *profilePic = nil;
             break;
         case 1:
         {
+            // send file
+            
+            
+            
+            
             
         }
-            break;
+        case 2:
+        {
+            // Transaction
+            
+            
+            
+        }
+//            break;
         case 3:
         {
             //present audio recording view
@@ -816,6 +829,9 @@ static NSString *profilePic = nil;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo
 {
+    
+    // send photo message
+    
     UIImage *myImage = image;
     
     [self.chatData addPhotoMsg:myImage];
@@ -832,7 +848,6 @@ static NSString *profilePic = nil;
     NSLog(@"gcm ios api key -- %@",iosApi);
     
     
-    
     [WebDataInterface sendPhoto:myImage fromStikyBee:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee completeHandler:^(NSString *data, NSError *error) {
         NSLog(@"send photo data ---- %@",data);
     }];
@@ -841,10 +856,6 @@ static NSString *profilePic = nil;
     
     [self sendMessages:androidApi text:@"" isSendText:NO];
     [self sendMessages:iosApi text:@"" isSendText:NO];
-    
-    
-    
-    
     
     
     
