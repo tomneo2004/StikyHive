@@ -21,6 +21,8 @@
 
 #import "ViewControllerUtil.h"
 
+#define kEarlyMessageLoadAmount 0
+
 
 @interface ChatMessagesViewController ()
 
@@ -147,15 +149,11 @@ static NSString *profilePic = nil;
 //         
 //     }];
 //    
-    
+    self.showLoadEarlierMessagesHeader = YES;
     
     _audioImage = [UIImage imageNamed:@"audio_message@2x"];
     
-    //listen to message receive notification
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:@"onMessageReceived" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferAccept:) name:acceptOfferNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferCancel:) name:cancelOfferNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFileOpenRequired:) name:openFileRequired object:nil];
+    
     
 }
 
@@ -184,6 +182,12 @@ static NSString *profilePic = nil;
     _profileImageView.layer.masksToBounds = YES;
     
     [self.navigationController.navigationBar addSubview:_profileImageView];
+    
+    //listen to message receive notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:@"onMessageReceived" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferAccept:) name:acceptOfferNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferCancel:) name:cancelOfferNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFileOpenRequired:) name:openFileRequired object:nil];
     
 }
 
@@ -635,6 +639,8 @@ static NSString *profilePic = nil;
                 header:(JSQMessagesLoadEarlierHeaderView *)headerView didTapLoadEarlierMessagesButton:(UIButton *)sender
 {
     NSLog(@"Load earlier messages!");
+    
+    [self loadEarlyMessage];
 }
 
 
@@ -812,6 +818,8 @@ static NSString *profilePic = nil;
     
 }
 
+
+
 #pragma mark - image picker controller delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo
@@ -956,6 +964,54 @@ static NSString *profilePic = nil;
     return self.view.frame;
 }
 
+#pragma mark - Load early message
+- (void)loadEarlyMessage{
+    
+    [self.view showActivityViewWithLabel:@"Loading early message..."];
+    
+    [WebDataInterface selectChatMsgs:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee limit:kEarlyMessageLoadAmount completion:^(NSObject *obj, NSError *error) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSDictionary *dic = (NSDictionary *)obj;
+            
+            if(dic == nil || error != nil || ![dic[@"status"] isEqualToString:@"success"]){
+                
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to load early message" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+            else{
+                
+                NSLog(@"%@", dic);
+                
+                if([dic[@"messages"] count] > 0){
+                    
+                    for(NSDictionary *sDic in dic[@"messages"]){
+                        
+                        //message is from other person
+                        if(![sDic[@"fromStikyBee"] isEqualToString:[LocalDataInterface retrieveStkid]]){
+                            
+                            [self.chatData processEarlyIncommingMessage:sDic];
+                        }
+                        else{//message is from myself
+                            
+                            [self.chatData processEarlyOutgoingMessage:sDic];
+                        }
+                    }
+                    
+                    self.showLoadEarlierMessagesHeader = NO;
+                    [self.collectionView reloadData];
+                }
+                
+                
+            }
+            
+            [self.view hideActivityView];
+        });
+    }];
+}
+
 #pragma mark - Process message
 - (void)processMessage:(NSDictionary *)dic{
     
@@ -971,37 +1027,6 @@ static NSString *profilePic = nil;
             
             refreshView = YES;
         }
-        /*
-        else if([dic[@"offerStatus"] integerValue]==-1 || [dic[@"offerStatus"] integerValue]==-2){//reject offer
-            
-            JSQMessage *rejectMsg = [[JSQMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:@"Rejected Offer"];
-            
-            [_chatData.messages addObject:rejectMsg];
-            
-            refreshView = YES;
-        }
-        else if([dic[@"offerStatus"] integerValue]==1 || [dic[@"offerStatus"] integerValue]==3){//accept offer
-            
-            if([dic[@"offerStatus"] integerValue]==1){
-                
-                //stikypay
-                AcceptOfferMessage *acceptMsg = [[AcceptOfferMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:@"Accepted Offer. Make payment here"];
-                
-                acceptMsg.stikypay = YES;
-                
-                refreshView = YES;
-            }
-            else if([dic[@"offerStatus"] integerValue]==3){
-                
-                //no stikypay
-                AcceptOfferMessage *acceptMsg = [[AcceptOfferMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:@"Accepted Offer."];
-                
-                acceptMsg.stikypay = NO;
-                
-                refreshView = YES;
-            }
-        }
-        */
         
         if(refreshView){
             
@@ -1077,7 +1102,7 @@ static NSString *profilePic = nil;
 #pragma mark - ChatData delegate
 - (void)onReceivePhotoReadyToPresent{
     
-    [self scrollToBottomAnimated:YES];
+    //[self scrollToBottomAnimated:YES];
     [self.collectionView reloadData];
 }
 
