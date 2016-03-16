@@ -69,6 +69,9 @@ typedef enum{
 
 - (void)dealloc{
     
+    if(_downloadOp != nil)
+        [_downloadOp cancel];
+    
     _fileURL = nil;
     _cachedAudioImageView = nil;
     

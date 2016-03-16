@@ -922,8 +922,8 @@ static NSString *profilePic = nil;
                         
                         NSDictionary *msgData = [self getAudioMessage:recipientID storageUrl:data];
                         
-                        [self sendAudioGCM:msgData withAPI:GCM_IOS_API];
-                        [self sendAudioGCM:msgData withAPI:GCM_Android_API];
+                        [self sendGCM:msgData withAPI:GCM_IOS_API];
+                        [self sendGCM:msgData withAPI:GCM_Android_API];
                         
                         
                         [self finishSendingMessageAnimated:YES];
@@ -940,7 +940,7 @@ static NSString *profilePic = nil;
 }
 
 #pragma mark - SendAudio GCM
-- (void)sendAudioGCM:(NSDictionary *)dic withAPI:(NSString *)api{
+- (void)sendGCM:(NSDictionary *)dic withAPI:(NSString *)api{
     
     // create the request
     NSString *sendUrl = @"https://android.googleapis.com/gcm/send";
@@ -981,6 +981,7 @@ static NSString *profilePic = nil;
     }];
 }
 
+#pragma mark - GCM message data
 - (NSDictionary *)getAudioMessage:(NSString *)to storageUrl:(NSString *)url
 {
     
@@ -1009,17 +1010,111 @@ static NSString *profilePic = nil;
     return msgDtata;
 }
 
+- (NSDictionary *)getAcceptOfferMessage:(NSString *)to stikyPay:(BOOL)yesOrNo withOfferId:(NSInteger)offerId{
+    
+    NSString *message;
+    
+    if(yesOrNo){
+        
+        message = [NSString stringWithFormat:@"Accepted offer. <span class=%@>Make payment <a href=/adaptivePay?offerId=%ld&recipient=%@>here</a>.</span>", [LocalDataInterface retrieveStkid], offerId, [LocalDataInterface retrieveStkid]];
+    }
+    else{
+        
+        message = @"Accepted offer.";
+    }
+    
+    NSDictionary *msgDtata = @{@"to":to,
+                               @"notification": @{
+                                       @"body": @"Accept offer",
+                                       @"title" : @"StikyHive Message"
+                                       },
+                               @"data":@{
+                                       @"fileName":[NSNull null],
+                                       @"msg":@"Accepted offer.",
+                                       @"offerId":[NSNumber numberWithInteger:0],
+                                       @"offerStatus":[NSNumber numberWithInteger:0],
+                                       @"price":[NSNull null],
+                                       @"rate":[NSNull null],
+                                       @"name":[NSNull null],
+                                       @"message":message,
+                                       @"recipientStkid":[LocalDataInterface retrieveStkid],
+                                       @"chatRecipient":[LocalDataInterface retrieveNameOfUser],
+                                       @"chatRecipientUrl":[LocalDataInterface retrieveProfileUrl],
+                                       @"senderToken":senderID,
+                                       @"recipientToken":recipientID
+                                       }
+                               };
+    
+    return msgDtata;
+}
+
+- (NSDictionary *)getRejectOfferMessage:(NSString *)to{
+    
+    NSDictionary *msgDtata = @{@"to":to,
+                               @"notification": @{
+                                       @"body": @"Reject offer",
+                                       @"title" : @"StikyHive Message"
+                                       },
+                               @"data":@{
+                                       @"fileName":[NSNull null],
+                                       @"msg":@"Rejected offer.",
+                                       @"offerId":[NSNumber numberWithInteger:0],
+                                       @"offerStatus":[NSNumber numberWithInteger:0],
+                                       @"price":[NSNull null],
+                                       @"rate":[NSNull null],
+                                       @"name":[NSNull null],
+                                       @"message":@"Rejected offer. Make new offer.",
+                                       @"recipientStkid":[LocalDataInterface retrieveStkid],
+                                       @"chatRecipient":[LocalDataInterface retrieveNameOfUser],
+                                       @"chatRecipientUrl":[LocalDataInterface retrieveProfileUrl],
+                                       @"senderToken":senderID,
+                                       @"recipientToken":recipientID
+                                       }
+                               };
+    
+    return msgDtata;
+}
+
 #pragma mark - OfferMediaItem notification handler
 - (void)onOfferAccept:(NSNotification *)notification{
     
-    //todo:send offer accept
+    //send offer accept
     NSLog(@"need to implement sending offer accept message");
+    
+    OfferMediaItem *item = notification.object;
+    
+    NSDictionary *msgData;
+    
+    //stiky pay
+    if(item.offerStatus == 0){
+        
+        msgData = [self getAcceptOfferMessage:recipientID stikyPay:YES withOfferId:item.offerId];
+    }
+    else{//no stiky pay
+        
+        msgData = [self getAcceptOfferMessage:recipientID stikyPay:NO withOfferId:item.offerId];
+    }
+    
+    if(msgData != nil){
+        
+        [self sendGCM:msgData withAPI:GCM_IOS_API];
+        [self sendGCM:msgData withAPI:GCM_Android_API];
+    }
+    else{
+        
+        NSLog(@"Unable to send accept gcm message reason:message data nil");
+    }
 }
 
 - (void)onOfferCancel:(NSNotification *)notification{
     
-    //todo:send offer cancel
+    //send offer reject
     NSLog(@"need to implement sending offer cancel message");
+    
+    NSDictionary *msgData = [self getRejectOfferMessage:recipientID];
+    
+    [self sendGCM:msgData withAPI:GCM_IOS_API];
+    [self sendGCM:msgData withAPI:GCM_Android_API];
 }
 
 #pragma mark - Message receive notification handler
