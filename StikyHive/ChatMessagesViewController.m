@@ -22,6 +22,9 @@
 #import "ViewControllerUtil.h"
 
 #define kEarlyMessageLoadAmount 0
+#define GCM_Android_API @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks"
+#define GCM_IOS_API @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk"
+
 
 
 @interface ChatMessagesViewController ()
@@ -892,27 +895,118 @@ static NSString *profilePic = nil;
     
     NSLog(@"confirm using recording audio at path %@", audioFilePath);
     
-    [self.view showActivityViewWithLabel:@"Uploading audio..."];
-    //upload audio to server before you do following code
-    [WebDataInterface uploadAudio:[NSData dataWithContentsOfFile:audioFilePath] stikyId:[LocalDataInterface retrieveStkid] toStikyId:ToStikyBee completeHandler:^(NSString *data, NSError *error) {
+    [self.view showActivityViewWithLabel:@"Processing audio..."];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    
+        NSData *aData = [NSData dataWithContentsOfFile:audioFilePath];
         
         dispatch_async(dispatch_get_main_queue(), ^{
+        
+            //[self.view hideActivityView];
+            [self.view showActivityViewWithLabel:@"Uploading audio..."];
             
-            if(error != nil){
+            //upload audio to server before you do following code
+            [WebDataInterface uploadAudio:aData stikyId:[LocalDataInterface retrieveStkid] toStikyId:ToStikyBee completeHandler:^(NSString *data, NSError *error) {
                 
-                
-                NSLog(@"upload audio fail:%@", error);
-            }
-            else{
-                
-                [self.chatData addAudioMediaMessageWithURL:[WebDataInterface getFullUrlPath:data] withAudioDuration:10];
-                [self finishSendingMessageAnimated:YES];
-            }
-            
-            [self.view hideActivityView];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    if(error != nil){
+                        
+                        
+                        NSLog(@"upload audio fail:%@", error);
+                    }
+                    else{
+                        
+                        [self.chatData addAudioMediaMessageWithURL:[WebDataInterface getFullUrlPath:data] withAudioDuration:10];
+                        
+                        NSDictionary *msgData = [self getAudioMessage:recipientID storageUrl:data];
+                        
+                        [self sendAudioGCM:msgData withAPI:GCM_IOS_API];
+                        [self sendAudioGCM:msgData withAPI:GCM_Android_API];
+                        
+                        
+                        [self finishSendingMessageAnimated:YES];
+                    }
+                    
+                    [self.view hideActivityView];
+                });
+            }];
         });
-    }];
+        
+    });
     
+    
+}
+
+#pragma mark - SendAudio GCM
+- (void)sendAudioGCM:(NSDictionary *)dic withAPI:(NSString *)api{
+    
+    // create the request
+    NSString *sendUrl = @"https://android.googleapis.com/gcm/send";
+    
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:sendUrl]];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [urlRequest setValue:[NSString stringWithFormat:@"key=%@",api] forHTTPHeaderField:@"Authorization"];
+    [urlRequest setTimeoutInterval:60];
+    
+    // get message data
+    NSDictionary *messages = dic;
+    
+    NSData *jsonBody = [NSJSONSerialization dataWithJSONObject:messages options:0 error:nil];
+    
+    [urlRequest setHTTPBody:jsonBody];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+        
+        if (data.length > 0 && connectionError == nil)
+        {
+            // NSJSONReadingOptions jsonOption = NSJSONReadingAllowFragments;
+            // id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:jsonOption error:&connectionError];
+            // NSLog(@"json object ----- %@",jsonObject);
+            
+            NSLog(@"response ---- %@",response);
+            
+            NSLog(@"json object text ");
+        }
+        else
+        {
+            NSLog(@"error ---- %@",connectionError);
+            
+        }
+        
+    }];
+}
+
+- (NSDictionary *)getAudioMessage:(NSString *)to storageUrl:(NSString *)url
+{
+    
+    NSDictionary *msgDtata = @{@"to":to,
+                               @"notification": @{
+                                       @"body": @"<img",
+                                       @"title" : @"StikyHive Message"
+                                       },
+                               @"data":@{
+                                       @"fileName":url,
+                                       @"msg":@"Voice Message",
+                                       @"offerId":[NSNumber numberWithInteger:0],
+                                       @"offerStatus":[NSNumber numberWithInteger:0],
+                                       //@"price":[NSNull null],
+                                       //@"rate":[NSNull null],
+                                       //@"name":[NSNull null],
+                                       @"message":@"<img",
+                                       @"recipientStkid":[LocalDataInterface retrieveStkid],
+                                       @"chatRecipient":[LocalDataInterface retrieveNameOfUser],
+                                       @"chatRecipientUrl":[LocalDataInterface retrieveProfileUrl],
+                                       @"senderToken":senderID,
+                                       @"recipientToken":recipientID
+                                       }
+                               };
+    
+    return msgDtata;
 }
 
 #pragma mark - OfferMediaItem notification handler
