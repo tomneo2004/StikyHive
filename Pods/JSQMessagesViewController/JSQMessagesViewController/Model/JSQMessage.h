@@ -98,6 +98,9 @@
                senderDisplayName:(NSString *)senderDisplayName
                             date:(NSDate *)date
                             text:(NSString *)text;
+
+
+
 /**
  *  Initializes and returns a message object having the given senderId, displayName, media,
  *  and current system date.

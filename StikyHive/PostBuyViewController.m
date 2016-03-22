@@ -18,6 +18,7 @@
 @interface PostBuyViewController ()
 
 
+@property (assign, nonatomic) NSInteger buyerId;
 @property (nonatomic, strong) NSMutableArray *industryArray;
 @property (nonatomic, strong) NSMutableArray *categoryArray;
 @property (nonatomic, strong) NSArray *skillArray;
@@ -37,6 +38,20 @@
 @end
 
 @implementation PostBuyViewController
+{
+    BOOL _isEditing;
+    BOOL _shouldPullData;
+}
+
+@synthesize myPostInfo = _myPostInfo;
+
+
+- (void)setBuyerId:(NSInteger)buyerId
+{
+    _buyerId = buyerId;
+}
+
+
 
 - (void)viewDidLoad
 {
@@ -84,47 +99,99 @@
         
         [WebDataInterface getRate:0 completion:^(NSObject *obj2, NSError *err2) {
             
-            dispatch_async(dispatch_get_main_queue(), ^{
+            
+           
+            
+                dispatch_async(dispatch_get_main_queue(), ^{
                 
-                NSDictionary *category = (NSDictionary *)obj;
-                NSArray *list = category[@"skills"];
+                    NSDictionary *category = (NSDictionary *)obj;
+                    NSArray *list = category[@"skills"];
                 
-                for (int i = 0; i < list.count; i++)
-                {
+                    for (int i = 0; i < list.count; i++)
+                    {
                     
-                    NSString *type = [[list objectAtIndex:i]valueForKey:@"type"];
-                    long long intType = [type integerValue];
-                    if (intType == 1)
-                    {
-                        [_industryArray addObject:list[i]];
+                        NSString *type = [[list objectAtIndex:i]valueForKey:@"type"];
+                        long long intType = [type integerValue];
+                        if (intType == 1)
+                        {
+                            [_industryArray addObject:list[i]];
                         
+                        }
+                        else if (intType == 2)
+                        {
+                        
+                            [_categoryArray addObject:list[i]];
+                        
+                        }
                     }
-                    else if (intType == 2)
-                    {
-                        
-                        [_categoryArray addObject:list[i]];
-                        
-                    }
-                }
                 
-                _skillArray = [_industryArray mutableCopy];
+                    _skillArray = [_industryArray mutableCopy];
                 
-                NSDictionary *rate = (NSDictionary *)obj2;
-                _rateArray = rate[@"rate"];
-                NSLog(@"skill array --- %@",_skillArray);
-                NSLog(@"rate array --- %@",_rateArray);
+                    NSDictionary *rate = (NSDictionary *)obj2;
+                    _rateArray = rate[@"rate"];
+                    NSLog(@"industry array --- %@",_industryArray);
+                    NSLog(@"category array --- %@",_categoryArray);
 
-
+                    
+                    
+                    
+                    
+                    [self pullData];
+                    
+                    
+                
+                    [self.view hideActivityView];
                 
                 
+            
+                });
                 
-                [self.view hideActivityView];
-            });
+            
             
         }];
     }];
     
 
+    _shouldPullData = YES;
+    
+}
+
+
+
+- (void)pullData
+{
+    
+//     [WebDataInterface getBuyerMarketById:_buyerId completion:^(NSObject *obj, NSError *err) {
+//    
+//         dispatch_async(dispatch_get_main_queue(), ^{
+//             
+//             NSDictionary *dict = (NSDictionary *)obj;
+//             NSLog(@"dict edit ---- %@",dict);
+//             dict[@"result"];
+//             
+//             
+//             
+//             
+//             _shouldPullData = NO;
+//             
+//             return;
+//             
+//         });
+//    
+//     }];
+    
+    
+    if (_myPostInfo != nil) {
+        NSLog(@"my post info ---- %@",_myPostInfo);
+        [self becomeEditingMode];
+    }
+    else
+    {
+        
+    }
+    
+    _shouldPullData = NO;
+    return;
     
 }
 
@@ -212,6 +279,161 @@
 
 }
 
+- (void)becomeEditingMode
+{
+    
+    _isEditing = YES;
+    
+    NSLog(@"my post info --- %@",_myPostInfo);
+    
+    _nameTextField.text = _myPostInfo.name;
+    NSLog(@"my post name --- %@",_myPostInfo.name);
+    NSLog(@"persontyep --- %ld",(long)_myPostInfo.personType);
+    NSLog(@"price --- %@",_myPostInfo.price);
+    
+    
+    
+    if (_myPostInfo.personType == 2)
+    {
+        [_individualRBtn setSelected:YES];
+    }
+    else
+    {
+        [_individualRBtn setSelected:NO];
+    }
+    
+    if (_myPostInfo.jobType == 1)
+    {
+        [_fulltRBtn setSelected:YES];
+    }
+    else
+    {
+        [_fulltRBtn setSelected:NO];
+    }
+    
+    
+    if (_myPostInfo.availability == 1)
+    {
+        [_openRBtn setSelected:YES];
+    }
+    else
+    {
+        [_openRBtn setSelected:NO];
+    }
+    
+    if (_myPostInfo.price)
+    {
+        _priceTextField.text = _myPostInfo.price;
+        
+        _rateTextField.text = _myPostInfo.rateName;
+        _rateId = _myPostInfo.rateId;
+        
+    }
+    
+    
+    if (_myPostInfo.type == 1)
+    {
+        
+        NSLog(@"type is %ld",(long)_myPostInfo.type);
+        _skillArray = [_industryArray mutableCopy];
+        
+        NSLog(@"now new skill array industry array      ------- %@",_skillArray);
+        
+        
+        [_industryPickerView reloadAllComponents];
+        
+        _professionalBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        _rawBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        
+        _buyManager.type = 1;
+        
+        
+        // display
+        _categoryId = [NSString stringWithFormat:@"%ld",(long)_myPostInfo.catId];
+        NSLog(@"catogory id ---- %@",_categoryId);
+        
+        for (NSDictionary*dict in _skillArray) {
+            
+            NSLog(@"dict dictionary --- %@",dict);
+            if ([dict[@"id"] integerValue] == [_categoryId integerValue])
+            {
+                NSLog(@"dict id ---- %@",dict);
+                _industryTextField.text = dict[@"name"];
+                break;
+            }
+            
+            
+        }
+
+        
+    }
+    else
+    {
+        
+        NSLog(@"type is %ld",(long)_myPostInfo.type);
+        _skillArray = [_categoryArray mutableCopy];
+        [_industryPickerView reloadAllComponents];
+        
+        
+        _rawBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        _professionalBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        
+        _buyManager.type = 2;
+        
+
+        // display
+        _categoryId = [NSString stringWithFormat:@"%ld",(long)_myPostInfo.catId];
+        
+        
+        for (NSDictionary*dict in _skillArray) {
+            NSLog(@"dic id --- %@",dict[@"id"]);
+            NSLog(@"category Id --- %@",_categoryId);
+            
+            if ([dict[@"id"] integerValue] == [_categoryId integerValue])
+            {
+                NSLog(@"dict id ---- %@",dict);
+                _industryTextField.text = dict[@"name"];
+                break;
+            }
+            
+            
+        }
+        
+        
+//        _industryTextField.text = ;
+        
+        
+        
+    }
+    
+//    _categoryId = [NSString stringWithFormat:@"%ld",(long)_myPostInfo.catId ];
+    
+    
+    
+    if (_myPostInfo.startTime)
+    {
+        NSLog(@"stat time --- %@",_myPostInfo.startTime);
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"HH"];
+        NSString *hh = [formatter stringFromDate:_myPostInfo.startTime];
+        
+        NSLog(@"stat time hh --- %@",hh);
+        NSLog(@"end date ---- %@",_myPostInfo.endTime);
+        [formatter setDateFormat:@"mm"];
+        NSLog(@"end dadte hh 00000 %@",[formatter stringFromDate:_myPostInfo.endTime]);
+        
+        
+    }
+    
+    
+    
+    
+    [_descWebView loadHTMLString:_myPostInfo.desc baseURL:nil];
+    [_respWebView loadHTMLString:_myPostInfo.responsibilities baseURL:nil];
+    
+    
+}
+
 
 - (void)tapReceived:(UITapGestureRecognizer *)tapGestureRecognizer
 {
@@ -238,6 +460,9 @@
     }
 
     
+//    if (_shouldPullData) {
+//        [self pullData];
+//    }
     
 }
 
@@ -422,6 +647,9 @@
         _buyManager.rateId =[@"0" integerValue];
     }
     
+    
+    NSLog(@"cat ID --- %ld",(long)_myPostInfo.catId);
+    NSLog(@"category id --- %@",_categoryId);
     _buyManager.catId = [_categoryId integerValue];
     
     _buyManager.desc = innerDesc;

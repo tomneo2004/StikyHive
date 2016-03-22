@@ -14,6 +14,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "BuyerPostViewController.h"
 #import "ViewControllerUtil.h"
+#import "PostBuyViewController.h"
 
 @interface MyPostViewController ()
 
@@ -68,6 +69,7 @@
             else{
                 
                 NSDictionary *dic = (NSDictionary *)obj;
+                NSLog(@"buyer market =---- %@",dic);
                 
                 if(((NSArray *)dic[@"buyermarkets"]).count <=0){
                     
@@ -78,6 +80,7 @@
                 else{
                     
                     _myPostInfos = [[NSMutableArray alloc] init];
+                    NSLog(@"buyer market info --- %@",obj);
                     
                     for(NSDictionary *data in dic[@"buyermarkets"]){
                         
@@ -148,6 +151,20 @@
 
 #pragma mark - MySkillCell delegate
 - (void)onEditTap:(MyPostCell *)cell{
+    
+    NSInteger index = [_tableView indexPathForCell:cell].row;
+    
+    MyPostInfo *info = [_myPostInfos objectAtIndex:index];
+    
+    NSLog(@"my post info ---- %@",[_myPostInfos objectAtIndex:index]);
+    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"post_buy_view_controller"];
+    PostBuyViewController *svc = (PostBuyViewController *)vc;
+    [svc setBuyerId:[info.postId integerValue]];
+    svc.myPostInfo = info;
+    
+    [self.navigationController pushViewController:svc animated:YES];
+    
     
 }
 

@@ -26,6 +26,8 @@
                             date:(NSDate *)date
                          isMedia:(BOOL)isMedia;
 
+
+
 @end
 
 
@@ -57,6 +59,8 @@
     }
     return self;
 }
+
+
 
 + (instancetype)messageWithSenderId:(NSString *)senderId
                         displayName:(NSString *)displayName
