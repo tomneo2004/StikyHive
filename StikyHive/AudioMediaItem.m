@@ -69,6 +69,9 @@ typedef enum{
 
 - (void)dealloc{
     
+    if(_downloadOp != nil)
+        [_downloadOp cancel];
+    
     _fileURL = nil;
     _cachedAudioImageView = nil;
     
@@ -117,8 +120,8 @@ typedef enum{
             _playerItem = [[AFSoundItem alloc] initWithDocFile:_filePath];
             playerItem = _playerItem;
             [weakSelf updateIndicator];
-            __attribute__((unused)) AFSoundPlayback *playback = [[AFSoundPlayback alloc] initWithItem:playerItem];
-            [weakSelf updateTimeLabelWithDuration:[NSNumber numberWithInteger:playerItem.duration]];
+            //__attribute__((unused)) AFSoundPlayback *playback = [[AFSoundPlayback alloc] initWithItem:playerItem];
+            //[weakSelf updateTimeLabelWithDuration:[NSNumber numberWithInteger:playerItem.duration]];
         });
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

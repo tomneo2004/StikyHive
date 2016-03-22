@@ -14,6 +14,7 @@
 #import <Google/CloudMessaging.h>
 #import "WebDataInterface.h"
 #import "LocalDataInterface.h"
+#import <PinterestSDK/PinterestSDK.h>
 
 #import "ChatMessagesViewController.h"
 #import "NavigChatViewController.h"
@@ -99,6 +100,8 @@ NSString *const SubscriptionTopic = @"/topics/global";
     //end
     
 //    return YES;
+    
+    [PDKClient configureSharedInstanceWithAppId:@"4823896747864506464"];
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
 }
@@ -126,6 +129,16 @@ NSString *const SubscriptionTopic = @"/topics/global";
 //    config.receiverDelegate = [[GCMReceiver alloc] init];
 //    [config.receiverDelegate] =
     
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
+{
+    if ([LISDKCallbackHandler shouldHandleUrl:url]) {
+        return [LISDKCallbackHandler application:app openURL:url sourceApplication:options[UIApplicationLaunchOptionsSourceApplicationKey] annotation:options[UIApplicationLaunchOptionsAnnotationKey]];
+    }
+    return YES;
+    
+    return [[PDKClient sharedInstance] handleCallbackURL:url];
 }
 
 // [START receive_apns_token_error]

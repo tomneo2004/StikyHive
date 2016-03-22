@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
-@interface SkillPageViewController : UIViewController <UIWebViewDelegate,UIScrollViewDelegate,UITextFieldDelegate, UIAlertViewDelegate>
+@interface SkillPageViewController : UIViewController <UIWebViewDelegate,UIScrollViewDelegate,UITextFieldDelegate, UIAlertViewDelegate, FBSDKSharingDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;

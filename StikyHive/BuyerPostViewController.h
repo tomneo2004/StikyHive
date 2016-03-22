@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
-@interface BuyerPostViewController : UIViewController <UIWebViewDelegate,UIScrollViewDelegate>
+@interface BuyerPostViewController : UIViewController <UIWebViewDelegate,UIScrollViewDelegate,FBSDKSharingDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;

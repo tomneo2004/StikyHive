@@ -341,10 +341,7 @@
 		676600E91BA18620003A84D8 /* terms_and_conditions.html in Resources */ = {isa = PBXBuildFile; fileRef = 676600E81BA18620003A84D8 /* terms_and_conditions.html */; };
 		676767541B81CBD70093F70D /* uicheckbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 676767531B81CBD70093F70D /* uicheckbox_checked.png */; };
 		676767561B81CBE10093F70D /* uicheckbox_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 676767551B81CBE10093F70D /* uicheckbox_unchecked.png */; };
-		6769CE031B9E89F6003A31DA /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6769CE021B9E89F6003A31DA /* linkedin-sdk.framework */; };
 		676A15121B8450BC00BB224B /* UserInfoEditorViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 676A15111B8450BC00BB224B /* UserInfoEditorViewController2.m */; };
-		676BA94B1B9D3F9C001EFEC0 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676BA9491B9D3F9C001EFEC0 /* FBSDKCoreKit.framework */; };
-		676BA94C1B9D3F9C001EFEC0 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676BA94A1B9D3F9C001EFEC0 /* FBSDKLoginKit.framework */; };
 		676BE94D1B93F72C003168F4 /* LogoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676BE94C1B93F72C003168F4 /* LogoutViewController.m */; };
 		676ED4581B85CEAB00696985 /* UserVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 676ED4571B85CEAB00696985 /* UserVerificationViewController.m */; };
 		676F77DF1B96F3060084988A /* TOCropViewControllerLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 676F77BB1B96F3060084988A /* TOCropViewControllerLocalizable.strings */; };
@@ -394,6 +391,7 @@
 		CE83C7951C3BAC8900753B80 /* OtherInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83C7941C3BAC8900753B80 /* OtherInfoViewController.m */; };
 		CE84D0F91C8D73A1005B8E14 /* FileMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE84D0F81C8D73A1005B8E14 /* FileMediaItem.m */; };
 		CE84D0FB1C8D740A005B8E14 /* keep_track.png in Resources */ = {isa = PBXBuildFile; fileRef = CE84D0FA1C8D740A005B8E14 /* keep_track.png */; };
+		CE84DC311CA0F0980090BF7C /* share_linkedin.png in Resources */ = {isa = PBXBuildFile; fileRef = CE84DC301CA0F0980090BF7C /* share_linkedin.png */; };
 		CE8526141C6056D100A9A480 /* AudioRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8526101C6056D100A9A480 /* AudioRecorderViewController.m */; };
 		CE8526151C6056D100A9A480 /* AudioRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8526111C6056D100A9A480 /* AudioRecorderViewController.xib */; };
 		CE8526161C6056D100A9A480 /* AudioRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8526131C6056D100A9A480 /* AudioRecordManager.m */; };
@@ -410,6 +408,7 @@
 		CE9C7CE61C1029E700326710 /* SubInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE51C1029E700326710 /* SubInfoCell.m */; };
 		CE9C7CE91C102ED600326710 /* SubInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7CE81C102ED600326710 /* SubInfo.m */; };
 		CEA325701C1A7116007B1E5C /* DescEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */; };
+		CEB25EDD1C9BFE04000FE65D /* linkedin-sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB25EDC1C9BFE04000FE65D /* linkedin-sdk.framework */; };
 		CEBDDFE31C30E05200CF54D8 /* ThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBDDFE21C30E05200CF54D8 /* ThumbnailView.m */; };
 		CEC8A1DA1C2A787300558608 /* MyPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1D91C2A787300558608 /* MyPostViewController.m */; };
 		CEC8A1DD1C2A78FD00558608 /* MyPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC8A1DC1C2A78FD00558608 /* MyPostCell.m */; };
@@ -914,11 +913,8 @@
 		676600E81BA18620003A84D8 /* terms_and_conditions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms_and_conditions.html; sourceTree = "<group>"; };
 		676767531B81CBD70093F70D /* uicheckbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uicheckbox_checked.png; sourceTree = "<group>"; };
 		676767551B81CBE10093F70D /* uicheckbox_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uicheckbox_unchecked.png; sourceTree = "<group>"; };
-		6769CE021B9E89F6003A31DA /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "linkedin-sdk.framework"; sourceTree = "<group>"; };
 		676A15101B8450BC00BB224B /* UserInfoEditorViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoEditorViewController2.h; sourceTree = "<group>"; };
 		676A15111B8450BC00BB224B /* UserInfoEditorViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoEditorViewController2.m; sourceTree = "<group>"; };
-		676BA9491B9D3F9C001EFEC0 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		676BA94A1B9D3F9C001EFEC0 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		676BE94B1B93F72C003168F4 /* LogoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutViewController.h; sourceTree = "<group>"; };
 		676BE94C1B93F72C003168F4 /* LogoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutViewController.m; sourceTree = "<group>"; };
 		676ED4561B85CEAB00696985 /* UserVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserVerificationViewController.h; sourceTree = "<group>"; };
@@ -1025,6 +1021,7 @@
 		CE84D0F71C8D73A1005B8E14 /* FileMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileMediaItem.h; sourceTree = "<group>"; };
 		CE84D0F81C8D73A1005B8E14 /* FileMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileMediaItem.m; sourceTree = "<group>"; };
 		CE84D0FA1C8D740A005B8E14 /* keep_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keep_track.png; sourceTree = "<group>"; };
+		CE84DC301CA0F0980090BF7C /* share_linkedin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_linkedin.png; sourceTree = "<group>"; };
 		CE85260F1C6056D100A9A480 /* AudioRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecorderViewController.h; sourceTree = "<group>"; };
 		CE8526101C6056D100A9A480 /* AudioRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecorderViewController.m; sourceTree = "<group>"; };
 		CE8526111C6056D100A9A480 /* AudioRecorderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioRecorderViewController.xib; sourceTree = "<group>"; };
@@ -1055,6 +1052,7 @@
 		CE9C7CE81C102ED600326710 /* SubInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfo.m; sourceTree = "<group>"; };
 		CEA3256E1C1A7116007B1E5C /* DescEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescEditorViewController.h; sourceTree = "<group>"; };
 		CEA3256F1C1A7116007B1E5C /* DescEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescEditorViewController.m; sourceTree = "<group>"; };
+		CEB25EDC1C9BFE04000FE65D /* linkedin-sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "linkedin-sdk.framework"; sourceTree = "<group>"; };
 		CEBDDFE11C30E05200CF54D8 /* ThumbnailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailView.h; sourceTree = "<group>"; };
 		CEBDDFE21C30E05200CF54D8 /* ThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailView.m; sourceTree = "<group>"; };
 		CEC8A1D81C2A787300558608 /* MyPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostViewController.h; sourceTree = "<group>"; };
@@ -1170,10 +1168,8 @@
 				CEF7F4601C7DA80000DF5602 /* AVFoundation.framework in Frameworks */,
 				CEF7F40D1C7D59E200DF5602 /* MediaPlayer.framework in Frameworks */,
 				CEFD19521C04047C00A79158 /* CoreLocation.framework in Frameworks */,
+				CEB25EDD1C9BFE04000FE65D /* linkedin-sdk.framework in Frameworks */,
 				674D0DBF1B7D916200B5B80D /* QuartzCore.framework in Frameworks */,
-				6769CE031B9E89F6003A31DA /* linkedin-sdk.framework in Frameworks */,
-				676BA94B1B9D3F9C001EFEC0 /* FBSDKCoreKit.framework in Frameworks */,
-				676BA94C1B9D3F9C001EFEC0 /* FBSDKLoginKit.framework in Frameworks */,
 				88A4C895FFB7048DDF6EC234 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1577,6 +1573,7 @@
 		674D0DC01B7D91FC00B5B80D /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				CE84DC301CA0F0980090BF7C /* share_linkedin.png */,
 				676767551B81CBE10093F70D /* uicheckbox_unchecked.png */,
 				676767531B81CBD70093F70D /* uicheckbox_checked.png */,
 				674D0DC11B7D91FC00B5B80D /* accessory_icon@2x.png */,
@@ -1980,12 +1977,10 @@
 		CAEAF8256B3A12FB7828D10B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEB25EDC1C9BFE04000FE65D /* linkedin-sdk.framework */,
 				CEF7F45F1C7DA80000DF5602 /* AVFoundation.framework */,
 				CEF7F40C1C7D59E200DF5602 /* MediaPlayer.framework */,
 				CEFD19511C04047C00A79158 /* CoreLocation.framework */,
-				6769CE021B9E89F6003A31DA /* linkedin-sdk.framework */,
-				676BA9491B9D3F9C001EFEC0 /* FBSDKCoreKit.framework */,
-				676BA94A1B9D3F9C001EFEC0 /* FBSDKLoginKit.framework */,
 				988CAEF31E1FF7DE4F6B17F9 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -2785,6 +2780,7 @@
 				516718961C1A799E003E9902 /* ZSSbgcolor@2x.png in Resources */,
 				CEE93A1E1BF4490100B292BA /* buzzr_requestform_photo.png in Resources */,
 				516718E81C1A799E003E9902 /* ZSSRichTextEditor.js in Resources */,
+				CE84DC311CA0F0980090BF7C /* share_linkedin.png in Resources */,
 				674D0E8B1B7D920E00B5B80D /* Payment_note@2x.png in Resources */,
 				674D10631B7DCB6B00B5B80D /* OpenSans-LightItalic.ttf in Resources */,
 				516718BE1C1A799E003E9902 /* ZSSoutdent@2x.png in Resources */,
