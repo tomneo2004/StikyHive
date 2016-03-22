@@ -11,6 +11,7 @@
 #import "ViewControllerUtil.h"
 #import "ReportAbuseViewController.h"
 #import "UIView+RNActivityView.h"
+#import <linkedin-sdk/LISDK.h>
 
 @interface BuyerPostViewController ()
 @property (assign, nonatomic) NSInteger buyerId;
@@ -25,6 +26,12 @@
 @property (nonatomic, strong) NSString *respHtml;
 @property (nonatomic, strong) NSString *buyerHtml;
 @property (nonatomic, strong) UIFont *semifont;
+
+@property (nonatomic, strong) NSString *stkId;
+@property (nonatomic, strong) NSString *postName;
+@property (nonatomic, strong) NSString *postDesc;
+@property (nonatomic, strong) NSString *profilePicUrl;
+@property (nonatomic, strong) FBSDKShareLinkContent *content;
 
 @end
 
@@ -86,6 +93,11 @@
         if (buyermarket) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 _marketDict = buyermarket[@"result"];
+                
+                _stkId = _marketDict[@"stkid"];
+                _profilePicUrl = [WebDataInterface getFullUrlPath:_marketDict[@"profilePicture"]];
+                _postName = _marketDict[@"name"];
+                _postDesc = _marketDict[@"description"];
                 
                 NSString *description = _marketDict[@"description"];
                 NSString *responsibility = _marketDict[@"responsibilities"];
@@ -569,38 +581,23 @@
     
     y = y + 35;
     
-    UIButton *emailButton = [[UIButton alloc] initWithFrame:CGRectMake(20, y, 40, 40)];
-//    emailButton.backgroundColor = [UIColor lightGrayColor];
-    [emailButton setImage:[UIImage imageNamed:@"share-email"] forState:UIControlStateNormal];
-    
-    CGFloat x = emailButton.frame.origin.x + 50;
-    
-    UIButton *twitterButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 40, 40)];
-    [twitterButton setImage:[UIImage imageNamed:@"share-twitter"] forState:UIControlStateNormal];
-    x = x + 50;
-    
-    UIButton *fbButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 40, 40)];
+    UIButton *fbButton = [[UIButton alloc] initWithFrame:CGRectMake(20, y, 40, 40)];
     [fbButton setImage:[UIImage imageNamed:@"share-facebook"] forState:UIControlStateNormal];
-    x = x + 50;
+    [fbButton addTarget:self action:@selector(shareToFacebook) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *pintButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 40, 40)];
-    [pintButton setImage:[UIImage imageNamed:@"share-pinterest"] forState:UIControlStateNormal];
+    CGFloat x = fbButton.frame.origin.x + 50;
     
-    x = x + 50;
-    
-    UIButton *googleButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 40, 40)];
-    [googleButton setImage:[UIImage imageNamed:@"share-google"] forState:UIControlStateNormal];
+    UIButton *linkedinButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 40, 40)];
+    [linkedinButton setImage:[UIImage imageNamed:@"share_linkedin"] forState:UIControlStateNormal];
+    [linkedinButton addTarget:self action:@selector(shareToLinkedIn) forControlEvents:UIControlEventTouchUpInside];
     
     
     
 //    [_contentScrollView addSubview:lineView];
     [_contentScrollView addSubview:reportButton];
     [_contentScrollView addSubview:shareLabel];
-    [_contentScrollView addSubview:emailButton];
-    [_contentScrollView addSubview:twitterButton];
     [_contentScrollView addSubview:fbButton];
-    [_contentScrollView addSubview:pintButton];
-    [_contentScrollView addSubview:googleButton];
+    [_contentScrollView addSubview:linkedinButton];
     
     y = y + 70;
     
@@ -669,6 +666,117 @@
     [_contentScrollView addSubview:lineView2];
 }
 
+
+- (void)shareToFacebook{
+    
+    _content = [[FBSDKShareLinkContent alloc] init];
+    _content.contentTitle = _postName;
+    _content.imageURL = [NSURL URLWithString:_profilePicUrl];
+    _content.contentURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://beta.stikyhive.com/buyerPage?stkid=%@&buyerId=%ld", _stkId, _buyerId]];
+    
+    FBSDKShareDialog *dialog=[[FBSDKShareDialog alloc]init];
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fbauth2://"]]){
+        dialog.mode = FBSDKShareDialogModeNative;
+    }
+    else {
+        dialog.mode = FBSDKShareDialogModeBrowser; //or FBSDKShareDialogModeAutomatic
+    }
+    dialog.shareContent=_content;
+    dialog.delegate=self;
+    dialog.fromViewController=self;
+    [dialog show];
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Share to Facebook" message:@"Share to Facebook successful" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+    
+    _content = nil;
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Share to Facebook" message:@"Share to Facebook fail" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+    
+    _content = nil;
+}
+
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer{
+    
+    _content = nil;
+}
+
+- (void)shareToLinkedIn{
+    
+    NSString *url = @"https://api.linkedin.com/v1/people/~/shares";
+    
+    NSString *payload;
+    
+    NSString *urlStr = [NSString stringWithFormat:@"http://beta.stikyhive.com/buyerPage?stkid=%@&buyerId=%ld", _stkId, _buyerId];
+    
+    payload = [NSString stringWithFormat:@"{\"comment\":\"%@ %@\",\"visibility\":{ \"code\":\"anyone\" }}", _postDesc, urlStr];
+    
+    if ([LISDKSessionManager hasValidSession]) {
+        [[LISDKAPIHelper sharedInstance] postRequest:url stringBody:payload
+                                             success:^(LISDKAPIResponse *response) {
+                                                 
+                                                 dispatch_async(dispatch_get_main_queue(), ^{
+                                                     
+                                                     // do something with response
+                                                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Share to linkedIn" message:@"Share to linkedIn successful" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                     [alert show];
+                                                 });
+                                                 
+                                                 
+                                             }
+                                               error:^(LISDKAPIError *apiError) {
+                                                   
+                                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                                       
+                                                       // do something with error
+                                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Share to linkedIn" message:@"Share to linkedIn fail" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                       [alert show];
+                                                   });
+                                                   
+                                               }];
+    }
+    else{
+        
+        
+        [LISDKSessionManager createSessionWithAuth:[NSArray arrayWithObjects:LISDK_BASIC_PROFILE_PERMISSION, LISDK_W_SHARE_PERMISSION, nil] state:nil showGoToAppStoreDialog:YES successBlock:^(NSString *str) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                NSLog(@"%s","success called!");
+                LISDKSession *session = [[LISDKSessionManager sharedInstance] session];
+                
+                [self shareToLinkedIn];
+            });
+            
+            
+        } errorBlock:^(NSError * error) {
+            NSLog(@"%s","error called!");
+        }];
+    }
+    /*
+     [PDKPin pinWithImageURL:[NSURL URLWithString:_profilePicUrl]
+     link:[NSURL URLWithString:[NSString stringWithFormat:@"http://beta.stikyhive.com/skillPage?stkid=%@&proOrRawId=%ld&like=%ld&proOrRaw=%ld&catId=%ld", _stkId, _skillId,_likeCount,_skillType,_catId]]
+     suggestedBoardName:_skillName
+     note:_skillDesc
+     withSuccess:^
+     {
+     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Post to Pinterest" message:@"Post to Pinterest successful" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+     [alert show];
+     }
+     andFailure:^(NSError *error)
+     {
+     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Post to Pinterest" message:@"Post to Pinterest fail" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+     [alert show];
+     }];
+     */
+}
 
 - (void)reportBtnTapped:(UITapGestureRecognizer *)sender
 {

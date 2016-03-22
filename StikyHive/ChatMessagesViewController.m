@@ -21,6 +21,11 @@
 
 #import "ViewControllerUtil.h"
 
+#define kEarlyMessageLoadAmount 0
+#define GCM_Android_API @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks"
+#define GCM_IOS_API @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk"
+
+
 
 @interface ChatMessagesViewController ()
 
@@ -147,15 +152,11 @@ static NSString *profilePic = nil;
 //         
 //     }];
 //    
-    
+    self.showLoadEarlierMessagesHeader = YES;
     
     _audioImage = [UIImage imageNamed:@"audio_message@2x"];
     
-    //listen to message receive notification
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:@"onMessageReceived" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferAccept:) name:acceptOfferNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferCancel:) name:cancelOfferNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFileOpenRequired:) name:openFileRequired object:nil];
+    
     
 }
 
@@ -184,6 +185,12 @@ static NSString *profilePic = nil;
     _profileImageView.layer.masksToBounds = YES;
     
     [self.navigationController.navigationBar addSubview:_profileImageView];
+    
+    //listen to message receive notification
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveMessage:) name:@"onMessageReceived" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferAccept:) name:acceptOfferNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOfferCancel:) name:cancelOfferNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFileOpenRequired:) name:openFileRequired object:nil];
     
 }
 
@@ -636,6 +643,8 @@ static NSString *profilePic = nil;
                 header:(JSQMessagesLoadEarlierHeaderView *)headerView didTapLoadEarlierMessagesButton:(UIButton *)sender
 {
     NSLog(@"Load earlier messages!");
+    
+    [self loadEarlyMessage];
 }
 
 
@@ -825,6 +834,8 @@ static NSString *profilePic = nil;
     
 }
 
+
+
 #pragma mark - image picker controller delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo
@@ -895,40 +906,226 @@ static NSString *profilePic = nil;
     
     NSLog(@"confirm using recording audio at path %@", audioFilePath);
     
-    [self.view showActivityViewWithLabel:@"Uploading audio..."];
-    //upload audio to server before you do following code
-    [WebDataInterface uploadAudio:[NSData dataWithContentsOfFile:audioFilePath] stikyId:[LocalDataInterface retrieveStkid] toStikyId:ToStikyBee completeHandler:^(NSString *data, NSError *error) {
+    [self.view showActivityViewWithLabel:@"Processing audio..."];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    
+        NSData *aData = [NSData dataWithContentsOfFile:audioFilePath];
         
         dispatch_async(dispatch_get_main_queue(), ^{
+        
+            //[self.view hideActivityView];
+            [self.view showActivityViewWithLabel:@"Uploading audio..."];
             
-            if(error != nil){
+            //upload audio to server before you do following code
+            [WebDataInterface uploadAudio:aData stikyId:[LocalDataInterface retrieveStkid] toStikyId:ToStikyBee completeHandler:^(NSString *data, NSError *error) {
                 
-                
-                NSLog(@"upload audio fail:%@", error);
-            }
-            else{
-                
-                [self.chatData addAudioMediaMessageWithURL:[WebDataInterface getFullUrlPath:data] withAudioDuration:10];
-                [self finishSendingMessageAnimated:YES];
-            }
-            
-            [self.view hideActivityView];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    if(error != nil){
+                        
+                        
+                        NSLog(@"upload audio fail:%@", error);
+                    }
+                    else{
+                        
+                        [self.chatData addAudioMediaMessageWithURL:[WebDataInterface getFullUrlPath:data] withAudioDuration:10];
+                        
+                        NSDictionary *msgData = [self getAudioMessage:recipientID storageUrl:data];
+                        
+                        [self sendGCM:msgData withAPI:GCM_IOS_API];
+                        [self sendGCM:msgData withAPI:GCM_Android_API];
+                        
+                        
+                        [self finishSendingMessageAnimated:YES];
+                    }
+                    
+                    [self.view hideActivityView];
+                });
+            }];
         });
-    }];
+        
+    });
     
+    
+}
+
+#pragma mark - SendAudio GCM
+- (void)sendGCM:(NSDictionary *)dic withAPI:(NSString *)api{
+    
+    // create the request
+    NSString *sendUrl = @"https://android.googleapis.com/gcm/send";
+    
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:sendUrl]];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [urlRequest setValue:[NSString stringWithFormat:@"key=%@",api] forHTTPHeaderField:@"Authorization"];
+    [urlRequest setTimeoutInterval:60];
+    
+    // get message data
+    NSDictionary *messages = dic;
+    
+    NSData *jsonBody = [NSJSONSerialization dataWithJSONObject:messages options:0 error:nil];
+    
+    [urlRequest setHTTPBody:jsonBody];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+        
+        if (data.length > 0 && connectionError == nil)
+        {
+            // NSJSONReadingOptions jsonOption = NSJSONReadingAllowFragments;
+            // id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:jsonOption error:&connectionError];
+            // NSLog(@"json object ----- %@",jsonObject);
+            
+            NSLog(@"response ---- %@",response);
+            
+            NSLog(@"json object text ");
+        }
+        else
+        {
+            NSLog(@"error ---- %@",connectionError);
+            
+        }
+        
+    }];
+}
+
+#pragma mark - GCM message data
+- (NSDictionary *)getAudioMessage:(NSString *)to storageUrl:(NSString *)url
+{
+    
+    NSDictionary *msgDtata = @{@"to":to,
+                               @"notification": @{
+                                       @"body": @"<img",
+                                       @"title" : @"StikyHive Message"
+                                       },
+                               @"data":@{
+                                       @"fileName":url,
+                                       @"msg":@"Voice Message",
+                                       @"offerId":[NSNumber numberWithInteger:0],
+                                       @"offerStatus":[NSNumber numberWithInteger:0],
+                                       //@"price":[NSNull null],
+                                       //@"rate":[NSNull null],
+                                       //@"name":[NSNull null],
+                                       @"message":@"<img",
+                                       @"recipientStkid":[LocalDataInterface retrieveStkid],
+                                       @"chatRecipient":[LocalDataInterface retrieveNameOfUser],
+                                       @"chatRecipientUrl":[LocalDataInterface retrieveProfileUrl],
+                                       @"senderToken":senderID,
+                                       @"recipientToken":recipientID
+                                       }
+                               };
+    
+    return msgDtata;
+}
+
+- (NSDictionary *)getAcceptOfferMessage:(NSString *)to stikyPay:(BOOL)yesOrNo withOfferId:(NSInteger)offerId{
+    
+    NSString *message;
+    
+    if(yesOrNo){
+        
+        message = [NSString stringWithFormat:@"Accepted offer. <span class=%@>Make payment <a href=/adaptivePay?offerId=%ld&recipient=%@>here</a>.</span>", [LocalDataInterface retrieveStkid], offerId, [LocalDataInterface retrieveStkid]];
+    }
+    else{
+        
+        message = @"Accepted offer.";
+    }
+    
+    NSDictionary *msgDtata = @{@"to":to,
+                               @"notification": @{
+                                       @"body": @"Accept offer",
+                                       @"title" : @"StikyHive Message"
+                                       },
+                               @"data":@{
+                                       @"fileName":[NSNull null],
+                                       @"msg":@"Accepted offer.",
+                                       @"offerId":[NSNumber numberWithInteger:0],
+                                       @"offerStatus":[NSNumber numberWithInteger:0],
+                                       @"price":[NSNull null],
+                                       @"rate":[NSNull null],
+                                       @"name":[NSNull null],
+                                       @"message":message,
+                                       @"recipientStkid":[LocalDataInterface retrieveStkid],
+                                       @"chatRecipient":[LocalDataInterface retrieveNameOfUser],
+                                       @"chatRecipientUrl":[LocalDataInterface retrieveProfileUrl],
+                                       @"senderToken":senderID,
+                                       @"recipientToken":recipientID
+                                       }
+                               };
+    
+    return msgDtata;
+}
+
+- (NSDictionary *)getRejectOfferMessage:(NSString *)to{
+    
+    NSDictionary *msgDtata = @{@"to":to,
+                               @"notification": @{
+                                       @"body": @"Reject offer",
+                                       @"title" : @"StikyHive Message"
+                                       },
+                               @"data":@{
+                                       @"fileName":[NSNull null],
+                                       @"msg":@"Rejected offer.",
+                                       @"offerId":[NSNumber numberWithInteger:0],
+                                       @"offerStatus":[NSNumber numberWithInteger:0],
+                                       @"price":[NSNull null],
+                                       @"rate":[NSNull null],
+                                       @"name":[NSNull null],
+                                       @"message":@"Rejected offer. Make new offer.",
+                                       @"recipientStkid":[LocalDataInterface retrieveStkid],
+                                       @"chatRecipient":[LocalDataInterface retrieveNameOfUser],
+                                       @"chatRecipientUrl":[LocalDataInterface retrieveProfileUrl],
+                                       @"senderToken":senderID,
+                                       @"recipientToken":recipientID
+                                       }
+                               };
+    
+    return msgDtata;
 }
 
 #pragma mark - OfferMediaItem notification handler
 - (void)onOfferAccept:(NSNotification *)notification{
     
-    //todo:send offer accept
+    //send offer accept
     NSLog(@"need to implement sending offer accept message");
+    
+    OfferMediaItem *item = notification.object;
+    
+    NSDictionary *msgData;
+    
+    //stiky pay
+    if(item.offerStatus == 0){
+        
+        msgData = [self getAcceptOfferMessage:recipientID stikyPay:YES withOfferId:item.offerId];
+    }
+    else{//no stiky pay
+        
+        msgData = [self getAcceptOfferMessage:recipientID stikyPay:NO withOfferId:item.offerId];
+    }
+    
+    if(msgData != nil){
+        
+        [self sendGCM:msgData withAPI:GCM_IOS_API];
+        [self sendGCM:msgData withAPI:GCM_Android_API];
+    }
+    else{
+        
+        NSLog(@"Unable to send accept gcm message reason:message data nil");
+    }
 }
 
 - (void)onOfferCancel:(NSNotification *)notification{
     
-    //todo:send offer cancel
+    //send offer reject
     NSLog(@"need to implement sending offer cancel message");
+    
+    NSDictionary *msgData = [self getRejectOfferMessage:recipientID];
+    
+    [self sendGCM:msgData withAPI:GCM_IOS_API];
+    [self sendGCM:msgData withAPI:GCM_Android_API];
 }
 
 #pragma mark - Message receive notification handler
@@ -967,6 +1164,54 @@ static NSString *profilePic = nil;
     return self.view.frame;
 }
 
+#pragma mark - Load early message
+- (void)loadEarlyMessage{
+    
+    [self.view showActivityViewWithLabel:@"Loading early message..."];
+    
+    [WebDataInterface selectChatMsgs:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee limit:kEarlyMessageLoadAmount completion:^(NSObject *obj, NSError *error) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSDictionary *dic = (NSDictionary *)obj;
+            
+            if(dic == nil || error != nil || ![dic[@"status"] isEqualToString:@"success"]){
+                
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to load early message" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+            else{
+                
+                NSLog(@"%@", dic);
+                
+                if([dic[@"messages"] count] > 0){
+                    
+                    for(NSDictionary *sDic in dic[@"messages"]){
+                        
+                        //message is from other person
+                        if(![sDic[@"fromStikyBee"] isEqualToString:[LocalDataInterface retrieveStkid]]){
+                            
+                            [self.chatData processEarlyIncommingMessage:sDic];
+                        }
+                        else{//message is from myself
+                            
+                            [self.chatData processEarlyOutgoingMessage:sDic];
+                        }
+                    }
+                    
+                    self.showLoadEarlierMessagesHeader = NO;
+                    [self.collectionView reloadData];
+                }
+                
+                
+            }
+            
+            [self.view hideActivityView];
+        });
+    }];
+}
+
 #pragma mark - Process message
 - (void)processMessage:(NSDictionary *)dic{
     
@@ -982,37 +1227,6 @@ static NSString *profilePic = nil;
             
             refreshView = YES;
         }
-        /*
-        else if([dic[@"offerStatus"] integerValue]==-1 || [dic[@"offerStatus"] integerValue]==-2){//reject offer
-            
-            JSQMessage *rejectMsg = [[JSQMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:@"Rejected Offer"];
-            
-            [_chatData.messages addObject:rejectMsg];
-            
-            refreshView = YES;
-        }
-        else if([dic[@"offerStatus"] integerValue]==1 || [dic[@"offerStatus"] integerValue]==3){//accept offer
-            
-            if([dic[@"offerStatus"] integerValue]==1){
-                
-                //stikypay
-                AcceptOfferMessage *acceptMsg = [[AcceptOfferMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:@"Accepted Offer. Make payment here"];
-                
-                acceptMsg.stikypay = YES;
-                
-                refreshView = YES;
-            }
-            else if([dic[@"offerStatus"] integerValue]==3){
-                
-                //no stikypay
-                AcceptOfferMessage *acceptMsg = [[AcceptOfferMessage alloc] initWithSenderId:dic[@"recipientStkid"] senderDisplayName:dic[@"chatRecipient"] date:[NSDate date] text:@"Accepted Offer."];
-                
-                acceptMsg.stikypay = NO;
-                
-                refreshView = YES;
-            }
-        }
-        */
         
         if(refreshView){
             
@@ -1088,7 +1302,7 @@ static NSString *profilePic = nil;
 #pragma mark - ChatData delegate
 - (void)onReceivePhotoReadyToPresent{
     
-    [self scrollToBottomAnimated:YES];
+    //[self scrollToBottomAnimated:YES];
     [self.collectionView reloadData];
 }
 

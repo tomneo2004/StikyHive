@@ -61,4 +61,8 @@
 
 - (void)addincomingFile:(NSString *)fileURL;
 
+- (void)processEarlyIncommingMessage:(NSDictionary *)dic;
+
+- (void)processEarlyOutgoingMessage:(NSDictionary *)dic;
+
 @end

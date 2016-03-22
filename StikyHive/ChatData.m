@@ -181,4 +181,141 @@
     [self.messages addObject:message];
 }
 
+- (void)processEarlyIncommingMessage:(NSDictionary *)dic{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+    
+    if([dic[@"fileName"] isEqual:[NSNull null]] && ![dic[@"message"] isEqual:[NSNull null]] && [dic[@"name"] isEqual:[NSNull null]] && ![dic[@"message"] isEqual:[NSNull null]] && [dic[@"message"] rangeOfString:@"<span"].location==NSNotFound){//text
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *textMsg = [[JSQMessage alloc] initWithSenderId:_incomingUserId senderDisplayName:_incomingDisplayName date:date text:dic[@"message"]];
+        
+        [self.messages insertObject:textMsg atIndex:0];
+    }
+    else if([dic[@"fileName"] isEqual:[NSNull null]] && [dic[@"message"] isEqual:[NSNull null]] && ![dic[@"name"] isEqual:[NSNull null]]){//make offer
+        
+        OfferMediaItem *item = [[OfferMediaItem alloc] initWithOfferId:[dic[@"offerId"] integerValue] withOfferStatus:[dic[@"offerStatus"] integerValue] withPrice:[dic[@"price"] doubleValue] withOfferName:dic[@"name"] withOfferRate:dic[@"rate"]];
+        [item setAppliesMediaViewMaskAsOutgoing:NO];
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:_incomingUserId senderDisplayName:_incomingDisplayName date:date media:item];
+        //JSQMessage *message = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:item];
+        [self.messages insertObject:message atIndex:0];
+    }
+    else if([dic[@"fileName"] isEqual:[NSNull null]] && [dic[@"name"] isEqual:[NSNull null]] && ![dic[@"message"] isEqual:[NSNull null]] && [dic[@"message"] rangeOfString:@"Accepted offer."].location!=NSNotFound){//accept offer
+        
+        AcceptOfferMediaItem *item = [[AcceptOfferMediaItem alloc] initWithHtmlString:dic[@"message"]];
+        [item setAppliesMediaViewMaskAsOutgoing:NO];
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:_incomingUserId senderDisplayName:_incomingDisplayName date:date media:item];
+        //JSQMessage *message = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:item];
+        [self.messages insertObject:message atIndex:0];
+    }
+    else if([dic[@"fileName"] isEqual:[NSNull null]] && [dic[@"name"] isEqual:[NSNull null]] && ![dic[@"message"] isEqual:[NSNull null]] && [dic[@"message"] rangeOfString:@"Rejected offer."].location!=NSNotFound){//reject offer
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *rejectMsg = [[JSQMessage alloc] initWithSenderId:_incomingUserId senderDisplayName:_incomingDisplayName date:date text:dic[@"message"]];
+        
+        [self.messages insertObject:rejectMsg atIndex:0];
+    }
+    else if(![dic[@"fileName"] isEqual:[NSNull null]] && [dic[@"fileName"] rangeOfString:@"fileTransfer"].location!=NSNotFound){//file transfer
+        
+        FileMediaItem *item = [[FileMediaItem alloc] initWithFileURLString:dic[@"fileName"]];
+        [item setAppliesMediaViewMaskAsOutgoing:NO];
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:_incomingUserId senderDisplayName:_incomingDisplayName date:date media:item];
+        //JSQMessage *message = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:item];
+        [self.messages insertObject:message atIndex:0];
+    }
+    else if(![dic[@"fileName"] isEqual:[NSNull null]] && [dic[@"fileName"] rangeOfString:@"imageTransfer"].location!=NSNotFound){//file image
+        
+        JSQPhotoMediaItem *photo = [[JSQPhotoMediaItem alloc] initWithImage:nil];
+        [photo setAppliesMediaViewMaskAsOutgoing:NO];
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *photoMessage = [[JSQMessage alloc] initWithSenderId:_incomingUserId senderDisplayName:_incomingDisplayName date:date media:photo];
+        //JSQMessage *photoMessage = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:photo];
+        [self.messages insertObject:photoMessage atIndex:0];
+        
+        [self startDownloadImageWithPhotoItem:photo WithURL:[WebDataInterface getFullUrlPath:dic[@"fileName"]]];
+    }
+    else if(![dic[@"fileName"] isEqual:[NSNull null]] && [dic[@"fileName"] rangeOfString:@"voiceTransfer"].location!=NSNotFound){//audio
+        
+        AudioMediaItem *item = [[AudioMediaItem alloc] initWithFileURL:[NSURL URLWithString:[WebDataInterface getFullUrlPath:dic[@"fileName"]]] Duration:[NSNumber numberWithInteger:0]];
+        [item setAppliesMediaViewMaskAsOutgoing:NO];
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:_incomingUserId senderDisplayName:_incomingDisplayName date:date media:item];
+        //JSQMessage *message = [JSQMessage messageWithSenderId:_incomingUserId displayName:_incomingDisplayName media:item];
+        [self.messages insertObject:message atIndex:0];
+    }
+
+}
+
+- (void)processEarlyOutgoingMessage:(NSDictionary *)dic{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+    
+    if([dic[@"fileName"] isEqual:[NSNull null]] && ![dic[@"message"] isEqual:[NSNull null]] && [dic[@"name"] isEqual:[NSNull null]] && ![dic[@"message"] isEqual:[NSNull null]] && [dic[@"message"] rangeOfString:@"<span"].location==NSNotFound){//text
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *textMsg = [[JSQMessage alloc] initWithSenderId:_outgoingUserId senderDisplayName:_outgoingDisplayName date:date text:dic[@"message"]];
+        
+        [self.messages insertObject:textMsg atIndex:0];
+    }
+    else if([dic[@"fileName"] isEqual:[NSNull null]] && [dic[@"name"] isEqual:[NSNull null]] && ![dic[@"message"] isEqual:[NSNull null]] && [dic[@"message"] rangeOfString:@"Accepted offer."].location!=NSNotFound){//accept offer
+        
+        AcceptOfferMediaItem *item = [[AcceptOfferMediaItem alloc] initWithHtmlString:dic[@"message"]];
+        [item setAppliesMediaViewMaskAsOutgoing:YES];
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:_outgoingUserId senderDisplayName:_outgoingDisplayName date:date media:item];
+        //JSQMessage *message = [JSQMessage messageWithSenderId:_outgoingUserId displayName:_outgoingDisplayName media:item];
+        [self.messages insertObject:message atIndex:0];
+    }
+    else if([dic[@"fileName"] isEqual:[NSNull null]] && [dic[@"name"] isEqual:[NSNull null]] && ![dic[@"message"] isEqual:[NSNull null]] && [dic[@"message"] rangeOfString:@"Rejected offer."].location!=NSNotFound){//reject offer
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *rejectMsg = [[JSQMessage alloc] initWithSenderId:_outgoingUserId senderDisplayName:_outgoingDisplayName date:date text:dic[@"message"]];
+        
+        [self.messages insertObject:rejectMsg atIndex:0];
+    }
+    else if(![dic[@"fileName"] isEqual:[NSNull null]] && [dic[@"fileName"] rangeOfString:@"fileTransfer"].location!=NSNotFound){//file transfer
+        
+        FileMediaItem *item = [[FileMediaItem alloc] initWithFileURLString:dic[@"fileName"]];
+        [item setAppliesMediaViewMaskAsOutgoing:YES];
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:_outgoingUserId senderDisplayName:_outgoingDisplayName date:date media:item];
+        //JSQMessage *message = [JSQMessage messageWithSenderId:_outgoingUserId displayName:_outgoingDisplayName media:item];
+        [self.messages insertObject:message atIndex:0];
+    }
+    else if(![dic[@"fileName"] isEqual:[NSNull null]] && [dic[@"fileName"] rangeOfString:@"imageTransfer"].location!=NSNotFound){//file image
+        
+        JSQPhotoMediaItem *photo = [[JSQPhotoMediaItem alloc] initWithImage:nil];
+        [photo setAppliesMediaViewMaskAsOutgoing:YES];
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *photoMessage = [[JSQMessage alloc] initWithSenderId:_outgoingUserId senderDisplayName:_outgoingDisplayName date:date media:photo];
+        //JSQMessage *photoMessage = [JSQMessage messageWithSenderId:_outgoingUserId displayName:_outgoingDisplayName media:photo];
+        [self.messages insertObject:photoMessage atIndex:0];
+        
+        [self startDownloadImageWithPhotoItem:photo WithURL:[WebDataInterface getFullUrlPath:dic[@"fileName"]]];
+    }
+    else if(![dic[@"fileName"] isEqual:[NSNull null]] && [dic[@"fileName"] rangeOfString:@"voiceTransfer"].location!=NSNotFound){//audio
+        
+        AudioMediaItem *item = [[AudioMediaItem alloc] initWithFileURL:[NSURL URLWithString:[WebDataInterface getFullUrlPath:dic[@"fileName"]]] Duration:[NSNumber numberWithInteger:0]];
+        [item setAppliesMediaViewMaskAsOutgoing:YES];
+        
+        NSDate *date  = [dic[@"createDate"] isEqual:[NSNull null]]? [NSDate date] : [dateFormatter dateFromString:dic[@"createDate"]];
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:_outgoingUserId senderDisplayName:_outgoingDisplayName date:date media:item];
+        //JSQMessage *message = [JSQMessage messageWithSenderId:_outgoingUserId displayName:_outgoingDisplayName media:item];
+        [self.messages insertObject:message atIndex:0];
+    }
+}
+
 @end
