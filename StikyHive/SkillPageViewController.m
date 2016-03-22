@@ -19,6 +19,10 @@
 #import <SendGrid/SendGrid.h>
 #import <SendGrid/SendGridEmail.h>
 #import "UIView+Toast.h"
+#import <PDKPin.h>
+#import <linkedin-sdk/LISDK.h>
+
+
 
 @interface SkillPageViewController ()
 
@@ -47,6 +51,15 @@
 @property (nonatomic, strong) NSString *sellerInfo;
 @property (nonatomic, strong) UIButton *testBtn;
 
+@property (nonatomic, strong) NSString *stkId;
+@property (nonatomic, assign) NSInteger skillId;
+@property (nonatomic, assign) NSInteger likeCount;
+@property (nonatomic, assign) NSInteger skillType;
+@property (nonatomic, assign) NSInteger catId;
+@property (nonatomic, strong) NSString *skillName;
+@property (nonatomic, strong) NSString *skillDesc;
+@property (nonatomic, strong) NSString *profilePicUrl;
+@property (nonatomic, strong) FBSDKShareLinkContent *content;
 
 @end
 
@@ -131,6 +144,15 @@
                      NSString *skillHtmlec = _skillDict[@"resultSkill"][@"summary"];
                      NSString *sellerHtmlec = _skillDict[@"resultSkill"][@"skillDesc"];
                      NSString *sellerInfoec = _skillDict[@"resultSkill"][@"beeInfo"];
+                     
+                     _stkId = _skillDict[@"resultSkill"][@"stkid"];
+                     _skillId = [_skillDict[@"resultSkill"][@"id"] integerValue];
+                     _likeCount = ([_skillDict[@"resultSkill"][@"likeCount"] isEqual:[NSNull null]])?0:[_skillDict[@"resultSkill"][@"likeCount"] integerValue];
+                     _skillType = [_skillDict[@"resultSkill"][@"type"] integerValue];
+                     _catId = [_skillDict[@"resultSkill"][@"catId"] integerValue];
+                     _skillName = _skillDict[@"resultSkill"][@"name"];
+                     _skillDesc = _skillDict[@"resultSkill"][@"skillDesc"];
+                     _profilePicUrl = [WebDataInterface getFullUrlPath:_skillDict[@"resultSkill"][@"profilePicture"]];
 
                      _skillHtml = skillHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,skillHtmlec] : @"";
                      _sellerHtml = sellerHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,sellerHtmlec] : @"";
@@ -724,10 +746,12 @@
     
     UIButton *fbButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 40, 40)];
     [fbButton setImage:[UIImage imageNamed:@"share-facebook"] forState:UIControlStateNormal];
+    [fbButton addTarget:self action:@selector(shareToFacebook) forControlEvents:UIControlEventTouchUpInside];
     x = x + 50;
     
     UIButton *pintButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 40, 40)];
-    [pintButton setImage:[UIImage imageNamed:@"share-pinterest"] forState:UIControlStateNormal];
+    [pintButton setImage:[UIImage imageNamed:@"share_linkedin"] forState:UIControlStateNormal];
+    [pintButton addTarget:self action:@selector(shareToLinkedIn) forControlEvents:UIControlEventTouchUpInside];
     
     x = x + 50;
     
@@ -752,9 +776,116 @@
     return y;
 }
 
+- (void)shareToFacebook{
+    
+    _content = [[FBSDKShareLinkContent alloc] init];
+    _content.contentTitle = _skillName;
+    _content.imageURL = [NSURL URLWithString:_profilePicUrl];
+    _content.contentURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://beta.stikyhive.com/skillPage?stkid=%@&proOrRawId=%ld&like=%ld&proOrRaw=%ld&catId=%ld", _stkId, _skillId,_likeCount,_skillType,_catId]];
+    
+    FBSDKShareDialog *dialog=[[FBSDKShareDialog alloc]init];
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fbauth2://"]]){
+        dialog.mode = FBSDKShareDialogModeNative;
+    }
+    else {
+        dialog.mode = FBSDKShareDialogModeBrowser; //or FBSDKShareDialogModeAutomatic
+    }
+    dialog.shareContent=_content;
+    dialog.delegate=self;
+    dialog.fromViewController=self;
+    [dialog show];
+}
 
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Share to Facebook" message:@"Share to Facebook successful" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+    
+    _content = nil;
+}
 
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Share to Facebook" message:@"Share to Facebook fail" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+    
+    _content = nil;
+}
 
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer{
+    
+    _content = nil;
+}
+
+- (void)shareToLinkedIn{
+    
+    NSString *url = @"https://api.linkedin.com/v1/people/~/shares";
+    
+    NSString *payload;
+    
+    NSString *urlStr = [NSString stringWithFormat:@"http://beta.stikyhive.com/skillPage?stkid=%@&proOrRawId=%ld&like=%ld&proOrRaw=%ld&catId=%ld", _stkId, _skillId,_likeCount,_skillType,_catId];
+    
+    payload = [NSString stringWithFormat:@"{\"comment\":\"%@ %@\",\"visibility\":{ \"code\":\"anyone\" }}", _skillDesc, urlStr];
+                         
+    if ([LISDKSessionManager hasValidSession]) {
+                             [[LISDKAPIHelper sharedInstance] postRequest:url stringBody:payload
+                                                                  success:^(LISDKAPIResponse *response) {
+                                                                      
+                                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                                      
+                                                                          // do something with response
+                                                                          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Share to linkedIn" message:@"Share to linkedIn successful" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                                          [alert show];
+                                                                      });
+                                                                      
+                                                                      
+                                                                  }
+                                                                    error:^(LISDKAPIError *apiError) {
+                                                                        
+                                                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                                                        
+                                                                            // do something with error
+                                                                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Share to linkedIn" message:@"Share to linkedIn fail" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                                                                            [alert show];
+                                                                        });
+                                                                        
+                                                                    }];
+    }
+    else{
+
+        
+        [LISDKSessionManager createSessionWithAuth:[NSArray arrayWithObjects:LISDK_BASIC_PROFILE_PERMISSION, LISDK_W_SHARE_PERMISSION, nil] state:nil showGoToAppStoreDialog:YES successBlock:^(NSString *str) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+                NSLog(@"%s","success called!");
+                LISDKSession *session = [[LISDKSessionManager sharedInstance] session];
+                
+                [self shareToLinkedIn];
+            });
+            
+
+        } errorBlock:^(NSError * error) {
+            NSLog(@"%s","error called!");
+        }];
+    }
+    /*
+    [PDKPin pinWithImageURL:[NSURL URLWithString:_profilePicUrl]
+                       link:[NSURL URLWithString:[NSString stringWithFormat:@"http://beta.stikyhive.com/skillPage?stkid=%@&proOrRawId=%ld&like=%ld&proOrRaw=%ld&catId=%ld", _stkId, _skillId,_likeCount,_skillType,_catId]]
+         suggestedBoardName:_skillName
+                       note:_skillDesc
+                withSuccess:^
+     {
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Post to Pinterest" message:@"Post to Pinterest successful" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+         [alert show];
+     }
+                 andFailure:^(NSError *error)
+     {
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Post to Pinterest" message:@"Post to Pinterest fail" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+         [alert show];
+     }];
+     */
+}
 
 - (CGFloat)displaySeller:(NSString *)name beeInfo:(NSString *)beeInfo proLocation:(NSString *)profileLocation atStartPoint:(CGPoint)point andWidth:(CGFloat)width
 {

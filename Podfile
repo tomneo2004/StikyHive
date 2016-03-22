@@ -29,4 +29,12 @@ pod 'EZAudio', '~> 1.1.2'
 
 pod 'JSQMessagesViewController'
 
-pod 'AFSoundManager' 
+pod 'AFSoundManager'
+
+pod 'PinterestSDK', :git => 'https://github.com/pinterest/ios-pdk.git'
+
+pod 'FBSDKShareKit'
+
+pod 'FBSDKCoreKit'
+
+pod 'FBSDKLoginKit'
