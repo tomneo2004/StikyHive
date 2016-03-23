@@ -653,7 +653,11 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
-
++ (void)getSearchSell:(NSString *)like completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{@"like":like};
+    [self requestData:DATA_URL_GET_SEARCH_SELL withParameters:params completion:completion];
+}
 
 
 

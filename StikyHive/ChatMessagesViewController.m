@@ -21,14 +21,14 @@
 
 #import "ViewControllerUtil.h"
 
-<<<<<<< HEAD
+
 #import "MakeOfferViewController.h"
-=======
+
 #define kEarlyMessageLoadAmount 0
 #define GCM_Android_API @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks"
 #define GCM_IOS_API @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk"
 
->>>>>>> 6ff451ed4dfda5d562b28ec0aadb612189df39b5
+
 
 
 @interface ChatMessagesViewController ()

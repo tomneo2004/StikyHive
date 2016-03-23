@@ -147,8 +147,20 @@
 }
 
 #pragma mark - MySkillCell delegate
-- (void)onEditTap:(MySkillCell *)cell{
+- (void)onEditTap:(MySkillCell *)cell
+{
     
+    NSInteger index = [_tableView indexPathForCell:cell].row;
+    
+    MySkillInfo *info = [_mySkillInfos objectAtIndex:index];
+    
+    
+    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@""];
+    
+    
+    
+    [self.navigationController pushViewController:svc animated:YES];
 }
 
 - (void)onViewTap:(MySkillCell *)cell{
