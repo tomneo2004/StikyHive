@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyPostInfo.h"
 
 @class RadioButton;
 
@@ -37,6 +38,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *professionalBtn;
 @property (strong, nonatomic) IBOutlet UIButton *rawBtn;
 
+
+@property (nonatomic, strong) MyPostInfo *myPostInfo;
+
 - (IBAction)nextBtnPressed:(id)sender;
 
 - (IBAction)professionalBtnTapped:(id)sender;
@@ -52,5 +56,6 @@
 - (IBAction)onAvailabitityRTapped:(id)sender;
 
 
+- (void)setBuyerId:(NSInteger)buyerId;
 
 @end

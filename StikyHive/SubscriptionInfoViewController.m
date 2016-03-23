@@ -72,6 +72,10 @@
                 
                 NSDictionary *dic = (NSDictionary *)obj;
                 
+                NSLog(@"sub info ---- %@",dic);
+                
+                NSLog(@"info count --- %lu",(unsigned long)((NSArray *)dic[@"subInfo"]).count);
+                
                 if(((NSArray *)dic[@"subInfo"]).count <=0){
                     
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No result" message:@"No subscription!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

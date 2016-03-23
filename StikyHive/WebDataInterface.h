@@ -228,7 +228,8 @@
 #define DATA_URL_SELECT_CHAT_MSGS       DATA_URL@"selectChatMsgs/format/json"
 #define DATA_URL_INSERT_CHAT_MSG        DATA_URL@"insertChatMsg/format/json"
 #define DATA_URL_CHECK_LAST_MSG         DATA_URL@"checkLastMessage/format/json"
-
+#define DATA_URL_INSERT_OFFER           DATA_URL@"insertOffer/format/json"
+#define DATA_URL_GET_SEARCH_SELL        DATA_URL@"getSearchSell/format/json"
 
 
 
@@ -488,6 +489,17 @@
 + (void)insertChatMsg:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee message:(NSString *)message createDate:(NSString *)createDate completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)checkLastMsg:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee message:(NSString *)message createDate:(NSString *)createDate completion:(void (^)(NSObject *, NSError *))completion;
+
+
++ (void)getSellAllMakeOffer:(NSInteger)limit catId:(NSInteger)catId stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion;
+
+
++ (void)insertOffer:(NSString *)skillId price:(NSString *)price rate:(NSString *)rate status:(NSInteger)status fromStikyBee:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee message:(NSString *)message createDate:(NSString *)createDate completion:(void (^)(NSObject *, NSError *))completion;
+
+
++ (void)getSearchSell:(NSString *)like completion:(void (^)(NSObject *, NSError *))completion;
+
+
 
 
 

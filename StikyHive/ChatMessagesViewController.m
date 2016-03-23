@@ -21,9 +21,13 @@
 
 #import "ViewControllerUtil.h"
 
+
+#import "MakeOfferViewController.h"
+
 #define kEarlyMessageLoadAmount 0
 #define GCM_Android_API @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks"
 #define GCM_IOS_API @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk"
+
 
 
 
@@ -56,8 +60,6 @@ static NSString *profilePic = nil;
 + (void)setToStikyBee:(NSString *)toStikyBee
 {
     ToStikyBee = toStikyBee;
-    NSLog(@"to stiky bee --- %@",ToStikyBee);
-    
 }
 
 + (void)setToStikyBeeInfoArray:(NSArray *)toStikyBeeArray
@@ -144,6 +146,17 @@ static NSString *profilePic = nil;
     /*
      * Show earlier messages url
      */
+<<<<<<< HEAD
+    [WebDataInterface selectChatMsgs:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee limit:7 completion:^(NSObject *obj, NSError *err)
+     {
+        
+         NSLog(@"chat obj--- %@",obj);
+         
+         
+     }];
+    
+    
+=======
 //    [WebDataInterface selectChatMsgs:@"15AAAAAE" toStikyBee:@"15AAAABX" limit:7 completion:^(NSObject *obj, NSError *err)
 //     {
 //        
@@ -153,6 +166,7 @@ static NSString *profilePic = nil;
 //     }];
 //    
     self.showLoadEarlierMessagesHeader = YES;
+>>>>>>> 6ff451ed4dfda5d562b28ec0aadb612189df39b5
     
     _audioImage = [UIImage imageNamed:@"audio_message@2x"];
     
@@ -258,13 +272,6 @@ static NSString *profilePic = nil;
         
         
         
-        NSString *androidApi = @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks";
-        NSString *iosApi = @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk";
-        [self sendMessages:androidApi text:text isSendText:YES];
-        [self sendMessages:iosApi text:text isSendText:YES];
-        
-        
-        
         NSDate *now = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
@@ -282,6 +289,14 @@ static NSString *profilePic = nil;
             }];
         }];
 
+        
+        
+        NSString *androidApi = @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks";
+        NSString *iosApi = @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk";
+        [self sendMessages:androidApi text:text isSendText:YES];
+        [self sendMessages:iosApi text:text isSendText:YES];
+
+        
         
         self.inputToolbar.contentView.rightBarButtonItem = _pttButton;
         self.inputToolbar.contentView.rightBarButtonItem.enabled = YES;
@@ -305,6 +320,8 @@ static NSString *profilePic = nil;
     
     // get message data
     NSDictionary *messages = [self getMessage:recipientID text:text isSendText:isSendText];
+    
+    //
     
     NSData *jsonBody = [NSJSONSerialization dataWithJSONObject:messages options:0 error:nil];
     
@@ -340,10 +357,12 @@ static NSString *profilePic = nil;
     
     NSString *msg = text;
     NSString *message = text;
+    
     if (!isSendText) {
         msg = @"Image Transfer";
         message = @"<img";
     }
+    
     
     NSLog(@"is send text ------ %d",isSendText);
     NSLog(@"msg ======= %@",msg);
@@ -745,7 +764,7 @@ static NSString *profilePic = nil;
 {
     [self.inputToolbar.contentView.textView resignFirstResponder];
     
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Send photo",@"Send file",@"Trasaction", @"Record audio", nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Send photo",@"Send file",@"Make Offer", @"Record audio", nil];
     
     [sheet showFromToolbar:self.inputToolbar];
 }
@@ -765,9 +784,33 @@ static NSString *profilePic = nil;
             break;
         case 1:
         {
+            // send file
+            
+            
+            
+            
             
         }
+        case 2:
+        {
+            // Transaction make offer
+            
+//            make_offer_view_controller
+            
+            UIViewController *vc = [ViewControllerUtil instantiateViewController:@"make_offer_view_controller"];
+            [MakeOfferViewController setToStikyBee:ToStikyBee];
+            
+//            MakeOfferViewController *movc = [[MakeOfferViewController alloc] init];
+//            movc.delegate = self;
+            
+            ((MakeOfferViewController *)vc).delegate = self;
+            
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            
             break;
+        }
+//            break;
         case 3:
         {
             //present audio recording view
@@ -784,6 +827,107 @@ static NSString *profilePic = nil;
     [self finishSendingMessageAnimated:YES];
     
 }
+
+
+#pragma mark - make offer delegate
+- (void)onMakeOfferTapped:(MakeOfferViewController *)makeOfferViewController dict:(NSDictionary *)dict
+{
+    
+    NSLog(@"make offer tapped return to chatting page");
+    // send make offer msg
+    NSLog(@"dict --- %@",dict);
+    
+    NSString *androidApi = @"AIzaSyCQPHllJgsZzVapK7rWdzdZ_dbIaqnrkks";
+    NSString *iosApi = @"AIzaSyCvIIIK7xwfLD5in_ypUiGyQWTJYrIzXOk";
+
+    
+    [self sendOffer:androidApi dict:dict];
+    [self sendOffer:iosApi dict:dict];
+    
+    NSDate *now = [NSDate date];
+    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:self.senderId senderDisplayName:self.senderDisplayName date:now text:dict[@"result"][@"message"]];
+    
+    
+    [self.chatData.messages addObject:message];
+    [self finishSendingMessageAnimated:YES];
+    
+    
+}
+
+
+- (void)sendOffer:(NSString *)api dict:(NSDictionary *)dict
+{
+    // create the request
+    NSString *sendUrl = @"https://android.googleapis.com/gcm/send";
+    
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:sendUrl]];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [urlRequest setValue:[NSString stringWithFormat:@"key=%@",api] forHTTPHeaderField:@"Authorization"];
+    [urlRequest setTimeoutInterval:60];
+    
+    // get message data
+    NSDictionary *messages = [self getMessage:recipientID dict:dict];
+    
+    //
+    
+    NSData *jsonBody = [NSJSONSerialization dataWithJSONObject:messages options:0 error:nil];
+    
+    [urlRequest setHTTPBody:jsonBody];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+        
+        if (data.length > 0 && connectionError == nil)
+        {
+            // NSJSONReadingOptions jsonOption = NSJSONReadingAllowFragments;
+            // id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:jsonOption error:&connectionError];
+            // NSLog(@"json object ----- %@",jsonObject);
+            
+            NSLog(@"response ---- %@",response);
+            
+//            NSLog(@"json object text ");
+        }
+        else
+        {
+            NSLog(@"error ---- %@",connectionError);
+            
+        }
+        
+    }];
+    
+}
+
+
+- (NSDictionary *)getMessage:(NSString *)to dict:(NSDictionary *)dict
+{
+    
+    NSDictionary *msgDtata = @{@"to":to,
+                               @"notification": @{
+                                       @"body": @"Make Offer"
+                                       },
+                               @"data":@{
+                                       @"fileName":[NSNull null],
+                                       @"msg":@"Make Offer",
+                                       @"offerId":dict[@"result"][@"offerId"],
+                                       @"offerStatus":dict[@"result"][@"offerStatus"],
+                                       @"price":dict[@"result"][@"price"],
+                                       @"rate":dict[@"result"][@"rate"],
+                                       @"name":dict[@"result"][@"name"],
+                                       @"message":dict[@"result"][@"message"],
+                                       @"recipientStkid":[LocalDataInterface retrieveStkid],
+                                       @"chatRecipient":[LocalDataInterface retrieveNameOfUser],
+                                       @"chatRecipientUrl":[LocalDataInterface retrieveProfileUrl],
+                                       @"senderToken":senderID,
+                                       @"recipientToken":recipientID
+                                       }
+                               };
+    
+    
+    return msgDtata;
+}
+
 
 - (void)showPhotoAction
 {
@@ -827,6 +971,9 @@ static NSString *profilePic = nil;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo
 {
+    
+    // send photo message
+    
     UIImage *myImage = image;
     
     [self.chatData addPhotoMsg:myImage];
@@ -843,7 +990,6 @@ static NSString *profilePic = nil;
     NSLog(@"gcm ios api key -- %@",iosApi);
     
     
-    
     [WebDataInterface sendPhoto:myImage fromStikyBee:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee completeHandler:^(NSString *data, NSError *error) {
         NSLog(@"send photo data ---- %@",data);
     }];
@@ -852,10 +998,6 @@ static NSString *profilePic = nil;
     
     [self sendMessages:androidApi text:@"" isSendText:NO];
     [self sendMessages:iosApi text:@"" isSendText:NO];
-    
-    
-    
-    
     
     
     

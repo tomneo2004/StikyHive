@@ -125,7 +125,7 @@ static NSString *const reuseIdentifier = @"buyer_cell";
     
     NSString *locationUrl = buyer.location != (id)[NSNull null] ? [WebDataInterface getFullUrlPath:buyer.location] : @"";
     
-    NSLog(@"location url ------- %@",locationUrl);
+//    NSLog(@"location url ------- %@",locationUrl);
     
     imageView.image = locationUrl.length > 0 ? [ViewControllerUtil getImageWithPath:locationUrl] : [UIImage imageNamed:@"Default_buyer_post"];
     
@@ -177,7 +177,7 @@ static NSString *const reuseIdentifier = @"buyer_cell";
     NSInteger idInteger = buyer.buyerID;
     NSString *location = buyer.location;
     
-    NSLog(@"post location picture ------- %@",location);
+//    NSLog(@"post location picture ------- %@",location);
     
     
     

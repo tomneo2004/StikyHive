@@ -625,8 +625,39 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 
 
 
++ (void)getSellAllMakeOffer:(NSInteger)limit catId:(NSInteger)catId stkid:(NSString *)stkid completion:(void (^)(NSObject *, NSError *))completion{
+    
+    NSDictionary *params = @{POST_PARAMETER_LIMIT:[NSNumber numberWithInteger:limit],
+                             POST_PARAMETER_CATEGORY_ID:[NSNumber numberWithInteger:catId],
+                             POST_PARAMETER_STKID:stkid};
+    [self requestData:DATA_URL_GET_SELL_MARKET withParameters:params completion:completion];
+    
+}
 
 
+
++ (void)insertOffer:(NSString *)skillId price:(NSString *)price rate:(NSString *)rate status:(NSInteger)status fromStikyBee:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee message:(NSString *)message createDate:(NSString *)createDate completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_SKILL_ID:skillId,
+                             POST_PARAMETER_PRICE:price,
+                             GOOGLE_PARAM_RATE:rate,
+                             POST_PARAMETER_STATUS:[NSNumber numberWithInteger:status],
+                             POST_PARAMETER_FROM_STIKY_BEE:fromStikyBee,
+                             POST_PARAMETER_TO_STIKY_BEE:toStikyBee,
+                             POST_PARAMETER_MESSAGE:message,
+                             POST_PARAMETER_CREATE_DATE:createDate};
+    
+    NSLog(@"params --- %@",params);
+    
+    [self requestData:DATA_URL_INSERT_OFFER withParameters:params completion:completion];
+}
+
+
++ (void)getSearchSell:(NSString *)like completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{@"like":like};
+    [self requestData:DATA_URL_GET_SEARCH_SELL withParameters:params completion:completion];
+}
 
 
 

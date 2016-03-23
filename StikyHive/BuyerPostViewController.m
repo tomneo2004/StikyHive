@@ -116,8 +116,11 @@
                 [self.view hideActivityView];
             });
         }
+        
+        
     }];
     
+//    [self.view hideActivityView];
 }
 
 
