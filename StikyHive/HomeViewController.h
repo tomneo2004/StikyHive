@@ -21,7 +21,7 @@
 #define BUYER_IMAGE_HEIGHT 160.0
 #define BUYER_IMAGE_SPACE 10.0
 
-@interface HomeViewController : SearchSellViewController <UIScrollViewDelegate>
+@interface HomeViewController : SearchSellViewController <UIScrollViewDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;

@@ -160,7 +160,7 @@
     
     
     
-    [self.navigationController pushViewController:svc animated:YES];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)onViewTap:(MySkillCell *)cell{

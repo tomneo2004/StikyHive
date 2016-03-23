@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchCell.h"
 
-@interface SearchViewController : UIViewController
+@interface SearchViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SearchCellDelegate>
+
+@property (nonatomic, copy) NSString *searchKeyword;
 
 @end

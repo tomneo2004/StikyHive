@@ -15,6 +15,7 @@
 #import "BuyerPostViewController.h"
 #import "UserProfileViewController.h"
 #import "SellingManager.h"
+#import "SearchViewController.h"
 
 @interface HomeViewController ()
 
@@ -111,7 +112,6 @@
        
     }];
     
-   
     
  /*
     NSString *emailText = [LocalDataInterface retrieveUsername];
@@ -125,6 +125,21 @@
          }];
     }
 */
+    
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    
+    if(searchBar.text != nil && ![searchBar.text isEqualToString:@""]){
+        
+        SearchViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
+        
+        controller.searchKeyword = searchBar.text;
+        
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
+    [searchBar resignFirstResponder];
     
 }
 
@@ -370,6 +385,8 @@
 {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
+    
+    _skillSearchBar.delegate = self;
     
     NSString *emailText = [LocalDataInterface retrieveUsername];
     NSString *passwordText = [LocalDataInterface retrievePassword];

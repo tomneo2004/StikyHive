@@ -424,6 +424,7 @@
 		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
 		CED907741CA22F8F00601D82 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED907731CA22F8F00601D82 /* SearchViewController.m */; };
 		CED907771CA2300300601D82 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED907761CA2300300601D82 /* SearchCell.m */; };
+		CED9077A1CA23AB500601D82 /* SearchInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED907791CA23AB500601D82 /* SearchInfo.m */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
 		CEE93A151BF4490100B292BA /* buzzr_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A061BF4490000B292BA /* buzzr_chat.png */; };
 		CEE93A161BF4490100B292BA /* buzzr_home_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A071BF4490000B292BA /* buzzr_home_btn.png */; };
@@ -1081,6 +1082,8 @@
 		CED907731CA22F8F00601D82 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		CED907751CA2300300601D82 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		CED907761CA2300300601D82 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		CED907781CA23AB500601D82 /* SearchInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchInfo.h; sourceTree = "<group>"; };
+		CED907791CA23AB500601D82 /* SearchInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchInfo.m; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
 		CEE93A061BF4490000B292BA /* buzzr_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_chat.png; sourceTree = "<group>"; };
 		CEE93A071BF4490000B292BA /* buzzr_home_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_home_btn.png; sourceTree = "<group>"; };
@@ -2257,6 +2260,8 @@
 				CED907731CA22F8F00601D82 /* SearchViewController.m */,
 				CED907751CA2300300601D82 /* SearchCell.h */,
 				CED907761CA2300300601D82 /* SearchCell.m */,
+				CED907781CA23AB500601D82 /* SearchInfo.h */,
+				CED907791CA23AB500601D82 /* SearchInfo.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -2979,6 +2984,7 @@
 				CE5D4A541C27B065005C07D4 /* ReviewCell.m in Sources */,
 				5175E0341C560BAB0094FB89 /* ChatMessagesViewController.m in Sources */,
 				CE9B8EC91C16C3620022653B /* BoughtInfo.m in Sources */,
+				CED9077A1CA23AB500601D82 /* SearchInfo.m in Sources */,
 				516F7EB51C182EA2005FEF8A /* SellingTableViewController.m in Sources */,
 				CE5D4A4C1C27A649005C07D4 /* PostCommentViewController.m in Sources */,
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
