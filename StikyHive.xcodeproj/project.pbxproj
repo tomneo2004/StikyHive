@@ -424,6 +424,9 @@
 		CED3C8851C2295DD0090DE35 /* icon_eye_open.png in Resources */ = {isa = PBXBuildFile; fileRef = CED3C8841C2295DD0090DE35 /* icon_eye_open.png */; };
 		CED73E0A1C06F31700ADB60C /* buzzr_top_btn(withoutButton).png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */; };
 		CED73E0D1C06F57C00ADB60C /* YelloBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CED73E0C1C06F57C00ADB60C /* YelloBTN.png */; };
+		CED907741CA22F8F00601D82 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED907731CA22F8F00601D82 /* SearchViewController.m */; };
+		CED907771CA2300300601D82 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED907761CA2300300601D82 /* SearchCell.m */; };
+		CED9077A1CA23AB500601D82 /* SearchInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED907791CA23AB500601D82 /* SearchInfo.m */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
 		CEE93A151BF4490100B292BA /* buzzr_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A061BF4490000B292BA /* buzzr_chat.png */; };
 		CEE93A161BF4490100B292BA /* buzzr_home_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A071BF4490000B292BA /* buzzr_home_btn.png */; };
@@ -1081,6 +1084,12 @@
 		CED3C8841C2295DD0090DE35 /* icon_eye_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_eye_open.png; sourceTree = "<group>"; };
 		CED73E081C06F31700ADB60C /* buzzr_top_btn(withoutButton).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr_top_btn(withoutButton).png"; sourceTree = "<group>"; };
 		CED73E0C1C06F57C00ADB60C /* YelloBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YelloBTN.png; sourceTree = "<group>"; };
+		CED907721CA22F8F00601D82 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		CED907731CA22F8F00601D82 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		CED907751CA2300300601D82 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		CED907761CA2300300601D82 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		CED907781CA23AB500601D82 /* SearchInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchInfo.h; sourceTree = "<group>"; };
+		CED907791CA23AB500601D82 /* SearchInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchInfo.m; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
 		CEE93A061BF4490000B292BA /* buzzr_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_chat.png; sourceTree = "<group>"; };
 		CEE93A071BF4490000B292BA /* buzzr_home_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_home_btn.png; sourceTree = "<group>"; };
@@ -1513,6 +1522,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CED907711CA22F0200601D82 /* Search */,
 				516A90321C4CA07200584073 /* StikyChat */,
 				CE83C7861C3B5F2800753B80 /* Education */,
 				CEC8A1D71C2A70DE00558608 /* MyPost */,
@@ -2253,6 +2263,19 @@
 			name = SkillView;
 			sourceTree = "<group>";
 		};
+		CED907711CA22F0200601D82 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CED907721CA22F8F00601D82 /* SearchViewController.h */,
+				CED907731CA22F8F00601D82 /* SearchViewController.m */,
+				CED907751CA2300300601D82 /* SearchCell.h */,
+				CED907761CA2300300601D82 /* SearchCell.m */,
+				CED907781CA23AB500601D82 /* SearchInfo.h */,
+				CED907791CA23AB500601D82 /* SearchInfo.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		CEE93A041BF448CA00B292BA /* NewVersion */ = {
 			isa = PBXGroup;
 			children = (
@@ -2953,6 +2976,7 @@
 				517D55321BDA4448000EA8FD /* UserProfileViewController.m in Sources */,
 				676F77EB1B96F3270084988A /* CropPhotoViewController.m in Sources */,
 				CEF7BA9C1BFAD2D6009624CC /* TitleViewController.m in Sources */,
+				CED907771CA2300300601D82 /* SearchCell.m in Sources */,
 				516F7EB81C183B3F005FEF8A /* SellingCell.m in Sources */,
 				674D0F6D1B7D9B6F00B5B80D /* WebDataInterface.m in Sources */,
 				674D0EBF1B7D98CA00B5B80D /* UserSkillViewController1.m in Sources */,
@@ -2971,6 +2995,7 @@
 				CE5D4A541C27B065005C07D4 /* ReviewCell.m in Sources */,
 				5175E0341C560BAB0094FB89 /* ChatMessagesViewController.m in Sources */,
 				CE9B8EC91C16C3620022653B /* BoughtInfo.m in Sources */,
+				CED9077A1CA23AB500601D82 /* SearchInfo.m in Sources */,
 				516F7EB51C182EA2005FEF8A /* SellingTableViewController.m in Sources */,
 				CE5D4A4C1C27A649005C07D4 /* PostCommentViewController.m in Sources */,
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
@@ -3007,6 +3032,7 @@
 				CEFD195C1C04123800A79158 /* DistanceTitle.m in Sources */,
 				CED3C8771C2251490090DE35 /* MySkillViewController.m in Sources */,
 				CE83C78C1C3B6B7600753B80 /* EducationInfo.m in Sources */,
+				CED907741CA22F8F00601D82 /* SearchViewController.m in Sources */,
 				CEE93A261BF47C2600B292BA /* CrossPollinateViewController.m in Sources */,
 				CEE93A2A1BF4852800B292BA /* Request.m in Sources */,
 				516A90351C4CA22000584073 /* ChatListViewController.m in Sources */,

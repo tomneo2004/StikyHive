@@ -57,8 +57,12 @@
                 [_attachmentImageView setImage:image];
             }
             
+            
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
         
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to download image" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
         }];
     }
     
