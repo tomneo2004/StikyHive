@@ -14,6 +14,7 @@
 #import "SkillViewTableViewController.h"
 #import "SkillPageViewController.h"
 #import "ViewControllerUtil.h"
+#import "SellingViewController.h"
 
 @interface MySkillViewController ()
 
@@ -78,6 +79,8 @@
                 else{
                     
                     _mySkillInfos = [[NSMutableArray alloc] init];
+                    
+                    NSLog(@"skill page result --- %@",dic[@"result"]);
                     
                     for(NSDictionary *data in dic[@"result"]){
                         
@@ -156,11 +159,13 @@
     
     
     
-    UIViewController *vc = [ViewControllerUtil instantiateViewController:@""];
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller"];
+//    SellingViewController *svc = (SellingViewController *)vc;
+//    svc.mySkillInfo = info;
     
+    ((SellingViewController *)vc).mySkillInfo = info;
     
-    
-    [self.navigationController pushViewController:svc animated:YES];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)onViewTap:(MySkillCell *)cell{

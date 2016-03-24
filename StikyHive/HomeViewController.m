@@ -491,7 +491,9 @@
 - (IBAction)seeAllSellerButtonPressed:(id)sender
 {
     
-    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"seller_view_controller"];
+//    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"seller_view_controller"];
+    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"sell_all_view_controller"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

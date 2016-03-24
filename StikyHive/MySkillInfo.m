@@ -28,6 +28,7 @@
 @synthesize catId = _catId;
 @synthesize name = _name;
 @synthesize skillDesc = _skillDesc;
+@synthesize summary = _summary;
 @synthesize type = _type;
 @synthesize firstname = _firstname;
 @synthesize lastname = _lastname;
@@ -100,6 +101,7 @@
         
         _name = [dic objectForKey:@"name"];
         _skillDesc = [dic objectForKey:@"skillDesc"];
+        _summary = [dic objectForKey:@"summary"];
         
         if(![[dic objectForKey:@"type"] isEqual:[NSNull null]])
             _type = [[dic objectForKey:@"type"] integerValue];

@@ -179,6 +179,8 @@
 		5186FE4B1BD5EA08002A51CA /* buyerspost_job_type.png in Resources */ = {isa = PBXBuildFile; fileRef = 5186FE481BD5EA08002A51CA /* buyerspost_job_type.png */; };
 		51896EAE1BCDFE5D006643AE /* SellerRevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51896EAD1BCDFE5D006643AE /* SellerRevViewController.m */; };
 		518E329A1C9A626B00BE72E4 /* MakeOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518E32991C9A626B00BE72E4 /* MakeOfferViewController.m */; };
+		519416231CA277110004AC00 /* SellAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 519416221CA277110004AC00 /* SellAllViewController.m */; };
+		519416261CA27B050004AC00 /* SellAllCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 519416251CA27B050004AC00 /* SellAllCell.m */; };
 		5198F7791C925D6400FC965D /* NavigChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5198F7781C925D6400FC965D /* NavigChatViewController.m */; };
 		51AC3C5C1BA6ABA8004DA21C /* slide-0820-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 51AC3C5A1BA6ABA8004DA21C /* slide-0820-01.png */; };
 		51AC3C5D1BA6ABA8004DA21C /* slide-0820-02.png in Resources */ = {isa = PBXBuildFile; fileRef = 51AC3C5B1BA6ABA8004DA21C /* slide-0820-02.png */; };
@@ -714,6 +716,10 @@
 		51896EAD1BCDFE5D006643AE /* SellerRevViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerRevViewController.m; sourceTree = "<group>"; };
 		518E32981C9A626B00BE72E4 /* MakeOfferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeOfferViewController.h; sourceTree = "<group>"; };
 		518E32991C9A626B00BE72E4 /* MakeOfferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeOfferViewController.m; sourceTree = "<group>"; };
+		519416211CA277110004AC00 /* SellAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellAllViewController.h; sourceTree = "<group>"; };
+		519416221CA277110004AC00 /* SellAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellAllViewController.m; sourceTree = "<group>"; };
+		519416241CA27B050004AC00 /* SellAllCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellAllCell.h; sourceTree = "<group>"; };
+		519416251CA27B050004AC00 /* SellAllCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellAllCell.m; sourceTree = "<group>"; };
 		5198F7771C925D6400FC965D /* NavigChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigChatViewController.h; sourceTree = "<group>"; };
 		5198F7781C925D6400FC965D /* NavigChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigChatViewController.m; sourceTree = "<group>"; };
 		51AC3C5A1BA6ABA8004DA21C /* slide-0820-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slide-0820-01.png"; sourceTree = "<group>"; };
@@ -1806,6 +1812,10 @@
 				516A614D1BC7A47900D4E890 /* PostCommViewController.m */,
 				51896EAC1BCDFE5D006643AE /* SellerRevViewController.h */,
 				51896EAD1BCDFE5D006643AE /* SellerRevViewController.m */,
+				519416211CA277110004AC00 /* SellAllViewController.h */,
+				519416221CA277110004AC00 /* SellAllViewController.m */,
+				519416241CA27B050004AC00 /* SellAllCell.h */,
+				519416251CA27B050004AC00 /* SellAllCell.m */,
 			);
 			name = Skill;
 			sourceTree = "<group>";
@@ -2949,6 +2959,7 @@
 				CED3C87A1C2251B10090DE35 /* MySkillInfo.m in Sources */,
 				674D0ECB1B7D99FC00B5B80D /* SellerCollectionViewController.m in Sources */,
 				51694D711BAC27EA007722F1 /* SelectableLabel.m in Sources */,
+				519416261CA27B050004AC00 /* SellAllCell.m in Sources */,
 				CE9054D21C17CB9300144078 /* OverlayViewController.m in Sources */,
 				CE24E7FC1C196E960021F078 /* UpdateProfileViewController.m in Sources */,
 				CE24E8021C1970000021F078 /* CountryInfo.m in Sources */,
@@ -2986,6 +2997,7 @@
 				516BC8691BB13FBE008BE2ED /* PhotoViewController.m in Sources */,
 				51694D6E1BAC27BC007722F1 /* SelectableImageView.m in Sources */,
 				517A1C651C0C2B72004017E4 /* SellingViewController4.m in Sources */,
+				519416231CA277110004AC00 /* SellAllViewController.m in Sources */,
 				CED3C87D1C225D800090DE35 /* MySkillCell.m in Sources */,
 				516F58A91C104A4000E4FD41 /* PromotionViewController.m in Sources */,
 				51896EAE1BCDFE5D006643AE /* SellerRevViewController.m in Sources */,

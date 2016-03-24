@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MySkillInfo.h"
 
 @interface SellingViewController : UIViewController <UIScrollViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate, UIWebViewDelegate,UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
+
+
+@property (nonatomic, strong) MySkillInfo *mySkillInfo;
+
 
 @end

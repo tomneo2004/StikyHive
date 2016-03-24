@@ -146,7 +146,7 @@ static NSString *profilePic = nil;
     /*
      * Show earlier messages url
      */
-<<<<<<< HEAD
+
     [WebDataInterface selectChatMsgs:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee limit:7 completion:^(NSObject *obj, NSError *err)
      {
         
@@ -156,7 +156,6 @@ static NSString *profilePic = nil;
      }];
     
     
-=======
 //    [WebDataInterface selectChatMsgs:@"15AAAAAE" toStikyBee:@"15AAAABX" limit:7 completion:^(NSObject *obj, NSError *err)
 //     {
 //        
@@ -166,7 +165,7 @@ static NSString *profilePic = nil;
 //     }];
 //    
     self.showLoadEarlierMessagesHeader = YES;
->>>>>>> 6ff451ed4dfda5d562b28ec0aadb612189df39b5
+//>>>>>>> 6ff451ed4dfda5d562b28ec0aadb612189df39b5
     
     _audioImage = [UIImage imageNamed:@"audio_message@2x"];
     

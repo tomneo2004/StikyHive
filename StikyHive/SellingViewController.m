@@ -45,12 +45,19 @@
 
 @end
 
-@implementation SellingViewController
+@implementation SellingViewController{
+    BOOL _isEditing;
+    BOOL _shouldPullData;
+}
+
+@synthesize mySkillInfo = _mySkillInfo;
 
 //static NSMutableDictionary *Skill_Info;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"my skill info --- %@",_mySkillInfo);
     
     _contentScrollView.alwaysBounceVertical = YES;
     _contentScrollView.delegate = self;
@@ -130,6 +137,7 @@
                 
 
                 [self displayPage];
+                [self pullData];
                 
                 [self.view hideActivityView];
             
@@ -163,6 +171,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)pullData
+{
+    
+    if (_mySkillInfo != nil) {
+        [self becomeEditingMode];
+    }
+    _shouldPullData = NO;
+    return;
 }
 
 
@@ -372,6 +390,92 @@
     [_contentScrollView setContentSize:CGSizeMake(width, y)];
 }
 
+
+
+- (void)becomeEditingMode
+{
+    _isEditing = YES;
+   
+    
+    _titleTextField.text = _mySkillInfo.name;
+    
+    [_summaryWebView loadHTMLString:_mySkillInfo.summary baseURL:nil];
+    [_descWebView loadHTMLString:_mySkillInfo.skillDesc baseURL:nil];
+    
+    
+    if (_mySkillInfo.price)
+    {
+        _priceTextField.text = [NSString stringWithFormat:@"%0.2f", _mySkillInfo.price];
+        
+        _rateTextField.text = _mySkillInfo.ratename;
+        
+        _rateId = [NSString stringWithFormat:@"%ld", (long)_mySkillInfo.rating];
+        
+    }
+    
+    
+    if(_mySkillInfo.type == 1)
+    {
+        _skillArray = [_industryArray mutableCopy];
+        [_industryPickerView reloadAllComponents];
+        
+        _professBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        _talentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        
+        _skillType = 1;
+        
+        
+        // display
+        _categoryId = [NSString stringWithFormat:@"%ld", (long)_mySkillInfo.catId];
+        
+        for (NSDictionary *dict in _skillArray)
+        {
+            if ([dict[@"id"] integerValue] == [_categoryId integerValue])
+            {
+                _industryTextField.text = dict[@"name"];
+                break;
+            }
+        }
+        
+        
+    }
+    else
+    {
+        _skillArray = [_categoryArray mutableCopy];
+        [_industryPickerView reloadAllComponents]; //reload picker view data
+        
+        _talentBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        _professBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        
+        _skillType = 2;
+        
+        
+        
+        // display
+        _categoryId = [NSString stringWithFormat:@"%ld", (long)_mySkillInfo.catId];
+        
+        for (NSDictionary *dict in _skillArray)
+        {
+            if ([dict[@"id"] integerValue] == [_categoryId integerValue])
+            {
+                _industryTextField.text = dict[@"name"];
+                break;
+            }
+        }
+        
+        
+        
+    }
+    
+    
+}
+
+
+
+
+
+
+
 - (void)nextBtnTapped:(UITapGestureRecognizer *)sender
 {
     NSString *titleString = _titleTextField.text;
@@ -382,8 +486,8 @@
 //    NSLog(@"rate - %@",_rateId);
     NSString *industryString = _industryTextField.text;
     
-    NSString *summaryString = [_summaryWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
-    NSString *descString = [_descWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+//    NSString *summaryString = [_summaryWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+//    NSString *descString = [_descWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
     NSString *innerSummary = [_summaryWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].innerHTML"];
     NSString *innerDesc = [_descWebView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].innerHTML"];
     

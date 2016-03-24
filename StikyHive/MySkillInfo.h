@@ -28,6 +28,7 @@
 @property (assign, readonly, nonatomic) NSInteger catId;
 @property (copy, readonly, nonatomic) NSString *name;
 @property (copy, readonly, nonatomic) NSString *skillDesc;
+@property (copy, readonly, nonatomic) NSString *summary;
 @property (assign, readonly, nonatomic) NSInteger type;
 @property (copy, readonly, nonatomic) NSString *firstname;
 @property (copy, readonly, nonatomic) NSString *lastname;
