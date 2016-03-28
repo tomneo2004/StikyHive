@@ -35,7 +35,7 @@
 #pragma mark - override
 - (void)layoutSubviews
 {
-    [self layoutSubviews];
+    [super layoutSubviews];
     
     if (!_isInit) {
         self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.size.width/2;
@@ -50,7 +50,17 @@
     }
 }
 
-
+- (void)setIsVideo:(BOOL)isVideo
+{
+    _isVideo = isVideo;
+    if (_isVideo) {
+        
+    }
+    else
+    {
+        
+    }
+}
 
 - (void)displayProfileImage:(NSString *)url
 {

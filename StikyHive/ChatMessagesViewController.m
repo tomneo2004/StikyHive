@@ -146,11 +146,11 @@ static NSString *profilePic = nil;
     /*
      * Show earlier messages url
      */
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
-=======
+//=======
 ///<<<<<<< HEAD
->>>>>>> c6e057082daccd7248adf834f4c25e2d217ea78e
+//>>>>>>> c6e057082daccd7248adf834f4c25e2d217ea78e
     [WebDataInterface selectChatMsgs:[LocalDataInterface retrieveStkid] toStikyBee:ToStikyBee limit:7 completion:^(NSObject *obj, NSError *err)
      {
         
@@ -160,10 +160,10 @@ static NSString *profilePic = nil;
      }];
     
     
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 ///=======
->>>>>>> c6e057082daccd7248adf834f4c25e2d217ea78e
+//>>>>>>> c6e057082daccd7248adf834f4c25e2d217ea78e
 //    [WebDataInterface selectChatMsgs:@"15AAAAAE" toStikyBee:@"15AAAABX" limit:7 completion:^(NSObject *obj, NSError *err)
 //     {
 //        

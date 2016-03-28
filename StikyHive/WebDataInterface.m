@@ -123,6 +123,15 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     [self requestData:DATA_URL_GET_SELL_MARKET withParameters:params completion:completion];
 }
 
+
++ (void)getSellAllSkills:(NSInteger)limit catId:(NSInteger)catId completion:(void (^)(NSObject *, NSError *))completion
+{
+    NSDictionary *params = @{POST_PARAMETER_LIMIT:[NSNumber numberWithInteger:limit],
+                             POST_PARAMETER_CATEGORY_ID:[NSNumber numberWithInteger:catId]};
+    [self requestData:DATA_URL_GET_SELL_MARKET withParameters:params completion:completion];
+
+}
+
 + (void)getBuyerMarket:(NSString *)skillId limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion {
     
     NSDictionary *params = @{POST_PARAMETER_SKILL_ID:skillId,

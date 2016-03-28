@@ -392,6 +392,9 @@
 + (void)getSellAllMy:(NSInteger)limit catId:(NSInteger)catId stkid:(NSString *)stkid flagMy:(BOOL)flagMy actionMaker:(NSString *)actionMaker completion:(void (^)(NSObject *, NSError *))completion;
 
 
++ (void)getSellAllSkills:(NSInteger)limit catId:(NSInteger)catId completion:(void (^)(NSObject *, NSError *))completion;
+
+
 + (void)getBuyerMarket:(NSString *)skillId limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)getBuyerMarketByStkid:(NSString *)stkid limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
