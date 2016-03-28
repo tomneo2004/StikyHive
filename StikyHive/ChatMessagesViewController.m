@@ -163,7 +163,11 @@ static NSString *profilePic = nil;
 //<<<<<<< HEAD
 //=======
 ///=======
+<<<<<<< HEAD
 //>>>>>>> c6e057082daccd7248adf834f4c25e2d217ea78e
+=======
+// >>>>>>> c6e057082daccd7248adf834f4c25e2d217ea78e
+>>>>>>> e1bf936f2c0218dc1d0179191aa4a9fbbecaec44
 //    [WebDataInterface selectChatMsgs:@"15AAAAAE" toStikyBee:@"15AAAABX" limit:7 completion:^(NSObject *obj, NSError *err)
 //     {
 //        
