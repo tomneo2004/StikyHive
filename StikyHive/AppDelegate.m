@@ -44,10 +44,19 @@ NSString *const SubscriptionTopic = @"/topics/global";
     }
     
     else {
-        return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                          sourceApplication:sourceApplication
-                                                          annotation:annotation];
+        //return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          //openURL:url
+                                                          //sourceApplication:sourceApplication
+                                                          //annotation:annotation];
+        
+        BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                      openURL:url
+                                                            sourceApplication:sourceApplication
+                                                                   annotation:annotation
+                        ];
+        
+        if(handled)
+            return handled;
         
     }
     
@@ -131,16 +140,28 @@ NSString *const SubscriptionTopic = @"/topics/global";
     
 }
 
+/*
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
     if ([LISDKCallbackHandler shouldHandleUrl:url]) {
         return [LISDKCallbackHandler application:app openURL:url sourceApplication:options[UIApplicationLaunchOptionsSourceApplicationKey] annotation:options[UIApplicationLaunchOptionsAnnotationKey]];
     }
-    return YES;
+    else{
+        
+        BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:app
+                                                                      openURL:url
+                                                            sourceApplication:options[UIApplicationLaunchOptionsSourceApplicationKey]
+                                                                   annotation:options[UIApplicationLaunchOptionsAnnotationKey]
+                        ];
+        
+        if(handled)
+            return handled;
+    }
+    return NO;
     
-    return [[PDKClient sharedInstance] handleCallbackURL:url];
+    //return [[PDKClient sharedInstance] handleCallbackURL:url];
 }
-
+*/
 // [START receive_apns_token_error]
 - (void)application:(UIApplication *)application
 didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
