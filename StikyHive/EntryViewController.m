@@ -21,9 +21,13 @@
 @property (nonatomic, strong) NSString *socialMediaType;
 @property (nonatomic, assign) NSInteger loginStatus;
 
+
 @end
 
-@implementation EntryViewController
+@implementation EntryViewController{
+    
+    FBSDKLoginManager *login;
+}
 //@synthesize emailTextField,passwordTextField;
 
 
@@ -443,10 +447,25 @@
                  
                  NSLog(@"type ---- %@",_socialMediaType);
                  
-                 
+                 [self.view showActivityViewWithLabel:@"login..."];
                  [WebDataInterface loginWithFB:email name:name profilePicture:profilePicture type:_socialMediaType completion:^(NSObject *obj, NSError *err)
                   {
-                      [self dataReceivedFBLogin:(NSDictionary *)obj];
+                      
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                      
+                          if(err== nil){
+                              
+                              [self dataReceivedFBLogin:(NSDictionary *)obj];
+                          }
+                          else{
+                              
+                              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Login fail" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                              [alert show];
+                          }
+                          
+                          [self.view hideActivityView];
+                      });
+                      
                   }];
                 
              }
@@ -496,7 +515,8 @@
 {
     _socialMediaType = @"facebook";
     
-    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    //FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    /*
     [login
      logInWithReadPermissions: @[@"public_profile", @"email", @"user_friends"]
      handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
@@ -516,6 +536,37 @@
              
          }
      }];
+    */
+    if([FBSDKAccessToken currentAccessToken]){
+        
+        NSLog(@"fb token valid");
+        [self fetchUserInfo];
+    }
+    else{
+        
+        login = [[FBSDKLoginManager alloc] init];
+        
+        [login logInWithReadPermissions:@[@"public_profile", @"email", @"user_friends"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            
+            if (error) {
+                NSLog(@"Process error");
+            } else if (result.isCancelled) {
+                NSLog(@"Cancelled");
+            } else {
+                NSLog(@"Logged in oooo");
+                
+                
+                if ([result.grantedPermissions containsObject:@"email"])
+                {
+                    NSLog(@"result is----:%@",result);
+                    [self fetchUserInfo];
+                }
+                
+            }
+
+        }];
+    }
+
 
 }
 
