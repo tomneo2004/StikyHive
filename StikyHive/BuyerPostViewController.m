@@ -12,6 +12,9 @@
 #import "ReportAbuseViewController.h"
 #import "UIView+RNActivityView.h"
 #import <linkedin-sdk/LISDK.h>
+#import <SendGrid/SendGrid.h>
+#import <SendGrid/SendGridEmail.h>
+#import "UIView+Toast.h"
 
 @interface BuyerPostViewController ()
 @property (assign, nonatomic) NSInteger buyerId;
@@ -183,6 +186,7 @@
     emailBtn.backgroundColor = color1;
     [emailBtn setImage:[UIImage imageNamed:@"skillpg_email"] forState:UIControlStateNormal];
     [emailBtn setTitle:@"Email" forState:UIControlStateNormal];
+    [emailBtn addTarget:self action:@selector(emailBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     emailBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 26, 10, 70);
     
     
@@ -204,6 +208,61 @@
     [self.view addSubview:callBtn];
     [self.view addSubview:chatBtn];
 
+    
+}
+
+- (void)emailBtnPressed
+{
+    
+    NSLog(@"email pressed");
+    
+    UIAlertView *emailAlert = [[UIAlertView alloc] initWithTitle:@"Decision" message:@"Are you sure to send email?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    [emailAlert show];
+    
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        //no
+        
+        
+    }else{
+        //yes
+        
+        [self sendEmail];
+        
+        [self.view makeToast:@"Your Email has been sent" duration:1.0 position:CSToastPositionCenter];
+        
+    }
+}
+
+- (void)sendEmail
+{
+    // send varification email
+    SendGrid *sendgrid = [SendGrid apiUser:@"StikyHive" apiKey:@"stikybee1234567"];
+    
+    NSString *toEmail = _marketDict[@"email"];
+    NSLog(@"to email --- %@",toEmail);
+    NSString *name = [NSString stringWithFormat:@"%@ %@",_marketDict[@"firstname"],_marketDict[@"lastname"]];
+    
+    /*
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    NSString *yearString = [formatter stringFromDate:[NSDate date]];
+    */
+    
+    SendGridEmail *email = [[SendGridEmail alloc] init];
+    email.from = @"stikybee@gmail.com";
+    email.to = toEmail;
+    email.subject = @"Email";
+    email.html = [NSString stringWithFormat:@"<body style='margin: 0px;width:600px;margin:0 auto; background-color: #f9f9f9;'><div style='padding-top: 40px; padding-bottom: 0px;'><div style='text-align: center; padding: 14px;'><img src='http://stikyhive.com/img/stikyhive_mail_logo.png' style='width:40&#37;'/></div><div style='background-image: url(http://stikyhive.com/img/background.png);padding-top:30px;'><div style='text-align: center; padding: 14px;'><span style='text-align: center; color: #fff; font-size: 20px; font-family: sans-serif; text-shadow: 0px 0px 19px #ddd;'>Hi %@!</span></div><div style='text-align: center; padding: 14px;'><img src='http://stikyhive.com/img/congrats.png' style='width:40&#37;'/></div><div style='text-align: center; padding: 14px;'><span style='text-align:center; font-size:18px;color:#fff'>Are you looking for the<span style='font-size:25px;font-family:sans-serif;color:#fff'>%@</span></span><div style='text-align:center; padding:14px'><span style='text-align:center;font-size:18px;color:#fff'>We've found someone who meets your requirements.</span></div><p style='text-align: center; font-size: 20px; margin-top: -3px; font-family: sans-serif; color: #fff;'></p></div><p style='text-align: center; font-size: 20px; margin-top: -3px; font-family: sans-serif; color: #fff;'>Respond to the potential seller via</p><p style='text-align: center; font-size: 17px; margin-top: -3px; font-family: sans-serif; color: #fff;'><div style='text-align: center;padding-bottom:50px;padding-top:10px;'><a href='mailto:%@' style='text-decoration:none;color:#fff;background-color:#00b9b9;border:none;border-radius:3px;font-size:18px;padding:9px 60px 9px 60px' target='_blank'>Respond</a></div></div><div style=' padding-top: 30px; padding-bottom: 25px;'><div style='text-align: center; font-size: 18px; font-family: sans-serif; color: rgb(92, 92, 92);'><a style='display: inline; margin-left: 10px; margin-right: 10px;'>How it works</a> | <a style='display: inline; margin-left: 10px; margin-right: 10px;'>Start buying & selling</a> | <a style='display: inline; margin-left: 10px; margin-right: 10px;'>T&C</a></div><div style='font-family: sans-serif; font-size: 12px; font-weight: 600; padding-top: 26px;'><p style='text-align: center;'>You've received this email as a registered user of StikyHive.</p><p style='text-align: center;   margin-top: -6px;'>If you did not sign up and would like to unsubscribe, please click <a>here</a>.</p></div></div><div style='background-color: #f9f9f9; padding: 16px;'><footer style='text-align: right;  font-size: 13px;'><p><center>View Online</center></p><p><center>&copy; StikyHive Singapore Pte Ltd. All Rights Reserved.</center></p></footer></div></body>",name, _marketDict[@"name"],toEmail];
+    
+    
+    email.text = @"hello world";
+    
+    [sendgrid sendWithWeb:email];
     
 }
 
