@@ -68,9 +68,10 @@
     NSString *fullUrl = [WebDataInterface getFullUrlPath:url];
     NSURL *urlRequest = [NSURL URLWithString:fullUrl];
     
-    [_profileImageView setImageWithURLRequest:[NSURLRequest requestWithURL:urlRequest] placeholderImage:[UIImage imageNamed:@"Default_profile_small@2x"] success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
+    [_profileImageView setImageWithURLRequest:[NSURLRequest requestWithURL:urlRequest] placeholderImage:[UIImage imageNamed:@"Default_profile_small@2x"] success:^(NSURLRequest *request, NSHTTPURLResponse * response, UIImage *image)
+    {
         _profileImageView.image = image;
-    } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"fail to download image");
     }];
     
@@ -82,9 +83,9 @@
     NSString *fullUrl = [WebDataInterface getFullUrlPath:url];
     NSURL *urlRequest = [NSURL URLWithString:fullUrl];
     
-    [_skillImageView setImageWithURLRequest:[NSURLRequest requestWithURL:urlRequest] placeholderImage:[UIImage imageNamed:@"default_seller_post"] success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
+    [_skillImageView setImageWithURLRequest:[NSURLRequest requestWithURL:urlRequest] placeholderImage:[UIImage imageNamed:@"default_seller_post"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         _skillImageView.image = image;
-    } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"fail to download image");
     }];
 

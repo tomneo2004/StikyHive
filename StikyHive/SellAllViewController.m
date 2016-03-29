@@ -17,6 +17,7 @@
 
 @implementation SellAllViewController{
     NSMutableArray *_skillArrays;
+    BOOL _isLoaded;
 }
 
 - (void)viewDidLoad {
@@ -28,50 +29,67 @@
     _sellTableView.dataSource = self;
     
     
-    
+    _isLoaded = NO;
     
 }
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSString *stkid = [LocalDataInterface retrieveStkid];
-    
-//    [self.view showActivityViewWithLabel:@"Loading..."];
-    
-    [WebDataInterface getSellAllSkills:0 catId:0 completion:^(NSObject *obj, NSError *err) {
-        NSLog(@"obj ------- %@",obj);
-        NSLog(@"err ----- %@",err);
-        
-        NSDictionary *dict = (NSDictionary *)obj;
-        NSLog(@"get sell all dict ---- %@",dict);
-        //         if (<#condition#>) {
-        //             <#statements#>
-        //         }
-        
-        
-        _skillArrays = [[NSMutableArray alloc] init];
-        
-        _skillArrays = dict[@"result"];
-        
-        
-        NSLog(@"skill array ---- %@",_skillArrays);
-        NSLog(@"skill array count --- %lu",(unsigned long)_skillArrays.count);
-        
-        [_sellTableView reloadData];
-        
-
-    }];
-    
-//    [WebDataInterface getSellAll:@"" catId:0 stkid:@"" actionMaker:stkid completion:^(NSObject *obj, NSError *err)
-//     {
-//         
-//         
-////         [self.view hideActivityView];
-//     }];
+//    NSString *stkid = [LocalDataInterface retrieveStkid];
+    if (!_isLoaded) {
+        [self pullData];
+    }
     
 
 }
+
+- (void)pullData
+{
+    [self.view showActivityViewWithLabel:@"Loading..." detailLabel:@"Fetching data"];
+    
+    [WebDataInterface getSellAllSkills:8 catId:0 completion:^(NSObject *obj, NSError *err) {
+//        NSLog(@"obj ------- %@",obj);
+//        NSLog(@"err ----- %@",err);
+      
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            
+            NSDictionary *dict = (NSDictionary *)obj;
+            NSLog(@"get sell all dict ---- %@",dict);
+
+            
+            if (err == nil && [dict[@"status"] isEqualToString:@"success"])
+            {
+                _skillArrays = [[NSMutableArray alloc] init];
+                
+                _skillArrays = dict[@"result"];
+                
+                
+                _isLoaded = YES;
+                NSLog(@"skill array ---- %@",_skillArrays);
+                NSLog(@"skill array count --- %lu",(unsigned long)_skillArrays.count);
+                
+                [_sellTableView reloadData];
+
+            }
+            else
+            {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No data were found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alertView show];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+
+            }
+            
+            [self.view hideActivityView];
+            
+        });
+        
+    }];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {
