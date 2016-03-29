@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SellAllCell.h"
 
-@interface SellAllViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, SellAllCellDelegate>
+@interface SellAllViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, SellAllCellDelegate, UISearchBarDelegate>
 
 
 
 @property (strong, nonatomic) IBOutlet UITableView *sellTableView;
 
+@property (strong, nonatomic) IBOutlet UISearchBar *skillSearchBar;
 
 @end

@@ -10,6 +10,7 @@
 #import "LocalDataInterface.h"
 #import "WebDataInterface.h"
 #import "UIView+RNActivityView.h"
+#import "SearchViewController.h"
 
 @interface SellAllViewController ()
 
@@ -28,7 +29,7 @@
     _sellTableView.delegate = self;
     _sellTableView.dataSource = self;
     
-    
+    _skillSearchBar.delegate = self;
     _isLoaded = NO;
     
 }
@@ -144,7 +145,23 @@
 }
 
 
+#pragma mark - search bar delegate
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    
+    if(searchBar.text != nil && ![searchBar.text isEqualToString:@""]){
+        
+        SearchViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
+        
+        controller.searchKeyword = searchBar.text;
+        
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+    
+    [searchBar resignFirstResponder];
+    
+}
 
 
 

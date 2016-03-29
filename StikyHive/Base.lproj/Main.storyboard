@@ -5106,6 +5106,7 @@
                     <connections>
                         <outlet property="searchDisplayController" destination="isU-dU-VxE" id="jLI-xP-E9f"/>
                         <outlet property="sellTableView" destination="M42-ee-oqR" id="vfg-sD-D3o"/>
+                        <outlet property="skillSearchBar" destination="Hgi-wt-JkU" id="Onj-57-KhN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="drn-Hw-LII" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -8592,7 +8593,7 @@ Cross Pollinate!</string>
         <!--Chat List View Controller-->
         <scene sceneID="XmP-4q-bSh">
             <objects>
-                <viewController id="WR9-qb-tvn" customClass="ChatListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chat_list_view_controller" id="WR9-qb-tvn" customClass="ChatListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vK3-pP-AND"/>
                         <viewControllerLayoutGuide type="bottom" id="JUg-ws-g5F"/>
