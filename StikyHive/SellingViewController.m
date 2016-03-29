@@ -482,8 +482,6 @@
     NSString *priceString = _priceTextField.text;
     NSString *rateString = _rateTextField.text;
     
-//    NSLog(@"category - %@",_categoryId);
-//    NSLog(@"rate - %@",_rateId);
     NSString *industryString = _industryTextField.text;
     
 //    NSString *summaryString = [_summaryWebView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];

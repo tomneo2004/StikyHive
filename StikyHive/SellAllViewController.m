@@ -50,8 +50,6 @@
     [self.view showActivityViewWithLabel:@"Loading..." detailLabel:@"Fetching data"];
     
     [WebDataInterface getSellAllSkills:8 catId:0 completion:^(NSObject *obj, NSError *err) {
-//        NSLog(@"obj ------- %@",obj);
-//        NSLog(@"err ----- %@",err);
       
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -68,8 +66,6 @@
                 
                 
                 _isLoaded = YES;
-                NSLog(@"skill array ---- %@",_skillArrays);
-                NSLog(@"skill array count --- %lu",(unsigned long)_skillArrays.count);
                 
                 [_sellTableView reloadData];
 

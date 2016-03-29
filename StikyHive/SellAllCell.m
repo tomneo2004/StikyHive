@@ -38,7 +38,7 @@
     [super layoutSubviews];
     
     if (!_isInit) {
-        self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.size.width/2;
+        self.profileImageView.layer.cornerRadius = 45/2;
         self.profileImageView.layer.masksToBounds = YES;
         self.profileImageView.layer.borderColor = [UIColor whiteColor].CGColor;
         self.profileImageView.layer.borderWidth = 2;
