@@ -16,6 +16,7 @@
 #import "UserProfileViewController.h"
 #import "SellingManager.h"
 #import "SearchViewController.h"
+#import "SellAllViewController.h"
 
 @interface HomeViewController ()
 
@@ -40,7 +41,7 @@
     
     UIColor *green = [UIColor colorWithRed:0 green:167.0/255 blue:155.0/255 alpha:1.0];
     UITableView *view = (UITableView *)self.tabBarController.moreNavigationController.topViewController.view;
-    view.tintColor = green; // change the icon color
+    view.tintColor = green; // change tab bar icon color
     
     CGFloat width = self.view.frame.size.width;
     
@@ -72,7 +73,7 @@
     _imageScrollView.delegate = self;
     
 //    if ([SellingManager sharedSellingManager].profileTap) {
-//        [self.tabBarController setSelectedIndex:3];
+//        [self.tabBarController setSelectedIndex:3]; 
 //    }
     
      
@@ -97,17 +98,12 @@
         [WebDataInterface getBuyerMarket:@"" limit:8 completion:^(NSObject *obj2, NSError *err2)
          {
              
-             NSLog(@"view did load...");
-             
-            // dispatch_async(dispatch_get_main_queue(), ^{
-                 
+                // display seller market on home page
                  [self dataReceivedSkills:(NSDictionary *)obj];
-                 
+             
+             // display buyer market on home page
                  [self dataReceivedBuyers:(NSDictionary *)obj2];
 
-            // });
-             
-             
         }];
        
     }];
@@ -184,13 +180,6 @@
               }];
 
              
-             
-             
-//             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-//             {
-//                 
-//             });
-             
          }];
         
         
@@ -201,8 +190,6 @@
 
 - (void)dataReceivedSkills:(NSDictionary *)dict
 {
-//    NSLog(@"dict ------------------------------------------- %@",dict);
-    
     
     if (dict && dict[@"status"])
     {
@@ -211,8 +198,6 @@
     
     _sellerMarket = dict[@"result"];
     
-    
-    NSLog(@"selller market --------------------------- %@",_sellerMarket);
     
     dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -329,7 +314,7 @@
 
 - (void)dataReceived:(NSDictionary *)dict
 {
-    
+    // check login status
         if (dict && dict[@"status"])
         {
             NSString *statusString = dict[@"status"];
@@ -383,7 +368,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+//    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
     
     _skillSearchBar.delegate = self;
@@ -396,7 +382,11 @@
     {
         [WebDataInterface loginWithEmail:emailText password:passwordText completion:^(NSObject *obj, NSError *err)
          {
-             dispatch_async(dispatch_get_main_queue(), ^{[self dataReceived:(NSDictionary *)obj];});
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 [self dataReceived:(NSDictionary *)obj];
+                 
+             });
          }];
     }
     else
@@ -417,6 +407,8 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    // image scroll view -- page control
+    
 //    NSInteger pageNumber = roundf(_imageScrollView.contentOffset.x / (_imageScrollView.frame.size.width));
     int page = _imageScrollView.contentOffset.x/_imageScrollView.frame.size.width;
     _pageControl.currentPage = page;
@@ -508,10 +500,12 @@
 - (IBAction)seeAllSellerButtonPressed:(id)sender
 {
     
-//    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"seller_view_controller"];
+    SellAllViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"sell_all_view_controller"];
+    [self.navigationController pushViewController:controller animated:YES];
     
-    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"sell_all_view_controller"];
-    [self.navigationController pushViewController:vc animated:YES];
+    
+//    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"sell_all_view_controller"];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)seeAllByerButtonPressed:(id)sender

@@ -227,24 +227,15 @@
     
     _bottomLoginButton.userInteractionEnabled = YES;
     
-    NSLog(@"dict --- %@",dict);
-    NSLog(@"email --- %@",_emailTextField.text);
-    NSLog(@"pass --- %@",_passwordTextField.text);
-    
-    
     
     if (dict && dict[@"status"])
     {
         NSString *statusString = dict[@"status"];
         
-        NSLog(@"login statuys --- %@", statusString);
-        
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([statusString isEqualToString:@"success"])
             {
-                
-                NSLog(@"login with email  ---------- %@", dict);
                 
                 /// TRY ---- store username and password to local data interface
                 [LocalDataInterface storeUsername:_emailTextField.text];

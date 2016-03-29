@@ -57,6 +57,14 @@
 //                return;
                 
             }
+            else
+            {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No data were found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alertView show];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+
+            }
             
             
             [self.view hideActivityView];

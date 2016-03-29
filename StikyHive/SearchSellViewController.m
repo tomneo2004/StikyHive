@@ -16,6 +16,7 @@
 #import "LocalDataInterface.h"
 #import "WebDataInterface.h"
 #import "ViewControllerUtil.h"
+#import "ChatListViewController.h"
 
 @interface SearchSellViewController ()
 
@@ -31,11 +32,11 @@
     [super viewDidLoad];
 
     UIBarButtonItem *chatButton = [ViewControllerUtil createBarButton:@"button_chat_header" onTarget:self withSelector:@selector(chatPressed)];
-    UIBarButtonItem *callButton = [ViewControllerUtil createBarButton:@"button_call_header" onTarget:self withSelector:@selector(callPressed)];
+//    UIBarButtonItem *callButton = [ViewControllerUtil createBarButton:@"button_call_header" onTarget:self withSelector:@selector(callPressed)];
     
     chatButton.imageInsets = UIEdgeInsetsMake(0, 10, 0, -10);
-    callButton.imageInsets = UIEdgeInsetsMake(0, -10, 0, 10);
-    self.navigationItem.rightBarButtonItems = @[callButton, chatButton];
+//    callButton.imageInsets = UIEdgeInsetsMake(0, -10, 0, 10);
+    self.navigationItem.rightBarButtonItems = @[chatButton];
     
     _chatBadge = [ViewControllerUtil createBadgeWithText:@"0" atX:300 andY:5];
     [self.navigationController.navigationBar addSubview:_chatBadge];
@@ -47,7 +48,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self refreshBadge];
+//    [self refreshBadge];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -127,9 +128,15 @@
 
 - (IBAction)chatPressed
 {
-    UIViewController *vc = ![ViewControllerUtil isLoggedIn] ? [ViewControllerUtil instantiateEntryView] :
-    [ViewControllerUtil instantiateViewController:@"chat_list_view_controller"];
-    [self.navigationController pushViewController:vc animated:YES];
+    NSLog(@"chat pressed");
+    
+    ChatListViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"chat_list_view_controller"];
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    
+//    UIViewController *vc = ![ViewControllerUtil isLoggedIn] ? [ViewControllerUtil instantiateEntryView] :
+//    [ViewControllerUtil instantiateViewController:@"chat_list_view_controller"];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)tapDetected:(UITapGestureRecognizer *)sender

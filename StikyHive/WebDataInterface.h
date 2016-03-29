@@ -230,6 +230,8 @@
 #define DATA_URL_CHECK_LAST_MSG         DATA_URL@"checkLastMessage/format/json"
 #define DATA_URL_INSERT_OFFER           DATA_URL@"insertOffer/format/json"
 #define DATA_URL_GET_SEARCH_SELL        DATA_URL@"getSearchSell/format/json"
+//#define DATA_URL_SAVE_REVIEW            DATA_URL@""
+
 
 
 
@@ -392,6 +394,9 @@
 + (void)getSellAllMy:(NSInteger)limit catId:(NSInteger)catId stkid:(NSString *)stkid flagMy:(BOOL)flagMy actionMaker:(NSString *)actionMaker completion:(void (^)(NSObject *, NSError *))completion;
 
 
++ (void)getSellAllSkills:(NSInteger)limit catId:(NSInteger)catId completion:(void (^)(NSObject *, NSError *))completion;
+
+
 + (void)getBuyerMarket:(NSString *)skillId limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)getBuyerMarketByStkid:(NSString *)stkid limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
@@ -448,6 +453,9 @@
 + (void)deleteSell:(NSInteger)skillId completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)saveReview:(NSString *)reviewId skillId:(NSString *)skillId viewCount:(NSString *)viewCount likeCount:(NSString *)likeCount owner:(NSString *)owner actionMaker:(NSString *)actionMaker completion:(void (^)(NSObject *, NSError *))completion;
+
+
++ (void)saveReviewLike:(NSInteger)reviewId skillId:(NSInteger)skillId viewCount:(NSInteger)viewCount likeCount:(NSInteger)likeCount owner:(NSString *)owner actionMaker:(NSString *)actionMaker completion:(void (^)(NSObject *, NSError *))completion;
 
 
 + (void)deleteBuyerPost:(NSInteger)buyerId stkid:(NSString *)stkid limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;

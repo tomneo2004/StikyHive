@@ -27,7 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
-
+@property (assign, nonatomic) BOOL isVideo;
 
 
 @property (weak, nonatomic) id<SellAllCellDelegate> delegate;
