@@ -21,6 +21,7 @@
 #import "UIView+Toast.h"
 #import <PDKPin.h>
 #import <linkedin-sdk/LISDK.h>
+#import "UIView+RNActivityView.h"
 
 
 
@@ -63,6 +64,7 @@
 @property (nonatomic, assign) NSInteger viewCount;
 @property (nonatomic, strong) UILabel *viewCountLabel;
 @property (nonatomic, strong) UILabel *likeCountLabel;
+@property (nonatomic, assign) NSInteger likeId;
 
 @end
 
@@ -165,6 +167,8 @@
                          
                          _viewCount = 0;
                      }
+                     
+                     _likeId = [_skillDict[@"resultSkill"][@"likeId"] integerValue];
 
                      _skillHtml = skillHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,skillHtmlec] : @"";
                      _sellerHtml = sellerHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,sellerHtmlec] : @"";
@@ -1099,17 +1103,58 @@
 
 - (void)likeBtnTapped:(UITapGestureRecognizer *)sender
 {
+    
+    [self.view showActivityViewWithLabel:@"Updating..."];
     if(_likeBtn.selected){
-        _likeCount--;
+        
+        [WebDataInterface saveReview:[NSString stringWithFormat:@"%ld", _likeId] skillId:[NSString stringWithFormat:@"%ld", _skillId] viewCount:@"0" likeCount:@"0" owner:_stkId actionMaker:[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *error) {
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if(error== nil){
+                    
+                    _likeCount--;
+                    
+                    [self updateLikeCount];
+                    
+                    _likeBtn.selected = !_likeBtn.selected;
+                }
+                
+                [self.view hideActivityView];
+            
+            });
+        }];
+        
     }
     else{
         
-        _likeCount++;
+        [WebDataInterface saveReview:[NSString stringWithFormat:@"%ld", _likeId] skillId:[NSString stringWithFormat:@"%ld", _skillId] viewCount:@"0" likeCount:@"1" owner:_stkId actionMaker:[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *error) {
+        
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+                if(error== nil){
+                    
+                    _likeCount++;
+                    
+                    [self updateLikeCount];
+                    
+                    _likeBtn.selected = !_likeBtn.selected;
+                }
+                
+                [self.view hideActivityView];
+            });
+            
+        }];
+        
+        
     }
     
+    /*
     _likeBtn.selected = !_likeBtn.selected;
     
     [self updateLikeCount];
+     */
 }
 
 
