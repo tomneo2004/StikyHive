@@ -21,6 +21,7 @@
 #import "UIView+Toast.h"
 #import <PDKPin.h>
 #import <linkedin-sdk/LISDK.h>
+#import "UIView+RNActivityView.h"
 
 
 
@@ -60,6 +61,10 @@
 @property (nonatomic, strong) NSString *skillDesc;
 @property (nonatomic, strong) NSString *profilePicUrl;
 @property (nonatomic, strong) FBSDKShareLinkContent *content;
+@property (nonatomic, assign) NSInteger viewCount;
+@property (nonatomic, strong) UILabel *viewCountLabel;
+@property (nonatomic, strong) UILabel *likeCountLabel;
+@property (nonatomic, assign) NSInteger likeId;
 
 @end
 
@@ -156,6 +161,17 @@
                      _skillName = _skillDict[@"resultSkill"][@"name"];
                      _skillDesc = _skillDict[@"resultSkill"][@"skillDesc"];
                      _profilePicUrl = [WebDataInterface getFullUrlPath:_skillDict[@"resultSkill"][@"profilePicture"]];
+                     
+                     if(![_skillDict[@"resultSkill"][@"viewCount"] isEqual:[NSNull null]]){
+                         
+                         _viewCount = [_skillDict[@"resultSkill"][@"viewCount"] integerValue];
+                     }
+                     else{
+                         
+                         _viewCount = 0;
+                     }
+                     
+                     _likeId = [_skillDict[@"resultSkill"][@"likeId"] integerValue];
 
                      _skillHtml = skillHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,skillHtmlec] : @"";
                      _sellerHtml = sellerHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,sellerHtmlec] : @"";
@@ -370,12 +386,18 @@
     
     UIColor *greenbColor = [UIColor colorWithRed:18.0/255 green:148.0/255 blue:133.0/255 alpha:1.0];
     
+    /*
     _bookmarkBtn = [[UIButton alloc] initWithFrame:CGRectMake(width-105, 18, 25, 30)];
     [_bookmarkBtn setImage:[UIImage imageNamed:@"bookmark"] forState:UIControlStateNormal];
     [_bookmarkBtn setImage:[UIImage imageNamed:@"bookmark_filled"] forState:UIControlStateSelected];
     [_bookmarkBtn addTarget:self action:@selector(bookmarkBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
+     */
+    _bookmarkBtn = [[UIButton alloc] initWithFrame:CGRectMake(width-105, 18, 25, 30)];
+    [_bookmarkBtn setImage:[UIImage imageNamed:@"icon_eye_open"] forState:UIControlStateNormal];
+    //[_bookmarkBtn setImage:[UIImage imageNamed:@"bookmark_filled"] forState:UIControlStateSelected];
+    //[_bookmarkBtn addTarget:self action:@selector(bookmarkBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    
+    /*
     UILabel *bmLabel = [[UILabel alloc] initWithFrame:CGRectMake(width-120, 20+_bookmarkBtn.frame.size.height+10, 59, 10)];
     [bmLabel setText:@"Bookmark"];
     bmLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:11];
@@ -384,12 +406,24 @@
     bmLabelCenter.x = _bookmarkBtn.center.x;
     bmLabel.center = bmLabelCenter;
     bmLabel.textAlignment = NSTextAlignmentCenter;
+     */
+    
+    _viewCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(width-120, 20+_bookmarkBtn.frame.size.height+10, 59, 10)];
+    _viewCountLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:11];
+    [_viewCountLabel setTextColor:greenbColor];
+    CGPoint vcLabelCenter = _viewCountLabel.center;
+    vcLabelCenter.x = _bookmarkBtn.center.x;
+    _viewCountLabel.center = vcLabelCenter;
+    _viewCountLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [self updateViewCount];
     
     _likeBtn = [[UIButton alloc] initWithFrame:CGRectMake(width-55, 20, 30, 30)];
     [_likeBtn setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
     [_likeBtn setImage:[UIImage imageNamed:@"like_filled"] forState:UIControlStateSelected];
     [_likeBtn addTarget:self action:@selector(likeBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
     
+    /*
     UILabel *likeLabel = [[UILabel alloc] initWithFrame:CGRectMake(width-53, 20+_bookmarkBtn.frame.size.height+10, 50, 10)];
     [likeLabel setText:@"Likes"];
     likeLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:11];;
@@ -398,7 +432,18 @@
     likeLabelCenter.x = _likeBtn.center.x;
     likeLabel.center = likeLabelCenter;
     likeLabel.textAlignment = NSTextAlignmentCenter;
+     */
     
+    _likeCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(width-53, 20+_bookmarkBtn.frame.size.height+10, 50, 10)];
+    [_likeCountLabel setText:@"Likes"];
+    _likeCountLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:11];;
+    [_likeCountLabel setTextColor:greenbColor];
+    CGPoint likeLabelCenter = _likeCountLabel.center;
+    likeLabelCenter.x = _likeBtn.center.x;
+    _likeCountLabel.center = likeLabelCenter;
+    _likeCountLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [self updateLikeCount];
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 80, 300, 30)];
     [nameLabel setText:name];
@@ -406,9 +451,11 @@
     nameLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:19];
     
     [imView addSubview:_bookmarkBtn];
-    [imView addSubview:bmLabel];
+    //[imView addSubview:bmLabel];
+    [imView addSubview:_viewCountLabel];
     [imView addSubview:_likeBtn];
-    [imView addSubview:likeLabel];
+    //[imView addSubview:likeLabel];
+    [imView addSubview:_likeCountLabel];
     [imView addSubview:nameLabel];
     
     [_contentScrollView addSubview:imView];
@@ -467,6 +514,15 @@
     return y;
 }
 
+- (void)updateViewCount{
+    
+    _viewCountLabel.text = [NSString stringWithFormat:@"%ld Views", _viewCount];
+}
+
+- (void)updateLikeCount{
+    
+    _likeCountLabel.text = [NSString stringWithFormat:@"%ld Likes", _likeCount];
+}
 
 - (void)displayProfilePicture:(NSString *)location atStartPoint:(CGPoint)point andWidth:(CGFloat)width
 {
@@ -1050,7 +1106,58 @@
 
 - (void)likeBtnTapped:(UITapGestureRecognizer *)sender
 {
+    
+    [self.view showActivityViewWithLabel:@"Updating..."];
+    if(_likeBtn.selected){
+        
+        [WebDataInterface saveReview:[NSString stringWithFormat:@"%ld", _likeId] skillId:[NSString stringWithFormat:@"%ld", _skillId] viewCount:@"0" likeCount:@"0" owner:_stkId actionMaker:[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *error) {
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if(error== nil){
+                    
+                    _likeCount--;
+                    
+                    [self updateLikeCount];
+                    
+                    _likeBtn.selected = !_likeBtn.selected;
+                }
+                
+                [self.view hideActivityView];
+            
+            });
+        }];
+        
+    }
+    else{
+        
+        [WebDataInterface saveReview:[NSString stringWithFormat:@"%ld", _likeId] skillId:[NSString stringWithFormat:@"%ld", _skillId] viewCount:@"0" likeCount:@"1" owner:_stkId actionMaker:[LocalDataInterface retrieveStkid] completion:^(NSObject *obj, NSError *error) {
+        
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+                if(error== nil){
+                    
+                    _likeCount++;
+                    
+                    [self updateLikeCount];
+                    
+                    _likeBtn.selected = !_likeBtn.selected;
+                }
+                
+                [self.view hideActivityView];
+            });
+            
+        }];
+        
+        
+    }
+    
+    /*
     _likeBtn.selected = !_likeBtn.selected;
+    
+    [self updateLikeCount];
+     */
 }
 
 
