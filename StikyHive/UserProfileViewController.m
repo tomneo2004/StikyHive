@@ -11,6 +11,8 @@
 #import "ViewControllerUtil.h"
 #import "LocalDataInterface.h"
 #import "UIView+RNActivityView.h"
+#import "SkillPageViewController.h"
+#import "BuyerPostViewController.h"
 
 @interface UserProfileViewController ()
 
@@ -494,7 +496,7 @@
                 
                 
                 // ------ to skill page -------
-                UIGestureRecognizer *viewReongnizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(skillViewTapped:)];
+                UITapGestureRecognizer *viewReongnizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skillViewTapped:)];
                 [skillView addGestureRecognizer:viewReongnizer];
                 skillView.tag = i;
                 
@@ -576,6 +578,10 @@
                 {
                     picImageView.image = [UIImage imageNamed:@"Default_skill_photo@2x"];
                 }
+                
+                UITapGestureRecognizer *viewReongnizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(postViewTapped:)];
+                [skillView addGestureRecognizer:viewReongnizer];
+                skillView.tag = i;
             
             }
         
@@ -1357,12 +1363,30 @@
 - (void)skillViewTapped:(UITapGestureRecognizer *)sender
 {
     
+    UIView *skillView = [sender view];
     
     
     
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"skill_page_view_controller"];
+    SkillPageViewController *svc = (SkillPageViewController *)vc;
+    [svc setSkillID:_seeAllArray[skillView.tag][@"skillId"]];
+    
+    [self.navigationController pushViewController:svc animated:YES];
     
 }
 
+
+- (void)postViewTapped:(UITapGestureRecognizer *)sender{
+    
+    UIView *skillView = [sender view];
+    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"buyer_post_view_controlller"];
+    BuyerPostViewController *svc = (BuyerPostViewController *)vc;
+    [svc setBuyerId:[_buyerMarketArray[skillView.tag][@"id"] integerValue]];
+    [svc setPictureLocation:_buyerMarketArray[skillView.tag][@"location"]];
+    
+    [self.navigationController pushViewController:svc animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
