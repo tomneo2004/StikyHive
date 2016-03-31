@@ -132,6 +132,9 @@
              _reviewArray = _commDict[@"reviews"];
              
         
+             NSLog(@"skill by id --- %@",obj);
+             NSLog(@"comm review ---- %@",obj2);
+             
         
              _skillDict = (NSDictionary *)obj;
         

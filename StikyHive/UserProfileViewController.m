@@ -53,10 +53,6 @@
 
     
     NSString *stkid = [LocalDataInterface retrieveStkid];
-    NSLog(@"my stk id ----- %@",stkid);
-    
-    
-    NSLog(@"stkid ---- %@",_stkId);
     
     [self.view showActivityViewWithLabel:@"Loading..."];
     
@@ -127,8 +123,6 @@
     y = [self displayTitleBg:CGPointMake(x, y) andWidth:width];
     
     y = [self displayTabScrollView:CGPointMake(x, y) andWidth:width];
-    
-    
     
     
     
@@ -290,7 +284,7 @@
         [iconImageView addSubview:tocolonyView];
         [iconImageView addSubview:chatView];
         [iconImageView addSubview:callView];
-    
+
         
     }
     
@@ -423,11 +417,6 @@
         
             UIView *skillView = [[UIView alloc] initWithFrame:CGRectMake(20, y+5, width-40, 240)];
             skillView.backgroundColor = [UIColor whiteColor];
-            
-            
-            
-            
-            
             
         
             UIImageView *picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, skillView.frame.size.width, 180)];

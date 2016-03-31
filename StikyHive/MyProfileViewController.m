@@ -93,23 +93,19 @@
                         else
                         {
                             _beeInfoDic = (NSDictionary *)obj;
-                            NSLog(@"stiky bee info -------- %@",_beeInfoDic);
+                            
                             
                             NSDictionary *seeAll = (NSDictionary *)obj2;
                             _seeAllArray = seeAll[@"result"];
-                            NSLog(@"see all  --------------- %@",_seeAllArray);
+                            
                             
                             _buyerMarket = (NSDictionary *)obj3;
                             _buyerMarketArray = _buyerMarket[@"buyermarkets"];
-                            NSLog(@"buyer market ----- %@",_buyerMarket);
                             
                             NSDictionary *dict = (NSDictionary *)obj4;
                             _savedDocuArray = dict[@"documents"];
                             
-                            NSLog(@"get saved document --- %@",_savedDocuArray);
-                            
-                            
-                            
+                                                       
                             [self displayPage];
                             
                             

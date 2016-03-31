@@ -52,7 +52,6 @@
 
 @synthesize mySkillInfo = _mySkillInfo;
 
-//static NSMutableDictionary *Skill_Info;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
