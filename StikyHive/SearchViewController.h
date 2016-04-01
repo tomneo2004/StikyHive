@@ -12,5 +12,7 @@
 @interface SearchViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, SearchCellDelegate>
 
 @property (nonatomic, copy) NSString *searchKeyword;
+@property (nonatomic, assign) BOOL searchByCatId;//if yes search by keyword will be turn off
+@property (nonatomic, assign) NSInteger catIdToSearch;
 
 @end

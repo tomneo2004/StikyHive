@@ -47,4 +47,7 @@
 
 - (IBAction)postBuyBtnPressed:(id)sender;
 
+- (IBAction)industryTap:(id)sender;
+- (IBAction)rawTalentTap:(id)sender;
+
 @end

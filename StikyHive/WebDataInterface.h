@@ -177,6 +177,7 @@
 /////////////////// Echo /////////////////////
 #define POST_PARAMETER_STATUS           @"status"
 #define DATA_URL                        DATA_HOST@"/androidstikyhive/index.php/api/users/"
+#define DATA_URL_GET_POSTS_ITLIST             DATA_URL@"getSkillCategory/format/json"
 #define DATA_URL_GET_POSTS_COUNTRY      DATA_URL@"getCountry/format/json"
 #define DATA_URL_GET_POSTS_CATEGORY     DATA_URL@"getSkillCategory/format/json"
 #define DATA_URL_USER_SIGNUP            DATA_URL@"createAccount/format/json"
@@ -365,7 +366,7 @@
 
 ///////// Echo ///////////////////////////////////////////////////////////////
 
-
++ (void)getITListWithcompletion:(void (^)(NSObject *, NSError *))completion;
 + (void)getCountry:(NSInteger)status completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)getCategory:(NSInteger)status completion:(void (^)(NSObject *, NSError *))completion;

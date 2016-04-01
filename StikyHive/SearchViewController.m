@@ -45,52 +45,106 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    _searchTitle.text = [NSString stringWithFormat:@"Search for %@", _searchKeyword];
+    [super viewWillAppear:animated];
     
-    if(!_isloaded)
+    if(!_isloaded){
+        
+        self.navigationController.navigationBar.topItem.title = @"Back";
+        self.title = _searchKeyword;
+        _searchTitle.text = [NSString stringWithFormat:@"Search for %@", _searchKeyword];
+        
         [self pullData];
+    }
+    
 }
+
+/*
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    self.navigationItem.title = @"Back";
+}
+ */
+
 
 - (void)pullData{
     
     //show activity
     [self.view showActivityViewWithLabel:@"Refreshing..." detailLabel:@"Fetching data"];
     
-    //urgent request of 3 rows of data
-    [WebDataInterface getSearchSell:_searchKeyword completion:^(NSObject *obj, NSError *error){
+    if(!_searchByCatId){
         
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-        
-            NSDictionary *dic = (NSDictionary *)obj;
-            if(error == nil && [dic[@"status"] isEqualToString:@"success"]){
+        //urgent request of 3 rows of data
+        [WebDataInterface getSearchSell:_searchKeyword completion:^(NSObject *obj, NSError *error){
             
-                _data = [[NSMutableArray alloc] init];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
                 
-                for(NSDictionary *dicData in dic[@"result"]){
+                NSDictionary *dic = (NSDictionary *)obj;
+                if(error == nil && [dic[@"status"] isEqualToString:@"success"]){
                     
-                    SearchInfo *info = [SearchInfo createSearchInfoFromDictionary:dicData];
+                    _data = [[NSMutableArray alloc] init];
                     
-                    [_data addObject:info];
+                    for(NSDictionary *dicData in dic[@"result"]){
+                        
+                        SearchInfo *info = [SearchInfo createSearchInfoFromDictionary:dicData];
+                        
+                        [_data addObject:info];
+                    }
+                    
+                    _isloaded = YES;
+                    
+                    [_tableView reloadData];
+                }
+                else{
+                    
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No data were found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alertView show];
+                    
+                    [self.navigationController popViewControllerAnimated:YES];
                 }
                 
-                _isloaded = YES;
+                [self.view hideActivityView];
                 
-                [_tableView reloadData];
-            }
-            else{
-                
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No data were found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alertView show];
-                
-                [self.navigationController popViewControllerAnimated:YES];
-            }
+            });
             
-            [self.view hideActivityView];
-            
-        });
+        }];
+    }
+    else{
         
-    }];
+        [WebDataInterface getSellAll:0 catId:_catIdToSearch stkid:@"" actionMaker:@"" completion:^(NSObject *obj, NSError *error) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+            
+                NSDictionary *dic = (NSDictionary *)obj;
+                if(error == nil && [dic[@"status"] isEqualToString:@"success"]){
+                    
+                    _data = [[NSMutableArray alloc] init];
+                    
+                    for(NSDictionary *dicData in dic[@"result"]){
+                        
+                        SearchInfo *info = [SearchInfo createSearchInfoFromDictionary:dicData];
+                        
+                        [_data addObject:info];
+                    }
+                    
+                    _isloaded = YES;
+                    
+                    [_tableView reloadData];
+                }
+                else{
+                    
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No data were found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alertView show];
+                    
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+                
+                [self.view hideActivityView];
+            });
+            
+        }];
+    }
 }
 
 #pragma mark - UITableViewSouceData delegate

@@ -150,6 +150,51 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Table View Controller-->
+        <scene sceneID="3ZO-K8-ljg">
+            <objects>
+                <tableViewController storyboardIdentifier="ITTableViewController" id="Hyq-QB-LXR" customClass="ITTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bcl-Cn-5vc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ITCell" id="Cph-Ch-fnd" customClass="ITCell">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cph-Ch-fnd" id="CI0-zH-jOq">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAG-6z-GhD">
+                                            <rect key="frame" x="8" y="8" width="584" height="27.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="QAG-6z-GhD" secondAttribute="bottom" id="28t-BK-XCz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="QAG-6z-GhD" secondAttribute="trailing" id="6J9-Wu-YrE"/>
+                                        <constraint firstItem="QAG-6z-GhD" firstAttribute="leading" secondItem="CI0-zH-jOq" secondAttribute="leadingMargin" id="6eQ-dr-7ed"/>
+                                        <constraint firstItem="QAG-6z-GhD" firstAttribute="top" secondItem="CI0-zH-jOq" secondAttribute="topMargin" id="Ax0-Vi-Rnd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="QAG-6z-GhD" id="f0F-B5-Yal"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Hyq-QB-LXR" id="DaG-1b-AiT"/>
+                            <outlet property="delegate" destination="Hyq-QB-LXR" id="xDF-CB-XXz"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vzk-lN-t7W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1459" y="1460"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="bR5-WQ-KQR">
             <objects>
@@ -390,6 +435,9 @@
                                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                                     <rect key="frame" x="20" y="988" width="180" height="100"/>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="industryTap:" destination="j4L-Eb-UJY" eventType="touchUpInside" id="RmF-Fm-PwN"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICL-gc-3RI">
                                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -399,6 +447,9 @@
                                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                                     <rect key="frame" x="142" y="988" width="236" height="100"/>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="rawTalentTap:" destination="j4L-Eb-UJY" eventType="touchUpInside" id="M2k-e5-a8D"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MhD-Dk-Ndn">
                                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -1722,7 +1773,7 @@
                                                 <exclude reference="uwM-rz-vFy"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="0.0" y="420" width="400" height="150"/>
                                             <mask key="constraints">
                                                 <include reference="uwM-rz-vFy"/>
@@ -1739,7 +1790,7 @@
                                                 <exclude reference="fCv-Ce-Z4m"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="570" width="400" height="149"/>
                                             <mask key="constraints">
                                                 <include reference="fCv-Ce-Z4m"/>
@@ -1763,7 +1814,7 @@
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKh-o2-knG">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="320" y="451" width="51" height="31"/>
                                         </variation>
                                         <connections>
@@ -1772,7 +1823,7 @@
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gu0-wb-6L0">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="320" y="600" width="51" height="31"/>
                                         </variation>
                                         <connections>
@@ -4906,7 +4957,8 @@
                                                             <exclude reference="j5V-0t-EbT"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="164"/>
                                                         <mask key="constraints">
                                                             <include reference="j5V-0t-EbT"/>
                                                         </mask>
@@ -4924,7 +4976,8 @@
                                                             <exclude reference="Z8k-MS-8Pj"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="169" y="145" width="45" height="45"/>
                                                         <mask key="constraints">
                                                             <include reference="15U-ny-YqB"/>
                                                             <include reference="Z8k-MS-8Pj"/>
@@ -10168,7 +10221,7 @@ Cross Pollinate!</string>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="IBV-eH-BY4" customClass="HCSStarRatingView">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IBV-eH-BY4" customClass="HCSStarRatingView">
                                                     <rect key="frame" x="8" y="277" width="240" height="44"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="NO"/>
@@ -10177,7 +10230,7 @@ Cross Pollinate!</string>
                                                         <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="Yellow.png"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4b0-Gp-xrl">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4b0-Gp-xrl">
                                                     <rect key="frame" x="256" y="284" width="88" height="30"/>
                                                     <state key="normal" title="Read Review">
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -10186,7 +10239,7 @@ Cross Pollinate!</string>
                                                         <action selector="readReview:" destination="sYw-Ps-SYz" eventType="touchUpInside" id="A6b-Dt-bIY"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dg-bP-tvS">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dg-bP-tvS">
                                                     <rect key="frame" x="352" y="284" width="79" height="30"/>
                                                     <state key="normal" title="Edit Review">
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -10195,7 +10248,7 @@ Cross Pollinate!</string>
                                                         <action selector="editReview:" destination="sYw-Ps-SYz" eventType="touchUpInside" id="VCb-8d-EAX"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZp-Kz-zmz">
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZp-Kz-zmz">
                                                     <rect key="frame" x="0.0" y="329" width="600" height="22.5"/>
                                                     <color key="backgroundColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
