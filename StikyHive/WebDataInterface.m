@@ -24,6 +24,11 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 
 //////////////////////  Echo ////////////////////////////////////////////////////
 
++ (void)getITListWithcompletion:(void (^)(NSObject *, NSError *))completion{
+    
+    [self requestData:DATA_URL_GET_POSTS_ITLIST withParameters:nil completion:completion];
+}
+
 + (void)getCountry:(NSInteger)status completion:(void (^)(NSObject *, NSError *))completion {
     NSNumber *statusNum = [NSNumber numberWithInteger:status];
     [self requestData:DATA_URL_GET_POSTS_COUNTRY withParameters:@{@"status":statusNum} completion:completion];

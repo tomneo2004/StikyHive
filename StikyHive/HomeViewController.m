@@ -17,6 +17,7 @@
 #import "SellingManager.h"
 #import "SearchViewController.h"
 #import "SellAllViewController.h"
+#import "ITTableViewController.h"
 
 @interface HomeViewController ()
 
@@ -534,4 +535,23 @@
     [self.navigationController pushViewController:vc animated:YES];
 
 }
+
+- (IBAction)industryTap:(id)sender{
+    
+    ITTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ITTableViewController"];
+    
+    controller.catToShow = industry;
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (IBAction)rawTalentTap:(id)sender{
+    
+    ITTableViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ITTableViewController"];
+    
+    controller.catToShow = talent;
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 @end

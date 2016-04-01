@@ -374,6 +374,8 @@
 		CE3EFDED1C0EC5AA00281FC6 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3EFDEC1C0EC5AA00281FC6 /* PDFViewController.m */; };
 		CE51A3B01C23FF9500652B90 /* AllCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */; };
 		CE51A3B31C2403FE00652B90 /* ReviewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE51A3B21C2403FE00652B90 /* ReviewInfo.m */; };
+		CE5A7D2E1CAE196A000D874A /* ITTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5A7D2D1CAE196A000D874A /* ITTableViewController.m */; };
+		CE5A7D311CAE1A17000D874A /* ITCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5A7D301CAE1A17000D874A /* ITCell.m */; };
 		CE5AA7551C86BD1E00514C6B /* icon_offer_decline.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5AA7521C86BD1E00514C6B /* icon_offer_decline.png */; };
 		CE5AA7561C86BD1E00514C6B /* icon_offer_accept.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5AA7531C86BD1E00514C6B /* icon_offer_accept.png */; };
 		CE5AA7571C86BD1E00514C6B /* icon_offer_stikypay.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5AA7541C86BD1E00514C6B /* icon_offer_stikypay.png */; };
@@ -996,6 +998,10 @@
 		CE51A3AF1C23FF9500652B90 /* AllCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCommentViewController.m; sourceTree = "<group>"; };
 		CE51A3B11C2403FE00652B90 /* ReviewInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewInfo.h; sourceTree = "<group>"; };
 		CE51A3B21C2403FE00652B90 /* ReviewInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewInfo.m; sourceTree = "<group>"; };
+		CE5A7D2C1CAE196A000D874A /* ITTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITTableViewController.h; sourceTree = "<group>"; };
+		CE5A7D2D1CAE196A000D874A /* ITTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITTableViewController.m; sourceTree = "<group>"; };
+		CE5A7D2F1CAE1A17000D874A /* ITCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITCell.h; sourceTree = "<group>"; };
+		CE5A7D301CAE1A17000D874A /* ITCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITCell.m; sourceTree = "<group>"; };
 		CE5AA7521C86BD1E00514C6B /* icon_offer_decline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_offer_decline.png; sourceTree = "<group>"; };
 		CE5AA7531C86BD1E00514C6B /* icon_offer_accept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_offer_accept.png; sourceTree = "<group>"; };
 		CE5AA7541C86BD1E00514C6B /* icon_offer_stikypay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_offer_stikypay.png; sourceTree = "<group>"; };
@@ -1522,6 +1528,7 @@
 		674D0D941B7D913400B5B80D /* StikyHive */ = {
 			isa = PBXGroup;
 			children = (
+				CE5A7D281CAE18A3000D874A /* IndustryTalent */,
 				CED907711CA22F0200601D82 /* Search */,
 				516A90321C4CA07200584073 /* StikyChat */,
 				CE83C7861C3B5F2800753B80 /* Education */,
@@ -2083,6 +2090,17 @@
 				CED3C87C1C225D800090DE35 /* MySkillCell.m */,
 			);
 			name = MySkill;
+			sourceTree = "<group>";
+		};
+		CE5A7D281CAE18A3000D874A /* IndustryTalent */ = {
+			isa = PBXGroup;
+			children = (
+				CE5A7D2C1CAE196A000D874A /* ITTableViewController.h */,
+				CE5A7D2D1CAE196A000D874A /* ITTableViewController.m */,
+				CE5A7D2F1CAE1A17000D874A /* ITCell.h */,
+				CE5A7D301CAE1A17000D874A /* ITCell.m */,
+			);
+			name = IndustryTalent;
 			sourceTree = "<group>";
 		};
 		CE5D4A461C279316005C07D4 /* SeeAllComments */ = {
@@ -2919,6 +2937,7 @@
 				CE02CED31C17FD2400B58819 /* PostReviewViewController.m in Sources */,
 				5175116A1C3B5F70001CD0F0 /* JobHistoryViewController.m in Sources */,
 				517C8F7E1BF9C2E80020CBE6 /* SellingViewController.m in Sources */,
+				CE5A7D2E1CAE196A000D874A /* ITTableViewController.m in Sources */,
 				CEF464151BF9CBB800010D21 /* UrgentSectionTitle.m in Sources */,
 				CEF7BA951BFAC64C009624CC /* UrgentRequestViewController.m in Sources */,
 				676F77E31B96F3060084988A /* UIImage+CropRotate.m in Sources */,
@@ -3003,6 +3022,7 @@
 				CE83C78F1C3B731700753B80 /* EducationCell.m in Sources */,
 				CE51A3B31C2403FE00652B90 /* ReviewInfo.m in Sources */,
 				CEBDDFE31C30E05200CF54D8 /* ThumbnailView.m in Sources */,
+				CE5A7D311CAE1A17000D874A /* ITCell.m in Sources */,
 				CE5D4A511C27AF8E005C07D4 /* SeeAllReviewViewController.m in Sources */,
 				674D0F771B7D9F2200B5B80D /* HtmlEditor.m in Sources */,
 				CE83C7921C3B999D00753B80 /* EditEducationTableViewController.m in Sources */,
