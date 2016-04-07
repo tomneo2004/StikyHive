@@ -129,6 +129,16 @@ static SellingManager *_instance;
     _video = video;
 }
 
+- (void)setSecVideoImage:(UIImage *)secVideoImage{
+    
+    _secVideoImage = secVideoImage;
+}
+
+- (void)setSecVideo:(NSData *)secVideo{
+    
+    _secVideo = secVideo;
+}
+
 - (void)setThumbnail:(NSData *)thumbnail
 {
     _thumbnail = thumbnail;
@@ -298,7 +308,13 @@ static SellingManager *_instance;
     _thumbnail2 = nil;
     
     _promotionStatus = nil;
-
+    _secVideo = nil;
+    _secVideoImage = nil;
+    
+    _videoEdit = NO;
+    _videoId = 0;
+    _secVideoEdit = NO;
+    _videoId = 0;
     
     _isSkillId = nil;
 }
@@ -309,6 +325,11 @@ static SellingManager *_instance;
     {
         
     _photoCaption = [[NSMutableArray alloc] init];
+        
+        _videoEdit = NO;
+        _videoId = 0;
+        _secVideoEdit = NO;
+        _videoId = 0;
         
     }
     return self;

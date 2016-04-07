@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SellingCell.h"
 #import "CropPhotoViewController.h"
+#import "MySkillInfo.h"
+#import "ImageCaption.h"
 
-@interface SellingTableViewController : CropPhotoViewController <UITableViewDataSource,UITableViewDelegate,SellingCellDelegate,UIGestureRecognizerDelegate>
+@interface SellingTableViewController : CropPhotoViewController <UITableViewDataSource,UITableViewDelegate,SellingCellDelegate,UIGestureRecognizerDelegate, ImageCaptionDelegate>
+
+@property (weak, nonatomic) MySkillInfo *mySkillInfo;
 
 - (IBAction)nextBtnPressed:(id)sender;
 

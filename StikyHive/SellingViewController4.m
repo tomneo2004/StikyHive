@@ -9,6 +9,7 @@
 #import "SellingViewController4.h"
 #import "ViewControllerUtil.h"
 #import "SellingManager.h"
+#import "PromotionViewController.h"
 
 @interface SellingViewController4 ()
 
@@ -95,6 +96,11 @@
             NSLog(@"yes");
             
             [SellingManager sharedSellingManager].photoStatus = NO;
+            
+            while([SellingManager sharedSellingManager].photoCaption.count > 4){
+                
+                [[SellingManager sharedSellingManager].photoCaption removeLastObject];
+            }
         }
     }
     else if (alertView.tag == 301)
@@ -125,6 +131,9 @@
         {
             NSLog(@"yes");
             [SellingManager sharedSellingManager].videoStatus = NO;
+            
+            [SellingManager sharedSellingManager].secVideoImage = nil;
+            [SellingManager sharedSellingManager].secVideo = nil;
         }
     }
 
@@ -212,6 +221,8 @@
 - (IBAction)nextBtn:(id)sender
 {
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"promotion_view_controller"];
+    PromotionViewController *sv = (PromotionViewController *)vc;
+    sv.mySkillInfo = _mySkillInfo;
     [self.navigationController pushViewController:vc animated:YES];
 
     

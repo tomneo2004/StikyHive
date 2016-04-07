@@ -10,6 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "MySkillInfo.h"
 
 #define SKILL_VIDEO_SOURCE_CAMERA 1
 #define SKILL_VIDEO_SOURCE_LIBRARY 2
@@ -33,6 +34,7 @@
 
 @property (strong, nonatomic) NSURL *videoURL;
 @property (strong, nonatomic) MPMoviePlayerController *videoController;
+@property (weak, nonatomic) MySkillInfo *mySkillInfo;
 
 
 

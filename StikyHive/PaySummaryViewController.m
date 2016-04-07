@@ -452,12 +452,25 @@
                                 
 //                                [WebDataInterface skillImageUpload:ic.image stikyid:stkid skillId:skillid type:1 editFlage:NO photoId:0 caption:ic.caption];
                                 
-                                [WebDataInterface skillImageUploadTest:ic.image stikyid:stkid type:1 editFlage:NO photoId:0 caption:ic.caption];
+                                //[WebDataInterface skillImageUploadTest:ic.image stikyid:stkid type:1 editFlage:NO photoId:0 caption:ic.caption];
+                                [WebDataInterface skillImageUpload:ic.image stikyid:stkid skillId:skillid type:1 editFlage:ic.edit photoId:ic.photoId caption:ic.caption];
                                 
                             }
                             
                         }
                         
+                        if([SellingManager sharedSellingManager].video != nil){
+                            
+                            [WebDataInterface skillVideoUpload:[SellingManager sharedSellingManager].video thumbnail:[SellingManager sharedSellingManager].videoImage stikyid:stkid skillId:skillid type:1 editFlage:[SellingManager sharedSellingManager].videoEdit videoId:[SellingManager sharedSellingManager].videoId isExtend:[SellingManager sharedSellingManager].videoExtendStatus];
+                        }
+                        
+                        if([SellingManager sharedSellingManager].secVideo != nil){
+                            
+                            [WebDataInterface skillVideoUpload:[SellingManager sharedSellingManager].secVideo thumbnail:[SellingManager sharedSellingManager].secVideoImage stikyid:stkid skillId:skillid type:1 editFlage:[SellingManager sharedSellingManager].videoEdit videoId:[SellingManager sharedSellingManager].videoId isExtend:[SellingManager sharedSellingManager].videoExtendStatus];
+                        }
+                        
+                        [smg clearCurrentSelling];
+                        [self.view hideActivityView];
                         
                         
                         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_sucess_view_controller"];
@@ -465,13 +478,12 @@
 
                     }
                     
+                    [self.view hideActivityView];
+                    
                 }];
                 
                 
             }
-
-            [smg clearCurrentSelling];
-            [self.view hideActivityView];
             
             
         }];
@@ -614,15 +626,30 @@
                             
                             NSLog(@"upload image with payment !!!!!!!!!");
                         
-//                            [WebDataInterface skillImageUpload:ic.image stikyid:stkid skillId:skillid type:1 editFlage:NO photoId:0 caption:ic.caption];
+                            [WebDataInterface skillImageUpload:ic.image stikyid:stkid skillId:skillid type:1 editFlage:ic.edit photoId:ic.photoId caption:ic.caption];
                             
-                            [WebDataInterface skillImageUploadTest:ic.image stikyid:stkid type:1 editFlage:NO photoId:0 caption:ic.caption];
+                            //[WebDataInterface skillImageUploadTest:ic.image stikyid:stkid type:1 editFlage:NO photoId:0 caption:ic.caption];
                         
                         }
                     
                     }
                     
+                    if([SellingManager sharedSellingManager].video != nil){
+                        
+                        [WebDataInterface skillVideoUpload:[SellingManager sharedSellingManager].video thumbnail:[SellingManager sharedSellingManager].videoImage stikyid:stkid skillId:skillid type:1 editFlage:[SellingManager sharedSellingManager].videoEdit videoId:[SellingManager sharedSellingManager].videoId isExtend:[SellingManager sharedSellingManager].videoExtendStatus];
+                    }
+                    
+                    if([SellingManager sharedSellingManager].secVideo != nil){
+                        
+                        [WebDataInterface skillVideoUpload:[SellingManager sharedSellingManager].secVideo thumbnail:[SellingManager sharedSellingManager].secVideoImage stikyid:stkid skillId:skillid type:1 editFlage:[SellingManager sharedSellingManager].videoEdit videoId:[SellingManager sharedSellingManager].videoId isExtend:[SellingManager sharedSellingManager].videoExtendStatus];
+                    }
+                    
+                    [smg clearCurrentSelling];
+                    [self.view hideActivityView];
+                    
                 }
+                
+                [self.view hideActivityView];
 
             }];
             
@@ -630,9 +657,9 @@
         }
         
         
-        [smg clearCurrentSelling];
         
-        [self.view hideActivityView];
+        
+        
         
         [self dismissViewControllerAnimated:YES completion:^{
             

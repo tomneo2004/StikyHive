@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PayPalMobile.h"
+#import "MySkillInfo.h"
 
 
 @interface PaySummaryViewController : UIViewController <UIScrollViewDelegate,PayPalPaymentDelegate>
@@ -20,7 +21,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *defUnitLabel;
 
-
+@property (weak, nonatomic) MySkillInfo *mySkillInfo;
 
 
 @end

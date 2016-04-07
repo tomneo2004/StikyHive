@@ -551,6 +551,8 @@
 //        [self.navigationController pushViewController:vc animated:YES];
         
         UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller_2"];
+        SellingViewController2 *sv = (SellingViewController2 *)vc;
+        sv.mySkillInfo = _mySkillInfo;
         [self.navigationController pushViewController:vc animated:YES];
 
 
