@@ -12,6 +12,7 @@
 #import "BuyManager.h"
 #import "ViewControllerUtil.h"
 #import "UIView+RNActivityView.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface BuyerPhotoViewController ()
 
@@ -20,7 +21,10 @@
 
 @end
 
-@implementation BuyerPhotoViewController
+@implementation BuyerPhotoViewController{
+    
+    BOOL _isLoaded;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,11 +34,38 @@
     [_photoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:selImage]];
     [_photoImageView setUserInteractionEnabled:YES];
     
+    _isLoaded = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+    
+    if(_myPostInfo != nil && ![_myPostInfo.location isEqual:[NSNull null]] && !_isLoaded){
+        
+        [self.view showActivityViewWithLabel:@"Fetching image..."];
+        
+        __weak typeof(self) weakSelf = self;
+        __weak UIImageView *weakImageView = _photoImageView;
+        [_photoImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[WebDataInterface getFullUrlPath:_myPostInfo.location]]] placeholderImage:[UIImage imageNamed:@"upload_buyer.png"] success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
+            
+            weakImageView.image = image;
+            
+            [weakSelf.view hideActivityView];
+            
+            _isLoaded = YES;
+            
+        } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
+            
+            [weakSelf.view hideActivityView];
+            
+        }];
+    }
 }
 
 /*
@@ -51,6 +82,7 @@
 - (void)onImageCropSuccessfulWithImageView:(UIImageView *)imageView
 {
     _imageSelected = YES;
+    
 }
 
 
@@ -64,7 +96,7 @@
 {
     NSLog(@"upload image");
     
-    NSData *imageData =UIImageJPEGRepresentation(profileImage, 1.0);
+    NSData *imageData =UIImageJPEGRepresentation(profileImage, 0.0);
     
     NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/filebuyerupload.php?stkid=%@&type=%ld&buyerId=%ld&editFlag=%d",stikyid,(long)type,(long)buyerId,editFlag];
     

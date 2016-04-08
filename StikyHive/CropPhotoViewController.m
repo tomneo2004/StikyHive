@@ -111,7 +111,7 @@
 - (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle
 {
     self.imageViewProfile.image = image;
-    [self layoutImageView];
+    //[self layoutImageView];
     
     self.navigationItem.rightBarButtonItem.enabled = YES;
     
