@@ -29,9 +29,16 @@
 @property (setter=setSkillRate:, getter=getSkillRate, nonatomic) NSString *skillRate;
 @property (setter=setSkillType:, getter=getSkillType, nonatomic) NSInteger skillType;
 
+@property (nonatomic, assign) BOOL videoEdit;
+@property (nonatomic, assign) NSInteger videoId;
 @property (setter=setVideoImage:, getter=getVideoImage, nonatomic) UIImage *videoImage;
 
 @property (setter=setVideo:, getter=getVideo, nonatomic) NSData *video;
+
+@property (nonatomic, assign) BOOL secVideoEdit;
+@property (nonatomic, assign) NSInteger secVideoId;
+@property (setter=setSecVideoImage:, getter=getSecVideoImage, nonatomic) UIImage *secVideoImage;
+@property (setter=setSecVideo:, getter=getSecVideo, nonatomic) NSData *secVideo;
 @property (setter=setThumbnail:, getter=getThumbnail, nonatomic) NSData *thumbnail;
 @property (setter=setVideo:, getter=getVideo2, nonatomic) NSData *video2;
 @property (setter=setThumbnail2:, getter=getThumbnail2, nonatomic) NSData *thumbnail2;

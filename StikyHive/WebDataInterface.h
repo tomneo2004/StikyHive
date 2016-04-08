@@ -525,6 +525,8 @@
 
 + (void)skillImageUploadTest:(UIImage *)image stikyid:(NSString *)stikyid type:(NSInteger)type editFlage:(BOOL)editFlage photoId:(NSInteger)photoId caption:(NSString *)caption;
 
++ (void)skillVideoUpload:(NSData *)videoData thumbnail:(UIImage *)thumImage stikyid:(NSString *)stikyid skillId:(NSInteger)skillId type:(NSInteger)type editFlage:(BOOL)editFlage videoId:(NSInteger)vieoId isExtend:(BOOL)extend;
+
 + (void)voiceTransfer:(NSString *)fromStikyBee toStikyBee:(NSString *)toStikyBee message:(NSString *)message dateTime:(NSString *)dateTime completion:(void (^)(NSObject *, NSError *))completion;
 
 ////////  ///////////// END -------------------------------------

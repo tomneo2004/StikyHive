@@ -849,9 +849,9 @@ static NSOperationQueue *queue;
     
         NSString *encodeCaption = [caption stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-        NSData *imageData =UIImageJPEGRepresentation(image, 1.0);
+        NSData *imageData =UIImageJPEGRepresentation(image, 0.0);
 
-        NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/photoupload.php?stkid=%@&skillId=%ld&type=%ld&editFlag=%d&photoId=%ld&caption=%@",stikyid,(long)skillId,(long)type,editFlage,(long)photoId,encodeCaption];
+        NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/photoupload.php?stkid=%@&skillId=%ld&type=%ld&editFlag=%@&photoId=%ld&caption=%@",stikyid,(long)skillId,(long)type,editFlage?@"true":@"false",(long)photoId,encodeCaption];
     
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL:[NSURL URLWithString:urlString]];
@@ -870,9 +870,59 @@ static NSOperationQueue *queue;
         [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
         [request setHTTPBody:body];
     
+        NSError *error;
+        NSURLResponse *response;
+        [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
-        [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        
+        NSLog(@"upload skill image response:%@", response);
+    
+        if(error != nil)
+            NSLog(@"upload skill image error:%@", error);
+    
+}
+
++ (void)skillVideoUpload:(NSData *)videoData thumbnail:(UIImage *)thumImage stikyid:(NSString *)stikyid skillId:(NSInteger)skillId type:(NSInteger)type editFlage:(BOOL)editFlage videoId:(NSInteger)vieoId isExtend:(BOOL)extend
+{
+    
+    NSData *imageData =UIImageJPEGRepresentation(thumImage, 0.0);
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/multiple_upload.php?stkid=%@&skillId=%ld&type=%ld&editFlag=%@&videoId=%ld&isExtend=%@",stikyid,(long)skillId,(long)type,editFlage?@"true":@"false",(long)vieoId,extend?@"true":@"false"];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploadedfile1\"; filename=\1\r\n"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    //         [body appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    //[body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    //[body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploadedfile2\"; filename=\1\r\n"]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    //         [body appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:videoData]];
+    [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    NSError *error;
+    NSURLResponse *response;
+    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    NSLog(@"upload skill video response:%@", response);
+    
+    if(error != nil)
+        NSLog(@"upload skill video error:%@", error);
+    
     
     
 }
@@ -882,7 +932,7 @@ static NSOperationQueue *queue;
 {
     NSString *encodeCaption = [caption stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSData *imageData =UIImageJPEGRepresentation(image, 1.0);
+    NSData *imageData =UIImageJPEGRepresentation(image, 0.0);
     
     NSString *urlString = [NSString stringWithFormat:@"http://beta.stikyhive.com:81/androidstikyhive/photoupload.php?stkid=%@&type=%ld&editFlag=%d&photoId=%ld&caption=%@",stikyid,(long)type,editFlage,(long)photoId,encodeCaption];
     

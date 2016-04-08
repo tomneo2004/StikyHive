@@ -9,6 +9,7 @@
 #import "PromotionViewController.h"
 #import "ViewControllerUtil.h"
 #import "SellingManager.h"
+#import "PaySummaryViewController.h"
 
 @interface PromotionViewController ()
 
@@ -34,6 +35,8 @@
     
     
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_summary_view_controller"];
+    PaySummaryViewController *sv = (PaySummaryViewController *)vc;
+    sv.mySkillInfo = _mySkillInfo;
     [self.navigationController pushViewController:vc animated:YES];
 
      NSLog(@"promotion status --- %d",[SellingManager sharedSellingManager].promotionStatus);
@@ -46,6 +49,8 @@
     [SellingManager sharedSellingManager].promotionStatus = NO;
     
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"pay_summary_view_controller"];
+    PaySummaryViewController *sv = (PaySummaryViewController *)vc;
+    sv.mySkillInfo = _mySkillInfo;
     [self.navigationController pushViewController:vc animated:YES];
     
     NSLog(@"promotion status --- %d",[SellingManager sharedSellingManager].promotionStatus);

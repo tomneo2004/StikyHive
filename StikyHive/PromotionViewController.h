@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MySkillInfo.h"
 
 @interface PromotionViewController : UIViewController
+@property (weak, nonatomic) MySkillInfo *mySkillInfo;
 - (IBAction)wantBtnPressed:(id)sender;
 - (IBAction)laterBtnPressed:(id)sender;
 

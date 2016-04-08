@@ -768,6 +768,16 @@
 
 - (CGFloat)displaySareButton:(CGPoint)point andWidth:(CGFloat)width
 {
+    
+    UIView * aView = [_contentScrollView viewWithTag:100];
+    [aView removeFromSuperview];
+    aView = [_contentScrollView viewWithTag:101];
+    [aView removeFromSuperview];
+    aView = [_contentScrollView viewWithTag:102];
+    [aView removeFromSuperview];
+    aView = [_contentScrollView viewWithTag:103];
+    [aView removeFromSuperview];
+    
     CGFloat y = point.y;
     
     //    UIView * lineView = [[UIView alloc] initWithFrame:CGRectMake(20, y, width - 40, 1)];
@@ -827,6 +837,10 @@
     [_contentScrollView addSubview:fbButton];
     [_contentScrollView addSubview:pintButton];
 //    [_contentScrollView addSubview:googleButton];
+    reportButton.tag = 100;
+    shareLabel.tag = 101;
+    fbButton.tag = 102;
+    pintButton.tag = 103;
     
     y = y + 70;
     
@@ -1031,6 +1045,8 @@
     
     CGFloat y = [self displayCommentsView:_reviewArray atStartPoint:CGPointMake(frame.origin.x, frame.origin.y) andWidth:self.view.frame.size.width isComm:NO];
     
+    y = [self displaySareButton:CGPointMake(0, y) andWidth:self.view.frame.size.width];
+    
     
     CGRect sellFrame = _sellerView.frame;
     sellFrame.origin.y = y + 30;
@@ -1058,6 +1074,8 @@
     }
     
     CGFloat y = [self displayCommentsView:_commentsArray atStartPoint:CGPointMake(frame.origin.x, frame.origin.y) andWidth:self.view.frame.size.width isComm:YES];
+    
+    y = [self displaySareButton:CGPointMake(0, y) andWidth:self.view.frame.size.width];
     
     CGRect sellFrame = _sellerView.frame;
     sellFrame.origin.y = y + 30;

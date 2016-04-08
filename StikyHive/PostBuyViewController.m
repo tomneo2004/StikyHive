@@ -13,6 +13,7 @@
 #import "UIView+RNActivityView.h"
 #import "HtmlEditor.h"
 #import "BuyManager.h"
+#import "BuyerPhotoViewController.h"
 
 
 @interface PostBuyViewController ()
@@ -415,11 +416,20 @@
         NSLog(@"stat time --- %@",_myPostInfo.startTime);
         NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
         [formatter setDateFormat:@"HH"];
-        NSString *hh = [formatter stringFromDate:_myPostInfo.startTime];
-        
-        NSLog(@"stat time hh --- %@",hh);
-        NSLog(@"end date ---- %@",_myPostInfo.endTime);
+        NSString *fhh = [formatter stringFromDate:_myPostInfo.startTime];
         [formatter setDateFormat:@"mm"];
+        NSString *fmm = [formatter stringFromDate:_myPostInfo.startTime];
+        _fromHHTextField.text = fhh;
+        _fromMMTextField.text = fmm;
+        
+        NSLog(@"stat time hh --- %@",fhh);
+        NSLog(@"end date ---- %@",_myPostInfo.endTime);
+        [formatter setDateFormat:@"HH"];
+        NSString *thh = [formatter stringFromDate:_myPostInfo.endTime];
+        [formatter setDateFormat:@"mm"];
+        NSString *tmm = [formatter stringFromDate:_myPostInfo.endTime];
+        _toHHTextField.text = thh;
+        _toMMTextField.text = tmm;
         NSLog(@"end dadte hh 00000 %@",[formatter stringFromDate:_myPostInfo.endTime]);
         
         
@@ -657,6 +667,8 @@
     
     
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"buyer_photo_view_controller"];
+    BuyerPhotoViewController *sv = (BuyerPhotoViewController *)vc;
+    sv.myPostInfo = _myPostInfo;
     [self.navigationController pushViewController:vc animated:YES];
     
 }
