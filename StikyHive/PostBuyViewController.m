@@ -455,6 +455,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc{
+    
+    UITabBarController *tabBarController = (UITabBarController *)[[[[UIApplication sharedApplication]delegate] window] rootViewController];
+    tabBarController.tabBar.hidden = NO;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     self.tabBarController.tabBar.hidden = YES;
