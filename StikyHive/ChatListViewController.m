@@ -134,7 +134,7 @@
     }
     
     nameLabel.text = [NSString stringWithFormat:@"%@ %@",dict[@"firstname"],dict[@"lastname"]];
-    msgLabel.text = dict[@"message"];
+    msgLabel.text = [dict[@"message"] isEqual:[NSNull null]]?@"":dict[@"message"];
     timeLabel.text = updateDay;
     
     return cell;
