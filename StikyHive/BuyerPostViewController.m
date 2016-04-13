@@ -56,6 +56,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"Buyer's Post";
     
     CGFloat width = self.view.frame.size.width - 40;
     
@@ -126,6 +127,11 @@
 //    [self.view hideActivityView];
 }
 
+- (void)dealloc{
+    
+    UITabBarController *tabBarController = (UITabBarController *)[[[[UIApplication sharedApplication]delegate] window] rootViewController];
+    tabBarController.tabBar.hidden = NO;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -182,30 +188,44 @@
     
     
 //    CGFloat width = self.view.frame.size.width;
+    /*
     UIButton *emailBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, width/3, 50)];
     emailBtn.backgroundColor = color1;
     [emailBtn setImage:[UIImage imageNamed:@"skillpg_email"] forState:UIControlStateNormal];
     [emailBtn setTitle:@"Email" forState:UIControlStateNormal];
     [emailBtn addTarget:self action:@selector(emailBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     emailBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 26, 10, 70);
+     */
+    UIButton *emailBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, width/2, 50)];
+    emailBtn.backgroundColor = color1;
+    [emailBtn setImage:[UIImage imageNamed:@"skillpg_email"] forState:UIControlStateNormal];
+    [emailBtn setTitle:@"Email" forState:UIControlStateNormal];
+    [emailBtn addTarget:self action:@selector(emailBtnPressed) forControlEvents:UIControlEventTouchUpInside];
+    emailBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 26, 10, 70);
     
-    
+    /*
     UIButton *callBtn = [[UIButton alloc] initWithFrame:CGRectMake(width/3, emailBtn.frame.origin.y, emailBtn.frame.size.width, emailBtn.frame.size.height)];
     callBtn.backgroundColor = color2;
     [callBtn setImage:[UIImage imageNamed:@"skillpg-call"] forState:UIControlStateNormal];
     [callBtn setTitle:@"Call" forState:UIControlStateNormal];
     callBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 26, 10, 66);
+     */
     
-    
+    /*
     UIButton *chatBtn = [[UIButton alloc] initWithFrame:CGRectMake(emailBtn.frame.size.width*2, emailBtn.frame.origin.y, emailBtn.frame.size.width, emailBtn.frame.size.height)];
     chatBtn.backgroundColor = color3;
     [chatBtn setImage:[UIImage imageNamed:@"skillpg-chat"] forState:UIControlStateNormal];
     [chatBtn setTitle:@"Chat" forState:UIControlStateNormal];
     chatBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 27, 10, 68);
-    
+    */
+    UIButton *chatBtn = [[UIButton alloc] initWithFrame:CGRectMake(emailBtn.frame.size.width, emailBtn.frame.origin.y, emailBtn.frame.size.width, emailBtn.frame.size.height)];
+    chatBtn.backgroundColor = color3;
+    [chatBtn setImage:[UIImage imageNamed:@"skillpg-chat"] forState:UIControlStateNormal];
+    [chatBtn setTitle:@"Chat" forState:UIControlStateNormal];
+    chatBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 27, 10, 68);
     
     [self.view addSubview:emailBtn];
-    [self.view addSubview:callBtn];
+    //[self.view addSubview:callBtn];
     [self.view addSubview:chatBtn];
 
     
@@ -385,7 +405,7 @@
     NSDateFormatter *formate = [[NSDateFormatter alloc] init];
     NSString *postDateString = _marketDict[@"createDate"];
     NSString *expDateString = _marketDict[@"expiredDate"];
-    [formate setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+    [formate setDateFormat:@"yyyy-MM-dd HH:mm:ss.sss"];
     NSDate *postDate = [formate dateFromString:postDateString];
     NSDate *date = [formate dateFromString:expDateString];
     [formate setDateFormat:@"dd MMM yyyy"];

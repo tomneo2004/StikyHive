@@ -88,7 +88,7 @@
                                                          withSelector:@selector(generalCallPressed)];
     chatButton.imageInsets = UIEdgeInsetsMake(0, 10, 0, -10);
     callButton.imageInsets = UIEdgeInsetsMake(0, -10, 0, 10);
-    self.navigationItem.rightBarButtonItems = @[callButton, chatButton];
+    self.navigationItem.rightBarButtonItems = @[/*callButton,*/ chatButton];
     
     CGFloat width = self.view.frame.size.width - 40;
     
@@ -129,64 +129,65 @@
 //    [self.view showActivityViewWithLabel:@"Loading..."];
     
     [WebDataInterface getSkillById:_Skill_ID stkid:stkid completion:^(NSObject *obj, NSError *err)
-    {
-        [WebDataInterface getCommReviewBySkillId:_Skill_ID completion:^(NSObject *obj2, NSError *err2)
-         {
-             _commDict = (NSDictionary *)obj2;
-             _commentsArray = _commDict[@"comments"];
-             _reviewArray = _commDict[@"reviews"];
-             
-        
-             NSLog(@"skill by id --- %@",obj);
-             NSLog(@"comm review ---- %@",obj2);
-             
-        
-             _skillDict = (NSDictionary *)obj;
-        
-             if (_skillDict)
-             {
-                 NSLog(@"skill dict 777 ----- %@",_skillDict);
-            
-                 dispatch_async(dispatch_get_main_queue(), ^{
-        
-                     NSString *skillHtmlec = _skillDict[@"resultSkill"][@"summary"];
-                     NSString *sellerHtmlec = _skillDict[@"resultSkill"][@"skillDesc"];
-                     NSString *sellerInfoec = _skillDict[@"resultSkill"][@"beeInfo"];
-                     
-                     _stkId = _skillDict[@"resultSkill"][@"stkid"];
-                     _skillId = [_skillDict[@"resultSkill"][@"id"] integerValue];
-                     _likeCount = ([_skillDict[@"resultSkill"][@"likeCount"] isEqual:[NSNull null]])?0:[_skillDict[@"resultSkill"][@"likeCount"] integerValue];
-                     _skillType = [_skillDict[@"resultSkill"][@"type"] integerValue];
-                     _catId = [_skillDict[@"resultSkill"][@"catId"] integerValue];
-                     _skillName = _skillDict[@"resultSkill"][@"name"];
-                     _skillDesc = _skillDict[@"resultSkill"][@"skillDesc"];
-                     _profilePicUrl = [WebDataInterface getFullUrlPath:_skillDict[@"resultSkill"][@"profilePicture"]];
-                     
-                     if(![_skillDict[@"resultSkill"][@"viewCount"] isEqual:[NSNull null]]){
-                         
-                         _viewCount = [_skillDict[@"resultSkill"][@"viewCount"] integerValue];
-                     }
-                     else{
-                         
-                         _viewCount = 0;
-                     }
-                     
-                     _likeId = [_skillDict[@"resultSkill"][@"likeId"] integerValue];
+     {
+         [WebDataInterface getCommReviewBySkillId:_Skill_ID completion:^(NSObject *obj2, NSError *err2)
+          {
+              _commDict = (NSDictionary *)obj2;
+              _commentsArray = _commDict[@"comments"];
+              _reviewArray = _commDict[@"reviews"];
+              
+              
+              NSLog(@"skill by id --- %@",obj);
+              NSLog(@"comm review ---- %@",obj2);
+              
+              
+              _skillDict = (NSDictionary *)obj;
+              
+              if (_skillDict)
+              {
+                  NSLog(@"skill dict 777 ----- %@",_skillDict);
+                  
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                      
+                      NSString *skillHtmlec = _skillDict[@"resultSkill"][@"summary"];
+                      NSString *sellerHtmlec = _skillDict[@"resultSkill"][@"skillDesc"];
+                      NSString *sellerInfoec = _skillDict[@"resultSkill"][@"beeInfo"];
+                      
+                      _stkId = _skillDict[@"resultSkill"][@"stkid"];
+                      _skillId = [_skillDict[@"resultSkill"][@"id"] integerValue];
+                      _likeCount = ([_skillDict[@"resultSkill"][@"likeCount"] isEqual:[NSNull null]])?0:[_skillDict[@"resultSkill"][@"likeCount"] integerValue];
+                      _skillType = [_skillDict[@"resultSkill"][@"type"] integerValue];
+                      _catId = [_skillDict[@"resultSkill"][@"catId"] integerValue];
+                      _skillName = _skillDict[@"resultSkill"][@"name"];
+                      _skillDesc = _skillDict[@"resultSkill"][@"skillDesc"];
+                      _profilePicUrl = [WebDataInterface getFullUrlPath:_skillDict[@"resultSkill"][@"profilePicture"]];
+                      
+                      if(![_skillDict[@"resultSkill"][@"viewCount"] isEqual:[NSNull null]]){
+                          
+                          _viewCount = [_skillDict[@"resultSkill"][@"viewCount"] integerValue];
+                      }
+                      else{
+                          
+                          _viewCount = 1;
+                      }
+                      
+                      _likeId = [_skillDict[@"resultSkill"][@"likeId"] integerValue];
+                      
+                      _skillHtml = skillHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,skillHtmlec] : @"";
+                      _sellerHtml = sellerHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,sellerHtmlec] : @"";
+                      _sellerInfo = sellerInfoec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,sellerInfoec] : @"";
+                      
+                      
+                      [_skillDescWebView loadHTMLString:_skillHtml baseURL:nil];
+                      [_sellerDescWebView loadHTMLString:_sellerHtml baseURL:nil];
+                      [_sellerInfoWebView loadHTMLString:_sellerInfo baseURL:nil];
+                      
+                  });
+              }
+              
+          }];
+     }];
 
-                     _skillHtml = skillHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,skillHtmlec] : @"";
-                     _sellerHtml = sellerHtmlec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,sellerHtmlec] : @"";
-                     _sellerInfo = sellerInfoec !=(id)[NSNull null] ? [NSString stringWithFormat:fontFormat, font14.fontName,(int)font14.pointSize,sellerInfoec] : @"";
-                
-                
-                     [_skillDescWebView loadHTMLString:_skillHtml baseURL:nil];
-                     [_sellerDescWebView loadHTMLString:_sellerHtml baseURL:nil];
-                     [_sellerInfoWebView loadHTMLString:_sellerInfo baseURL:nil];
-                
-                 });
-             }
-             
-        }];
-    }];
     
 //    [WebDataInterface getCommReviewBySkillId:_Skill_ID completion:^(NSObject *obj2, NSError *err2)
 //    {
@@ -262,22 +263,36 @@
     
     
     //    CGFloat width = self.view.frame.size.width;
+    /*
     UIButton *emailBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, width/3, 50)];
     emailBtn.backgroundColor = color1;
     [emailBtn setImage:[UIImage imageNamed:@"skillpg_email"] forState:UIControlStateNormal];
     [emailBtn setTitle:@"Email" forState:UIControlStateNormal];
     emailBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 26, 10, 70);
     [emailBtn addTarget:self action:@selector(emailBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
+    */
+    UIButton *emailBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, width/2, 50)];
+    emailBtn.backgroundColor = color1;
+    [emailBtn setImage:[UIImage imageNamed:@"skillpg_email"] forState:UIControlStateNormal];
+    [emailBtn setTitle:@"Email" forState:UIControlStateNormal];
+    emailBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 26, 10, 70);
+    [emailBtn addTarget:self action:@selector(emailBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    /*
     UIButton *callBtn = [[UIButton alloc] initWithFrame:CGRectMake(width/3, emailBtn.frame.origin.y, emailBtn.frame.size.width, emailBtn.frame.size.height)];
     callBtn.backgroundColor = color2;
     [callBtn setImage:[UIImage imageNamed:@"skillpg-call"] forState:UIControlStateNormal];
     [callBtn setTitle:@"Call" forState:UIControlStateNormal];
     callBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 26, 10, 66);
+    */
     
-    
+    /*
     UIButton *chatBtn = [[UIButton alloc] initWithFrame:CGRectMake(emailBtn.frame.size.width*2, emailBtn.frame.origin.y, emailBtn.frame.size.width, emailBtn.frame.size.height)];
+    chatBtn.backgroundColor = color3;
+    [chatBtn setImage:[UIImage imageNamed:@"skillpg-chat"] forState:UIControlStateNormal];
+    [chatBtn setTitle:@"Chat" forState:UIControlStateNormal];
+    chatBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 27, 10, 68);
+     */
+    UIButton *chatBtn = [[UIButton alloc] initWithFrame:CGRectMake(emailBtn.frame.size.width, emailBtn.frame.origin.y, emailBtn.frame.size.width, emailBtn.frame.size.height)];
     chatBtn.backgroundColor = color3;
     [chatBtn setImage:[UIImage imageNamed:@"skillpg-chat"] forState:UIControlStateNormal];
     [chatBtn setTitle:@"Chat" forState:UIControlStateNormal];
@@ -285,7 +300,7 @@
     
     
     [self.view addSubview:emailBtn];
-    [self.view addSubview:callBtn];
+    //[self.view addSubview:callBtn];
     [self.view addSubview:chatBtn];
     
 }
@@ -1013,6 +1028,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+    
+- (void)dealloc{
+    
+    UITabBarController *tabBarController = (UITabBarController *)[[[[UIApplication sharedApplication]delegate] window] rootViewController];
+    tabBarController.tabBar.hidden = NO;
+}
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     self.tabBarController.tabBar.hidden = YES;
@@ -1023,6 +1048,19 @@
          _commentsArray = _commDict[@"comments"];
          _reviewArray = _commDict[@"reviews"];
 
+         dispatch_async(dispatch_get_main_queue(), ^{
+             
+             CGRect frame = _commView.frame;
+             frame.size.height = 100;
+             _commView.frame = frame;
+         
+             for (UIView *view in [_commView subviews])
+             {
+                 [view removeFromSuperview];
+             }
+             
+             [self displayCommentsView:_commentsArray atStartPoint:CGPointMake(frame.origin.x, frame.origin.y) andWidth:self.view.frame.size.width isComm:YES];
+         });
      }];
     
 }

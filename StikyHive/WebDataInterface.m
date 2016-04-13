@@ -685,9 +685,17 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
 }
 
 
++ (void)getSellFilter:(NSInteger)filter completion:(void (^)(NSObject *, NSError *))completion{
+    
+    NSDictionary *params = @{@"flagSkill":[NSNumber numberWithInteger:filter]};
+    [self requestData:DATA_URL_GET_FILTER_SELL_MARKET withParameters:params completion:completion];
+}
 
-
-
++ (void)getSellMostViewCompletion:(void (^)(NSObject *, NSError *))completion{
+    
+    NSDictionary *params = @{@"status":[NSNumber numberWithInteger:1]};
+    [self requestData:DATA_URL_GET_MOSTVIEW_SELL_MARKET withParameters:params completion:completion];
+}
 
 
 

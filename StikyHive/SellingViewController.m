@@ -148,6 +148,12 @@
     
 }
 
+- (void)dealloc{
+    
+    UITabBarController *tabBarController = (UITabBarController *)[[[[UIApplication sharedApplication]delegate] window] rootViewController];
+    tabBarController.tabBar.hidden = NO;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

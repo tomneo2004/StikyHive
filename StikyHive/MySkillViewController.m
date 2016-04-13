@@ -110,6 +110,8 @@
     
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"selling_view_controller"];
     [self.navigationController pushViewController:vc animated:YES];
+    
+
 }
 
 #pragma mark - UITableViewDataSource delegate

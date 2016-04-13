@@ -403,6 +403,7 @@
 		CE9029CA1C44B1DB00FDAA4D /* EmptyEducationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9029C91C44B1DB00FDAA4D /* EmptyEducationView.xib */; };
 		CE9054D21C17CB9300144078 /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9054D11C17CB9300144078 /* OverlayViewController.m */; };
 		CE9054D61C17D25400144078 /* ReadReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9054D51C17D25400144078 /* ReadReviewViewController.m */; };
+		CE963FC71CBCFEDE00BE1416 /* buzzr(m).png in Resources */ = {isa = PBXBuildFile; fileRef = CE963FC61CBCFEDE00BE1416 /* buzzr(m).png */; };
 		CE9936191C71824000815E1B /* AudioMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9936181C71824000815E1B /* AudioMediaItem.m */; };
 		CE9B8EC61C16C34D0022653B /* BoughtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B8EC51C16C34D0022653B /* BoughtViewController.m */; };
 		CE9B8EC91C16C3620022653B /* BoughtInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B8EC81C16C3620022653B /* BoughtInfo.m */; };
@@ -1049,6 +1050,7 @@
 		CE9054D11C17CB9300144078 /* OverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayViewController.m; sourceTree = "<group>"; };
 		CE9054D41C17D25400144078 /* ReadReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadReviewViewController.h; sourceTree = "<group>"; };
 		CE9054D51C17D25400144078 /* ReadReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadReviewViewController.m; sourceTree = "<group>"; };
+		CE963FC61CBCFEDE00BE1416 /* buzzr(m).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buzzr(m).png"; sourceTree = "<group>"; };
 		CE9936171C71824000815E1B /* AudioMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioMediaItem.h; sourceTree = "<group>"; };
 		CE9936181C71824000815E1B /* AudioMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioMediaItem.m; sourceTree = "<group>"; };
 		CE9B8EC41C16C34D0022653B /* BoughtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoughtViewController.h; sourceTree = "<group>"; };
@@ -2302,6 +2304,7 @@
 				CEE93A051BF4490000B292BA /* buzzr_call.png */,
 				CEE93A061BF4490000B292BA /* buzzr_chat.png */,
 				CEE93A071BF4490000B292BA /* buzzr_home_btn.png */,
+				CE963FC61CBCFEDE00BE1416 /* buzzr(m).png */,
 				CEE93A081BF4490000B292BA /* buzzr_img.png */,
 				CEE93A091BF4490000B292BA /* buzzr_navi.png */,
 				CEE93A0A1BF4490000B292BA /* buzzr_paymentsummary_bee.png */,
@@ -2816,6 +2819,7 @@
 				516718BA1C1A799E003E9902 /* ZSSlink@2x.png in Resources */,
 				516718AB1C1A799E003E9902 /* ZSShorizontalrule.png in Resources */,
 				51788CAE1BBD14FE00A96AD7 /* like_filled.png in Resources */,
+				CE963FC71CBCFEDE00BE1416 /* buzzr(m).png in Resources */,
 				5186FE4A1BD5EA08002A51CA /* buyerspost_job_time.png in Resources */,
 				674D0E701B7D920E00B5B80D /* Default_profile_header@2x.png in Resources */,
 				516718B01C1A799E003E9902 /* ZSSindent@2x.png in Resources */,

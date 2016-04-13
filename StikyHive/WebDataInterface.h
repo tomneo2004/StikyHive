@@ -188,6 +188,8 @@
 #define DATA_URL_USER_FB_LOGIN          DATA_URL@"socialMedia/format/json"
 #define DATA_URL_USER_FORGOT_PASSWORD   DATA_URL@"forgotPassword/format/json"
 #define DATA_URL_GET_SELL_MARKET        DATA_URL@"getSellAll/format/json"
+#define DATA_URL_GET_FILTER_SELL_MARKET        DATA_URL@"filter/format/json"
+#define DATA_URL_GET_MOSTVIEW_SELL_MARKET        DATA_URL@"sortByView/format/json"
 #define DATA_URL_GET_BUYER_MARKET       DATA_URL@"getBuyerMarket/format/json"
 #define DATA_URL_GET_SKILL_BY_ID        DATA_URL@"getSkillById/format/json"
 #define DATA_URL_GET_COMM_BY_SKILL_ID   DATA_URL@"selectCommReviewBySkillId/format/json"
@@ -509,9 +511,9 @@
 + (void)getSearchSell:(NSString *)like completion:(void (^)(NSObject *, NSError *))completion;
 
 
++ (void)getSellFilter:(NSInteger)filter completion:(void (^)(NSObject *, NSError *))completion;
 
-
-
++ (void)getSellMostViewCompletion:(void (^)(NSObject *, NSError *))completion;
 
 
 
