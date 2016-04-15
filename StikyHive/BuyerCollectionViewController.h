@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BuyerCollectionViewCell.h"
 
-@interface BuyerCollectionViewController : UICollectionViewController
+@interface BuyerCollectionViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 
 @end

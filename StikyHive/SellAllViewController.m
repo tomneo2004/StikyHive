@@ -14,6 +14,7 @@
 #import "ActionSheetPicker.h"
 #import "ViewControllerUtil.h"
 #import "SkillPageViewController.h"
+#import "UserProfileViewController.h"
 
 
 @interface SellAllViewController ()
@@ -264,6 +265,20 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - SellAllCell delegate
+- (void)onProfileImageTap:(SellAllCell *)cell{
+    
+    NSIndexPath *indexPath = [_sellTableView indexPathForCell:cell];
+    
+    NSDictionary *dic = [_skillArrays objectAtIndex:indexPath.row];
+    
+    //present user profile controller
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"user_profile_view_controller"];
+    UserProfileViewController *svc = (UserProfileViewController *)vc;
+    [svc setStkID:dic[@"stkid"]];
+    
+    [self.navigationController pushViewController:svc animated:YES];
+}
 
 #pragma mark - search bar delegate
 
@@ -281,6 +296,11 @@
     
     [searchBar resignFirstResponder];
     
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    
+    [searchBar resignFirstResponder];
 }
 
 

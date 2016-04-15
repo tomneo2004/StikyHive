@@ -191,6 +191,7 @@
 #define DATA_URL_GET_FILTER_SELL_MARKET        DATA_URL@"filter/format/json"
 #define DATA_URL_GET_MOSTVIEW_SELL_MARKET        DATA_URL@"sortByView/format/json"
 #define DATA_URL_GET_BUYER_MARKET       DATA_URL@"getBuyerMarket/format/json"
+#define DATA_URL_GET_SEARCH_BUYER_MARKET       DATA_URL@"searchBuyerMarket/format/json"
 #define DATA_URL_GET_SKILL_BY_ID        DATA_URL@"getSkillById/format/json"
 #define DATA_URL_GET_COMM_BY_SKILL_ID   DATA_URL@"selectCommReviewBySkillId/format/json"
 #define DATA_URL_POST_COMMENT           DATA_URL@"insertComment/format/json"
@@ -277,6 +278,7 @@
 #define POST_PARAMETER_LIMIT            @"limit"
 #define POST_PARAMETER_CATEGORY_ID      @"catId"
 #define POST_PARAMETER_SKILL_ID         @"skillId"
+#define POST_PARAMETER_BUYER_SEARCH_KEYWORD         @"search"
 #define POST_PARAMETER_REVIEWR          @"reviewer"
 #define POST_PARAMETER_REVIEW           @"review"
 #define POST_PARAMETER_TYPE             @"type"
@@ -401,6 +403,8 @@
 
 
 + (void)getBuyerMarket:(NSString *)skillId limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
+
++ (void)searchBuyerWithKeyword:(NSString *)key completion:(void (^)(NSObject *, NSError *))completion;
 
 + (void)getBuyerMarketByStkid:(NSString *)stkid limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion;
 

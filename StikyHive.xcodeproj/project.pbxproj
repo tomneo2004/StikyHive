@@ -430,6 +430,7 @@
 		CED907741CA22F8F00601D82 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CED907731CA22F8F00601D82 /* SearchViewController.m */; };
 		CED907771CA2300300601D82 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CED907761CA2300300601D82 /* SearchCell.m */; };
 		CED9077A1CA23AB500601D82 /* SearchInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED907791CA23AB500601D82 /* SearchInfo.m */; };
+		CEDB67E91CC0ACD6001B1099 /* BuyerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDB67E81CC0ACD6001B1099 /* BuyerCollectionViewCell.m */; };
 		CEE93A141BF4490000B292BA /* buzzr_call.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A051BF4490000B292BA /* buzzr_call.png */; };
 		CEE93A151BF4490100B292BA /* buzzr_chat.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A061BF4490000B292BA /* buzzr_chat.png */; };
 		CEE93A161BF4490100B292BA /* buzzr_home_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE93A071BF4490000B292BA /* buzzr_home_btn.png */; };
@@ -1098,6 +1099,8 @@
 		CED907761CA2300300601D82 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		CED907781CA23AB500601D82 /* SearchInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchInfo.h; sourceTree = "<group>"; };
 		CED907791CA23AB500601D82 /* SearchInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchInfo.m; sourceTree = "<group>"; };
+		CEDB67E71CC0ACD6001B1099 /* BuyerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerCollectionViewCell.h; sourceTree = "<group>"; };
+		CEDB67E81CC0ACD6001B1099 /* BuyerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerCollectionViewCell.m; sourceTree = "<group>"; };
 		CEE93A051BF4490000B292BA /* buzzr_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_call.png; sourceTree = "<group>"; };
 		CEE93A061BF4490000B292BA /* buzzr_chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_chat.png; sourceTree = "<group>"; };
 		CEE93A071BF4490000B292BA /* buzzr_home_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buzzr_home_btn.png; sourceTree = "<group>"; };
@@ -1420,6 +1423,8 @@
 				51700A911BD4C93500294DAD /* BuyerPostViewController.m */,
 				517D552D1BDA0301000EA8FD /* ReportAbuseViewController.h */,
 				517D552E1BDA0301000EA8FD /* ReportAbuseViewController.m */,
+				CEDB67E71CC0ACD6001B1099 /* BuyerCollectionViewCell.h */,
+				CEDB67E81CC0ACD6001B1099 /* BuyerCollectionViewCell.m */,
 			);
 			name = Buyer;
 			sourceTree = "<group>";
@@ -3109,6 +3114,7 @@
 				516C51621C0410B8002710AA /* SellingViewController3.m in Sources */,
 				516718DD1C1A799E003E9902 /* CYRLayoutManager.m in Sources */,
 				51700A921BD4C93500294DAD /* BuyerPostViewController.m in Sources */,
+				CEDB67E91CC0ACD6001B1099 /* BuyerCollectionViewCell.m in Sources */,
 				676F77E01B96F3060084988A /* TOActivityCroppedImageProvider.m in Sources */,
 				5172BB901C2A826100C8AB14 /* BuyerPhotoViewController.m in Sources */,
 				CEF7BA991BFAC66E009624CC /* MyRequestViewController.m in Sources */,

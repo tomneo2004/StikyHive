@@ -15,6 +15,7 @@
 #import <SendGrid/SendGrid.h>
 #import <SendGrid/SendGridEmail.h>
 #import "UIView+Toast.h"
+#import "ChatMessagesViewController.h"
 
 @interface BuyerPostViewController ()
 @property (assign, nonatomic) NSInteger buyerId;
@@ -222,6 +223,7 @@
     chatBtn.backgroundColor = color3;
     [chatBtn setImage:[UIImage imageNamed:@"skillpg-chat"] forState:UIControlStateNormal];
     [chatBtn setTitle:@"Chat" forState:UIControlStateNormal];
+    [chatBtn addTarget:self action:@selector(chatBtnTap) forControlEvents:UIControlEventTouchUpInside];
     chatBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 27, 10, 68);
     
     [self.view addSubview:emailBtn];
@@ -229,6 +231,13 @@
     [self.view addSubview:chatBtn];
 
     
+}
+
+- (void)chatBtnTap{
+    
+    [ChatMessagesViewController setToStikyBee:_stkId];
+    ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
+    [self.navigationController pushViewController:cmvc animated:YES];
 }
 
 - (void)emailBtnPressed
@@ -326,7 +335,7 @@
     NSString *endDate = _marketDict[@"expiredDate"];
     ////// calculaate days left -----------
     NSDateFormatter *formate = [[NSDateFormatter alloc] init];
-    [formate setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+    [formate setDateFormat:@"yyyy-MM-dd HH:mm:ss.sss"];
     NSDate *postDate = [formate dateFromString:endDate];
     [formate setDateFormat:@"yyyy-MM-dd"];
     
@@ -358,11 +367,13 @@
     expireDay.font = [UIFont fontWithName:@"OpenSans-Semibold" size:13];
     expireDay.text = [NSString stringWithFormat:@"%ld days left",(long)manyOfDays];
     
+    /*
     _bookmarkBtn = [[UIButton alloc] initWithFrame:CGRectMake(width-65, 15, 25, 30)];
     [_bookmarkBtn setImage:[UIImage imageNamed:@"bookmark"] forState:UIControlStateNormal];
     [_bookmarkBtn setImage:[UIImage imageNamed:@"bookmark_filled"] forState:UIControlStateSelected];
     [_bookmarkBtn addTarget:self action:@selector(bookmarkBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
+    */
+    /*
     UILabel *bmLabel = [[UILabel alloc] initWithFrame:CGRectMake(width-80, _bookmarkBtn.frame.origin.y+_bookmarkBtn.frame.size.height+10, 60, 10)];
     [bmLabel setText:@"Bookmark"];
     bmLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:11];
@@ -371,7 +382,7 @@
     CGPoint bmLabelCenter = bmLabel.center;
     bmLabelCenter.x = _bookmarkBtn.center.x;
     bmLabel.center = bmLabelCenter;
-
+     */
 
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, bgImageView.frame.size.height-40, 300, 30)];
     titleLabel.text = _marketDict[@"name"];
@@ -380,8 +391,8 @@
     [bgImageView addSubview:expireDay];
     [bgImageView addSubview:pointView];
     [bgImageView addSubview:avaLabel];
-    [bgImageView addSubview:_bookmarkBtn];
-    [bgImageView addSubview:bmLabel];
+    //[bgImageView addSubview:_bookmarkBtn];
+    //[bgImageView addSubview:bmLabel];
     [bgImageView addSubview:titleLabel];
     
     

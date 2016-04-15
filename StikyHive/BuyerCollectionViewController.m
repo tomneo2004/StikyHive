@@ -13,19 +13,26 @@
 #import "BuyerPageViewController.h"
 #import "BuyerPostViewController.h"
 #import "SelectableLabel.h"
+#import "UIView+RNActivityView.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface BuyerCollectionViewController ()
 
 @property (nonatomic, strong) NSMutableArray *buyerList;
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 
 @end
 
 @implementation BuyerCollectionViewController
 
+
 static NSString *const reuseIdentifier = @"buyer_cell";
 
 - (void)viewDidLoad
 {
+    
+    
+    self.title = @"Buyers";
     [super viewDidLoad];
     
     _buyerList = @[].mutableCopy;
@@ -73,8 +80,8 @@ static NSString *const reuseIdentifier = @"buyer_cell";
                [_buyerList addObject:[self createBuyer:buyerDict]];
            }
         
-           [self.collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
-           [self.collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+           [_collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+           [_collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
         }
         else {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -82,6 +89,12 @@ static NSString *const reuseIdentifier = @"buyer_cell";
             });
         }
     }
+}
+
+- (IBAction)postInMarket:(id)sender{
+    
+    UIViewController *vc = [ViewControllerUtil instantiateViewController:@"post_buy_view_controller"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (Buyer *)createBuyer:(NSDictionary *)dict
@@ -113,7 +126,7 @@ static NSString *const reuseIdentifier = @"buyer_cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    /*
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
@@ -127,13 +140,28 @@ static NSString *const reuseIdentifier = @"buyer_cell";
     
 //    NSLog(@"location url ------- %@",locationUrl);
     
-    imageView.image = locationUrl.length > 0 ? [ViewControllerUtil getImageWithPath:locationUrl] : [UIImage imageNamed:@"Default_buyer_post"];
-    
+    //imageView.image = locationUrl.length > 0 ? [ViewControllerUtil getImageWithPath:locationUrl] : [UIImage imageNamed:@"Default_buyer_post"];
     
     
 //    titleLabel.index = indexPath.row;
 //    titleLabel.userInteractionEnabled = YES;
 //    [titleLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleLabelTapped:)]];
+    */
+    
+    BuyerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    if(cell == nil){
+        
+        cell = [[BuyerCollectionViewCell alloc] init];
+    }
+    
+    Buyer *buyer = _buyerList[indexPath.row];
+    
+    cell.nameLabel.text = buyer.name;
+    
+    NSString *locationUrl = buyer.location != (id)[NSNull null] ? [WebDataInterface getFullUrlPath:buyer.location] : @"";
+    
+    [cell displayImageWithURL:locationUrl];
     
     return cell;
 }
@@ -189,6 +217,50 @@ static NSString *const reuseIdentifier = @"buyer_cell";
     [self.navigationController pushViewController:svc animated:YES];
 
 
+}
+
+#pragma mark - search bar delegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    
+    if(searchBar.text != nil && ![searchBar.text isEqualToString:@""]){
+        
+        [self.view showActivityViewWithLabel:@"Searching..."];
+        
+        [WebDataInterface searchBuyerWithKeyword:searchBar.text completion:^(NSObject *obj, NSError *error) {
+           
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+                NSDictionary *dic = (NSDictionary *)obj;
+                if(error != nil){
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There is an error while searching!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alert show];
+                    
+                }
+                else if([dic[@"status"] isEqualToString:@"fail"]){
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No data" message:@"No data were found!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alert show];
+                }
+                else{
+                    
+                    [self displayResult:dic];
+                }
+                
+                [self.view hideActivityView];
+            });
+        }];
+    }
+    
+    [searchBar resignFirstResponder];
+    
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    
+    [searchBar resignFirstResponder];
 }
 
 /*

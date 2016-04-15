@@ -32,6 +32,8 @@
 
 @property (strong, nonatomic) IBOutlet UISearchBar *skillSearchBar;
 
+@property (weak, nonatomic) IBOutlet UIButton *topStartSellingBtn;
+
 @property (strong, nonatomic) IBOutlet UIButton *mainStartSellButton;
 
 @property (strong, nonatomic) IBOutlet UILabel *browseLabel;

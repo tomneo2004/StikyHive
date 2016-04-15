@@ -13,7 +13,7 @@
 @protocol SellAllCellDelegate <NSObject>
 
 @optional
-
+- (void)onProfileImageTap:(SellAllCell *)cell;
 
 
 

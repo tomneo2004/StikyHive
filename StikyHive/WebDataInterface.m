@@ -145,6 +145,12 @@ const float DATA_REQUEST_TIMEOUT = 30.0f;
     [self requestData:DATA_URL_GET_BUYER_MARKET withParameters:params completion:completion];
 }
 
++ (void)searchBuyerWithKeyword:(NSString *)key completion:(void (^)(NSObject *, NSError *))completion{
+    
+    NSDictionary *params = @{POST_PARAMETER_BUYER_SEARCH_KEYWORD:key};
+
+    [self requestData:DATA_URL_GET_SEARCH_BUYER_MARKET withParameters:params completion:completion];
+}
 
 + (void)getBuyerMarketByStkid:(NSString *)stkid limit:(NSInteger)limit completion:(void (^)(NSObject *, NSError *))completion
 {
