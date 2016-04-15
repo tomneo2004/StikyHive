@@ -22,7 +22,7 @@
 #import <PDKPin.h>
 #import <linkedin-sdk/LISDK.h>
 #import "UIView+RNActivityView.h"
-
+#import "ChatMessagesViewController.h"
 
 
 @interface SkillPageViewController ()
@@ -200,6 +200,13 @@
 //    [self.view hideActivityView];
 }
 
+- (void)generalChatPressed{
+    
+    [ChatMessagesViewController setToStikyBee:_stkId];
+    ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
+    [self.navigationController pushViewController:cmvc animated:YES];
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)awebView
 {
     _numberOfWebViewLoaded++;
@@ -296,6 +303,7 @@
     chatBtn.backgroundColor = color3;
     [chatBtn setImage:[UIImage imageNamed:@"skillpg-chat"] forState:UIControlStateNormal];
     [chatBtn setTitle:@"Chat" forState:UIControlStateNormal];
+    [chatBtn addTarget:self action:@selector(generalChatPressed) forControlEvents:UIControlEventTouchUpInside];
     chatBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 27, 10, 68);
     
     
@@ -1059,7 +1067,14 @@
                  [view removeFromSuperview];
              }
              
-             [self displayCommentsView:_commentsArray atStartPoint:CGPointMake(frame.origin.x, frame.origin.y) andWidth:self.view.frame.size.width isComm:YES];
+             CGFloat y;
+             
+             y = [self displayCommentsView:_commentsArray atStartPoint:CGPointMake(frame.origin.x, frame.origin.y) andWidth:self.view.frame.size.width isComm:YES];
+             
+             y = [self displaySareButton:CGPointMake(0, y) andWidth:self.view.frame.size.width];
+             
+             if(_commBtn)
+                 [_commBtn setTitle:[NSString stringWithFormat:@"Comments(%lu)",(unsigned long)_commentsArray.count] forState:UIControlStateNormal];
          });
      }];
     

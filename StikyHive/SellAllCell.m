@@ -44,9 +44,20 @@
         self.profileImageView.layer.borderWidth = 2;
         self.profileImageView.userInteractionEnabled = YES;
         
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileImageTap)];
+        [self.profileImageView addGestureRecognizer:tap];
+        
         _isInit = YES;
         
         
+    }
+}
+
+- (void)profileImageTap{
+    
+    if([_delegate respondsToSelector:@selector(onProfileImageTap:)]){
+    
+        [_delegate onProfileImageTap:self];
     }
 }
 
@@ -93,7 +104,12 @@
     
 }
 
-
+- (void)prepareForReuse{
+    
+    _delegate = nil;
+    [_profileImageView cancelImageRequestOperation];
+    [_skillImageView cancelImageRequestOperation];
+}
 
 
 @end

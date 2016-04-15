@@ -21,6 +21,7 @@
 #import "LocalDataInterface.h"
 //#import "UserInfo.h"
 
+
 @interface SellerCollectionViewController ()
 
 @property (nonatomic, strong) NSMutableArray *skillList;

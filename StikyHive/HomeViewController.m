@@ -63,7 +63,9 @@
     _mainScrollView.alwaysBounceVertical = YES;
     [_mainScrollView addSubview:_refreshControl];
     _mainScrollView.delegate = self;
-    [_mainScrollView setContentSize:CGSizeMake(_mainScrollView.frame.size.width,1700)];
+    UIView *mainView = [[_mainScrollView subviews] objectAtIndex:0];
+    //[_mainScrollView setContentSize:CGSizeMake(_mainScrollView.frame.size.width,1700)];
+    [_mainScrollView setContentSize:CGSizeMake(_mainScrollView.frame.size.width,mainView.bounds.size.height)];
     
     [_mainScrollView setContentOffset:CGPointMake(0, -180) animated:YES]; // Force pull to refresh
     
@@ -372,6 +374,8 @@
 //    [super viewWillAppear:animated];
     [super viewDidAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
+    _topStartSellingBtn.titleLabel.minimumScaleFactor = 0.5f;
+    _topStartSellingBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
     
     _skillSearchBar.delegate = self;
     
