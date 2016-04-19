@@ -35,6 +35,7 @@
 
 @implementation SellingTableViewController{
     NSInteger _tmpIndex;
+    BOOL _isLoaded;
 }
 
 - (void)viewDidLoad {
@@ -43,7 +44,7 @@
     
 //    _imageFileArray = [[NSMutableArray alloc] init];
     
-    
+    _isLoaded = NO;
    SellingManager *smg = [SellingManager sharedSellingManager];
     
     if(smg.photoCaption == nil){
@@ -141,7 +142,7 @@
     }
     
     //on edit skill
-    if(_mySkillInfo){
+    if(_mySkillInfo && !_isLoaded){
         
         [self.view showActivityViewWithLabel:@"Fetching data..."];
         [WebDataInterface getSkillById:_mySkillInfo.skillId stkid:_mySkillInfo.stkId completion:^(NSObject *obj, NSError *error) {
@@ -211,6 +212,8 @@
                     
                     if(_numberOfRows == 0)
                         [self.view hideActivityView];
+                    
+                    _isLoaded = YES;
                 }
                 
             });
@@ -262,6 +265,7 @@
             return;
     }
     
+    [_sellTableView reloadData];
     [self.view hideActivityView];
 }
 
@@ -397,6 +401,11 @@
     
     _imageSelected0 = YES;
     
+    [_sellTableView reloadData];
+}
+
+- (void)onCancel{
     
+    [super onCancel];
 }
 @end
