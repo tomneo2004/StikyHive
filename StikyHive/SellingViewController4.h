@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MySkillInfo.h"
+#import "ImageCaption.h"
 
 @interface SellingViewController4 : UIViewController <UIScrollViewDelegate, UIAlertViewDelegate>
 

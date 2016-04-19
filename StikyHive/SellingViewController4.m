@@ -10,9 +10,12 @@
 #import "ViewControllerUtil.h"
 #import "SellingManager.h"
 #import "PromotionViewController.h"
+#import "UIView+RNActivityView.h"
+#import "LocalDataInterface.h"
+#import "WebDataInterface.h"
+
 
 @interface SellingViewController4 ()
-
 
 
 @end
@@ -52,13 +55,13 @@
     }
 
     
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -220,11 +223,12 @@
 
 - (IBAction)nextBtn:(id)sender
 {
+    
     UIViewController *vc = [ViewControllerUtil instantiateViewController:@"promotion_view_controller"];
     PromotionViewController *sv = (PromotionViewController *)vc;
     sv.mySkillInfo = _mySkillInfo;
     [self.navigationController pushViewController:vc animated:YES];
 
-    
 }
+
 @end

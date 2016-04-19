@@ -37,7 +37,7 @@
 @property (nonatomic, strong) HtmlEditor *descEditor;
 @property (nonatomic, assign) BOOL descEditorLoaded;
 @property (nonatomic, assign) NSString *categoryId;
-@property (nonatomic, assign) NSString *rateId;
+@property (nonatomic, copy) NSString *rateId;
 @property (nonatomic, assign) NSInteger skillType;
 @property (nonatomic, strong) NSDictionary *skillDict;
 @property (nonatomic, strong) SellingManager *smg;
@@ -395,7 +395,18 @@
     [_contentScrollView setContentSize:CGSizeMake(width, y)];
 }
 
+- (NSString *)getRateIdByName:(NSString *)rName{
 
+    for(NSDictionary *dic in _rateArray){
+        
+        if([dic[@"name"] isEqualToString:rName]){
+            
+            return dic[@"id"];
+        }
+    }
+    
+    return 0;
+}
 
 - (void)becomeEditingMode
 {
@@ -414,7 +425,9 @@
         
         _rateTextField.text = _mySkillInfo.ratename;
         
-        _rateId = [NSString stringWithFormat:@"%ld", (long)_mySkillInfo.rating];
+        _rateId = [self getRateIdByName:_mySkillInfo.ratename];
+        
+       // _rateId = [NSString stringWithFormat:@"%ld", (long)_mySkillInfo.rating];
         
     }
     
@@ -645,7 +658,7 @@
     {
         _rateTextField.text = _rateArray[row][@"name"];
         
-        _rateId = _rateArray[row][@"id"];
+        _rateId = [NSString stringWithFormat:@"%ld", [_rateArray[row][@"id"] integerValue]];
     }
     
 }

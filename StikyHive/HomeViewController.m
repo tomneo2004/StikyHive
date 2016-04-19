@@ -402,7 +402,7 @@
     
     if ([SellingManager sharedSellingManager].profileTap)
     {
-        [self.tabBarController setSelectedIndex:3];
+        [self.tabBarController setSelectedIndex:2];
         [SellingManager sharedSellingManager].profileTap = NO;
     }
 

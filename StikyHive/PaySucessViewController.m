@@ -42,6 +42,8 @@
     
     [self.navigationController popToRootViewControllerAnimated:YES];
     
+    NSLog(@"root %@", [self.navigationController viewControllers]);
+    
     [SellingManager sharedSellingManager].profileTap = YES;
     
     
