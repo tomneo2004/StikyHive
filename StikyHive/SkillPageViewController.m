@@ -19,7 +19,6 @@
 #import <SendGrid/SendGrid.h>
 #import <SendGrid/SendGridEmail.h>
 #import "UIView+Toast.h"
-#import <PDKPin.h>
 #import <linkedin-sdk/LISDK.h>
 #import "UIView+RNActivityView.h"
 #import "ChatMessagesViewController.h"

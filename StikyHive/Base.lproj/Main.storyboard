@@ -1006,7 +1006,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Se3-t2-aSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1027,9 +1026,29 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHQ-WJ-Iur">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.074509803920000006" green="0.58431372550000005" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="XGg-Sm-EO8"/>
+                                </constraints>
                                 <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="XGg-Sm-EO8"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="XGg-Sm-EO8"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="nextBtnPressed:" destination="Z02-je-KUF" eventType="touchUpInside" id="rer-Qp-jqx"/>
                                 </connections>
@@ -1153,15 +1172,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="I6P-Jo-5sw" firstAttribute="top" secondItem="vHQ-WJ-Iur" secondAttribute="bottom" constant="385" id="3IP-Uj-IYY">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="18"/>
                             </constraint>
-                            <constraint firstItem="vHQ-WJ-Iur" firstAttribute="top" secondItem="O0H-to-khi" secondAttribute="bottom" id="E5v-U2-scr"/>
+                            <constraint firstItem="vHQ-WJ-Iur" firstAttribute="top" secondItem="O0H-to-khi" secondAttribute="bottom" id="E5v-U2-scr">
+                                <variation key="heightClass=regular-widthClass=compact" constant="18"/>
+                            </constraint>
                             <constraint firstItem="O0H-to-khi" firstAttribute="top" secondItem="aIV-T3-bBN" secondAttribute="bottom" constant="15" id="Pv9-W1-hzh"/>
                             <constraint firstItem="vHQ-WJ-Iur" firstAttribute="centerX" secondItem="Bzb-vF-1qI" secondAttribute="centerX" id="ZUw-c6-B08"/>
                             <constraint firstItem="aIV-T3-bBN" firstAttribute="leading" secondItem="Bzb-vF-1qI" secondAttribute="leadingMargin" constant="4" id="cbb-10-tlS"/>
                             <constraint firstItem="O0H-to-khi" firstAttribute="leading" secondItem="Bzb-vF-1qI" secondAttribute="leading" id="jUX-tb-6Lg"/>
                             <constraint firstItem="aIV-T3-bBN" firstAttribute="top" secondItem="DPJ-xz-xOt" secondAttribute="bottom" id="s80-vS-BF5"/>
-                            <constraint firstItem="vHQ-WJ-Iur" firstAttribute="width" secondItem="Bzb-vF-1qI" secondAttribute="width" id="sTS-f1-zTZ"/>
+                            <constraint firstItem="vHQ-WJ-Iur" firstAttribute="width" secondItem="Bzb-vF-1qI" secondAttribute="width" multiplier="0.8" id="sTS-f1-zTZ"/>
                             <constraint firstAttribute="trailing" secondItem="O0H-to-khi" secondAttribute="trailing" id="tTB-2u-Lvk"/>
                         </constraints>
                         <variation key="default">
@@ -1765,7 +1786,7 @@
                                                 <exclude reference="V6w-Fu-6Oc"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="0.0" y="270" width="400" height="150"/>
                                             <mask key="constraints">
                                                 <include reference="V6w-Fu-6Oc"/>
@@ -1814,7 +1835,7 @@
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNy-gJ-UvX">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="320" y="301" width="51" height="31"/>
                                         </variation>
                                         <connections>
@@ -9460,9 +9481,6 @@ Cross Pollinate!</string>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="64" width="68" height="20"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5O-hs-0kf">
                                 <rect key="frame" x="20" y="87.5" width="95" height="33"/>
@@ -9476,9 +9494,6 @@ Cross Pollinate!</string>
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="84" width="120" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="addSkill:" destination="1Qg-Ij-s41" eventType="touchUpInside" id="r2u-Wy-d12"/>
                                 </connections>
@@ -9616,9 +9631,6 @@ Cross Pollinate!</string>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="119" width="400" height="632"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="1Qg-Ij-s41" id="DCm-Ok-gRS"/>
                                     <outlet property="delegate" destination="1Qg-Ij-s41" id="mu7-lW-rFT"/>
@@ -9630,7 +9642,7 @@ Cross Pollinate!</string>
                             <constraint firstItem="u5O-hs-0kf" firstAttribute="width" secondItem="JkF-Hi-G8n" secondAttribute="width" multiplier="0.3" id="2qP-03-jfg"/>
                             <constraint firstAttribute="trailing" secondItem="5hH-os-NSC" secondAttribute="trailing" id="Aip-w4-VHl"/>
                             <constraint firstItem="sAT-oZ-Qr2" firstAttribute="leading" secondItem="JkF-Hi-G8n" secondAttribute="leadingMargin" id="YfH-9d-cy4"/>
-                            <constraint firstItem="u5O-hs-0kf" firstAttribute="top" secondItem="sAT-oZ-Qr2" secondAttribute="bottom" id="aKY-ht-2NB"/>
+                            <constraint firstItem="u5O-hs-0kf" firstAttribute="top" secondItem="sAT-oZ-Qr2" secondAttribute="bottom" multiplier="1.1" id="aKY-ht-2NB"/>
                             <constraint firstItem="5hH-os-NSC" firstAttribute="top" secondItem="u5O-hs-0kf" secondAttribute="bottom" constant="5" id="aT3-mb-L3c"/>
                             <constraint firstItem="1og-Fs-3in" firstAttribute="top" secondItem="5hH-os-NSC" secondAttribute="bottom" id="eMp-Ks-TJM"/>
                             <constraint firstItem="u5O-hs-0kf" firstAttribute="leading" secondItem="JkF-Hi-G8n" secondAttribute="leadingMargin" id="kHe-Rk-IMo"/>
@@ -10006,7 +10018,7 @@ Cross Pollinate!</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="92.5" width="120" height="30"/>
+                                    <rect key="frame" x="20" y="92" width="120" height="30"/>
                                 </variation>
                                 <connections>
                                     <action selector="addPost:" destination="cqq-Fj-1rR" eventType="touchUpInside" id="Yrs-SL-ppb"/>
@@ -10147,7 +10159,7 @@ Cross Pollinate!</string>
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="127.5" width="400" height="623.5"/>
+                                    <rect key="frame" x="0.0" y="127" width="400" height="623.5"/>
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="cqq-Fj-1rR" id="hBr-je-3kg"/>
@@ -11615,7 +11627,7 @@ Cross Pollinate!</string>
                                             <constraint firstAttribute="width" constant="300" id="spV-Mz-INk"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="4"/>

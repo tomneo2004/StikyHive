@@ -103,10 +103,11 @@ static NSString *profilePic = nil;
     
 //    self.showLoadEarlierMessagesHeader = YES;
     
-    
+    /*
     UIBarButtonItem *callButton = [ViewControllerUtil createBarButton:@"button_call_header" onTarget:self withSelector:@selector(callPressedd:)];
     callButton.imageInsets = UIEdgeInsetsMake(0, -15, 0, 15);
     self.navigationItem.rightBarButtonItems = @[callButton];
+     */
     self.navigationController.navigationBar.topItem.title = @"";
     
     

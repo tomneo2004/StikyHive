@@ -14,7 +14,6 @@
 #import <Google/CloudMessaging.h>
 #import "WebDataInterface.h"
 #import "LocalDataInterface.h"
-#import <PinterestSDK/PinterestSDK.h>
 
 #import "ChatMessagesViewController.h"
 #import "NavigChatViewController.h"
@@ -110,7 +109,7 @@ NSString *const SubscriptionTopic = @"/topics/global";
     
 //    return YES;
     
-    [PDKClient configureSharedInstanceWithAppId:@"4823896747864506464"];
+    //[PDKClient configureSharedInstanceWithAppId:@"4823896747864506464"];
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
 }

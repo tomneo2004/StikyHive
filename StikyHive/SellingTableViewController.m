@@ -42,6 +42,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"Start Selling";
+    
 //    _imageFileArray = [[NSMutableArray alloc] init];
     
     _isLoaded = NO;
