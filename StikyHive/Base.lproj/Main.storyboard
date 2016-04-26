@@ -24,8 +24,10 @@
             <string>OpenSans-Bold</string>
             <string>OpenSans-Bold</string>
             <string>OpenSans-Bold</string>
+            <string>OpenSans-Bold</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -1745,7 +1747,7 @@
                                                 <exclude reference="kx4-9t-LIY"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="0.0" y="109" width="400" height="160"/>
                                             <mask key="constraints">
                                                 <include reference="kx4-9t-LIY"/>
@@ -1786,7 +1788,7 @@
                                                 <exclude reference="V6w-Fu-6Oc"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="270" width="400" height="150"/>
                                             <mask key="constraints">
                                                 <include reference="V6w-Fu-6Oc"/>
@@ -1829,13 +1831,13 @@
                                     </imageView>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFV-PL-6Ul">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                             <rect key="frame" x="320" y="146" width="51" height="31"/>
                                         </variation>
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNy-gJ-UvX">
                                         <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                             <rect key="frame" x="320" y="301" width="51" height="31"/>
                                         </variation>
                                         <connections>
@@ -9481,6 +9483,9 @@ Cross Pollinate!</string>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="64" width="68" height="20"/>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5O-hs-0kf">
                                 <rect key="frame" x="20" y="87.5" width="95" height="33"/>
@@ -9494,6 +9499,9 @@ Cross Pollinate!</string>
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="92.5" width="120" height="30"/>
+                                </variation>
                                 <connections>
                                     <action selector="addSkill:" destination="1Qg-Ij-s41" eventType="touchUpInside" id="r2u-Wy-d12"/>
                                 </connections>
@@ -9631,6 +9639,9 @@ Cross Pollinate!</string>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="127.5" width="400" height="623.5"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="1Qg-Ij-s41" id="DCm-Ok-gRS"/>
                                     <outlet property="delegate" destination="1Qg-Ij-s41" id="mu7-lW-rFT"/>
@@ -10166,14 +10177,103 @@ Cross Pollinate!</string>
                                     <outlet property="delegate" destination="cqq-Fj-1rR" id="EKK-bm-fKg"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E62-Sf-Pam">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="looking.png" translatesAutoresizingMaskIntoConstraints="NO" id="dRe-Gz-STF">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No posts yet!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnk-co-XSo">
+                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="22"/>
+                                        <color key="textColor" red="0.89786537247474751" green="0.8636550057710578" blue="0.066639750559522981" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9W8-o4-eis">
+                                        <rect key="frame" x="8" y="133" width="180" height="36"/>
+                                        <color key="backgroundColor" red="0.0" green="0.65490196079999996" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                        <state key="normal" title="Post to buy">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="128.5" y="442" width="143.5" height="36"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="addPost:" destination="cqq-Fj-1rR" eventType="touchUpInside" id="bwA-WM-a74"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="qnk-co-XSo" firstAttribute="top" secondItem="dRe-Gz-STF" secondAttribute="bottom" constant="8" id="CF3-W1-z5A"/>
+                                    <constraint firstItem="dRe-Gz-STF" firstAttribute="width" secondItem="E62-Sf-Pam" secondAttribute="width" multiplier="0.5" id="G9P-aO-A0h"/>
+                                    <constraint firstItem="9W8-o4-eis" firstAttribute="centerX" secondItem="dRe-Gz-STF" secondAttribute="centerX" id="HxO-Es-N0Q"/>
+                                    <constraint firstItem="dRe-Gz-STF" firstAttribute="height" secondItem="E62-Sf-Pam" secondAttribute="height" multiplier="0.2" id="UZG-4g-PZW"/>
+                                    <constraint firstItem="qnk-co-XSo" firstAttribute="centerX" secondItem="dRe-Gz-STF" secondAttribute="centerX" id="WaM-P1-Nvh"/>
+                                    <constraint firstItem="9W8-o4-eis" firstAttribute="width" secondItem="qnk-co-XSo" secondAttribute="width" id="f6Y-I7-9hz"/>
+                                    <constraint firstItem="dRe-Gz-STF" firstAttribute="centerY" secondItem="E62-Sf-Pam" secondAttribute="centerY" id="hp7-3v-Ztp"/>
+                                    <constraint firstItem="9W8-o4-eis" firstAttribute="top" secondItem="qnk-co-XSo" secondAttribute="bottom" constant="8" id="vSU-kq-ieW"/>
+                                    <constraint firstItem="dRe-Gz-STF" firstAttribute="centerX" secondItem="E62-Sf-Pam" secondAttribute="centerX" id="wSh-59-mOA"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="dRe-Gz-STF"/>
+                                        <exclude reference="qnk-co-XSo"/>
+                                        <exclude reference="9W8-o4-eis"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="G9P-aO-A0h"/>
+                                        <exclude reference="UZG-4g-PZW"/>
+                                        <exclude reference="hp7-3v-Ztp"/>
+                                        <exclude reference="wSh-59-mOA"/>
+                                        <exclude reference="CF3-W1-z5A"/>
+                                        <exclude reference="WaM-P1-Nvh"/>
+                                        <exclude reference="HxO-Es-N0Q"/>
+                                        <exclude reference="f6Y-I7-9hz"/>
+                                        <exclude reference="vSU-kq-ieW"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="dRe-Gz-STF"/>
+                                        <include reference="qnk-co-XSo"/>
+                                        <include reference="9W8-o4-eis"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="G9P-aO-A0h"/>
+                                        <include reference="UZG-4g-PZW"/>
+                                        <include reference="hp7-3v-Ztp"/>
+                                        <include reference="wSh-59-mOA"/>
+                                        <include reference="CF3-W1-z5A"/>
+                                        <include reference="WaM-P1-Nvh"/>
+                                        <include reference="HxO-Es-N0Q"/>
+                                        <include reference="f6Y-I7-9hz"/>
+                                        <include reference="vSU-kq-ieW"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="E62-Sf-Pam" secondAttribute="trailing" constant="20" id="1uL-tv-q2f">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="E62-Sf-Pam" firstAttribute="leading" secondItem="Rpz-Td-d3G" secondAttribute="leading" id="AAL-pz-tLn"/>
                             <constraint firstItem="A3q-Al-S9M" firstAttribute="top" secondItem="mqR-qn-8yi" secondAttribute="bottom" constant="5" id="AfS-7L-kDF"/>
                             <constraint firstItem="A3q-Al-S9M" firstAttribute="width" secondItem="Rpz-Td-d3G" secondAttribute="width" multiplier="0.3" id="Et1-Bq-9H4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mqR-qn-8yi" secondAttribute="trailing" id="KtB-oR-ZhQ"/>
                             <constraint firstItem="A3q-Al-S9M" firstAttribute="leading" secondItem="mqR-qn-8yi" secondAttribute="leading" id="O8C-ws-atY"/>
+                            <constraint firstItem="E62-Sf-Pam" firstAttribute="top" secondItem="mqR-qn-8yi" secondAttribute="bottom" constant="248.5" id="Q6e-ba-b9y">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="mqR-qn-8yi" firstAttribute="leading" secondItem="Rpz-Td-d3G" secondAttribute="leadingMargin" id="QwK-tc-5cP"/>
+                            <constraint firstItem="7Za-P0-V1a" firstAttribute="top" secondItem="E62-Sf-Pam" secondAttribute="bottom" id="qbG-Wo-7hj"/>
                             <constraint firstItem="dtE-4j-MCA" firstAttribute="top" secondItem="A3q-Al-S9M" secondAttribute="bottom" constant="5" id="qt8-uR-shf"/>
                             <constraint firstItem="mqR-qn-8yi" firstAttribute="top" secondItem="qxa-La-Nk9" secondAttribute="bottom" id="ssK-8R-Pwy"/>
                             <constraint firstItem="dtE-4j-MCA" firstAttribute="leading" secondItem="Rpz-Td-d3G" secondAttribute="leading" id="wNR-Qv-g3s"/>
@@ -10181,24 +10281,39 @@ Cross Pollinate!</string>
                             <constraint firstItem="7Za-P0-V1a" firstAttribute="top" secondItem="dtE-4j-MCA" secondAttribute="bottom" id="zmj-x7-xaO"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="E62-Sf-Pam"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="Et1-Bq-9H4"/>
+                                <exclude reference="1uL-tv-q2f"/>
+                                <exclude reference="AAL-pz-tLn"/>
+                                <exclude reference="Q6e-ba-b9y"/>
+                                <exclude reference="qbG-Wo-7hj"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="E62-Sf-Pam"/>
+                            </mask>
                             <mask key="constraints">
                                 <include reference="Et1-Bq-9H4"/>
+                                <include reference="1uL-tv-q2f"/>
+                                <include reference="AAL-pz-tLn"/>
+                                <include reference="Q6e-ba-b9y"/>
+                                <include reference="qbG-Wo-7hj"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="qUN-Y5-4O2"/>
                     <connections>
+                        <outlet property="noPostView" destination="E62-Sf-Pam" id="TZq-Xp-rce"/>
                         <outlet property="tableView" destination="dtE-4j-MCA" id="EJE-w7-LUV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lf-dX-3vE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5123" y="1689"/>
+            <point key="canvasLocation" x="5122.5" y="1689"/>
         </scene>
         <!--Sold View Controller-->
         <scene sceneID="wMT-eb-Rog">
@@ -15800,6 +15915,7 @@ Cross Pollinate!</string>
         <image name="icon_play.png" width="50" height="50"/>
         <image name="like.png" width="50" height="45"/>
         <image name="logo.png" width="300" height="205"/>
+        <image name="looking.png" width="397" height="190"/>
         <image name="moreorless.png" width="664" height="675"/>
         <image name="sell_upload_photo.png" width="681" height="384"/>
         <image name="sell_upload_video.png" width="681" height="384"/>

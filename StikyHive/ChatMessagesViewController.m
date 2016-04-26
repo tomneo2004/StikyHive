@@ -95,6 +95,10 @@ static NSString *profilePic = nil;
 //        profileImage = [ViewControllerUtil getImageWithPath:profilePic];
 //    }
     
+    if(profileImage == nil){
+        
+        profileImage = [UIImage imageNamed:@"Default_profile_image@2x.png"];
+    }
    
     _chatData = [[ChatData alloc] initWithIncomingAvatarImage:profileImage incomingID:ToStikyBee incomingDisplayName:fullName outgoingID:self.senderId outgoingDisplayName:self.senderDisplayName];
     

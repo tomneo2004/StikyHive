@@ -39,6 +39,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"Document";
+    
     _removedDocumentInfo = [[NSMutableArray alloc] init];
     _tableView.allowsSelectionDuringEditing = YES;
     _dateFormatter = [[NSDateFormatter alloc] init];

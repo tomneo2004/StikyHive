@@ -59,6 +59,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"Post to buy";
+    
     _contentScrollView.alwaysBounceVertical = YES;
     _contentScrollView.delegate = self;
     

@@ -30,6 +30,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"Post to buy";
+    
     SEL selImage = @selector(tapImageDetected:);
     [_photoImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:selImage]];
     [_photoImageView setUserInteractionEnabled:YES];
