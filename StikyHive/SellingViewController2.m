@@ -44,7 +44,7 @@ static NSMutableDictionary *Skill_Info;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.title = @"Start Selling";
     
 //    NSLog(@"skill info ---- %@",Skill_Info);
     

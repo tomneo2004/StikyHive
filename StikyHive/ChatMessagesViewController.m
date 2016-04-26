@@ -95,6 +95,10 @@ static NSString *profilePic = nil;
 //        profileImage = [ViewControllerUtil getImageWithPath:profilePic];
 //    }
     
+    if(profileImage == nil){
+        
+        profileImage = [UIImage imageNamed:@"Default_profile_image@2x.png"];
+    }
    
     _chatData = [[ChatData alloc] initWithIncomingAvatarImage:profileImage incomingID:ToStikyBee incomingDisplayName:fullName outgoingID:self.senderId outgoingDisplayName:self.senderDisplayName];
     
@@ -103,10 +107,11 @@ static NSString *profilePic = nil;
     
 //    self.showLoadEarlierMessagesHeader = YES;
     
-    
+    /*
     UIBarButtonItem *callButton = [ViewControllerUtil createBarButton:@"button_call_header" onTarget:self withSelector:@selector(callPressedd:)];
     callButton.imageInsets = UIEdgeInsetsMake(0, -15, 0, 15);
     self.navigationItem.rightBarButtonItems = @[callButton];
+     */
     self.navigationController.navigationBar.topItem.title = @"";
     
     

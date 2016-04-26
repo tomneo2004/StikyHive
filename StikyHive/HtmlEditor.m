@@ -15,6 +15,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.translucent = NO;
+    
     
     self.enabledToolbarItems = @[ZSSRichTextEditorToolbarUndo,
                                  ZSSRichTextEditorToolbarRedo,

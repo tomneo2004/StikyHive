@@ -10,7 +10,7 @@ platform :ios, '7.0'
 pod 'SendGrid', '~>  0.2.6'
 
 platform :ios, '7.0'
-pod "AFNetworking", "~> 2.0"
+pod 'AFNetworking'
 
 
 platform :ios, '7.0'
@@ -31,10 +31,12 @@ pod 'JSQMessagesViewController'
 
 pod 'AFSoundManager'
 
-pod 'PinterestSDK', :git => 'https://github.com/pinterest/ios-pdk.git'
+#pod 'PinterestSDK', :git => 'https://github.com/pinterest/ios-pdk.git'
 
 pod 'FBSDKShareKit'
 
 pod 'FBSDKCoreKit'
 
 pod 'FBSDKLoginKit'
+
+pod 'ZSSRichTextEditor'

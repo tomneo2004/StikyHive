@@ -30,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    self.title = @"Sellers";
     _sellTableView.delegate = self;
     _sellTableView.dataSource = self;
     
@@ -54,10 +54,13 @@
 {
     [self.view showActivityViewWithLabel:@"Loading..." detailLabel:@"Fetching data"];
     
+    _sellTableView.hidden  = YES;
+    
     [WebDataInterface getSellAllSkills:8 catId:1 completion:^(NSObject *obj, NSError *err) {
       
         dispatch_async(dispatch_get_main_queue(), ^{
             
+            _sellTableView.hidden  = NO;
             
             NSDictionary *dict = (NSDictionary *)obj;
             NSLog(@"get sell all dict ---- %@",dict);
@@ -112,10 +115,14 @@
        
         [self.view showActivityViewWithLabel:@"Loading..." detailLabel:@"Fetching data"];
         
+        _sellTableView.hidden  = YES;
+        
        [WebDataInterface getSellFilter:result completion:^(NSObject *obj, NSError *error) {
           
            dispatch_async(dispatch_get_main_queue(), ^{
            
+               _sellTableView.hidden  = NO;
+               
                NSDictionary *dict = (NSDictionary *)obj;
                
                if (error == nil && [dict[@"status"] isEqualToString:@"success"])
@@ -162,9 +169,13 @@
             
             [self.view showActivityViewWithLabel:@"Loading..." detailLabel:@"Fetching data"];
             
+            _sellTableView.hidden  = YES;
+            
             [WebDataInterface getSellMostViewCompletion:^(NSObject *obj, NSError *error) {
                
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    _sellTableView.hidden  = NO;
                     
                     NSDictionary *dict = (NSDictionary *)obj;
                     
@@ -284,7 +295,7 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    
+    /*
     if(searchBar.text != nil && ![searchBar.text isEqualToString:@""]){
         
         SearchViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
@@ -293,6 +304,54 @@
         
         [self.navigationController pushViewController:controller animated:YES];
     }
+     */
+    
+    if([searchBar.text isEqualToString:@""])
+        return;
+    
+    [self.view showActivityViewWithLabel:@"Loading..." detailLabel:@"Fetching data"];
+    
+    _sellTableView.hidden  = YES;
+    
+    [WebDataInterface getSearchSell:searchBar.text completion:^(NSObject *obj, NSError *error){
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSDictionary *dict = (NSDictionary *)obj;
+            NSLog(@"get sell all dict ---- %@",dict);
+            
+            
+            _sellTableView.hidden  = NO;
+            
+            if (error == nil && [dict[@"status"] isEqualToString:@"success"])
+            {
+                _skillArrays = [[NSMutableArray alloc] init];
+                
+                _skillArrays = dict[@"result"];
+                
+                
+                _isLoaded = YES;
+                
+                [_sellTableView reloadData];
+                
+            }
+            else
+            {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No data were found" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alertView show];
+                
+                //[self.navigationController popViewControllerAnimated:YES];
+                
+            }
+            
+            [self.view hideActivityView];
+
+            
+        });
+        
+    }];
+
     
     [searchBar resignFirstResponder];
     

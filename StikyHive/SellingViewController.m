@@ -56,6 +56,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Start Selling";
+    
     NSLog(@"my skill info --- %@",_mySkillInfo);
     
     _contentScrollView.alwaysBounceVertical = YES;

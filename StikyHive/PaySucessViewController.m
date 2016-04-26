@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Start Selling Successful";
     // Do any additional setup after loading the view.
 }
 

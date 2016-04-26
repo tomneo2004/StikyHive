@@ -13,6 +13,7 @@
 #import "UIView+RNActivityView.h"
 #import "SkillPageViewController.h"
 #import "BuyerPostViewController.h"
+#import "ChatMessagesViewController.h"
 
 @interface UserProfileViewController ()
 
@@ -47,6 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     
     _contentScrollView.alwaysBounceVertical = YES;
     _contentScrollView.delegate = self;
@@ -96,7 +98,9 @@
                 
                             dispatch_async(dispatch_get_main_queue(), ^{
                     
-                        
+                                
+                                NSString *name = [NSString stringWithFormat:@"%@ %@", _beeInfoDic[@"stikybee"][@"firstname"], _beeInfoDic[@"stikybee"][@"lastname"]];
+                                self.title = name;
                                 [self displayPage];
                             
                             
@@ -270,6 +274,7 @@
         CGPoint chatBtnCenter = chatBtn.center;
         chatBtnCenter.x = iconViewWidth/2;
         chatBtn.center = chatBtnCenter;
+        [chatBtn addTarget:self action:@selector(onChat) forControlEvents:UIControlEventTouchUpInside];
         [chatView addSubview:chatBtn];
     
     
@@ -280,12 +285,12 @@
         CGPoint callBtnCenter = callBtn.center;
         callBtnCenter.x = iconViewWidth/2;
         callBtn.center = callBtnCenter;
-        [callView addSubview:callBtn];
+        //[callView addSubview:callBtn];
 
         [iconImageView addSubview:contactView];
-        [iconImageView addSubview:tocolonyView];
+        //[iconImageView addSubview:tocolonyView];
         [iconImageView addSubview:chatView];
-        [iconImageView addSubview:callView];
+        //[iconImageView addSubview:callView];
 
         
     }
@@ -298,6 +303,12 @@
 }
 
 
+- (void)onChat{
+    
+    [ChatMessagesViewController setToStikyBee:_beeInfoDic[@"stikybee"][@"stkid"]];
+    ChatMessagesViewController *cmvc = [ChatMessagesViewController messagesViewController];
+    [self.navigationController pushViewController:cmvc animated:YES];
+}
 
 - (CGFloat)displayTabScrollView:(CGPoint)point andWidth:(CGFloat)width
 {

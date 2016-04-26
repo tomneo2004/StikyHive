@@ -19,6 +19,7 @@
 @interface MyPostViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *noPostView;
 
 @end
 
@@ -34,6 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"My post";
     
     _dateFormatter = [[NSDateFormatter alloc] init];
     [_dateFormatter setDateFormat:@"dd MMM yyyy"];
@@ -73,8 +76,13 @@
                 
                 if(((NSArray *)dic[@"buyermarkets"]).count <=0){
                     
+                    /*
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No result" message:@"No post information!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alert show];
+                     */
+                    
+                    _tableView.hidden = YES;
+                    _noPostView.hidden = NO;
                     
                 }
                 else{
@@ -88,6 +96,9 @@
                         [_myPostInfos addObject:info];
                     }
                     
+                    _tableView.hidden = NO;
+                    _noPostView.hidden = YES;
+                    
                     [_tableView reloadData];
                     
                     [self.view hideActivityView];
@@ -99,7 +110,7 @@
             
             [self.view hideActivityView];
             
-            [self.navigationController popViewControllerAnimated:YES];
+            //[self.navigationController popViewControllerAnimated:YES];
             
         });
     }];
@@ -218,6 +229,12 @@
                     
                     [_myPostInfos removeObjectAtIndex:_tmpDeleteIndex];
                     [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_tmpDeleteIndex inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    
+                    if(_myPostInfos.count <= 0){
+                        
+                        _tableView.hidden = YES;
+                        _noPostView.hidden = NO;
+                    }
                     
                 }
                 

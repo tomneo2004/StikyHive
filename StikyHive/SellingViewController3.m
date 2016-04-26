@@ -40,6 +40,7 @@ static NSData *Video_Data;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"Start Selling";
     
     _contentScrollView.alwaysBounceVertical = YES;
     _contentScrollView.delegate = self;

@@ -42,6 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Start Selling";
     
     _contentScrollView.alwaysBounceVertical = YES;
     _contentScrollView.delegate = self;

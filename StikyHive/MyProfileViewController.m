@@ -44,6 +44,8 @@
     _contentScrollView.alwaysBounceVertical = YES;
     _contentScrollView.delegate = self;
     
+    self.title = @"My Profile";
+    
 //    ///////
 //    
 //    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

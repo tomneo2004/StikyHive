@@ -33,6 +33,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"Subscription";
+    
     _dateFormatter = [[NSDateFormatter alloc] init];
     [_dateFormatter setDateFormat:@"dd MMM yyyy"];
 }
