@@ -97,7 +97,7 @@ static NSString *profilePic = nil;
     
     if(profileImage == nil){
         
-        profileImage = [UIImage imageNamed:@"Default_profile_image@2x.png"];
+        profileImage = [UIImage imageNamed:@"Default_profile_small@2x"];
     }
    
     _chatData = [[ChatData alloc] initWithIncomingAvatarImage:profileImage incomingID:ToStikyBee incomingDisplayName:fullName outgoingID:self.senderId outgoingDisplayName:self.senderDisplayName];
@@ -190,7 +190,15 @@ static NSString *profilePic = nil;
     [self.tabBarController.tabBar setHidden:YES];
     
     _profileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(290, 2, 36, 36)];
-    _profileImageView.image = [ViewControllerUtil getImageWithPath:[WebDataInterface getFullUrlPath:[LocalDataInterface retrieveProfileUrl]]];
+    UIImage *profileImage = [ViewControllerUtil getImageWithPath:[WebDataInterface getFullUrlPath:[LocalDataInterface retrieveProfileUrl]]];
+    
+    if(profileImage == nil){
+        
+        profileImage = [UIImage imageNamed:@"Default_profile_small@2x"];
+    }
+    
+    //_profileImageView.image = [ViewControllerUtil getImageWithPath:[WebDataInterface getFullUrlPath:[LocalDataInterface retrieveProfileUrl]]];
+    _profileImageView.image = profileImage;
     _profileImageView.layer.cornerRadius = 18;
     _profileImageView.layer.masksToBounds = YES;
     
