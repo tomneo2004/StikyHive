@@ -81,13 +81,10 @@
     // Do any additional setup after loading the view.
     [self setTitle:@"Skill Page"];
     
-    UIBarButtonItem *chatButton = [ViewControllerUtil createBarButton:@"button_chat_header" onTarget:self
-                                                         withSelector:@selector(generalChatPressed)];
-    UIBarButtonItem *callButton = [ViewControllerUtil createBarButton:@"button_call_header" onTarget:self
-                                                         withSelector:@selector(generalCallPressed)];
-    chatButton.imageInsets = UIEdgeInsetsMake(0, 10, 0, -10);
-    callButton.imageInsets = UIEdgeInsetsMake(0, -10, 0, 10);
-    self.navigationItem.rightBarButtonItems = @[/*callButton,*/ chatButton];
+    
+    
+
+    
     
     CGFloat width = self.view.frame.size.width - 40;
     
@@ -180,6 +177,18 @@
                       [_skillDescWebView loadHTMLString:_skillHtml baseURL:nil];
                       [_sellerDescWebView loadHTMLString:_sellerHtml baseURL:nil];
                       [_sellerInfoWebView loadHTMLString:_sellerInfo baseURL:nil];
+                      
+                      if(![[LocalDataInterface retrieveStkid] isEqualToString:_stkId]){
+                          
+                          UIBarButtonItem *chatButton = [ViewControllerUtil createBarButton:@"button_chat_header" onTarget:self
+                                                                               withSelector:@selector(generalChatPressed)];
+                          UIBarButtonItem *callButton = [ViewControllerUtil createBarButton:@"button_call_header" onTarget:self
+                                                                               withSelector:@selector(generalCallPressed)];
+                          chatButton.imageInsets = UIEdgeInsetsMake(0, 10, 0, -10);
+                          callButton.imageInsets = UIEdgeInsetsMake(0, -10, 0, 10);
+                          
+                          self.navigationItem.rightBarButtonItems = @[/*callButton,*/ chatButton];
+                      }
                       
                   });
               }
@@ -306,9 +315,13 @@
     chatBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 27, 10, 68);
     
     
-    [self.view addSubview:emailBtn];
-    //[self.view addSubview:callBtn];
-    [self.view addSubview:chatBtn];
+    if(![[LocalDataInterface retrieveStkid] isEqualToString:_stkId]){
+        
+        [self.view addSubview:emailBtn];
+        //[self.view addSubview:callBtn];
+        [self.view addSubview:chatBtn];
+    }
+    
     
 }
 
