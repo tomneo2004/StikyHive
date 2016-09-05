@@ -17,10 +17,16 @@ I did not work on this project from the beginning.I enter and work on this proje
 I work on:
 - Search Talent by industry
 - Search skills
+- CrossPollinate
+- Profile management
 - StikyChat
     - Send recorded audio
     - Play received audio
     - Send image / show image
+    - Send message/ receive message
+- Fix prvious bug & issue
+- Improve performance
+- partial server interface
 
 To run project:
 
