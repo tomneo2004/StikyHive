@@ -100,6 +100,7 @@
 		51C0A7E91BC6115600860CD3 /* SellerCommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51C0A7E81BC6115600860CD3 /* SellerCommViewController.m */; };
 		51C2568D1C337DF1007E6581 /* BuySucessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51C2568C1C337DF1007E6581 /* BuySucessViewController.m */; };
 		51C2568F1C33907B007E6581 /* upload_buyer.png in Resources */ = {isa = PBXBuildFile; fileRef = 51C2568E1C33907B007E6581 /* upload_buyer.png */; };
+		52B185D61D7D2A0C00C9E498 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 52B185D51D7D2A0C00C9E498 /* README.md */; };
 		67361F2D1B82D0CB00C1374D /* UserAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67361F2C1B82D0CB00C1374D /* UserAgreementViewController.m */; };
 		67361F2F1B830D3B00C1374D /* smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = 67361F2E1B830D3B00C1374D /* smiley.png */; };
 		67361F341B830F6300C1374D /* add_profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 67361F331B830F6300C1374D /* add_profile.png */; };
@@ -548,6 +549,7 @@
 		51C2568B1C337DF1007E6581 /* BuySucessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuySucessViewController.h; sourceTree = "<group>"; };
 		51C2568C1C337DF1007E6581 /* BuySucessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuySucessViewController.m; sourceTree = "<group>"; };
 		51C2568E1C33907B007E6581 /* upload_buyer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload_buyer.png; sourceTree = "<group>"; };
+		52B185D51D7D2A0C00C9E498 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5BD589799144B88408CD0618 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		67361F2B1B82D0CB00C1374D /* UserAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAgreementViewController.h; sourceTree = "<group>"; };
 		67361F2C1B82D0CB00C1374D /* UserAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAgreementViewController.m; sourceTree = "<group>"; };
@@ -1194,6 +1196,7 @@
 		674D0D891B7D913400B5B80D = {
 			isa = PBXGroup;
 			children = (
+				52B185D51D7D2A0C00C9E498 /* README.md */,
 				5102A38B1C4789870075116C /* GoogleService-Info.plist */,
 				674D0DBE1B7D916200B5B80D /* QuartzCore.framework */,
 				CE85260E1C6056D100A9A480 /* AudioRecordManager */,
@@ -2243,7 +2246,7 @@
 				TargetAttributes = {
 					674D0D911B7D913400B5B80D = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = FJ76M7Y99D;
+						DevelopmentTeam = D7S3BX6UT5;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2633,6 +2636,7 @@
 				CED9077A1CA23AB500601D82 /* SearchInfo.m in Sources */,
 				516F7EB51C182EA2005FEF8A /* SellingTableViewController.m in Sources */,
 				CE5D4A4C1C27A649005C07D4 /* PostCommentViewController.m in Sources */,
+				52B185D61D7D2A0C00C9E498 /* README.md in Sources */,
 				676F77E41B96F3060084988A /* TOCropViewController.m in Sources */,
 				CEFD19581C040F3D00A79158 /* SearchResultCell.m in Sources */,
 				CE83C78F1C3B731700753B80 /* EducationCell.m in Sources */,
@@ -2895,8 +2899,8 @@
 			baseConfigurationReference = 5BD589799144B88408CD0618 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
